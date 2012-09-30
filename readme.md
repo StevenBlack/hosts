@@ -30,7 +30,7 @@ Currently the `hosts` files from the following locations are amalgamated and de-
 ## Location of your hosts file
 To modify your current `hosts` file, look for it in the following places:
 
-**Mac OS X, iOS**: `/etc/hosts`
+**Mac OS X, iOS, Android**: `/etc/hosts`
 
 **Windows**: `%SystemRoot%\system32\drivers\etc\hosts`
 
