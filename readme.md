@@ -39,3 +39,7 @@ To modify your current `hosts` file, look for it in the following places and mod
 
 **Windows**: `%SystemRoot%\system32\drivers\etc\hosts` folder.
 
+<style>
+h2 {color:red;}
+</style>
+
