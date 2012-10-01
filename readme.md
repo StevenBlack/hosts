@@ -33,8 +33,3 @@ To modify your current `hosts` file, look for it in the following places:
 **Mac OS X, iOS, Android**: `/etc/hosts`
 
 **Windows**: `%SystemRoot%\system32\drivers\etc\hosts`
-
-<style>
-h2 {color:red;}
-</style>
-
