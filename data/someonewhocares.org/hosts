@@ -6,7 +6,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Dec 3th, 2012 at 11:14
+# Last updated: Dec 26th, 2012 at 20:08
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -49,6 +49,9 @@
 #    | As well, note that the format is different on old macs, so
 #    | please visit http://someonewhocares.org/hosts/mac/ for mac format
 #    ------------------
+# To convert the hosts file to a set of Cisco IOS commands for Cisco routers
+#   use this script by Jesse Baird:
+#   http://jebaird.com/blog/hosts-ip-host-generating-blocked-hosts-host-file-cisco-router
 
 # If there is a domain name you would rather never see, simply add a line
 # that reads "127.0.0.1 machine.domain.tld". This will have the effect of
@@ -1648,10 +1651,12 @@ fe80::1%lo0     localhost
 127.0.0.1 malware-live-pro-scanv1.com
 127.0.0.1 maxi4.firstvds.ru
 127.0.0.1 monkeyball.osa.pl
+127.0.0.1 movies.701pages.com
 127.0.0.1 murcia-ban.es
 127.0.0.1 mylike.co.uk				# Facebook trojan
 127.0.0.1 nactx.com
 127.0.0.1 natashyabaydesign.com
+127.0.0.1 new-dating-2012.info
 127.0.0.1 new-vid-zone-1.blogspot.com.au
 127.0.0.1 newwayscanner.info
 127.0.0.1 ns1.oix.com
@@ -2151,6 +2156,7 @@ fe80::1%lo0     localhost
 127.0.0.1 pubads.g.doubleclick.net
 127.0.0.1 rd.intl.doubleclick.net
 127.0.0.1 securepubads.g.doubleclick.net
+127.0.0.1 stats.g.doubleclick.net
 127.0.0.1 twx.2mdn.net
 127.0.0.1 twx.doubleclick.net
 127.0.0.1 ukrpts.net
@@ -9982,8 +9988,8 @@ fe80::1%lo0     localhost
 #  Flesch, Brent Getz, Jerry Cain, Brian Micek, Lee Hancock, Kay Thiele,
 #  Kwan Ting Chan, Wladimir Labeikovsky, Lino Demasi, Bowie Bailey, Andreas 
 #  Marschall, Michael Tompkins, Michael O'Donnell, and Jos&eacute; Lucas Teixeira
-#  de Oliveira for helping to build 
-#  the hosts file.
+#  de Oliveira for helping to build the hosts file.
 # Russell O'Connor for OS/2 information
 # kwadronaut for Windows 7 and Vista information
 # John Mueller and Lawrence H Smith for Mac Pre-OSX information
+# Jesse Baird for the Cisco IOS script
