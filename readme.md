@@ -12,6 +12,19 @@ Currently the `hosts` files from the following locations are amalgamated:
 * Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
+You can add any additional sources you'd like under the data/ directory. Provide a copy of the current `hosts` file and a file called
+update.info with the URL to the `hosts` file source. This will allow updateHostsFile.py to automatically update your source.
+
+## Using updateHostsFile.py
+
+This Python script will generate a unique hosts file based on the sources provided. You can either have the script go out and fetch
+an updated version over the web (defined by the update.info text file in the source's directory), or it will use the `hosts` file you
+already have checked into your source's data folder.
+
+Usage
+
+    python updateHostsFile.py
+
 ## What is a hosts file?
 
 A hosts file, named `hosts` (with no file extension), is a plain-text file used by all operating systems to map hostnames to IP addresses. 
