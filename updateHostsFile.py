@@ -54,6 +54,13 @@ def promptForExclusions():
 		displayExclusionOptions()
 	else:
 		print 'OK, we won\'t exclude any domains.'
+
+def promptForMoreCustomExclusions():
+	response = query_yes_no("Do you have more domains you want to enter?")
+	if (response == "yes"):
+		return True
+	else:
+		return False
 # End Prompt the User
 
 # Exclusion logic
@@ -69,14 +76,12 @@ def displayExclusionOptions():
 		gatherCustomExclusions()
 
 def gatherCustomExclusions():
-	moreEntries = True;
-	while (moreEntries):
+	while True:
 		domainFromUser = raw_input("Enter the domain you want to exclude (e.g. facebook.com): ")
 		if (isValidDomainFormat(domainFromUser)):
 			excludeDomain(domainFromUser)
-		response = query_yes_no("Do you have more domains you want to enter?")
-        if (response == "no"):
-        	moreEntries = False
+		if (promptForMoreCustomExclusions() == False):
+			return
 
 def excludeDomain(domain):
 	exclusionRegexs.append(re.compile(EXCLUSION_PATTERN + domain))
@@ -219,6 +224,9 @@ def query_yes_no(question, default="yes"):
 ## end of http://code.activestate.com/recipes/577058/ }}}
 
 def isValidDomainFormat(domain):
+	if (domain == ''):
+		print "You didn\'t enter a domain. Try again."
+		return False
 	domainRegex = re.compile("www\d{0,3}[.]|https?")
 	if (domainRegex.match(domain)):
 		print "The domain " + domain + " is not valid. Do not include www.domain.com or http(s)://domain.com. Try again."
