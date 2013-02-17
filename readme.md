@@ -17,9 +17,7 @@ update.info with the URL to the `hosts` file source. This will allow updateHosts
 
 ## Using updateHostsFile.py
 
-This Python script will generate a unique hosts file based on the sources provided. You can either have the script go out and fetch
-an updated version over the web (defined by the update.info text file in the source's directory), or it will use the `hosts` file you
-already have checked into your source's data folder.
+This Python script will generate a unique hosts file based on the sources provided. You can either have the script go out and fetch an updated version over the web (defined by the update.info text file in the source's directory), or it will use the `hosts` file you already have checked into your source's data folder.
 
 Usage
 
@@ -48,8 +46,32 @@ For example, to nullify requests to some doubleclick.net servers, adding these l
 ## Location of your hosts file
 To modify your current `hosts` file, look for it in the following places and modify it with a text editor.
 
-**Mac OS X, iOS, Android**: `/etc/hosts` folder.
+**Mac OS X, iOS, Android, Linux**: `/etc/hosts` folder.
 
 **Windows**: `%SystemRoot%\system32\drivers\etc\hosts` folder.
 
+## Reloading hosts file
+Your operating system will cache DNS lookups. You can either reboot or run the following commands to manually flush your DNS cache once the new hosts file is in place.
 
+### Mac OS X
+Open a Terminal and run:
+
+`dscacheutil -flushcache`
+
+### Windows
+Open a Command Prompt:
+
+**Windows XP**: Start -> Run -> `cmd`
+
+**Windows Vista, 7**: Start Button -> type `cmd` -> right-click Command Prompt -> "Run as Administrator"
+
+**Windows 8**: Start -> Swipe Up -> All Apps -> Windows System -> right-click Command Prompt -> "Run as Administrator"
+
+and run:
+
+`ipconfig /flushdns`
+
+### Linux
+Open a Terminal and run:
+
+`/etc/rc.d/init.d/nscd restart`
