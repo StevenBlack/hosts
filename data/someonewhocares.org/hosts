@@ -6,7 +6,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Feb 7th, 2013 at 19:11
+# Last updated: Feb 17th, 2013 at 13:37
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -1152,7 +1152,6 @@ fe80::1%lo0     localhost
 127.0.0.1 stat1.z-stat.com
 127.0.0.1 stat3.cybermonitor.com
 127.0.0.1 statcounter.com
-127.0.0.1 static.chartbeat.com
 127.0.0.1 static.kibboko.com
 127.0.0.1 static.smni.com		# Santa Monica - popunders
 127.0.0.1 statik.topica.com
@@ -2441,6 +2440,7 @@ fe80::1%lo0     localhost
 #<2o7-sites>
 
 # 2o7.net -- server side tracking
+#127.0.0.1 appleglobal.112.2o7.net	#breaks apple.com
 127.0.0.1 102.112.2o7.net
 127.0.0.1 102.122.2o7.net
 127.0.0.1 112.2o7.net
@@ -4769,7 +4769,6 @@ fe80::1%lo0     localhost
 127.0.0.1 api-public.addthis.com
 127.0.0.1 api.addthis.com
 127.0.0.1 api.affinesystems.com
-127.0.0.1 api.chartbeat.com
 127.0.0.1 apopt.hbmediapro.com
 127.0.0.1 app.scanscout.com
 127.0.0.1 apparel-offer.com
@@ -6459,7 +6458,6 @@ fe80::1%lo0     localhost
 127.0.0.1 phpadsnew.gamefolk.de
 127.0.0.1 phpadsnew.wn.com
 127.0.0.1 pick-savings.com
-127.0.0.1 ping.chartbeat.net
 127.0.0.1 pink.habralab.ru
 127.0.0.1 pix01.revsci.net
 127.0.0.1 pix521.adtech.de
@@ -6881,7 +6879,6 @@ fe80::1%lo0     localhost
 127.0.0.1 static.vpptechnologies.com
 127.0.0.1 static.way2traffic.com
 127.0.0.1 static1.influads.com
-127.0.0.1 static2.chartbeat.com
 127.0.0.1 staticads.btopenworld.com
 127.0.0.1 staticb.mydirtyhobby.com
 127.0.0.1 statistik-gallup.dk
@@ -6906,6 +6903,7 @@ fe80::1%lo0     localhost
 127.0.0.1 suresafe1.adsovo.com
 127.0.0.1 surplus-suppliers.com
 127.0.0.1 survey.112.2o7.net
+127.0.0.1 surveycentral.directinsure.info
 127.0.0.1 surveygizmo.com
 127.0.0.1 surveymonkeycom.tt.omtrdc.net
 127.0.0.1 surveypass.com
@@ -7434,6 +7432,7 @@ fe80::1%lo0     localhost
 127.0.0.1 www.freecameraprovider.com
 127.0.0.1 www.freecamerasource.com
 127.0.0.1 www.freecamerauk.co.uk
+127.0.0.1 www.freecamsecrets.com
 127.0.0.1 www.freecoolgift.com
 127.0.0.1 www.freedesignerhandbagreviews.com
 127.0.0.1 www.freedinnersource.com
