@@ -79,14 +79,12 @@ def gatherCustomExclusions():
         	moreEntries = False
 
 def excludeDomain(domain):
-	print 'in exclude domain'
 	exclusionRegexs.append(re.compile(EXCLUSION_PATTERN + domain))
 
 def matchesExclusions(strippedRule):
 	strippedDomain = strippedRule.split()[1]
 	for exclusionRegex in exclusionRegexs:
 		if exclusionRegex.search(strippedDomain):
-			print 'Domain ' + strippedDomain + ' matched exclusions'
 			return True
 	return False
 # End Exclusion Logic
