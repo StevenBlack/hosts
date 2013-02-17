@@ -36,7 +36,7 @@ def main():
 	mergeFile = createInitialFile()
 	finalFile = removeDups(mergeFile)
 	finalizeFile(finalFile)
-	print 'Success! Your shiny new hosts file has been prepared.'
+	printSuccess('Success! Your shiny new hosts file has been prepared.')
 
 # Prompt the User
 def promptForUpdate():
@@ -117,8 +117,8 @@ def getUpdateURLFromFile(source):
 		updateFile.close()
 	else:
 		retURL = None
-		print 'Warning: Can\'t find the update file for source ' + source
-		print 'Make sure that there\'s a file at ' + pathToUpdateFile
+		printFailure('Warning: Can\'t find the update file for source ' + source + '\n' +
+					 'Make sure that there\'s a file at ' + pathToUpdateFile)
 	return retURL
 # End Update Logic
 
@@ -153,7 +153,7 @@ def removeDups(mergeFile):
 
 	mergeFile.close()
 
-	print 'Removed ' + str(duplicatesRemoved) + ' duplicates from the merged file'
+	printSuccess('Removed ' + str(duplicatesRemoved) + ' duplicates from the merged file')
 	return finalFile
 
 def finalizeFile(finalFile):
@@ -165,8 +165,8 @@ def finalizeFile(finalFile):
 def stripRule(line):
 	splitLine = line.split()
 	if (len(splitLine) < 2) :
-		print 'A line in the hostfile is going to cause problems because it is nonstandard'
-		print 'The line reads ' + line + ' please check your data files. Maybe you have a comment without a #?'
+		printFailure('A line in the hostfile is going to cause problems because it is nonstandard\n' +
+					 'The line reads ' + line + ' please check your data files. Maybe you have a comment without a #?')
 		sys.exit()
 	return splitLine[0] + ' ' + splitLine[1]
 
@@ -212,14 +212,14 @@ def query_yes_no(question, default="yes"):
         raise ValueError("invalid default answer: '%s'" % default)
 
     while 1:
-        sys.stdout.write(question + prompt)
+        sys.stdout.write(colorize(question, colors.PROMPT) + prompt)
         choice = raw_input().lower()
         if default is not None and choice == '':
             return default
         elif choice in valid.keys():
             return valid[choice]
         else:
-            sys.stdout.write("Please respond with 'yes' or 'no' "\
+            printFailure("Please respond with 'yes' or 'no' "\
                              "(or 'y' or 'n').\n")
 ## end of http://code.activestate.com/recipes/577058/ }}}
 
@@ -233,6 +233,22 @@ def isValidDomainFormat(domain):
 		return False
 	else:
 		return True
+
+# Colors
+class colors:
+    PROMPT 	= '\033[94m'
+    SUCCESS = '\033[92m'
+    FAIL 	= '\033[91m'
+    ENDC 	= '\033[0m'
+
+def colorize(text, color):
+	return color + text + colors.ENDC
+
+def printSuccess(text):
+	print colorize(text, colors.SUCCESS)
+
+def printFailure(text):
+	print colorize(text, colors.FAIL)
 # End Helper Functions
 
 if __name__ == "__main__":
