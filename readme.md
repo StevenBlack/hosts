@@ -2,7 +2,9 @@
 
 This repo consolidates several reputable `hosts` files and consolidates them into a single hosts file that you can use.
 
-**Currently this hosts file contains 24245 unique entries.**
+Last updated: February 25, 2013
+
+**Currently this hosts file contains 22,690 unique entries.**
 
 ## Source of host data amalgamated here
 
