@@ -37,6 +37,7 @@ def main():
 	finalFile = removeDups(mergeFile)
 	finalizeFile(finalFile)
 	printSuccess('Success! Your shiny new hosts file has been prepared.')
+	print 'Copy the generated file to /etc/hosts or %SystemRoot%\system32\drivers\etc\hosts'
 
 # Prompt the User
 def promptForUpdate():
