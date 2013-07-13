@@ -208,6 +208,10 @@ def moveHostsFileIntoPlace(finalFile):
 		else:
 			if(subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"])):
 				printFailure("Flushing the DNS Cache failed.")
+	else if (os.name == 'nt'):
+		print 'Automatically moving the hosts file in place is not yet supported.'
+		print 'Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts'
+
 # End File Logic
 
 # Helper Functions
