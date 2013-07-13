@@ -19,6 +19,8 @@ DATA_PATH = BASEDIR_PATH + '/data'
 DATA_FILENAMES = 'hosts'
 UPDATE_URL_FILENAME = 'update.info'
 SOURCES = os.listdir(DATA_PATH)
+README_TEMPLATE = BASEDIR_PATH + '/readme_template.md'
+README_FILE = BASEDIR_PATH + '/readme.md'
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
@@ -28,7 +30,7 @@ COMMON_EXCLUSIONS = ['hulu.com']
 
 # Global vars
 exclusionRegexs = []
-duplicatesRemoved = 0;
+numberOfRules = 0
 
 def main():
 	promptForUpdate()
@@ -36,7 +38,8 @@ def main():
 	mergeFile = createInitialFile()
 	finalFile = removeDups(mergeFile)
 	finalizeFile(finalFile)
-	printSuccess('Success! Your shiny new hosts file has been prepared.')
+	updateReadme(numberOfRules)
+	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + str(numberOfRules) + ' unique entries.')
 	print 'Copy the generated file to /etc/hosts or %SystemRoot%\system32\drivers\etc\hosts'
 
 # Prompt the User
@@ -134,7 +137,8 @@ def createInitialFile():
 	return mergeFile
 
 def removeDups(mergeFile):
-	global duplicatesRemoved
+	global numberOfRules
+
 	finalFile = open(BASEDIR_PATH + '/hosts', 'w+b')
 	mergeFile.seek(0) # reset file pointer
 
@@ -149,12 +153,10 @@ def removeDups(mergeFile):
 		if strippedRule not in rules_seen:
 			finalFile.write(line)
 			rules_seen.add(strippedRule)
-		else:
-			duplicatesRemoved += 1
+			numberOfRules += 1
 
 	mergeFile.close()
 
-	printSuccess('Removed ' + str(duplicatesRemoved) + ' duplicates from the merged file')
 	return finalFile
 
 def finalizeFile(finalFile):
@@ -172,7 +174,7 @@ def stripRule(line):
 	return splitLine[0] + ' ' + splitLine[1]
 
 def writeOpeningHeader(finalFile):
-	global duplicatesRemoved
+	global numberOfRules
 	finalFile.seek(0) #reset file pointer
 	fileContents = finalFile.read(); #save content
 	finalFile.seek(0) #write at the top
@@ -183,10 +185,15 @@ def writeOpeningHeader(finalFile):
 	for source in SOURCES:
 		finalFile.write('#    ' + source + '\n')
 	finalFile.write('#\n')
-	finalFile.write('# Take Note:\n')
-	finalFile.write('# Merging these sources produced ' + str(duplicatesRemoved) + ' duplicates\n')
+	finalFile.write('# Merging these sources produced ' + str(numberOfRules) + ' unique entries\n')
 	finalFile.write('# ===============================================================\n')
 	finalFile.write(fileContents)
+
+def updateReadme(numberOfRules):
+	with open(README_FILE, "wt") as out:
+		for line in open(README_TEMPLATE):
+			out.write(line.replace('@NUM_ENTRIES@', str(numberOfRules)))
+
 # End File Logic
 
 # Helper Functions
