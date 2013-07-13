@@ -7,8 +7,10 @@
 # as sources into one, unique host file to keep you internet browsing happy.
 
 import os
+import platform
 import re
 import string
+import subprocess
 import sys
 import tempfile
 import urllib2
@@ -40,7 +42,7 @@ def main():
 	finalizeFile(finalFile)
 	updateReadme(numberOfRules)
 	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + str(numberOfRules) + ' unique entries.')
-	print 'Copy the generated file to /etc/hosts or %SystemRoot%\system32\drivers\etc\hosts'
+	moveHostsFileIntoPlace(finalFile)
 
 # Prompt the User
 def promptForUpdate():
@@ -194,6 +196,18 @@ def updateReadme(numberOfRules):
 		for line in open(README_TEMPLATE):
 			out.write(line.replace('@NUM_ENTRIES@', str(numberOfRules)))
 
+def moveHostsFileIntoPlace(finalFile):
+	if (os.name == 'posix'):
+		print 'Moving the file requires administrative privileges. You might need to enter your password.'
+		if(subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"])):
+			printFailure("Moving the file failed.")
+		print 'Flushing the DNS Cache to utilize new hosts file...'
+		if (platform.system() == 'Darwin'):
+			if(subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"])):
+				printFailure("Flushing the DNS Cache failed.")
+		else:
+			if(subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"])):
+				printFailure("Flushing the DNS Cache failed.")
 # End File Logic
 
 # Helper Functions
