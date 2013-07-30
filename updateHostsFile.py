@@ -42,7 +42,7 @@ def main():
 	finalizeFile(finalFile)
 	updateReadme(numberOfRules)
 	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + str(numberOfRules) + ' unique entries.')
-	moveHostsFileIntoPlace(finalFile)
+	promptForMove(finalFile)
 
 # Prompt the User
 def promptForUpdate():
@@ -67,6 +67,13 @@ def promptForMoreCustomExclusions():
 		return True
 	else:
 		return False
+
+def promptForMove(finalFile):
+  response = query_yes_no("Do you want to replace your existing hosts file with the newly generated file?")
+  if (response == "yes"):
+    moveHostsFileIntoPlace(finalFile)
+  else:
+    return False
 # End Prompt the User
 
 # Exclusion logic
