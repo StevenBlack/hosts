@@ -2,13 +2,7 @@
 
 This repo consolidates several reputable `hosts` files and consolidates them into a single hosts file that you can use.
 
-<<<<<<< HEAD
-Last updated: June 6, 2013
-
-**Currently this hosts file contains 23,073 unique entries.**
-=======
-**Currently this hosts file contains 22887 unique entries.**
->>>>>>> 3d234cab9c026ef6719da9dab9657cf535ddb61b
+**Currently this hosts file contains @NUM_ENTRIES@ unique entries.**
 
 ## Source of host data amalgamated here
 
@@ -16,7 +10,6 @@ Currently the `hosts` files from the following locations are amalgamated:
 
 * MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated monthly, or thereabouts.
 * Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
-* The Malware Domain List at [http://www.malwaredomainlist.com/](http://www.malwaredomainlist.com/).
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
 You can add any additional sources you'd like under the data/ directory. Provide a copy of the current `hosts` file and a file called

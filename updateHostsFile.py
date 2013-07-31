@@ -7,8 +7,10 @@
 # as sources into one, unique host file to keep you internet browsing happy.
 
 import os
+import platform
 import re
 import string
+import subprocess
 import sys
 import tempfile
 import urllib2
@@ -19,6 +21,8 @@ DATA_PATH = BASEDIR_PATH + '/data'
 DATA_FILENAMES = 'hosts'
 UPDATE_URL_FILENAME = 'update.info'
 SOURCES = os.listdir(DATA_PATH)
+README_TEMPLATE = BASEDIR_PATH + '/readme_template.md'
+README_FILE = BASEDIR_PATH + '/readme.md'
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
@@ -28,7 +32,7 @@ COMMON_EXCLUSIONS = ['hulu.com']
 
 # Global vars
 exclusionRegexs = []
-duplicatesRemoved = 0;
+numberOfRules = 0
 
 def main():
 	promptForUpdate()
@@ -36,7 +40,9 @@ def main():
 	mergeFile = createInitialFile()
 	finalFile = removeDups(mergeFile)
 	finalizeFile(finalFile)
-	printSuccess('Success! Your shiny new hosts file has been prepared.')
+	updateReadme(numberOfRules)
+	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + str(numberOfRules) + ' unique entries.')
+	promptForMove(finalFile)
 
 # Prompt the User
 def promptForUpdate():
@@ -61,6 +67,13 @@ def promptForMoreCustomExclusions():
 		return True
 	else:
 		return False
+
+def promptForMove(finalFile):
+  response = query_yes_no("Do you want to replace your existing hosts file with the newly generated file?")
+  if (response == "yes"):
+    moveHostsFileIntoPlace(finalFile)
+  else:
+    return False
 # End Prompt the User
 
 # Exclusion logic
@@ -133,7 +146,8 @@ def createInitialFile():
 	return mergeFile
 
 def removeDups(mergeFile):
-	global duplicatesRemoved
+	global numberOfRules
+
 	finalFile = open(BASEDIR_PATH + '/hosts', 'w+b')
 	mergeFile.seek(0) # reset file pointer
 
@@ -148,12 +162,10 @@ def removeDups(mergeFile):
 		if strippedRule not in rules_seen:
 			finalFile.write(line)
 			rules_seen.add(strippedRule)
-		else:
-			duplicatesRemoved += 1
+			numberOfRules += 1
 
 	mergeFile.close()
 
-	printSuccess('Removed ' + str(duplicatesRemoved) + ' duplicates from the merged file')
 	return finalFile
 
 def finalizeFile(finalFile):
@@ -171,7 +183,7 @@ def stripRule(line):
 	return splitLine[0] + ' ' + splitLine[1]
 
 def writeOpeningHeader(finalFile):
-	global duplicatesRemoved
+	global numberOfRules
 	finalFile.seek(0) #reset file pointer
 	fileContents = finalFile.read(); #save content
 	finalFile.seek(0) #write at the top
@@ -182,10 +194,31 @@ def writeOpeningHeader(finalFile):
 	for source in SOURCES:
 		finalFile.write('#    ' + source + '\n')
 	finalFile.write('#\n')
-	finalFile.write('# Take Note:\n')
-	finalFile.write('# Merging these sources produced ' + str(duplicatesRemoved) + ' duplicates\n')
+	finalFile.write('# Merging these sources produced ' + str(numberOfRules) + ' unique entries\n')
 	finalFile.write('# ===============================================================\n')
 	finalFile.write(fileContents)
+
+def updateReadme(numberOfRules):
+	with open(README_FILE, "wt") as out:
+		for line in open(README_TEMPLATE):
+			out.write(line.replace('@NUM_ENTRIES@', str(numberOfRules)))
+
+def moveHostsFileIntoPlace(finalFile):
+	if (os.name == 'posix'):
+		print 'Moving the file requires administrative privileges. You might need to enter your password.'
+		if(subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"])):
+			printFailure("Moving the file failed.")
+		print 'Flushing the DNS Cache to utilize new hosts file...'
+		if (platform.system() == 'Darwin'):
+			if(subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"])):
+				printFailure("Flushing the DNS Cache failed.")
+		else:
+			if(subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"])):
+				printFailure("Flushing the DNS Cache failed.")
+	elif (os.name == 'nt'):
+		print 'Automatically moving the hosts file in place is not yet supported.'
+		print 'Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts'
+
 # End File Logic
 
 # Helper Functions
