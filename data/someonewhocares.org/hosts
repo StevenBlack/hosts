@@ -6,11 +6,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-<<<<<<< HEAD
-# Last updated: Jun 3th, 2013 at 11:35
-=======
-# Last updated: Jul 22nd, 2013 at 12:28
->>>>>>> 3d234cab9c026ef6719da9dab9657cf535ddb61b
+# Last updated: Aug 23th, 2013 at 02:30
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -314,6 +310,9 @@ fe80::1%lo0     localhost
 #127.0.0.1 ads.imeem.com		# Seems to interfere with the functioning of imeem.com
 #</maybe-spy>
 
+#127.0.0.1 ll.a.hulu.com	# Uncomment to block Hulu. 
+#127.0.0.1 t2.hulu.com		# Uncomment to block Hulu. 
+#127.0.0.1 track.hulu.com	# Uncomment to block Hulu. 
 127.0.0.1 006.free-counter.co.uk
 127.0.0.1 006.freecounters.co.uk
 127.0.0.1 06272002-dbase.hitcountz.net # Web bugs in spam
@@ -828,7 +827,6 @@ fe80::1%lo0     localhost
 127.0.0.1 linkcounter.pornosite.com
 127.0.0.1 linktrack.bravenet.com
 127.0.0.1 livestats.atlanta-airport.com
-127.0.0.1 ll.a.hulu.com
 127.0.0.1 loading321.com
 127.0.0.1 loc1.hitsprocessor.com
 127.0.0.1 log.btopenworld.com
@@ -1264,7 +1262,6 @@ fe80::1%lo0     localhost
 127.0.0.1 straighttangerine.cz.cc
 127.0.0.1 sugoicounter.com
 127.0.0.1 superstats.com
-127.0.0.1 t2.hulu.com
 127.0.0.1 tagging.outrider.com
 127.0.0.1 talkcity.realtracker.com
 127.0.0.1 targetnet.com
@@ -1294,7 +1291,6 @@ fe80::1%lo0     localhost
 127.0.0.1 track.ft.com
 127.0.0.1 track.gawker.com
 127.0.0.1 track.homestead.com
-127.0.0.1 track.hulu.com
 127.0.0.1 track.lfstmedia.com
 127.0.0.1 track.mybloglog.com
 127.0.0.1 track.omg2.com
@@ -2939,7 +2935,9 @@ fe80::1%lo0     localhost
 #</maybe-ads>
 
 # ads
+#127.0.0.1 ad.hulu.com		# Uncomment to block Hulu.
 #127.0.0.1 adf.ly
+#127.0.0.1 ads.hulu.com		# Uncomment to block Hulu.
 127.0.0.1 0101011.com
 127.0.0.1 0d79ed.r.axf8.net
 127.0.0.1 0pn.ru
@@ -3099,7 +3097,6 @@ fe80::1%lo0     localhost
 127.0.0.1 ad.harrenmedianetwork.com
 127.0.0.1 ad.horvitznewspapers.net
 127.0.0.1 ad.howstuffworks.com
-127.0.0.1 ad.hulu.com
 127.0.0.1 ad.iconadserver.com
 127.0.0.1 ad.insightexpressai.com
 127.0.0.1 ad.investopedia.com
@@ -3724,7 +3721,6 @@ fe80::1%lo0     localhost
 127.0.0.1 ads.hollywood.com
 127.0.0.1 ads.hooqy.com
 127.0.0.1 ads.hothardware.com
-127.0.0.1 ads.hulu.com
 127.0.0.1 ads.hulu.com.edgesuite.net
 127.0.0.1 ads.humorbua.no
 127.0.0.1 ads.i-am-bored.com
@@ -3762,6 +3758,7 @@ fe80::1%lo0     localhost
 127.0.0.1 ads.iwon.com
 127.0.0.1 ads.jacksonville.com
 127.0.0.1 ads.jeneauempire.com
+127.0.0.1 ads.jetpackdigital.com
 127.0.0.1 ads.jetphotos.net
 127.0.0.1 ads.jewcy.com
 127.0.0.1 ads.jimworld.com
@@ -4779,6 +4776,7 @@ fe80::1%lo0     localhost
 127.0.0.1 ak.p.openx.net
 127.0.0.1 aka-cdn-ns.adtech.de
 127.0.0.1 aka-cdn-ns.adtechus.com
+127.0.0.1 aka-cdn.adtechus.com
 127.0.0.1 akaads-espn.starwave.com
 127.0.0.1 akamai.invitemedia.com
 127.0.0.1 ako.cc
@@ -5203,10 +5201,7 @@ fe80::1%lo0     localhost
 127.0.0.1 cdn1.xlightmedia.com
 127.0.0.1 cdn2.adsdk.com
 127.0.0.1 cdn2.amateurmatch.com
-<<<<<<< HEAD
-=======
 127.0.0.1 cdn2.emediate.eu
->>>>>>> 3d234cab9c026ef6719da9dab9657cf535ddb61b
 127.0.0.1 cdn3.adexprts.com
 127.0.0.1 cdn3.telemetryverification.net
 127.0.0.1 cdn454.telemetryverification.net
@@ -5502,6 +5497,7 @@ fe80::1%lo0     localhost
 127.0.0.1 e.as-eu.falkag.net
 127.0.0.1 e0.extreme-dm.com
 127.0.0.1 e1.addthis.com
+127.0.0.1 e2.cdn.qnsr.com
 127.0.0.1 e2.emediate.se
 127.0.0.1 ead.sharethis.com
 127.0.0.1 eads-adserving.com
@@ -5529,8 +5525,10 @@ fe80::1%lo0     localhost
 127.0.0.1 emea-bidder.mathtag.com
 127.0.0.1 engage.everyone.net
 127.0.0.1 engage.speedera.net
+127.0.0.1 engine.4chan-ads.org
 127.0.0.1 engine.adland.ru
 127.0.0.1 engine.adzerk.net
+127.0.0.1 engine.carbonads.com
 127.0.0.1 engine.espace.netavenir.com
 127.0.0.1 engine.influads.com
 127.0.0.1 engine.rorer.ru
@@ -6366,6 +6364,7 @@ fe80::1%lo0     localhost
 127.0.0.1 nysubwayoffer.com
 127.0.0.1 nytadvertising.nytimes.com
 127.0.0.1 o0.winfuture.de
+127.0.0.1 o1.qnsr.com
 127.0.0.1 oads.cracked.com
 127.0.0.1 oamsrhads.us.publicus.com
 127.0.0.1 oas-1.rmuk.co.uk
@@ -6703,6 +6702,7 @@ fe80::1%lo0     localhost
 127.0.0.1 s.boom.ro
 127.0.0.1 s.clicktale.net
 127.0.0.1 s.di.com.pl
+127.0.0.1 s.flite.com
 127.0.0.1 s.innovid.com
 127.0.0.1 s.media-imdb.com
 127.0.0.1 s.megaclick.com
@@ -6926,6 +6926,7 @@ fe80::1%lo0     localhost
 127.0.0.1 static.adtaily.pl
 127.0.0.1 static.adzerk.net
 127.0.0.1 static.aff-landing-tmp.foxtab.com
+127.0.0.1 static.carbonads.com
 127.0.0.1 static.clicktorrent.info
 127.0.0.1 static.creatives.livejasmin.com
 127.0.0.1 static.doubleclick.net
@@ -7858,6 +7859,7 @@ fe80::1%lo0     localhost
 127.0.0.1 www.treeloot.com
 127.0.0.1 www.trendnews.com
 127.0.0.1 www.trendsonline.biz
+127.0.0.1 www.trendsonline.mobi
 127.0.0.1 www.tutop.com
 127.0.0.1 www.tuttosessogratis.org
 127.0.0.1 www.ukbanners.com
@@ -10078,6 +10080,88 @@ fe80::1%lo0     localhost
 127.0.0.1 zyrtec.3.p2l.info
 127.0.0.1 zyrtec.4.p2l.info
 #</wiki-spam-sites>
+
+#<Phorm-sites>
+
+# Phorm contextual advertising sites
+127.0.0.1 a.oix.com
+127.0.0.1 a.oix.net
+127.0.0.1 a.openinternetexchange.com
+127.0.0.1 a.phormlabs.com
+127.0.0.1 a.webwise.com
+127.0.0.1 a.webwise.net
+127.0.0.1 b.oix.net
+127.0.0.1 b.webwise.net
+127.0.0.1 br.phorm.com
+127.0.0.1 bt.phorm.com
+127.0.0.1 bt.webwise.com
+127.0.0.1 c.webwise.com
+127.0.0.1 c.webwise.net
+127.0.0.1 d.oix.com
+127.0.0.1 d.phormlabs.com
+127.0.0.1 ig.fp.oix.net
+127.0.0.1 invite.gezinti.com
+127.0.0.1 kentsucks.youcanoptout.com
+127.0.0.1 kr.phorm.com
+127.0.0.1 mail.youcanoptout.com
+127.0.0.1 mail.youcanoptout.net
+127.0.0.1 mail.youcanoptout.org
+127.0.0.1 monitor.phorm.com
+127.0.0.1 mx01.openinternetexchange.com
+127.0.0.1 mx01.openinternetexchange.net
+127.0.0.1 mx01.webwise.com
+127.0.0.1 mx03.phorm.com
+127.0.0.1 navegador.oi.com.br
+127.0.0.1 navegador.telefonica.com.br
+127.0.0.1 ns1.oix.com
+127.0.0.1 ns1.openinternetexchange.com
+127.0.0.1 ns1.phorm.com
+127.0.0.1 ns2.oix.com
+127.0.0.1 ns2.openinternetexchange.com
+127.0.0.1 ns2.phorm.com
+127.0.0.1 ns2.youcanoptout.com
+127.0.0.1 ns3.openinternetexchange.com
+127.0.0.1 oi.webnavegador.com.br
+127.0.0.1 oix-stage.net
+127.0.0.1 oix.phorm.com
+127.0.0.1 oixcrv-lab.net
+127.0.0.1 oixcrv-stage.net
+127.0.0.1 oixcrv.net
+127.0.0.1 oixpre-stage.net
+127.0.0.1 oixpre.net
+127.0.0.1 oixssp-lab.net
+127.0.0.1 oixssp.net
+127.0.0.1 openinternetexchange.com
+127.0.0.1 openinternetexchange.net
+127.0.0.1 phorm.kr
+127.0.0.1 phormlabs.com
+127.0.0.1 prm-ext.phorm.com
+127.0.0.1 romdiscover.com
+127.0.0.1 rtc.romdiscover.com
+127.0.0.1 stats.oix.com
+127.0.0.1 stopphoulplay.com
+127.0.0.1 stopphoulplay.net
+127.0.0.1 telefonica.webnavegador.com.br
+127.0.0.1 terra.fp.oix.net
+127.0.0.1 ui.oix.net
+127.0.0.1 w.oix.net
+127.0.0.1 webnavegador.com.br
+127.0.0.1 webwise.com
+127.0.0.1 webwise.net
+127.0.0.1 www.gezinti.com
+127.0.0.1 www.gozatar.com
+127.0.0.1 www.oix.com
+127.0.0.1 www.openinternetexchange.com
+127.0.0.1 www.phormlabs.com
+127.0.0.1 www.stopphoulplay.com
+127.0.0.1 www.youcanoptout.com
+127.0.0.1 www.youcanoptout.net
+127.0.0.1 www.youcanoptout.org
+127.0.0.1 xxyyzz.youcanoptout.com
+127.0.0.1 youcanoptout.com
+127.0.0.1 youcanoptout.net
+127.0.0.1 youcanoptout.org
+#</Phorm-sites>
 
 # Acknowledgements
 # I'd like to thank the following people for submitting sites, and
