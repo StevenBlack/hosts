@@ -1,6 +1,8 @@
 #Amalgamated hosts file
 
-This repo consolidates several reputable `hosts` files and consolidates them into a single hosts file that you can use.
+This repository consolidates several reputable `hosts` files into a single `hosts` file that you can use.
+
+Also included is a Python script to fetch and merge the `hosts` file from their various sources.
 
 **Currently this hosts file contains 23335 unique entries.**
 
@@ -10,10 +12,10 @@ Currently the `hosts` files from the following locations are amalgamated:
 
 * MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated monthly, or thereabouts.
 * Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
+* http://www.malwaredomainlist.com/
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
-You can add any additional sources you'd like under the data/ directory. Provide a copy of the current `hosts` file and a file called
-update.info with the URL to the `hosts` file source. This will allow updateHostsFile.py to automatically update your source.
+You can add any additional sources you'd like under the data/ directory. Provide a copy of the current `hosts` file and a file called update.info with the URL to the `hosts` file source. This will allow `updateHostsFile.py` to automatically update your source.
 
 ## Using updateHostsFile.py
 
