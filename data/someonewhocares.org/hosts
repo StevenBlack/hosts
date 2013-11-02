@@ -6,7 +6,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Aug 23th, 2013 at 02:30
+# Last updated: Oct 30th, 2013 at 01:01
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -48,6 +48,8 @@
 #    ------------------
 #    | As well, note that the format is different on old macs, so
 #    | please visit http://someonewhocares.org/hosts/mac/ for mac format
+# For Android place the file at "/system/etc/hosts". You will need root
+#   access on your device to do this.
 #    ------------------
 # To convert the hosts file to a set of Cisco IOS commands for Cisco routers
 #   use this script by Jesse Baird:
@@ -1572,7 +1574,6 @@ fe80::1%lo0     localhost
 127.0.0.1 allhqpics.com				# Facebook trojan
 127.0.0.1 alphabirdnetwork.com
 127.0.0.1 antispywareexpert.com
-127.0.0.1 antitero.tk
 127.0.0.1 antivirus-online-scan5.com
 127.0.0.1 antivirus-scanner.com
 127.0.0.1 antivirus-scanner8.com
@@ -1815,7 +1816,6 @@ fe80::1%lo0     localhost
 127.0.0.1 www.akoneplatit.sk
 127.0.0.1 www.allhqpics.com			# Facebook trojan
 127.0.0.1 www.anatol.com
-127.0.0.1 www.antitero.tk
 127.0.0.1 www.articlefuns.cn
 127.0.0.1 www.articleidea.cn
 127.0.0.1 www.asianread.com
@@ -2208,6 +2208,7 @@ fe80::1%lo0     localhost
 127.0.0.1 m9.za.2mdn.net
 127.0.0.1 n3302ad.doubleclick.net
 127.0.0.1 n3349ad.doubleclick.net
+127.0.0.1 n4061ad.doubleclick.net
 127.0.0.1 n4403ad.doubleclick.net
 127.0.0.1 n479ad.doubleclick.net
 127.0.0.1 optimize.doubleclick.net
@@ -3079,7 +3080,6 @@ fe80::1%lo0     localhost
 127.0.0.1 ad.dc2.adtech.de
 127.0.0.1 ad.designtaxi.com
 127.0.0.1 ad.deviantart.com
-127.0.0.1 ad.doubleclick.net
 127.0.0.1 ad.egloos.com
 127.0.0.1 ad.espn.starwave.com
 127.0.0.1 ad.eurosport.com
@@ -3411,6 +3411,7 @@ fe80::1%lo0     localhost
 127.0.0.1 adremote.timeinc.net
 127.0.0.1 adriver.ru
 127.0.0.1 adroll.com
+127.0.0.1 adrotator.se
 127.0.0.1 ads-de.spray.net
 127.0.0.1 ads-dev.youporn.com
 127.0.0.1 ads-direct.prodigy.net
@@ -4875,6 +4876,7 @@ fe80::1%lo0     localhost
 127.0.0.1 avpa.javalobby.org
 127.0.0.1 awesomevipoffers.com
 127.0.0.1 awrz.net
+127.0.0.1 axp.zedo.com
 127.0.0.1 azcentra.app.ur.gcion.com
 127.0.0.1 azoogleads.com
 127.0.0.1 b.ads2.msn.com
@@ -6121,7 +6123,6 @@ fe80::1%lo0     localhost
 127.0.0.1 liberty.gedads.com
 127.0.0.1 link2me.ru
 127.0.0.1 link4ads.com
-127.0.0.1 links.dot.tk
 127.0.0.1 linktracker.angelfire.com
 127.0.0.1 linuxpark.adtech.de
 127.0.0.1 linuxpark.adtech.fr
@@ -6162,6 +6163,7 @@ fe80::1%lo0     localhost
 127.0.0.1 m3.2mdn.net
 127.0.0.1 macaddictads.snv.futurenet.com
 127.0.0.1 macads.net
+127.0.0.1 mackeeperapp1.zeobit.com
 127.0.0.1 mad2.brandreachsys.com
 127.0.0.1 mads.aol.com
 127.0.0.1 mads.cnet.com
@@ -6175,6 +6177,7 @@ fe80::1%lo0     localhost
 127.0.0.1 marketing.888.com
 127.0.0.1 marriottinternationa.tt.omtrdc.net
 127.0.0.1 mastertracks.be
+127.0.0.1 matomy.adk2.co
 127.0.0.1 matrix.mediavantage.de
 127.0.0.1 maxads.ruralpress.com
 127.0.0.1 maxadserver.corusradionetwork.com
@@ -6296,7 +6299,6 @@ fe80::1%lo0     localhost
 127.0.0.1 myseostats.com
 127.0.0.1 myusersonline.com
 127.0.0.1 myyearbookdigital.checkm8.com
-127.0.0.1 n4061ad.doubleclick.net
 127.0.0.1 n4g.us.intellitxt.com
 127.0.0.1 nationalissuepanel.com
 127.0.0.1 nationalpost.adperfect.com
@@ -6714,7 +6716,6 @@ fe80::1%lo0     localhost
 127.0.0.1 s1.cz.adocean.pl
 127.0.0.1 s1.gratkapl.adocean.pl
 127.0.0.1 s2.buysellads.com
-127.0.0.1 s2.youtube.com
 127.0.0.1 s3.buysellads.com
 127.0.0.1 s5.addthis.com
 127.0.0.1 sad.sharethis.com
@@ -7057,6 +7058,7 @@ fe80::1%lo0     localhost
 127.0.0.1 tps31.doubleverify.com
 127.0.0.1 tr.wl.webads.nl
 127.0.0.1 track-apmebf.cj.akadns.net
+127.0.0.1 track.adbooth.net
 127.0.0.1 track.bigbrandpromotions.com
 127.0.0.1 track.e7r.com.br
 127.0.0.1 track.omgpl.com
@@ -7197,6 +7199,7 @@ fe80::1%lo0     localhost
 127.0.0.1 widgets.tcimg.com
 127.0.0.1 wigetmedia.com
 127.0.0.1 wikiforosh.ir
+127.0.0.1 williamhill.es
 127.0.0.1 wmedia.rotator.hadj7.adjuggler.net
 127.0.0.1 wordplaywhiz.com
 127.0.0.1 work-offer.com
@@ -7440,7 +7443,6 @@ fe80::1%lo0     localhost
 127.0.0.1 www.dgmaustralia.com
 127.0.0.1 www.dietoftoday.ca.pn
 127.0.0.1 www.digimedia.com
-127.0.0.1 www.direc-tory.tk
 127.0.0.1 www.directnetadvertising.net
 127.0.0.1 www.directpowerrewards.com
 127.0.0.1 www.dirtyrhino.com
@@ -7466,7 +7468,6 @@ fe80::1%lo0     localhost
 127.0.0.1 www.entertainment-rewardpath.com
 127.0.0.1 www.entertainment-specials.com
 127.0.0.1 www.eshopads2.com
-127.0.0.1 www.etoro.com
 127.0.0.1 www.euros4click.de
 127.0.0.1 www.exclusivegiftcards.com
 127.0.0.1 www.eyeblaster-bs.com
@@ -7860,6 +7861,7 @@ fe80::1%lo0     localhost
 127.0.0.1 www.trendnews.com
 127.0.0.1 www.trendsonline.biz
 127.0.0.1 www.trendsonline.mobi
+127.0.0.1 www.trndsys.mobi
 127.0.0.1 www.tutop.com
 127.0.0.1 www.tuttosessogratis.org
 127.0.0.1 www.ukbanners.com
@@ -7890,6 +7892,7 @@ fe80::1%lo0     localhost
 127.0.0.1 www.whatuwhatuwhatuwant.com
 127.0.0.1 www.widgetbucks.com
 127.0.0.1 www.wigetmedia.com
+127.0.0.1 www.williamhill.es
 127.0.0.1 www.windaily.com
 127.0.0.1 www.winnerschoiceservices.com
 127.0.0.1 www.wordplaywhiz.com
@@ -7997,6 +8000,7 @@ fe80::1%lo0     localhost
 127.0.0.1 xpcs.ads.yahoo.com
 127.0.0.1 xstatic.nk-net.pl
 127.0.0.1 y.cdn.adblade.com
+127.0.0.1 yieldmanagement.adbooth.net
 127.0.0.1 yieldmanager.net
 127.0.0.1 ym.adnxs.com
 127.0.0.1 yodleeinc.tt.omtrdc.net
