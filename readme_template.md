@@ -12,6 +12,7 @@ Currently the `hosts` files from the following locations are amalgamated:
 * Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
 * Malware Domain List at [http://www.malwaredomainlist.com/](http://www.malwaredomainlist.com/), updated regularly.
 * Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
+* hpHosts at [http://hosts-file.net/](http://hosts-file.net/), updated regularly
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
 You can add any additional sources you'd like under the data/ directory. Provide a copy of the current `hosts` file and a file called
