@@ -14,6 +14,8 @@ import subprocess
 import sys
 import tempfile
 import urllib2
+import zipfile
+import StringIO
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -115,7 +117,16 @@ def updateAllSources():
 			continue;
 		print 'Updating source ' + source + ' from ' + updateURL
 		updatedFile = urllib2.urlopen(updateURL)
+
 		updatedFile = updatedFile.read()
+
+		if '.zip' in updateURL:
+			updatedZippedFile = zipfile.ZipFile(StringIO.StringIO(updatedFile))
+			for name in updatedZippedFile.namelist():
+				if name in ('hosts', 'hosts.txt'):
+					updatedFile = updatedZippedFile.open(name).read()
+					break
+
 		updatedFile = string.replace( updatedFile, '\r', '' ) #get rid of carriage-return symbols
 
 		dataFile   = open(DATA_PATH + '/' + source + '/' + DATA_FILENAMES, 'w')
