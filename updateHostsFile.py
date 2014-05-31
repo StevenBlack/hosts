@@ -14,6 +14,8 @@ import subprocess
 import sys
 import tempfile
 import urllib2
+import zipfile
+import StringIO
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -23,6 +25,7 @@ UPDATE_URL_FILENAME = 'update.info'
 SOURCES = os.listdir(DATA_PATH)
 README_TEMPLATE = BASEDIR_PATH + '/readme_template.md'
 README_FILE = BASEDIR_PATH + '/readme.md'
+TARGET_HOST = '0.0.0.0'
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
@@ -115,7 +118,16 @@ def updateAllSources():
 			continue;
 		print 'Updating source ' + source + ' from ' + updateURL
 		updatedFile = urllib2.urlopen(updateURL)
+
 		updatedFile = updatedFile.read()
+
+		if '.zip' in updateURL:
+			updatedZippedFile = zipfile.ZipFile(StringIO.StringIO(updatedFile))
+			for name in updatedZippedFile.namelist():
+				if name in ('hosts', 'hosts.txt'):
+					updatedFile = updatedZippedFile.open(name).read()
+					break
+
 		updatedFile = string.replace( updatedFile, '\r', '' ) #get rid of carriage-return symbols
 
 		dataFile   = open(DATA_PATH + '/' + source + '/' + DATA_FILENAMES, 'w')
@@ -151,7 +163,7 @@ def removeDups(mergeFile):
 	finalFile = open(BASEDIR_PATH + '/hosts', 'w+b')
 	mergeFile.seek(0) # reset file pointer
 
-	rules_seen = set()
+	hostnames = set()
 	for line in mergeFile.readlines():
 		if line[0].startswith("#") or line[0] == '\n':
 			finalFile.write(line) #maintain the comments for readability
@@ -159,14 +171,26 @@ def removeDups(mergeFile):
 		strippedRule = stripRule(line) #strip comments
 		if matchesExclusions(strippedRule):
 			continue
-		if strippedRule not in rules_seen:
-			finalFile.write(line)
-			rules_seen.add(strippedRule)
+		hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
+
+		if normalizedRule and hostname not in hostnames:
+			finalFile.write(normalizedRule)
+			hostnames.add(hostname)
 			numberOfRules += 1
+		else:
+			finalFile.write(line)
 
 	mergeFile.close()
 
 	return finalFile
+
+def normalizeRule(rule):
+	result = re.search(r'^\s*(\d+\.\d+\.\d+\.\d+)\s+([\w\.-]+)(.*)',rule)
+	if result:
+		target, hostname, suffix = result.groups()
+		return hostname, "%s\t%s%s\n" % (TARGET_HOST, hostname, suffix)
+	print '==>%s<==' % rule
+	return None, None
 
 def finalizeFile(finalFile):
 	writeOpeningHeader(finalFile)
