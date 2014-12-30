@@ -8,7 +8,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Nov 24th, 2014 at 02:55
+# Last updated: Dec 29th, 2014 at 13:41
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -72,7 +72,7 @@
 255.255.255.255	broadcasthost
 ::1		localhost
 127.0.0.1	local
-fe80::1%lo0	localhost
+#fe80::1%lo0	localhost
 #</localhost>
 
 #<shock-sites>
@@ -1772,6 +1772,7 @@ fe80::1%lo0	localhost
 127.0.0.1 products-gold.net
 127.0.0.1 proflashdata.com			# Facebook trojan
 127.0.0.1 protectionupdatecenter.com
+127.0.0.1 puush.in
 127.0.0.1 pv.wantsfly.com
 127.0.0.1 qip.ru
 127.0.0.1 qy.corrmedic.ru
@@ -1922,6 +1923,7 @@ fe80::1%lo0	localhost
 127.0.0.1 www.portaldimensional.com
 127.0.0.1 www.poxudeli.ru
 127.0.0.1 www.proflashdata.com			# Facebook trojan
+127.0.0.1 www.puush.in
 127.0.0.1 www.rickrolling.com
 127.0.0.1 www.russian-sex.com
 127.0.0.1 www.scotiaonline.scotiabank.salferreras.com
@@ -1954,6 +1956,7 @@ fe80::1%lo0	localhost
 127.0.0.1 xfotosx01.fromru.su
 127.0.0.1 xponlinescanner.com
 127.0.0.1 xvrxyzba253.hotmail.ru
+127.0.0.1 ymail-activate1.bugs3.com
 127.0.0.1 yrwap.cn
 127.0.0.1 zarozinski.info
 127.0.0.1 zettapetta.com
@@ -3094,6 +3097,7 @@ fe80::1%lo0	localhost
 127.0.0.1 ad11.focalink.com
 127.0.0.1 ad12.bannerbank.ru
 127.0.0.1 ad12.focalink.com
+127.0.0.1 ad131m.adk2.co
 127.0.0.1 ad13.focalink.com
 127.0.0.1 ad14.focalink.com
 127.0.0.1 ad15.focalink.com
@@ -3127,6 +3131,7 @@ fe80::1%lo0	localhost
 127.0.0.1 ad2.ip.ro
 127.0.0.1 ad2.lbn.ru
 127.0.0.1 ad2.nationalreview.com
+127.0.0.1 ad2.neodatagroup.com
 127.0.0.1 ad2.pamedia.com
 127.0.0.1 ad2.parom.hu
 127.0.0.1 ad2.peel.com
@@ -3152,6 +3157,7 @@ fe80::1%lo0	localhost
 127.0.0.1 ad5.lbn.ru
 127.0.0.1 ad6.bannerbank.ru
 127.0.0.1 ad6.horvitznewspapers.net
+127.0.0.1 ad6media.fr
 127.0.0.1 ad.71i.de
 127.0.0.1 ad7.bannerbank.ru
 127.0.0.1 ad8.bannerbank.ru
@@ -5221,6 +5227,7 @@ fe80::1%lo0	localhost
 127.0.0.1 car-truck-boat-premiumblvd.com
 127.0.0.1 casalemedia.com
 127.0.0.1 cas.clickability.com
+127.0.0.1 cas.criteo.com
 127.0.0.1 cashback.co.uk
 127.0.0.1 cashbackwow.co.uk
 127.0.0.1 cashflowmarketing.com
@@ -5447,6 +5454,7 @@ fe80::1%lo0	localhost
 127.0.0.1 content.yieldmanager.edgesuite.net
 127.0.0.1 context3.kanoodle.com
 127.0.0.1 context5.kanoodle.com
+127.0.0.1 contextad.pl
 127.0.0.1 context.adshadow.net
 127.0.0.1 contextweb.com
 127.0.0.1 conv.adengage.com
@@ -5562,6 +5570,7 @@ fe80::1%lo0	localhost
 127.0.0.1 delb.mspaceads.com
 127.0.0.1 delivery.adyea.com
 127.0.0.1 delivery.clickonometrics.pl
+127.0.0.1 delivery.myswitchads.com
 127.0.0.1 delivery.trafficjunky.net
 127.0.0.1 delivery.w00tads.com
 127.0.0.1 delivery.way2traffic.com
@@ -5657,6 +5666,7 @@ fe80::1%lo0	localhost
 127.0.0.1 engine.carbonads.com
 127.0.0.1 engine.espace.netavenir.com
 127.0.0.1 engine.influads.com
+127.0.0.1 engine.phn.doublepimp.com
 127.0.0.1 engine.rorer.ru
 127.0.0.1 enirocode.adtlgc.com
 127.0.0.1 enirodk.adtlgc.com
@@ -6895,6 +6905,7 @@ fe80::1%lo0	localhost
 127.0.0.1 s3.buysellads.com
 127.0.0.1 s5.addthis.com
 127.0.0.1 s7.addthis.com
+127.0.0.1 s.ad131m.com
 127.0.0.1 s.admulti.com
 127.0.0.1 sad.sharethis.com
 127.0.0.1 safe.hyperpaysys.com
@@ -7134,7 +7145,9 @@ fe80::1%lo0	localhost
 127.0.0.1 static.carbonads.com
 127.0.0.1 static.clicktorrent.info
 127.0.0.1 static.creatives.livejasmin.com
+127.0.0.1 static.criteo.net
 127.0.0.1 static.doubleclick.net
+127.0.0.1 static.eu.criteo.net
 127.0.0.1 static.everyone.net
 127.0.0.1 static.exoclick.com
 127.0.0.1 static.fastpic.ru
@@ -7201,6 +7214,7 @@ fe80::1%lo0	localhost
 127.0.0.1 sysadmin.map24.com
 127.0.0.1 t1.adserver.com
 127.0.0.1 t4.liverail.com
+127.0.0.1 t.adonly.com
 127.0.0.1 t-ads.adap.tv
 127.0.0.1 tag1.webabacus.com
 127.0.0.1 tag.admeld.com
@@ -7303,6 +7317,7 @@ fe80::1%lo0	localhost
 127.0.0.1 travelncs.com
 127.0.0.1 trekmedia.net
 127.0.0.1 trendnews.com
+127.0.0.1 triangle.dealsaver.com
 127.0.0.1 trk.alskeip.com
 127.0.0.1 trk.etrigue.com
 127.0.0.1 trk.yadomedia.com
@@ -7642,6 +7657,7 @@ fe80::1%lo0	localhost
 127.0.0.1 www.abrogatesdv.info
 127.0.0.1 www.actiondesk.com
 127.0.0.1 www.action.ientry.net
+127.0.0.1 www.ad6media.fr
 127.0.0.1 www.adbanner.gr
 127.0.0.1 www.adbrite.com
 127.0.0.1 www.adcanadian.com
