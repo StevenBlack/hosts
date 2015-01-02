@@ -165,7 +165,7 @@ def removeDups(mergeFile):
 
 	hostnames = set()
 	for line in mergeFile.readlines():
-		if line[0].startswith("#") or line[0] == '\n':
+		if line[0].startswith("#") or re.match(r'^\s*$', line[0]):
 			finalFile.write(line) #maintain the comments for readability
 			continue
 		strippedRule = stripRule(line) #strip comments
@@ -249,7 +249,7 @@ def moveHostsFileIntoPlace(finalFile):
 ## {{{ http://code.activestate.com/recipes/577058/ (r2)
 def query_yes_no(question, default="yes"):
     """Ask a yes/no question via raw_input() and return their answer.
-    
+
     "question" is a string that is presented to the user.
     "default" is the presumed answer if the user just hits <Enter>.
         It must be "yes" (the default), "no" or None (meaning
