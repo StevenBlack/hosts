@@ -13,6 +13,12 @@ import string
 import subprocess
 import sys
 import tempfile
+import __future__
+
+from future.standard_library import install_aliases
+from builtins import input
+install_aliases()
+
 import urllib.request, urllib.error, urllib.parse
 import zipfile
 import io
@@ -128,7 +134,7 @@ def updateAllSources():
 					updatedFile = updatedZippedFile.open(name).read()
 					break
 
-		updatedFile = str.replace(updatedFile.decode('utf-8'), '\r', '' ) #get rid of carriage-return symbols
+		updatedFile = updatedFile.decode('utf-8').replace('\r', '' ) #get rid of carriage-return symbols
 
 		dataFile   = open(DATA_PATH + '/' + source + '/' + DATA_FILENAMES, 'w')
 		dataFile.write(updatedFile)
