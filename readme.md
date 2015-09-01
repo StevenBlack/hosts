@@ -2,7 +2,7 @@
 
 This repo consolidates several reputable `hosts` files and consolidates them into a single hosts file that you can use.
 
-**Currently this hosts file contains 26080 unique entries.**
+**Currently this hosts file contains 26030 unique entries.**
 
 ## Source of host data amalgamated here
 
@@ -21,6 +21,8 @@ update.info with the URL to the `hosts` file source. This will allow updateHosts
 ## Using updateHostsFile.py
 
 This Python script will generate a unique hosts file based on the sources provided. You can either have the script go out and fetch an updated version over the web (defined by the update.info text file in the source's directory), or it will use the `hosts` file you already have checked into your source's data folder.
+
+This script requires the futures module from pip.
 
 Usage
 

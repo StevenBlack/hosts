@@ -13,9 +13,15 @@ import string
 import subprocess
 import sys
 import tempfile
-import urllib2
+import __future__
+
+from future.standard_library import install_aliases
+from builtins import input
+install_aliases()
+
+import urllib.request, urllib.error, urllib.parse
 import zipfile
-import StringIO
+import io
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -53,7 +59,7 @@ def promptForUpdate():
 	if (response == "yes"):
 		updateAllSources()
 	else:
-		print 'OK, we\'ll stick with what we\'ve  got locally.'
+		print('OK, we\'ll stick with what we\'ve  got locally.')
 
 def promptForExclusions():
 	response = query_yes_no("Do you want to exclude any domains?\n" +
@@ -62,7 +68,7 @@ def promptForExclusions():
 	if (response == "yes"):
 		displayExclusionOptions()
 	else:
-		print 'OK, we won\'t exclude any domains.'
+		print('OK, we won\'t exclude any domains.')
 
 def promptForMoreCustomExclusions():
 	response = query_yes_no("Do you have more domains you want to enter?")
@@ -93,7 +99,7 @@ def displayExclusionOptions():
 
 def gatherCustomExclusions():
 	while True:
-		domainFromUser = raw_input("Enter the domain you want to exclude (e.g. facebook.com): ")
+		domainFromUser = input("Enter the domain you want to exclude (e.g. facebook.com): ")
 		if (isValidDomainFormat(domainFromUser)):
 			excludeDomain(domainFromUser)
 		if (promptForMoreCustomExclusions() == False):
@@ -116,23 +122,24 @@ def updateAllSources():
 		updateURL = getUpdateURLFromFile(source)
 		if (updateURL == None):
 			continue;
-		print 'Updating source ' + source + ' from ' + updateURL
-		updatedFile = urllib2.urlopen(updateURL)
+		print('Updating source ' + source + ' from ' + updateURL)
+		updatedFile = urllib.request.urlopen(updateURL)
 
 		updatedFile = updatedFile.read()
 
 		if '.zip' in updateURL:
-			updatedZippedFile = zipfile.ZipFile(StringIO.StringIO(updatedFile))
+			updatedZippedFile = zipfile.ZipFile(io.StringIO(updatedFile))
 			for name in updatedZippedFile.namelist():
 				if name in ('hosts', 'hosts.txt'):
 					updatedFile = updatedZippedFile.open(name).read()
 					break
 
-		updatedFile = string.replace( updatedFile, '\r', '' ) #get rid of carriage-return symbols
+		updatedFile = updatedFile.decode('utf-8').replace('\r', '' ) #get rid of carriage-return symbols
 
 		dataFile   = open(DATA_PATH + '/' + source + '/' + DATA_FILENAMES, 'w')
 		dataFile.write(updatedFile)
 		dataFile.close()
+
 
 def getUpdateURLFromFile(source):
 	pathToUpdateFile = DATA_PATH + '/' + source + '/' + UPDATE_URL_FILENAME
@@ -149,7 +156,7 @@ def getUpdateURLFromFile(source):
 
 # File Logic
 def createInitialFile():
-	mergeFile = tempfile.NamedTemporaryFile()
+	mergeFile = tempfile.NamedTemporaryFile('wt+')
 	for source in SOURCES:
 		curFile = open(DATA_PATH + '/' + source +'/' + DATA_FILENAMES, 'r')
 		mergeFile.write('\n# Begin ' + source + '\n')
@@ -160,7 +167,7 @@ def createInitialFile():
 def removeDups(mergeFile):
 	global numberOfRules
 
-	finalFile = open(BASEDIR_PATH + '/hosts', 'w+b')
+	finalFile = open(BASEDIR_PATH + '/hosts', 'w+t')
 	mergeFile.seek(0) # reset file pointer
 
 	hostnames = set()
@@ -189,7 +196,7 @@ def normalizeRule(rule):
 	if result:
 		target, hostname, suffix = result.groups()
 		return hostname, "%s\t%s%s\n" % (TARGET_HOST, hostname, suffix)
-	print '==>%s<==' % rule
+	print('==>%s<==' % rule)
 	return None, None
 
 def finalizeFile(finalFile):
@@ -229,10 +236,10 @@ def updateReadme(numberOfRules):
 
 def moveHostsFileIntoPlace(finalFile):
 	if (os.name == 'posix'):
-		print 'Moving the file requires administrative privileges. You might need to enter your password.'
+		print('Moving the file requires administrative privileges. You might need to enter your password.')
 		if(subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"])):
 			printFailure("Moving the file failed.")
-		print 'Flushing the DNS Cache to utilize new hosts file...'
+		print('Flushing the DNS Cache to utilize new hosts file...')
 		if (platform.system() == 'Darwin'):
 			if(subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"])):
 				printFailure("Flushing the DNS Cache failed.")
@@ -240,8 +247,8 @@ def moveHostsFileIntoPlace(finalFile):
 			if(subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"])):
 				printFailure("Flushing the DNS Cache failed.")
 	elif (os.name == 'nt'):
-		print 'Automatically moving the hosts file in place is not yet supported.'
-		print 'Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts'
+		print('Automatically moving the hosts file in place is not yet supported.')
+		print('Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts')
 
 # End File Logic
 
@@ -270,10 +277,10 @@ def query_yes_no(question, default="yes"):
 
     while 1:
         sys.stdout.write(colorize(question, colors.PROMPT) + prompt)
-        choice = raw_input().lower()
+        choice = input().lower()
         if default is not None and choice == '':
             return default
-        elif choice in valid.keys():
+        elif choice in list(valid.keys()):
             return valid[choice]
         else:
             printFailure("Please respond with 'yes' or 'no' "\
@@ -282,11 +289,11 @@ def query_yes_no(question, default="yes"):
 
 def isValidDomainFormat(domain):
 	if (domain == ''):
-		print "You didn\'t enter a domain. Try again."
+		print("You didn\'t enter a domain. Try again.")
 		return False
 	domainRegex = re.compile("www\d{0,3}[.]|https?")
 	if (domainRegex.match(domain)):
-		print "The domain " + domain + " is not valid. Do not include www.domain.com or http(s)://domain.com. Try again."
+		print("The domain " + domain + " is not valid. Do not include www.domain.com or http(s)://domain.com. Try again.")
 		return False
 	else:
 		return True
@@ -302,10 +309,10 @@ def colorize(text, color):
 	return color + text + colors.ENDC
 
 def printSuccess(text):
-	print colorize(text, colors.SUCCESS)
+	print(colorize(text, colors.SUCCESS))
 
 def printFailure(text):
-	print colorize(text, colors.FAIL)
+	print(colorize(text, colors.FAIL))
 # End Helper Functions
 
 if __name__ == "__main__":
