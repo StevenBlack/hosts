@@ -26,6 +26,8 @@ Usage
 
     python updateHostsFile.py
 
+**TAKE NOTE** this script is tested with Python version 2.7.10.  I hope to have a Python 3 version soon.
+
 ## What is a hosts file?
 
 A hosts file, named `hosts` (with no file extension), is a plain-text file used by all operating systems to map hostnames to IP addresses. 
