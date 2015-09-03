@@ -8,11 +8,11 @@ This repo consolidates several reputable `hosts` files and consolidates them int
 
 Currently the `hosts` files from the following locations are amalgamated:
 
+* The [Adaway hosts file](http://adaway.org/hosts.txt), updated regularly.
 * MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated monthly, or thereabouts.
 * Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
 * Malware Domain List at [http://www.malwaredomainlist.com/](http://www.malwaredomainlist.com/), updated regularly.
 * Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
-* hpHosts at [http://hosts-file.net/](http://hosts-file.net/), updated regularly
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
 You can add any additional sources you'd like under the data/ directory. Provide a copy of the current `hosts` file and a file called
@@ -25,7 +25,7 @@ This Python script will generate a unique hosts file based on the sources provid
 Usage
 
     python updateHostsFile.py
-
+  
 **TAKE NOTE** this script is tested with Python version 2.7.10.  I hope to have a Python 3 version soon.
 
 ## What is a hosts file?
