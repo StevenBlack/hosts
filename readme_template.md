@@ -80,3 +80,7 @@ and run:
 Open a Terminal and run:
 
 `/etc/rc.d/init.d/nscd restart`
+
+**Linux with systemd**: systemctl restart network.service
+
+**Fedora Linux**: systemctl restart NetworkManager.service
