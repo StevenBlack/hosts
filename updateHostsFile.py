@@ -25,7 +25,7 @@ UPDATE_URL_FILENAME = 'update.info'
 SOURCES = os.listdir(DATA_PATH)
 README_TEMPLATE = BASEDIR_PATH + '/readme_template.md'
 README_FILE = BASEDIR_PATH + '/readme.md'
-TARGET_HOST = '0.0.0.0'
+TARGET_HOST = '0'
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
@@ -185,7 +185,7 @@ def removeDups(mergeFile):
 	return finalFile
 
 def normalizeRule(rule):
-	result = re.search(r'^\s*(\d+\.\d+\.\d+\.\d+)\s+([\w\.-]+)(.*)',rule)
+	result = re.search(r'^[ \t]*(\d+\.\d+\.\d+\.\d+)\s+([\w\.-]+)(.*)',rule)
 	if result:
 		target, hostname, suffix = result.groups()
 		return hostname, "%s\t%s%s\n" % (TARGET_HOST, hostname, suffix)
