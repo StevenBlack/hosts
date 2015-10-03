@@ -2,7 +2,7 @@
 
 This repo consolidates several reputable `hosts` files and consolidates them into a single hosts file that you can use.
 
-**Currently this hosts file contains 26680 unique entries.**
+**Currently this hosts file contains 26792 unique entries.**
 
 ## Source of host data amalgamated here
 
@@ -47,8 +47,12 @@ For example, to nullify requests to some doubleclick.net servers, adding these l
     # etc...
 
 
-## Why use `0` instead of `0.0.0.0` or `127.0.0.1`?
-See [here](http://www.dslreports.com/forum/r16790135-Large-Hosts-file-0-0-0-0-or-127-0-0-1) and [here](http://www.dslreports.com/forum/r24621780-hosts-127-0-0-1-vs-0-0-0-0).  Turns out using just `0` increases parsing speed, and it makes the hosts file smaller.
+## Why use `0.0.0.0` instead of `127.0.0.1`?
+Using `0.0.0.0` is faster.
+
+## Why not use just `0` instead of `0.0.0.0`?
+We tried that.  Using `0` doesn't work universally.
+
 
 ## Location of your hosts file
 To modify your current `hosts` file, look for it in the following places and modify it with a text editor.
