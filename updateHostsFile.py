@@ -25,7 +25,7 @@ UPDATE_URL_FILENAME = 'update.info'
 SOURCES = os.listdir(DATA_PATH)
 README_TEMPLATE = BASEDIR_PATH + '/readme_template.md'
 README_FILE = BASEDIR_PATH + '/readme.md'
-TARGET_HOST = '0'
+TARGET_HOST = '0.0.0.0'
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
