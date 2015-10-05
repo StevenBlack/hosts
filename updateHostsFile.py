@@ -173,22 +173,20 @@ def removeDups(mergeFile):
 			continue
 		hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
 
-		if normalizedRule and hostname not in hostnames:
+		if normalizedRule and (hostname not in hostnames):
 			finalFile.write(normalizedRule)
 			hostnames.add(hostname)
 			numberOfRules += 1
-		else:
-			finalFile.write(line)
 
 	mergeFile.close()
 
 	return finalFile
 
 def normalizeRule(rule):
-	result = re.search(r'^\s*(\d+\.\d+\.\d+\.\d+)\s+([\w\.-]+)(.*)',rule)
+	result = re.search(r'^[ \t]*(\d+\.\d+\.\d+\.\d+)\s+([\w\.-]+)(.*)',rule)
 	if result:
 		target, hostname, suffix = result.groups()
-		return hostname, "%s\t%s%s\n" % (TARGET_HOST, hostname, suffix)
+		return hostname, "%s %s %s\n" % (TARGET_HOST, hostname, suffix)
 	print '==>%s<==' % rule
 	return None, None
 
