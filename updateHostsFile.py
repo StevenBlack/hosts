@@ -164,6 +164,7 @@ def removeDups(mergeFile):
 	mergeFile.seek(0) # reset file pointer
 
 	hostnames = set()
+	hostnames.add("localhost")
 	for line in mergeFile.readlines():
 		if line[0].startswith("#") or re.match(r'^\s*$', line[0]):
 			finalFile.write(line) #maintain the comments for readability
@@ -218,6 +219,9 @@ def writeOpeningHeader(finalFile):
 	finalFile.write('#\n')
 	finalFile.write('# Merging these sources produced ' + str(numberOfRules) + ' unique entries\n')
 	finalFile.write('# ===============================================================\n')
+	finalFile.write('\n')
+	finalFile.write('127.0.0.1 localhost\n')
+	finalFile.write('\n')
 	finalFile.write(fileContents)
 
 def updateReadme(numberOfRules):
