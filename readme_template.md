@@ -48,7 +48,7 @@ For example, to nullify requests to some doubleclick.net servers, adding these l
 
 
 ## Why use `0.0.0.0` instead of `127.0.0.1`?
-Using `0.0.0.0` is faster.
+Using `0.0.0.0` is faster because you don't have to wait for a timeout. It also does not interfere with a web server that may be running on the local PC.
 
 ## Why not use just `0` instead of `0.0.0.0`?
 We tried that.  Using `0` doesn't work universally.
