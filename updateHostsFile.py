@@ -44,7 +44,8 @@ def main():
 	finalFile = removeDups(mergeFile)
 	finalizeFile(finalFile)
 	updateReadme(numberOfRules)
-	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + str(numberOfRules) + ' unique entries.')
+	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + "{:,}".format( numberOfRules ) + ' unique entries.')
+
 	promptForMove(finalFile)
 
 # Prompt the User
@@ -217,7 +218,7 @@ def writeOpeningHeader(finalFile):
 	for source in SOURCES:
 		finalFile.write('#    ' + source + '\n')
 	finalFile.write('#\n')
-	finalFile.write('# Merging these sources produced ' + str(numberOfRules) + ' unique entries\n')
+	finalFile.write('# Merging these sources produced ' + "{:,}".format( numberOfRules ) + ' unique entries\n')
 	finalFile.write('# ===============================================================\n')
 	finalFile.write('\n')
 	finalFile.write('127.0.0.1 localhost\n')
@@ -227,7 +228,7 @@ def writeOpeningHeader(finalFile):
 def updateReadme(numberOfRules):
 	with open(README_FILE, "wt") as out:
 		for line in open(README_TEMPLATE):
-			out.write(line.replace('@NUM_ENTRIES@', str(numberOfRules)))
+			out.write(line.replace('@NUM_ENTRIES@', "{:,}".format( numberOfRules )))
 
 def moveHostsFileIntoPlace(finalFile):
 	if (os.name == 'posix'):
