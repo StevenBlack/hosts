@@ -19,12 +19,12 @@ import StringIO
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
-DATA_PATH = BASEDIR_PATH + '/data'
+DATA_PATH = os.path.join(BASEDIR_PATH, 'data')
 DATA_FILENAMES = 'hosts'
 UPDATE_URL_FILENAME = 'update.info'
 SOURCES = os.listdir(DATA_PATH)
-README_TEMPLATE = BASEDIR_PATH + '/readme_template.md'
-README_FILE = BASEDIR_PATH + '/readme.md'
+README_TEMPLATE = os.path.join(BASEDIR_PATH, 'readme_template.md')
+README_FILE = os.path.join(BASEDIR_PATH, 'readme.md')
 TARGET_HOST = '0.0.0.0'
 
 # Exclusions
@@ -131,12 +131,12 @@ def updateAllSources():
 
 		updatedFile = string.replace( updatedFile, '\r', '' ) #get rid of carriage-return symbols
 
-		dataFile   = open(DATA_PATH + '/' + source + '/' + DATA_FILENAMES, 'w')
+		dataFile   = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'w')
 		dataFile.write(updatedFile)
 		dataFile.close()
 
 def getUpdateURLFromFile(source):
-	pathToUpdateFile = DATA_PATH + '/' + source + '/' + UPDATE_URL_FILENAME
+	pathToUpdateFile = os.path.join(DATA_PATH, source, UPDATE_URL_FILENAME)
 	if os.path.exists(pathToUpdateFile):
 		updateFile = open(pathToUpdateFile, 'r')
 		retURL = updateFile.readline().strip()
@@ -152,7 +152,7 @@ def getUpdateURLFromFile(source):
 def createInitialFile():
 	mergeFile = tempfile.NamedTemporaryFile()
 	for source in SOURCES:
-		curFile = open(DATA_PATH + '/' + source +'/' + DATA_FILENAMES, 'r')
+		curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
 		mergeFile.write('\n# Begin ' + source + '\n')
 		mergeFile.write(curFile.read())
 		mergeFile.write('\n# End ' + source + '\n')
@@ -161,7 +161,7 @@ def createInitialFile():
 def removeDups(mergeFile):
 	global numberOfRules
 
-	finalFile = open(BASEDIR_PATH + '/hosts', 'w+b')
+	finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'w+b')
 	mergeFile.seek(0) # reset file pointer
 
 	hostnames = set()
