@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
-# Script by Ben Limmer
+# Script originally written by Ben Limmer
 # https://github.com/l1m5
+#
+# Modified by Zaur Molotnikov
+# https://github.com/qutorial/hosts 
 #
 # This simple Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
@@ -58,7 +61,7 @@ def promptForUpdate():
 def promptForExclusions():
 	response = query_yes_no("Do you want to exclude any domains?\n" +
 							"For example, hulu.com video streaming must be able to access " +
-							"its tracking and ad servers in order to play video.")
+							"its tracking and ad servers in order to play video.", default="no")
 	if (response == "yes"):
 		displayExclusionOptions()
 	else:
@@ -181,7 +184,7 @@ def normalizeRule(rule):
 	if result:
 		target, hostname, suffix = result.groups()
 		return hostname, "%s %s %s\n" % (TARGET_HOST, hostname, suffix)
-	print ('==>%s<==' % rule)
+	#print ('==>%s<==' % rule)
 	return None, None
 
 def finalizeFile(finalFile):	
@@ -216,8 +219,10 @@ def writeOpeningHeader(finalFile):
 	finalFile.write('127.0.0.1 localhost\n')
 	finalFile.write('\n')
 	
-	with open(os.path.join(BASEDIR_PATH, "preamble.txt"), "r") as f:
-		finalFile.write(f.read());
+	preamble = os.path.join(BASEDIR_PATH, "preamble.txt");
+	if os.path.isfile(preamble):
+		with open(preamble, "r") as f:
+			finalFile.write(f.read());
 	
 	finalFile.write(fileContents)
 
@@ -236,8 +241,11 @@ def moveHostsFileIntoPlace(finalFile):
 			if(subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"])):
 				printFailure("Flushing the DNS Cache failed.")
 		else:
-			if(subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"])):
-				printFailure("Flushing the DNS Cache failed.")
+			if os.path.isfile("/etc/rc.d/init.d/nscd"):
+				if(subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"])):
+					printFailure("Flushing the DNS Cache failed.")
+			else:
+				print("Flushing seems to happen automatically on this system")
 	elif (os.name == 'nt'):
 		print ('Automatically moving the hosts file in place is not yet supported.')
 		print ('Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts')
