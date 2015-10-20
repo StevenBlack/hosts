@@ -16,7 +16,21 @@
 
 127.0.0.1 localhost
 
+# hosts file, Zaur Molotnikov, fortiss machine
+# Regular business
+127.0.1.1	fortiss-n-069
 
+# Secure banking sites
+195.140.100.223	kskmse.de
+195.140.107.67	portal.kskmse.de
+129.35.230.2	meine.deutsche-bank.de
+
+# Local Fortiss resources
+192.168.16.40	jupiter.local
+192.168.16.40	jupiter.fortiss.org
+192.168.16.40	jupiter.fortiss.fortiss.org
+192.168.16.32	as02
+192.168.16.77	fs01
 # Begin someonewhocares.org
 # This hosts file is brought to you by Dan Pollock and can be found at
 # http://someonewhocares.org/hosts/zero/
@@ -29065,6 +29079,29 @@
 
 #
 # ANALYTICS
+#
+0.0.0.0 analytics.localytics.com 
+
+# [Medialytics]
+0.0.0.0 a.medialytics.com 
+0.0.0.0 c.medialytics.com 
+0.0.0.0 cdn.creative.medialytics.com 
+0.0.0.0 p.medialytics.com 
+0.0.0.0 px.cdn.creative.medialytics.com 
+
+# [Google]
+
+# [applift]
+0.0.0.0 applift.com 
+# use finer grained hostnames?
+#127.0.0.1 tracking.applift.com
+
+# [EFF Tracker Detection]
+0.0.0.0 trackersimulator.org 
+0.0.0.0 eviltracker.net 
+0.0.0.0 do-not-tracker.org 
+# End adaway.org
+
 #
 0.0.0.0 analytics.localytics.com 
 
