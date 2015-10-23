@@ -189,7 +189,11 @@ def normalizeRule(rule):
 	if result:
 		target, hostname, suffix = result.groups()
 		hostname = hostname.lower() # explicitly lowercase hostname
-		return hostname, "%s %s %s\n" % (TARGET_HOST, hostname, suffix)
+		if suffix is not '':
+			# add suffix as comment only, not as a separate host
+			return hostname, "%s %s #%s\n" % (TARGET_HOST, hostname, suffix)
+		else:
+			return hostname, "%s %s\n" % (TARGET_HOST, hostname)
 	print '==>%s<==' % rule
 	return None, None
 
