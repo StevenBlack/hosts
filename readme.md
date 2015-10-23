@@ -3,7 +3,7 @@
 This repo consolidates several reputable `hosts` files and consolidates them into a single
 amalgamated file with duplicates removed.
 
-**Currently this hosts file contains 26,826 unique entries.**
+**Currently this hosts file contains 26,938 unique entries.**
 
 ## Source of host data amalgamated here
 
