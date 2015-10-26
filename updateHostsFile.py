@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+#This will be changed back, when Python 2 support patch is applied
 
 # Script by Ben Limmer
 # https://github.com/l1m5
@@ -13,9 +14,13 @@ import string
 import subprocess
 import sys
 import tempfile
-import urllib2
-import zipfile
-import StringIO
+# zip files are not used actually, support deleted
+# StringIO is not needed in Python 3
+# Python 3 works differently with urlopen
+import urllib
+from urllib import request
+
+# In Python 3   "print" is a function, braces are added everywhere
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -54,7 +59,7 @@ def promptForUpdate():
 	if (response == "yes"):
 		updateAllSources()
 	else:
-		print 'OK, we\'ll stick with what we\'ve  got locally.'
+		print ('OK, we\'ll stick with what we\'ve  got locally.')
 
 def promptForExclusions():
 	response = query_yes_no("Do you want to exclude any domains?\n" +
@@ -63,7 +68,7 @@ def promptForExclusions():
 	if (response == "yes"):
 		displayExclusionOptions()
 	else:
-		print 'OK, we won\'t exclude any domains.'
+		print ('OK, we won\'t exclude any domains.')
 
 def promptForMoreCustomExclusions():
 	response = query_yes_no("Do you have more domains you want to enter?")
@@ -117,19 +122,15 @@ def updateAllSources():
 		updateURL = getUpdateURLFromFile(source)
 		if (updateURL == None):
 			continue;
-		print 'Updating source ' + source + ' from ' + updateURL
-		updatedFile = urllib2.urlopen(updateURL)
+		print ('Updating source ' + source + ' from ' + updateURL)
+		# This is migration to Python 3, it works differently with urlopen
+		updatedFile =  urllib.request.urlopen(updateURL)
 
-		updatedFile = updatedFile.read()
+        # zip file support remove
 
-		if '.zip' in updateURL:
-			updatedZippedFile = zipfile.ZipFile(StringIO.StringIO(updatedFile))
-			for name in updatedZippedFile.namelist():
-				if name in ('hosts', 'hosts.txt'):
-					updatedFile = updatedZippedFile.open(name).read()
-					break
-
-		updatedFile = string.replace( updatedFile, '\r', '' ) #get rid of carriage-return symbols
+        # in Python 3 one has to specify encoding explicitly
+		updatedFile = updatedFile.read().decode("UTF-8")		
+		updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
 
 		dataFile   = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'w')
 		dataFile.write(updatedFile)
@@ -150,24 +151,29 @@ def getUpdateURLFromFile(source):
 
 # File Logic
 def createInitialFile():
-	mergeFile = tempfile.NamedTemporaryFile()
+	mergeFile = tempfile.NamedTemporaryFile()	
 	for source in SOURCES:
 		curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
-		mergeFile.write('\n# Begin ' + source + '\n')
-		mergeFile.write(curFile.read())
-		mergeFile.write('\n# End ' + source + '\n')
+		# Python 3 requires explicit support for encoding
+		mergeFile.write(bytes('\n# Begin ' + source + '\n', 'UTF-8'))
+		mergeFile.write(bytes(curFile.read(), 'UTF-8'))
+		mergeFile.write(bytes('\n# End ' + source + '\n', 'UTF-8'))
 	return mergeFile
 
 def removeDups(mergeFile):
 	global numberOfRules
 
-	finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'w+b')
+    # Another mode is required to read and write the file in Python 3      
+	finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'r+')
 	mergeFile.seek(0) # reset file pointer
 
 	hostnames = set()
 	hostnames.add("localhost")
 	for line in mergeFile.readlines():
-		if line[0].startswith("#") or re.match(r'^\s*$', line[0]):
+        # Explicit encoding
+		line = line.decode("UTF-8")
+		# Testing the first character doesn't require startswith
+		if line[0] == '#' or re.match(r'^\s*$', line[0]):
 			finalFile.write(line) #maintain the comments for readability
 			continue
 		strippedRule = stripRule(line) #strip comments
@@ -194,7 +200,7 @@ def normalizeRule(rule):
 			return hostname, "%s %s #%s\n" % (TARGET_HOST, hostname, suffix)
 		else:
 			return hostname, "%s %s\n" % (TARGET_HOST, hostname)
-	print '==>%s<==' % rule
+	print ('==>%s<==' % rule)
 	return None, None
 
 def finalizeFile(finalFile):
@@ -206,8 +212,9 @@ def finalizeFile(finalFile):
 def stripRule(line):
 	splitLine = line.split()
 	if (len(splitLine) < 2) :
+        # This is due to the diffrences between bytes and string type in Python 3
 		printFailure('A line in the hostfile is going to cause problems because it is nonstandard\n' +
-					 'The line reads ' + line + ' please check your data files. Maybe you have a comment without a #?')
+					 'The line reads ' + str(line) + ' please check your data files. Maybe you have a comment without a #?')
 		sys.exit()
 	return splitLine[0] + ' ' + splitLine[1]
 
@@ -237,10 +244,10 @@ def updateReadme(numberOfRules):
 
 def moveHostsFileIntoPlace(finalFile):
 	if (os.name == 'posix'):
-		print 'Moving the file requires administrative privileges. You might need to enter your password.'
+		print ('Moving the file requires administrative privileges. You might need to enter your password.')
 		if(subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"])):
 			printFailure("Moving the file failed.")
-		print 'Flushing the DNS Cache to utilize new hosts file...'
+		print ('Flushing the DNS Cache to utilize new hosts file...')
 		if (platform.system() == 'Darwin'):
 			if(subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"])):
 				printFailure("Flushing the DNS Cache failed.")
@@ -248,8 +255,8 @@ def moveHostsFileIntoPlace(finalFile):
 			if(subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"])):
 				printFailure("Flushing the DNS Cache failed.")
 	elif (os.name == 'nt'):
-		print 'Automatically moving the hosts file in place is not yet supported.'
-		print 'Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts'
+		print ('Automatically moving the hosts file in place is not yet supported.')
+		print ('Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts')
 
 # End File Logic
 
@@ -278,7 +285,8 @@ def query_yes_no(question, default="yes"):
 
     while 1:
         sys.stdout.write(colorize(question, colors.PROMPT) + prompt)
-        choice = raw_input().lower()
+        # input works instead of raw_input in Python 3
+        choice = input().lower()
         if default is not None and choice == '':
             return default
         elif choice in valid.keys():
@@ -290,11 +298,11 @@ def query_yes_no(question, default="yes"):
 
 def isValidDomainFormat(domain):
 	if (domain == ''):
-		print "You didn\'t enter a domain. Try again."
+		print ("You didn\'t enter a domain. Try again.")
 		return False
 	domainRegex = re.compile("www\d{0,3}[.]|https?")
 	if (domainRegex.match(domain)):
-		print "The domain " + domain + " is not valid. Do not include www.domain.com or http(s)://domain.com. Try again."
+		print ("The domain " + domain + " is not valid. Do not include www.domain.com or http(s)://domain.com. Try again.")
 		return False
 	else:
 		return True
@@ -310,10 +318,10 @@ def colorize(text, color):
 	return color + text + colors.ENDC
 
 def printSuccess(text):
-	print colorize(text, colors.SUCCESS)
+	print (colorize(text, colors.SUCCESS))
 
 def printFailure(text):
-	print colorize(text, colors.FAIL)
+	print (colorize(text, colors.FAIL))
 # End Helper Functions
 
 if __name__ == "__main__":
