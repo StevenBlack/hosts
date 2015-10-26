@@ -28,12 +28,20 @@ except ImportError:
 	from urlparse import urlparse
 	from urllib import urlencode
 	from urllib2 import urlopen, Request, HTTPError
-    
+
+
+Python3=False;
+
+cur_version = sys.version_info
+if cur_version >= (3, 0):
+	Python3=True;
+   
 def myInput(msg=""):
-	try:
-		return raw_input(msg);
-	except:
+	if Python3:
 		return input(msg);
+	else:
+		return raw_input(msg);
+		
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -153,10 +161,10 @@ def updateAllSources():
 		updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
 
 		dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'w')
-		try: #Python2
-			dataFile.write(updatedFile.encode("UTF-8"))
-		except: #Python3
+		if Python3:
 			dataFile.write(updatedFile)
+		else:
+			dataFile.write(updatedFile.encode("UTF-8"))
 		dataFile.close()
 
 def getUpdateURLFromFile(source):
@@ -177,14 +185,14 @@ def createInitialFile():
 	mergeFile = tempfile.NamedTemporaryFile()	
 	for source in SOURCES:
 		curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
-		try: # Python2
-			mergeFile.write(str('\n# Begin ' + source + '\n').encode('UTF-8'))
-			mergeFile.write(curFile.read())
-			mergeFile.write(str('\n# End ' + source + '\n').encode( 'UTF-8'))
-		except: #Python3
+		if Python3:
 			mergeFile.write(bytes('\n# Begin ' + source + '\n', 'UTF-8'))
 			mergeFile.write(bytes(curFile.read(), 'UTF-8'))
 			mergeFile.write(bytes('\n# End ' + source + '\n', 'UTF-8'))
+		else:
+			mergeFile.write(str('\n# Begin ' + source + '\n').encode('UTF-8'))
+			mergeFile.write(curFile.read())
+			mergeFile.write(str('\n# End ' + source + '\n').encode( 'UTF-8'))
 	return mergeFile
 
 def removeDups(mergeFile):
@@ -197,16 +205,19 @@ def removeDups(mergeFile):
 	hostnames.add("localhost")
 	for line in mergeFile.readlines():
 		line = line.decode("UTF-8")
+		
 		# Comments and empty lines
 		if line[0] == '#' or re.match(r'^\s*$', line[0]):
 			try:#Python2
-				finalFile.write(line.encode('UTF-8')) #maintain the comments for readability
-			except: #Python3
+				finalFile.write(line.encode('UTF-8')) #maintain the comments for readability				
+			except: #Python3				
 				finalFile.write(line) #maintain the comments for readability
 			continue
+
 		strippedRule = stripRule(line) #strip comments
 		if matchesExclusions(strippedRule):
 			continue
+		
 		hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
 
 		if normalizedRule and (hostname not in hostnames):
