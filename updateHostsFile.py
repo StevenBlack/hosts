@@ -9,6 +9,9 @@
 # This simple Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
 
+#Python 2 compatibility
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import os
 import platform
 import re
@@ -16,8 +19,21 @@ import string
 import subprocess
 import sys
 import tempfile
-import urllib
-from urllib import request
+
+try:
+	from urllib.parse import urlparse, urlencode
+	from urllib.request import urlopen, Request
+	from urllib.error import HTTPError
+except ImportError:
+	from urlparse import urlparse
+	from urllib import urlencode
+	from urllib2 import urlopen, Request, HTTPError
+    
+def myInput(msg=""):
+	try:
+		return raw_input(msg);
+	except:
+		return input(msg);
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -97,7 +113,7 @@ def displayExclusionOptions():
 
 def gatherCustomExclusions():
 	while True:
-		domainFromUser = input("Enter the domain you want to exclude (e.g. facebook.com): ")
+		domainFromUser = myInput("Enter the domain you want to exclude (e.g. facebook.com): ")
 		if (isValidDomainFormat(domainFromUser)):
 			excludeDomain(domainFromUser)
 		if (promptForMoreCustomExclusions() == False):
@@ -114,6 +130,18 @@ def matchesExclusions(strippedRule):
 	return False
 # End Exclusion Logic
 
+
+# This function handles both Python2 and Python3
+def getFileByUrl(url):
+	try:		
+		f = urlopen(url)
+		return f.read().decode("UTF-8")		
+	except:
+		print ("Problem getting file: ", url);
+		raise
+	
+    
+
 # Update Logic
 def updateAllSources():
 	for source in SOURCES:
@@ -121,13 +149,14 @@ def updateAllSources():
 		if (updateURL == None):
 			continue;
 		print ('Updating source ' + source + ' from ' + updateURL)
-		updatedFile =  urllib.request.urlopen(updateURL)
-
-		updatedFile = updatedFile.read().decode("UTF-8")		
+		updatedFile = getFileByUrl(updateURL);
 		updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
 
-		dataFile   = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'w')
-		dataFile.write(updatedFile)
+		dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'w')
+		try:
+			dataFile.write(updatedFile.encode("UTF-8"))
+		except:
+			dataFile.write(updatedFile)
 		dataFile.close()
 
 def getUpdateURLFromFile(source):
@@ -282,7 +311,7 @@ def query_yes_no(question, default="yes"):
 
     while 1:
         sys.stdout.write(colorize(question, colors.PROMPT) + prompt)
-        choice = input().lower()
+        choice = myInput().lower()
         if default is not None and choice == '':
             return default
         elif choice in valid.keys():
