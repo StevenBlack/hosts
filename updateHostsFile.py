@@ -187,6 +187,7 @@ def normalizeRule(rule):
 		target, hostname, suffix = result.groups()
 		if len(suffix) > 0:
                         print("Ignoring a suffix : ", suffix, " in a rule ", rule);
+		hostname = hostname.lower() # explicitly lowercase hostname
 		return hostname, "%s %s\n" % (TARGET_HOST, hostname)
 	print ('Non-standard rule is passed: ', rule)
 	return None, None
