@@ -190,7 +190,6 @@ def normalizeRule(rule):
 		hostname = hostname.lower() # explicitly lowercase hostname
 		return hostname, "%s %s\n" % (TARGET_HOST, hostname)
 	print ('Non-standard rule is passed: ', rule)
-			return hostname, "%s %s\n" % (TARGET_HOST, hostname)
 	return None, None
 
 def finalizeFile(finalFile):
