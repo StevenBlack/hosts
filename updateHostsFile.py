@@ -1,11 +1,13 @@
-#!/usr/bin/env python3
-#This will be changed back, when Python 2 support patch is applied
+#!/usr/bin/env python
 
 # Script by Ben Limmer
 # https://github.com/l1m5
 #
 # This simple Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
+
+# Making Python 2 compatible with Python 3
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import os
 import platform
@@ -17,10 +19,50 @@ import tempfile
 # zip files are not used actually, support deleted
 # StringIO is not needed in Python 3
 # Python 3 works differently with urlopen
-import urllib
-from urllib import request
+
+# Supporting urlopen in Python 2 and Python 3
+try:
+	from urllib.parse import urlparse, urlencode
+	from urllib.request import urlopen, Request
+	from urllib.error import HTTPError
+except ImportError:
+	from urlparse import urlparse
+	from urllib import urlencode
+	from urllib2 import urlopen, Request, HTTPError
+
+# This function handles both Python 2 and Python 3
+def getFileByUrl(url):
+	try:		
+		f = urlopen(url)
+		return f.read().decode("UTF-8")		
+	except:
+		print ("Problem getting file: ", url);
+		raise
+
 
 # In Python 3   "print" is a function, braces are added everywhere
+
+# Detecting Python 3 for version-dependent implementations
+Python3=False;
+cur_version = sys.version_info
+if cur_version >= (3, 0):
+	Python3=True;
+   
+# This function works in both Python 2 and Python 3
+def myInput(msg=""):
+	if Python3:
+		return input(msg);
+	else:
+		return raw_input(msg);
+
+
+# Cross-python writing function
+def writeData(f, data):
+	if Python3:
+		f.write(bytes(data, 'UTF-8'))
+	else:
+		f.write(str(data).encode('UTF-8'))
+	
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -96,10 +138,11 @@ def displayExclusionOptions():
 	response = query_yes_no("Do you want to exclude any other domains?")
 	if (response == "yes"):
 		gatherCustomExclusions()
-
+		
 def gatherCustomExclusions():
 	while True:
-		domainFromUser = raw_input("Enter the domain you want to exclude (e.g. facebook.com): ")
+		# Cross-python Input
+		domainFromUser = myInput("Enter the domain you want to exclude (e.g. facebook.com): ")
 		if (isValidDomainFormat(domainFromUser)):
 			excludeDomain(domainFromUser)
 		if (promptForMoreCustomExclusions() == False):
@@ -123,17 +166,13 @@ def updateAllSources():
 		if (updateURL == None):
 			continue;
 		print ('Updating source ' + source + ' from ' + updateURL)
-		# This is migration to Python 3, it works differently with urlopen
-		updatedFile =  urllib.request.urlopen(updateURL)
-
-        # zip file support remove
-
-        # in Python 3 one has to specify encoding explicitly
-		updatedFile = updatedFile.read().decode("UTF-8")		
+		# Cross-python call
+		updatedFile = getFileByUrl(updateURL);
 		updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
 
-		dataFile   = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'w')
-		dataFile.write(updatedFile)
+		# This is cross-python code
+		dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'wb')
+		writeData(dataFile, updatedFile);
 		dataFile.close()
 
 def getUpdateURLFromFile(source):
@@ -154,17 +193,18 @@ def createInitialFile():
 	mergeFile = tempfile.NamedTemporaryFile()	
 	for source in SOURCES:
 		curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
-		# Python 3 requires explicit support for encoding
-		mergeFile.write(bytes('\n# Begin ' + source + '\n', 'UTF-8'))
-		mergeFile.write(bytes(curFile.read(), 'UTF-8'))
-		mergeFile.write(bytes('\n# End ' + source + '\n', 'UTF-8'))
+		#Done in a cross-python way
+		writeData(mergeFile, '\n# Begin ' + source + '\n')
+		writeData(mergeFile, curFile.read())
+		writeData(mergeFile, '\n# End ' + source + '\n')
+		
 	return mergeFile
 
 def removeDups(mergeFile):
 	global numberOfRules
 
     # Another mode is required to read and write the file in Python 3      
-	finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'r+')
+	finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'r+b')
 	mergeFile.seek(0) # reset file pointer
 
 	hostnames = set()
@@ -174,15 +214,17 @@ def removeDups(mergeFile):
 		line = line.decode("UTF-8")
 		# Testing the first character doesn't require startswith
 		if line[0] == '#' or re.match(r'^\s*$', line[0]):
-			finalFile.write(line) #maintain the comments for readability
+			# Cross-python write
+			writeData(finalFile, line)
 			continue
+		
 		strippedRule = stripRule(line) #strip comments
 		if matchesExclusions(strippedRule):
 			continue
 		hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
 
 		if normalizedRule and (hostname not in hostnames):
-			finalFile.write(normalizedRule)
+			writeData(finalFile, normalizedRule)
 			hostnames.add(hostname)
 			numberOfRules += 1
 
@@ -223,18 +265,18 @@ def writeOpeningHeader(finalFile):
 	finalFile.seek(0) #reset file pointer
 	fileContents = finalFile.read(); #save content
 	finalFile.seek(0) #write at the top
-	finalFile.write('# This file is a merged collection of hosts from reputable sources,\n')
-	finalFile.write('# with a dash of crowd sourcing via Github\n#\n')
-	finalFile.write('# Project home page: https://github.com/StevenBlack/hosts\n#\n')
-	finalFile.write('# Current sources:\n')
+	writeData(finalFile, '# This file is a merged collection of hosts from reputable sources,\n')
+	writeData(finalFile, '# with a dash of crowd sourcing via Github\n#\n')
+	writeData(finalFile, '# Project home page: https://github.com/StevenBlack/hosts\n#\n')
+	writeData(finalFile, '# Current sources:\n')
 	for source in SOURCES:
-		finalFile.write('#    ' + source + '\n')
-	finalFile.write('#\n')
-	finalFile.write('# Merging these sources produced ' + "{:,}".format( numberOfRules ) + ' unique entries\n')
-	finalFile.write('# ===============================================================\n')
-	finalFile.write('\n')
-	finalFile.write('127.0.0.1 localhost\n')
-	finalFile.write('\n')
+		writeData(finalFile, '#    ' + source + '\n')
+	writeData(finalFile, '#\n')
+	writeData(finalFile, '# Merging these sources produced ' + "{:,}".format( numberOfRules ) + ' unique entries\n')
+	writeData(finalFile, '# ===============================================================\n')
+	writeData(finalFile, '\n')
+	writeData(finalFile, '127.0.0.1 localhost\n')
+	writeData(finalFile, '\n')
 	finalFile.write(fileContents)
 
 def updateReadme(numberOfRules):
@@ -285,8 +327,8 @@ def query_yes_no(question, default="yes"):
 
     while 1:
         sys.stdout.write(colorize(question, colors.PROMPT) + prompt)
-        # input works instead of raw_input in Python 3
-        choice = input().lower()
+        # Changed to be cross-python
+        choice = myInput().lower()
         if default is not None and choice == '':
             return default
         elif choice in valid.keys():
