@@ -27,7 +27,8 @@ UPDATE_URL_FILENAME = 'update.info'
 SOURCES = os.listdir(DATA_PATH)
 README_TEMPLATE = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE = os.path.join(BASEDIR_PATH, 'readme.md')
-TARGET_HOST = '0.0.0.0'
+#0.0.0.0 works in the same way but is more confusing
+TARGET_HOST = '127.0.0.1'
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
@@ -162,6 +163,7 @@ def removeDups(mergeFile):
 	hostnames.add("localhost")
 	for line in mergeFile.readlines():
 		line = line.decode("UTF-8")
+		# Comments and empty lines
 		if line[0] == '#' or re.match(r'^\s*$', line[0]):
 			finalFile.write(line) #maintain the comments for readability
 			continue
@@ -183,8 +185,10 @@ def normalizeRule(rule):
 	result = re.search(r'^[ \t]*(\d+\.\d+\.\d+\.\d+)\s+([\w\.-]+)(.*)',rule)
 	if result:
 		target, hostname, suffix = result.groups()
-		return hostname, "%s %s %s\n" % (TARGET_HOST, hostname, suffix)
-	#print ('==>%s<==' % rule)
+		if len(suffix) > 0:
+                        print("Ignoring a suffix : ", suffix, " in a rule ", rule);
+		return hostname, "%s %s\n" % (TARGET_HOST, hostname)
+	print ('Non-standard rule is passed: ', rule)
 	return None, None
 
 def finalizeFile(finalFile):	
