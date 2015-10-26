@@ -97,7 +97,7 @@ def displayExclusionOptions():
 
 def gatherCustomExclusions():
 	while True:
-		domainFromUser = raw_input("Enter the domain you want to exclude (e.g. facebook.com): ")
+		domainFromUser = input("Enter the domain you want to exclude (e.g. facebook.com): ")
 		if (isValidDomainFormat(domainFromUser)):
 			excludeDomain(domainFromUser)
 		if (promptForMoreCustomExclusions() == False):
