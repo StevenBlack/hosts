@@ -92,7 +92,7 @@ def promptForMoreCustomExclusions():
 		return False
 
 def promptForMove(finalFile):
-  response = query_yes_no("Do you want to replace your existing hosts file with the newly generated file?")
+  response = query_yes_no("Do you want to replace your existing hosts file with the newly generated file?", default="no")
   if (response == "yes"):
     moveHostsFileIntoPlace(finalFile)
   else:
@@ -153,9 +153,9 @@ def updateAllSources():
 		updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
 
 		dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'w')
-		try:
+		try: #Python2
 			dataFile.write(updatedFile.encode("UTF-8"))
-		except:
+		except: #Python3
 			dataFile.write(updatedFile)
 		dataFile.close()
 
@@ -177,9 +177,14 @@ def createInitialFile():
 	mergeFile = tempfile.NamedTemporaryFile()	
 	for source in SOURCES:
 		curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
-		mergeFile.write(bytes('\n# Begin ' + source + '\n', 'UTF-8'))
-		mergeFile.write(bytes(curFile.read(), 'UTF-8'))
-		mergeFile.write(bytes('\n# End ' + source + '\n', 'UTF-8'))
+		try: # Python2
+			mergeFile.write(str('\n# Begin ' + source + '\n').encode('UTF-8'))
+			mergeFile.write(curFile.read())
+			mergeFile.write(str('\n# End ' + source + '\n').encode( 'UTF-8'))
+		except: #Python3
+			mergeFile.write(bytes('\n# Begin ' + source + '\n', 'UTF-8'))
+			mergeFile.write(bytes(curFile.read(), 'UTF-8'))
+			mergeFile.write(bytes('\n# End ' + source + '\n', 'UTF-8'))
 	return mergeFile
 
 def removeDups(mergeFile):
@@ -194,7 +199,10 @@ def removeDups(mergeFile):
 		line = line.decode("UTF-8")
 		# Comments and empty lines
 		if line[0] == '#' or re.match(r'^\s*$', line[0]):
-			finalFile.write(line) #maintain the comments for readability
+			try:#Python2
+				finalFile.write(line.encode('UTF-8')) #maintain the comments for readability
+			except: #Python3
+				finalFile.write(line) #maintain the comments for readability
 			continue
 		strippedRule = stripRule(line) #strip comments
 		if matchesExclusions(strippedRule):
