@@ -6,6 +6,9 @@
 # This simple Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
 
+# Making Python 2 compatible with Python 3
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import os
 import platform
 import re
@@ -13,9 +16,53 @@ import string
 import subprocess
 import sys
 import tempfile
-import urllib2
-import zipfile
-import StringIO
+# zip files are not used actually, support deleted
+# StringIO is not needed in Python 3
+# Python 3 works differently with urlopen
+
+# Supporting urlopen in Python 2 and Python 3
+try:
+	from urllib.parse import urlparse, urlencode
+	from urllib.request import urlopen, Request
+	from urllib.error import HTTPError
+except ImportError:
+	from urlparse import urlparse
+	from urllib import urlencode
+	from urllib2 import urlopen, Request, HTTPError
+
+# This function handles both Python 2 and Python 3
+def getFileByUrl(url):
+	try:		
+		f = urlopen(url)
+		return f.read().decode("UTF-8")		
+	except:
+		print ("Problem getting file: ", url);
+		raise
+
+
+# In Python 3   "print" is a function, braces are added everywhere
+
+# Detecting Python 3 for version-dependent implementations
+Python3=False;
+cur_version = sys.version_info
+if cur_version >= (3, 0):
+	Python3=True;
+   
+# This function works in both Python 2 and Python 3
+def myInput(msg=""):
+	if Python3:
+		return input(msg);
+	else:
+		return raw_input(msg);
+
+
+# Cross-python writing function
+def writeData(f, data):
+	if Python3:
+		f.write(bytes(data, 'UTF-8'))
+	else:
+		f.write(str(data).encode('UTF-8'))
+	
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -54,7 +101,7 @@ def promptForUpdate():
 	if (response == "yes"):
 		updateAllSources()
 	else:
-		print 'OK, we\'ll stick with what we\'ve  got locally.'
+		print ('OK, we\'ll stick with what we\'ve  got locally.')
 
 def promptForExclusions():
 	response = query_yes_no("Do you want to exclude any domains?\n" +
@@ -63,7 +110,7 @@ def promptForExclusions():
 	if (response == "yes"):
 		displayExclusionOptions()
 	else:
-		print 'OK, we won\'t exclude any domains.'
+		print ('OK, we won\'t exclude any domains.')
 
 def promptForMoreCustomExclusions():
 	response = query_yes_no("Do you have more domains you want to enter?")
@@ -91,10 +138,11 @@ def displayExclusionOptions():
 	response = query_yes_no("Do you want to exclude any other domains?")
 	if (response == "yes"):
 		gatherCustomExclusions()
-
+		
 def gatherCustomExclusions():
 	while True:
-		domainFromUser = raw_input("Enter the domain you want to exclude (e.g. facebook.com): ")
+		# Cross-python Input
+		domainFromUser = myInput("Enter the domain you want to exclude (e.g. facebook.com): ")
 		if (isValidDomainFormat(domainFromUser)):
 			excludeDomain(domainFromUser)
 		if (promptForMoreCustomExclusions() == False):
@@ -117,22 +165,14 @@ def updateAllSources():
 		updateURL = getUpdateURLFromFile(source)
 		if (updateURL == None):
 			continue;
-		print 'Updating source ' + source + ' from ' + updateURL
-		updatedFile = urllib2.urlopen(updateURL)
+		print ('Updating source ' + source + ' from ' + updateURL)
+		# Cross-python call
+		updatedFile = getFileByUrl(updateURL);
+		updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
 
-		updatedFile = updatedFile.read()
-
-		if '.zip' in updateURL:
-			updatedZippedFile = zipfile.ZipFile(StringIO.StringIO(updatedFile))
-			for name in updatedZippedFile.namelist():
-				if name in ('hosts', 'hosts.txt'):
-					updatedFile = updatedZippedFile.open(name).read()
-					break
-
-		updatedFile = string.replace( updatedFile, '\r', '' ) #get rid of carriage-return symbols
-
-		dataFile   = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'w')
-		dataFile.write(updatedFile)
+		# This is cross-python code
+		dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'wb')
+		writeData(dataFile, updatedFile);
 		dataFile.close()
 
 def getUpdateURLFromFile(source):
@@ -150,33 +190,41 @@ def getUpdateURLFromFile(source):
 
 # File Logic
 def createInitialFile():
-	mergeFile = tempfile.NamedTemporaryFile()
+	mergeFile = tempfile.NamedTemporaryFile()	
 	for source in SOURCES:
 		curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
-		mergeFile.write('\n# Begin ' + source + '\n')
-		mergeFile.write(curFile.read())
-		mergeFile.write('\n# End ' + source + '\n')
+		#Done in a cross-python way
+		writeData(mergeFile, '\n# Begin ' + source + '\n')
+		writeData(mergeFile, curFile.read())
+		writeData(mergeFile, '\n# End ' + source + '\n')
+		
 	return mergeFile
 
 def removeDups(mergeFile):
 	global numberOfRules
 
-	finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'w+b')
+    # Another mode is required to read and write the file in Python 3      
+	finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'r+b')
 	mergeFile.seek(0) # reset file pointer
 
 	hostnames = set()
 	hostnames.add("localhost")
 	for line in mergeFile.readlines():
-		if line[0].startswith("#") or re.match(r'^\s*$', line[0]):
-			finalFile.write(line) #maintain the comments for readability
+        # Explicit encoding
+		line = line.decode("UTF-8")
+		# Testing the first character doesn't require startswith
+		if line[0] == '#' or re.match(r'^\s*$', line[0]):
+			# Cross-python write
+			writeData(finalFile, line)
 			continue
+		
 		strippedRule = stripRule(line) #strip comments
 		if matchesExclusions(strippedRule):
 			continue
 		hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
 
 		if normalizedRule and (hostname not in hostnames):
-			finalFile.write(normalizedRule)
+			writeData(finalFile, normalizedRule)
 			hostnames.add(hostname)
 			numberOfRules += 1
 
@@ -194,7 +242,7 @@ def normalizeRule(rule):
 			return hostname, "%s %s #%s\n" % (TARGET_HOST, hostname, suffix)
 		else:
 			return hostname, "%s %s\n" % (TARGET_HOST, hostname)
-	print '==>%s<==' % rule
+	print ('==>%s<==' % rule)
 	return None, None
 
 def finalizeFile(finalFile):
@@ -206,8 +254,9 @@ def finalizeFile(finalFile):
 def stripRule(line):
 	splitLine = line.split()
 	if (len(splitLine) < 2) :
+        # This is due to the diffrences between bytes and string type in Python 3
 		printFailure('A line in the hostfile is going to cause problems because it is nonstandard\n' +
-					 'The line reads ' + line + ' please check your data files. Maybe you have a comment without a #?')
+					 'The line reads ' + str(line) + ' please check your data files. Maybe you have a comment without a #?')
 		sys.exit()
 	return splitLine[0] + ' ' + splitLine[1]
 
@@ -216,18 +265,18 @@ def writeOpeningHeader(finalFile):
 	finalFile.seek(0) #reset file pointer
 	fileContents = finalFile.read(); #save content
 	finalFile.seek(0) #write at the top
-	finalFile.write('# This file is a merged collection of hosts from reputable sources,\n')
-	finalFile.write('# with a dash of crowd sourcing via Github\n#\n')
-	finalFile.write('# Project home page: https://github.com/StevenBlack/hosts\n#\n')
-	finalFile.write('# Current sources:\n')
+	writeData(finalFile, '# This file is a merged collection of hosts from reputable sources,\n')
+	writeData(finalFile, '# with a dash of crowd sourcing via Github\n#\n')
+	writeData(finalFile, '# Project home page: https://github.com/StevenBlack/hosts\n#\n')
+	writeData(finalFile, '# Current sources:\n')
 	for source in SOURCES:
-		finalFile.write('#    ' + source + '\n')
-	finalFile.write('#\n')
-	finalFile.write('# Merging these sources produced ' + "{:,}".format( numberOfRules ) + ' unique entries\n')
-	finalFile.write('# ===============================================================\n')
-	finalFile.write('\n')
-	finalFile.write('127.0.0.1 localhost\n')
-	finalFile.write('\n')
+		writeData(finalFile, '#    ' + source + '\n')
+	writeData(finalFile, '#\n')
+	writeData(finalFile, '# Merging these sources produced ' + "{:,}".format( numberOfRules ) + ' unique entries\n')
+	writeData(finalFile, '# ===============================================================\n')
+	writeData(finalFile, '\n')
+	writeData(finalFile, '127.0.0.1 localhost\n')
+	writeData(finalFile, '\n')
 	finalFile.write(fileContents)
 
 def updateReadme(numberOfRules):
@@ -237,10 +286,10 @@ def updateReadme(numberOfRules):
 
 def moveHostsFileIntoPlace(finalFile):
 	if (os.name == 'posix'):
-		print 'Moving the file requires administrative privileges. You might need to enter your password.'
+		print ('Moving the file requires administrative privileges. You might need to enter your password.')
 		if(subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"])):
 			printFailure("Moving the file failed.")
-		print 'Flushing the DNS Cache to utilize new hosts file...'
+		print ('Flushing the DNS Cache to utilize new hosts file...')
 		if (platform.system() == 'Darwin'):
 			if(subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"])):
 				printFailure("Flushing the DNS Cache failed.")
@@ -248,8 +297,8 @@ def moveHostsFileIntoPlace(finalFile):
 			if(subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"])):
 				printFailure("Flushing the DNS Cache failed.")
 	elif (os.name == 'nt'):
-		print 'Automatically moving the hosts file in place is not yet supported.'
-		print 'Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts'
+		print ('Automatically moving the hosts file in place is not yet supported.')
+		print ('Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts')
 
 # End File Logic
 
@@ -278,7 +327,8 @@ def query_yes_no(question, default="yes"):
 
     while 1:
         sys.stdout.write(colorize(question, colors.PROMPT) + prompt)
-        choice = raw_input().lower()
+        # Changed to be cross-python
+        choice = myInput().lower()
         if default is not None and choice == '':
             return default
         elif choice in valid.keys():
@@ -290,11 +340,11 @@ def query_yes_no(question, default="yes"):
 
 def isValidDomainFormat(domain):
 	if (domain == ''):
-		print "You didn\'t enter a domain. Try again."
+		print ("You didn\'t enter a domain. Try again.")
 		return False
 	domainRegex = re.compile("www\d{0,3}[.]|https?")
 	if (domainRegex.match(domain)):
-		print "The domain " + domain + " is not valid. Do not include www.domain.com or http(s)://domain.com. Try again."
+		print ("The domain " + domain + " is not valid. Do not include www.domain.com or http(s)://domain.com. Try again.")
 		return False
 	else:
 		return True
@@ -310,10 +360,10 @@ def colorize(text, color):
 	return color + text + colors.ENDC
 
 def printSuccess(text):
-	print colorize(text, colors.SUCCESS)
+	print (colorize(text, colors.SUCCESS))
 
 def printFailure(text):
-	print colorize(text, colors.FAIL)
+	print (colorize(text, colors.FAIL))
 # End Helper Functions
 
 if __name__ == "__main__":
