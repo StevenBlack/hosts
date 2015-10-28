@@ -32,9 +32,9 @@ except ImportError:
 
 # This function handles both Python 2 and Python 3
 def getFileByUrl(url):
-	try:		
+	try:
 		f = urlopen(url)
-		return f.read().decode("UTF-8")		
+		return f.read().decode("UTF-8")
 	except:
 		print ("Problem getting file: ", url);
 		raise
@@ -47,7 +47,7 @@ Python3=False;
 cur_version = sys.version_info
 if cur_version >= (3, 0):
 	Python3=True;
-   
+
 # This function works in both Python 2 and Python 3
 def myInput(msg=""):
 	if Python3:
@@ -62,7 +62,7 @@ def writeData(f, data):
 		f.write(bytes(data, 'UTF-8'))
 	else:
 		f.write(str(data).encode('UTF-8'))
-	
+
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -138,7 +138,7 @@ def displayExclusionOptions():
 	response = query_yes_no("Do you want to exclude any other domains?")
 	if (response == "yes"):
 		gatherCustomExclusions()
-		
+
 def gatherCustomExclusions():
 	while True:
 		# Cross-python Input
@@ -190,20 +190,20 @@ def getUpdateURLFromFile(source):
 
 # File Logic
 def createInitialFile():
-	mergeFile = tempfile.NamedTemporaryFile()	
+	mergeFile = tempfile.NamedTemporaryFile()
 	for source in SOURCES:
 		curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
 		#Done in a cross-python way
 		writeData(mergeFile, '\n# Begin ' + source + '\n')
 		writeData(mergeFile, curFile.read())
 		writeData(mergeFile, '\n# End ' + source + '\n')
-		
+
 	return mergeFile
 
 def removeDups(mergeFile):
 	global numberOfRules
 
-    # Another mode is required to read and write the file in Python 3      
+    # Another mode is required to read and write the file in Python 3
 	finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'r+b')
 	mergeFile.seek(0) # reset file pointer
 
@@ -217,7 +217,7 @@ def removeDups(mergeFile):
 			# Cross-python write
 			writeData(finalFile, line)
 			continue
-		
+
 		strippedRule = stripRule(line) #strip comments
 		if matchesExclusions(strippedRule):
 			continue
