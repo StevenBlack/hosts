@@ -37,7 +37,7 @@ def getFileByUrl(url):
 		return f.read().decode("UTF-8")
 	except:
 		print ("Problem getting file: ", url);
-		raise
+		# raise
 
 
 # In Python 3   "print" is a function, braces are added everywhere
