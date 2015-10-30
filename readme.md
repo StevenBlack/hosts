@@ -3,7 +3,7 @@
 This repo consolidates several reputable `hosts` files and consolidates them into a single
 amalgamated file with duplicates removed.
 
-**Currently this hosts file contains 26,891 unique entries.**
+**Currently this hosts file contains 26,888 unique entries.**
 
 ## Source of host data amalgamated here
 
@@ -19,6 +19,11 @@ Currently the `hosts` files from the following locations are amalgamated:
 You can add additional sources by placing them in the `data/` directory. Provide a copy of that new
 `hosts` file, and place its update url in `update.info`. The `updateHostsFile.py` routine will
 automatically refresh the `hosts` file from source each time a new amalgamated file is generated.
+
+
+## How do I incorporate my own hosts?
+
+If you have custom host records, place them in file `myhosts`.  The contents of this file are prepended to the amalgamated hosts file during the update process.
 
 ## Using updateHostsFile.py
 
