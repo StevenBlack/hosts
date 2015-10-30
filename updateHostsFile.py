@@ -277,6 +277,12 @@ def writeOpeningHeader(finalFile):
 	writeData(finalFile, '\n')
 	writeData(finalFile, '127.0.0.1 localhost\n')
 	writeData(finalFile, '\n')
+	
+	preamble = os.path.join(BASEDIR_PATH, "myhosts");
+	if os.path.isfile(preamble):
+		with open(preamble, "r") as f:
+			writeData(finalFile, f.read());
+	
 	finalFile.write(fileContents)
 
 def updateReadme(numberOfRules):
