@@ -20,6 +20,11 @@ You can add additional sources by placing them in the `data/` directory. Provide
 `hosts` file, and place its update url in `update.info`. The `updateHostsFile.py` routine will
 automatically refresh the `hosts` file from source each time a new amalgamated file is generated.
 
+
+## How do I incorporate my own hosts?
+
+If you have custom host records, place them in file `myhosts`.  The contents of this file are prepended to the amalgamated hosts file during the update process.
+
 ## Using updateHostsFile.py
 
 This Python script will generate a unique hosts file based on the sources in the `data/` folder.
