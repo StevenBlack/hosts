@@ -73,6 +73,9 @@ SOURCES = os.listdir(DATA_PATH)
 README_TEMPLATE = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE = os.path.join(BASEDIR_PATH, 'readme.md')
 TARGET_HOST = '0.0.0.0'
+DS_STORE = BASEDIR_PATH + '/data/.DS_Store'
+if os.path.isfile(DS_STORE):
+	os.remove(DS_STORE)
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
