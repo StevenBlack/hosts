@@ -77,9 +77,17 @@ SOURCES = listdir_nohidden(DATA_PATH)
 README_TEMPLATE = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE = os.path.join(BASEDIR_PATH, 'readme.md')
 TARGET_HOST = '0.0.0.0'
+WHITELIST_FILE = os.path.join(BASEDIR_PATH, 'whitelist')
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
+
+# Exclutions from whitelist file
+EXCLUSIONS = []
+if os.path.isfile(WHITELIST_FILE):
+	with open(WHITELIST_FILE, "r") as ins:
+		for line in ins:
+			EXCLUSIONS.append(line)
 
 # Common domains to exclude
 COMMON_EXCLUSIONS = ['hulu.com']
@@ -90,6 +98,7 @@ numberOfRules = 0
 
 def main():
 	promptForUpdate()
+	excludeFromFile()
 	promptForExclusions()
 	mergeFile = createInitialFile()
 	finalFile = removeDups(mergeFile)
@@ -98,6 +107,14 @@ def main():
 	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + "{:,}".format( numberOfRules ) + ' unique entries.')
 
 	promptForMove(finalFile)
+
+# Exclusion from file
+def excludeFromFile():
+	for domain in EXCLUSIONS:
+		if (domain != '' and not domain.startswith("#")):
+			domainRegex = re.compile("www\d{0,3}[.]|https?")
+			if not (domainRegex.match(domain)):
+				excludeDomain(domain)
 
 # Prompt the User
 def promptForUpdate():
