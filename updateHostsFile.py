@@ -16,6 +16,7 @@ import string
 import subprocess
 import sys
 import tempfile
+import glob
 # zip files are not used actually, support deleted
 # StringIO is not needed in Python 3
 # Python 3 works differently with urlopen
@@ -63,19 +64,19 @@ def writeData(f, data):
 	else:
 		f.write(str(data).encode('UTF-8'))
 
+# This function doesn't list hidden files
+def listdir_nohidden(path):
+	return glob.glob(os.path.join(path, '*'))
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
 DATA_PATH = os.path.join(BASEDIR_PATH, 'data')
 DATA_FILENAMES = 'hosts'
 UPDATE_URL_FILENAME = 'update.info'
-SOURCES = os.listdir(DATA_PATH)
+SOURCES = listdir_nohidden(DATA_PATH)
 README_TEMPLATE = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE = os.path.join(BASEDIR_PATH, 'readme.md')
 TARGET_HOST = '0.0.0.0'
-DS_STORE = BASEDIR_PATH + '/data/.DS_Store'
-if os.path.isfile(DS_STORE):
-	os.remove(DS_STORE)
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
