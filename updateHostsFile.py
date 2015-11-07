@@ -78,16 +78,11 @@ README_TEMPLATE = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE = os.path.join(BASEDIR_PATH, 'readme.md')
 TARGET_HOST = '0.0.0.0'
 WHITELIST_FILE = os.path.join(BASEDIR_PATH, 'whitelist')
+HOSTS_FILE = os.path.join(BASEDIR_PATH, 'hosts')
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
-
-# Exclutions from whitelist file
 EXCLUSIONS = []
-if os.path.isfile(WHITELIST_FILE):
-	with open(WHITELIST_FILE, "r") as ins:
-		for line in ins:
-			EXCLUSIONS.append(line)
 
 # Common domains to exclude
 COMMON_EXCLUSIONS = ['hulu.com']
@@ -98,11 +93,11 @@ numberOfRules = 0
 
 def main():
 	promptForUpdate()
-	excludeFromFile()
 	promptForExclusions()
 	mergeFile = createInitialFile()
 	finalFile = removeDups(mergeFile)
 	finalizeFile(finalFile)
+	excludeFromFile()
 	updateReadme(numberOfRules)
 	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + "{:,}".format( numberOfRules ) + ' unique entries.')
 
@@ -110,11 +105,37 @@ def main():
 
 # Exclusion from file
 def excludeFromFile():
-	for domain in EXCLUSIONS:
-		if (domain != '' and not domain.startswith("#")):
-			domainRegex = re.compile("www\d{0,3}[.]|https?")
-			if not (domainRegex.match(domain)):
-				excludeDomain(domain)
+    global numberOfRules
+    if os.path.isfile(WHITELIST_FILE):
+    	with open(WHITELIST_FILE, "r") as ins:
+    		for line in ins:
+    			EXCLUSIONS.append(line)
+        f = open(HOSTS_FILE)
+        output = []
+        for line in f:
+            write = 'true'
+            for domain in EXCLUSIONS:
+                if domain in line:
+                    write = 'false'
+                    numberOfRules -= 1
+                    break
+            if (write == 'true'):
+                output.append(line)   
+        f.close()
+        f = open(HOSTS_FILE, 'w')
+        f.writelines(output)
+        f.close()
+        f = open(HOSTS_FILE)
+        output = []
+        for line in f:
+            if 'unique entries' not in line:
+                output.append(line)  
+            else:
+                output.append('# Merging these sources produced ' + "{:,}".format( numberOfRules ) + ' unique entries\n')
+        f.close()
+        f = open(HOSTS_FILE, 'w')
+        f.writelines(output)
+        f.close()
 
 # Prompt the User
 def promptForUpdate():
@@ -131,7 +152,7 @@ def promptForExclusions():
 	if (response == "yes"):
 		displayExclusionOptions()
 	else:
-		print ('OK, we won\'t exclude any domains.')
+		print ('OK, we\'ll only exclude domains in the whitelist.')
 
 def promptForMoreCustomExclusions():
 	response = query_yes_no("Do you have more domains you want to enter?")
