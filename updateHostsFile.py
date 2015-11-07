@@ -78,12 +78,10 @@ README_TEMPLATE = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE = os.path.join(BASEDIR_PATH, 'readme.md')
 TARGET_HOST = '0.0.0.0'
 WHITELIST_FILE = os.path.join(BASEDIR_PATH, 'whitelist')
-HOSTS_FILE = os.path.join(BASEDIR_PATH, 'hosts')
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
 EXCLUSIONS = []
-
 # Common domains to exclude
 COMMON_EXCLUSIONS = ['hulu.com']
 
@@ -97,45 +95,10 @@ def main():
 	mergeFile = createInitialFile()
 	finalFile = removeDups(mergeFile)
 	finalizeFile(finalFile)
-	excludeFromFile()
 	updateReadme(numberOfRules)
 	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + "{:,}".format( numberOfRules ) + ' unique entries.')
 
 	promptForMove(finalFile)
-
-# Exclusion from file
-def excludeFromFile():
-    global numberOfRules
-    if os.path.isfile(WHITELIST_FILE):
-    	with open(WHITELIST_FILE, "r") as ins:
-    		for line in ins:
-    			EXCLUSIONS.append(line)
-        f = open(HOSTS_FILE)
-        output = []
-        for line in f:
-            write = 'true'
-            for domain in EXCLUSIONS:
-                if domain in line:
-                    write = 'false'
-                    numberOfRules -= 1
-                    break
-            if (write == 'true'):
-                output.append(line)   
-        f.close()
-        f = open(HOSTS_FILE, 'w')
-        f.writelines(output)
-        f.close()
-        f = open(HOSTS_FILE)
-        output = []
-        for line in f:
-            if 'unique entries' not in line:
-                output.append(line)  
-            else:
-                output.append('# Merging these sources produced ' + "{:,}".format( numberOfRules ) + ' unique entries\n')
-        f.close()
-        f = open(HOSTS_FILE, 'w')
-        f.writelines(output)
-        f.close()
 
 # Prompt the User
 def promptForUpdate():
@@ -244,6 +207,10 @@ def createInitialFile():
 
 def removeDups(mergeFile):
 	global numberOfRules
+	if os.path.isfile(WHITELIST_FILE):
+		with open(WHITELIST_FILE, "r") as ins:
+			for line in ins:
+				EXCLUSIONS.append(line)
 
     # Another mode is required to read and write the file in Python 3
 	finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'r+b')
@@ -252,6 +219,7 @@ def removeDups(mergeFile):
 	hostnames = set()
 	hostnames.add("localhost")
 	for line in mergeFile.readlines():
+		write = 'true'
         # Explicit encoding
 		line = line.decode("UTF-8")
 		# Testing the first character doesn't require startswith
@@ -264,8 +232,11 @@ def removeDups(mergeFile):
 		if matchesExclusions(strippedRule):
 			continue
 		hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
-
-		if normalizedRule and (hostname not in hostnames):
+		for exclude in EXCLUSIONS:
+			if (exclude in line):
+				write = 'false'
+				break
+		if normalizedRule and (hostname not in hostnames) and (write == 'true'):
 			writeData(finalFile, normalizedRule)
 			hostnames.add(hostname)
 			numberOfRules += 1
