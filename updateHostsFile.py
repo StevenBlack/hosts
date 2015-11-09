@@ -93,7 +93,7 @@ def main():
 	promptForUpdate()
 	promptForExclusions()
 	mergeFile = createInitialFile()
-	finalFile = removeDups(mergeFile)
+	finalFile = removeDupsAndExcl(mergeFile)
 	finalizeFile(finalFile)
 	updateReadme(numberOfRules)
 	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + "{:,}".format( numberOfRules ) + ' unique entries.')
@@ -205,7 +205,7 @@ def createInitialFile():
 
 	return mergeFile
 
-def removeDups(mergeFile):
+def removeDupsAndExcl(mergeFile):
 	global numberOfRules
 	if os.path.isfile(WHITELIST_FILE):
 		with open(WHITELIST_FILE, "r") as ins:
