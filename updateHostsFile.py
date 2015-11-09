@@ -16,6 +16,7 @@ import string
 import subprocess
 import sys
 import tempfile
+import glob
 # zip files are not used actually, support deleted
 # StringIO is not needed in Python 3
 # Python 3 works differently with urlopen
@@ -63,20 +64,24 @@ def writeData(f, data):
 	else:
 		f.write(str(data).encode('UTF-8'))
 
+# This function doesn't list hidden files
+def listdir_nohidden(path):
+	return glob.glob(os.path.join(path, '*'))
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
 DATA_PATH = os.path.join(BASEDIR_PATH, 'data')
 DATA_FILENAMES = 'hosts'
 UPDATE_URL_FILENAME = 'update.info'
-SOURCES = os.listdir(DATA_PATH)
+SOURCES = listdir_nohidden(DATA_PATH)
 README_TEMPLATE = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE = os.path.join(BASEDIR_PATH, 'readme.md')
 TARGET_HOST = '0.0.0.0'
+WHITELIST_FILE = os.path.join(BASEDIR_PATH, 'whitelist')
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
-
+EXCLUSIONS = []
 # Common domains to exclude
 COMMON_EXCLUSIONS = ['hulu.com']
 
@@ -88,7 +93,7 @@ def main():
 	promptForUpdate()
 	promptForExclusions()
 	mergeFile = createInitialFile()
-	finalFile = removeDups(mergeFile)
+	finalFile = removeDupsAndExcl(mergeFile)
 	finalizeFile(finalFile)
 	updateReadme(numberOfRules)
 	printSuccess('Success! Your shiny new hosts file has been prepared.\nIt contains ' + "{:,}".format( numberOfRules ) + ' unique entries.')
@@ -110,7 +115,7 @@ def promptForExclusions():
 	if (response == "yes"):
 		displayExclusionOptions()
 	else:
-		print ('OK, we won\'t exclude any domains.')
+		print ('OK, we\'ll only exclude domains in the whitelist.')
 
 def promptForMoreCustomExclusions():
 	response = query_yes_no("Do you have more domains you want to enter?")
@@ -200,8 +205,12 @@ def createInitialFile():
 
 	return mergeFile
 
-def removeDups(mergeFile):
+def removeDupsAndExcl(mergeFile):
 	global numberOfRules
+	if os.path.isfile(WHITELIST_FILE):
+		with open(WHITELIST_FILE, "r") as ins:
+			for line in ins:
+				EXCLUSIONS.append(line)
 
     # Another mode is required to read and write the file in Python 3
 	finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'r+b')
@@ -210,6 +219,7 @@ def removeDups(mergeFile):
 	hostnames = set()
 	hostnames.add("localhost")
 	for line in mergeFile.readlines():
+		write = 'true'
         # Explicit encoding
 		line = line.decode("UTF-8")
 		# Testing the first character doesn't require startswith
@@ -222,8 +232,11 @@ def removeDups(mergeFile):
 		if matchesExclusions(strippedRule):
 			continue
 		hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
-
-		if normalizedRule and (hostname not in hostnames):
+		for exclude in EXCLUSIONS:
+			if (exclude in line):
+				write = 'false'
+				break
+		if normalizedRule and (hostname not in hostnames) and (write == 'true'):
 			writeData(finalFile, normalizedRule)
 			hostnames.add(hostname)
 			numberOfRules += 1
