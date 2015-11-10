@@ -199,9 +199,7 @@ def createInitialFile():
 	for source in SOURCES:
 		curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
 		#Done in a cross-python way
-		writeData(mergeFile, '\n# Begin ' + source + '\n')
 		writeData(mergeFile, curFile.read())
-		writeData(mergeFile, '\n# End ' + source + '\n')
 
 	return mergeFile
 
