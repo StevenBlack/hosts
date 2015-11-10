@@ -229,6 +229,8 @@ def removeDupsAndExcl(mergeFile):
 			continue
 
 		strippedRule = stripRule(line) #strip comments
+		if len(strippedRule) == 0:
+			continue
 		if matchesExclusions(strippedRule):
 			continue
 		hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
@@ -267,11 +269,10 @@ def finalizeFile(finalFile):
 def stripRule(line):
 	splitLine = line.split()
 	if (len(splitLine) < 2) :
-        # This is due to the diffrences between bytes and string type in Python 3
-		printFailure('A line in the hostfile is going to cause problems because it is nonstandard\n' +
-					 'The line reads ' + str(line) + ' please check your data files. Maybe you have a comment without a #?')
-		sys.exit()
-	return splitLine[0] + ' ' + splitLine[1]
+		# just return blank
+		return ''
+	else:
+		return splitLine[0] + ' ' + splitLine[1]
 
 def writeOpeningHeader(finalFile):
 	global numberOfRules
@@ -290,12 +291,12 @@ def writeOpeningHeader(finalFile):
 	writeData(finalFile, '\n')
 	writeData(finalFile, '127.0.0.1 localhost\n')
 	writeData(finalFile, '\n')
-	
+
 	preamble = os.path.join(BASEDIR_PATH, "myhosts");
 	if os.path.isfile(preamble):
 		with open(preamble, "r") as f:
 			writeData(finalFile, f.read());
-	
+
 	finalFile.write(fileContents)
 
 def updateReadme(numberOfRules):
