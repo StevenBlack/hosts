@@ -282,11 +282,6 @@ def writeOpeningHeader(finalFile):
 	writeData(finalFile, '# This file is a merged collection of hosts from reputable sources,\n')
 	writeData(finalFile, '# with a dash of crowd sourcing via Github\n#\n')
 	writeData(finalFile, '# Project home page: https://github.com/StevenBlack/hosts\n#\n')
-	writeData(finalFile, '# Current sources:\n')
-	for source in SOURCES:
-		writeData(finalFile, '#    ' + source + '\n')
-	writeData(finalFile, '#\n')
-	writeData(finalFile, '# Merging these sources produced ' + "{:,}".format( numberOfRules ) + ' unique entries\n')
 	writeData(finalFile, '# ===============================================================\n')
 	writeData(finalFile, '\n')
 	writeData(finalFile, '127.0.0.1 localhost\n')
