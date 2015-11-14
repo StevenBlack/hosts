@@ -83,7 +83,7 @@ manually flush your DNS cache once the new hosts file is in place.
 ### Mac OS X
 Open a Terminal and run:
 
-`dscacheutil -flushcache`
+`sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder`
 
 ### Windows
 Open a Command Prompt:
