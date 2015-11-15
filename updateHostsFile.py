@@ -109,7 +109,6 @@ def promptForUpdate():
 			file = open(os.path.join(BASEDIR_PATH, 'hosts'), 'w+').close()
 		except:
 			printFailure("ERROR: No 'hosts' file in the folder, try creating one manually")
-			sys.exit()
 	
 	response = query_yes_no("Do you want to update all data sources?")
 	if (response == "yes"):
