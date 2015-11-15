@@ -90,10 +90,10 @@ exclusionRegexs = []
 numberOfRules = 0
 
 def main():
-	removeOldHostsFile()
 	promptForUpdate()
 	promptForExclusions()
 	mergeFile = createInitialFile()
+	removeOldHostsFile()
 	finalFile = removeDupsAndExcl(mergeFile)
 	finalizeFile(finalFile)
 	updateReadme(numberOfRules)
