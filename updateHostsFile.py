@@ -90,6 +90,7 @@ exclusionRegexs = []
 numberOfRules = 0
 
 def main():
+	removeOldHostsFile()
 	promptForUpdate()
 	promptForExclusions()
 	mergeFile = createInitialFile()
@@ -313,6 +314,12 @@ def moveHostsFileIntoPlace(finalFile):
 	elif (os.name == 'nt'):
 		print ('Automatically moving the hosts file in place is not yet supported.')
 		print ('Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts')
+		
+def removeOldHostsFile():       		# hotfix since merging with an already existing hosts file leads to artefacts and duplicates
+	oldFilePath=os.path.join(BASEDIR_PATH,'hosts')
+	open(oldFilePath, 'a').close()		# create if already removed, so remove wont raise an error
+	os.remove(oldFilePath);
+	open(oldFilePath, 'a').close()		# create new empty hostsfile
 
 # End File Logic
 
