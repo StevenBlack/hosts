@@ -232,6 +232,8 @@ def removeDupsAndExcl( mergeFile ):
 			# Cross-python write
 			writeData( finalFile, line )
 			continue
+		if '::1' in line:
+			continue
 
 		strippedRule = stripRule( line ) #strip comments
 		if len( strippedRule ) == 0:
