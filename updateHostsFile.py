@@ -190,8 +190,8 @@ def updateAllSources():
 def getUpdateURLFromFile( source ):
 	pathToUpdateFile = os.path.join( DATA_PATH, source, UPDATE_URL_FILENAME )
 	if os.path.exists( pathToUpdateFile ):
-        updateFile = open( pathToUpdateFile, 'r' )
-        retURL     = updateFile.readline().strip()
+		updateFile = open( pathToUpdateFile, 'r' )
+		retURL     = updateFile.readline().strip()
 		updateFile.close()
 	else:
 		retURL = None
