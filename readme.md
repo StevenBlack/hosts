@@ -3,7 +3,7 @@
 This repo consolidates several reputable `hosts` files and consolidates them into a single
 amalgamated file with duplicates removed.
 
-**Currently this hosts file contains 26,899 unique entries.**
+**Currently this hosts file contains 26,932 unique entries.**
 
 ## Source of host data amalgamated here
 
@@ -83,7 +83,7 @@ manually flush your DNS cache once the new hosts file is in place.
 ### Mac OS X
 Open a Terminal and run:
 
-`dscacheutil -flushcache`
+`sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder`
 
 ### Windows
 Open a Command Prompt:
