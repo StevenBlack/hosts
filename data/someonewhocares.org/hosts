@@ -8,7 +8,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Nov 9th, 2015 at 15:52
+# Last updated: Nov 19th, 2015 at 21:40
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -41,8 +41,6 @@
 #    systems at "/private/etc/hosts". You will require root access to do
 #    this. Saving this file to "~/hosts" will allow you to run something
 #    like "sudo cp ~/hosts /etc/hosts".
-# Ubuntu users who experience trouble with apt-get should consult
-#    http://ubuntuforums.org/archive/index.php/t-613521.html
 # For OS/2 copy the file to "%ETC%\HOSTS" and in the CONFIG.SYS file,
 #    ensure that the line "SET USE_HOSTS_FIRST=1" is included.
 # For BeOS place it at "/boot/beos/etc/hosts"
@@ -88,8 +86,6 @@
 0.0.0.0 www.oralse.ca
 0.0.0.0 goat.cx
 0.0.0.0 www.goat.cx
-0.0.0.0 goatse.ru
-0.0.0.0 www.goatse.ru
 
 0.0.0.0 1girl1pitcher.com
 0.0.0.0 1girl1pitcher.org
@@ -97,6 +93,8 @@
 0.0.0.0 1man1jar.org
 0.0.0.0 1man2needles.com
 0.0.0.0 1priest1nun.com
+0.0.0.0 1priest1nun.net
+0.0.0.0 2girls1cup.cc
 0.0.0.0 2girls1cup.com
 0.0.0.0 2girls1cup-free.com
 0.0.0.0 2girls1cup.nl
@@ -109,6 +107,7 @@
 0.0.0.0 4girlsfingerpaint.org
 0.0.0.0 bagslap.com
 0.0.0.0 ballsack.org
+0.0.0.0 bestshockers.com
 0.0.0.0 bluewaffle.biz
 0.0.0.0 bottleguy.com
 0.0.0.0 bowlgirl.com
@@ -132,6 +131,7 @@
 0.0.0.0 homewares.org
 0.0.0.0 howtotroll.org
 0.0.0.0 japscat.org
+0.0.0.0 jarsquatter.com
 0.0.0.0 jiztini.com
 0.0.0.0 junecleeland.com
 0.0.0.0 kids-in-sandbox.com
@@ -139,6 +139,7 @@
 0.0.0.0 lemonparty.biz
 0.0.0.0 lemonparty.org
 0.0.0.0 lolhello.com
+0.0.0.0 lolshock.com
 0.0.0.0 loltrain.com
 0.0.0.0 meatspin.biz
 0.0.0.0 meatspin.com
@@ -152,6 +153,7 @@
 0.0.0.0 octopusgirl.com
 0.0.0.0 on.nimp.org
 0.0.0.0 painolympics.info
+0.0.0.0 painolympics.org
 0.0.0.0 phonejapan.com
 0.0.0.0 pressurespot.com
 0.0.0.0 prolapseman.com
@@ -178,6 +180,8 @@
 0.0.0.0 www.1man1jar.org
 0.0.0.0 www.1man2needles.com
 0.0.0.0 www.1priest1nun.com
+0.0.0.0 www.1priest1nun.net
+0.0.0.0 www.2girls1cup.cc
 0.0.0.0 www.2girls1cup-free.com
 0.0.0.0 www.2girls1cup.nl
 0.0.0.0 www.2girls1cup.ws
@@ -187,6 +191,7 @@
 0.0.0.0 www.4girlsfingerpaint.org
 0.0.0.0 www.bagslap.com
 0.0.0.0 www.ballsack.org
+0.0.0.0 www.bestshockers.com
 0.0.0.0 www.bluewaffle.biz
 0.0.0.0 www.bottleguy.com
 0.0.0.0 www.bowlgirl.com
@@ -217,6 +222,7 @@
 0.0.0.0 www.lemonparty.biz
 0.0.0.0 www.lemonparty.org
 0.0.0.0 www.lolhello.com
+0.0.0.0 www.lolshock.com
 0.0.0.0 www.loltrain.com
 0.0.0.0 www.meatspin.biz
 0.0.0.0 www.meatspin.com
@@ -230,6 +236,7 @@
 0.0.0.0 www.octopusgirl.com
 0.0.0.0 www.on.nimp.org
 0.0.0.0 www.painolympics.info
+0.0.0.0 www.painolympics.org
 0.0.0.0 www.phonejapan.com
 0.0.0.0 www.pressurespot.com
 0.0.0.0 www.prolapseman.com
@@ -767,7 +774,6 @@
 0.0.0.0 gator.com
 0.0.0.0 gcounter.hosting4u.net
 0.0.0.0 gd.mlb.com
-0.0.0.0 gemius.pl
 0.0.0.0 geocounter.net
 0.0.0.0 gkkzngresullts.com
 0.0.0.0 go-in-search.net
@@ -1628,6 +1634,8 @@
 0.0.0.0 antivirus-scanner.com
 0.0.0.0 a.oix.com
 0.0.0.0 a.oix.net
+0.0.0.0 a.openinternetexchange.com
+0.0.0.0 a.phormlabs.com
 0.0.0.0 apple-protection.info
 0.0.0.0 applestore.com-mobile.gift
 0.0.0.0 armsart.com
@@ -1646,7 +1654,9 @@
 0.0.0.0 b.oix.com
 0.0.0.0 b.oix.net
 0.0.0.0 BonusCashh.com
+0.0.0.0 br.phorm.com
 0.0.0.0 brunga.at	# Facebook phishing attempt
+0.0.0.0 bt.phorm.com
 0.0.0.0 bt.webwise.com
 0.0.0.0 bt.webwise.net
 0.0.0.0 bt.webwise.org
@@ -1678,7 +1688,9 @@
 0.0.0.0 dhauzja511.co.cc
 0.0.0.0 dietpharmacyrx.net
 0.0.0.0 documents-signature.com
+0.0.0.0 d.oix.com
 0.0.0.0 download.abetterinternet.com
+0.0.0.0 d.phormlabs.com
 0.0.0.0 drc-group.net
 0.0.0.0 dubstep.onedumb.com
 0.0.0.0 east.05tz2e9.com
@@ -1719,8 +1731,10 @@
 0.0.0.0 icecars.com
 0.0.0.0 idea21.org
 0.0.0.0 Iframecash.biz
+0.0.0.0 ig.fp.oix.net
 0.0.0.0 infopaypal.com
 0.0.0.0 installmac.com
+0.0.0.0 invite.gezinti.com
 0.0.0.0 ipadzu.net
 0.0.0.0 ircleaner.com
 0.0.0.0 istartsurf.com
@@ -1732,12 +1746,14 @@
 0.0.0.0 jump.ewoss.net
 0.0.0.0 juste.ru	# Twitter trojan
 0.0.0.0 kczambians.com
+0.0.0.0 kentsucks.youcanoptout.com
 0.0.0.0 keybinary.com
 0.0.0.0 kirgo.at	# Facebook phishing attempt
 0.0.0.0 klowns4phun.com
 0.0.0.0 konflow.com				# Facebook trojan
 0.0.0.0 kplusd.far.ru
 0.0.0.0 kpremium.com
+0.0.0.0 kr.phorm.com
 0.0.0.0 lank.ru
 0.0.0.0 lighthouse2k.com
 0.0.0.0 like.likewut.net
@@ -1760,40 +1776,68 @@
 0.0.0.0 m02.webwise.org
 0.0.0.0 mac-protection.info
 0.0.0.0 mail.cyberh.fr
+0.0.0.0 mail.youcanoptout.com
+0.0.0.0 mail.youcanoptout.net
+0.0.0.0 mail.youcanoptout.org
 0.0.0.0 malware-live-pro-scanv1.com
 0.0.0.0 maxi4.firstvds.ru
 0.0.0.0 megasurfin.com
+0.0.0.0 monitor.phorm.com
 0.0.0.0 monkeyball.osa.pl
 0.0.0.0 movies.701pages.com
 0.0.0.0 mplayerdownloader.com
 0.0.0.0 mshelp247.weebly.com
 0.0.0.0 murcia-ban.es
+0.0.0.0 mx01.openinternetexchange.com
+0.0.0.0 mx01.openinternetexchange.net
+0.0.0.0 mx01.webwise.com
+0.0.0.0 mx03.phorm.com
 0.0.0.0 mylike.co.uk				# Facebook trojan
 0.0.0.0 myprivateemails.com
 0.0.0.0 nactx.com
 0.0.0.0 natashyabaydesign.com
+0.0.0.0 navegador.oi.com.br
+0.0.0.0 navegador.telefonica.com.br
 0.0.0.0 new-dating-2012.info
 0.0.0.0 new-vid-zone-1.blogspot.com.au
 0.0.0.0 newwayscanner.info
 0.0.0.0 novemberrainx.com
 0.0.0.0 ns1.oix.com
 0.0.0.0 ns1.oix.net
+0.0.0.0 ns1.openinternetexchange.com
+0.0.0.0 ns1.phorm.com
 0.0.0.0 ns1.webwise.com
 0.0.0.0 ns1.webwise.net
 0.0.0.0 ns1.webwise.org
 0.0.0.0 ns2.oix.com
 0.0.0.0 ns2.oix.net
+0.0.0.0 ns2.openinternetexchange.com
+0.0.0.0 ns2.phorm.com
 0.0.0.0 ns2.webwise.com
 0.0.0.0 ns2.webwise.net
 0.0.0.0 ns2.webwise.org
+0.0.0.0 ns2.youcanoptout.com
+0.0.0.0 ns3.openinternetexchange.com
 0.0.0.0 nufindings.info
 0.0.0.0 oferty-online.com
 0.0.0.0 office.officenet.co.kr
+0.0.0.0 oi.webnavegador.com.br
 0.0.0.0 oix.com
+0.0.0.0 oixcrv-lab.net
+0.0.0.0 oixcrv.net
+0.0.0.0 oixcrv-stage.net
 0.0.0.0 oix.net
+0.0.0.0 oix.phorm.com
+0.0.0.0 oixpre.net
+0.0.0.0 oixpre-stage.net
+0.0.0.0 oixssp-lab.net
+0.0.0.0 oixssp.net
+0.0.0.0 oix-stage.net
 0.0.0.0 oj.likewut.net
 0.0.0.0 online-antispym4.com
 0.0.0.0 oo-na-na-pics.com
+0.0.0.0 openinternetexchange.com
+0.0.0.0 openinternetexchange.net
 0.0.0.0 ordersildenafil.com
 0.0.0.0 otsserver.com
 0.0.0.0 outerinfo.com
@@ -1802,10 +1846,41 @@
 0.0.0.0 pc-scanner16.com
 0.0.0.0 personalantispy.com
 0.0.0.0 phatthalung.go.th
+0.0.0.0 phorm.biz.tr
+0.0.0.0 phorm.ch
+0.0.0.0 phormchina.com
+0.0.0.0 phorm.cl
+0.0.0.0 phorm.co.in
+0.0.0.0 phorm.com
+0.0.0.0 phorm.com.br
+0.0.0.0 phorm.com.es
+0.0.0.0 phorm.com.mx
+0.0.0.0 phorm.com.tr
+0.0.0.0 phorm.co.uk
+0.0.0.0 phormdev.com
+0.0.0.0 phormdiscover.com
+0.0.0.0 phorm.dk
+0.0.0.0 phorm.es
+0.0.0.0 phorm.hk
+0.0.0.0 phorm.in
+0.0.0.0 phorm.info.tr
+0.0.0.0 phorm.jp
+0.0.0.0 phormkorea.com
+0.0.0.0 phorm.kr
+0.0.0.0 phormlabs.com
+0.0.0.0 phorm.nom.es
+0.0.0.0 phorm.org.es
+0.0.0.0 phormprivacy.com
+0.0.0.0 phorm.ro
+0.0.0.0 phormservice.com
+0.0.0.0 phormsolution.com
+0.0.0.0 phorm.tv.tr
+0.0.0.0 phorm.web.tr
 0.0.0.0 picture-uploads.com
 0.0.0.0 pilltabletsrxbargain.net
 0.0.0.0 powabcyfqe.com
 0.0.0.0 premium-live-scan.com
+0.0.0.0 prm-ext.phorm.com
 0.0.0.0 products-gold.net
 0.0.0.0 proflashdata.com			# Facebook trojan
 0.0.0.0 protectionupdatecenter.com
@@ -1816,8 +1891,11 @@
 0.0.0.0 rd.alphabirdnetwork.com
 0.0.0.0 rickrolling.com
 0.0.0.0 roifmd.info
+0.0.0.0 romdiscover.com
+0.0.0.0 rtc.romdiscover.com
 0.0.0.0 russian-sex.com
 0.0.0.0 s4d.in
+0.0.0.0 safedownloadsrus166.com
 0.0.0.0 scan.antispyware-free-scanner.com
 0.0.0.0 scanner.best-click-av1.info
 0.0.0.0 scanner.best-protect.info
@@ -1842,6 +1920,9 @@
 0.0.0.0 sousay.info
 0.0.0.0 standardsandpraiserepurpose.com
 0.0.0.0 start.qip.ru
+0.0.0.0 stats.oix.com
+0.0.0.0 stopphoulplay.com
+0.0.0.0 stopphoulplay.net
 0.0.0.0 suddenplot.com
 0.0.0.0 superegler.net
 0.0.0.0 supernaturalart.com
@@ -1854,6 +1935,8 @@
 0.0.0.0 tattooshaha.info			# Facebook trojan
 0.0.0.0 technicalconsumerreports.com
 0.0.0.0 technology-revealed.com
+0.0.0.0 telefonica.webnavegador.com.br
+0.0.0.0 terra.fp.oix.net
 0.0.0.0 test.ishvara-yoga.com
 0.0.0.0 TheBizMeet.com
 0.0.0.0 thedatesafe.com			# Facebook trojan
@@ -1878,6 +1961,7 @@
 0.0.0.0 twitter.secure.bzpharma.net
 0.0.0.0 uawj.moqhixoz.cn
 0.0.0.0 ughmvqf.spitt.ru
+0.0.0.0 ui.oix.net
 0.0.0.0 uqz.com
 0.0.0.0 users16.jabry.com
 0.0.0.0 utenti.lycos.it
@@ -1888,6 +1972,7 @@
 0.0.0.0 vxiframe.biz
 0.0.0.0 waldenfarms.com
 0.0.0.0 weblover.info
+0.0.0.0 webnavegador.com.br
 0.0.0.0 webpaypal.com
 0.0.0.0 webwise.com
 0.0.0.0 webwise.net
@@ -1896,6 +1981,7 @@
 0.0.0.0 wewillrocknow.com
 0.0.0.0 willysy.com
 0.0.0.0 wm.maxysearch.info
+0.0.0.0 w.oix.net
 0.0.0.0 womo.corrmedic.ru
 0.0.0.0 www1.bmo.com.hotfrio.com.br
 0.0.0.0 www1.firesavez5.com
@@ -1929,8 +2015,10 @@
 0.0.0.0 www.fictioncinema.com
 0.0.0.0 www.fischereszter.hu
 0.0.0.0 www.froling.bee.pl
+0.0.0.0 www.gezinti.com
 0.0.0.0 www.gns-consola.com
 0.0.0.0 www.goggle.com
+0.0.0.0 www.gozatar.com
 0.0.0.0 www.grouphappy.com
 0.0.0.0 www.hakerzy.net
 0.0.0.0 www.haoyunlaid.com
@@ -1962,9 +2050,11 @@
 0.0.0.0 www.oix.com
 0.0.0.0 www.oix.net
 0.0.0.0 www.onlyfreeoffersonline.com
+0.0.0.0 www.openinternetexchange.com
 0.0.0.0 www.oreidofitilho.com.br
 0.0.0.0 www.otsserver.com
 0.0.0.0 www.pay-pal.com-cgibin-canada.4mcmeta4v.cn
+0.0.0.0 www.phormlabs.com
 0.0.0.0 www.picture-uploads.com
 0.0.0.0 www.portaldimensional.com
 0.0.0.0 www.poxudeli.ru
@@ -1980,6 +2070,7 @@
 0.0.0.0 www.shinilchurch.net	# domain was hacked and had a trojan installed
 0.0.0.0 www.sinera.org
 0.0.0.0 www.someonewhocares.com
+0.0.0.0 www.stopphoulplay.com
 0.0.0.0 www.tanger.com.br
 0.0.0.0 www.tattooshaha.info			# Facebook trojan
 0.0.0.0 www.te81.net
@@ -1988,6 +2079,7 @@
 0.0.0.0 www.tvshowslist.com
 0.0.0.0 www.upi6.pillsstore-c.com		# Facebook trojan
 0.0.0.0 www.uqz.com
+0.0.0.0 www.venturead.com
 0.0.0.0 www.via99.org
 0.0.0.0 www.videolove.clanteam.com
 0.0.0.0 www.videostan.ru
@@ -1999,10 +2091,18 @@
 0.0.0.0 www.webwise.org
 0.0.0.0 www.wewillrocknow.com
 0.0.0.0 www.willysy.com
+0.0.0.0 www.youcanoptout.com
+0.0.0.0 www.youcanoptout.net
+0.0.0.0 www.youcanoptout.org
+0.0.0.0 www.youfiletor.com
 0.0.0.0 xfotosx01.fromru.su
 0.0.0.0 xponlinescanner.com
 0.0.0.0 xvrxyzba253.hotmail.ru
+0.0.0.0 xxyyzz.youcanoptout.com
 0.0.0.0 ymail-activate1.bugs3.com
+0.0.0.0 youcanoptout.com
+0.0.0.0 youcanoptout.net
+0.0.0.0 youcanoptout.org
 0.0.0.0 yrwap.cn
 0.0.0.0 zarozinski.info
 0.0.0.0 zb1.zeroredirect1.com
@@ -3168,11 +3268,11 @@
 #</maybe-ads>
 
 # ads
-0.0.0.0
 0.0.0.0 0101011.com
 0.0.0.0 0427d7.se
 0.0.0.0 0d79ed.r.axf8.net
 0.0.0.0 0pn.ru
+0.0.0.0 0qizz.super-promo.hoxo.info
 0.0.0.0 104231.dtiblog.com
 0.0.0.0 10.im.cz
 0.0.0.0 121media.com
@@ -5072,6 +5172,7 @@
 0.0.0.0 ads.tw.adsonar.com
 0.0.0.0 ads.ucomics.com
 0.0.0.0 ads.uigc.net
+0.0.0.0 ads.ukclimbing.com
 0.0.0.0 ads.ultimatesurrender.com
 0.0.0.0 ads.undertone.com
 0.0.0.0 ads.unixathome.org
@@ -5483,6 +5584,7 @@
 0.0.0.0 aureate.com
 0.0.0.0 auslieferung.commindo-media-ressourcen.de
 0.0.0.0 AUSpolice.com
+0.0.0.0 aussiemethod.com
 0.0.0.0 austria1.adverserve.net
 0.0.0.0 autocontext.begun.ru
 0.0.0.0 automotive-offer.com
@@ -5721,7 +5823,6 @@
 0.0.0.0 bs.israelinfo.ru
 0.0.0.0 bs.serving-sys.com	#eyeblaster.com
 0.0.0.0 bt.linkpulse.com
-0.0.0.0 bt.webwise.com
 0.0.0.0 bumerangshowsites.hurriyet.com.tr
 0.0.0.0 burns.adtech.de
 0.0.0.0 burns.adtech.fr
@@ -5827,6 +5928,7 @@
 0.0.0.0 cdn.8digits.com
 0.0.0.0 cdn.adigniter.org
 0.0.0.0 cdn.adnxs.com
+0.0.0.0 cdn.adplxmd.com
 0.0.0.0 cdnads.cam4.com
 0.0.0.0 cdn.ads.ookla.com
 0.0.0.0 cdn.adsrvmedia.net
@@ -5840,6 +5942,7 @@
 0.0.0.0 cdn.crowdignite.com
 0.0.0.0 cdn.directrev.com
 0.0.0.0 cdn.eyewonder.com
+0.0.0.0 cdn.freefaits.com
 0.0.0.0 cdn.go.arbo.bbelements.com
 0.0.0.0 cdn.go.arbopl.bbelements.com
 0.0.0.0 cdn.go.cz.bbelements.com
@@ -5970,6 +6073,7 @@
 0.0.0.0 clkuk.tradedoubler.com
 0.0.0.0 c.lomadee.com
 0.0.0.0 closeoutproductsreview.com
+0.0.0.0 cloudcrown.com
 0.0.0.0 c.l.qq.com
 0.0.0.0 cluster3.adultadworld.com
 0.0.0.0 cluster.adultadworld.com
@@ -6095,7 +6199,6 @@
 0.0.0.0 creative.ad131m.com
 0.0.0.0 creative.adshuffle.com
 0.0.0.0 creative.ak.facebook.com
-0.0.0.0 creative.cc-dt.com
 0.0.0.0 creatives.livejasmin.com
 0.0.0.0 creatives.rgadvert.com
 0.0.0.0 creatrixads.com
@@ -6594,6 +6697,7 @@
 0.0.0.0 go.arbo.bbelements.com
 0.0.0.0 go.arbopl.bbelements.com
 0.0.0.0 go.arboru.bbelements.com
+0.0.0.0 goautofinance.com
 0.0.0.0 go.bb007.bbelements.com
 0.0.0.0 go.cz.bbelements.com
 0.0.0.0 go.eu.bbelements.com
@@ -6894,6 +6998,7 @@
 0.0.0.0 i.simpli.fi
 0.0.0.0 islamicmarketing.net
 0.0.0.0 i.static.zaplata.bg
+0.0.0.0 istockbargains.com
 0.0.0.0 it.adserver.yahoo.com
 0.0.0.0 itemagic.net
 0.0.0.0 i.total-media.net
@@ -6995,6 +7100,7 @@
 0.0.0.0 l.5min.com
 0.0.0.0 l.admob.com
 0.0.0.0 ladyclicks.ru
+0.0.0.0 land.purifier.cc
 0.0.0.0 lanzar.publicidadweb.com
 0.0.0.0 laptopreportcard.com
 0.0.0.0 laptoprewards.com
@@ -7035,6 +7141,8 @@
 0.0.0.0 learning-offer.com
 0.0.0.0 legal-rewardpath.com
 0.0.0.0 leisure-offer.com
+0.0.0.0 letsfinder.com
+0.0.0.0 letssearch.com
 0.0.0.0 lg.brandreachsys.com
 0.0.0.0 liberty.gedads.com
 0.0.0.0 ligtv.kokteyl.com
@@ -7068,6 +7176,7 @@
 0.0.0.0 lp1.linkpulse.com
 0.0.0.0 lp4.linkpulse.com
 0.0.0.0 lpcloudsvr405.com
+0.0.0.0 lp.empire.goodgamestudios.com
 0.0.0.0 lp.jeux-lk.com
 0.0.0.0 l.qq.com
 0.0.0.0 lsassoc.com
@@ -7085,8 +7194,6 @@
 0.0.0.0 lw2.gamecopyworld.com
 0.0.0.0 lycos.247realmedia.com
 0.0.0.0 l.yieldmanager.net
-0.0.0.0 m1.2mdn.net
-0.0.0.0 m1.au.2mdn.net
 0.0.0.0 m1.emea.2mdn.net
 0.0.0.0 m1.emea.2mdn.net.edgesuite.net
 0.0.0.0 m2.sexgarantie.nl
@@ -7141,7 +7248,6 @@
 0.0.0.0 mbox9.offermatica.com
 0.0.0.0 mcfg.sandai.net
 0.0.0.0 MCOpolice.com
-0.0.0.0 m.de.2mdn.net
 0.0.0.0 mds.centrport.net
 0.0.0.0 media10.popmarker.com
 0.0.0.0 media1.popmarker.com
@@ -7275,7 +7381,6 @@
 0.0.0.0 msn.allyes.com
 0.0.0.0 msnbe-hp.metriweb.be
 0.0.0.0 msn-cdn.effectivemeasure.net
-0.0.0.0 msn.oewabox.at
 0.0.0.0 msnsearch.srv.girafa.com
 0.0.0.0 msn.tns-cs.net
 0.0.0.0 msn.uvwbox.de
@@ -7293,6 +7398,7 @@
 0.0.0.0 myasiantv.gsspcln.jp
 0.0.0.0 my.blueadvertise.com
 0.0.0.0 mycashback.co.uk
+0.0.0.0 my-cash-bot.co
 0.0.0.0 mycelloffer.com
 0.0.0.0 mychoicerewards.com
 0.0.0.0 myclicknet.ro
@@ -7321,8 +7427,6 @@
 0.0.0.0 nationalpost.adperfect.com
 0.0.0.0 nationalsurveypanel.com
 0.0.0.0 native.sharethrough.com
-0.0.0.0 navegador.oi.com.br
-0.0.0.0 navegador.telefonica.com.br
 0.0.0.0 nbads.com
 0.0.0.0 nbc.adbureau.net
 0.0.0.0 nbimg.dt00.net
@@ -7353,6 +7457,7 @@
 0.0.0.0 newjunk4u.com
 0.0.0.0 news6health.com
 0.0.0.0 newsblock.marketgid.com
+0.0.0.0 news-finances.com
 0.0.0.0 new.smartcontext.pl
 0.0.0.0 newssourceoftoday.com #security risk/fake news#
 0.0.0.0 newsterminalvelocity.com
@@ -7448,22 +7553,11 @@
 0.0.0.0 oix8.net
 0.0.0.0 oix9.net
 0.0.0.0 oixchina.com
-0.0.0.0 oix.com
-0.0.0.0 oixcrv-lab.net
-0.0.0.0 oixcrv.net
 0.0.0.0 oixcrv-rubyem.net
 0.0.0.0 oixcrv-rubytest.net
-0.0.0.0 oixcrv-stage.net
-0.0.0.0 oix.net
-0.0.0.0 oixpre.net
-0.0.0.0 oixpre-stage.net
 0.0.0.0 oix-rubyem.net
 0.0.0.0 oix-rubytest.net
-0.0.0.0 oixssp-lab.net
-0.0.0.0 oixssp.net
 0.0.0.0 oixssp-rubyem.net
-0.0.0.0 oixssp-stage.net
-0.0.0.0 oix-stage.net
 0.0.0.0 old-darkroast.adknowledge.com
 0.0.0.0 ometrics.warnerbros.com
 0.0.0.0 onclickads.net
@@ -7481,9 +7575,6 @@
 0.0.0.0 openads.zeads.com
 0.0.0.0 openad.travelnow.com
 0.0.0.0 opencandy.com
-0.0.0.0 openinternetexchange.com
-0.0.0.0 openinternetexchange.net
-0.0.0.0 openinternetexchange.org
 0.0.0.0 opentable.tt.omtrdc.net
 0.0.0.0 openx2.fotoflexer.com
 0.0.0.0 openx.adfactor.nl
@@ -7496,6 +7587,7 @@
 0.0.0.0 optimize.indieclick.com
 0.0.0.0 optimzedby.rmxads.com
 0.0.0.0 orange.fr-enqueteannuelle.xyz
+0.0.0.0 orange.fr-votre-opinion.xyz
 0.0.0.0 orange.weborama.fr
 0.0.0.0 ordie.adbureau.net
 0.0.0.0 origin.chron.com
@@ -7814,6 +7906,7 @@
 0.0.0.0 rc.rlcdn.com
 0.0.0.0 rc.wl.webads.nl
 0.0.0.0 r.domob.cn
+0.0.0.0 rdsa2012.com
 0.0.0.0 realads.realmedia.com
 0.0.0.0 realgfsbucks.com
 0.0.0.0 realmedia-a800.d4p.net	# Scientific American
@@ -7895,7 +7988,6 @@
 0.0.0.0 rmm1u.checkm8.com
 0.0.0.0 rms.admeta.com
 0.0.0.0 ro.bbelements.com
-0.0.0.0 romdiscover.com
 0.0.0.0 romepartners.com
 0.0.0.0 roosevelt.gjbig.com
 0.0.0.0 rosettastone.tt.omtrdc.net
@@ -8279,7 +8371,6 @@
 0.0.0.0 stats.tudou.com
 0.0.0.0 stat.tudou.com
 0.0.0.0 status.addthis.com
-0.0.0.0 stat.youku.com
 0.0.0.0 st.blogads.com
 0.0.0.0 s.tcimg.com
 0.0.0.0 st.marketgid.com
@@ -8747,15 +8838,11 @@
 0.0.0.0 weblogger.visilabs.com
 0.0.0.0 webmdcom.tt.omtrdc.net
 0.0.0.0 webnavegador.com
-0.0.0.0 webnavegador.com.br
 0.0.0.0 web.nyc.ads.juno.co
 0.0.0.0 webservices-rewardpath.com
 0.0.0.0 websurvey.spa-mr.com
 0.0.0.0 webuysupplystore.mooo.com
 0.0.0.0 webwise.bt.com
-0.0.0.0 webwise.com
-0.0.0.0 webwise.net
-0.0.0.0 webwise.org
 0.0.0.0 wegetpaid.net
 0.0.0.0 w.ic.tynt.com
 0.0.0.0 widget3.linkwithin.com
@@ -8822,6 +8909,7 @@
 0.0.0.0 www2.bannerspace.com
 0.0.0.0 www2.glam.com
 0.0.0.0 www2.kampanyatakip.net
+0.0.0.0 www2.pubdirecte.com
 0.0.0.0 www2.zapadserver1.com
 0.0.0.0 www30a1.glam.com
 0.0.0.0 www30a1-orig.glam.com
@@ -8904,6 +8992,7 @@
 0.0.0.0 www.adnet.biz
 0.0.0.0 www.adnet.com
 0.0.0.0 www.adnet.de
+0.0.0.0 www.adnetworkperformance.com
 0.0.0.0 www.adobee.com
 0.0.0.0 www.adobur.com
 0.0.0.0 www.adocean.pl
@@ -9303,7 +9392,6 @@
 0.0.0.0 www.joinfree.ro
 0.0.0.0 www.jxliu.com
 0.0.0.0 www.kampanyatakip.net
-0.0.0.0 www.keybinary.com
 0.0.0.0 www.keywordblocks.com
 0.0.0.0 www.kitaramarketplace.com
 0.0.0.0 www.kitaramedia.com
@@ -9332,6 +9420,7 @@
 0.0.0.0 www.linkpulse.com
 0.0.0.0 www.linkwithin.com
 0.0.0.0 www.liveinternet.ru
+0.0.0.0 www.lldiettracker.com
 0.0.0.0 www.lottoforever.com
 0.0.0.0 www.lpcloudsvr302.com
 0.0.0.0 www.lpmxp2014.com
@@ -9350,6 +9439,7 @@
 0.0.0.0 www.lpmxp2027.com
 0.0.0.0 www.lucky-day-uk.com
 0.0.0.0 www.macombdisplayads.com
+0.0.0.0 www.market-buster.com
 0.0.0.0 www.marketing-rewardpath.com
 0.0.0.0 www.mastertracks.be
 0.0.0.0 www.maxbounty.com
@@ -9660,9 +9750,6 @@
 0.0.0.0 youcanoptin.com
 0.0.0.0 youcanoptin.net
 0.0.0.0 youcanoptin.org
-0.0.0.0 youcanoptout.com
-0.0.0.0 youcanoptout.net
-0.0.0.0 youcanoptout.org
 0.0.0.0 youfck.com
 0.0.0.0 yourdvdplayer.com
 0.0.0.0 yourfreegascard.com
@@ -11780,115 +11867,54 @@
 0.0.0.0 zyrtec.4.p2l.info
 #</wiki-spam-sites>
 
-#<Phorm-sites>
+#<Windows10>
 
-# Phorm contextual advertising sites
-0.0.0.0 a.oix.com
-0.0.0.0 a.oix.net
-0.0.0.0 a.openinternetexchange.com
-0.0.0.0 a.phormlabs.com
-0.0.0.0 a.webwise.com
-0.0.0.0 a.webwise.net
-0.0.0.0 b.oix.net
-0.0.0.0 br.phorm.com
-0.0.0.0 bt.phorm.com
-0.0.0.0 bt.webwise.com
-0.0.0.0 b.webwise.net
-0.0.0.0 c.webwise.com
-0.0.0.0 c.webwise.net
-0.0.0.0 d.oix.com
-0.0.0.0 d.phormlabs.com
-0.0.0.0 ig.fp.oix.net
-0.0.0.0 invite.gezinti.com
-0.0.0.0 kentsucks.youcanoptout.com
-0.0.0.0 kr.phorm.com
-0.0.0.0 mail.youcanoptout.com
-0.0.0.0 mail.youcanoptout.net
-0.0.0.0 mail.youcanoptout.org
-0.0.0.0 monitor.phorm.com
-0.0.0.0 mx01.openinternetexchange.com
-0.0.0.0 mx01.openinternetexchange.net
-0.0.0.0 mx01.webwise.com
-0.0.0.0 mx03.phorm.com
-0.0.0.0 navegador.oi.com.br
-0.0.0.0 navegador.telefonica.com.br
-0.0.0.0 ns1.oix.com
-0.0.0.0 ns1.openinternetexchange.com
-0.0.0.0 ns1.phorm.com
-0.0.0.0 ns2.oix.com
-0.0.0.0 ns2.openinternetexchange.com
-0.0.0.0 ns2.phorm.com
-0.0.0.0 ns2.youcanoptout.com
-0.0.0.0 ns3.openinternetexchange.com
-0.0.0.0 oi.webnavegador.com.br
-0.0.0.0 oixcrv-lab.net
-0.0.0.0 oixcrv.net
-0.0.0.0 oixcrv-stage.net
-0.0.0.0 oix.phorm.com
-0.0.0.0 oixpre.net
-0.0.0.0 oixpre-stage.net
-0.0.0.0 oixssp-lab.net
-0.0.0.0 oixssp.net
-0.0.0.0 oix-stage.net
-0.0.0.0 openinternetexchange.com
-0.0.0.0 openinternetexchange.net
-0.0.0.0 phorm.biz.tr
-0.0.0.0 phorm.ch
-0.0.0.0 phormchina.com
-0.0.0.0 phorm.cl
-0.0.0.0 phorm.co.in
-0.0.0.0 phorm.com
-0.0.0.0 phorm.com.br
-0.0.0.0 phorm.com.es
-0.0.0.0 phorm.com.mx
-0.0.0.0 phorm.com.tr
-0.0.0.0 phorm.co.uk
-0.0.0.0 phormdev.com
-0.0.0.0 phormdiscover.com
-0.0.0.0 phorm.dk
-0.0.0.0 phorm.es
-0.0.0.0 phorm.hk
-0.0.0.0 phorm.in
-0.0.0.0 phorm.info.tr
-0.0.0.0 phorm.jp
-0.0.0.0 phormkorea.com
-0.0.0.0 phorm.kr
-0.0.0.0 phormlabs.com
-0.0.0.0 phorm.nom.es
-0.0.0.0 phorm.org.es
-0.0.0.0 phormprivacy.com
-0.0.0.0 phorm.ro
-0.0.0.0 phormservice.com
-0.0.0.0 phormsolution.com
-0.0.0.0 phorm.tv.tr
-0.0.0.0 phorm.web.tr
-0.0.0.0 prm-ext.phorm.com
-0.0.0.0 romdiscover.com
-0.0.0.0 rtc.romdiscover.com
-0.0.0.0 stats.oix.com
-0.0.0.0 stopphoulplay.com
-0.0.0.0 stopphoulplay.net
-0.0.0.0 telefonica.webnavegador.com.br
-0.0.0.0 terra.fp.oix.net
-0.0.0.0 ui.oix.net
-0.0.0.0 webnavegador.com.br
-0.0.0.0 webwise.com
-0.0.0.0 webwise.net
-0.0.0.0 w.oix.net
-0.0.0.0 www.gezinti.com
-0.0.0.0 www.gozatar.com
-0.0.0.0 www.oix.com
-0.0.0.0 www.openinternetexchange.com
-0.0.0.0 www.phormlabs.com
-0.0.0.0 www.stopphoulplay.com
-0.0.0.0 www.youcanoptout.com
-0.0.0.0 www.youcanoptout.net
-0.0.0.0 www.youcanoptout.org
-0.0.0.0 xxyyzz.youcanoptout.com
-0.0.0.0 youcanoptout.com
-0.0.0.0 youcanoptout.net
-0.0.0.0 youcanoptout.org
-#</Phorm-sites>
+# Windows 10 reporting domains. These are commented out by default
+#	as they may interfere with some services.
+
+#0.0.0.0 a-0001.a-msedge.net
+#0.0.0.0 choice.microsoft.com
+#0.0.0.0 choice.microsoft.com.nstac.net
+#0.0.0.0 compatexchange.cloudapp.net
+#0.0.0.0 corpext.msitadfs.glbdns2.microsoft.com
+#0.0.0.0 corp.sts.microsoft.com
+#0.0.0.0 cs1.wpc.v0cdn.net
+#0.0.0.0 df.telemetry.microsoft.com
+#0.0.0.0 diagnostics.support.microsoft.com
+#0.0.0.0 fe2.update.microsoft.com.akadns.net
+#0.0.0.0 feedback.search.microsoft.com
+#0.0.0.0 feedback.windows.com
+#0.0.0.0 i1.services.social.microsoft.com
+#0.0.0.0 i1.services.social.microsoft.com.nsatc.net
+#0.0.0.0 oca.telemetry.microsoft.com
+#0.0.0.0 oca.telemetry.microsoft.com.nsatc.net
+#0.0.0.0 pre.footprintpredict.com
+#0.0.0.0 redir.metaservices.microsoft.com
+#0.0.0.0 reports.wes.df.telemetry.microsoft.com
+#0.0.0.0 services.wes.df.telemetry.microsoft.com
+#0.0.0.0 settings-sandbox.data.microsoft.com
+#0.0.0.0 sls.update.microsoft.com.akadns.net
+#0.0.0.0 sqm.df.telemetry.microsoft.com
+#0.0.0.0 sqm.telemetry.microsoft.com
+#0.0.0.0 sqm.telemetry.microsoft.com.nsatc.net
+#0.0.0.0 ssw.live.com
+#0.0.0.0 statsfe1.ws.microsoft.com
+#0.0.0.0 statsfe2.update.microsoft.com.akadns.net
+#0.0.0.0 survey.watson.microsoft.com
+#0.0.0.0 telecommand.telemetry.microsoft.com
+#0.0.0.0 telecommand.telemetry.microsoft.com.nsatc.net
+#0.0.0.0 telemetry.appex.bing.net
+#0.0.0.0 telemetry.microsoft.com
+#0.0.0.0 telemetry.urs.microsoft.com
+#0.0.0.0 vortex.data.microsoft.com
+#0.0.0.0 vortex-sandbox.data.microsoft.com
+#0.0.0.0 vortex-win.data.microsoft.com
+#0.0.0.0 watson.live.com
+#0.0.0.0 watson.microsoft.com
+#0.0.0.0 watson.ppe.telemetry.microsoft.com
+#0.0.0.0 watson.telemetry.microsoft.com
+#0.0.0.0 watson.telemetry.microsoft.com.nsatc.net
+#</Windows10>
 
 # Acknowledgements
 # I'd like to thank the following people for submitting sites, and
