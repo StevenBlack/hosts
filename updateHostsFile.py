@@ -292,6 +292,7 @@ def writeOpeningHeader(finalFile):
 	writeData( finalFile, '# ===============================================================\n' )
 	writeData( finalFile, '\n' )
 	writeData( finalFile, '127.0.0.1 localhost\n' )
+	writeData( finalFile, '::1 localhost\n' )
 	writeData( finalFile, '\n' )
 
 	preamble = os.path.join( BASEDIR_PATH, "myhosts" );
