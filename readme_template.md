@@ -101,10 +101,12 @@ and run:
 `ipconfig /flushdns`
 
 ### Linux
-Open a Terminal and run:
+Open a Terminal and run with root privileges:
 
-`/etc/rc.d/init.d/nscd restart`
+**Debian/Ubuntu** `sudo /etc/rc.d/init.d/nscd restart`
 
-**Linux with systemd**: systemctl restart network.service
+**Linux with systemd**: `sudo systemctl restart network.service`
 
-**Fedora Linux**: systemctl restart NetworkManager.service
+**Fedora Linux**: `sudo systemctl restart NetworkManager.service`
+
+**Arch Linux/Manjaro**: `sudo systemctl restart NetworkManager.service`
