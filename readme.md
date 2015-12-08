@@ -3,7 +3,7 @@
 This repo consolidates several reputable `hosts` files and consolidates them into a single
 amalgamated file with duplicates removed.
 
-**Currently this hosts file contains 26,933 unique entries.**
+**Currently this hosts file contains 26,799 unique entries.**
 
 ## Source of host data amalgamated here
 
@@ -101,10 +101,12 @@ and run:
 `ipconfig /flushdns`
 
 ### Linux
-Open a Terminal and run:
+Open a Terminal and run with root privileges:
 
-`/etc/rc.d/init.d/nscd restart`
+**Debian/Ubuntu** `sudo /etc/rc.d/init.d/nscd restart`
 
-**Linux with systemd**: systemctl restart network.service
+**Linux with systemd**: `sudo systemctl restart network.service`
 
-**Fedora Linux**: systemctl restart NetworkManager.service
+**Fedora Linux**: `sudo systemctl restart NetworkManager.service`
+
+**Arch Linux/Manjaro**: `sudo systemctl restart NetworkManager.service`
