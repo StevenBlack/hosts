@@ -180,12 +180,16 @@ def updateAllSources():
 		print ( 'Updating source ' + source + ' from ' + updateURL )
 		# Cross-python call
 		updatedFile = getFileByUrl( updateURL );
-		updatedFile = updatedFile.replace( '\r', '' ) #get rid of carriage-return symbols
 
-		# This is cross-python code
-		dataFile = open( os.path.join( DATA_PATH, source, DATA_FILENAMES ), 'wb' )
-		writeData( dataFile, updatedFile );
-		dataFile.close()
+		try:
+			updatedFile = updatedFile.replace( '\r', '' ) #get rid of carriage-return symbols
+			# This is cross-python code
+			dataFile = open( os.path.join( DATA_PATH, source, DATA_FILENAMES ), 'wb' )
+			writeData( dataFile, updatedFile );
+			dataFile.close()
+		except:
+			print ( "Skipping." );
+
 
 def getUpdateURLFromFile( source ):
 	pathToUpdateFile = os.path.join( DATA_PATH, source, UPDATE_URL_FILENAME )
