@@ -9,6 +9,7 @@ amalgamated file with duplicates removed.
 
 Currently the `hosts` files from the following locations are amalgamated:
 
+* The (huge) [hosts-file.net][http://hosts-file.net], updated regularly.
 * The [Adaway hosts file](http://adaway.org/hosts.txt), updated regularly.
 * MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated monthly, or thereabouts.
 * Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
