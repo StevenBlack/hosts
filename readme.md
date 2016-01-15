@@ -5,11 +5,10 @@ amalgamated file with duplicates removed.
 
 **Currently this hosts file contains 27,138 unique entries.**
 
-## Source of host data amalgamated here
+## Sources of host data amalgamated here
 
 Currently the `hosts` files from the following locations are amalgamated:
 
-* The (huge) [hosts-file.net](http://hosts-file.net), updated regularly.
 * The [Adaway hosts file](http://adaway.org/hosts.txt), updated regularly.
 * MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated monthly, or thereabouts.
 * Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
@@ -21,6 +20,7 @@ You can add additional sources by placing them in the `data/` directory. Provide
 `hosts` file, and place its update url in `update.info`. The `updateHostsFile.py` routine will
 automatically refresh the `hosts` file from source each time a new amalgamated file is generated.
 
+You might consider adding the (huge) file from [hosts-file.net](http://hosts-file.net).  That source is not included here because it is very large (300,000+ entries) and doesn't display the level of curation activity I expect.
 
 ## How do I incorporate my own hosts?
 
