@@ -1,16 +1,36 @@
 #Amalgamated hosts file
 
-This repo consolidates several reputable `hosts` files and consolidates them into a single
-amalgamated file with duplicates removed.
+This repo consolidates several reputable `hosts` files and merges them into a single
+amalgamated hosts file with duplicates removed.
 
-**Currently this hosts file contains @NUM_ENTRIES@ unique entries.**
+**Currently this amalgamated hosts file contains @NUM_ENTRIES@ unique entries.**
+
+## Goals of this amalgamated hosts file
+
+The goals of this repo are to
+
+1) automatically combine high-quality lists of hosts,
+2) de-dupe the resultant combined list,
+3) and keep the resultant file reasonably sized.
+
+A high-quality source is defined here as one that is actively curated.  A hosts source should be frequently
+updated by its maintainers with both additions and removals.  The larger the hosts file, the higher the level of
+curation is expected.
+
+For example, the (huge) hosts file from [hosts-file.net](http://hosts-file.net) is **not** included
+here because it is very large (300,000+ entries) and doesn't currently display a corresponding high level of curation
+activity.
+
+It is expected that this amalgamated hosts file will serve both desktop and mobile devices under a variety of operating
+systems.
 
 ## Sources of host data amalgamated here
 
 Currently the `hosts` files from the following locations are amalgamated:
 
 * The [Adaway hosts file](http://adaway.org/hosts.txt), updated regularly.
-* MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated monthly, or thereabouts.
+* MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated
+monthly, or thereabouts.
 * Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
 * Malware Domain List at [http://www.malwaredomainlist.com/](http://www.malwaredomainlist.com/), updated regularly.
 * Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
@@ -20,11 +40,10 @@ You can add additional sources by placing them in the `data/` directory. Provide
 `hosts` file, and place its update url in `update.info`. The `updateHostsFile.py` routine will
 automatically refresh the `hosts` file from source each time a new amalgamated file is generated.
 
-You might consider adding the (huge) file from [hosts-file.net](http://hosts-file.net).  That source is not included here because it is very large (300,000+ entries) and doesn't display the level of curation activity I expect.
-
 ## How do I incorporate my own hosts?
 
-If you have custom host records, place them in file `myhosts`.  The contents of this file are prepended to the amalgamated hosts file during the update process.
+If you have custom host records, place them in file `myhosts`.  The contents of this file are prepended to the
+amalgamated hosts file during the update process.
 
 ## Using updateHostsFile.py
 
