@@ -133,7 +133,8 @@ def promptForMoreCustomExclusions():
         return False
 
 def promptForMove(finalFile):
-    response = query_yes_no("Do you want to replace your existing hosts file with the newly generated file?")
+    response = query_yes_no("Do you want to replace your existing hosts file " +
+                            "with the newly generated file?")
     if response == "yes":
         moveHostsFileIntoPlace(finalFile)
     else:
