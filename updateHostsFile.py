@@ -109,7 +109,7 @@ def promptForUpdate():
     # Create hosts file if it doesn't exists
     if not os.path.isfile(os.path.join(BASEDIR_PATH, 'hosts')):
         try:
-            file = open(os.path.join(BASEDIR_PATH, 'hosts'), 'w+').close()
+            open(os.path.join(BASEDIR_PATH, 'hosts'), 'w+').close()
         except:
             printFailure("ERROR: No 'hosts' file in the folder, try creating one manually")
 
@@ -266,7 +266,7 @@ def removeDupsAndExcl(mergeFile):
 def normalizeRule(rule):
     result = re.search(r'^[ \t]*(\d+\.\d+\.\d+\.\d+)\s+([\w\.-]+)(.*)', rule)
     if result:
-        target, hostname, suffix = result.groups()
+        hostname, suffix = result.group(2,3)
         hostname = hostname.lower() # explicitly lowercase hostname
         if suffix is not '':
             # add suffix as comment only, not as a separate host
