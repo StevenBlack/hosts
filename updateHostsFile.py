@@ -37,23 +37,23 @@ def getFileByUrl(url):
         f = urlopen(url)
         return f.read().decode("UTF-8")
     except:
-        print ("Problem getting file: ", url);
+        print ("Problem getting file: ", url)
         # raise
 
 # In Python 3   "print" is a function, braces are added everywhere
 
 # Detecting Python 3 for version-dependent implementations
-Python3     = False;
+Python3     = False
 cur_version = sys.version_info
 if cur_version >= (3, 0):
-    Python3 = True;
+    Python3 = True
 
 # This function works in both Python 2 and Python 3
 def myInput(msg = ""):
     if Python3:
-        return input(msg);
+        return input(msg)
     else:
-        return raw_input(msg);
+        return raw_input(msg)
 
 
 # Cross-python writing function
@@ -178,19 +178,19 @@ def updateAllSources():
     for source in SOURCES:
         updateURL = getUpdateURLFromFile(source)
         if updateURL == None:
-            continue;
+            continue
         print ('Updating source ' + source + ' from ' + updateURL)
         # Cross-python call
-        updatedFile = getFileByUrl(updateURL);
+        updatedFile = getFileByUrl(updateURL)
 
         try:
             updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
             # This is cross-python code
             dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'wb')
-            writeData(dataFile, updatedFile);
+            writeData(dataFile, updatedFile)
             dataFile.close()
         except:
-            print ("Skipping.");
+            print ("Skipping.")
 
 
 def getUpdateURLFromFile(source):
@@ -290,7 +290,7 @@ def stripRule(line):
 def writeOpeningHeader(finalFile):
     global numberOfRules
     finalFile.seek(0) #reset file pointer
-    fileContents = finalFile.read(); #save content
+    fileContents = finalFile.read()  #save content
     finalFile.seek(0) #write at the top
     writeData(finalFile, '# This file is a merged collection of hosts from reputable sources,\n')
     writeData(finalFile, '# with a dash of crowd sourcing via Github\n#\n')
@@ -301,10 +301,10 @@ def writeOpeningHeader(finalFile):
     writeData(finalFile, '::1 localhost\n')
     writeData(finalFile, '\n')
 
-    preamble = os.path.join(BASEDIR_PATH, "myhosts");
+    preamble = os.path.join(BASEDIR_PATH, "myhosts")
     if os.path.isfile(preamble):
         with open(preamble, "r") as f:
-            writeData(finalFile, f.read());
+            writeData(finalFile, f.read())
 
     finalFile.write(fileContents)
 
@@ -336,7 +336,7 @@ def moveHostsFileIntoPlace(finalFile):
 def removeOldHostsFile():               # hotfix since merging with an already existing hosts file leads to artefacts and duplicates
     oldFilePath = os.path.join(BASEDIR_PATH, 'hosts')
     open(oldFilePath, 'a').close()        # create if already removed, so remove wont raise an error
-    os.remove(oldFilePath);
+    os.remove(oldFilePath)
     open(oldFilePath, 'a').close()        # create new empty hostsfile
 
 # End File Logic
