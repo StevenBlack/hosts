@@ -315,7 +315,8 @@ def updateReadme(numberOfRules):
 
 def moveHostsFileIntoPlace(finalFile):
     if os.name == 'posix':
-        print ('Moving the file requires administrative privileges. You might need to enter your password.')
+        print ('Moving the file requires administrative privileges. ' +
+               'You might need to enter your password.')
         if subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"]):
             printFailure("Moving the file failed.")
         print ('Flushing the DNS Cache to utilize new hosts file...')
@@ -383,7 +384,8 @@ def isValidDomainFormat(domain):
         return False
     domainRegex = re.compile("www\d{0,3}[.]|https?")
     if domainRegex.match(domain):
-        print ("The domain " + domain + " is not valid. Do not include www.domain.com or http(s)://domain.com. Try again.")
+        print ("The domain " + domain + " is not valid. " +
+               "Do not include www.domain.com or http(s)://domain.com. Try again.")
         return False
     else:
         return True
