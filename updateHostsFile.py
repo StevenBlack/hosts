@@ -114,7 +114,7 @@ def promptForUpdate():
     if response == "yes":
         updateAllSources()
     else:
-        print ('OK, we\'ll stick with what we\'ve  got locally.')
+        print ("OK, we\'ll stick with what we\'ve  got locally.")
 
 def promptForExclusions():
     response = query_yes_no("Do you want to exclude any domains?\n" +
@@ -123,7 +123,7 @@ def promptForExclusions():
     if response == "yes":
         displayExclusionOptions()
     else:
-        print ('OK, we\'ll only exclude domains in the whitelist.')
+        print ("OK, we\'ll only exclude domains in the whitelist.")
 
 def promptForMoreCustomExclusions():
     response = query_yes_no("Do you have more domains you want to enter?")
@@ -179,7 +179,7 @@ def updateAllSources():
         updateURL = getUpdateURLFromFile(source)
         if updateURL == None:
             continue
-        print ('Updating source ' + source + ' from ' + updateURL)
+        print ("Updating source " + source + " from " + updateURL)
         # Cross-python call
         updatedFile = getFileByUrl(updateURL)
 
@@ -270,7 +270,7 @@ def normalizeRule(rule):
             return hostname, "%s %s #%s\n" % (TARGET_HOST, hostname, suffix)
         else:
             return hostname, "%s %s\n" % (TARGET_HOST, hostname)
-    print ('==>%s<==' % rule)
+    print ("==>%s<==" % rule)
     return None, None
 
 def finalizeFile(finalFile):
@@ -315,11 +315,11 @@ def updateReadme(numberOfRules):
 
 def moveHostsFileIntoPlace(finalFile):
     if os.name == 'posix':
-        print ('Moving the file requires administrative privileges. ' +
-               'You might need to enter your password.')
+        print ("Moving the file requires administrative privileges. " +
+               "You might need to enter your password.")
         if subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"]):
             printFailure("Moving the file failed.")
-        print ('Flushing the DNS Cache to utilize new hosts file...')
+        print ("Flushing the DNS Cache to utilize new hosts file...")
         if platform.system() == 'Darwin':
             if subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"]):
                 printFailure("Flushing the DNS Cache failed.")
@@ -331,8 +331,8 @@ def moveHostsFileIntoPlace(finalFile):
                 if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "NetworkManager.service"]):
                     printFailure("Flushing the DNS Cache failed.")
     elif os.name == 'nt':
-        print ('Automatically moving the hosts file in place is not yet supported.')
-        print ('Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts')
+        print ("Automatically moving the hosts file in place is not yet supported.")
+        print ("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")
 
 def removeOldHostsFile():               # hotfix since merging with an already existing hosts file leads to artefacts and duplicates
     oldFilePath = os.path.join(BASEDIR_PATH, 'hosts')
