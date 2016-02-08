@@ -248,7 +248,7 @@ def removeDupsAndExcl(mergeFile):
             continue
         hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
         for exclude in EXCLUSIONS:
-            if (exclude in line):
+            if exclude in line:
                 write = 'false'
                 break
         if normalizedRule and (hostname not in hostnames) and (write == 'true'):
@@ -281,7 +281,7 @@ def finalizeFile(finalFile):
 # the comments are preserved in the output hosts file
 def stripRule(line):
     splitLine = line.split()
-    if (len(splitLine) < 2) :
+    if len(splitLine) < 2 :
         # just return blank
         return ''
     else:
@@ -314,22 +314,22 @@ def updateReadme(numberOfRules):
             out.write(line.replace('@NUM_ENTRIES@', "{:,}".format(numberOfRules)))
 
 def moveHostsFileIntoPlace(finalFile):
-    if (os.name == 'posix'):
+    if os.name == 'posix':
         print ('Moving the file requires administrative privileges. You might need to enter your password.')
-        if(subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"])):
+        if subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"]):
             printFailure("Moving the file failed.")
         print ('Flushing the DNS Cache to utilize new hosts file...')
-        if (platform.system() == 'Darwin'):
-            if(subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"])):
+        if platform.system() == 'Darwin':
+            if subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"]):
                 printFailure("Flushing the DNS Cache failed.")
         else:
             if os.path.isfile("/etc/rc.d/init.d/nscd"):
-                if(subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"])):
+                if subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"]):
                     printFailure("Flushing the DNS Cache failed.")
             if os.path.isfile("/usr/lib/systemd/system/NetworkManager.service"):
-                if(subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "NetworkManager.service"])):
+                if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "NetworkManager.service"]):
                     printFailure("Flushing the DNS Cache failed.")
-    elif (os.name == 'nt'):
+    elif os.name == 'nt':
         print ('Automatically moving the hosts file in place is not yet supported.')
         print ('Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts')
 
@@ -378,11 +378,11 @@ def query_yes_no(question, default = "yes"):
 ## end of http://code.activestate.com/recipes/577058/ }}}
 
 def isValidDomainFormat(domain):
-    if (domain == ''):
+    if domain == '':
         print ("You didn\'t enter a domain. Try again.")
         return False
     domainRegex = re.compile("www\d{0,3}[.]|https?")
-    if (domainRegex.match(domain)):
+    if domainRegex.match(domain):
         print ("The domain " + domain + " is not valid. Do not include www.domain.com or http(s)://domain.com. Try again.")
         return False
     else:
