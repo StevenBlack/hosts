@@ -96,7 +96,8 @@ def main():
     finalFile = removeDupsAndExcl(mergeFile)
     finalizeFile(finalFile)
     updateReadme(numberOfRules)
-    printSuccess('Success! Your new hosts file has been prepared.\nIt contains ' + "{:,}".format(numberOfRules) + ' unique entries.')
+    printSuccess('Success! Your new hosts file has been prepared.\nIt contains ' +
+                 "{:,}".format(numberOfRules) + ' unique entries.')
 
     promptForMove(finalFile)
 
