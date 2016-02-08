@@ -6,6 +6,9 @@
 # This Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
 
+# pylint: disable=invalid-name
+# pylint: disable=bad-whitespace
+
 # Making Python 2 compatible with Python 3
 from __future__ import absolute_import, division, print_function, unicode_literals
 
