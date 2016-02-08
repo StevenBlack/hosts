@@ -111,7 +111,7 @@ def promptForUpdate():
             printFailure("ERROR: No 'hosts' file in the folder, try creating one manually")
 
     response = query_yes_no("Do you want to update all data sources?")
-    if (response == "yes"):
+    if response == "yes":
         updateAllSources()
     else:
         print ('OK, we\'ll stick with what we\'ve  got locally.')
@@ -120,21 +120,21 @@ def promptForExclusions():
     response = query_yes_no("Do you want to exclude any domains?\n" +
                             "For example, hulu.com video streaming must be able to access " +
                             "its tracking and ad servers in order to play video.")
-    if (response == "yes"):
+    if response == "yes":
         displayExclusionOptions()
     else:
         print ('OK, we\'ll only exclude domains in the whitelist.')
 
 def promptForMoreCustomExclusions():
     response = query_yes_no("Do you have more domains you want to enter?")
-    if (response == "yes"):
+    if response == "yes":
         return True
     else:
         return False
 
 def promptForMove(finalFile):
     response = query_yes_no("Do you want to replace your existing hosts file with the newly generated file?")
-    if (response == "yes"):
+    if response == "yes":
         moveHostsFileIntoPlace(finalFile)
     else:
         return False
@@ -144,21 +144,21 @@ def promptForMove(finalFile):
 def displayExclusionOptions():
     for exclusionOption in COMMON_EXCLUSIONS:
         response = query_yes_no("Do you want to exclude the domain " + exclusionOption + " ?")
-        if (response == "yes"):
+        if response == "yes":
             excludeDomain(exclusionOption)
         else:
             continue
     response = query_yes_no("Do you want to exclude any other domains?")
-    if (response == "yes"):
+    if response == "yes":
         gatherCustomExclusions()
 
 def gatherCustomExclusions():
     while True:
         # Cross-python Input
         domainFromUser = myInput("Enter the domain you want to exclude (e.g. facebook.com): ")
-        if (isValidDomainFormat(domainFromUser)):
+        if isValidDomainFormat(domainFromUser):
             excludeDomain(domainFromUser)
-        if (promptForMoreCustomExclusions() == False):
+        if promptForMoreCustomExclusions() == False:
             return
 
 def excludeDomain(domain):
@@ -176,7 +176,7 @@ def matchesExclusions(strippedRule):
 def updateAllSources():
     for source in SOURCES:
         updateURL = getUpdateURLFromFile(source)
-        if (updateURL == None):
+        if updateURL == None:
             continue;
         print ('Updating source ' + source + ' from ' + updateURL)
         # Cross-python call
