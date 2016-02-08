@@ -159,7 +159,7 @@ def gatherCustomExclusions():
         domainFromUser = myInput("Enter the domain you want to exclude (e.g. facebook.com): ")
         if isValidDomainFormat(domainFromUser):
             excludeDomain(domainFromUser)
-        if promptForMoreCustomExclusions() == False:
+        if promptForMoreCustomExclusions() is False:
             return
 
 def excludeDomain(domain):
@@ -177,7 +177,7 @@ def matchesExclusions(strippedRule):
 def updateAllSources():
     for source in SOURCES:
         updateURL = getUpdateURLFromFile(source)
-        if updateURL == None:
+        if updateURL is None:
             continue
         print ("Updating source " + source + " from " + updateURL)
         # Cross-python call
@@ -356,7 +356,7 @@ def query_yes_no(question, default = "yes"):
     """
     valid = {"yes":"yes", "y":"yes", "ye":"yes",
              "no":"no", "n":"no"}
-    if default == None:
+    if default is None:
         prompt = " [y/n] "
     elif default == "yes":
         prompt = " [Y/n] "
