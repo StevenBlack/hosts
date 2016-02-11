@@ -20,6 +20,7 @@ import subprocess
 import sys
 import tempfile
 import glob
+import argparse
 # zip files are not used actually, support deleted
 # StringIO is not needed in Python 3
 # Python 3 works differently with urlopen
@@ -91,7 +92,16 @@ COMMON_EXCLUSIONS = ['hulu.com']
 exclusionRegexs = []
 numberOfRules   = 0
 
+auto = False
+
 def main():
+    parser = argparse.ArgumentParser(description="Creates an amalgamated hosts file from hosts stored in data subfolders.")
+    parser.add_argument("--auto", "-a", dest="auto", default=False, action='store_true', help="Run without prompting.")
+    args = parser.parse_args()
+
+    global auto
+    auto = args.auto
+
     promptForUpdate()
     promptForExclusions()
     mergeFile = createInitialFile()
@@ -113,14 +123,14 @@ def promptForUpdate():
         except:
             printFailure("ERROR: No 'hosts' file in the folder, try creating one manually")
 
-    response = query_yes_no("Do you want to update all data sources?")
+    response = "yes" if auto else query_yes_no("Do you want to update all data sources?")
     if response == "yes":
         updateAllSources()
     else:
         print ("OK, we\'ll stick with what we\'ve  got locally.")
 
 def promptForExclusions():
-    response = query_yes_no("Do you want to exclude any domains?\n" +
+    response = "no" if auto else query_yes_no("Do you want to exclude any domains?\n" +
                             "For example, hulu.com video streaming must be able to access " +
                             "its tracking and ad servers in order to play video.")
     if response == "yes":
@@ -136,7 +146,7 @@ def promptForMoreCustomExclusions():
         return False
 
 def promptForMove(finalFile):
-    response = query_yes_no("Do you want to replace your existing hosts file " +
+    response = "no" if auto else query_yes_no("Do you want to replace your existing hosts file " +
                             "with the newly generated file?")
     if response == "yes":
         moveHostsFileIntoPlace(finalFile)
