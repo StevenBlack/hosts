@@ -1,7 +1,11 @@
 #!/usr/bin/env python
+# coding: utf-8
 
 # Script by Ben Limmer
 # https://github.com/l1m5
+#
+# Output traduzido por Gabriel Antunes
+# https://github.com/muthdra
 #
 # This Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
@@ -41,7 +45,7 @@ def getFileByUrl(url):
         f = urlopen(url)
         return f.read().decode("UTF-8")
     except:
-        print ("Problem getting file: ", url)
+        print ("Erro ao abrir arquivo: ", url)
         # raise
 
 # In Python 3   "print" is a function, braces are added everywhere
@@ -95,8 +99,8 @@ numberOfRules   = 0
 auto = False
 
 def main():
-    parser = argparse.ArgumentParser(description="Creates an amalgamated hosts file from hosts stored in data subfolders.")
-    parser.add_argument("--auto", "-a", dest="auto", default=False, action='store_true', help="Run without prompting.")
+    parser = argparse.ArgumentParser(description="Cria um arquivo de hosts mesclado dos hosts guardados nas subpastas da pasta data.")
+    parser.add_argument("--auto", "-a", dest="auto", default=False, action='store_true', help="Rodar sem prompts.")
     args = parser.parse_args()
 
     global auto
@@ -109,8 +113,8 @@ def main():
     finalFile = removeDupsAndExcl(mergeFile)
     finalizeFile(finalFile)
     updateReadme(numberOfRules)
-    printSuccess('Success! Your new hosts file has been prepared.\nIt contains ' +
-                 "{:,}".format(numberOfRules) + ' unique entries.')
+    printSuccess("Sucesso! O seu novo arquivo de hosts foi preparado.\nEle contém " +
+                 "{:,}".format(numberOfRules) + " entradas únicas.")
 
     promptForMove(finalFile)
 
@@ -121,33 +125,33 @@ def promptForUpdate():
         try:
             open(os.path.join(BASEDIR_PATH, 'hosts'), 'w+').close()
         except:
-            printFailure("ERROR: No 'hosts' file in the folder, try creating one manually")
+            printFailure("ERRO: Arquivo 'hosts' não encontrado na pasta, tente criar um manualmente")
 
-    response = "yes" if auto else query_yes_no("Do you want to update all data sources?")
+    response = "yes" if auto else query_yes_no("Você deseja atualizar todas as fontes de dados?")
     if response == "yes":
         updateAllSources()
     else:
-        print ("OK, we\'ll stick with what we\'ve  got locally.")
+        print ("OK, vamos nos manter com os arquivos locais.")
 
 def promptForExclusions():
-    response = "no" if auto else query_yes_no("Do you want to exclude any domains?\n" +
-                            "For example, hulu.com video streaming must be able to access " +
-                            "its tracking and ad servers in order to play video.")
+    response = "no" if auto else query_yes_no("Você deseja excluir algum domínio?\n" +
+                            "Por exemplo, o site hulu.com precisa acessar " +
+                            "seus serviços de propaganda para reproduzir vídeos.")
     if response == "yes":
         displayExclusionOptions()
     else:
-        print ("OK, we\'ll only exclude domains in the whitelist.")
+        print ("OK, excluiremos apenas os domínios da whitelist.")
 
 def promptForMoreCustomExclusions():
-    response = query_yes_no("Do you have more domains you want to enter?")
+    response = query_yes_no("Você deseja excluir mais domínios?")
     if response == "yes":
         return True
     else:
         return False
 
 def promptForMove(finalFile):
-    response = "no" if auto else query_yes_no("Do you want to replace your existing hosts file " +
-                            "with the newly generated file?")
+    response = "no" if auto else query_yes_no("Você deseja substituir seu arquivo de hosts existente " +
+                                              "pelo novo arquivo gerado?")
     if response == "yes":
         moveHostsFileIntoPlace(finalFile)
     else:
@@ -157,19 +161,19 @@ def promptForMove(finalFile):
 # Exclusion logic
 def displayExclusionOptions():
     for exclusionOption in COMMON_EXCLUSIONS:
-        response = query_yes_no("Do you want to exclude the domain " + exclusionOption + " ?")
+        response = query_yes_no("Você deseja excluir o domínio " + exclusionOption + " ?")
         if response == "yes":
             excludeDomain(exclusionOption)
         else:
             continue
-    response = query_yes_no("Do you want to exclude any other domains?")
+    response = query_yes_no("Você deseja excluir outros domínios?")
     if response == "yes":
         gatherCustomExclusions()
 
 def gatherCustomExclusions():
     while True:
         # Cross-python Input
-        domainFromUser = myInput("Enter the domain you want to exclude (e.g. facebook.com): ")
+        domainFromUser = myInput("Digite o site que deseja excluir (e.g. facebook.com): ")
         if isValidDomainFormat(domainFromUser):
             excludeDomain(domainFromUser)
         if promptForMoreCustomExclusions() is False:
@@ -192,7 +196,7 @@ def updateAllSources():
         updateURL = getUpdateURLFromFile(source)
         if updateURL is None:
             continue
-        print ("Updating source " + source + " from " + updateURL)
+        print ("Atualizando fonte " + source + " de " + updateURL)
         # Cross-python call
         updatedFile = getFileByUrl(updateURL)
 
@@ -203,7 +207,7 @@ def updateAllSources():
             writeData(dataFile, updatedFile)
             dataFile.close()
         except:
-            print ("Skipping.")
+            print ("Ignorando.")
 
 
 def getUpdateURLFromFile(source):
@@ -214,8 +218,8 @@ def getUpdateURLFromFile(source):
         updateFile.close()
     else:
         retURL = None
-        printFailure('Warning: Can\'t find the update file for source ' + source + '\n' +
-                     'Make sure that there\'s a file at ' + pathToUpdateFile)
+        printFailure('Atenção: Arquivo fonte não encontrado a partir de ' + source + '\n' +
+                     'Certifique-se de que existe um arquivo em ' + pathToUpdateFile)
     return retURL
 # End Update Logic
 
@@ -305,9 +309,10 @@ def writeOpeningHeader(finalFile):
     finalFile.seek(0) #reset file pointer
     fileContents = finalFile.read()  #save content
     finalFile.seek(0) #write at the top
-    writeData(finalFile, '# This file is a merged collection of hosts from reputable sources,\n')
-    writeData(finalFile, '# with a dash of crowd sourcing via Github\n#\n')
-    writeData(finalFile, '# Project home page: https://github.com/StevenBlack/hosts\n#\n')
+    writeData(finalFile, '# Este arquivo e uma mescla de hosts de fontes confiaveis,\n')
+    writeData(finalFile, '# com uma pitada de colaboracao do Github\n#\n')
+    writeData(finalFile, '# Pagina do projeto: https://github.com/StevenBlack/hosts\n#\n')
+    writeData(finalFile, '# Traduzido por Gabriel Antunes: https://github.com/muthdra\n#\n')
     writeData(finalFile, '# ===============================================================\n')
     writeData(finalFile, '\n')
     writeData(finalFile, '127.0.0.1 localhost\n')
@@ -328,24 +333,25 @@ def updateReadme(numberOfRules):
 
 def moveHostsFileIntoPlace(finalFile):
     if os.name == 'posix':
-        print ("Moving the file requires administrative privileges. " +
-               "You might need to enter your password.")
+        print ("Privilégios de administrador são necessários para mover o arquivo. " +
+               "Talvez você precise digitar sua senha.")
         if subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"]):
             printFailure("Moving the file failed.")
-        print ("Flushing the DNS Cache to utilize new hosts file...")
+        print ("Limpando o Cache DNS para utilizar o novo arquivo de hosts...")
         if platform.system() == 'Darwin':
             if subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"]):
-                printFailure("Flushing the DNS Cache failed.")
+                printFailure("A limpeza do Cache DNS falhou.")
         else:
             if os.path.isfile("/etc/rc.d/init.d/nscd"):
                 if subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"]):
                     printFailure("Flushing the DNS Cache failed.")
             if os.path.isfile("/usr/lib/systemd/system/NetworkManager.service"):
                 if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "NetworkManager.service"]):
-                    printFailure("Flushing the DNS Cache failed.")
+                    printFailure("A limpeza do Cache DNS falhou.")
+
     elif os.name == 'nt':
-        print ("Automatically moving the hosts file in place is not yet supported.")
-        print ("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")
+        print ("Mover automaticamente o arquivo de hosts ainda não é suportado.")
+        print ("Por favor mova o arquivo gerado para %SystemRoot%\system32\drivers\etc\hosts")
 
 def removeOldHostsFile():               # hotfix since merging with an already existing hosts file leads to artefacts and duplicates
     oldFilePath = os.path.join(BASEDIR_PATH, 'hosts')
@@ -387,18 +393,18 @@ def query_yes_no(question, default = "yes"):
         elif choice in valid.keys():
             return valid[choice]
         else:
-            printFailure("Please respond with 'yes' or 'no' "\
-                             "(or 'y' or 'n').\n")
+            printFailure("Por favor responda com 'yes' para SIM ou 'no' para NÃO "\
+                             "(ou 'y' ou 'n').\n")
 ## end of http://code.activestate.com/recipes/577058/ }}}
 
 def isValidDomainFormat(domain):
     if domain == '':
-        print ("You didn\'t enter a domain. Try again.")
+        print ("Você não digitou um domínio. Tente novamente")
         return False
     domainRegex = re.compile("www\d{0,3}[.]|https?")
     if domainRegex.match(domain):
-        print ("The domain " + domain + " is not valid. " +
-               "Do not include www.domain.com or http(s)://domain.com. Try again.")
+        print ("O domínio " + domain + " não é válido. " +
+               "Não inclua www.domain.com ou http(s)://domain.com. Tente novamente.")
         return False
     else:
         return True
