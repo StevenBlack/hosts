@@ -74,11 +74,11 @@ For example, to nullify requests to some doubleclick.net servers, adding these l
 file will do it:
 
     # block doubleClick's servers
-    127.0.0.1 ad.ae.doubleclick.net
-    127.0.0.1 ad.ar.doubleclick.net
-    127.0.0.1 ad.at.doubleclick.net
-    127.0.0.1 ad.au.doubleclick.net
-    127.0.0.1 ad.be.doubleclick.net
+    0.0.0.0 ad.ae.doubleclick.net
+    0.0.0.0 ad.ar.doubleclick.net
+    0.0.0.0 ad.at.doubleclick.net
+    0.0.0.0 ad.au.doubleclick.net
+    0.0.0.0 ad.be.doubleclick.net
     # etc...
 
 
