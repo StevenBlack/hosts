@@ -192,7 +192,7 @@ def updateAllSources():
         updateURL = getUpdateURLFromFile(source)
         if updateURL is None:
             continue
-        print ("Updating source " + source + " from " + updateURL)
+        print ("Updating source " + os.path.basename(source) + " from " + updateURL)
         # Cross-python call
         updatedFile = getFileByUrl(updateURL)
 
