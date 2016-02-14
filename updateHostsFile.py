@@ -77,7 +77,6 @@ DATA_PATH           = os.path.join(BASEDIR_PATH, 'data')
 DATA_FILENAMES      = 'hosts'
 UPDATE_URL_FILENAME = 'update.info'
 SOURCES             = listdir_nohidden(DATA_PATH)
-README_TEMPLATE     = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE         = os.path.join(BASEDIR_PATH, 'readme.md')
 TARGET_HOST         = '0.0.0.0'
 WHITELIST_FILE      = os.path.join(BASEDIR_PATH, 'whitelist')
@@ -322,9 +321,12 @@ def writeOpeningHeader(finalFile):
     finalFile.write(fileContents)
 
 def updateReadme(numberOfRules):
+    lines = open(README_FILE).readlines()
     with open(README_FILE, "wt") as out:
-        for line in open(README_TEMPLATE):
-            out.write(line.replace('@NUM_ENTRIES@', "{:,}".format(numberOfRules)))
+        for line in lines:
+            if line.startswith('**Currently '):
+                line = '**Currently this amalgamated hosts file contains {:,} unique entries.**\n'.format(numberOfRules)
+            out.write(line)
 
 def moveHostsFileIntoPlace(finalFile):
     if os.name == 'posix':
