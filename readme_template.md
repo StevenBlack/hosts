@@ -9,11 +9,11 @@ amalgamated hosts file with duplicates removed.
 
 The goals of this repo are to
 
-1) automatically combine high-quality lists of hosts,
+1. automatically combine high-quality lists of hosts,
 
-2) de-dupe the resultant combined list,
+2. de-dupe the resultant combined list,
 
-3) and keep the resultant file reasonably sized.
+3. and keep the resultant file reasonably sized.
 
 A high-quality source is defined here as one that is actively curated.  A hosts source should be frequently
 updated by its maintainers with both additions and removals.  The larger the hosts file, the higher the level of
@@ -82,7 +82,7 @@ file will do it:
     # etc...
 
 
-## Why use `0.0.0.0` instead of `127.0.0.1`?
+## We recommend using `0.0.0.0` instead of `127.0.0.1`
 Using `0.0.0.0` is faster because you don't have to wait for a timeout. It also does not interfere
 with a web server that may be running on the local PC.
 
