@@ -3,7 +3,7 @@
 This repo consolidates several reputable `hosts` files and merges them into a single
 amalgamated hosts file with duplicates removed.
 
-**Currently this amalgamated hosts file contains 27,148 unique entries.**
+**Currently this amalgamated hosts file contains 27,139 unique entries.**
 
 ## Goals of this amalgamated hosts file
 
@@ -131,4 +131,6 @@ Open a Terminal and run with root privileges:
 
 **Fedora Linux**: `sudo systemctl restart NetworkManager.service`
 
-**Arch Linux/Manjaro**: `sudo systemctl restart NetworkManager.service`
+**Arch Linux/Manjaro with Network Manager**: `sudo systemctl restart NetworkManager.service`
+
+**Arch Linux/Manjaro with Wicd**: `sudo systemctl restart wicd.service`
