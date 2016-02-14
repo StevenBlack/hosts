@@ -131,4 +131,6 @@ Open a Terminal and run with root privileges:
 
 **Fedora Linux**: `sudo systemctl restart NetworkManager.service`
 
-**Arch Linux/Manjaro**: `sudo systemctl restart NetworkManager.service`
+**Arch Linux/Manjaro with Network Manager**: `sudo systemctl restart NetworkManager.service`
+
+**Arch Linux/Manjaro with Wicd**: `sudo systemctl restart wicd.service`
