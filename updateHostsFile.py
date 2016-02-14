@@ -15,10 +15,12 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import os
 import platform
 import re
+import shutil
 import string
 import subprocess
 import sys
 import tempfile
+import time
 import glob
 import argparse
 # zip files are not used actually, support deleted
@@ -353,6 +355,8 @@ def moveHostsFileIntoPlace(finalFile):
 def removeOldHostsFile():               # hotfix since merging with an already existing hosts file leads to artefacts and duplicates
     oldFilePath = os.path.join(BASEDIR_PATH, 'hosts')
     open(oldFilePath, 'a').close()        # create if already removed, so remove wont raise an error
+    backupFilePath = os.path.join(BASEDIR_PATH, 'hosts-{0}'.format(time.strftime("%c")))
+    shutil.copyfile(oldFilePath, backupFilePath) # make a backup copy, marking the date in which the list was updated
     os.remove(oldFilePath)
     open(oldFilePath, 'a').close()        # create new empty hostsfile
 
