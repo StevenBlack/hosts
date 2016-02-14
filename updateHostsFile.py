@@ -93,13 +93,14 @@ exclusionRegexs = []
 numberOfRules   = 0
 
 auto = False
+verbose = True
 
 def main():
     parser = argparse.ArgumentParser(description="Creates an amalgamated hosts file from hosts stored in data subfolders.")
     parser.add_argument("--auto", "-a", dest="auto", default=False, action='store_true', help="Run without prompting.")
     args = parser.parse_args()
 
-    global auto
+    global auto, verbose
     auto = args.auto
 
     promptForUpdate()
@@ -127,7 +128,8 @@ def promptForUpdate():
     if response == "yes":
         updateAllSources()
     else:
-        print ("OK, we\'ll stick with what we\'ve  got locally.")
+        if not auto:
+            print ("OK, we\'ll stick with what we\'ve  got locally.")
 
 def promptForExclusions():
     response = "no" if auto else query_yes_no("Do you want to exclude any domains?\n" +
@@ -136,7 +138,8 @@ def promptForExclusions():
     if response == "yes":
         displayExclusionOptions()
     else:
-        print ("OK, we\'ll only exclude domains in the whitelist.")
+        if not auto:
+            print ("OK, we\'ll only exclude domains in the whitelist.")
 
 def promptForMoreCustomExclusions():
     response = query_yes_no("Do you have more domains you want to enter?")
