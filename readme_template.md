@@ -7,7 +7,7 @@ amalgamated hosts file with duplicates removed.
 
 ## Goals of this amalgamated hosts file
 
-The goals of this repo are to
+The goals of this repo are to:
 
 1. automatically combine high-quality lists of hosts,
 
@@ -38,27 +38,33 @@ monthly, or thereabouts.
 * Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
-You can add additional sources by placing them in the `data/` directory. Provide a copy of that new
-`hosts` file, and place its update url in `update.info`. The `updateHostsFile.py` routine will
-automatically refresh the `hosts` file from source each time a new amalgamated file is generated.
+## Generate your own amalgamated hosts file
+
+The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible, will generate an amalgamated hosts file 
+based on the sources in the local `data/` subfolder.  The script will prompt ask you if it should fetch updated versions 
+over the web (defined by the update.info text file in each source's folder), or it will use the `hosts` file that's 
+already there.
+
+**Usage**
+
+    python updateHostsFile.py [--auto]
+
+Command line options:
+
+`--auto`, `-a` — run the script without prompting. When `--auto` is invoked,
+
+* Host data sources are updated.
+* Your active hosts file is *not* replaced.
+
+## How do I control which sources are amalgamated?
+
+You can add additional sources by placing each in a subfolder of the `data/` folder. Provide a copy of that new
+`hosts` file, and place its update url in `update.info`. 
 
 ## How do I incorporate my own hosts?
 
 If you have custom host records, place them in file `myhosts`.  The contents of this file are prepended to the
 amalgamated hosts file during the update process.
-
-## Using updateHostsFile.py
-
-This Python script will generate a unique hosts file based on the sources in the `data/` folder.
-You can either have the script go out and fetch an updated version over the web (defined by the
-update.info text file in the source's directory), or it will use the `hosts` file that's already
-there.
-
-Usage
-
-    python updateHostsFile.py
-
-**TAKE NOTE** this script is tested with Python version 2.7.10.
 
 ## What is a hosts file?
 
