@@ -1,76 +1,87 @@
-#Arquivo de hosts mesclados
+#Amalgamated hosts file
 
-Este repositório consolida vários arquivos 'hosts' confiáveis e mescla-os em um único arquivo de hosts com duplicatas removidas.
+This repo consolidates several reputable `hosts` files and merges them into a single
+amalgamated hosts file with duplicates removed.
 
-**Atualmente este arquivo de hosts contém 27,139 entradas únicas.**
+**Currently this amalgamated hosts file contains 27,140 unique entries.**
 
-## Objetivos do arquivo de hosts mesclados
+Brazilian Portuguese translation available [here](https://github.com/muthdra/hosts-ptbr).
 
-Os objetivos deste repositório são
+## Goals of this amalgamated hosts file
 
-1) combinar automaticamente uma lista de hosts de alta qualidade
+The goals of this repo are to:
 
-2) retirar duplicatas da lista combinada
+1. automatically combine high-quality lists of hosts,
 
-3) manter o arquivo resultante com um tamanho razoável
+2. de-dupe the resultant combined list,
 
-Uma fonte de alta qualidade é definida aqui como uma que é ativamente curada. Uma fonte de hosts deve ser frequentemente
-atualizada pelos seus responsáveis com adições e remoções. Quanto maior o arquivo de hosts, maior é o nível de cuidado
-esperado.
+3. and keep the resultant file reasonably sized.
 
-Por exemplo, o (enorme) arquivo de hosts do [hosts-file.net](http://hosts-file.net) **não** está incluído aqui pois
-ele é muito grande (mais de 300,000 entradas) e atualmente não demonstra um nível correspondente de cuidados.
+A high-quality source is defined here as one that is actively curated.  A hosts source should be frequently
+updated by its maintainers with both additions and removals.  The larger the hosts file, the higher the level of
+curation is expected.
 
-É esperado que este arquivo de hosts mesclados funcione bem em dispositivos de mesa ou portáteis suportando uma grande
-variedade de sistemas operacionais.
+For example, the (huge) hosts file from [hosts-file.net](http://hosts-file.net) is **not** included
+here because it is very large (300,000+ entries) and doesn't currently display a corresponding high level of curation
+activity.
 
-## Fontes de dados de hosts mesclados
+It is expected that this amalgamated hosts file will serve both desktop and mobile devices under a variety of operating
+systems.
 
-Atualmente os arquivos de 'hosts' das seguintes fontes são mesclados:
+## Sources of host data amalgamated here
 
-* O [arquivo de hosts Adaway](http://adaway.org/hosts.txt), atualizado regularmente.
-* Arquivo de hosts do MVPs.org em[http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), atualizado
-mensalmente.
-* Dan Pollock em [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) atualizado regularmente.
-* Malware Domain List em [http://www.malwaredomainlist.com/](http://www.malwaredomainlist.com/), atualizado regularmente.
-* Peter Lowe em [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), atualizado regularmente.
-* A pequena lista do autor Steven Black [aqui](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
+Currently the `hosts` files from the following locations are amalgamated:
 
-Você pode adicionar mais fontes colocando-as na pasta 'data/'. Forneça uma cópia do novo arquivo 'hosts'
-e coloque sua url de atualização em 'update.info'. A rotina 'updateHostsFile.py' irá automaticamente
-atualizar o arquivo 'hosts' de cada fonte todas as vezes que um novo arquivo mesclado é gerado.
+* The [Adaway hosts file](http://adaway.org/hosts.txt), updated regularly.
+* MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated
+monthly, or thereabouts.
+* Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
+* Malware Domain List at [http://www.malwaredomainlist.com/](http://www.malwaredomainlist.com/), updated regularly.
+* Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
+* My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
-## Como incorporar meus próprios hosts?
+## Generate your own amalgamated hosts file
 
-Se você possui um arquivo de hosts própiro, coloque-o no arquivo 'myhosts'. O conteúdo deste arquivo é adicionado ao
-arquivo de hosts mesclados durante o processo de atualização.
+The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible, will generate an amalgamated hosts file 
+based on the sources in the local `data/` subfolder.  The script will prompt you Whether it should fetch updated 
+versions (from locations defined by the update.info text file in each source's folder), otherwise it will use the 
+`hosts` file that's already there.
 
-## Usando updateHostsFile.py
+**Usage**
 
-Este script Python vai gerar um arquivo de hosts personalizado baseado nas fontes da pasta 'data/'.
-Você pode fazer com que o script busque uma versão atualizada pela internet (definida pelo arquivo update.info
-no diretório da fonte), ou ele usará o arquivo 'hosts' já encontrado locamente.
+    python updateHostsFile.py [--auto]
 
-Utilização
+Command line options:
 
-    python updateHostsFile.py
+`--auto`, `-a`: run the script without prompting. When `--auto` is invoked,
 
-**ATENÇÃO** este script foi testado com a versão 2.7.10 do Python.
+* Host data sources are updated.
+* Your active hosts file is *not* replaced.
 
-## O que é um arquivo de hosts?
+## How do I control which sources are amalgamated?
 
-Um arquivo de hosts, chamado 'hosts' (sem extensão de arquivo), é um arquivo de texto puro usado por todos
-os sistemas operacionais para mapear nomes e endereços IP.
+You can add additional sources by placing each in a subfolder of the `data/` folder. Provide a copy of that new
+`hosts` file, and place its update url in `update.info`. 
 
-Na maioria dos sistemas operacionais, o arquivo 'hosts' é preferencial ao 'DNS'. Então se um nome é resolvido
-pelo arquivo 'hosts', a requisição nunca sai do computador.
+## How do I incorporate my own hosts?
 
-Ter um arquivo 'hosts' inteligente permite bloquear malwares, adwares e outras irritações.
+If you have custom host records, place them in file `myhosts`.  The contents of this file are prepended to the
+amalgamated hosts file during the update process.
 
-Por exemplo, para anular requisições para alguns servidores da doubleclick.net, você pode adicionar estas
-linhas ao seu arquivo 'hosts':
+## What is a hosts file?
 
-    # bloquear servidores doubleClick
+A hosts file, named `hosts` (with no file extension), is a plain-text file used by all operating
+systems to map hostnames to IP addresses.
+
+In most operating systems, the `hosts` file is preferential to `DNS`.  Therefore if a host name is
+resolved by the `hosts` file, the request never leaves your computer.
+
+Having a smart `hosts` file goes a long way towards blocking malware, adware, and other irritants.
+
+For example, to nullify requests to some doubleclick.net servers, adding these lines to your hosts
+file will do it:
+
+    # block doubleClick's servers
     127.0.0.1 ad.ae.doubleclick.net
     127.0.0.1 ad.ar.doubleclick.net
     127.0.0.1 ad.at.doubleclick.net
@@ -79,51 +90,55 @@ linhas ao seu arquivo 'hosts':
     # etc...
 
 
-## Por que usar '0.0.0.0' em vez de '127.0.0.1'?
-Usar '0.0.0.0' é mais rápido pois você não precisa esperar por um timeout. Isso também não interfere com um servidor
-web que esteja rodando no PC local.
+## We recommend using `0.0.0.0` instead of `127.0.0.1`
+Using `0.0.0.0` is faster because you don't have to wait for a timeout. It also does not interfere
+with a web server that may be running on the local PC.
 
-## Por que não usar somente '0' em vez de '0.0.0.0'?
-Nós tentamos isso. Usar '0' não funciona em todos os casos.
+## Why not use just `0` instead of `0.0.0.0`?
+We tried that.  Using `0` doesn't work universally.
 
-## Localização do seu arquivo de hosts
-Para modificar o seu arquivo 'hosts' atual, procure-o nos seguintes lugares e modifique-o com um editor de texto.
 
-**Mac OS X, iOS, Android, Linux**: pasta '/etc/hosts'.
+## Location of your hosts file
+To modify your current `hosts` file, look for it in the following places and modify it with a text
+editor.
 
-**Windows**: pasta '%SystemRoot%\system32\drivers\etc\hosts'.
+**Mac OS X, iOS, Android, Linux**: `/etc/hosts` folder.
 
-## Recarregar o arquivo de hosts
-O seu sistema operacional cria um cachê de DNS. Você pode reiniciar ou rodar os seguintes comandos para remover
-manualmente o cachê de DNS uma vez que o novo arquivo de hosts for configurado.
+**Windows**: `%SystemRoot%\system32\drivers\etc\hosts` folder.
+
+## Reloading hosts file
+Your operating system will cache DNS lookups. You can either reboot or run the following commands to
+manually flush your DNS cache once the new hosts file is in place.
 
 ### Mac OS X
-Abra o Terminal e rode:
+Open a Terminal and run:
 
-'sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
+`sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder`
 
 ### Windows
-Abra o Prompt de Comando:
+Open a Command Prompt:
 
-**Windows XP**: Inciar -> Executar -> 'cmd'
+**Windows XP**: Start -> Run -> `cmd`
 
-**Windows Vista, 7**: Iniciar -> digite 'cmd' -> clique com o botão direito em Prompt de Comando ->
-"Executar como Administrador"
+**Windows Vista, 7**: Start Button -> type `cmd` -> right-click Command Prompt ->
+"Run as Administrator"
 
-**Windows 8**: Iniciar -> Arrastar para Cima -> Todos os Aplicativos -> Sistema ->
-clique com o botão direito em Prompt de Comando -> "Executar como Administrador"
+**Windows 8**: Start -> Swipe Up -> All Apps -> Windows System -> right-click Command Prompt ->
+"Run as Administrator"
 
-e rode o seguinte comando:
+and run:
 
-'ipconfig /flushdns'
+`ipconfig /flushdns`
 
 ### Linux
-Abra um Terminal e execute o seguinte comando com privilégios de superusuário:
+Open a Terminal and run with root privileges:
 
-**Debian/Ubuntu** 'sudo /etc/rc.d/init.d/nscd restart'
+**Debian/Ubuntu** `sudo /etc/rc.d/init.d/nscd restart`
 
-**Linux com systemd**: 'sudo systemctl restart network.service'
+**Linux with systemd**: `sudo systemctl restart network.service`
 
-**Linux Fedora**: 'sudo systemctl restart NetworkManager.service'
+**Fedora Linux**: `sudo systemctl restart NetworkManager.service`
 
-**Arch Linux/Manjaro**: 'sudo systemctl restart NetworkManager.service'
+**Arch Linux/Manjaro with Network Manager**: `sudo systemctl restart NetworkManager.service`
+
+**Arch Linux/Manjaro with Wicd**: `sudo systemctl restart wicd.service`
