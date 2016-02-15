@@ -282,7 +282,7 @@ def normalizeRule(rule):
     result = re.search(r'^[ \t]*(\d+\.\d+\.\d+\.\d+)\s+([\w\.-]+)(.*)', rule)
     if result:
         hostname, suffix = result.group(2,3)
-        hostname = hostname.lower() # explicitly lowercase hostname
+        hostname = hostname.lower().strip() # explicitly lowercase and trim the hostname
         if suffix is not '':
             # add suffix as comment only, not as a separate host
             return hostname, "%s %s #%s\n" % (TARGET_HOST, hostname, suffix)
