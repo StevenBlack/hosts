@@ -41,9 +41,9 @@ monthly, or thereabouts.
 ## Generate your own amalgamated hosts file
 
 The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible, will generate an amalgamated hosts file 
-based on the sources in the local `data/` subfolder.  The script will prompt ask you if it should fetch updated versions 
-over the web (defined by the update.info text file in each source's folder), or it will use the `hosts` file that's 
-already there.
+based on the sources in the local `data/` subfolder.  The script will prompt you Whether it should fetch updated 
+versions (from locations defined by the update.info text file in each source's folder), otherwise it will use the 
+`hosts` file that's already there.
 
 **Usage**
 
