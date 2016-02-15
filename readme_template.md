@@ -5,15 +5,17 @@ amalgamated hosts file with duplicates removed.
 
 **Currently this amalgamated hosts file contains @NUM_ENTRIES@ unique entries.**
 
+Brazilian Portuguese translation available [here](https://github.com/muthdra/hosts-ptbr).
+
 ## Goals of this amalgamated hosts file
 
-The goals of this repo are to
+The goals of this repo are to:
 
-1) automatically combine high-quality lists of hosts,
+1. automatically combine high-quality lists of hosts,
 
-2) de-dupe the resultant combined list,
+2. de-dupe the resultant combined list,
 
-3) and keep the resultant file reasonably sized.
+3. and keep the resultant file reasonably sized.
 
 A high-quality source is defined here as one that is actively curated.  A hosts source should be frequently
 updated by its maintainers with both additions and removals.  The larger the hosts file, the higher the level of
@@ -38,27 +40,33 @@ monthly, or thereabouts.
 * Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
-You can add additional sources by placing them in the `data/` directory. Provide a copy of that new
-`hosts` file, and place its update url in `update.info`. The `updateHostsFile.py` routine will
-automatically refresh the `hosts` file from source each time a new amalgamated file is generated.
+## Generate your own amalgamated hosts file
+
+The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible, will generate an amalgamated hosts file 
+based on the sources in the local `data/` subfolder.  The script will prompt you Whether it should fetch updated 
+versions (from locations defined by the update.info text file in each source's folder), otherwise it will use the 
+`hosts` file that's already there.
+
+**Usage**
+
+    python updateHostsFile.py [--auto]
+
+Command line options:
+
+`--auto`, `-a`: run the script without prompting. When `--auto` is invoked,
+
+* Host data sources are updated.
+* Your active hosts file is *not* replaced.
+
+## How do I control which sources are amalgamated?
+
+You can add additional sources by placing each in a subfolder of the `data/` folder. Provide a copy of that new
+`hosts` file, and place its update url in `update.info`. 
 
 ## How do I incorporate my own hosts?
 
 If you have custom host records, place them in file `myhosts`.  The contents of this file are prepended to the
 amalgamated hosts file during the update process.
-
-## Using updateHostsFile.py
-
-This Python script will generate a unique hosts file based on the sources in the `data/` folder.
-You can either have the script go out and fetch an updated version over the web (defined by the
-update.info text file in the source's directory), or it will use the `hosts` file that's already
-there.
-
-Usage
-
-    python updateHostsFile.py
-
-**TAKE NOTE** this script is tested with Python version 2.7.10.
 
 ## What is a hosts file?
 
@@ -82,7 +90,7 @@ file will do it:
     # etc...
 
 
-## Why use `0.0.0.0` instead of `127.0.0.1`?
+## We recommend using `0.0.0.0` instead of `127.0.0.1`
 Using `0.0.0.0` is faster because you don't have to wait for a timeout. It also does not interfere
 with a web server that may be running on the local PC.
 
@@ -131,4 +139,6 @@ Open a Terminal and run with root privileges:
 
 **Fedora Linux**: `sudo systemctl restart NetworkManager.service`
 
-**Arch Linux/Manjaro**: `sudo systemctl restart NetworkManager.service`
+**Arch Linux/Manjaro with Network Manager**: `sudo systemctl restart NetworkManager.service`
+
+**Arch Linux/Manjaro with Wicd**: `sudo systemctl restart wicd.service`
