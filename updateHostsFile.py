@@ -251,6 +251,8 @@ def removeDupsAndExcl(mergeFile):
         write = 'true'
         # Explicit encoding
         line = line.decode("UTF-8")
+        # replace tabs with space
+        line = line.replace('\t+', ' ')
         # Testing the first character doesn't require startswith
         if line[0] == '#' or re.match(r'^\s*$', line[0]):
             # Cross-python write
