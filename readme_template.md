@@ -51,7 +51,7 @@ already there.
 
 Command line options:
 
-`--auto`, `-a` — run the script without prompting. When `--auto` is invoked,
+`--auto`, `-a`: run the script without prompting. When `--auto` is invoked,
 
 * Host data sources are updated.
 * Your active hosts file is *not* replaced.
