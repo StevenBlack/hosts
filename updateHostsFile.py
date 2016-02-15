@@ -81,7 +81,6 @@ UPDATE_URL_FILENAME = 'update.info'
 SOURCES             = listdir_nohidden(DATA_PATH)
 README_TEMPLATE     = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE         = os.path.join(BASEDIR_PATH, 'readme.md')
-TARGET_HOST         = '0.0.0.0'
 WHITELIST_FILE      = os.path.join(BASEDIR_PATH, 'whitelist')
 
 # Exclusions
@@ -93,9 +92,9 @@ COMMON_EXCLUSIONS = ['hulu.com']
 # Global vars
 exclusionRegexs = []
 numberOfRules   = 0
-
 auto = False
 verbose = True
+targetIP = '0.0.0.0'
 
 def main():
     parser = argparse.ArgumentParser(description="Creates an amalgamated hosts file from hosts stored in data subfolders.")
@@ -287,9 +286,9 @@ def normalizeRule(rule):
         hostname = hostname.lower().strip() # explicitly lowercase and trim the hostname
         if suffix is not '':
             # add suffix as comment only, not as a separate host
-            return hostname, "%s %s #%s\n" % (TARGET_HOST, hostname, suffix)
+            return hostname, "%s %s #%s\n" % (targetIP, hostname, suffix)
         else:
-            return hostname, "%s %s\n" % (TARGET_HOST, hostname)
+            return hostname, "%s %s\n" % (targetIP, hostname)
     print ("==>%s<==" % rule)
     return None, None
 
