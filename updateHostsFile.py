@@ -351,6 +351,9 @@ def moveHostsFileIntoPlace(finalFile):
             if os.path.isfile("/usr/lib/systemd/system/NetworkManager.service"):
                 if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "NetworkManager.service"]):
                     printFailure("Flushing the DNS Cache failed.")
+            if os.path.isfile("/usr/lib/systemd/system/wicd.service"):
+                if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "wicd.service"]):
+                    printFailure("Flushing the DNS Cache failed.")
     elif os.name == 'nt':
         print ("Automatically moving the hosts file in place is not yet supported.")
         print ("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")
