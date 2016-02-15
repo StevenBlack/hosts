@@ -47,7 +47,7 @@ versions (from locations defined by the update.info text file in each source's f
 
 **Usage**
 
-    python updateHostsFile.py [--auto]
+    python updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn]
 
 Command line options:
 
@@ -55,6 +55,9 @@ Command line options:
 
 * Host data sources are updated.
 * Your active hosts file is *not* replaced.
+
+`--ip nnn.nnn.nnn.nnn`: the IP address to use as the target.  Default is `0.0.0.0`.
+
 
 ## How do I control which sources are amalgamated?
 
