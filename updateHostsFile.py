@@ -93,16 +93,18 @@ COMMON_EXCLUSIONS = ['hulu.com']
 exclusionRegexs = []
 numberOfRules   = 0
 auto = False
-verbose = True
-targetIP = '0.0.0.0'
+targetIP = "0.0.0.0"
 
 def main():
+
     parser = argparse.ArgumentParser(description="Creates an amalgamated hosts file from hosts stored in data subfolders.")
     parser.add_argument("--auto", "-a", dest="auto", default=False, action='store_true', help="Run without prompting.")
+    parser.add_argument("--ip", "-i", dest="targetIP", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0")
     args = parser.parse_args()
 
-    global auto, verbose
+    global auto, targetIP
     auto = args.auto
+    targetIP = args.targetIP
 
     promptForUpdate()
     promptForExclusions()
