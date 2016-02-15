@@ -314,7 +314,7 @@ def writeOpeningHeader(finalFile):
     finalFile.seek(0) #write at the top
     writeData(finalFile, '# This file is a merged collection of hosts from reputable sources,\n')
     writeData(finalFile, '# with a dash of crowd sourcing via Github\n#\n')
-    writeData(finalFile, '# Latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts\n#\n')
+    writeData(finalFile, '# Latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts\n')
     writeData(finalFile, '# Project home page: https://github.com/StevenBlack/hosts\n#\n')
     writeData(finalFile, '# ===============================================================\n')
     writeData(finalFile, '\n')
