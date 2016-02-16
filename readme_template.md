@@ -47,6 +47,12 @@ versions (from locations defined by the update.info text file in each source's f
 
 **Usage**
 
+Using Python 3:
+
+    python3 updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn]
+
+Using Python 2.7:
+
     python updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn]
 
 Command line options:
