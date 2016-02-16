@@ -1,9 +1,12 @@
 #Amalgamated hosts file
 
-This repo consolidates several reputable `hosts` files and merges them into a single
-amalgamated hosts file with duplicates removed.
+This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file 
+with duplicates removed.  You can [download the resultant amalgamated hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) or clone this repo and generate your own using the Python script provided.
 
-**Currently this amalgamated hosts file contains 27,140 unique entries.**
+**Details about this amalgamated hosts file:**
+
+* Source data was updated, and the amalgamated hosts file was generated, on **2016 February 16 at 16:20:30 +0000**.
+* Currently this amalgamated hosts file contains **27,139 unique entries**.
 
 ## Goals of this amalgamated hosts file
 
@@ -46,6 +49,12 @@ versions (from locations defined by the update.info text file in each source's f
 `hosts` file that's already there.
 
 **Usage**
+
+Using Python 3:
+
+    python3 updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn]
+
+Using Python 2.7:
 
     python updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn]
 
