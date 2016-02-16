@@ -333,7 +333,7 @@ def writeOpeningHeader(finalFile):
 def updateReadme(numberOfRules):
     with open(README_FILE, "wt") as out:
         for line in open(README_TEMPLATE):
-            line = line.replace( '@GEN_DATE@', time.strftime("%Y %B %d at %H:%M:%S +0000", time.gmtime()))
+            line = line.replace( '@GEN_DATE@', time.strftime("%B %d %Y at %H:%M:%S +0000", time.gmtime()))
             out.write(line.replace('@NUM_ENTRIES@', "{:,}".format(numberOfRules)))
 
 def moveHostsFileIntoPlace(finalFile):
