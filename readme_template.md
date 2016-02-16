@@ -1,7 +1,7 @@
 #Amalgamated hosts file
 
-This repo consolidates several reputable `hosts` files and merges them into a single
-amalgamated hosts file with duplicates removed.
+This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file 
+with duplicates removed.  You can [download the resultant amalgamated hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) or clone this repo and generate your own using the Python script provided.
 
 **Currently this amalgamated hosts file contains @NUM_ENTRIES@ unique entries.**
 
