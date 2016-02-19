@@ -8,6 +8,7 @@
 
 127.0.0.1 localhost
 127.0.0.1 localhost.localdomain
+127.0.0.1 local
 255.255.255.255 broadcasthost
 ::1 localhost
 
@@ -17430,7 +17431,6 @@
 # your information back to a company.
 
 #<localhost>
-0.0.0.0 local
 #fe80::1%lo0	localhost
 #</localhost>
 
