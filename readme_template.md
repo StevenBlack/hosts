@@ -5,8 +5,8 @@ with duplicates removed.  You can [download the resultant amalgamated hosts file
 
 **Details about this amalgamated hosts file:**
 
-* Source data was updated, and the amalgamated hosts file was generated, on **@GEN_DATE@**.
-* Currently this amalgamated hosts file contains **@NUM_ENTRIES@ unique entries**.
+* Last updated: **@GEN_DATE@**.
+* Contains: **@NUM_ENTRIES@ unique entries**.
 
 ## Goals of this amalgamated hosts file
 

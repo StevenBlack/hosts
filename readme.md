@@ -5,8 +5,8 @@ with duplicates removed.  You can [download the resultant amalgamated hosts file
 
 **Details about this amalgamated hosts file:**
 
-* Source data was updated, and the amalgamated hosts file was generated, on **February 19 2016 at 13:07:03 GMT**.
-* Currently this amalgamated hosts file contains **27,141 unique entries**.
+* Last updated: **February 19 2016 at 13:28:28 GMT**.
+* Contains: **27,141 unique entries**.
 
 ## Goals of this amalgamated hosts file
 
