@@ -249,6 +249,7 @@ def removeDupsAndExcl(mergeFile):
     hostnames = set()
     hostnames.add("localhost")
     hostnames.add("localhost.localdomain")
+    hostnames.add("local")
     hostnames.add("broadcasthost")
     for line in mergeFile.readlines():
         write = 'true'
@@ -323,6 +324,7 @@ def writeOpeningHeader(finalFile):
     writeData(finalFile, '\n')
     writeData(finalFile, '127.0.0.1 localhost\n')
     writeData(finalFile, '127.0.0.1 localhost.localdomain\n')
+    writeData(finalFile, '127.0.0.1 local\n')
     writeData(finalFile, '255.255.255.255 broadcasthost\n')
     writeData(finalFile, '::1 localhost\n')
     writeData(finalFile, '\n')
