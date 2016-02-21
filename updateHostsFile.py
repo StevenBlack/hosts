@@ -371,7 +371,7 @@ def removeOldHostsFile():               # hotfix since merging with an already e
     oldFilePath = os.path.join(BASEDIR_PATH, 'hosts')
     open(oldFilePath, 'a').close()        # create if already removed, so remove wont raise an error
     backupFilePath = os.path.join(BASEDIR_PATH, 'hosts-{0}'.format(time.strftime("%c")))
-    shutil.copyfile(oldFilePath, backupFilePath) # make a backup copy, marking the date in which the list was updated
+    shutil.copy(oldFilePath, backupFilePath) # make a backup copy, marking the date in which the list was updated
     os.remove(oldFilePath)
     open(oldFilePath, 'a').close()        # create new empty hostsfile
 
