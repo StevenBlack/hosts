@@ -327,6 +327,7 @@ def writeOpeningHeader(finalFile):
     writeData(finalFile, '127.0.0.1 local\n')
     writeData(finalFile, '255.255.255.255 broadcasthost\n')
     writeData(finalFile, '::1 localhost\n')
+    writeData(finalFile, 'fe80::1%lo0 localhost\n')
     writeData(finalFile, '\n')
 
     preamble = os.path.join(BASEDIR_PATH, "myhosts")
