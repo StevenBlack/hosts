@@ -1,11 +1,11 @@
 #Amalgamated hosts file
 
-This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file 
+This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file
 with duplicates removed.  You can [download the resultant amalgamated hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) or clone this repo and generate your own using the Python script provided.
 
 **Details about this amalgamated hosts file:**
 
-* Last updated: **February 21 2016 at 00:31:15 GMT**.
+* Last updated: **February 21 2016 at 00:48:04 GMT**.
 * Contains: **27,142 unique entries**.
 
 ## Goals of this amalgamated hosts file
@@ -43,9 +43,9 @@ monthly, or thereabouts.
 
 ## Generate your own amalgamated hosts file
 
-The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible, will generate an amalgamated hosts file 
-based on the sources in the local `data/` subfolder.  The script will prompt you Whether it should fetch updated 
-versions (from locations defined by the update.info text file in each source's folder), otherwise it will use the 
+The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible, will generate an amalgamated hosts file
+based on the sources in the local `data/` subfolder.  The script will prompt you Whether it should fetch updated
+versions (from locations defined by the update.info text file in each source's folder), otherwise it will use the
 `hosts` file that's already there.
 
 **Usage**
@@ -71,7 +71,7 @@ Command line options:
 ## How do I control which sources are amalgamated?
 
 You can add additional sources by placing each in a subfolder of the `data/` folder. Provide a copy of that new
-`hosts` file, and place its update url in `update.info`. 
+`hosts` file, and place its update url in `update.info`.
 
 ## How do I incorporate my own hosts?
 
@@ -152,3 +152,5 @@ Open a Terminal and run with root privileges:
 **Arch Linux/Manjaro with Network Manager**: `sudo systemctl restart NetworkManager.service`
 
 **Arch Linux/Manjaro with Wicd**: `sudo systemctl restart wicd.service`
+
+**Others**: Consult [this wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
