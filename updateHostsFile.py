@@ -76,6 +76,7 @@ def listdir_nohidden(path):
 # Project Settings
 BASEDIR_PATH        = os.path.dirname(os.path.realpath(__file__))
 DATA_PATH           = os.path.join(BASEDIR_PATH, 'data')
+EXTENSIONS_PATH     = os.path.join(BASEDIR_PATH, 'extensions')
 DATA_FILENAMES      = 'hosts'
 UPDATE_URL_FILENAME = 'update.info'
 SOURCES             = listdir_nohidden(DATA_PATH)
@@ -94,17 +95,24 @@ exclusionRegexs = []
 numberOfRules   = 0
 auto = False
 targetIP = "0.0.0.0"
+extensions = []
 
 def main():
 
     parser = argparse.ArgumentParser(description="Creates an amalgamated hosts file from hosts stored in data subfolders.")
     parser.add_argument("--auto", "-a", dest="auto", default=False, action='store_true', help="Run without prompting.")
-    parser.add_argument("--ip", "-i", dest="targetIP", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0")
+    parser.add_argument("--ip", "-i", dest="targetIP", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
+    parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs='*', help="Host extensions to include in the final hosts file.")
     args = parser.parse_args()
 
-    global auto, targetIP
+    global auto, targetIP, extensions
     auto = args.auto
     targetIP = args.targetIP
+
+    # All our extensions folders...
+    extensions = [os.path.basename(item) for item in listdir_nohidden(EXTENSIONS_PATH)]
+    # ... intersected with the extensions passed-in as arguments
+    extensions = list(set(args.extensions).intersection(extensions))
 
     promptForUpdate()
     promptForExclusions()
@@ -210,7 +218,6 @@ def updateAllSources():
             dataFile.close()
         except:
             print ("Skipping.")
-
 
 def getUpdateURLFromFile(source):
     pathToUpdateFile = os.path.join(DATA_PATH, source, UPDATE_URL_FILENAME)
