@@ -76,9 +76,11 @@ def listdir_nohidden(path):
 # Project Settings
 BASEDIR_PATH        = os.path.dirname(os.path.realpath(__file__))
 DATA_PATH           = os.path.join(BASEDIR_PATH, 'data')
+EXTENSIONS_PATH     = os.path.join(BASEDIR_PATH, 'extensions')
 DATA_FILENAMES      = 'hosts'
 UPDATE_URL_FILENAME = 'update.info'
 SOURCES             = listdir_nohidden(DATA_PATH)
+EXTENSIONS          = listdir_nohidden(EXTENSIONS_PATH)
 README_TEMPLATE     = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE         = os.path.join(BASEDIR_PATH, 'readme.md')
 WHITELIST_FILE      = os.path.join(BASEDIR_PATH, 'whitelist')
@@ -94,17 +96,24 @@ exclusionRegexs = []
 numberOfRules   = 0
 auto = False
 targetIP = "0.0.0.0"
+extensions = []
 
 def main():
 
     parser = argparse.ArgumentParser(description="Creates an amalgamated hosts file from hosts stored in data subfolders.")
     parser.add_argument("--auto", "-a", dest="auto", default=False, action='store_true', help="Run without prompting.")
-    parser.add_argument("--ip", "-i", dest="targetIP", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0")
+    parser.add_argument("--ip", "-i", dest="targetIP", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
+    parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs='*', help="Host extensions to include in the final hosts file.")
     args = parser.parse_args()
 
-    global auto, targetIP
+    global auto, targetIP, extensions
     auto = args.auto
     targetIP = args.targetIP
+
+    # All our extensions folders...
+    extensions = [os.path.basename(item) for item in listdir_nohidden(EXTENSIONS_PATH)]
+    # ... intersected with the extensions passed-in as arguments
+    extensions = list(set(args.extensions).intersection(extensions))
 
     promptForUpdate()
     promptForExclusions()
@@ -194,7 +203,8 @@ def matchesExclusions(strippedRule):
 
 # Update Logic
 def updateAllSources():
-    for source in SOURCES:
+    allsources = list(set(SOURCES) | set(EXTENSIONS))
+    for source in allsources:
         updateURL = getUpdateURLFromFile(source)
         if updateURL is None:
             continue
@@ -210,7 +220,6 @@ def updateAllSources():
             dataFile.close()
         except:
             print ("Skipping.")
-
 
 def getUpdateURLFromFile(source):
     pathToUpdateFile = os.path.join(DATA_PATH, source, UPDATE_URL_FILENAME)
@@ -230,6 +239,11 @@ def createInitialFile():
     mergeFile = tempfile.NamedTemporaryFile()
     for source in SOURCES:
         curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
+        #Done in a cross-python way
+        writeData(mergeFile, curFile.read())
+
+    for source in extensions:
+        curFile = open(os.path.join(EXTENSIONS_PATH, source, DATA_FILENAMES), 'r')
         #Done in a cross-python way
         writeData(mergeFile, curFile.read())
 
