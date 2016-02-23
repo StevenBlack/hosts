@@ -80,6 +80,7 @@ EXTENSIONS_PATH     = os.path.join(BASEDIR_PATH, 'extensions')
 DATA_FILENAMES      = 'hosts'
 UPDATE_URL_FILENAME = 'update.info'
 SOURCES             = listdir_nohidden(DATA_PATH)
+EXTENSIONS          = listdir_nohidden(EXTENSIONS_PATH)
 README_TEMPLATE     = os.path.join(BASEDIR_PATH, 'readme_template.md')
 README_FILE         = os.path.join(BASEDIR_PATH, 'readme.md')
 WHITELIST_FILE      = os.path.join(BASEDIR_PATH, 'whitelist')
@@ -202,7 +203,8 @@ def matchesExclusions(strippedRule):
 
 # Update Logic
 def updateAllSources():
-    for source in SOURCES:
+    allsources = list(set(SOURCES) | set(EXTENSIONS))
+    for source in allsources:
         updateURL = getUpdateURLFromFile(source)
         if updateURL is None:
             continue
@@ -237,6 +239,11 @@ def createInitialFile():
     mergeFile = tempfile.NamedTemporaryFile()
     for source in SOURCES:
         curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
+        #Done in a cross-python way
+        writeData(mergeFile, curFile.read())
+
+    for source in extensions:
+        curFile = open(os.path.join(EXTENSIONS_PATH, source, DATA_FILENAMES), 'r')
         #Done in a cross-python way
         writeData(mergeFile, curFile.read())
 
