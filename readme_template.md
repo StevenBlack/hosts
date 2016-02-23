@@ -67,11 +67,11 @@ versions (from locations defined by the update.info text file in each source's f
 
 Using Python 3:
 
-    python3 updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
+    python3 updateHostsFile.py [--auto] [--replace] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
 
 Using Python 2.7:
 
-    python updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
+    python updateHostsFile.py [--auto] [--replace] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
 
 Command line options:
 
@@ -79,7 +79,10 @@ Command line options:
 
 * Host data sources, including extensions, are updated.
 * No extensions are included by default.  Use the `--extensions` or `-e` flag to include any you want.
-* Your active hosts file is *not* replaced.
+* Your active hosts file is *not* replaced unless you include the `--replace` flag.
+
+`--replace`, `-r`: trigger replacing your active hosts file with the new hosts file. Use along with `--auto` to
+force replacement.
 
 `--ip nnn.nnn.nnn.nnn`, `--i nnn.nnn.nnn.nnn`: the IP address to use as the target.  Default is `0.0.0.0`.
 
