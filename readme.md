@@ -5,8 +5,18 @@ with duplicates removed.  You can [download the resultant amalgamated hosts file
 
 **Details about this amalgamated hosts file:**
 
-* Last updated: **February 23 2016 at 00:41:21 GMT**.
+* Last updated: **February 23 2016 at 01:05:02 GMT**.
 * Contains: **27,148 unique entries**.
+
+## Take note!
+This repo now includes <strong>extensions</strong> which are subfolder names under the <code>extensions</code>
+folder wherein you can stash category specific <code>hosts</code> files.
+
+Currently there is one extension to block porn sites.  Note the <code>extensions/porn</code> folder with a
+5,000+ domain hosts file that you can include with the following command
+
+    python updateHostsFile.py --e porn
+
 
 ## Goals of this amalgamated hosts file
 
@@ -14,9 +24,11 @@ The goals of this repo are to:
 
 1. automatically combine high-quality lists of hosts,
 
-2. de-dupe the resultant combined list,
+2. provide easy extensions,
 
-3. and keep the resultant file reasonably sized.
+3. de-dupe the resultant combined list,
+
+4. and keep the resultant file reasonably sized.
 
 A high-quality source is defined here as one that is actively curated.  A hosts source should be frequently
 updated by its maintainers with both additions and removals.  The larger the hosts file, the higher the level of
