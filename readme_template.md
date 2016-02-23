@@ -41,6 +41,9 @@ monthly, or thereabouts.
 * Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
+In addition, the generator can optionally include extensions depending on your particular needs.  Currently the repo
+ships with a `porn` extension but you can add your own by creating new folders belos the `extensions` folder.
+
 ## Generate your own amalgamated hosts file
 
 The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible, will generate an amalgamated hosts file
@@ -48,15 +51,15 @@ based on the sources in the local `data/` subfolder.  The script will prompt you
 versions (from locations defined by the update.info text file in each source's folder), otherwise it will use the
 `hosts` file that's already there.
 
-**Usage**
+### Usage
 
 Using Python 3:
 
-    python3 updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn]
+    python3 updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
 
 Using Python 2.7:
 
-    python updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn]
+    python updateHostsFile.py [--auto] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
 
 Command line options:
 
@@ -65,8 +68,12 @@ Command line options:
 * Host data sources are updated.
 * Your active hosts file is *not* replaced.
 
-`--ip nnn.nnn.nnn.nnn`: the IP address to use as the target.  Default is `0.0.0.0`.
+`--ip nnn.nnn.nnn.nnn`, `--i nnn.nnn.nnn.nnn`: the IP address to use as the target.  Default is `0.0.0.0`.
 
+`--extensions ext1 ext2 ext3`, `-e ext1 ext2 ext3`: the names of subfolders below the `extensions` folder containing
+other hosts collections to include. Example: `--extensions porn` or `-e porn`.
+
+`--help`, `-h`: display help.
 
 ## How do I control which sources are amalgamated?
 
