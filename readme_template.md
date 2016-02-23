@@ -1,5 +1,19 @@
 #Amalgamated hosts file
 
+<div class="infotip">
+    <p>
+        This repo now includes <strong>extensions</strong> which are subfolder names under the <code>extensions</code>
+        folder wherein you can stash category specific <code>hosts</code> files.
+    </p>
+    <p>
+        Currently there is one extension to block porn sites.  Note the <code>extensions/porn</code> folder with a
+        5,000+ domain hosts file that you can include with the following command
+    </p>
+    <p>
+        <code>python updateHostsFile.py --e porn</code>
+    </p>
+</div>
+
 This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file
 with duplicates removed.  You can [download the resultant amalgamated hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) or clone this repo and generate your own using the Python script provided.
 
