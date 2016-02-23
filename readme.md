@@ -5,7 +5,7 @@ with duplicates removed.  You can [download the resultant amalgamated hosts file
 
 **Details about this amalgamated hosts file:**
 
-* Last updated: **February 23 2016 at 00:29:33 GMT**.
+* Last updated: **February 23 2016 at 00:41:21 GMT**.
 * Contains: **27,148 unique entries**.
 
 ## Goals of this amalgamated hosts file
@@ -65,7 +65,8 @@ Command line options:
 
 `--auto`, `-a`: run the script without prompting. When `--auto` is invoked,
 
-* Host data sources are updated.
+* Host data sources, including extensions, are updated.
+* No extensions are included by default.  Use the `--extensions` or `-e` flag to include any you want.
 * Your active hosts file is *not* replaced.
 
 `--ip nnn.nnn.nnn.nnn`, `--i nnn.nnn.nnn.nnn`: the IP address to use as the target.  Default is `0.0.0.0`.
