@@ -61,7 +61,6 @@ def myInput(msg = ""):
     else:
         return raw_input(msg)
 
-
 # Cross-python writing function
 def writeData(f, data):
     if Python3:
@@ -212,21 +211,22 @@ def matchesExclusions(strippedRule):
 def updateAllSources():
     allsources = list(set(SOURCES) | set(EXTENSIONS))
     for source in allsources:
-        updateURL = getUpdateURLFromFile(source)
-        if updateURL is None:
-            continue
-        print ("Updating source " + os.path.basename(source) + " from " + updateURL)
-        # Cross-python call
-        updatedFile = getFileByUrl(updateURL)
+        if os.path.isdir(source):
+            updateURL = getUpdateURLFromFile(source)
+            if updateURL is None:
+                continue
+            print ("Updating source " + os.path.basename(source) + " from " + updateURL)
+            # Cross-python call
+            updatedFile = getFileByUrl(updateURL)
 
-        try:
-            updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
-            # This is cross-python code
-            dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'wb')
-            writeData(dataFile, updatedFile)
-            dataFile.close()
-        except:
-            print ("Skipping.")
+            try:
+                updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
+                # This is cross-python code
+                dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'wb')
+                writeData(dataFile, updatedFile)
+                dataFile.close()
+            except:
+                print ("Skipping.")
 
 def getUpdateURLFromFile(source):
     pathToUpdateFile = os.path.join(DATA_PATH, source, UPDATE_URL_FILENAME)
