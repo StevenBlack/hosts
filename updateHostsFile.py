@@ -95,6 +95,7 @@ COMMON_EXCLUSIONS = ['hulu.com']
 exclusionRegexs = []
 numberOfRules   = 0
 auto = False
+replace = False
 targetIP = "0.0.0.0"
 extensions = []
 
@@ -102,12 +103,14 @@ def main():
 
     parser = argparse.ArgumentParser(description="Creates an amalgamated hosts file from hosts stored in data subfolders.")
     parser.add_argument("--auto", "-a", dest="auto", default=False, action='store_true', help="Run without prompting.")
+    parser.add_argument("--replace", "-r", dest="replace", default=False, action='store_true', help="Replace your active hosts file with this new hosts file.")
     parser.add_argument("--ip", "-i", dest="targetIP", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
     parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs='*', help="Host extensions to include in the final hosts file.")
     args = parser.parse_args()
 
-    global auto, targetIP, extensions
+    global auto, targetIP, extensions, replace
     auto = args.auto
+    replace = args.replace
     targetIP = args.targetIP
 
     # All our extensions folders...
@@ -161,7 +164,11 @@ def promptForMoreCustomExclusions():
         return False
 
 def promptForMove(finalFile):
-    response = "no" if auto else query_yes_no("Do you want to replace your existing hosts file " +
+
+    if replace:
+        response = "yes"
+    else:
+        response = "no" if auto else query_yes_no("Do you want to replace your existing hosts file " +
                             "with the newly generated file?")
     if response == "yes":
         moveHostsFileIntoPlace(finalFile)
