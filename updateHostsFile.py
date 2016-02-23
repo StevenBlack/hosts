@@ -261,7 +261,8 @@ def removeDupsAndExcl(mergeFile):
     if os.path.isfile(WHITELIST_FILE):
         with open(WHITELIST_FILE, "r") as ins:
             for line in ins:
-                EXCLUSIONS.append(line)
+                if line.rstrip():
+                    EXCLUSIONS.append(line)
 
     # Another mode is required to read and write the file in Python 3
     finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'r+b')
