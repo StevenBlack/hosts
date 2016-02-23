@@ -5,18 +5,8 @@ with duplicates removed.  You can [download the resultant amalgamated hosts file
 
 **Details about this amalgamated hosts file:**
 
-* Last updated: **February 23 2016 at 02:33:37 GMT**.
-* Contains: **27,148 unique entries**.
-
-## Take note!
-This repo now includes <strong>extensions</strong> which are subfolder names under the <code>extensions</code>
-folder wherein you can stash category specific <code>hosts</code> files.
-
-Currently there is one extension to block porn sites.  Note the <code>extensions/porn</code> folder with a
-5,000+ domain hosts file that you can include with the following command
-
-    python updateHostsFile.py --e porn
-
+* Last updated: **February 23 2016.**.
+* Contains: **27,150 unique entries**.
 
 ## Goals of this amalgamated hosts file
 
@@ -87,7 +77,7 @@ force replacement.
 `--ip nnn.nnn.nnn.nnn`, `--i nnn.nnn.nnn.nnn`: the IP address to use as the target.  Default is `0.0.0.0`.
 
 `--extensions ext1 ext2 ext3`, `-e ext1 ext2 ext3`: the names of subfolders below the `extensions` folder containing
-other hosts collections to include. Example: `--extensions porn` or `-e porn`.
+additional category-specific hosts files to include in the amalgamation. Example: `--extensions porn` or `-e porn`.
 
 `--help`, `-h`: display help.
 
