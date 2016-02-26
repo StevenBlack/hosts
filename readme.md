@@ -1,12 +1,10 @@
 #Amalgamated hosts file
 
-This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file
-with duplicates removed.  You can [download the resultant amalgamated hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) or clone this repo and generate your own using the Python script provided.
-
-**Details about this amalgamated hosts file:**
-
 * Last updated: **February 26 2016**.
 * Contains: **27,149 unique entries**.
+
+This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file
+with duplicates removed.  You can [download the resultant amalgamated hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) or clone this repo and generate your own using the Python script provided.
 
 ## Goals of this amalgamated hosts file
 
@@ -55,15 +53,15 @@ versions (from locations defined by the update.info text file in each source's f
 
 ### Usage
 
-Using Python 3:
+#### Using Python 3:
 
     python3 updateHostsFile.py [--auto] [--replace] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
 
-Using Python 2.7:
+#### Using Python 2.7:
 
     python updateHostsFile.py [--auto] [--replace] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
 
-Command line options:
+#### Command line options:
 
 `--auto`, or `-a`: run the script without prompting. When `--auto` is invoked,
 
