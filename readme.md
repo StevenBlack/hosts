@@ -1,37 +1,21 @@
 #Amalgamated hosts file
 
-* Last updated: **February 26 2016**.
+**Expectation**: This amalgamated hosts file should serve all devices, regardless of OS.
+
+It's always better when it's fresh.
+
+* Last updated: **February 27 2016**.
 * Contains: **27,149 unique entries**.
 
 This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file
-with duplicates removed.  You can [download the resultant amalgamated hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) or clone this repo and generate your own using the Python script provided.
+with duplicates removed.
 
-## Goals of this amalgamated hosts file
-
-The goals of this repo are to:
-
-1. automatically combine high-quality lists of hosts,
-
-2. provide easy extensions,
-
-3. de-dupe the resultant combined list,
-
-4. and keep the resultant file reasonably sized.
-
-A high-quality source is defined here as one that is actively curated.  A hosts source should be frequently
-updated by its maintainers with both additions and removals.  The larger the hosts file, the higher the level of
-curation is expected.
-
-For example, the (huge) hosts file from [hosts-file.net](http://hosts-file.net) is **not** included
-here because it is very large (300,000+ entries) and doesn't currently display a corresponding high level of curation
-activity.
-
-It is expected that this amalgamated hosts file will serve both desktop and mobile devices under a variety of operating
-systems.
+You can [download the resultant amalgamated hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) 
+or clone this repo and generate your own using the Python script provided.
 
 ## Sources of host data amalgamated here
 
-Currently the `hosts` files from the following locations are amalgamated:
+Updated `hosts` files from the following locations are amalgamated:
 
 * The [Adaway hosts file](http://adaway.org/hosts.txt), updated regularly.
 * MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated
@@ -41,8 +25,8 @@ monthly, or thereabouts.
 * Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
-In addition, the generator can optionally include extensions depending on your particular needs.  Currently the repo
-ships with a `porn` extension but you can add your own by creating new folders belos the `extensions` folder.
+In addition, the hosts amalgamater is extensible.  You manage extensions by curating the `extensions/` folder tree.  
+See the `porn` extension which is included, for example. 
 
 ## Generate your own amalgamated hosts file
 
@@ -81,8 +65,9 @@ additional category-specific hosts files to include in the amalgamation. Example
 
 ## How do I control which sources are amalgamated?
 
-You can add additional sources by placing each in a subfolder of the `data/` folder. Provide a copy of that new
-`hosts` file, and place its update url in `update.info`.
+Add one or more  *additional* sources, each in a subfolder of the `data/` folder, and specify its update url in `update.info` file.
+
+Add one or more *optional* sources, each in a subfolder of the `extensions/` folder, and specify the update url in `update.info`.
 
 ## How do I incorporate my own hosts?
 
@@ -165,3 +150,27 @@ Open a Terminal and run with root privileges:
 **Arch Linux/Manjaro with Wicd**: `sudo systemctl restart wicd.service`
 
 **Others**: Consult [this wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
+
+
+## Goals of this amalgamated hosts file
+
+The goals of this repo are to:
+
+1. automatically combine high-quality lists of hosts,
+
+2. provide easy extensions,
+
+3. de-dupe the resultant combined list,
+
+4. and keep the resultant file reasonably sized.
+
+A high-quality source is defined here as one that is actively curated.  A hosts source should be frequently
+updated by its maintainers with both additions and removals.  The larger the hosts file, the higher the level of
+curation is expected.
+
+For example, the (huge) hosts file from [hosts-file.net](http://hosts-file.net) is **not** included
+here because it is very large (300,000+ entries) and doesn't currently display a corresponding high level of curation
+activity.
+
+It is expected that this amalgamated hosts file will serve both desktop and mobile devices under a variety of operating
+systems.
