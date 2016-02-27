@@ -1,14 +1,12 @@
 #Amalgamated hosts file
 
-**Expectation**: This amalgamated hosts file should serve all devices, regardless of OS.
+This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file
+with duplicates removed.
 
-It's always better when it's fresh.
+**Expectation**: This amalgamated hosts file should serve all devices, regardless of OS.
 
 * Last updated: **February 27 2016**.
 * Contains: **27,149 unique entries**.
-
-This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file
-with duplicates removed.
 
 You can [download the resultant amalgamated hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) 
 or clone this repo and generate your own using the Python script provided.
