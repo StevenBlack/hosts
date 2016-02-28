@@ -1,8 +1,8 @@
 # Extensions
 
-Use subfolders under the `extensions` folder to house extensions to the final amalgamated hosts file.
+Use subfolders under the `extensions` folder to house extensions to the final unified hosts file.
 
-Currently this repo includes a `porn` extension which you can optionally add to your final amalgamated file.
+Currently this repo includes a `porn` extension which you can optionally add to your final unified file.
 
 Here's a sample call to include the `porn` extension.
 

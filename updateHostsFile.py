@@ -100,7 +100,7 @@ extensions = []
 
 def main():
 
-    parser = argparse.ArgumentParser(description="Creates an amalgamated hosts file from hosts stored in data subfolders.")
+    parser = argparse.ArgumentParser(description="Creates a unified hosts file from hosts stored in data subfolders.")
     parser.add_argument("--auto", "-a", dest="auto", default=False, action='store_true', help="Run without prompting.")
     parser.add_argument("--replace", "-r", dest="replace", default=False, action='store_true', help="Replace your active hosts file with this new hosts file.")
     parser.add_argument("--ip", "-i", dest="targetIP", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
