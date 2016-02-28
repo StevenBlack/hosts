@@ -1,19 +1,19 @@
-#Amalgamated hosts file
+#Unified hosts file
 
-This repository consolidates several reputable `hosts` files, and merges them into a single amalgamated hosts file
+This repository consolidates several reputable `hosts` files, and merges them into a single unified hosts file
 with duplicates removed.
 
-**Expectation**: This amalgamated hosts file should serve all devices, regardless of OS.
+**Expectation**: This unified hosts file should serve all devices, regardless of OS.
 
 * Last updated: **@GEN_DATE@**.
 * Contains: **@NUM_ENTRIES@ unique entries**.
 
-You can [download the resultant amalgamated hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) 
+You can [download the resultant unified hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) 
 or clone this repo and generate your own using the Python script provided.
 
-## Sources of host data amalgamated here
+## Sources of host data unified here
 
-Updated `hosts` files from the following locations are amalgamated:
+Updated `hosts` files from the following locations are unified:
 
 * The [Adaway hosts file](http://adaway.org/hosts.txt), updated regularly.
 * MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated
@@ -26,9 +26,9 @@ monthly, or thereabouts.
 In addition, the hosts amalgamater is extensible.  You manage extensions by curating the `extensions/` folder tree.  
 See the `porn` extension which is included, for example. 
 
-## Generate your own amalgamated hosts file
+## Generate your own unified hosts file
 
-The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible, will generate an amalgamated hosts file
+The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible, will generate a unified hosts file
 based on the sources in the local `data/` subfolder.  The script will prompt you Whether it should fetch updated
 versions (from locations defined by the update.info text file in each source's folder), otherwise it will use the
 `hosts` file that's already there.
@@ -61,7 +61,7 @@ additional category-specific hosts files to include in the amalgamation. Example
 
 `--help`, or `-h`: display help.
 
-## How do I control which sources are amalgamated?
+## How do I control which sources are unified?
 
 Add one or more  *additional* sources, each in a subfolder of the `data/` folder, and specify its update url in `update.info` file.
 
@@ -70,7 +70,7 @@ Add one or more *optional* sources, each in a subfolder of the `extensions/` fol
 ## How do I incorporate my own hosts?
 
 If you have custom host records, place them in file `myhosts`.  The contents of this file are prepended to the
-amalgamated hosts file during the update process.
+unified hosts file during the update process.
 
 ## What is a hosts file?
 
@@ -150,7 +150,7 @@ Open a Terminal and run with root privileges:
 **Others**: Consult [this wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
 
 
-## Goals of this amalgamated hosts file
+## Goals of this unified hosts file
 
 The goals of this repo are to:
 
@@ -170,5 +170,5 @@ For example, the (huge) hosts file from [hosts-file.net](http://hosts-file.net) 
 here because it is very large (300,000+ entries) and doesn't currently display a corresponding high level of curation
 activity.
 
-It is expected that this amalgamated hosts file will serve both desktop and mobile devices under a variety of operating
+It is expected that this unified hosts file will serve both desktop and mobile devices under a variety of operating
 systems.
