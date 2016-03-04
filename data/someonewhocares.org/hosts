@@ -8,7 +8,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Thu, 03 Mar 2016 at 02:56:34 GMT
+# Last updated: Thu, 03 Mar 2016 at 21:57:10 GMT
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -6987,6 +6987,7 @@
 0.0.0.0 h.admob.com
 0.0.0.0 h-afnetwww.adshuffle.com
 0.0.0.0 halfords.ukrpts.net
+0.0.0.0 haouzy.info
 0.0.0.0 happydiscountspecials.com
 0.0.0.0 harvest176.adgardener.com
 0.0.0.0 harvest284.adgardener.com
@@ -7462,6 +7463,7 @@
 0.0.0.0 mackeeperapp2.mackeeper.com
 0.0.0.0 mackeeperapp3.mackeeper.com
 0.0.0.0 mackeeperapp.mackeeper.com
+0.0.0.0 mac.system-alert1.com
 0.0.0.0 mad2.brandreachsys.com
 0.0.0.0 madadsmedia.com
 0.0.0.0 m.adbridge.de
@@ -10248,7 +10250,6 @@
 0.0.0.0 cya2.net
 0.0.0.0 i.ligatus.com
 0.0.0.0 images.revtrax.com
-0.0.0.0 pof.com
 0.0.0.0 shorte.st
 0.0.0.0 src.kitcode.net
 0.0.0.0 stat.ringier.cz
@@ -12327,51 +12328,58 @@
 
 #<Windows10>
 
-# Windows 10 reporting domains. These are commented out by default
-#	as they may interfere with some services.
-
-#0.0.0.0 a-0001.a-msedge.net
-#0.0.0.0 choice.microsoft.com
-#0.0.0.0 choice.microsoft.com.nstac.net
-#0.0.0.0 compatexchange.cloudapp.net
-#0.0.0.0 corpext.msitadfs.glbdns2.microsoft.com
-#0.0.0.0 corp.sts.microsoft.com
-#0.0.0.0 cs1.wpc.v0cdn.net
-#0.0.0.0 df.telemetry.microsoft.com
-#0.0.0.0 diagnostics.support.microsoft.com
-#0.0.0.0 fe2.update.microsoft.com.akadns.net
-#0.0.0.0 feedback.search.microsoft.com
-#0.0.0.0 feedback.windows.com
-#0.0.0.0 i1.services.social.microsoft.com
-#0.0.0.0 i1.services.social.microsoft.com.nsatc.net
-#0.0.0.0 oca.telemetry.microsoft.com
-#0.0.0.0 oca.telemetry.microsoft.com.nsatc.net
-#0.0.0.0 pre.footprintpredict.com
-#0.0.0.0 redir.metaservices.microsoft.com
-#0.0.0.0 reports.wes.df.telemetry.microsoft.com
-#0.0.0.0 services.wes.df.telemetry.microsoft.com
-#0.0.0.0 settings-sandbox.data.microsoft.com
-#0.0.0.0 sls.update.microsoft.com.akadns.net
-#0.0.0.0 sqm.df.telemetry.microsoft.com
-#0.0.0.0 sqm.telemetry.microsoft.com
-#0.0.0.0 sqm.telemetry.microsoft.com.nsatc.net
-#0.0.0.0 ssw.live.com
-#0.0.0.0 statsfe1.ws.microsoft.com
-#0.0.0.0 statsfe2.update.microsoft.com.akadns.net
-#0.0.0.0 survey.watson.microsoft.com
-#0.0.0.0 telecommand.telemetry.microsoft.com
-#0.0.0.0 telecommand.telemetry.microsoft.com.nsatc.net
-#0.0.0.0 telemetry.appex.bing.net
-#0.0.0.0 telemetry.microsoft.com
-#0.0.0.0 telemetry.urs.microsoft.com
-#0.0.0.0 vortex.data.microsoft.com
-#0.0.0.0 vortex-sandbox.data.microsoft.com
-#0.0.0.0 vortex-win.data.microsoft.com
-#0.0.0.0 watson.live.com
-#0.0.0.0 watson.microsoft.com
-#0.0.0.0 watson.ppe.telemetry.microsoft.com
-#0.0.0.0 watson.telemetry.microsoft.com
-#0.0.0.0 watson.telemetry.microsoft.com.nsatc.net
+# Windows 10 reporting domains. 
+0.0.0.0 a-0001.a-msedge.net
+0.0.0.0 a-0002.a-msedge.net
+0.0.0.0 a-0003.a-msedge.net
+0.0.0.0 a-0004.a-msedge.net
+0.0.0.0 a-0005.a-msedge.net
+0.0.0.0 a-0006.a-msedge.net
+0.0.0.0 a-0007.a-msedge.net
+0.0.0.0 a-0008.a-msedge.net
+0.0.0.0 a-0009.a-msedge.net
+0.0.0.0 a.ads2.msads.net
+0.0.0.0 a.ads2.msn.com
+0.0.0.0 adnexus.net
+0.0.0.0 aidps.atdmt.com
+0.0.0.0 a-msedge.net
+0.0.0.0 apps.skype.com
+0.0.0.0 az361816.vo.msecnd.net
+0.0.0.0 az512334.vo.msecnd.net
+0.0.0.0 b.ads1.msn.com
+0.0.0.0 b.ads2.msads.net
+0.0.0.0 c.atdmt.com
+0.0.0.0 cdn.atdmt.com
+0.0.0.0 cds26.ams9.msecn.net
+0.0.0.0 c.msn.com
+0.0.0.0 db3aqu.atdmt.com
+0.0.0.0 ec.atdmt.com
+0.0.0.0 fe2.update.microsoft.com.akadns.net
+0.0.0.0 feedback.microsoft-hohm.com
+0.0.0.0 flex.msn.com
+0.0.0.0 g.msn.com
+0.0.0.0 h1.msn.com
+0.0.0.0 lb1.www.ms.akadns.net
+0.0.0.0 live.rads.msn.com
+0.0.0.0 m.adnxs.com
+0.0.0.0 m.hotmail.com
+0.0.0.0 msedge.net
+0.0.0.0 msftncsi.com
+0.0.0.0 msnbot-65-55-108-23.search.msn.com
+0.0.0.0 msntest.serving-sys.com
+0.0.0.0 preview.msn.com
+0.0.0.0 pricelist.skype.com
+0.0.0.0 reports.wes.df.telemetry.microsoft.com
+0.0.0.0 schemas.microsoft.akadns.net
+0.0.0.0 secure.flashtalking.com
+0.0.0.0 settings-win.data.microsoft.com
+0.0.0.0 s.gateway.messenger.live.com
+0.0.0.0 sO.2mdn.net
+0.0.0.0 statsfe2.ws.microsoft.com
+0.0.0.0 telemetry.appex.bing.net:443
+0.0.0.0 ui.skype.com
+0.0.0.0 wes.df.telemetry.microsoft.com
+0.0.0.0 www.msftncsi.com
 #</Windows10>
 
 # Acknowledgements
