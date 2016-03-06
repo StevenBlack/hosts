@@ -8,7 +8,7 @@ with duplicates removed.
 * Last updated: **@GEN_DATE@**.
 * Contains: **@NUM_ENTRIES@ unique entries**.
 
-You can [download the resultant unified hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) 
+You can [download the resultant unified hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts)
 or clone this repo and generate your own using the Python script provided.
 
 ## Sources of host data unified here
@@ -23,8 +23,8 @@ monthly, or thereabouts.
 * Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
-In addition, the hosts amalgamater is extensible.  You manage extensions by curating the `extensions/` folder tree.  
-See the `porn` extension which is included, for example. 
+In addition, the hosts amalgamater is extensible.  You manage extensions by curating the `extensions/` folder tree.
+See the `social` and `porn` extension which are included, for example.
 
 ## Generate your own unified hosts file
 
@@ -57,7 +57,7 @@ force replacement.
 `--ip nnn.nnn.nnn.nnn`, or `-i nnn.nnn.nnn.nnn`: the IP address to use as the target.  Default is `0.0.0.0`.
 
 `--extensions ext1 ext2 ext3`, or `-e ext1 ext2 ext3`: the names of subfolders below the `extensions` folder containing
-additional category-specific hosts files to include in the amalgamation. Example: `--extensions porn` or `-e porn`.
+additional category-specific hosts files to include in the amalgamation. Example: `--extensions porn` or `-e social porn`.
 
 `--help`, or `-h`: display help.
 
