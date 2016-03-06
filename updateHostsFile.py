@@ -212,21 +212,37 @@ def updateAllSources():
     allsources = list(set(SOURCES) | set(EXTENSIONS))
     for source in allsources:
         if os.path.isdir(source):
-            updateURL = getUpdateURLFromFile(source)
-            if updateURL is None:
+            updateURLs = getUpdateURLsFromFile(source)
+            if not len(updateURLs):
                 continue
-            print ("Updating source " + os.path.basename(source) + " from " + updateURL)
-            # Cross-python call
-            updatedFile = getFileByUrl(updateURL)
 
-            try:
-                updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
-                # This is cross-python code
-                dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'wb')
-                writeData(dataFile, updatedFile)
-                dataFile.close()
-            except:
-                print ("Skipping.")
+            for updateURL in updateURLs:
+                print ("Updating source " + os.path.basename(source) + " from " + updateURL)
+                # Cross-python call
+                updatedFile = getFileByUrl(updateURL)
+                try:
+                    updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
+                    # This is cross-python code
+                    dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'wb')
+                    writeData(dataFile, updatedFile)
+                    dataFile.close()
+                except:
+                    print ("Skipping.")
+
+def getUpdateURLsFromFile(source):
+    pathToUpdateFile = os.path.join(DATA_PATH, source, UPDATE_URL_FILENAME)
+    if os.path.exists(pathToUpdateFile):
+        updateFile = open(pathToUpdateFile, 'r')
+        retURLs     = updateFile.readlines()
+        # .strip()
+        updateFile.close()
+    else:
+        retURL = None
+        printFailure('Warning: Can\'t find the update file for source ' + source + '\n' +
+                     'Make sure that there\'s a file at ' + pathToUpdateFile)
+    return retURLs
+# End Update Logic
+
 
 def getUpdateURLFromFile(source):
     pathToUpdateFile = os.path.join(DATA_PATH, source, UPDATE_URL_FILENAME)
