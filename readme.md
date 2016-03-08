@@ -13,7 +13,7 @@ or clone this repo and generate your own using the Python script provided.
 
 ## Sources of host data unified here
 
-Updated `hosts` files from the following locations are unified:
+Updated `hosts` files from the following locations are always unified and included:
 
 * The [Adaway hosts file](http://adaway.org/hosts.txt), updated regularly.
 * MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated
@@ -23,8 +23,9 @@ monthly, or thereabouts.
 * Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
-In addition, the hosts amalgamater is extensible.  You manage extensions by curating the `extensions/` folder tree.
-See the `social` and `porn` extension which are included, for example.
+## Extensions
+The unified hosts file is extensible .  You manage extensions by curating the `extensions/` folder tree.
+See the `social`, `gambling`, and `porn` extension which are included in this repo, for example.
 
 ## Generate your own unified hosts file
 
@@ -63,9 +64,11 @@ additional category-specific hosts files to include in the amalgamation. Example
 
 ## How do I control which sources are unified?
 
-Add one or more  *additional* sources, each in a subfolder of the `data/` folder, and specify its update url in `update.info` file.
+Add one or more  *additional* sources, each in a subfolder of the `data/` folder, and specify its update url in 
+`update.info` file.
 
-Add one or more *optional* sources, each in a subfolder of the `extensions/` folder, and specify the update url in `update.info`.
+Add one or more *optional* extensions, which originate from subfolders of the `extensions/` folder.  Again the url in 
+`update.info` controls where this extension finds its updates.
 
 ## How do I incorporate my own hosts?
 
