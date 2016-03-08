@@ -5,8 +5,8 @@ with duplicates removed.
 
 **Expectation**: This unified hosts file should serve all devices, regardless of OS.
 
-* Last updated: **March 07 2016**.
-* Contains: **27,206 unique entries**.
+* Last updated: **March 08 2016**.
+* Contains: **27,214 unique entries**.
 
 You can [download the resultant unified hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts)
 or clone this repo and generate your own using the Python script provided.
