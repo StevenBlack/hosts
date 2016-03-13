@@ -389,13 +389,16 @@ def writeOpeningHeader(finalFile):
 
 def updateReadme(numberOfRules):
     extensionsStr = "* Extensions: **none**."
+    extensionsHeader = ""
     if extensions:
       extensionsStr = "* Extensions: **" + ", ".join(extensions) + "**."
+      extensionsHeader = "with "+ ", ".join(extensions) + " extensions"
 
     with open(os.path.join(outputPath,README_FILENAME), "wt") as out:
         for line in open(README_TEMPLATE):
             line = line.replace( '@GEN_DATE@', time.strftime("%B %d %Y", time.gmtime()))
             line = line.replace( '@EXTENSIONS@', extensionsStr )
+            line = line.replace( '@EXTENSIONS_HEADER@', extensionsHeader )
             out.write(line.replace('@NUM_ENTRIES@', "{:,}".format(numberOfRules)))
 
 def moveHostsFileIntoPlace(finalFile):

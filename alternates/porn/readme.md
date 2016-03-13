@@ -1,4 +1,4 @@
-#Unified hosts file
+#Unified hosts file with porn extensions
 
 This repository consolidates several reputable `hosts` files, and merges them into a single unified hosts file
 with duplicates removed.
@@ -9,8 +9,8 @@ with duplicates removed.
 * Extensions: **porn**.
 * Contains: **32,504 unique entries**.
 
-You can [download the resultant unified hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts)
-or clone this repo and generate your own using the Python or bash scripts provided.
+See the [`alternates` folder](https://github.com/StevenBlack/hosts/tree/master/alternates) for variants of this hosts
+file, extended in different ways.
 
 ## Sources of host data unified here
 
@@ -62,7 +62,7 @@ force replacement.
 containing additional category-specific hosts files to include in the amalgamation. Example: `--extensions porn` or
 `-e social porn`.
 
-`--noupdate`, or `-n`: skip frtching updates from hosts data sources.
+`--noupdate`, or `-n`: skip fetching updates from hosts data sources.
 
 `--output <subfolder>`, or `-o <subfolder>`: place the generated source file in a subfolder.  If the subfolder does not
 exist, it will be created.

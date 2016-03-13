@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # This creates a vanilla hosts file
-python updateHostsFile.py -a -n
+python updateHostsFile.py -a
 
 # These create various alternate hosts files by combining and adding the gambling, porn, and social media extensions.
 python updateHostsFile.py -a -n -o alternates/gambling -e gambling
