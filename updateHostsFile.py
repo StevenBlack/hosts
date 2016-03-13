@@ -292,7 +292,7 @@ def removeDupsAndExcl(mergeFile):
         os.makedirs(outputPath)
 
     # Another mode is required to read and write the file in Python 3
-    finalFile = open(os.path.join(outputPath, 'hosts'), 'w+')
+    finalFile = open(os.path.join(outputPath, 'hosts'), 'r+')
     mergeFile.seek(0) # reset file pointer
 
     hostnames = set()
