@@ -81,7 +81,7 @@ UPDATE_URL_FILENAME = 'update.info'
 SOURCES             = listdir_nohidden(DATA_PATH)
 EXTENSIONS          = listdir_nohidden(EXTENSIONS_PATH)
 README_TEMPLATE     = os.path.join(BASEDIR_PATH, 'readme_template.md')
-README_FILE         = os.path.join(BASEDIR_PATH, 'readme.md')
+README_FILENAME     = 'readme.md'
 WHITELIST_FILE      = os.path.join(BASEDIR_PATH, 'whitelist')
 
 # Exclusions
@@ -122,8 +122,8 @@ def main():
 
     # All our extensions folders...
     extensions = [os.path.basename(item) for item in listdir_nohidden(EXTENSIONS_PATH)]
-    # ... intersected with the extensions passed-in as arguments
-    extensions = list(set(args.extensions).intersection(extensions))
+    # ... intersected with the extensions passed-in as arguments, then sorted.
+    extensions = sorted( list(set(args.extensions).intersection(extensions)) )
 
     promptForUpdate()
     promptForExclusions()
@@ -132,7 +132,7 @@ def main():
     finalFile = removeDupsAndExcl(mergeFile)
     finalizeFile(finalFile)
     updateReadme(numberOfRules)
-    printSuccess('Success! Your new hosts file has been prepared.\nIt contains ' +
+    printSuccess('Success! The hosts file has been saved in folder\n' + outputPath + '\nIt contains ' +
                  "{:,}".format(numberOfRules) + ' unique entries.')
 
     promptForMove(finalFile)
@@ -388,9 +388,14 @@ def writeOpeningHeader(finalFile):
     finalFile.write(fileContents)
 
 def updateReadme(numberOfRules):
-    with open(README_FILE, "wt") as out:
+    extensionsStr = "* Extensions: **none**."
+    if extensions:
+      extensionsStr = "* Extensions: **" + ", ".join(extensions) + "**."
+
+    with open(os.path.join(outputPath,README_FILENAME), "wt") as out:
         for line in open(README_TEMPLATE):
             line = line.replace( '@GEN_DATE@', time.strftime("%B %d %Y", time.gmtime()))
+            line = line.replace( '@EXTENSIONS@', extensionsStr )
             out.write(line.replace('@NUM_ENTRIES@', "{:,}".format(numberOfRules)))
 
 def moveHostsFileIntoPlace(finalFile):
