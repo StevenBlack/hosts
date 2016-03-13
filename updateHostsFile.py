@@ -91,8 +91,9 @@ EXCLUSIONS        = []
 COMMON_EXCLUSIONS = ['hulu.com']
 
 # Global vars
+outputPath = BASEDIR_PATH
 exclusionRegexs = []
-numberOfRules   = 0
+numberOfRules = 0
 auto = False
 replace = False
 targetIP = "0.0.0.0"
@@ -105,12 +106,15 @@ def main():
     parser.add_argument("--replace", "-r", dest="replace", default=False, action='store_true', help="Replace your active hosts file with this new hosts file.")
     parser.add_argument("--ip", "-i", dest="targetIP", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
     parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs='*', help="Host extensions to include in the final hosts file.")
+    parser.add_argument("--output", "-o", dest="outputSubFolder", default="", help="Output subfolder for generated hosts file.")
+
     args = parser.parse_args()
 
-    global auto, targetIP, extensions, replace
+    global auto, replace, targetIP, replace, extensions, outputPath
     auto = args.auto
     replace = args.replace
     targetIP = args.targetIP
+    outputPath = os.path.join(BASEDIR_PATH, args.outputSubFolder)
 
     # All our extensions folders...
     extensions = [os.path.basename(item) for item in listdir_nohidden(EXTENSIONS_PATH)]
@@ -280,8 +284,11 @@ def removeDupsAndExcl(mergeFile):
                 if line.rstrip():
                     EXCLUSIONS.append(line)
 
+    if not os.path.exists(outputPath):
+        os.makedirs(outputPath)
+
     # Another mode is required to read and write the file in Python 3
-    finalFile = open(os.path.join(BASEDIR_PATH, 'hosts'), 'r+b')
+    finalFile = open(os.path.join(outputPath, 'hosts'), 'r+b')
     mergeFile.seek(0) # reset file pointer
 
     hostnames = set()
