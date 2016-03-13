@@ -95,6 +95,7 @@ outputPath = BASEDIR_PATH
 exclusionRegexs = []
 numberOfRules = 0
 auto = False
+update = True
 replace = False
 targetIP = "0.0.0.0"
 extensions = []
@@ -107,14 +108,17 @@ def main():
     parser.add_argument("--ip", "-i", dest="targetIP", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
     parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs='*', help="Host extensions to include in the final hosts file.")
     parser.add_argument("--output", "-o", dest="outputSubFolder", default="", help="Output subfolder for generated hosts file.")
+    parser.add_argument("--noupdate", "-n", dest="noUpdate", default=False, action='store_true', help="Don't update from host data sources.")
+
 
     args = parser.parse_args()
 
-    global auto, replace, targetIP, replace, extensions, outputPath
+    global auto, update, replace, targetIP, replace, extensions, outputPath
     auto = args.auto
     replace = args.replace
     targetIP = args.targetIP
     outputPath = os.path.join(BASEDIR_PATH, args.outputSubFolder)
+    update = not args.noUpdate
 
     # All our extensions folders...
     extensions = [os.path.basename(item) for item in listdir_nohidden(EXTENSIONS_PATH)]
@@ -143,7 +147,7 @@ def promptForUpdate():
             printFailure("ERROR: No 'hosts' file in the folder, try creating one manually")
 
     response = "yes" if auto else query_yes_no("Do you want to update all data sources?")
-    if response == "yes":
+    if response == "yes" and update:
         updateAllSources()
     else:
         if not auto:
