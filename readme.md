@@ -5,7 +5,7 @@ with duplicates removed.
 
 **Expectation**: This unified hosts file should serve all devices, regardless of OS.
 
-* Last updated: **March 11 2016**.
+* Last updated: **March 13 2016**.
 * Contains: **27,254 unique entries**.
 
 You can [download the resultant unified hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts)
