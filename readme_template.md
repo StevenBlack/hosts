@@ -6,10 +6,11 @@ with duplicates removed.
 **Expectation**: This unified hosts file should serve all devices, regardless of OS.
 
 * Last updated: **@GEN_DATE@**.
+@EXTENSIONS@
 * Contains: **@NUM_ENTRIES@ unique entries**.
 
 You can [download the resultant unified hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts)
-or clone this repo and generate your own using the Python script provided.
+or clone this repo and generate your own using the Python or bash scripts provided.
 
 ## Sources of host data unified here
 
@@ -24,7 +25,7 @@ monthly, or thereabouts.
 * My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
 
 ## Extensions
-The unified hosts file is extensible .  You manage extensions by curating the `extensions/` folder tree.
+The unified hosts file is extensible.  You manage extensions by curating the `extensions/` folder tree.
 See the `social`, `gambling`, and `porn` extension which are included in this repo, for example.
 
 ## Generate your own unified hosts file
@@ -57,17 +58,23 @@ force replacement.
 
 `--ip nnn.nnn.nnn.nnn`, or `-i nnn.nnn.nnn.nnn`: the IP address to use as the target.  Default is `0.0.0.0`.
 
-`--extensions ext1 ext2 ext3`, or `-e ext1 ext2 ext3`: the names of subfolders below the `extensions` folder containing
-additional category-specific hosts files to include in the amalgamation. Example: `--extensions porn` or `-e social porn`.
+`--extensions <ext1> <ext2> <ext3>`, or `-e <ext1> <ext2> <ext3>`: the names of subfolders below the `extensions` folder
+containing additional category-specific hosts files to include in the amalgamation. Example: `--extensions porn` or
+`-e social porn`.
+
+`--noupdate`, or `-n`: skip frtching updates from hosts data sources.
+
+`--output <subfolder>`, or `-o <subfolder>`: place the generated source file in a subfolder.  If the subfolder does not
+exist, it will be created.
 
 `--help`, or `-h`: display help.
 
 ## How do I control which sources are unified?
 
-Add one or more  *additional* sources, each in a subfolder of the `data/` folder, and specify its update url in 
+Add one or more  *additional* sources, each in a subfolder of the `data/` folder, and specify its update url in
 `update.info` file.
 
-Add one or more *optional* extensions, which originate from subfolders of the `extensions/` folder.  Again the url in 
+Add one or more *optional* extensions, which originate from subfolders of the `extensions/` folder.  Again the url in
 `update.info` controls where this extension finds its updates.
 
 ## How do I incorporate my own hosts?

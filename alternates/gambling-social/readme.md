@@ -6,8 +6,8 @@ with duplicates removed.
 **Expectation**: This unified hosts file should serve all devices, regardless of OS.
 
 * Last updated: **March 13 2016**.
-* Extensions: **none**.
-* Contains: **27,254 unique entries**.
+* Extensions: **gambling, social**.
+* Contains: **28,022 unique entries**.
 
 You can [download the resultant unified hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts)
 or clone this repo and generate your own using the Python or bash scripts provided.
