@@ -5,9 +5,9 @@ with duplicates removed.
 
 **Expectation**: This unified hosts file should serve all devices, regardless of OS.
 
-* Last updated: **March 13 2016**.
+* Last updated: **March 15 2016**.
 * Extensions: **none**.
-* Contains: **27,254 unique entries**.
+* Contains: **27,262 unique entries**.
 
 See the [`alternates` folder](https://github.com/StevenBlack/hosts/tree/master/alternates) for variants of this hosts
 file, extended in different ways.
