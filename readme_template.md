@@ -22,7 +22,7 @@ Unified hosts + **gambling + social** | [link](https://raw.githubusercontent.com
 Unified hosts + **porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts) | tally tba
 Unified hosts + **gambling + porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/raw/master/alternates/gambling-porn-social/hosts) | tally tba
 
-## Sources of host data unified here
+## Sources of hosts data unified here
 
 Updated `hosts` files from the following locations are always unified and included:
 
@@ -59,7 +59,7 @@ versions (from locations defined by the update.info text file in each source's f
 
 `--auto`, or `-a`: run the script without prompting. When `--auto` is invoked,
 
-* Host data sources, including extensions, are updated.
+* Hosts data sources, including extensions, are updated.
 * No extensions are included by default.  Use the `--extensions` or `-e` flag to include any you want.
 * Your active hosts file is *not* replaced unless you include the `--replace` flag.
 
@@ -89,7 +89,7 @@ Add one or more *optional* extensions, which originate from subfolders of the `e
 
 ## How do I incorporate my own hosts?
 
-If you have custom host records, place them in file `myhosts`.  The contents of this file are prepended to the
+If you have custom hosts records, place them in file `myhosts`.  The contents of this file are prepended to the
 unified hosts file during the update process.
 
 ## What is a hosts file?
@@ -97,7 +97,7 @@ unified hosts file during the update process.
 A hosts file, named `hosts` (with no file extension), is a plain-text file used by all operating
 systems to map hostnames to IP addresses.
 
-In most operating systems, the `hosts` file is preferential to `DNS`.  Therefore if a host name is
+In most operating systems, the `hosts` file is preferential to `DNS`.  Therefore if a domain name is
 resolved by the `hosts` file, the request never leaves your computer.
 
 Having a smart `hosts` file goes a long way towards blocking malware, adware, and other irritants.
