@@ -11,16 +11,16 @@ Several variants are available.  See the table below:
 
 ### Hosts file variants
 
-Host file recipe | Raw hosts | Domains
----------------- | --------- | -------
-Unified hosts = **(adware + malware)** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | **@NUM_ENTRIES@ unique entries**
-Unified hosts + **gambling** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts) | tally tba
-Unified hosts + **porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts) | tally tba
-Unified hosts + **social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts) | tally tba
-Unified hosts + **gambling + porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts) | tally tba
-Unified hosts + **gambling + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts) | tally tba
-Unified hosts + **porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts) | tally tba
-Unified hosts + **gambling + porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/raw/master/alternates/gambling-porn-social/hosts) | tally tba
+Host file recipe | Raw hosts | Unique domains
+---------------- | --------- | --------------
+Unified hosts = **(adware + malware)** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | @NUM_ENTRIES@
+Unified hosts + **gambling** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts) | 27,975
+Unified hosts + **porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts) | 32,512
+Unified hosts + **social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts) | 27,370
+Unified hosts + **gambling + porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts) | 33,225
+Unified hosts + **gambling + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts) | 28,083
+Unified hosts + **porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts) | 32,620
+Unified hosts + **gambling + porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/raw/master/alternates/gambling-porn-social/hosts) | 33,333
 
 ## Sources of hosts data unified here
 
