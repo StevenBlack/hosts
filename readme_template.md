@@ -3,14 +3,24 @@
 This repository consolidates several reputable `hosts` files, and merges them into a single unified hosts file
 with duplicates removed.
 
-**Expectation**: This unified hosts file should serve all devices, regardless of OS.
+Several variants are available.  See the table below:
+
+**Expectation**: These unified hosts file should serve all devices, regardless of OS.
 
 * Last updated: **@GEN_DATE@**.
-@EXTENSIONS@
-* Contains: **@NUM_ENTRIES@ unique entries**.
 
-See the [`alternates` folder](https://github.com/StevenBlack/hosts/tree/master/alternates) for variants of this hosts
-file, extended in different ways.
+### Hosts file variants
+
+Host file recipe | Raw hosts | Domains
+---------------- | --------- | -------
+Unified hosts = **(adware + malware)** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | **@NUM_ENTRIES@ unique entries**
+Unified hosts + **gambling** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts) | tally tba
+Unified hosts + **porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts) | tally tba
+Unified hosts + **social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts) | tally tba
+Unified hosts + **gambling + porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts) | tally tba
+Unified hosts + **gambling + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts) | tally tba
+Unified hosts + **porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts) | tally tba
+Unified hosts + **gambling + porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/raw/master/alternates/gambling-porn-social/hosts) | tally tba
 
 ## Sources of host data unified here
 
