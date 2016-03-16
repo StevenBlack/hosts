@@ -12,8 +12,8 @@ Several variants are available.  See the table below:
 ### Hosts file variants
 
 Host file recipe | Raw hosts | Unique domains
----------------- | --------- | --------------
-Unified hosts = **(adware + malware)** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | 28,083
+---------------- |:---------:|:-------------:
+Unified hosts = **(adware + malware)** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | 27,262
 Unified hosts + **gambling** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts) | 27,975
 Unified hosts + **porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts) | 32,512
 Unified hosts + **social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts) | 27,370
