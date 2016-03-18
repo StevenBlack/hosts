@@ -12,7 +12,7 @@ Here are some sample calls, which vary which extensions are included.
 
 **Using Python 3**:
 
-    python3 updateHostsFile.py -auto --extensions porn social gambling
+    python3 updateHostsFile.py --auto --extensions porn social gambling
 
 or, in short form:
 
