@@ -23,6 +23,7 @@ import tempfile
 import time
 import glob
 import argparse
+import socket
 # zip files are not used actually, support deleted
 # StringIO is not needed in Python 3
 # Python 3 works differently with urlopen
@@ -382,6 +383,8 @@ def writeOpeningHeader(finalFile):
     writeData(finalFile, '255.255.255.255 broadcasthost\n')
     writeData(finalFile, '::1 localhost\n')
     writeData(finalFile, 'fe80::1%lo0 localhost\n')
+    if platform.system() == 'Linux':
+        writeData(finalFile, '127.0.1.1 ' + socket.gethostname() + '\n')
     writeData(finalFile, '\n')
 
     preamble = os.path.join(BASEDIR_PATH, "myhosts")
