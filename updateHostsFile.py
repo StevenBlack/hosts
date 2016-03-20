@@ -410,24 +410,43 @@ def updateReadme(numberOfRules):
 
 def moveHostsFileIntoPlace(finalFile):
     if os.name == 'posix':
+        dnsCacheFound = False
         print ("Moving the file requires administrative privileges. " +
                "You might need to enter your password.")
         if subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"]):
             printFailure("Moving the file failed.")
         print ("Flushing the DNS Cache to utilize new hosts file...")
         if platform.system() == 'Darwin':
+            dnsCacheFound = True
             if subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"]):
                 printFailure("Flushing the DNS Cache failed.")
         else:
             if os.path.isfile("/etc/rc.d/init.d/nscd"):
+                dnsCacheFound = True
                 if subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"]):
                     printFailure("Flushing the DNS Cache failed.")
+                else:
+                    printSuccess("Flushing DNS by restarting nscd succeeded")
             if os.path.isfile("/usr/lib/systemd/system/NetworkManager.service"):
+                dnsCacheFound = True
                 if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "NetworkManager.service"]):
                     printFailure("Flushing the DNS Cache failed.")
+                else:
+                    printSuccess("Flushing DNS by restarting NetworkManager succeeded")
             if os.path.isfile("/usr/lib/systemd/system/wicd.service"):
+                dnsCacheFound = True
                 if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "wicd.service"]):
                     printFailure("Flushing the DNS Cache failed.")
+                else:
+                    printSuccess("Flushing DNS by restarting wicd succeeded")
+            if os.path.isfile("/usr/lib/systemd/system/dnsmasq.service"):
+                dnsCacheFound = True
+                if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "dnsmasq.service"]):
+                    printFailure("Flushing the DNS Cache failed.")
+                else:
+                    printSuccess("Flushing DNS by restarting dnsmasq succeeded")
+            if not dnsCacheFound:
+                printFailure("Unable to determine DNS management tool.")
     elif os.name == 'nt':
         print ("Automatically moving the hosts file in place is not yet supported.")
         print ("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")
