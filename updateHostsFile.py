@@ -143,8 +143,11 @@ def promptForUpdate():
         except:
             printFailure("ERROR: No 'hosts' file in the folder, try creating one manually")
 
+    if not update:
+        return
+
     response = "yes" if auto else query_yes_no("Do you want to update all data sources?")
-    if response == "yes" and update:
+    if response == "yes":
         updateAllSources()
     else:
         if not auto:
