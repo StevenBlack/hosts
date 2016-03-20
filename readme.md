@@ -89,7 +89,7 @@ Add one or more *optional* extensions, which originate from subfolders of the `e
 
 ## How do I incorporate my own hosts?
 
-If you have custom hosts records, place them in file `myhosts`.  The contents of this file are prepended to the
+If you have custom hosts records, place them in file `myhosts`.  The contents of this file are added near top of the
 unified hosts file during the update process.
 
 ## What is a hosts file?
