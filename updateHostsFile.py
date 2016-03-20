@@ -49,10 +49,7 @@ def getFileByUrl(url):
 # In Python 3   "print" is a function, braces are added everywhere
 
 # Detecting Python 3 for version-dependent implementations
-Python3     = False
-cur_version = sys.version_info
-if cur_version >= (3, 0):
-    Python3 = True
+Python3 = sys.version_info >= (3,0)
 
 # This function works in both Python 2 and Python 3
 def myInput(msg = ""):
