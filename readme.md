@@ -1,4 +1,4 @@
-#Unified hosts file 
+#Unified hosts file with porn extensions
 
 This repository consolidates several reputable `hosts` files, and merges them into a single unified hosts file
 with duplicates removed.
@@ -7,7 +7,7 @@ Several variants are available.  See the table below:
 
 **Expectation**: These unified hosts file should serve all devices, regardless of OS.
 
-* Last updated: **March 17 2016**.
+* Last updated: **March 20 2016**.
 
 ### Hosts file variants
 
