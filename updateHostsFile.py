@@ -24,6 +24,7 @@ import time
 import glob
 import argparse
 import socket
+import json
 # zip files are not used actually, support deleted
 # StringIO is not needed in Python 3
 # Python 3 works differently with urlopen
@@ -71,16 +72,17 @@ def listdir_nohidden(path):
     return glob.glob(os.path.join(path, '*'))
 
 # Project Settings
-BASEDIR_PATH        = os.path.dirname(os.path.realpath(__file__))
-DATA_PATH           = os.path.join(BASEDIR_PATH, 'data')
-EXTENSIONS_PATH     = os.path.join(BASEDIR_PATH, 'extensions')
-DATA_FILENAMES      = 'hosts'
-UPDATE_URL_FILENAME = 'update.info'
-SOURCES             = listdir_nohidden(DATA_PATH)
-EXTENSIONS          = listdir_nohidden(EXTENSIONS_PATH)
-README_TEMPLATE     = os.path.join(BASEDIR_PATH, 'readme_template.md')
-README_FILENAME     = 'readme.md'
-WHITELIST_FILE      = os.path.join(BASEDIR_PATH, 'whitelist')
+BASEDIR_PATH         = os.path.dirname(os.path.realpath(__file__))
+DATA_PATH            = os.path.join(BASEDIR_PATH, 'data')
+EXTENSIONS_PATH      = os.path.join(BASEDIR_PATH, 'extensions')
+DATA_FILENAMES       = 'hosts'
+UPDATE_URL_FILENAME  = 'update.info'
+SOURCES              = listdir_nohidden(DATA_PATH)
+EXTENSIONS           = listdir_nohidden(EXTENSIONS_PATH)
+README_TEMPLATE      = os.path.join(BASEDIR_PATH, 'readme_template.md')
+README_FILENAME      = 'readme.md'
+WHITELIST_FILE       = os.path.join(BASEDIR_PATH, 'whitelist')
+README_DATA_FILENAME = "readmeData.json"
 
 # Exclusions
 EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
@@ -108,10 +110,9 @@ def main():
     parser.add_argument("--output", "-o", dest="outputSubFolder", default="", help="Output subfolder for generated hosts file.")
     parser.add_argument("--noupdate", "-n", dest="noUpdate", default=False, action='store_true', help="Don't update from host data sources.")
 
-
     args = parser.parse_args()
 
-    global auto, update, replace, targetIP, replace, extensions, outputPath
+    global auto, update, replace, targetIP, replace, extensions, outputPath, readmeData
     auto = args.auto
     replace = args.replace
     targetIP = args.targetIP
@@ -123,13 +124,17 @@ def main():
     # ... intersected with the extensions passed-in as arguments, then sorted.
     extensions = sorted( list(set(args.extensions).intersection(extensions)) )
 
+    with open(README_DATA_FILENAME, 'r') as f:
+        readmeData = json.load(f)
+
     promptForUpdate()
     promptForExclusions()
     mergeFile = createInitialFile()
     removeOldHostsFile()
     finalFile = removeDupsAndExcl(mergeFile)
     finalizeFile(finalFile)
-    updateReadme(numberOfRules)
+    # updateReadme(numberOfRules)
+    updateReadmeData(numberOfRules)
     printSuccess('Success! The hosts file has been saved in folder\n' + outputPath + '\nIt contains ' +
                  "{:,}".format(numberOfRules) + ' unique entries.')
 
@@ -379,7 +384,7 @@ def writeOpeningHeader(finalFile):
     writeData(finalFile, '\n')
     writeData(finalFile, '127.0.0.1 localhost\n')
     writeData(finalFile, '127.0.0.1 localhost.localdomain\n')
-    writeData(finalFile, '127.0.0.1 local\n')
+    writeData(finalFile, '127.a0.0.1 local\n')
     writeData(finalFile, '255.255.255.255 broadcasthost\n')
     writeData(finalFile, '::1 localhost\n')
     writeData(finalFile, 'fe80::1%lo0 localhost\n')
@@ -394,12 +399,26 @@ def writeOpeningHeader(finalFile):
 
     finalFile.write(fileContents)
 
+def updateReadmeData(numberOfRules):
+    extensionsKey = "base"
+    hostsLocation = ""
+    if extensions:
+        extensionsKey = "-".join(extensions)
+
+    generationData = {}
+    generationData["location"] = outputPath
+    generationData["entries"]  = numberOfRules
+
+    readmeData[extensionsKey] = generationData
+    with open(README_DATA_FILENAME, 'w') as f:
+        json.dump(readmeData, f)
+
 def updateReadme(numberOfRules):
     extensionsStr = "* Extensions: **none**."
     extensionsHeader = ""
     if extensions:
-      extensionsStr = "* Extensions: **" + ", ".join(extensions) + "**."
-      extensionsHeader = "with "+ ", ".join(extensions) + " extensions"
+        extensionsStr = "* Extensions: **" + ", ".join(extensions) + "**."
+        extensionsHeader = "with "+ ", ".join(extensions) + " extensions"
 
     with open(os.path.join(outputPath,README_FILENAME), "wt") as out:
         for line in open(README_TEMPLATE):
