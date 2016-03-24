@@ -315,6 +315,8 @@ def removeDupsAndExcl(mergeFile):
     exclusions = settings["exclusions"]
     for line in mergeFile.readlines():
         write = 'true'
+        # Trim trailing whitespace
+        line = line.rstrip()
         # Explicit encoding
         line = line.decode("UTF-8")
         # replace tabs with space
