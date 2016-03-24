@@ -27,7 +27,7 @@ Python3 = sys.version_info >= (3,0)
 
 def main():
 
-    s = Template('${description} | [Readme](https://github.com/StevenBlack/hosts/blob/master/${location}readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/${location}hosts) | ${entries}')
+    s = Template('${description} | [Readme](https://github.com/StevenBlack/hosts/blob/master/${location}readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/${location}hosts) | ${fmtentries}')
 
     with open(README_DATA_FILENAME, 'r') as f:
        data = json.load(f)
@@ -41,6 +41,7 @@ def main():
 
     tocRows = ""
     for key in keys:
+        data[key]["fmtentries"] = "{:,}".format(data[key]["entries"])
         if key == "base":
             data[key]["description"] = 'Unified hosts = **(adware + malware)**'
         else:
