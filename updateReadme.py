@@ -10,17 +10,11 @@
 
 import os
 import platform
-import re
-import shutil
 import string
-import subprocess
 import sys
-import tempfile
 import time
-import glob
-import argparse
-import socket
 import json
+from string import Template
 
 # Project Settings
 BASEDIR_PATH         = os.path.dirname(os.path.realpath(__file__))
@@ -33,6 +27,8 @@ Python3 = sys.version_info >= (3,0)
 
 def main():
 
+    s = Template('${description} | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/${location}hosts) | ${entries}')
+
     with open(README_DATA_FILENAME, 'r') as f:
        data = json.load(f)
 
@@ -42,6 +38,16 @@ def main():
         keys = data.keys()
 
     keys.sort(key=cmp_keys)
+
+    tocRows = ""
+    for key in keys:
+        if key == "base":
+            data[key]["description"] = 'Unified hosts = **(adware + malware)**'
+        else:
+            data[key]["description"] = 'Unified hosts **+ ' + key.replace( "-", " + ") + '**'
+
+        tocRows += s.substitute(data[key]) + "\n"
+
 
     for key in keys:
         extensions = key.replace( "-", ", ")
@@ -53,7 +59,8 @@ def main():
                 line = line.replace( '@GEN_DATE@', time.strftime("%B %d %Y", time.gmtime()))
                 line = line.replace( '@EXTENSIONS@', extensionsStr )
                 line = line.replace( '@EXTENSIONS_HEADER@', extensionsHeader )
-                line = line.replace('@NUM_ENTRIES@', "{:,}".format(data[key]["entries"]))
+                line = line.replace( '@NUM_ENTRIES@', "{:,}".format(data[key]["entries"]))
+                line = line.replace( '@TOCROWS@', tocRows )
                 out.write( line )
 
 def cmp_keys(item):
