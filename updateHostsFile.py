@@ -74,59 +74,62 @@ def listdir_nohidden(path):
 
 # Project Settings
 BASEDIR_PATH         = os.path.dirname(os.path.realpath(__file__))
-DATA_PATH            = os.path.join(BASEDIR_PATH, 'data')
-EXTENSIONS_PATH      = os.path.join(BASEDIR_PATH, 'extensions')
-DATA_FILENAMES       = 'hosts'
-UPDATE_URL_FILENAME  = 'update.info'
-SOURCES              = listdir_nohidden(DATA_PATH)
-EXTENSIONS           = listdir_nohidden(EXTENSIONS_PATH)
-README_TEMPLATE      = os.path.join(BASEDIR_PATH, 'readme_template.md')
-README_FILENAME      = 'readme.md'
-WHITELIST_FILE       = os.path.join(BASEDIR_PATH, 'whitelist')
-README_DATA_FILENAME = "readmeData.json"
 
-# Exclusions
-EXCLUSION_PATTERN = '([a-zA-Z\d-]+\.){0,}' #append domain the end
-EXCLUSIONS        = []
-# Common domains to exclude
-COMMON_EXCLUSIONS = ['hulu.com']
+defaults = {
+    "numberofrules" : 0,
+    "datapath" : os.path.join(BASEDIR_PATH, "data"),
+    "freshen" : True,
+    "replace" : False,
+    "extensionspath" : os.path.join(BASEDIR_PATH, "extensions"),
+    "extensions" : [],
+    "outputsubfolder" : "",
+    "datafilenames" : "hosts",
+    "targetip" : "0.0.0.0",
+    "updateurlfilename" : "update.info",
+    "readmefilename" : "readme.md",
+    "readmetemplate" : os.path.join(BASEDIR_PATH, "readme_template.md"),
+    "readmedata" : {},
+    "readmedatafilename" : "readmeData.json",
+    "exclusionpattern" : "([a-zA-Z\d-]+\.){0,}",
+    "exclusionregexs" : [],
+    "exclusions" : [],
+    "commonexclusions" : ["hulu.com"],
+    "whitelistfile" : os.path.join(BASEDIR_PATH, "whitelist")}
 
-# Global vars
-outputPath = BASEDIR_PATH
-exclusionRegexs = []
-numberOfRules = 0
-auto = False
-update = True
-replace = False
-targetIP = "0.0.0.0"
-extensions = []
+options = {}
+settings = {}
 
 def main():
 
     parser = argparse.ArgumentParser(description="Creates a unified hosts file from hosts stored in data subfolders.")
     parser.add_argument("--auto", "-a", dest="auto", default=False, action='store_true', help="Run without prompting.")
     parser.add_argument("--replace", "-r", dest="replace", default=False, action='store_true', help="Replace your active hosts file with this new hosts file.")
-    parser.add_argument("--ip", "-i", dest="targetIP", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
+    parser.add_argument("--ip", "-i", dest="targetip", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
     parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs='*', help="Host extensions to include in the final hosts file.")
-    parser.add_argument("--output", "-o", dest="outputSubFolder", default="", help="Output subfolder for generated hosts file.")
-    parser.add_argument("--noupdate", "-n", dest="noUpdate", default=False, action='store_true', help="Don't update from host data sources.")
+    parser.add_argument("--output", "-o", dest="outputsubfolder", default="", help="Output subfolder for generated hosts file.")
+    parser.add_argument("--noupdate", "-n", dest="noupdate", default=False, action='store_true', help="Don't update from host data sources.")
 
-    args = parser.parse_args()
+    global defaults, options, settings
 
-    global auto, update, replace, targetIP, replace, extensions, outputPath, readmeData
-    auto = args.auto
-    replace = args.replace
-    targetIP = args.targetIP
-    outputPath = os.path.join(BASEDIR_PATH, args.outputSubFolder)
-    update = not args.noUpdate
+    options = vars(parser.parse_args())
+
+    options["outputpath"] = os.path.join(BASEDIR_PATH, options["outputsubfolder"])
+    options["freshen"] = not options["noupdate"]
+
+    settings = {}
+    settings.update(defaults)
+    settings.update(options)
+
+    settings["sources"] = listdir_nohidden(settings["datapath"])
+
 
     # All our extensions folders...
-    extensions = [os.path.basename(item) for item in listdir_nohidden(EXTENSIONS_PATH)]
+    settings["extensions"] = [os.path.basename(item) for item in listdir_nohidden(settings["extensionspath"])]
     # ... intersected with the extensions passed-in as arguments, then sorted.
-    extensions = sorted( list(set(args.extensions).intersection(extensions)) )
+    settings["extensions"]  = sorted( list(set(options["extensions"]).intersection(settings["extensions"])) )
 
-    with open(README_DATA_FILENAME, 'r') as f:
-        readmeData = json.load(f)
+    with open(settings["readmedatafilename"], 'r') as f:
+        settings["readmedata"] = json.load(f)
 
     promptForUpdate()
     promptForExclusions()
@@ -134,9 +137,9 @@ def main():
     removeOldHostsFile()
     finalFile = removeDupsAndExcl(mergeFile)
     finalizeFile(finalFile)
-    updateReadmeData(numberOfRules)
-    printSuccess('Success! The hosts file has been saved in folder\n' + outputPath + '\nIt contains ' +
-                 "{:,}".format(numberOfRules) + ' unique entries.')
+    updateReadmeData()
+    printSuccess('Success! The hosts file has been saved in folder ' + settings["outputsubfolder"] + '\nIt contains ' +
+                 "{:,}".format(settings["numberofrules"]) + ' unique entries.')
 
     promptForMove(finalFile)
 
@@ -149,24 +152,24 @@ def promptForUpdate():
         except:
             printFailure("ERROR: No 'hosts' file in the folder, try creating one manually")
 
-    if not update:
+    if not settings["freshen"]:
         return
 
-    response = "yes" if auto else query_yes_no("Do you want to update all data sources?")
+    response = "yes" if settings["auto"] else query_yes_no("Do you want to update all data sources?")
     if response == "yes":
         updateAllSources()
     else:
-        if not auto:
+        if not settings["auto"]:
             print ("OK, we\'ll stick with what we\'ve  got locally.")
 
 def promptForExclusions():
-    response = "no" if auto else query_yes_no("Do you want to exclude any domains?\n" +
+    response = "no" if settings["auto"] else query_yes_no("Do you want to exclude any domains?\n" +
                             "For example, hulu.com video streaming must be able to access " +
                             "its tracking and ad servers in order to play video.")
     if response == "yes":
         displayExclusionOptions()
     else:
-        if not auto:
+        if not settings["auto"]:
             print ("OK, we\'ll only exclude domains in the whitelist.")
 
 def promptForMoreCustomExclusions():
@@ -178,10 +181,10 @@ def promptForMoreCustomExclusions():
 
 def promptForMove(finalFile):
 
-    if replace:
+    if settings["replace"]:
         response = "yes"
     else:
-        response = "no" if auto else query_yes_no("Do you want to replace your existing hosts file " +
+        response = "no" if settings["auto"] else query_yes_no("Do you want to replace your existing hosts file " +
                             "with the newly generated file?")
     if response == "yes":
         moveHostsFileIntoPlace(finalFile)
@@ -191,7 +194,7 @@ def promptForMove(finalFile):
 
 # Exclusion logic
 def displayExclusionOptions():
-    for exclusionOption in COMMON_EXCLUSIONS:
+    for exclusionOption in settings["common_exclusions"]:
         response = query_yes_no("Do you want to exclude the domain " + exclusionOption + " ?")
         if response == "yes":
             excludeDomain(exclusionOption)
@@ -211,11 +214,11 @@ def gatherCustomExclusions():
             return
 
 def excludeDomain(domain):
-    exclusionRegexs.append(re.compile(EXCLUSION_PATTERN + domain))
+    settings["exclusionregexs"].append(re.compile(settings["exclusionpattern"] + domain))
 
 def matchesExclusions(strippedRule):
     strippedDomain = strippedRule.split()[1]
-    for exclusionRegex in exclusionRegexs:
+    for exclusionRegex in settings["exclusionregexs"]:
         if exclusionRegex.search(strippedDomain):
             return True
     return False
@@ -223,7 +226,7 @@ def matchesExclusions(strippedRule):
 
 # Update Logic
 def updateAllSources():
-    allsources = list(set(SOURCES) | set(EXTENSIONS))
+    allsources = list(set(settings["sources"]) | set(settings["extensions"]))
     for source in allsources:
         if os.path.isdir(source):
             updateURLs = getUpdateURLsFromFile(source)
@@ -237,14 +240,14 @@ def updateAllSources():
                 try:
                     updatedFile = updatedFile.replace('\r', '') #get rid of carriage-return symbols
                     # This is cross-python code
-                    dataFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'wb')
+                    dataFile = open(os.path.join(settings["datapath"], source, settings["datafilenames"]), 'wb')
                     writeData(dataFile, updatedFile)
                     dataFile.close()
                 except:
                     print ("Skipping.")
 
 def getUpdateURLsFromFile(source):
-    pathToUpdateFile = os.path.join(DATA_PATH, source, UPDATE_URL_FILENAME)
+    pathToUpdateFile = os.path.join(settings["datapath"], source, settings["updateurlfilename"])
     if os.path.exists(pathToUpdateFile):
         updateFile = open(pathToUpdateFile, 'r')
         retURLs     = updateFile.readlines()
@@ -259,7 +262,7 @@ def getUpdateURLsFromFile(source):
 
 
 def getUpdateURLFromFile(source):
-    pathToUpdateFile = os.path.join(DATA_PATH, source, UPDATE_URL_FILENAME)
+    pathToUpdateFile = os.path.join(settings["datapath"], source, settings["updateurlfilename"])
     if os.path.exists(pathToUpdateFile):
         updateFile = open(pathToUpdateFile, 'r')
         retURL     = updateFile.readline().strip()
@@ -274,34 +277,34 @@ def getUpdateURLFromFile(source):
 # File Logic
 def createInitialFile():
     mergeFile = tempfile.NamedTemporaryFile()
-    for source in SOURCES:
-        curFile = open(os.path.join(DATA_PATH, source, DATA_FILENAMES), 'r')
+    for source in settings["sources"]:
+        curFile = open(os.path.join(settings["datapath"], source, settings["datafilenames"]), 'r')
         #Done in a cross-python way
         writeData(mergeFile, curFile.read())
 
-    for source in extensions:
-        curFile = open(os.path.join(EXTENSIONS_PATH, source, DATA_FILENAMES), 'r')
+    for source in settings["extensions"]:
+        curFile = open(os.path.join(settings["extensionspath"], source, settings["datafilenames"]), 'r')
         #Done in a cross-python way
         writeData(mergeFile, curFile.read())
 
     return mergeFile
 
 def removeDupsAndExcl(mergeFile):
-    global numberOfRules
-    if os.path.isfile(WHITELIST_FILE):
-        with open(WHITELIST_FILE, "r") as ins:
+    numberOfRules = settings["numberofrules"]
+    if os.path.isfile(settings["whitelistfile"]):
+        with open(settings["whitelistfile"], "r") as ins:
             for line in ins:
                 if line.rstrip():
-                    EXCLUSIONS.append(line)
+                    settings["exclusions"].append(line)
 
-    if not os.path.exists(outputPath):
-        os.makedirs(outputPath)
+    if not os.path.exists(settings["outputpath"]):
+        os.makedirs(settings["outputpath"])
 
     # Another mode is required to read and write the file in Python 3
     if Python3:
-        finalFile = open(os.path.join(outputPath, 'hosts'), 'w+b')
+        finalFile = open(os.path.join(settings["outputpath"], 'hosts'), 'w+b')
     else:
-        finalFile = open(os.path.join(outputPath, 'hosts'), 'w+')
+        finalFile = open(os.path.join(settings["outputpath"], 'hosts'), 'w+')
 
     mergeFile.seek(0) # reset file pointer
     hostnames = set()
@@ -309,6 +312,7 @@ def removeDupsAndExcl(mergeFile):
     hostnames.add("localhost.localdomain")
     hostnames.add("local")
     hostnames.add("broadcasthost")
+    exclusions = settings["exclusions"]
     for line in mergeFile.readlines():
         write = 'true'
         # Explicit encoding
@@ -329,7 +333,7 @@ def removeDupsAndExcl(mergeFile):
         if matchesExclusions(strippedRule):
             continue
         hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
-        for exclude in EXCLUSIONS:
+        for exclude in exclusions:
             if exclude in line:
                 write = 'false'
                 break
@@ -338,6 +342,8 @@ def removeDupsAndExcl(mergeFile):
             hostnames.add(hostname)
             numberOfRules += 1
 
+
+    settings["numberofrules"] = numberOfRules
     mergeFile.close()
 
     return finalFile
@@ -349,9 +355,9 @@ def normalizeRule(rule):
         hostname = hostname.lower().strip() # explicitly lowercase and trim the hostname
         if suffix is not '':
             # add suffix as comment only, not as a separate host
-            return hostname, "%s %s #%s\n" % (targetIP, hostname, suffix)
+            return hostname, "%s %s #%s\n" % (settings["targetip"], hostname, suffix)
         else:
-            return hostname, "%s %s\n" % (targetIP, hostname)
+            return hostname, "%s %s\n" % (settings["targetip"], hostname)
     print ("==>%s<==" % rule)
     return None, None
 
@@ -370,14 +376,13 @@ def stripRule(line):
         return splitLine[0] + ' ' + splitLine[1]
 
 def writeOpeningHeader(finalFile):
-    global numberOfRules
     finalFile.seek(0) #reset file pointer
     fileContents = finalFile.read()  #save content
     finalFile.seek(0) #write at the top
     writeData(finalFile, '# This hosts file is a merged collection of hosts from reputable sources,\n')
     writeData(finalFile, '# with a dash of crowd sourcing via Github\n#\n')
     writeData(finalFile, '# Date: ' + time.strftime("%B %d %Y", time.gmtime()) + '\n')
-    writeData(finalFile, '# Number of unique domains: ' + "{:,}".format(numberOfRules) + '\n#\n')
+    writeData(finalFile, '# Number of unique domains: ' + "{:,}".format(settings["numberofrules"]) + '\n#\n')
     writeData(finalFile, '# Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts\n')
     writeData(finalFile, '# Project home page: https://github.com/StevenBlack/hosts\n#\n')
     writeData(finalFile, '# ===============================================================\n')
@@ -399,19 +404,19 @@ def writeOpeningHeader(finalFile):
 
     finalFile.write(fileContents)
 
-def updateReadmeData(numberOfRules):
+def updateReadmeData():
     extensionsKey = "base"
     hostsLocation = ""
-    if extensions:
-        extensionsKey = "-".join(extensions)
+    if settings["extensions"]:
+        extensionsKey = "-".join(settings["extensions"])
 
     generationData = {}
-    generationData["location"] = outputPath
-    generationData["entries"]  = numberOfRules
+    generationData["location"] = os.path.join(settings["outputsubfolder"], '')
+    generationData["entries"]  = settings["numberofrules"]
 
-    readmeData[extensionsKey] = generationData
-    with open(README_DATA_FILENAME, 'w') as f:
-        json.dump(readmeData, f)
+    settings["readmedata"][extensionsKey] = generationData
+    with open(settings["readmedatafilename"], 'w') as f:
+        json.dump(settings["readmedata"], f)
 
 def moveHostsFileIntoPlace(finalFile):
     if os.name == 'posix':
@@ -532,19 +537,19 @@ def printFailure(text):
 # End Helper Functions
 
 # Orphaned now.
-def updateReadme(numberOfRules):
+def updateReadme():
     extensionsStr = "* Extensions: **none**."
     extensionsHeader = ""
-    if extensions:
-        extensionsStr = "* Extensions: **" + ", ".join(extensions) + "**."
-        extensionsHeader = "with "+ ", ".join(extensions) + " extensions"
+    if settings["extensions"]:
+        extensionsStr = "* Extensions: **" + ", ".join(settings["extensions"]) + "**."
+        extensionsHeader = "with "+ ", ".join(settings["extensions"]) + " extensions"
 
-    with open(os.path.join(outputPath,README_FILENAME), "wt") as out:
-        for line in open(README_TEMPLATE):
+    with open(os.path.join(settings["outputpath"],settings["readmefilename"]), "wt") as out:
+        for line in open(settings["readme_template"]):
             line = line.replace( '@GEN_DATE@', time.strftime("%B %d %Y", time.gmtime()))
             line = line.replace( '@EXTENSIONS@', extensionsStr )
             line = line.replace( '@EXTENSIONS_HEADER@', extensionsHeader )
-            out.write(line.replace('@NUM_ENTRIES@', "{:,}".format(numberOfRules)))
+            out.write(line.replace('@NUM_ENTRIES@', "{:,}".format(settings["numberofrules"])))
 
 
 
