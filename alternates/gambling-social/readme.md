@@ -1,26 +1,25 @@
 #Unified hosts file with gambling, social extensions
 
-This repository consolidates several reputable `hosts` files, and merges them into a single unified hosts file
+This repository consolidates several reputable `hosts` files, and merges them into various unified hosts files
 with duplicates removed.
 
-Several variants are available.  See the table below:
+* Last updated: **March 24 2016**.
 
-**Expectation**: These unified hosts file should serve all devices, regardless of OS.
-
-* Last updated: **March 22 2016**.
-
-### Hosts file variants
+### List of all hosts file variants
 
 Host file recipe | Raw hosts | Unique domains
 ---------------- |:---------:|:-------------:
-Unified hosts = **(adware + malware)** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | 27,274
-Unified hosts + **gambling** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts) | 27,989
-Unified hosts + **porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts) | 32,524
-Unified hosts + **social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts) | 27,382
-Unified hosts + **gambling + porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts) | 33,239
-Unified hosts + **gambling + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts) | 28,097
-Unified hosts + **porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts) | 32,632
-Unified hosts + **gambling + porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn-social/hosts) | 33,347
+Unified hosts = **(adware + malware)** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | 27284
+Unified hosts **+ gambling** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts) | 27999
+Unified hosts **+ porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts) | 32534
+Unified hosts **+ social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts) | 27392
+Unified hosts **+ gambling + porn** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts) | 33249
+Unified hosts **+ gambling + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts) | 28107
+Unified hosts **+ porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts) | 32642
+Unified hosts **+ gambling + porn + social** | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn-social/hosts) | 33357
+
+
+**Expectation**: These unified hosts file should serve all devices, regardless of OS.
 
 ## Sources of hosts data unified here
 
