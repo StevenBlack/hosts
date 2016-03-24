@@ -315,12 +315,14 @@ def removeDupsAndExcl(mergeFile):
     exclusions = settings["exclusions"]
     for line in mergeFile.readlines():
         write = 'true'
-        # Trim trailing whitespace
-        line = line.rstrip()
         # Explicit encoding
         line = line.decode("UTF-8")
         # replace tabs with space
         line = line.replace('\t+', ' ')
+        # Trim trailing whitespace
+        line = line.rstrip()
+        if not line:
+            continue
         # Testing the first character doesn't require startswith
         if line[0] == '#' or re.match(r'^\s*$', line[0]):
             # Cross-python write
