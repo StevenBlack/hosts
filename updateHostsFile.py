@@ -133,7 +133,6 @@ def main():
     removeOldHostsFile()
     finalFile = removeDupsAndExcl(mergeFile)
     finalizeFile(finalFile)
-    # updateReadme(numberOfRules)
     updateReadmeData(numberOfRules)
     printSuccess('Success! The hosts file has been saved in folder\n' + outputPath + '\nIt contains ' +
                  "{:,}".format(numberOfRules) + ' unique entries.')
@@ -413,20 +412,6 @@ def updateReadmeData(numberOfRules):
     with open(README_DATA_FILENAME, 'w') as f:
         json.dump(readmeData, f)
 
-def updateReadme(numberOfRules):
-    extensionsStr = "* Extensions: **none**."
-    extensionsHeader = ""
-    if extensions:
-        extensionsStr = "* Extensions: **" + ", ".join(extensions) + "**."
-        extensionsHeader = "with "+ ", ".join(extensions) + " extensions"
-
-    with open(os.path.join(outputPath,README_FILENAME), "wt") as out:
-        for line in open(README_TEMPLATE):
-            line = line.replace( '@GEN_DATE@', time.strftime("%B %d %Y", time.gmtime()))
-            line = line.replace( '@EXTENSIONS@', extensionsStr )
-            line = line.replace( '@EXTENSIONS_HEADER@', extensionsHeader )
-            out.write(line.replace('@NUM_ENTRIES@', "{:,}".format(numberOfRules)))
-
 def moveHostsFileIntoPlace(finalFile):
     if os.name == 'posix':
         dnsCacheFound = False
@@ -544,6 +529,23 @@ def printSuccess(text):
 def printFailure(text):
     print (colorize(text, colors.FAIL))
 # End Helper Functions
+
+# Orphaned now.
+def updateReadme(numberOfRules):
+    extensionsStr = "* Extensions: **none**."
+    extensionsHeader = ""
+    if extensions:
+        extensionsStr = "* Extensions: **" + ", ".join(extensions) + "**."
+        extensionsHeader = "with "+ ", ".join(extensions) + " extensions"
+
+    with open(os.path.join(outputPath,README_FILENAME), "wt") as out:
+        for line in open(README_TEMPLATE):
+            line = line.replace( '@GEN_DATE@', time.strftime("%B %d %Y", time.gmtime()))
+            line = line.replace( '@EXTENSIONS@', extensionsStr )
+            line = line.replace( '@EXTENSIONS_HEADER@', extensionsHeader )
+            out.write(line.replace('@NUM_ENTRIES@', "{:,}".format(numberOfRules)))
+
+
 
 if __name__ == "__main__":
     main()
