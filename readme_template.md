@@ -3,15 +3,16 @@
 This repository consolidates several reputable `hosts` files, and merges them into various unified hosts files
 with duplicates removed.
 
+* Here's the [raw hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/@SUBFOLDER@hosts) containing @NUM_ENTRIES@ entries.
 * Last updated: **@GEN_DATE@**.
 
 ### List of all hosts file variants
 
-Host file recipe | Raw hosts | Unique domains
----------------- |:---------:|:-------------:
+Host file recipe | Readme | Raw hosts | Unique domains
+---------------- |:------:|:---------:|:-------------:
 @TOCROWS@
 
-**Expectation**: These unified hosts file should serve all devices, regardless of OS.
+**Expectation**: These unified hosts files should serve all devices, regardless of OS.
 
 ## Sources of hosts data unified here
 

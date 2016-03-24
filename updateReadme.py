@@ -27,7 +27,7 @@ Python3 = sys.version_info >= (3,0)
 
 def main():
 
-    s = Template('${description} | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/${location}hosts) | ${entries}')
+    s = Template('${description} | [Readme](https://github.com/StevenBlack/hosts/blob/master/${location}readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/${location}hosts) | ${entries}')
 
     with open(README_DATA_FILENAME, 'r') as f:
        data = json.load(f)
@@ -60,6 +60,7 @@ def main():
                 line = line.replace( '@EXTENSIONS@', extensionsStr )
                 line = line.replace( '@EXTENSIONS_HEADER@', extensionsHeader )
                 line = line.replace( '@NUM_ENTRIES@', "{:,}".format(data[key]["entries"]))
+                line = line.replace( '@SUBFOLDER@',os.path.join(data[key]["location"], ''))
                 line = line.replace( '@TOCROWS@', tocRows )
                 out.write( line )
 
