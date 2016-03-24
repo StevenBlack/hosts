@@ -382,8 +382,10 @@ def writeOpeningHeader(finalFile):
     writeData(finalFile, '# This hosts file is a merged collection of hosts from reputable sources,\n')
     writeData(finalFile, '# with a dash of crowd sourcing via Github\n#\n')
     writeData(finalFile, '# Date: ' + time.strftime("%B %d %Y", time.gmtime()) + '\n')
+    if settings["extensions"]:
+        writeData(finalFile, '# Extensions added to this file: ' + ", ".join(settings["extensions"]) + '\n')
     writeData(finalFile, '# Number of unique domains: ' + "{:,}".format(settings["numberofrules"]) + '\n#\n')
-    writeData(finalFile, '# Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts\n')
+    writeData(finalFile, '# Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/'+ os.path.join(settings["outputsubfolder"],"") + 'hosts\n')
     writeData(finalFile, '# Project home page: https://github.com/StevenBlack/hosts\n#\n')
     writeData(finalFile, '# ===============================================================\n')
     writeData(finalFile, '\n')
