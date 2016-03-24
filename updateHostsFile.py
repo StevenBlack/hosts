@@ -457,6 +457,12 @@ def moveHostsFileIntoPlace(finalFile):
                     printFailure("Flushing the DNS Cache failed.")
                 else:
                     printSuccess("Flushing DNS by restarting dnsmasq succeeded")
+            if os.path.isfile("/usr/lib/systemd/system/networking.service"):
+                dnsCacheFound = True
+                if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "networking.service"]):
+                    printFailure("Flushing the DNS Cache failed.")
+                else:
+                    printSuccess("Flushing DNS by restarting networking.service succeeded")
             if not dnsCacheFound:
                 printFailure("Unable to determine DNS management tool.")
     elif os.name == 'nt':
