@@ -25,6 +25,7 @@ import glob
 import argparse
 import socket
 import json
+
 # zip files are not used actually, support deleted
 # StringIO is not needed in Python 3
 # Python 3 works differently with urlopen
@@ -39,6 +40,9 @@ except ImportError:
     from urllib import urlencode
     from urllib2 import urlopen, Request, HTTPError
 
+# Detecting Python 3 for version-dependent implementations
+Python3 = sys.version_info >= (3,0)
+
 # This function handles both Python 2 and Python 3
 def getFileByUrl(url):
     try:
@@ -49,9 +53,6 @@ def getFileByUrl(url):
         # raise
 
 # In Python 3   "print" is a function, braces are added everywhere
-
-# Detecting Python 3 for version-dependent implementations
-Python3 = sys.version_info >= (3,0)
 
 # This function works in both Python 2 and Python 3
 def myInput(msg = ""):
