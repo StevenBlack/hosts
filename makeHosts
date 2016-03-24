@@ -1,13 +1,14 @@
 #!/bin/sh
 
 # These create various alternate hosts files by combining and adding the gambling, porn, and social media extensions.
-python updateHostsFile.py -a    -o alternates/gambling -e gambling
-python updateHostsFile.py -a -n -o alternates/porn -e porn
-python updateHostsFile.py -a -n -o alternates/social -e social
-python updateHostsFile.py -a -n -o alternates/gambling-porn -e gambling porn
-python updateHostsFile.py -a -n -o alternates/gambling-social -e gambling social
-python updateHostsFile.py -a -n -o alternates/porn-social -e porn social
-python updateHostsFile.py -a -n -o alternates/gambling-porn-social -e gambling porn social
+python3 updateHostsFile.py -a    -o alternates/gambling -e gambling
+python3 updateHostsFile.py -a -n -o alternates/porn -e porn
+python3 updateHostsFile.py -a -n -o alternates/social -e social
+python3 updateHostsFile.py -a -n -o alternates/gambling-porn -e gambling porn
+python3 updateHostsFile.py -a -n -o alternates/gambling-social -e gambling social
+python3 updateHostsFile.py -a -n -o alternates/porn-social -e porn social
+python3 updateHostsFile.py -a -n -o alternates/gambling-porn-social -e gambling porn social
+python3 updateHostsFile.py -a -n
 
-# This creates a vanilla hosts file
-python updateHostsFile.py -a -n
+# Update the readmes.
+python3 updatereadme.py
