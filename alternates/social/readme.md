@@ -4,7 +4,7 @@ This repository consolidates several reputable `hosts` files, and merges them in
 with duplicates removed.
 
 * Here's the [raw hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts) containing 27,393 entries.
-* Last updated: **March 24 2016**.
+* Last updated: **March 25 2016**.
 
 ### List of all hosts file variants
 
