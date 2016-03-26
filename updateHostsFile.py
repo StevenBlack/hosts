@@ -73,7 +73,7 @@ def listdir_nohidden(path):
     return glob.glob(os.path.join(path, '*'))
 
 # Project Settings
-BASEDIR_PATH         = os.path.dirname(os.path.realpath(__file__))
+BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 defaults = {
     "numberofrules" : 0,
@@ -121,7 +121,6 @@ def main():
     settings.update(options)
 
     settings["sources"] = listdir_nohidden(settings["datapath"])
-
 
     # All our extensions folders...
     settings["extensions"] = [os.path.basename(item) for item in listdir_nohidden(settings["extensionspath"])]
