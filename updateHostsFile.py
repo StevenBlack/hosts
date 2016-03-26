@@ -546,22 +546,5 @@ def printFailure(text):
     print (colorize(text, colors.FAIL))
 # End Helper Functions
 
-# Orphaned now.
-def updateReadme():
-    extensionsStr = "* Extensions: **none**."
-    extensionsHeader = ""
-    if settings["extensions"]:
-        extensionsStr = "* Extensions: **" + ", ".join(settings["extensions"]) + "**."
-        extensionsHeader = "with "+ ", ".join(settings["extensions"]) + " extensions"
-
-    with open(os.path.join(settings["outputpath"],settings["readmefilename"]), "wt") as out:
-        for line in open(settings["readme_template"]):
-            line = line.replace( '@GEN_DATE@', time.strftime("%B %d %Y", time.gmtime()))
-            line = line.replace( '@EXTENSIONS@', extensionsStr )
-            line = line.replace( '@EXTENSIONS_HEADER@', extensionsHeader )
-            out.write(line.replace('@NUM_ENTRIES@', "{:,}".format(settings["numberofrules"])))
-
-
-
 if __name__ == "__main__":
     main()
