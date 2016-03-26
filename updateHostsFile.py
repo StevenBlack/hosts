@@ -96,9 +96,6 @@ defaults = {
     "commonexclusions" : ["hulu.com"],
     "whitelistfile" : os.path.join(BASEDIR_PATH, "whitelist")}
 
-options = {}
-settings = {}
-
 def main():
 
     parser = argparse.ArgumentParser(description="Creates a unified hosts file from hosts stored in data subfolders.")
@@ -109,7 +106,7 @@ def main():
     parser.add_argument("--output", "-o", dest="outputsubfolder", default="", help="Output subfolder for generated hosts file.")
     parser.add_argument("--noupdate", "-n", dest="noupdate", default=False, action='store_true', help="Don't update from host data sources.")
 
-    global defaults, options, settings
+    global  settings
 
     options = vars(parser.parse_args())
 
