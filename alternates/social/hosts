@@ -1,9 +1,9 @@
 # This hosts file is a merged collection of hosts from reputable sources,
 # with a dash of crowd sourcing via Github
 #
-# Date: March 27 2016
+# Date: March 29 2016
 # Extensions added to this file: social
-# Number of unique domains: 26,998
+# Number of unique domains: 26,997
 #
 # Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts
 # Project home page: https://github.com/StevenBlack/hosts
@@ -17400,7 +17400,7 @@ fe80::1%lo0 localhost
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Sat, 26 Mar 2016 at 17:36:56 GMT
+# Last updated: Mon, 28 Mar 2016 at 23:17:30 GMT
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from
@@ -27437,7 +27437,7 @@ fe80::1%lo0 localhost
 0.0.0.0 schemas.microsoft.akadns.net
 0.0.0.0 secure.flashtalking.com
 0.0.0.0 settings-win.data.microsoft.com
-0.0.0.0 s.gateway.messenger.live.com
+#0.0.0.0 s.gateway.messenger.live.com 	# Interferes with Skype
 0.0.0.0 so.2mdn.net
 0.0.0.0 statsfe2.ws.microsoft.com
 0.0.0.0 telemetry.appex.bing.net #:443
