@@ -118,6 +118,8 @@ def main():
     settings.update(options)
 
     settings["sources"] = listdir_nohidden(settings["datapath"])
+    settings["extensionsources"] = listdir_nohidden(settings["extensionspath"])
+
 
     # All our extensions folders...
     settings["extensions"] = [os.path.basename(item) for item in listdir_nohidden(settings["extensionspath"])]
@@ -222,7 +224,7 @@ def matchesExclusions(strippedRule):
 
 # Update Logic
 def updateAllSources():
-    allsources = list(set(settings["sources"]) | set(settings["extensions"]))
+    allsources = list(set(settings["sources"]) | set(settings["extensionsources"]))
     for source in allsources:
         if os.path.isdir(source):
             updateURLs = getUpdateURLsFromFile(source)
