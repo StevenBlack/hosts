@@ -89,7 +89,7 @@ defaults = {
     "readmefilename" : "readme.md",
     "readmetemplate" : os.path.join(BASEDIR_PATH, "readme_template.md"),
     "readmedata" : {},
-    "readmedatafilename" : "readmeData.json",
+    "readmedatafilename" : os.path.join(BASEDIR_PATH, "readmeData.json"),
     "exclusionpattern" : "([a-zA-Z\d-]+\.){0,}",
     "exclusionregexs" : [],
     "exclusions" : [],
