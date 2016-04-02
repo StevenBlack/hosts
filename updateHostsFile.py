@@ -292,7 +292,8 @@ def removeDupsAndExcl(mergeFile):
     if os.path.isfile(settings["whitelistfile"]):
         with open(settings["whitelistfile"], "r") as ins:
             for line in ins:
-                if line.rstrip():
+                line = line.strip(" \t\n\r")
+                if line and not line.startswith("#"):
                     settings["exclusions"].append(line)
 
     if not os.path.exists(settings["outputpath"]):
