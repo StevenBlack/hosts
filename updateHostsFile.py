@@ -192,7 +192,7 @@ def promptForMove(finalFile):
 
 # Exclusion logic
 def displayExclusionOptions():
-    for exclusionOption in settings["common_exclusions"]:
+    for exclusionOption in settings["commonexclusions"]:
         response = query_yes_no("Do you want to exclude the domain " + exclusionOption + " ?")
         if response == "yes":
             excludeDomain(exclusionOption)
