@@ -80,6 +80,7 @@ defaults = {
     "datapath" : os.path.join(BASEDIR_PATH, "data"),
     "freshen" : True,
     "replace" : False,
+    "backup" : False,
     "extensionspath" : os.path.join(BASEDIR_PATH, "extensions"),
     "extensions" : [],
     "outputsubfolder" : "",
@@ -105,6 +106,7 @@ def main():
     parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs="*", help="Host extensions to include in the final hosts file.")
     parser.add_argument("--output", "-o", dest="outputsubfolder", default="", help="Output subfolder for generated hosts file.")
     parser.add_argument("--noupdate", "-n", dest="noupdate", default=False, action="store_true", help="Don't update from host data sources.")
+    parser.add_argument("--backup", "-b", dest="backup", default=False, action="store_true", help="Backup the hosts files before they are overridden.")
 
     global  settings
 
@@ -473,8 +475,11 @@ def moveHostsFileIntoPlace(finalFile):
 def removeOldHostsFile():               # hotfix since merging with an already existing hosts file leads to artefacts and duplicates
     oldFilePath = os.path.join(BASEDIR_PATH, "hosts")
     open(oldFilePath, "a").close()        # create if already removed, so remove wont raise an error
-    backupFilePath = os.path.join(BASEDIR_PATH, "hosts-{0}".format(time.strftime("%Y-%m-%d-%H-%M-%S")))
-    shutil.copy(oldFilePath, backupFilePath) # make a backup copy, marking the date in which the list was updated
+
+    if settings["backup"]:
+        backupFilePath = os.path.join(BASEDIR_PATH, "hosts-{0}".format(time.strftime("%Y-%m-%d-%H-%M-%S")))
+        shutil.copy(oldFilePath, backupFilePath) # make a backup copy, marking the date in which the list was updated
+
     os.remove(oldFilePath)
     open(oldFilePath, "a").close()        # create new empty hostsfile
 
