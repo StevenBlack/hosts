@@ -1,10 +1,10 @@
 #Unified hosts file with porn, social extensions
 
-This repository consolidates several reputable `hosts` files, and merges them into various unified hosts files
-with duplicates removed.
+This repository consolidates several reputable `hosts` files, and merges them into a unified hosts file
+with duplicates removed.  This repo provide alternate hosts files depending on what you want to block.
 
+* Last updated: **April 04 2016**.
 * Here's the [raw hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts) containing 32,210 entries.
-* Last updated: **April 03 2016**.
 
 ### List of all hosts file variants
 
