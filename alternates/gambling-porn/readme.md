@@ -1,7 +1,7 @@
 #Unified hosts file with gambling, porn extensions
 
 This repository consolidates several reputable `hosts` files, and merges them into a unified hosts file
-with duplicates removed.  This repo provide alternate hosts files depending on what you want to block.
+with duplicates removed.  This repo provides several hosts files tailored to you need to block.
 
 * Last updated: **April 04 2016**.
 * Here's the [raw hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts) containing 32,807 entries.
