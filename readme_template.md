@@ -49,27 +49,28 @@ versions (from locations defined by the update.info text file in each source's f
 
 #### Command line options:
 
+`--help`, or `-h`: display help.
+
 `--auto`, or `-a`: run the script without prompting. When `--auto` is invoked,
 
 * Hosts data sources, including extensions, are updated.
 * No extensions are included by default.  Use the `--extensions` or `-e` flag to include any you want.
 * Your active hosts file is *not* replaced unless you include the `--replace` flag.
 
-`--replace`, or `-r`: trigger replacing your active hosts file with the new hosts file. Use along with `--auto` to
-force replacement.
-
-`--ip nnn.nnn.nnn.nnn`, or `-i nnn.nnn.nnn.nnn`: the IP address to use as the target.  Default is `0.0.0.0`.
+`--backup`, or `-b`: Make a backup of existing hosts file(s) as you generate over them.
 
 `--extensions <ext1> <ext2> <ext3>`, or `-e <ext1> <ext2> <ext3>`: the names of subfolders below the `extensions` folder
 containing additional category-specific hosts files to include in the amalgamation. Example: `--extensions porn` or
 `-e social porn`.
+
+`--ip nnn.nnn.nnn.nnn`, or `-i nnn.nnn.nnn.nnn`: the IP address to use as the target.  Default is `0.0.0.0`.
 
 `--noupdate`, or `-n`: skip fetching updates from hosts data sources.
 
 `--output <subfolder>`, or `-o <subfolder>`: place the generated source file in a subfolder.  If the subfolder does not
 exist, it will be created.
 
-`--help`, or `-h`: display help.
+`--replace`, or `-r`: trigger replacing your active hosts
 
 ## How do I control which sources are unified?
 
