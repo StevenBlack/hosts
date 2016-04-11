@@ -4,7 +4,7 @@ This repository consolidates several reputable `hosts` files, and merges them in
 with duplicates removed.  This repo provides several hosts files tailored to you need to block.
 
 * Last updated: **@GEN_DATE@**.
-* Here's the [raw hosts file](https://raw.githubusercontent.com/StevenBlack/hosts/master/@SUBFOLDER@hosts) containing @NUM_ENTRIES@ entries.
+* Here's the [raw hosts file @EXTENSIONS_HEADER@](https://raw.githubusercontent.com/StevenBlack/hosts/master/@SUBFOLDER@hosts) containing @NUM_ENTRIES@ entries.
 
 ### List of all hosts file variants
 
