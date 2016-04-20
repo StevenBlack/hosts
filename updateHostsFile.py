@@ -81,6 +81,7 @@ defaults = {
     "freshen" : True,
     "replace" : False,
     "backup" : False,
+    "skipstatichosts": False,
     "extensionspath" : os.path.join(BASEDIR_PATH, "extensions"),
     "extensions" : [],
     "outputsubfolder" : "",
@@ -105,6 +106,7 @@ def main():
     parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs="*", help="Host extensions to include in the final hosts file.")
     parser.add_argument("--ip", "-i", dest="targetip", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
     parser.add_argument("--noupdate", "-n", dest="noupdate", default=False, action="store_true", help="Don't update from host data sources.")
+    parser.add_argument("--skipstatichosts", "-s", dest="skipstatichosts", default=False, action="store_true", help="Skip static localhost entries in the final hosts file.")
     parser.add_argument("--output", "-o", dest="outputsubfolder", default="", help="Output subfolder for generated hosts file.")
     parser.add_argument("--replace", "-r", dest="replace", default=False, action="store_true", help="Replace your active hosts file with this new hosts file.")
 
@@ -181,10 +183,10 @@ def promptForMoreCustomExclusions():
 
 def promptForMove(finalFile):
 
-    if settings["replace"]:
+    if settings["replace"] and not settings["skipstatichosts"]:
         response = "yes"
     else:
-        response = "no" if settings["auto"] else query_yes_no("Do you want to replace your existing hosts file " +
+        response = "no" if settings["auto"] or settings["skipstatichosts"] else query_yes_no("Do you want to replace your existing hosts file " +
                             "with the newly generated file?")
     if response == "yes":
         moveHostsFileIntoPlace(finalFile)
@@ -392,15 +394,17 @@ def writeOpeningHeader(finalFile):
     writeData(finalFile, "# Project home page: https://github.com/StevenBlack/hosts\n#\n")
     writeData(finalFile, "# ===============================================================\n")
     writeData(finalFile, "\n")
-    writeData(finalFile, "127.0.0.1 localhost\n")
-    writeData(finalFile, "127.0.0.1 localhost.localdomain\n")
-    writeData(finalFile, "127.0.0.1 local\n")
-    writeData(finalFile, "255.255.255.255 broadcasthost\n")
-    writeData(finalFile, "::1 localhost\n")
-    writeData(finalFile, "fe80::1%lo0 localhost\n")
-    if platform.system() == "Linux":
-        writeData(finalFile, "127.0.1.1 " + socket.gethostname() + "\n")
-    writeData(finalFile, "\n")
+
+    if not settings["skipstatichosts"]:
+        writeData(finalFile, "127.0.0.1 localhost\n")
+        writeData(finalFile, "127.0.0.1 localhost.localdomain\n")
+        writeData(finalFile, "127.0.0.1 local\n")
+        writeData(finalFile, "255.255.255.255 broadcasthost\n")
+        writeData(finalFile, "::1 localhost\n")
+        writeData(finalFile, "fe80::1%lo0 localhost\n")
+        if platform.system() == "Linux":
+            writeData(finalFile, "127.0.1.1 " + socket.gethostname() + "\n")
+        writeData(finalFile, "\n")
 
     preamble = os.path.join(BASEDIR_PATH, "myhosts")
     if os.path.isfile(preamble):
