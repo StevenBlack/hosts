@@ -174,12 +174,8 @@ def promptForExclusions():
         if not settings["auto"]:
             print ("OK, we'll only exclude domains in the whitelist.")
 
-def promptForMoreCustomExclusions():
-    response = query_yes_no("Do you have more domains you want to enter?")
-    if response == "yes":
-        return True
-    else:
-        return False
+def promptForMoreCustomExclusions(question="Do you have more domains you want to enter?"):
+    return query_yes_no(question) == "yes"
 
 def promptForMove(finalFile):
 
@@ -212,7 +208,7 @@ def gatherCustomExclusions():
         domainFromUser = myInput("Enter the domain you want to exclude (e.g. facebook.com): ")
         if isValidDomainFormat(domainFromUser):
             excludeDomain(domainFromUser)
-        if promptForMoreCustomExclusions() is False:
+        if not promptForMoreCustomExclusions():
             return
 
 def excludeDomain(domain):
@@ -231,11 +227,7 @@ def updateAllSources():
     allsources = list(set(settings["sources"]) | set(settings["extensionsources"]))
     for source in allsources:
         if os.path.isdir(source):
-            updateURLs = getUpdateURLsFromFile(source)
-            if not len(updateURLs):
-                continue
-
-            for updateURL in updateURLs:
+            for updateURL in getUpdateURLsFromFile(source):
                 print ("Updating source " + os.path.basename(source) + " from " + updateURL)
                 # Cross-python call
                 updatedFile = getFileByUrl(updateURL)
@@ -266,28 +258,27 @@ def getUpdateURLsFromFile(source):
 def getUpdateURLFromFile(source):
     pathToUpdateFile = os.path.join(settings["datapath"], source, settings["updateurlfilename"])
     if os.path.exists(pathToUpdateFile):
-        updateFile = open(pathToUpdateFile, "r")
-        retURL     = updateFile.readline().strip()
-        updateFile.close()
-    else:
-        retURL = None
-        printFailure("Warning: Can't find the update file for source " + source + "\n" +
-                     "Make sure that there's a file at " + pathToUpdateFile)
-    return retURL
+        with open(pathToUpdateFile, "r") as updateFile:
+            return updateFile.readline().strip()
+    printFailure("Warning: Can't find the update file for source " + source + "\n" +
+                 "Make sure that there's a file at " + pathToUpdateFile)
+    return None
 # End Update Logic
 
 # File Logic
 def createInitialFile():
     mergeFile = tempfile.NamedTemporaryFile()
     for source in settings["sources"]:
-        curFile = open(os.path.join(settings["datapath"], source, settings["datafilenames"]), "r")
-        #Done in a cross-python way
-        writeData(mergeFile, curFile.read())
+        filename = os.path.join(settings["datapath"], source, settings["datafilenames"])
+        with open(curFile, "r"):
+            #Done in a cross-python way
+            writeData(mergeFile, curFile.read())
 
     for source in settings["extensions"]:
-        curFile = open(os.path.join(settings["extensionspath"], source, settings["datafilenames"]), "r")
-        #Done in a cross-python way
-        writeData(mergeFile, curFile.read())
+        filename = os.path.join(settings["extensionspath"], source, settings["datafilenames"])
+        with open(filename, "r") as curFile:
+            #Done in a cross-python way
+            writeData(mergeFile, curFile.read())
 
     return mergeFile
 
@@ -304,10 +295,8 @@ def removeDupsAndExcl(mergeFile):
         os.makedirs(settings["outputpath"])
 
     # Another mode is required to read and write the file in Python 3
-    if Python3:
-        finalFile = open(os.path.join(settings["outputpath"], "hosts"), "w+b")
-    else:
-        finalFile = open(os.path.join(settings["outputpath"], "hosts"), "w+")
+    finalFile = open(os.path.join(settings["outputpath"], "hosts"),
+                     "w+b" if Python3 else "w+")
 
     mergeFile.seek(0) # reset file pointer
     hostnames = set()
@@ -333,9 +322,7 @@ def removeDupsAndExcl(mergeFile):
             continue
 
         strippedRule = stripRule(line) #strip comments
-        if len(strippedRule) == 0:
-            continue
-        if matchesExclusions(strippedRule):
+        if not strippedRule or matchesExclusions(strippedRule):
             continue
         hostname, normalizedRule = normalizeRule(strippedRule) # normalize rule
         for exclude in exclusions:
@@ -358,7 +345,7 @@ def normalizeRule(rule):
     if result:
         hostname, suffix = result.group(2,3)
         hostname = hostname.lower().strip() # explicitly lowercase and trim the hostname
-        if suffix is not "":
+        if suffix:
             # add suffix as comment only, not as a separate host
             return hostname, "%s %s #%s\n" % (settings["targetip"], hostname, suffix)
         else:
@@ -419,10 +406,8 @@ def updateReadmeData():
     if settings["extensions"]:
         extensionsKey = "-".join(settings["extensions"])
 
-    generationData = {}
-    generationData["location"] = os.path.join(settings["outputsubfolder"], "")
-    generationData["entries"]  = settings["numberofrules"]
-
+    generationData = {"location": os.path.join(settings["outputsubfolder"], "")
+                      "entries": settings["numberofrules"]}
     settings["readmedata"][extensionsKey] = generationData
     with open(settings["readmedatafilename"], "w") as f:
         json.dump(settings["readmedata"], f)
