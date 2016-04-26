@@ -373,7 +373,7 @@ def writeOpeningHeader(finalFile):
     finalFile.seek(0) #write at the top
     writeData(finalFile, "# This hosts file is a merged collection of hosts from reputable sources,\n")
     writeData(finalFile, "# with a dash of crowd sourcing via Github\n#\n")
-    writeData(finalFile, "# Date: {:B %d %Y}\n".format(time.gmtime()))
+    writeData(finalFile, "# Date: " + time.strftime("%B %d %Y", time.gmtime()) + "\n")
     if settings["extensions"]:
         writeData(finalFile, "# Extensions added to this file: " + ", ".join(settings["extensions"]) + "\n")
     writeData(finalFile, "# Number of unique domains: " + "{:,}\n#\n".format(settings["numberofrules"]))
