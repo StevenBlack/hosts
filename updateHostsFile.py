@@ -270,7 +270,7 @@ def createInitialFile():
     mergeFile = tempfile.NamedTemporaryFile()
     for source in settings["sources"]:
         filename = os.path.join(settings["datapath"], source, settings["datafilenames"])
-        with open(curFile, "r"):
+        with open(filename, "r") as curFile:
             #Done in a cross-python way
             writeData(mergeFile, curFile.read())
 
