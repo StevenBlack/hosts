@@ -373,10 +373,10 @@ def writeOpeningHeader(finalFile):
     finalFile.seek(0) #write at the top
     writeData(finalFile, "# This hosts file is a merged collection of hosts from reputable sources,\n")
     writeData(finalFile, "# with a dash of crowd sourcing via Github\n#\n")
-    writeData(finalFile, "# Date: " + time.strftime("%B %d %Y", time.gmtime()) + "\n")
+    writeData(finalFile, "# Date: {:B %d %Y}\n".format(time.gmtime()))
     if settings["extensions"]:
         writeData(finalFile, "# Extensions added to this file: " + ", ".join(settings["extensions"]) + "\n")
-    writeData(finalFile, "# Number of unique domains: " + "{:,}".format(settings["numberofrules"]) + "\n#\n")
+    writeData(finalFile, "# Number of unique domains: " + "{:,}\n#\n".format(settings["numberofrules"]))
     writeData(finalFile, "# Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/"+ os.path.join(settings["outputsubfolder"],"") + "hosts\n")
     writeData(finalFile, "# Project home page: https://github.com/StevenBlack/hosts\n#\n")
     writeData(finalFile, "# ===============================================================\n")
@@ -466,7 +466,7 @@ def removeOldHostsFile():               # hotfix since merging with an already e
     open(oldFilePath, "a").close()        # create if already removed, so remove wont raise an error
 
     if settings["backup"]:
-        backupFilePath = os.path.join(BASEDIR_PATH, "hosts-{0}".format(time.strftime("%Y-%m-%d-%H-%M-%S")))
+        backupFilePath = os.path.join(BASEDIR_PATH, "hosts-{}".format(time.strftime("%Y-%m-%d-%H-%M-%S")))
         shutil.copy(oldFilePath, backupFilePath) # make a backup copy, marking the date in which the list was updated
 
     os.remove(oldFilePath)
