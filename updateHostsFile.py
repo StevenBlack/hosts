@@ -406,7 +406,7 @@ def updateReadmeData():
     if settings["extensions"]:
         extensionsKey = "-".join(settings["extensions"])
 
-    generationData = {"location": os.path.join(settings["outputsubfolder"], "")
+    generationData = {"location": os.path.join(settings["outputsubfolder"], ""),
                       "entries": settings["numberofrules"]}
     settings["readmedata"][extensionsKey] = generationData
     with open(settings["readmedatafilename"], "w") as f:
