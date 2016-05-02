@@ -30,15 +30,19 @@ import json
 # StringIO is not needed in Python 3
 # Python 3 works differently with urlopen
 
-# Supporting urlopen in Python 2 and Python 3
-try:
+try:                 # Python 3
     from urllib.parse import urlparse, urlencode
     from urllib.request import urlopen, Request
     from urllib.error import HTTPError
-except ImportError:
+except ImportError:  # Python 2
     from urlparse import urlparse
     from urllib import urlencode
     from urllib2 import urlopen, Request, HTTPError
+
+try:               # Python 2
+    raw_input
+except NameError:  # Python 3
+    raw_input = input
 
 # Detecting Python 3 for version-dependent implementations
 Python3 = sys.version_info >= (3,0)
@@ -53,13 +57,6 @@ def getFileByUrl(url):
         # raise
 
 # In Python 3   "print" is a function, braces are added everywhere
-
-# This function works in both Python 2 and Python 3
-def myInput(msg = ""):
-    if Python3:
-        return input(msg)
-    else:
-        return raw_input(msg)
 
 # Cross-python writing function
 def writeData(f, data):
@@ -205,7 +202,7 @@ def displayExclusionOptions():
 def gatherCustomExclusions():
     while True:
         # Cross-python Input
-        domainFromUser = myInput("Enter the domain you want to exclude (e.g. facebook.com): ")
+        domainFromUser = raw_input("Enter the domain you want to exclude (e.g. facebook.com): ")
         if isValidDomainFormat(domainFromUser):
             excludeDomain(domainFromUser)
         if not promptForMoreCustomExclusions():
@@ -299,11 +296,7 @@ def removeDupsAndExcl(mergeFile):
                      "w+b" if Python3 else "w+")
 
     mergeFile.seek(0) # reset file pointer
-    hostnames = set()
-    hostnames.add("localhost")
-    hostnames.add("localhost.localdomain")
-    hostnames.add("local")
-    hostnames.add("broadcasthost")
+    hostnames = set(["localhost", "localhost.localdomain", "local", "broadcasthost"])
     exclusions = settings["exclusions"]
     for line in mergeFile.readlines():
         write = "true"
@@ -333,7 +326,6 @@ def removeDupsAndExcl(mergeFile):
             writeData(finalFile, normalizedRule)
             hostnames.add(hostname)
             numberOfRules += 1
-
 
     settings["numberofrules"] = numberOfRules
     mergeFile.close()
@@ -488,26 +480,23 @@ def query_yes_no(question, default = "yes"):
     """
     valid = {"yes":"yes", "y":"yes", "ye":"yes",
              "no":"no", "n":"no"}
-    if default is None:
-        prompt = " [y/n] "
-    elif default == "yes":
-        prompt = " [Y/n] "
-    elif default == "no":
-        prompt = " [y/N] "
-    else:
+    prompt = {None: " [y/n] ",
+              "yes": " [Y/n] ",
+              "no": " [y/N] "}.get(default, None)
+    if not prompt:
         raise ValueError("invalid default answer: '%s'" % default)
 
     while 1:
         sys.stdout.write(colorize(question, colors.PROMPT) + prompt)
         # Changed to be cross-python
-        choice = myInput().lower()
-        if default is not None and choice == "":
+        choice = raw_input().lower()
+        if default and not choice:
             return default
-        elif choice in valid.keys():
+        elif choice in valid:
             return valid[choice]
         else:
-            printFailure("Please respond with 'yes' or 'no' "\
-                             "(or 'y' or 'n').\n")
+            printFailure(
+                "Please respond with 'yes' or 'no' (or 'y' or 'n').\n")
 ## end of http://code.activestate.com/recipes/577058/ }}}
 
 def isValidDomainFormat(domain):
