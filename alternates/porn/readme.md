@@ -1,10 +1,10 @@
-#Unified hosts file with base extensions
+#Unified hosts file with porn extensions
 
 This repository consolidates several reputable `hosts` files, and merges them into a unified hosts file
 with duplicates removed.  This repo provides several hosts files tailored to you need to block.
 
 * Last updated: **June 04 2016**.
-* Here's the [raw hosts file with base extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) containing 27,050 entries.
+* Here's the [raw hosts file with porn extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts) containing 32,323 entries.
 
 ### List of all hosts file variants
 
