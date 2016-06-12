@@ -106,6 +106,7 @@ def main():
     parser.add_argument("--skipstatichosts", "-s", dest="skipstatichosts", default=False, action="store_true", help="Skip static localhost entries in the final hosts file.")
     parser.add_argument("--output", "-o", dest="outputsubfolder", default="", help="Output subfolder for generated hosts file.")
     parser.add_argument("--replace", "-r", dest="replace", default=False, action="store_true", help="Replace your active hosts file with this new hosts file.")
+    parser.add_argument("--flush-dns-cache", "-f", dest="flushdnscache", default=False, action="store_true", help="Attempt to flush DNS cache after replacing the hosts file.")
 
     global  settings
 
@@ -174,6 +175,12 @@ def promptForExclusions():
 def promptForMoreCustomExclusions(question="Do you have more domains you want to enter?"):
     return query_yes_no(question) == "yes"
 
+
+def promptForFlushDnsCache():
+    if settings['flushdnscache'] or query_yes_no("Attempt to flush the DNS cache?"):
+        flushDnsCache()
+
+
 def promptForMove(finalFile):
 
     if settings["replace"] and not settings["skipstatichosts"]:
@@ -183,6 +190,7 @@ def promptForMove(finalFile):
                             "with the newly generated file?")
     if response == "yes":
         moveHostsFileIntoPlace(finalFile)
+        promptForFlushDnsCache()
     else:
         return False
 # End Prompt the User
@@ -404,54 +412,60 @@ def updateReadmeData():
     with open(settings["readmedatafilename"], "w") as f:
         json.dump(settings["readmedata"], f)
 
+
 def moveHostsFileIntoPlace(finalFile):
     if os.name == "posix":
-        dnsCacheFound = False
         print ("Moving the file requires administrative privileges. " +
                "You might need to enter your password.")
         if subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"]):
             printFailure("Moving the file failed.")
-        print ("Flushing the DNS Cache to utilize new hosts file...")
-        if platform.system() == "Darwin":
-            dnsCacheFound = True
-            if subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"]):
-                printFailure("Flushing the DNS Cache failed.")
-        else:
-            if os.path.isfile("/etc/rc.d/init.d/nscd"):
-                dnsCacheFound = True
-                if subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"]):
-                    printFailure("Flushing the DNS Cache failed.")
-                else:
-                    printSuccess("Flushing DNS by restarting nscd succeeded")
-            if os.path.isfile("/usr/lib/systemd/system/NetworkManager.service"):
-                dnsCacheFound = True
-                if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "NetworkManager.service"]):
-                    printFailure("Flushing the DNS Cache failed.")
-                else:
-                    printSuccess("Flushing DNS by restarting NetworkManager succeeded")
-            if os.path.isfile("/usr/lib/systemd/system/wicd.service"):
-                dnsCacheFound = True
-                if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "wicd.service"]):
-                    printFailure("Flushing the DNS Cache failed.")
-                else:
-                    printSuccess("Flushing DNS by restarting wicd succeeded")
-            if os.path.isfile("/usr/lib/systemd/system/dnsmasq.service"):
-                dnsCacheFound = True
-                if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "dnsmasq.service"]):
-                    printFailure("Flushing the DNS Cache failed.")
-                else:
-                    printSuccess("Flushing DNS by restarting dnsmasq succeeded")
-            if os.path.isfile("/usr/lib/systemd/system/networking.service"):
-                dnsCacheFound = True
-                if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "networking.service"]):
-                    printFailure("Flushing the DNS Cache failed.")
-                else:
-                    printSuccess("Flushing DNS by restarting networking.service succeeded")
-            if not dnsCacheFound:
-                printFailure("Unable to determine DNS management tool.")
     elif os.name == "nt":
-        print ("Automatically moving the hosts file in place is not yet supported.")
-        print ("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")
+        print("Automatically moving the hosts file in place is not yet supported.")
+        print("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")
+
+
+def flushDnsCache():
+    print("Flushing the DNS cache to utilize new hosts file...")
+    print("Flushing the DNS cache requires administrative privileges. " +
+          "You might need to enter your password.")
+    dnsCacheFound = False
+    if platform.system() == "Darwin":
+        if subprocess.call(["/usr/bin/sudo", "killall", "-HUP", "mDNSResponder"]):
+            printFailure("Flushing the DNS cache failed.")
+    else:
+        if os.path.isfile("/etc/rc.d/init.d/nscd"):
+            dnsCacheFound = True
+            if subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd", "restart"]):
+                printFailure("Flushing the DNS cache failed.")
+            else:
+                printSuccess("Flushing DNS by restarting nscd succeeded")
+        if os.path.isfile("/usr/lib/systemd/system/NetworkManager.service"):
+            dnsCacheFound = True
+            if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "NetworkManager.service"]):
+                printFailure("Flushing the DNS cache failed.")
+            else:
+                printSuccess("Flushing DNS by restarting NetworkManager succeeded")
+        if os.path.isfile("/usr/lib/systemd/system/wicd.service"):
+            dnsCacheFound = True
+            if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "wicd.service"]):
+                printFailure("Flushing the DNS cache failed.")
+            else:
+                printSuccess("Flushing DNS by restarting wicd succeeded")
+        if os.path.isfile("/usr/lib/systemd/system/dnsmasq.service"):
+            dnsCacheFound = True
+            if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "dnsmasq.service"]):
+                printFailure("Flushing the DNS cache failed.")
+            else:
+                printSuccess("Flushing DNS by restarting dnsmasq succeeded")
+        if os.path.isfile("/usr/lib/systemd/system/networking.service"):
+            dnsCacheFound = True
+            if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "restart", "networking.service"]):
+                printFailure("Flushing the DNS cache failed.")
+            else:
+                printSuccess("Flushing DNS by restarting networking.service succeeded")
+        if not dnsCacheFound:
+            printFailure("Unable to determine DNS management tool.")
+
 
 def removeOldHostsFile():               # hotfix since merging with an already existing hosts file leads to artefacts and duplicates
     oldFilePath = os.path.join(BASEDIR_PATH, "hosts")
