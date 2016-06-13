@@ -177,8 +177,12 @@ def promptForMoreCustomExclusions(question="Do you have more domains you want to
 
 
 def promptForFlushDnsCache():
-    if settings['flushdnscache'] or query_yes_no("Attempt to flush the DNS cache?"):
-        flushDnsCache()
+    if settings['auto']:
+        if settings['flushdnscache']:
+            flushDnsCache()
+    else:
+        if settings['flushdnscache'] or query_yes_no("Attempt to flush the DNS cache?"):
+            flushDnsCache()
 
 
 def promptForMove(finalFile):
