@@ -147,11 +147,19 @@ manually flush your DNS cache once the new hosts file is in place.
 
 ### Mac OS X
 Open a Terminal and run:
-
-`sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder`
+```
+sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
+```
 
 ### Windows
-Open a Command Prompt:
+
+|Run `updateHostsWindows.bat` in Command Prompt in repository dir always after updating main hosts file for easy replacing hosts file in Windows and reload DNS cache.|
+:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+|WARNING: Don't run this BAT file directly from popup menu. You have been warned.|
+:---------------------------------------------------------------------------------
+
+Open a Command Prompt in directory where are files from this repository:
 
 **Windows XP**: Start -> Run -> `cmd`
 
@@ -161,9 +169,10 @@ Open a Command Prompt:
 **Windows 8**: Start -> Swipe Up -> All Apps -> Windows System -> right-click Command Prompt ->
 "Run as Administrator"
 
-and run:
-
-`ipconfig /flushdns`
+and run command:
+```
+updateHostsWindows.bat
+```
 
 ### Linux
 Open a Terminal and run with root privileges:
