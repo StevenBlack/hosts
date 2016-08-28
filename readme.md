@@ -3,7 +3,7 @@
 This repository consolidates several reputable `hosts` files, and merges them into a unified hosts file
 with duplicates removed.  This repo provides several hosts files tailored to you need to block.
 
-* Last updated: **August 27 2016**.
+* Last updated: **August 28 2016**.
 * Here's the [raw hosts file with base extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) containing 26,391 entries.
 
 ### List of all hosts file variants
