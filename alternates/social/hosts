@@ -1,9 +1,9 @@
 # This hosts file is a merged collection of hosts from reputable sources,
 # with a dash of crowd sourcing via Github
 #
-# Date: August 28 2016
+# Date: August 29 2016
 # Extensions added to this file: social
-# Number of unique domains: 26,621
+# Number of unique domains: 26,656
 #
 # Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts
 # Project home page: https://github.com/StevenBlack/hosts
@@ -542,7 +542,7 @@ fe80::1%lo0 localhost
 0.0.0.0 eviltracker.net
 0.0.0.0 do-not-tracker.org ##
 #   http://www.malwaredomainlist.com/hostslist/hosts.txt   #
-#         Last updated: Fri, 26 Aug 16 14:12:26 +0000      #
+#         Last updated: Mon, 29 Aug 16 14:07:43 +0000      #
 
 
 0.0.0.0 0koryu0.easter.ne.jp
@@ -665,6 +665,7 @@ fe80::1%lo0 localhost
 0.0.0.0 blog.replacemycontacts.com
 0.0.0.0 bluecutsystem.com
 0.0.0.0 bnsoutlaws.co.uk
+0.0.0.0 bonjo.bmbsklep.pl
 0.0.0.0 boogu.barginginfrance.net
 0.0.0.0 bookofkisl.com
 0.0.0.0 boots.fotopyra.pl
@@ -827,10 +828,12 @@ fe80::1%lo0 localhost
 0.0.0.0 ftp.flyfishusa.com
 0.0.0.0 funchill.com
 0.0.0.0 funkucck.bluerobot.cl
+0.0.0.0 geil.alon3.tk
 0.0.0.0 generalchemicalsupply.com
 0.0.0.0 getdatanetukscan.info
 0.0.0.0 go-quicky.com
 0.0.0.0 gogetgorgeous.com
+0.0.0.0 gojnox.boxtomarket.com
 0.0.0.0 gosciniec-paproc.pl
 0.0.0.0 gravityexp.com
 0.0.0.0 gredinatib.org
@@ -864,6 +867,7 @@ fe80::1%lo0 localhost
 0.0.0.0 hobbytotaalservice.nl
 0.0.0.0 hoerbird.net
 0.0.0.0 holishit.in
+0.0.0.0 honor.agitaattori.fi
 0.0.0.0 hosting-controlid1.tk
 0.0.0.0 hosting-controlnext.tk
 0.0.0.0 hosting-controlpin.tk
@@ -1144,6 +1148,7 @@ fe80::1%lo0 localhost
 0.0.0.0 pumpkin.brisik.net
 0.0.0.0 purethc.com
 0.0.0.0 pwvita.pl
+0.0.0.0 pybul.bestfrozenporn.nl
 0.0.0.0 q28840.nb.host127-0-0-1.com
 0.0.0.0 qbike.com.br
 0.0.0.0 qualityindustrialcoatings.com
@@ -1490,6 +1495,7 @@ fe80::1%lo0 localhost
 0.0.0.0 vipdn123.blackapplehost.com
 0.0.0.0 vistatech.us
 0.0.0.0 vitalityxray.com
+0.0.0.0 vitaly.agricolacolhue.cl
 0.0.0.0 vitamasaz.pl
 0.0.0.0 vitha.csheaven.com
 0.0.0.0 vivaweb.org
@@ -1533,6 +1539,7 @@ fe80::1%lo0 localhost
 0.0.0.0 wkmg.co.kr
 0.0.0.0 wmserver.net
 0.0.0.0 womenslabour.org
+0.0.0.0 womsy.bobbutcher.net
 0.0.0.0 wonchangvacuum.com.my
 0.0.0.0 wopper.bioblitzgaming.ca
 0.0.0.0 worldgymperu.com
@@ -27104,6 +27111,37 @@ fe80::1%lo0 localhost
 0.0.0.0 watson.ppe.telemetry.microsoft.com
 0.0.0.0 watson.telemetry.microsoft.com
 0.0.0.0 watson.telemetry.microsoft.com.nsatc.net ##
+# These rules were added by the Unchecky program in order to block advertising software modules
+0.0.0.0 api.recommendedsw.com
+0.0.0.0 installer.betterinstaller.com
+0.0.0.0 installer.filebulldog.com
+0.0.0.0 d3oxtn1x3b8d7i.cloudfront.net
+0.0.0.0 inno.bisrv.com
+0.0.0.0 nsis.bisrv.com
+0.0.0.0 cdn.file2desktop.com
+0.0.0.0 cdn.goateastcach.us
+0.0.0.0 cdn.guttastatdk.us
+0.0.0.0 cdn.insta.oibundles2.com
+0.0.0.0 cdn.insta.playbryte.com
+0.0.0.0 cdn.llogetfastcach.us
+0.0.0.0 cdn.montiera.com
+0.0.0.0 cdn.msdwnld.com
+0.0.0.0 cdn.mypcbackup.com
+0.0.0.0 cdn.ppdownload.com
+0.0.0.0 cdn.riceateastcach.us
+0.0.0.0 cdn.shyapotato.us
+0.0.0.0 cdn.solimba.com
+0.0.0.0 cdn.tuto4pc.com
+0.0.0.0 cdn.appround.biz
+0.0.0.0 cdn.bigspeedpro.com
+0.0.0.0 cdn.bispd.com
+0.0.0.0 cdn.bisrv.com
+0.0.0.0 cdn.cdndp.com
+0.0.0.0 cdn.download.sweetpacks.com
+0.0.0.0 cdn.dpdownload.com
+0.0.0.0 cdn.visualbee.net
+# unchecky_end
+# Ad server list for use with hosts files to block ads
 #
 # For more information about this list, see: https://pgl.yoyo.org/adservers/
 # ----
@@ -27115,7 +27153,7 @@ fe80::1%lo0 localhost
 # other formats:  https://pgl.yoyo.org/adservers/formats.php
 # policy:         https://pgl.yoyo.org/adservers/policy.php
 #
-# start date:    Sun, 28 Aug 2016 00:00:00
+# start date:    Mon, 29 Aug 2016 00:00:00
 0.0.0.0 101com.com
 0.0.0.0 101order.com
 0.0.0.0 123found.com
