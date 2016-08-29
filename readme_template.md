@@ -180,7 +180,7 @@ and run command:
 updateHostsWindows.bat
 ```
 
-|If you want using huge hosts file with merged [https://www.hosts-file.net/](hphosts) (NOT INCLUDED HERE) you need to DISABLE and STOP `Dnscache` service before you replace hosts file in Windows Systems. You have been warned.|
+|If you want using huge hosts file with merged [hphosts](https://www.hosts-file.net) (NOT INCLUDED HERE) you need to DISABLE and STOP `Dnscache` service before you replace hosts file in Windows Systems. You have been warned.|
 :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Open a Command Prompt with Administrator privileges and run once commands:
