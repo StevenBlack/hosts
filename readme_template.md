@@ -153,11 +153,14 @@ sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
 
 ### Windows
 
+|`makeHostsWindows.bat` BATCH file will create various alternate hosts files by combining and adding the gambling, porn, and social media extensions. This file REQUIRED installed Python 3.5.x environment in Windows System. Launch this file as normal user.|
+:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 |Run `updateHostsWindows.bat` in Command Prompt in repository dir always after updating main hosts file for easy replacing hosts file in Windows and reload DNS cache.|
 :---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-|WARNING: Don't run this BAT file directly from popup menu. You have been warned.|
-:---------------------------------------------------------------------------------
+|WARNING: Don't run these BAT files directly or from popup menu. You have been warned.|
+:--------------------------------------------------------------------------------------
 
 Open a Command Prompt in directory where are files from this repository:
 
@@ -169,9 +172,22 @@ Open a Command Prompt in directory where are files from this repository:
 **Windows 8**: Start -> Swipe Up -> All Apps -> Windows System -> right-click Command Prompt ->
 "Run as Administrator"
 
+**Windows 10**: Start Button -> type `cmd` -> right-click Command Prompt ->
+"Run as Administrator"
+
 and run command:
 ```
 updateHostsWindows.bat
+```
+
+|If you want using huge hosts file with merged [https://www.hosts-file.net/](hphosts) (NOT INCLUDED HERE) you need to DISABLE and STOP `Dnscache` service before you replace hosts file in Windows Systems. You have been warned.|
+:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Open a Command Prompt with Administrator privileges and run once commands:
+
+```
+sc config "Dnscache" start= disabled
+sc stop "Dnscache"
 ```
 
 ### Linux
