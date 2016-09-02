@@ -1,9 +1,9 @@
 # This hosts file is a merged collection of hosts from reputable sources,
 # with a dash of crowd sourcing via Github
 #
-# Date: August 31 2016
+# Date: September 02 2016
 # Extensions added to this file: porn, social
-# Number of unique domains: 31,942
+# Number of unique domains: 31,945
 #
 # Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts
 # Project home page: https://github.com/StevenBlack/hosts
@@ -515,6 +515,9 @@ fe80::1%lo0 localhost
 0.0.0.0 ifc.inmobi.com
 0.0.0.0 thinknear-hosted.thinknearhub.com
 
+# [https://play.google.com/store/apps/details?id=com.buymeapie.bmap]
+0.0.0.0 ads.adadapted.com
+
 #
 # ANALYTICS
 #
@@ -540,7 +543,8 @@ fe80::1%lo0 localhost
 # [EFF Tracker Detection]
 0.0.0.0 trackersimulator.org
 0.0.0.0 eviltracker.net
-0.0.0.0 do-not-tracker.org ##
+0.0.0.0 do-not-tracker.org
+#               MalwareDomainList.com Hosts List           #
 #   http://www.malwaredomainlist.com/hostslist/hosts.txt   #
 #         Last updated: Mon, 29 Aug 16 14:07:43 +0000      #
 
@@ -16764,7 +16768,7 @@ fe80::1%lo0 localhost
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Mon, 22 Aug 2016 at 22:04:59 GMT
+# Last updated: Thu, 01 Sep 2016 at 19:38:40 GMT
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from
@@ -18018,6 +18022,7 @@ fe80::1%lo0 localhost
 0.0.0.0 apple.com-safetyalert.com
 0.0.0.0 apple.com-scan-virus-detected.com
 0.0.0.0 apple.com-store.me
+0.0.0.0 apple.com------support.host
 0.0.0.0 apple-protection.info
 0.0.0.0 applestore.com-mobile.gift
 0.0.0.0 armsart.com
@@ -18080,6 +18085,7 @@ fe80::1%lo0 localhost
 0.0.0.0 coderexception.com
 0.0.0.0 c.oix.com
 0.0.0.0 c.oix.net
+0.0.0.0 com2err.xyz
 0.0.0.0 conduit.com
 0.0.0.0 coordino.com
 0.0.0.0 cra-arc.gc.ca.bioder.com.tr
@@ -22087,6 +22093,7 @@ fe80::1%lo0 localhost
 0.0.0.0 dnps.com
 0.0.0.0 dnse.linkpulse.com
 0.0.0.0 dock.inmobi.com
+0.0.0.0 domwpm.stream
 0.0.0.0 dosugcz.biz
 0.0.0.0 dowelsobject.com
 0.0.0.0 downloadapps.tech
@@ -23393,6 +23400,7 @@ fe80::1%lo0 localhost
 0.0.0.0 primetime.ad.primetime.net
 0.0.0.0 privitize.com
 0.0.0.0 prizes.co.uk
+0.0.0.0 prjcq.com
 0.0.0.0 productopinionpanel.com
 0.0.0.0 productresearchpanel.com
 0.0.0.0 producttestpanel.com
@@ -25348,6 +25356,7 @@ fe80::1%lo0 localhost
 0.0.0.0 xstatic.nk-net.pl
 0.0.0.0 y.admob.com
 0.0.0.0 yadro.ru
+0.0.0.0 yie4zooseif.info
 0.0.0.0 yieldmanagement.adbooth.net
 0.0.0.0 yieldmanager.net
 0.0.0.0 yodleeinc.tt.omtrdc.net
@@ -25374,6 +25383,7 @@ fe80::1%lo0 localhost
 0.0.0.0 yumenetworks.com
 0.0.0.0 yx-in-f108.1e100.net
 0.0.0.0 z1.adserver.com
+0.0.0.0 za1.sierra-fox.com
 0.0.0.0 z.admob.com
 0.0.0.0 zads.zedo.com
 0.0.0.0 zapadserver1.com
@@ -27146,14 +27156,14 @@ fe80::1%lo0 localhost
 # For more information about this list, see: https://pgl.yoyo.org/adservers/
 # ----
 # last updated:   Thu, 11 Aug 2016 06:22:03 GMT
-# entries:        2371
+# entries:        2365
 # format:         hosts (hosts -- in hosts file format)
 # credits:        Peter Lowe - pgl@yoyo.org - https://pgl.yoyo.org/ - https://twitter.com/pgl
 # this URL:       https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0
 # other formats:  https://pgl.yoyo.org/adservers/formats.php
 # policy:         https://pgl.yoyo.org/adservers/policy.php
 #
-# start date:    Wed, 31 Aug 2016 00:00:00
+# start date:    Fri, 02 Sep 2016 00:00:00
 0.0.0.0 101com.com
 0.0.0.0 101order.com
 0.0.0.0 123found.com
@@ -27482,7 +27492,6 @@ fe80::1%lo0 localhost
 0.0.0.0 ads2.rne.com
 0.0.0.0 ads2.virtual-nights.com
 0.0.0.0 ads2.xnet.cz
-0.0.0.0 ads2004.treiberupdate.de
 0.0.0.0 ads3.contentabc.com
 0.0.0.0 ads3.virtual-nights.com
 0.0.0.0 ads4.virtual-nights.com
@@ -27767,7 +27776,6 @@ fe80::1%lo0 localhost
 0.0.0.0 casinotreasure.com
 0.0.0.0 cben1.net
 0.0.0.0 cbmall.com
-0.0.0.0 cbx.net
 0.0.0.0 cdn.freefacti.com
 0.0.0.0 ceskydomov.alias.ngs.modry.cz
 0.0.0.0 ch.questionmarket.com
@@ -27870,7 +27878,6 @@ fe80::1%lo0 localhost
 0.0.0.0 directtrack.com
 0.0.0.0 discountclick.com
 0.0.0.0 displayadsmedia.com
-0.0.0.0 displaypagerank.com
 0.0.0.0 dmtracker.com
 0.0.0.0 dmtracking.alibaba.com
 0.0.0.0 domaining.in
@@ -28252,7 +28259,6 @@ fe80::1%lo0 localhost
 0.0.0.0 pagerank-submitter.de
 0.0.0.0 pagerank-suchmaschine.de
 0.0.0.0 pagerank-united.de
-0.0.0.0 pagerank4u.eu
 0.0.0.0 pagerank4you.com
 0.0.0.0 pageranktop.com
 0.0.0.0 partage-facile.com
@@ -28350,6 +28356,7 @@ fe80::1%lo0 localhost
 0.0.0.0 ranking-links.de
 0.0.0.0 ranking-liste.de
 0.0.0.0 ranking-street.de
+0.0.0.0 rankingchart.de
 0.0.0.0 rankingscout.com
 0.0.0.0 rankyou.com
 0.0.0.0 rapidcounter.com
@@ -28504,6 +28511,7 @@ fe80::1%lo0 localhost
 0.0.0.0 textlinks.com
 0.0.0.0 tfag.de
 0.0.0.0 theadhost.com
+0.0.0.0 thebugs.ws
 0.0.0.0 therapistla.com
 0.0.0.0 therichkids.com
 0.0.0.0 thrnt.com
@@ -28572,9 +28580,7 @@ fe80::1%lo0 localhost
 0.0.0.0 truehits.net
 0.0.0.0 truehits2.gits.net.th
 0.0.0.0 tubemogul.com
-0.0.0.0 tvas-a.pw
 0.0.0.0 tvas-c.pw
-0.0.0.0 tvmtracker.com
 0.0.0.0 twittad.com
 0.0.0.0 tyroo.com
 0.0.0.0 uarating.com
