@@ -3,7 +3,7 @@
 This repository consolidates several reputable `hosts` files, and merges them into a unified hosts file
 with duplicates removed.  This repo provides several hosts files tailored to you need to block.
 
-* Last updated: **September 02 2016**.
+* Last updated: **September 03 2016**.
 * Here's the [raw hosts file with gambling, social extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts) containing 27,373 entries.
 
 ### List of all hosts file variants
