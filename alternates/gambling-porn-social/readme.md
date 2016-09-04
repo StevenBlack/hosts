@@ -3,7 +3,7 @@
 This repository consolidates several reputable `hosts` files, and merges them into a unified hosts file
 with duplicates removed.  This repo provides several hosts files tailored to you need to block.
 
-* Last updated: **September 03 2016**.
+* Last updated: **September 04 2016**.
 * Here's the [raw hosts file with gambling, porn, social extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn-social/hosts) containing 32,659 entries.
 
 ### List of all hosts file variants
@@ -161,10 +161,10 @@ sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
 
 ### Windows
 
-|`makeHostsWindows.bat` BATCH file will create various alternate hosts files by combining and adding the gambling, porn, and social media extensions. This file REQUIRED installed Python 3.5.x environment in Windows System. Launch this file as normal user.|
+|`makeHostsWindows.bat` BATCH file will create various alternate hosts files by combining and adding the gambling, porn, and social media extensions. You need to be connected to the Internet. This file REQUIRED installed Python 3.5.x runtime environment in Windows System. Launch this file as normal user.|
 :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-|Run `updateHostsWindows.bat` in Command Prompt in repository dir always after updating main hosts file for easy replacing hosts file in Windows and reload DNS cache.|
+|Run `updateHostsWindows.bat` BATCH file in Command Prompt with Administrator privileges in repository directory for easy update, replace hosts file and reload DNS cache in Windows System. You need to be connected to the Internet. This file REQUIRED installed Python 3.5.x runtime environment in Windows System.|
 :---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 |WARNING: Don't run these BAT files directly or from popup menu. You have been warned.|
