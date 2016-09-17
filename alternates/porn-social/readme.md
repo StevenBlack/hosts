@@ -125,17 +125,23 @@ For example, to nullify requests to some doubleclick.net servers, adding these l
 file will do it:
 
     # block doubleClick's servers
-    127.0.0.1 ad.ae.doubleclick.net
-    127.0.0.1 ad.ar.doubleclick.net
-    127.0.0.1 ad.at.doubleclick.net
-    127.0.0.1 ad.au.doubleclick.net
-    127.0.0.1 ad.be.doubleclick.net
+    0.0.0.0 ad.ae.doubleclick.net
+    0.0.0.0 ad.ar.doubleclick.net
+    0.0.0.0 ad.at.doubleclick.net
+    0.0.0.0 ad.au.doubleclick.net
+    0.0.0.0 ad.be.doubleclick.net
     # etc...
 
 
 ## We recommend using `0.0.0.0` instead of `127.0.0.1`
-Using `0.0.0.0` is faster because you don't have to wait for a timeout. It also does not interfere
-with a web server that may be running on the local PC.
+
+Traditionally most host files use `127.0.0.1`, the *loopback address*, to establish an IP connection to the local machine.
+
+We prefer to use ``0.0.0.0`, which is defined as a non-routable meta-address used to designate an invalid, unknown,
+or non applicable target.
+
+Using `0.0.0.0` is empirically faster, possibly because there's no wait for a timeout resolution. It also does not
+interfere with a web server that may be running on the local PC.
 
 ## Why not use just `0` instead of `0.0.0.0`?
 We tried that.  Using `0` doesn't work universally.
