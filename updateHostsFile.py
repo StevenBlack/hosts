@@ -47,6 +47,16 @@ except NameError:  # Python 3
 # Detecting Python 3 for version-dependent implementations
 Python3 = sys.version_info >= (3,0)
 
+def main_is_frozen():
+   return (hasattr(sys, "frozen") or # new py2exe
+           hasattr(sys, "importers") # old py2exe
+           or imp.is_frozen("__main__")) # tools/freeze
+
+def get_main_dir():
+   if main_is_frozen():
+       return os.path.dirname(sys.executable)
+   return os.path.dirname(os.path.realpath(__file__))
+
 # This function handles both Python 2 and Python 3
 def getFileByUrl(url):
     try:
@@ -70,7 +80,7 @@ def listdir_nohidden(path):
     return glob.glob(os.path.join(path, "*"))
 
 # Project Settings
-BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
+BASEDIR_PATH = get_main_dir()
 
 defaults = {
     "numberofrules" : 0,
