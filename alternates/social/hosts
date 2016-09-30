@@ -1,9 +1,9 @@
 # This hosts file is a merged collection of hosts from reputable sources,
 # with a dash of crowd sourcing via Github
 #
-# Date: September 28 2016
+# Date: September 30 2016
 # Extensions added to this file: social
-# Number of unique domains: 27,063
+# Number of unique domains: 27,093
 #
 # Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts
 # Project home page: https://github.com/StevenBlack/hosts
@@ -544,12 +544,13 @@ fe80::1%lo0 localhost
 0.0.0.0 trackersimulator.org
 0.0.0.0 eviltracker.net
 0.0.0.0 do-not-tracker.org
-#
-# BEGIN 2o7Net tracking sites based on http://www.hostsfile.org/hosts.html content.
-#
-# http://www.makeuseof.com/tag/that-mysterious-2o7-net-tracking-cookie-all-you-need-to-know/
-# https://en.wikipedia.org/wiki/Omniture
 
+### Extra rules for @StevenBlack 's hosts project
+### https://github.com/FadeMind/hosts.extras
+### 2o7Net tracking sites based on http://www.hostsfile.org/hosts.html content.
+### http://www.makeuseof.com/tag/that-mysterious-2o7-net-tracking-cookie-all-you-need-to-know/
+### https://en.wikipedia.org/wiki/Omniture
+### <2o7Net> < B E G I N >
 0.0.0.0 102.112.207.net
 0.0.0.0 102.112.2o7.net
 0.0.0.0 102.122.2o7.net
@@ -1658,8 +1659,7 @@ fe80::1%lo0 localhost
 0.0.0.0 ziffdavisglobal.112.2o7.net
 0.0.0.0 ziffdavispennyarcade.112.2o7.net
 0.0.0.0 zipzoomfly.122.2o7.net
-
-# END 2o7Net
+### <2o7Net> < END >
 #               MalwareDomainList.com Hosts List           #
 #   http://www.malwaredomainlist.com/hostslist/hosts.txt   #
 #         Last updated: Wed, 21 Sep 16 12:13:46 +0000      #
@@ -27465,11 +27465,12 @@ fe80::1%lo0 localhost
 # John Mueller and Lawrence H Smith for Mac Pre-OSX information
 # Jesse Baird for the Cisco IOS script
 
-# SPOTIFY ADS BEGIN #
+### Extra rules for @StevenBlack 's hosts project
+### https://github.com/FadeMind/hosts.extras
+### <SpotifyAds> < B E G I N >
 0.0.0.0 gads.pubmatic.com
 0.0.0.0 spclient.wg.spotify.com
-
-# SPOTIFY ADS END #
+### <SpotifyAds> < E N D >
 #=====================================
 # Hosts contributed by Steven Black
 # http://stevenblack.com
@@ -27498,25 +27499,53 @@ fe80::1%lo0 localhost
 0.0.0.0 www.torrenty-org.pl
 #=====================================
 
+
+### Extra rules for @StevenBlack 's hosts project
+### https://github.com/FadeMind/hosts.extras
+### <Windows 10 Telemetry> < B E G I N >
+0.0.0.0 a-0001.a-msedge.net
+0.0.0.0 a-0002.a-msedge.net
+0.0.0.0 a-0003.a-msedge.net
+0.0.0.0 a-0004.a-msedge.net
+0.0.0.0 a-0005.a-msedge.net
+0.0.0.0 a-0006.a-msedge.net
+0.0.0.0 a-0007.a-msedge.net
+0.0.0.0 a-0008.a-msedge.net
+0.0.0.0 a-0009.a-msedge.net
 0.0.0.0 ac3.msn.com
+0.0.0.0 apps.skype.com
+0.0.0.0 ca.telemetry.microsoft.com
+0.0.0.0 cache.datamart.windows.com
 0.0.0.0 choice.microsoft.com
 0.0.0.0 choice.microsoft.com.nsatc.net
 0.0.0.0 compatexchange.cloudapp.net
 0.0.0.0 corp.sts.microsoft.com
 0.0.0.0 corpext.msitadfs.glbdns2.microsoft.com
 0.0.0.0 cs1.wpc.v0cdn.net
+0.0.0.0 db3wns2011111.wns.windows.com
+0.0.0.0 df.telemetry.microsoft.com
 0.0.0.0 diagnostics.support.microsoft.com
+0.0.0.0 fe2.update.microsoft.com.akadns.net
+0.0.0.0 fe3.delivery.dsp.mp.microsoft.com.nsatc.net
 0.0.0.0 feedback.search.microsoft.com
 0.0.0.0 feedback.windows.com
 0.0.0.0 i1.services.social.microsoft.com
 0.0.0.0 i1.services.social.microsoft.com.nsatc.net
+0.0.0.0 m.hotmail.com
+0.0.0.0 msftncsi.com
+0.0.0.0 msnbot-207-46-194-33.search.msn.com
 0.0.0.0 oca.telemetry.microsoft.com
 0.0.0.0 oca.telemetry.microsoft.com.nsatc.net
 0.0.0.0 pre.footprintpredict.com
+0.0.0.0 pricelist.skype.com
 0.0.0.0 redir.metaservices.microsoft.com
+0.0.0.0 s.gateway.messenger.live.com
 0.0.0.0 services.wes.df.telemetry.microsoft.com
+0.0.0.0 settings.data.microsoft.com
 0.0.0.0 settings-sandbox.data.microsoft.com
 0.0.0.0 sls.update.microsoft.com.akadns.net
+0.0.0.0 spynet2.microsoft.com
+0.0.0.0 spynetalt.microsoft.com
 0.0.0.0 sqm.df.telemetry.microsoft.com
 0.0.0.0 sqm.telemetry.microsoft.com
 0.0.0.0 sqm.telemetry.microsoft.com.nsatc.net
@@ -27526,18 +27555,27 @@ fe80::1%lo0 localhost
 0.0.0.0 survey.watson.microsoft.com
 0.0.0.0 telecommand.telemetry.microsoft.com
 0.0.0.0 telecommand.telemetry.microsoft.com.nsatc.net
+0.0.0.0 telecommand.telemetry.microsoft.com.nsat #­c.net
+0.0.0.0 telemetry.microsoft.com
 0.0.0.0 telemetry.urs.microsoft.com
+0.0.0.0 ui.skype.com
+0.0.0.0 v10.vortex-win.data.microsoft.com
+0.0.0.0 vortex.data.microsoft.com
 0.0.0.0 vortex-bn2.metron.live.com.nsatc.net
 0.0.0.0 vortex-cy2.metron.live.com.nsatc.net
 0.0.0.0 vortex-sandbox.data.microsoft.com
 0.0.0.0 vortex-win.data.microsoft.com
-0.0.0.0 vortex.data.microsoft.com
 0.0.0.0 watson.live.com
 0.0.0.0 watson.microsoft.com
 0.0.0.0 watson.ppe.telemetry.microsoft.com
 0.0.0.0 watson.telemetry.microsoft.com
-0.0.0.0 watson.telemetry.microsoft.com.nsatc.net ##
-# These rules were added by the Unchecky program in order to block advertising software modules
+0.0.0.0 watson.telemetry.microsoft.com.nsatc.net
+0.0.0.0 win10.ipv6.microsoft.com
+0.0.0.0 www.msftncsi.com
+### <Windows 10 Telemetry> < E N D >
+### Extra rules for @StevenBlack 's hosts project
+### https://github.com/FadeMind/hosts.extras
+### <UncheckyAds> < B E G I N >
 0.0.0.0 tracking.opencandy.com
 0.0.0.0 api.recommendedsw.com
 0.0.0.0 installer.betterinstaller.com
@@ -27567,7 +27605,7 @@ fe80::1%lo0 localhost
 0.0.0.0 cdn.download.sweetpacks.com
 0.0.0.0 cdn.dpdownload.com
 0.0.0.0 cdn.visualbee.net
-# unchecky_end
+### <UncheckyAds> < E N D >
 # Ad server list for use with hosts files to block ads
 #
 # For more information about this list, see: https://pgl.yoyo.org/adservers/
@@ -27580,7 +27618,7 @@ fe80::1%lo0 localhost
 # other formats:  https://pgl.yoyo.org/adservers/formats.php
 # policy:         https://pgl.yoyo.org/adservers/policy.php
 #
-# start date:    Wed, 28 Sep 2016 00:00:00
+# start date:    Fri, 30 Sep 2016 00:00:00
 0.0.0.0 101com.com
 0.0.0.0 101order.com
 0.0.0.0 123found.com
