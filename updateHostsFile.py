@@ -25,6 +25,8 @@ import glob
 import argparse
 import socket
 import json
+import zipfile
+import zlib
 
 # zip files are not used actually, support deleted
 # StringIO is not needed in Python 3
@@ -84,6 +86,7 @@ defaults = {
     "outputsubfolder" : "",
     "datafilenames" : "hosts",
     "targetip" : "0.0.0.0",
+    "ziphosts" : False,
     "updateurlfilename" : "update.info",
     "readmefilename" : "readme.md",
     "readmetemplate" : os.path.join(BASEDIR_PATH, "readme_template.md"),
@@ -102,6 +105,7 @@ def main():
     parser.add_argument("--backup", "-b", dest="backup", default=False, action="store_true", help="Backup the hosts files before they are overridden.")
     parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs="*", help="Host extensions to include in the final hosts file.")
     parser.add_argument("--ip", "-i", dest="targetip", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
+    parser.add_argument("--zip", "-z", dest="ziphosts", default=False, action="store_true", help="Additionally create a zip archive of the hosts file.")
     parser.add_argument("--noupdate", "-n", dest="noupdate", default=False, action="store_true", help="Don't update from host data sources.")
     parser.add_argument("--skipstatichosts", "-s", dest="skipstatichosts", default=False, action="store_true", help="Skip static localhost entries in the final hosts file.")
     parser.add_argument("--output", "-o", dest="outputsubfolder", default="", help="Output subfolder for generated hosts file.")
@@ -137,6 +141,12 @@ def main():
     removeOldHostsFile()
     finalFile = removeDupsAndExcl(mergeFile)
     finalizeFile(finalFile)
+
+    if settings["ziphosts"]:
+        zf = zipfile.ZipFile(os.path.join(settings["outputsubfolder"], "hosts.zip"), mode='w')
+        zf.write(os.path.join(settings["outputsubfolder"], "hosts"), compress_type=zipfile.ZIP_DEFLATED, arcname='hosts')
+        zf.close()
+
     updateReadmeData()
     printSuccess("Success! The hosts file has been saved in folder " + settings["outputsubfolder"] + "\nIt contains " +
                  "{:,}".format(settings["numberofrules"]) + " unique entries.")
