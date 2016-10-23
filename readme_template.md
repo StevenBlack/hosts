@@ -8,8 +8,8 @@ with duplicates removed.  This repo provides several hosts files tailored to you
 
 ### List of all hosts file variants
 
-Host file recipe | Readme | Raw hosts | Unique domains
----------------- |:------:|:---------:|:-------------:
+Host file recipe | Readme | Raw hosts | hosts (.zip) | Unique domains
+---------------- |:------:|:---------:|:------------:|:-------------:
 @TOCROWS@
 
 **Expectation**: These unified hosts files should serve all devices, regardless of OS.
@@ -76,6 +76,7 @@ exist, it will be created.
 
 `--skipstatichosts`, or `-s`: `false` (default) or `true`, omit the standard section, at the top containing lines like `127.0.0.1 localhost`.  This is useful for configuring proximate DNS services on the local network.
 
+`--zip`, or `-z`: `false` (default) or `true`, additionally create a zip archive of the hosts file named `hosts.zip`.
 
 ## How do I control which sources are unified?
 
