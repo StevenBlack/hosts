@@ -96,6 +96,7 @@ defaults = {
     "exclusionregexs" : [],
     "exclusions" : [],
     "commonexclusions" : ["hulu.com"],
+    "blacklistfile" : os.path.join(BASEDIR_PATH, "blacklist"),
     "whitelistfile" : os.path.join(BASEDIR_PATH, "whitelist")}
 
 def main():
@@ -297,6 +298,11 @@ def createInitialFile():
     for source in settings["extensions"]:
         filename = os.path.join(settings["extensionspath"], source, settings["datafilenames"])
         with open(filename, "r") as curFile:
+            #Done in a cross-python way
+            writeData(mergeFile, curFile.read())
+
+    if os.path.isfile(settings["blacklistfile"]):
+        with open(settings["blacklistfile"], "r") as curFile:
             #Done in a cross-python way
             writeData(mergeFile, curFile.read())
 
