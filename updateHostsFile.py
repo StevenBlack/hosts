@@ -87,7 +87,7 @@ defaults = {
     "datafilenames" : "hosts",
     "targetip" : "0.0.0.0",
     "ziphosts" : False,
-    "updateurlfilename" : "update.info",
+    "sourcedatafilename" : "update.json",
     "readmefilename" : "readme.md",
     "readmetemplate" : os.path.join(BASEDIR_PATH, "readme_template.md"),
     "readmedata" : {},
@@ -260,14 +260,14 @@ def updateAllSources():
                     print ("Skipping.")
 
 def getUpdateURLsFromFile(source):
-    pathToUpdateFile = os.path.join(settings["datapath"], source, settings["updateurlfilename"])
+    pathToUpdateFile = os.path.join(settings["datapath"], source, settings["sourcedatafilename"])
     if os.path.exists(pathToUpdateFile):
         updateFile = open(pathToUpdateFile, "r")
-        retURLs     = updateFile.readlines()
-        # .strip()
+        updateData = json.load(updateFile)
+        retURLs    = [updateData["url"]]
         updateFile.close()
     else:
-        retURL = None
+        retURLs = None
         printFailure("Warning: Can't find the update file for source " + source + "\n" +
                      "Make sure that there's a file at " + pathToUpdateFile)
     return retURLs
@@ -275,10 +275,11 @@ def getUpdateURLsFromFile(source):
 
 
 def getUpdateURLFromFile(source):
-    pathToUpdateFile = os.path.join(settings["datapath"], source, settings["updateurlfilename"])
+    pathToUpdateFile = os.path.join(settings["datapath"], source, settings["sourcedatafilename"])
     if os.path.exists(pathToUpdateFile):
         with open(pathToUpdateFile, "r") as updateFile:
-            return updateFile.readline().strip()
+            updateData = json.load(updateFile)
+            return [updateData["url"]]
     printFailure("Warning: Can't find the update file for source " + source + "\n" +
                  "Make sure that there's a file at " + pathToUpdateFile)
     return None
