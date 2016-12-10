@@ -80,8 +80,7 @@ exist, it will be created.
 
 ## How do I control which sources are unified?
 
-Add one or more  *additional* sources, each in a subfolder of the `data/` folder, and specify its update url in
-`update.info` file.
+Add one or more  *additional* sources, each in a subfolder of the `data/` folder, and specify the `url` key in its `update.json` file.
 
 Add one or more *optional* extensions, which originate from subfolders of the `extensions/` folder.  Again the url in
 `update.info` controls where this extension finds its updates.
