@@ -93,6 +93,13 @@ Add one or more  *additional* sources, each in a subfolder of the `data/` folder
 Add one or more *optional* extensions, which originate from subfolders of the `extensions/` folder.  Again the url in
 `update.info` controls where this extension finds its updates.
 
+Create an *optional* `blacklist` file. The contents of this file (containing a listing of additional domains in
+`hosts` file format) are appended to the unified hosts file during the update process. A sample `blacklist` is
+included, and may be modified as you desire.
+
+  * NOTE: The `blacklist` is not tracked by git, so any changes you make won't be overridden when you `git pull`
+  this repo from `origin` in the future.
+
 ### How do I include my own custom domain mappings?
 
 If you have custom hosts records, place them in file `myhosts`.  The contents of this file are prepended to the
