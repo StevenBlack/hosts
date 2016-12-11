@@ -300,7 +300,7 @@ def createInitialFile():
             #Done in a cross-python way
             writeData(mergeFile, curFile.read())
 
-        pathToUpdateFile = os.path.join(settings["datapath"], source, settings["sourcedatafilename"])
+        pathToUpdateFile = os.path.join(settings["extensionspath"], source, settings["sourcedatafilename"])
         if os.path.exists(pathToUpdateFile):
             updateFile = open(pathToUpdateFile, "r")
             updateData = json.load(updateFile)

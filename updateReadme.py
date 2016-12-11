@@ -38,7 +38,7 @@ def main():
         keys = data.keys()
 
     keys.sort(key=cmp_keys)
-    print (keys)
+
     tocRows = ""
     for key in keys:
         data[key]["fmtentries"] = "{:,}".format(data[key]["entries"])
