@@ -27,7 +27,9 @@ Python3 = sys.version_info >= (3,0)
 
 def main():
 
-    s = Template('${description} | [Readme](https://github.com/StevenBlack/hosts/blob/master/${location}readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/${location}hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/${location}hosts.zip) | ${fmtentries}')
+    master = "https://github.com/StevenBlack/hosts/blob/master/"
+    raw = "https://raw.githubusercontent.com/StevenBlack/hosts/master/"
+    s = Template('${description} | [Readme](${master}${location}readme.md) | [link](${raw}${location}hosts) | [link](${raw}${location}hosts.zip) | ${fmtentries}')
 
     with open(README_DATA_FILENAME, 'r') as f:
        data = json.load(f)
