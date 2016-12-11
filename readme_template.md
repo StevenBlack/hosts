@@ -14,21 +14,17 @@ Host file recipe | Readme | Raw hosts | hosts (.zip) | Unique domains
 
 **Expectation**: These unified hosts files should serve all devices, regardless of OS.
 
-## Sources of hosts data unified here
+## Sources of hosts data unified in this variant
 
 Updated `hosts` files from the following locations are always unified and included:
 
-* The [Adaway hosts file](http://adaway.org/hosts.txt), updated regularly.
-* MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated
-monthly, or thereabouts.
-* Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
-* Malware Domain List at [http://www.malwaredomainlist.com/](http://www.malwaredomainlist.com/), updated regularly.
-* Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
-* My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
+Host file source | Description | Home page | Raw hosts | Update frequency 
+-----------------|-------------|:---------:|:---------:|:-------:
+@SOURCEROWS@
+
 
 ## Extensions
-The unified hosts file is extensible.  You manage extensions by curating the `extensions/` folder tree.
-See the `social`, `gambling`, and `porn` extension which are included in this repo, for example.
+The unified hosts file is extensible.  You manage extensions by curating the `extensions/` folder tree. See the `social`, `gambling`, and `porn` extension folders.
 
 ## Generate your own unified hosts file
 
@@ -84,6 +80,13 @@ Add one or more  *additional* sources, each in a subfolder of the `data/` folder
 
 Add one or more *optional* extensions, which originate from subfolders of the `extensions/` folder.  Again the url in
 `update.info` controls where this extension finds its updates.
+
+Create an *optional* `blacklist` file. The contents of this file (containing a listing of additional domains in
+`hosts` file format) are appended to the unified hosts file during the update process. A sample `blacklist` is
+included, and may be modified as you desire.
+
+  * NOTE: The `blacklist` is not tracked by git, so any changes you make won't be overridden when you `git pull`
+  this repo from `origin` in the future.
 
 ### How do I include my own custom domain mappings?
 

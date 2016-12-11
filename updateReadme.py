@@ -49,11 +49,28 @@ def main():
 
         tocRows += s.substitute(data[key]) + "\n"
 
+    rowdefaults = {
+        "name": "",
+        "description": "",
+        "homeurl": "",
+        "frequency": "",
+        "issues": "",
+        "url": ""}
+
+    t = Template('${name} | ${description} |[link](${homeurl}) | [raw](${url}) | ${frequency} ')
 
     for key in keys:
         extensions = key.replace( "-", ", ")
         extensionsStr = "* Extensions: **" + extensions + "**."
         extensionsHeader = "with "+ extensions + " extensions"
+
+        sourceRows = ""
+        sourceList = data[key]["sourcesdata"]
+        for source in sourceList:
+            thisrow = {}
+            thisrow.update(rowdefaults)
+            thisrow.update(source)
+            sourceRows += t.substitute(thisrow) + "\n"
 
         with open(os.path.join(data[key]["location"],README_FILENAME), "wt") as out:
             for line in open(README_TEMPLATE):
@@ -63,6 +80,7 @@ def main():
                 line = line.replace( '@NUM_ENTRIES@', "{:,}".format(data[key]["entries"]))
                 line = line.replace( '@SUBFOLDER@',os.path.join(data[key]["location"], ''))
                 line = line.replace( '@TOCROWS@', tocRows )
+                line = line.replace( '@SOURCEROWS@', sourceRows )
                 out.write( line )
 
 def cmp_keys(item):

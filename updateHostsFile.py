@@ -88,6 +88,7 @@ defaults = {
     "targetip" : "0.0.0.0",
     "ziphosts" : False,
     "sourcedatafilename" : "update.json",
+    "sourcesdata": [],
     "readmefilename" : "readme.md",
     "readmetemplate" : os.path.join(BASEDIR_PATH, "readme_template.md"),
     "readmedata" : {},
@@ -96,6 +97,7 @@ defaults = {
     "exclusionregexs" : [],
     "exclusions" : [],
     "commonexclusions" : ["hulu.com"],
+    "blacklistfile" : os.path.join(BASEDIR_PATH, "blacklist"),
     "whitelistfile" : os.path.join(BASEDIR_PATH, "whitelist")}
 
 def main():
@@ -273,30 +275,40 @@ def getUpdateURLsFromFile(source):
     return retURLs
 # End Update Logic
 
-
-def getUpdateURLFromFile(source):
-    pathToUpdateFile = os.path.join(settings["datapath"], source, settings["sourcedatafilename"])
-    if os.path.exists(pathToUpdateFile):
-        with open(pathToUpdateFile, "r") as updateFile:
-            updateData = json.load(updateFile)
-            return [updateData["url"]]
-    printFailure("Warning: Can't find the update file for source " + source + "\n" +
-                 "Make sure that there's a file at " + pathToUpdateFile)
-    return None
-# End Update Logic
-
 # File Logic
 def createInitialFile():
     mergeFile = tempfile.NamedTemporaryFile()
+
+    # spin the sources for the base file
     for source in settings["sources"]:
         filename = os.path.join(settings["datapath"], source, settings["datafilenames"])
         with open(filename, "r") as curFile:
             #Done in a cross-python way
             writeData(mergeFile, curFile.read())
 
+        pathToUpdateFile = os.path.join(settings["datapath"], source, settings["sourcedatafilename"])
+        if os.path.exists(pathToUpdateFile):
+            updateFile = open(pathToUpdateFile, "r")
+            updateData = json.load(updateFile)
+            settings["sourcesdata"].append(updateData)
+            updateFile.close()
+
+    # spin the sources for extensions to the base file
     for source in settings["extensions"]:
         filename = os.path.join(settings["extensionspath"], source, settings["datafilenames"])
         with open(filename, "r") as curFile:
+            #Done in a cross-python way
+            writeData(mergeFile, curFile.read())
+
+        pathToUpdateFile = os.path.join(settings["extensionspath"], source, settings["sourcedatafilename"])
+        if os.path.exists(pathToUpdateFile):
+            updateFile = open(pathToUpdateFile, "r")
+            updateData = json.load(updateFile)
+            settings["sourcesdata"].append(updateData)
+            updateFile.close()
+
+    if os.path.isfile(settings["blacklistfile"]):
+        with open(settings["blacklistfile"], "r") as curFile:
             #Done in a cross-python way
             writeData(mergeFile, curFile.read())
 
@@ -422,7 +434,8 @@ def updateReadmeData():
         extensionsKey = "-".join(settings["extensions"])
 
     generationData = {"location": os.path.join(settings["outputsubfolder"], ""),
-                      "entries": settings["numberofrules"]}
+                      "entries": settings["numberofrules"],
+                      "sourcesdata": settings["sourcesdata"]}
     settings["readmedata"][extensionsKey] = generationData
     with open(settings["readmedatafilename"], "w") as f:
         json.dump(settings["readmedata"], f)
