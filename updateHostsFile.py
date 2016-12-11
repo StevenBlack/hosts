@@ -279,12 +279,14 @@ def getUpdateURLsFromFile(source):
 # File Logic
 def createInitialFile():
     mergeFile = tempfile.NamedTemporaryFile()
+    # spin the sources for the base file
     for source in settings["sources"]:
         filename = os.path.join(settings["datapath"], source, settings["datafilenames"])
         with open(filename, "r") as curFile:
             #Done in a cross-python way
             writeData(mergeFile, curFile.read())
 
+    # spin the sources for extensions to the base file
     for source in settings["extensions"]:
         filename = os.path.join(settings["extensionspath"], source, settings["datafilenames"])
         with open(filename, "r") as curFile:
