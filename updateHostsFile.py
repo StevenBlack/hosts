@@ -88,6 +88,7 @@ defaults = {
     "targetip" : "0.0.0.0",
     "ziphosts" : False,
     "sourcedatafilename" : "update.json",
+    "sourcedata" : [],
     "readmefilename" : "readme.md",
     "readmetemplate" : os.path.join(BASEDIR_PATH, "readme_template.md"),
     "readmedata" : {},
@@ -265,6 +266,7 @@ def getUpdateURLsFromFile(source):
     if os.path.exists(pathToUpdateFile):
         updateFile = open(pathToUpdateFile, "r")
         updateData = json.load(updateFile)
+        settings["sourcedata"].append(updateData)
         retURLs    = [updateData["url"]]
         updateFile.close()
     else:
@@ -428,7 +430,8 @@ def updateReadmeData():
         extensionsKey = "-".join(settings["extensions"])
 
     generationData = {"location": os.path.join(settings["outputsubfolder"], ""),
-                      "entries": settings["numberofrules"]}
+                      "entries": settings["numberofrules"],
+                      "sourcedata": settings["sourcedata"]}
     settings["readmedata"][extensionsKey] = generationData
     with open(settings["readmedatafilename"], "w") as f:
         json.dump(settings["readmedata"], f)
