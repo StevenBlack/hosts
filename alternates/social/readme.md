@@ -43,12 +43,12 @@ Telemetry | Windows users tracking sites based on https://github.com/Nummer/Dest
 tyzbit | Microsoft tracking domains.  A fork of this repo providing additional data. |[link](https://github.com/tyzbit/hosts/blob/master/data/tyzbit/hosts) | [raw](https://raw.githubusercontent.com/tyzbit/hosts/master/data/tyzbit/hosts) | rarely 
 UncheckyAds | Windows installers ads sources sites based on https://unchecky.com/ content. |[link](https://github.com/FadeMind/hosts.extras) | [raw](https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts) | occasional 
 yoyo.org | Blocking with ad server and tracking server hostnames. |[link](https://pgl.yoyo.org/adservers/) | [raw](https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0) | frequently 
+Sinfonietta's social media blocking hosts file | A collection of category-specific host files. |[link](https://github.com/Sinfonietta/hostfiles) | [raw](https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/social-hosts) | occasional 
 
 
 
 ## Extensions
-The unified hosts file is extensible.  You manage extensions by curating the `extensions/` folder tree.
-See the `social`, `gambling`, and `porn` extension which are included in this repo, for example.
+The unified hosts file is extensible.  You manage extensions by curating the `extensions/` folder tree. See the `social`, `gambling`, and `porn` extension folders.
 
 ## Generate your own unified hosts file
 
