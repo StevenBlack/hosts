@@ -14,17 +14,14 @@ Host file recipe | Readme | Raw hosts | hosts (.zip) | Unique domains
 
 **Expectation**: These unified hosts files should serve all devices, regardless of OS.
 
-## Sources of hosts data unified here
+## Sources of hosts data unified in this variant
 
 Updated `hosts` files from the following locations are always unified and included:
 
-* The [Adaway hosts file](http://adaway.org/hosts.txt), updated regularly.
-* MVPs.org Hosts file at [http://winhelp2002.mvps.org/hosts.htm](http://winhelp2002.mvps.org/hosts.htm), updated
-monthly, or thereabouts.
-* Dan Pollock at [http://someonewhocares.org/hosts/](http://someonewhocares.org/hosts/) updated regularly.
-* Malware Domain List at [http://www.malwaredomainlist.com/](http://www.malwaredomainlist.com/), updated regularly.
-* Peter Lowe at [http://pgl.yoyo.org/adservers/](http://pgl.yoyo.org/adservers/), updated regularly.
-* My own small list in raw form [here](https://raw.github.com/StevenBlack/hosts/master/data/StevenBlack/hosts).
+Host file source | Description | Home page | Raw hosts | Update frequency 
+-----------------|-------------|:---------:|:---------:|:-------:
+@SOURCEROWS@
+
 
 ## Extensions
 The unified hosts file is extensible.  You manage extensions by curating the `extensions/` folder tree.
