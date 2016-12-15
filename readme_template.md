@@ -8,8 +8,10 @@ with duplicates removed.  This repo provides several hosts files tailored to you
 
 ### List of all hosts file variants
 
-Host file recipe | Readme | Raw hosts | hosts (.zip) | Unique domains
----------------- |:------:|:---------:|:------------:|:-------------:
+The **Non Github mirror** is the link to use for some hosts file managers like [Hostsman for Windows](http://www.abelhadigital.com/hostsman) that don't work with Github download links.
+
+Host file recipe | Readme | Raw hosts | hosts (.zip) | Unique domains | Non Github mirror
+---------------- |:------:|:---------:|:------------:|:--------------:|:-------------:
 @TOCROWS@
 
 **Expectation**: These unified hosts files should serve all devices, regardless of OS.
