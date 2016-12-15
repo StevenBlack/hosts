@@ -3,21 +3,23 @@
 This repository consolidates several reputable `hosts` files, and merges them into a unified hosts file
 with duplicates removed.  This repo provides several hosts files tailored to you need to block.
 
-* Last updated: **December 12 2016**.
-* Here's the [raw hosts file with gambling, porn, social extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn-social/hosts) containing 38,308 entries.
+* Last updated: **December 15 2016**.
+* Here's the [raw hosts file with gambling, porn, social extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn-social/hosts) containing 39,851 entries.
 
 ### List of all hosts file variants
 
-Host file recipe | Readme | Raw hosts | hosts (.zip) | Unique domains
----------------- |:------:|:---------:|:------------:|:-------------:
-Unified hosts = **(adware + malware)** | [Readme](https://github.com/StevenBlack/hosts/blob/master/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts.zip) | 31,817
-Unified hosts **+ gambling** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/gambling/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts.zip) | 32,531
-Unified hosts **+ porn** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/porn/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts.zip) | 37,364
-Unified hosts **+ social** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/social/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts.zip) | 32,047
-Unified hosts **+ gambling + porn** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/gambling-porn/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts.zip) | 38,078
-Unified hosts **+ gambling + social** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/gambling-social/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts.zip) | 32,761
-Unified hosts **+ porn + social** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/porn-social/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts.zip) | 37,594
-Unified hosts **+ gambling + porn + social** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/gambling-porn-social/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn-social/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn-social/hosts.zip) | 38,308
+The **Non Github mirror** is the link to use for some hosts file managers like [Hostsman for Windows](http://www.abelhadigital.com/hostsman) that don't work with Github download links.
+
+Host file recipe | Readme | Raw hosts | hosts (.zip) | Unique domains | Non Github mirror
+---------------- |:------:|:---------:|:------------:|:--------------:|:-------------:
+Unified hosts = **(adware + malware)** | [Readme](https://github.com/StevenBlack/hosts/blob/master/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts.zip) | 31,865 | [link](http://sbc.io/hosts/hosts)
+Unified hosts **+ gambling** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/gambling/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts.zip) | 33,385 | [link](http://sbc.io/hosts/alternates/gambling/hosts)
+Unified hosts **+ porn** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/porn/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts.zip) | 38,101 | [link](http://sbc.io/hosts/alternates/porn/hosts)
+Unified hosts **+ social** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/social/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts.zip) | 32,095 | [link](http://sbc.io/hosts/alternates/social/hosts)
+Unified hosts **+ gambling + porn** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/gambling-porn/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts.zip) | 39,621 | [link](http://sbc.io/hosts/alternates/gambling-porn/hosts)
+Unified hosts **+ gambling + social** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/gambling-social/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social/hosts.zip) | 33,615 | [link](http://sbc.io/hosts/alternates/gambling-social/hosts)
+Unified hosts **+ porn + social** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/porn-social/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts.zip) | 38,331 | [link](http://sbc.io/hosts/alternates/porn-social/hosts)
+Unified hosts **+ gambling + porn + social** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/gambling-porn-social/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn-social/hosts) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn-social/hosts.zip) | 39,851 | [link](http://sbc.io/hosts/alternates/gambling-porn-social/hosts)
 
 
 **Expectation**: These unified hosts files should serve all devices, regardless of OS.
