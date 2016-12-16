@@ -9,19 +9,40 @@
 #
 # ./updaeHosts.sh OR sh updaeHosts.sh
 
-function flushDNS {
+flushDNS() {
+	# Find OS name
+	#if Darwin (Mac OSX)
+	#if Linux (Ubunut /Debian)
+
+	OS=$(uname)
+	echo $OS
+
 	# Find Mac version and cleares the DNS Cache
-	MAJOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $2}')
-	if [ "$MAJOR_MAC_VERSION" -ge "10" ]
+	if [ "$OS" = "Darwin" ]
 	then
-	 		sudo killall -HUP mDNSResponder
-	else
+		MAJOR_MAC_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $2}')
+		if [ "$MAJOR_MAC_VERSION" -ge "10" ]
+		then
+		 	sudo killall -HUP mDNSResponder
+		else
 			sudo dscacheutil -flushcache
+		fi
 	fi
+
+	if [ "$OS" = "Linux" ]
+	then
+		# Find Unix version and cleares the DNS Cache
+		MAJOR_UNIX_NAME=$(lsb_release -i | awk -F ":" '{print $2}')
+		if [ "$MAJOR_UNIX_NAME" = "Ubuntu" ]
+		then
+			sudo /etc/rc.d/init.d/nscd restart
+		fi
+	fi
+
 	echo "* * * DNS Cache Cleared * * *"
 }
 
-function updateHosts {
+updateHosts() {
 	echo "* * * Updating hosts * * *"
 	python updateHostsFile.py -a >> /dev/null
 	echo "* * * Copying hosts to /etc/hosts * * *"
