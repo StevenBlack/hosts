@@ -4,10 +4,22 @@
 python3 updateHostsFile.py -a -z    -o alternates/gambling -e gambling
 python3 updateHostsFile.py -a -z -n -o alternates/porn -e porn
 python3 updateHostsFile.py -a -z -n -o alternates/social -e social
+python3 updateHostsFile.py -a -z -n -o alternates/fakenews -e fakenews
+
+python3 updateHostsFile.py -a -z -n -o alternates/fakenews-gambling -e fakenews gambling
+python3 updateHostsFile.py -a -z -n -o alternates/fakenews-porn -e fakenews porn
+python3 updateHostsFile.py -a -z -n -o alternates/fakenews-social -e fakenews social
 python3 updateHostsFile.py -a -z -n -o alternates/gambling-porn -e gambling porn
 python3 updateHostsFile.py -a -z -n -o alternates/gambling-social -e gambling social
 python3 updateHostsFile.py -a -z -n -o alternates/porn-social -e porn social
+
+python3 updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-porn -e fakenews gambling porn
+python3 updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-social -e fakenews gambling social
+python3 updateHostsFile.py -a -z -n -o alternates/fakenews-porn-social -e fakenews porn social
 python3 updateHostsFile.py -a -z -n -o alternates/gambling-porn-social -e gambling porn social
+
+python3 updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-porn-social -e fakenews gambling porn social
+
 python3 updateHostsFile.py -a -z -n
 
 # Update the readmes.
