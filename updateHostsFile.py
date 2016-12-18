@@ -245,7 +245,7 @@ def matchesExclusions(strippedRule):
 # Update Logic
 def updateAllSources():
     # Update all hosts files regardless of folder depth
-    allsources = glob('*/**/' + settings["sourcedatafilename"])
+    allsources = glob('*/**/' + settings["sourcedatafilename"], recursive=True)
     for source in allsources:
         updateFile = open(source, "r")
         updateData = json.load(updateFile)
