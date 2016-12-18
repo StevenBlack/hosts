@@ -259,9 +259,9 @@ def updateAllSources():
             updatedFile = updatedFile.replace("\r", "") #get rid of carriage-return symbols
 
             # This is cross-python code
-            dataFile = open(os.path.join(BASEDIR_PATH, os.path.dirname(source), settings["hostfilename"]), "wb")
-            writeData(dataFile, updatedFile)
-            dataFile.close()
+            hostsFile = open(os.path.join(BASEDIR_PATH, os.path.dirname(source), settings["hostfilename"]), "wb")
+            writeData(hostsFile, updatedFile)
+            hostsFile.close()
         except:
             print ("Skipping.")
 # End Update Logic
