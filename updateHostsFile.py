@@ -84,7 +84,7 @@ defaults = {
     "extensionspath" : os.path.join(BASEDIR_PATH, "extensions"),
     "extensions" : [],
     "outputsubfolder" : "",
-    "datafilenames" : "hosts",
+    "hostfilename" : "hosts",
     "targetip" : "0.0.0.0",
     "ziphosts" : False,
     "sourcedatafilename" : "update.json",
@@ -259,7 +259,7 @@ def updateAllSources():
             updatedFile = updatedFile.replace("\r", "") #get rid of carriage-return symbols
 
             # This is cross-python code
-            dataFile = open(os.path.join(BASEDIR_PATH, os.path.dirname(source), settings["datafilenames"]), "wb")
+            dataFile = open(os.path.join(BASEDIR_PATH, os.path.dirname(source), settings["hostfilename"]), "wb")
             writeData(dataFile, updatedFile)
             dataFile.close()
         except:
@@ -271,8 +271,9 @@ def createInitialFile():
     mergeFile = tempfile.NamedTemporaryFile()
 
     # spin the sources for the base file
+    #### glob('data/**/hosts',recursive=True)
     for source in settings["sources"]:
-        filename = os.path.join(settings["datapath"], source, settings["datafilenames"])
+        filename = os.path.join(settings["datapath"], source, settings["hostfilename"])
         with open(filename, "r") as curFile:
             #Done in a cross-python way
             writeData(mergeFile, curFile.read())
@@ -286,7 +287,7 @@ def createInitialFile():
 
     # spin the sources for extensions to the base file
     for source in settings["extensions"]:
-        filename = os.path.join(settings["extensionspath"], source, settings["datafilenames"])
+        filename = os.path.join(settings["extensionspath"], source, settings["hostfilename"])
         with open(filename, "r") as curFile:
             #Done in a cross-python way
             writeData(mergeFile, curFile.read())
