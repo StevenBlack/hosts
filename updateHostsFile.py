@@ -21,7 +21,7 @@ import subprocess
 import sys
 import tempfile
 import time
-import glob
+from glob import glob
 import argparse
 import socket
 import json
@@ -69,7 +69,7 @@ def writeData(f, data):
 
 # This function doesn't list hidden files
 def listdir_nohidden(path):
-    return glob.glob(os.path.join(path, "*"))
+    return glob(os.path.join(path, "*"))
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -127,7 +127,6 @@ def main():
 
     settings["sources"] = listdir_nohidden(settings["datapath"])
     settings["extensionsources"] = listdir_nohidden(settings["extensionspath"])
-
 
     # All our extensions folders...
     settings["extensions"] = [os.path.basename(item) for item in listdir_nohidden(settings["extensionspath"])]
@@ -245,34 +244,26 @@ def matchesExclusions(strippedRule):
 
 # Update Logic
 def updateAllSources():
-    allsources = list(set(settings["sources"]) | set(settings["extensionsources"]))
+    # Update all hosts files regardless of folder depth
+    allsources = glob('*/**/' + settings["sourcedatafilename"])
     for source in allsources:
-        if os.path.isdir(source):
-            for updateURL in getUpdateURLsFromFile(source):
-                print ("Updating source " + os.path.basename(source) + " from " + updateURL)
-                # Cross-python call
-                updatedFile = getFileByUrl(updateURL)
-                try:
-                    updatedFile = updatedFile.replace("\r", "") #get rid of carriage-return symbols
-                    # This is cross-python code
-                    dataFile = open(os.path.join(settings["datapath"], source, settings["datafilenames"]), "wb")
-                    writeData(dataFile, updatedFile)
-                    dataFile.close()
-                except:
-                    print ("Skipping.")
-
-def getUpdateURLsFromFile(source):
-    pathToUpdateFile = os.path.join(settings["datapath"], source, settings["sourcedatafilename"])
-    if os.path.exists(pathToUpdateFile):
-        updateFile = open(pathToUpdateFile, "r")
+        updateFile = open(source, "r")
         updateData = json.load(updateFile)
-        retURLs    = [updateData["url"]]
+        updateURL  = updateData["url"]
         updateFile.close()
-    else:
-        retURLs = None
-        printFailure("Warning: Can't find the update file for source " + source + "\n" +
-                     "Make sure that there's a file at " + pathToUpdateFile)
-    return retURLs
+
+        print ("Updating source " + os.path.dirname(source) + " from " + updateURL)
+        # Cross-python call
+        updatedFile = getFileByUrl(updateURL)
+        try:
+            updatedFile = updatedFile.replace("\r", "") #get rid of carriage-return symbols
+
+            # This is cross-python code
+            dataFile = open(os.path.join(BASEDIR_PATH, os.path.dirname(source), settings["datafilenames"]), "wb")
+            writeData(dataFile, updatedFile)
+            dataFile.close()
+        except:
+            print ("Skipping.")
 # End Update Logic
 
 # File Logic
