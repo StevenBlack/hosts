@@ -6,7 +6,9 @@ Currently this repo includes three extensions:
 
 * `gambling` for common online betting sites,  
 * `social` for common social media sites, and 
-* `porn` for porn sites.  You can optionally add either or both to your final unified file.
+* `porn` for porn sites.  
+* `fakenews` for fake news sites. 
+
 
 Here are some sample calls, which vary which extensions are included.
 
