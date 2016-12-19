@@ -22,6 +22,7 @@ import sys
 import tempfile
 import time
 from glob import glob
+import fnmatch
 import argparse
 import socket
 import json
@@ -245,7 +246,8 @@ def matchesExclusions(strippedRule):
 # Update Logic
 def updateAllSources():
     # Update all hosts files regardless of folder depth
-    allsources = glob('*/**/' + settings["sourcedatafilename"], recursive=True)
+    # allsources = glob('*/**/' + settings["sourcedatafilename"], recursive=True)
+    allsources = recursiveGlob("*", settings["sourcedatafilename"])
     for source in allsources:
         updateFile = open(source, "r")
         updateData = json.load(updateFile)
@@ -271,12 +273,12 @@ def createInitialFile():
     mergeFile = tempfile.NamedTemporaryFile()
 
     # spin the sources for the base file
-    for source in glob(settings["datapath"] + "/**/" + settings["hostfilename"], recursive=True):
+    for source in recursiveGlob(settings["datapath"], settings["hostfilename"]):
         with open(source, "r") as curFile:
             #Done in a cross-python way
             writeData(mergeFile, curFile.read())
 
-    for source in glob(settings["datapath"] + "/**/" + settings["sourcedatafilename"], recursive=True):
+    for source in recursiveGlob(settings["datapath"], settings["sourcedatafilename"]):
         updateFile = open(source, "r")
         updateData = json.load(updateFile)
         settings["sourcesdata"].append(updateData)
@@ -285,13 +287,13 @@ def createInitialFile():
     # spin the sources for extensions to the base file
     for source in settings["extensions"]:
         # filename = os.path.join(settings["extensionspath"], source, settings["hostfilename"])
-        for filename in glob(os.path.join(settings["extensionspath"], source) + "/**/" + settings["hostfilename"], recursive=True):
+        for filename in recursiveGlob(os.path.join(settings["extensionspath"], source), settings["hostfilename"]):
             with open(filename, "r") as curFile:
                 #Done in a cross-python way
                 writeData(mergeFile, curFile.read())
 
         # updateFilePath = os.path.join(settings["extensionspath"], source, settings["sourcedatafilename"])
-        for updateFilePath in glob( os.path.join(settings["extensionspath"], source) + "/**/" + settings["sourcedatafilename"], recursive=True):
+        for updateFilePath in recursiveGlob( os.path.join(settings["extensionspath"], source), settings["sourcedatafilename"]):
             updateFile = open(updateFilePath, "r")
             updateData = json.load(updateFile)
             settings["sourcesdata"].append(updateData)
@@ -542,6 +544,20 @@ def isValidDomainFormat(domain):
         return False
     else:
         return True
+
+# A version-independent glob(  ... "/**/" ... )
+def recursiveGlob(stem, filepattern):
+    if sys.version_info >= (3,5):
+        return glob(stem + "/**/" + filepattern, recursive=True)
+    else:
+        if stem == "*":
+            stem = "."
+        matches = []
+        for root, dirnames, filenames in os.walk(stem):
+            for filename in fnmatch.filter(filenames, filepattern):
+                matches.append(os.path.join(root, filename))
+    return matches
+
 
 # Colors
 class colors:
