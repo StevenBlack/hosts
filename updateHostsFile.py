@@ -271,30 +271,28 @@ def createInitialFile():
     mergeFile = tempfile.NamedTemporaryFile()
 
     # spin the sources for the base file
-    #### glob('data/**/hosts',recursive=True)
-    for source in settings["sources"]:
-        filename = os.path.join(settings["datapath"], source, settings["hostfilename"])
-        with open(filename, "r") as curFile:
+    for source in glob(settings["datapath"] + "/**/" + settings["hostfilename"], recursive=True):
+        with open(source, "r") as curFile:
             #Done in a cross-python way
             writeData(mergeFile, curFile.read())
 
-        pathToUpdateFile = os.path.join(settings["datapath"], source, settings["sourcedatafilename"])
-        if os.path.exists(pathToUpdateFile):
-            updateFile = open(pathToUpdateFile, "r")
-            updateData = json.load(updateFile)
-            settings["sourcesdata"].append(updateData)
-            updateFile.close()
+    for source in glob(settings["datapath"] + "/**/" + settings["sourcedatafilename"], recursive=True):
+        updateFile = open(source, "r")
+        updateData = json.load(updateFile)
+        settings["sourcesdata"].append(updateData)
+        updateFile.close()
 
     # spin the sources for extensions to the base file
     for source in settings["extensions"]:
-        filename = os.path.join(settings["extensionspath"], source, settings["hostfilename"])
-        with open(filename, "r") as curFile:
-            #Done in a cross-python way
-            writeData(mergeFile, curFile.read())
+        # filename = os.path.join(settings["extensionspath"], source, settings["hostfilename"])
+        for filename in glob(os.path.join(settings["extensionspath"], source) + "/**/" + settings["hostfilename"], recursive=True):
+            with open(filename, "r") as curFile:
+                #Done in a cross-python way
+                writeData(mergeFile, curFile.read())
 
-        pathToUpdateFile = os.path.join(settings["extensionspath"], source, settings["sourcedatafilename"])
-        if os.path.exists(pathToUpdateFile):
-            updateFile = open(pathToUpdateFile, "r")
+        # updateFilePath = os.path.join(settings["extensionspath"], source, settings["sourcedatafilename"])
+        for updateFilePath in glob( os.path.join(settings["extensionspath"], source) + "/**/" + settings["sourcedatafilename"], recursive=True):
+            updateFile = open(updateFilePath, "r")
             updateData = json.load(updateFile)
             settings["sourcesdata"].append(updateData)
             updateFile.close()
