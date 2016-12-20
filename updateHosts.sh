@@ -1,13 +1,4 @@
-#!/usr/bin/env bash
-# This script will create in first running backup of ORIGINAL/CURRENT hosts file in hosts.skel file.
-# If hosts.skel file exists, then NEW copy with customized unified hosts file will be copied to proper path.
-# Next DNS Cache will be refreshed.
-# YOU NEED RUNNING THIS SCRIPT FILE IN COMMAND LINE PROMPT WITH ADMINISTRATOR PRIVILIGES
-#
-# Might have to change change execute for the script file
-# chmod 755 updaeHosts.sh
-#
-# ./updaeHosts.sh OR sh updaeHosts.sh
+#!/bin/bash
 
 flushDNS() {
 	# Find OS name
@@ -15,7 +6,6 @@ flushDNS() {
 	#if Linux (Ubunut /Debian)
 
 	OS=$(uname)
-	echo $OS
 
 	# Find Mac version and cleares the DNS Cache
 	if [ "$OS" = "Darwin" ]
@@ -50,6 +40,37 @@ updateHosts() {
 	flushDNS
 }
 
+defaultHosts()
+{
+cat <<EOF
+
+# IPv4
+
+127.0.0.1 localhost
+127.0.0.1 localhost.localdomain
+127.0.0.1 local
+255.255.255.255 broadcasthost
+
+# IPv6
+
+::1 localhost
+fe80::1%lo0 localhost
+
+EOF
+}
+
+# Restore default Hosts file.
+restore()
+{
+  OUT=$(defaultHosts)
+  echo "* * * Restoring default hosts * * *"
+  echo "This is restored default hosts file: $OUT" > hosts
+	sudo cp hosts /etc/hosts
+  flushDNS
+}
+
+# Update Hosts file from various sources.
+update() {
 if [ -f "/etc/hosts.skel" ]
 then
 	updateHosts
@@ -57,4 +78,22 @@ else
 	echo "* * * Creating a Backup of current hosts file (/etc/hosts.skel) * * *"
 	sudo cp /etc/hosts /etc/hosts.skel
 	updateHosts
+fi
+}
+
+if [ "$1" = "-u" ] || [ "$1" = "--update" ]
+then
+  update
+elif [ "$1" = "-r" ] || [ "$1" = "--restore" ]
+then
+  restore
+else
+  echo "Use this Script to update OR restore hosts file"
+  echo ""
+  echo "# Useage #"
+  echo "./t.sh -u OR ./t.sh -r"
+  echo ""
+  echo "-u or --update  : to update the hosts file for various sources"
+  echo "-r or --restore : to restore the hosts file to system default"
+  echo ""
 fi
