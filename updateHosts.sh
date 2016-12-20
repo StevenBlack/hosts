@@ -1,5 +1,13 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
+# This script will create in first running backup of ORIGINAL/CURRENT hosts file in hosts.skel file.
+# If hosts.skel file exists, then NEW copy with customized unified hosts file will be copied to proper path.
+# Next DNS Cache will be refreshed.
+# YOU NEED RUNNING THIS SCRIPT FILE IN COMMAND LINE PROMPT WITH ADMINISTRATOR PRIVILIGES
+#
+# Might have to change change execute for the script file
+# chmod 755 updaeHosts.sh
+#
+# ./updaeHosts.sh OR sh updaeHosts.sh
 flushDNS() {
 	# Find OS name
 	#if Darwin (Mac OSX)
