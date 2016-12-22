@@ -3,6 +3,8 @@
 :: Next DNS Cache will be refreshed.
 :: THIS BAT FILE WILL BE LAUNCHED WITH ADMINISTRATOR PRIVILIGES
 @ECHO OFF
+SETLOCAL EnableDelayedExpansion
+TITLE Update Hosts
 
 VER | FINDSTR /L "5.1." > NUL
 IF %ERRORLEVEL% EQU 0 GOTO START
@@ -10,12 +12,16 @@ IF %ERRORLEVEL% EQU 0 GOTO START
 VER | FINDSTR /L "5.2." > NUL
 IF %ERRORLEVEL% EQU 0 GOTO START
 
-:UAC_ADMIN
+CLS
+IF "%1"=="" GOTO CHECK_UAC
+IF "%1"=="start" GOTO START
+
+:CHECK_UAC
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"  
-if '%ERRORLEVEL%' NEQ '0' (
+If '%ERRORLEVEL%' NEQ '0' (
     ECHO Requesting administrative privileges...
     GOTO UAC_PROMPT
-) else (
+) Else (
     GOTO ADMIN
 )
 
@@ -26,10 +32,8 @@ ECHO UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%TEMP%\getadmin.vbs"
 EXIT /B
 
 :ADMIN
-if exist "%TEMP%\getadmin.vbs" (
-    DEL "%TEMP%\getadmin.vbs"
-)
-pushd "%CD%"
+IF EXIST "%TEMP%\getadmin.vbs" ( DEL "%TEMP%\getadmin.vbs" )
+PUSHD "%CD%"
 CD /D "%~dp0"
 CD %CD%
 %COMSPEC% /c "updateHostsWindows.bat" start
@@ -70,3 +74,4 @@ ipconfig /flushdns
 GOTO END
 
 :END
+ENDLOCAL
