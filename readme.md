@@ -225,29 +225,8 @@ sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
 |`makeHostsWindows.bat` BATCH file will create various alternate hosts files by combining and adding the gambling, porn, and social media extensions. You need to be connected to the Internet. This file REQUIRED installed Python 3.5.x runtime environment in Windows System. Launch this file as normal user.|
 :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-|Run `updateHostsWindows.bat` BATCH file in Command Prompt with Administrator privileges in repository directory for easy update, replace hosts file and reload DNS cache in Windows System. You need to be connected to the Internet. This file REQUIRED installed Python 3.5.x runtime environment in Windows System.|
+|Run `updateHostsWindows.bat` BATCH file will replace hosts file and reload DNS cache in Windows System. You need to be connected to the Internet. This file REQUIRED installed Python 3.5.x runtime environment in Windows System.|
 :---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-|WARNING: Don't run these BAT files directly or from popup menu. You have been warned.|
-:--------------------------------------------------------------------------------------
-
-Open a Command Prompt in directory where are files from this repository:
-
-**Windows XP**: Start -> Run -> `cmd`
-
-**Windows Vista, 7**: Start Button -> type `cmd` -> right-click Command Prompt ->
-"Run as Administrator"
-
-**Windows 8**: Start -> Swipe Up -> All Apps -> Windows System -> right-click Command Prompt ->
-"Run as Administrator"
-
-**Windows 10**: Start Button -> type `cmd` -> right-click Command Prompt ->
-"Run as Administrator"
-
-and run command:
-```
-updateHostsWindows.bat
-```
 
 |If you want using huge hosts file with merged [hphosts](https://www.hosts-file.net) (NOT INCLUDED HERE) you need to DISABLE and STOP `Dnscache` service before you replace hosts file in Windows Systems. You have been warned.|
 :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
