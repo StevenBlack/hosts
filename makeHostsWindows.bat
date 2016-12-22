@@ -1,4 +1,5 @@
 @ECHO OFF
+TITLE Make Hosts
 
 if not exist "%WINDIR%\py.exe" (
 	ECHO :: ERROR :: Python 3.5 Runtime NOT FOUND...
