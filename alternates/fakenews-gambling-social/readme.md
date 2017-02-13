@@ -4,7 +4,7 @@ This repository consolidates several reputable `hosts` files, and merges them
 into a unified hosts file with duplicates removed.  This repo provides several
 hosts files tailored to you need to block.
 
-* Last updated: **February 12 2017**.
+* Last updated: **February 13 2017**.
 * Here's the [raw hosts file with fakenews, gambling, social extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-social/hosts) containing 34,487 entries.
 
 ### List of all hosts file variants
