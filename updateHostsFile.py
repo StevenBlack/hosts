@@ -82,6 +82,7 @@ defaults = {
     "replace" : False,
     "backup" : False,
     "skipstatichosts": False,
+    "keepdomaincomments": False,
     "extensionspath" : os.path.join(BASEDIR_PATH, "extensions"),
     "extensions" : [],
     "outputsubfolder" : "",
@@ -108,6 +109,7 @@ def main():
     parser.add_argument("--backup", "-b", dest="backup", default=False, action="store_true", help="Backup the hosts files before they are overridden.")
     parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs="*", help="Host extensions to include in the final hosts file.")
     parser.add_argument("--ip", "-i", dest="targetip", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
+    parser.add_argument("--keepdomaincomments", "-k", dest="keepdomaincomments", default=False, help="Keep domain line comments.")
     parser.add_argument("--zip", "-z", dest="ziphosts", default=False, action="store_true", help="Additionally create a zip archive of the hosts file.")
     parser.add_argument("--noupdate", "-n", dest="noupdate", default=False, action="store_true", help="Don't update from host data sources.")
     parser.add_argument("--skipstatichosts", "-s", dest="skipstatichosts", default=False, action="store_true", help="Skip static localhost entries in the final hosts file.")
@@ -364,7 +366,7 @@ def normalizeRule(rule):
     if result:
         hostname, suffix = result.group(2,3)
         hostname = hostname.lower().strip() # explicitly lowercase and trim the hostname
-        if suffix:
+        if suffix and settings["keepdomaincomments"]:
             # add suffix as comment only, not as a separate host
             return hostname, "%s %s #%s\n" % (settings["targetip"], hostname, suffix)
         else:
