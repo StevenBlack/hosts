@@ -4,7 +4,7 @@ This repository consolidates several reputable `hosts` files, and merges them
 into a unified hosts file with duplicates removed.  This repo provides several
 hosts files tailored to you need to block.
 
-* Last updated: **February 17 2017**.
+* Last updated: **February 18 2017**.
 * Here's the [raw hosts file with porn, social extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social/hosts) containing 40,265 entries.
 
 ### List of all hosts file variants
@@ -111,6 +111,12 @@ Only active when `--replace` is also active.
 
 `--ip nnn.nnn.nnn.nnn`, or `-i nnn.nnn.nnn.nnn`: the IP address to use as the 
 target.  Default is `0.0.0.0`.
+
+`--keepdomaincomments`, or `-k`: `false` (default) or `true`, keep the comments 
+that appear on the same line as domains.  The default is `false` since some
+router-based implementations can't handle comments in-line with hosts.
+
+`--skipstatichosts`, or `-s`: `false` (default) or `true`, 
 
 `--noupdate`, or `-n`: skip fetching updates from hosts data sources.
 
