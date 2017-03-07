@@ -168,6 +168,20 @@ final hosts file.
 The `whitelist` is not tracked by git, so any changes you make won't be
 overridden when you `git pull` this repo  from `origin` in the future.
 
+### How do I pull this repo without losing changes?
+
+The easiest way to update this repo without overriding the `whitelist`,
+`blacklist`, or `myhosts` files is to run the following commands. Any changes
+to these files will be placed into a stash so that you can pop after the
+updated repo is pulled.
+```bash
+git checkout -- hosts readmeData.json
+git stash
+git pull
+git stash pop
+```
+After this the `updateHostsFile.py` script can be run to update the hosts
+file.
 
 ## What is a hosts file?
 
