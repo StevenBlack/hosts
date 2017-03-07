@@ -211,7 +211,7 @@ lines to your hosts file will do it:
 
 Traditionally most host files use `127.0.0.1`, the *loopback address*, to establish an IP connection to the local machine.
 
-We prefer to use ``0.0.0.0`, which is defined as a non-routable meta-address used to designate an invalid, unknown,
+We prefer to use `0.0.0.0`, which is defined as a non-routable meta-address used to designate an invalid, unknown,
 or non applicable target.
 
 Using `0.0.0.0` is empirically faster, possibly because there's no wait for a timeout resolution. It also does not
