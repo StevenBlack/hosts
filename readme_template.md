@@ -272,3 +272,7 @@ and doesn't currently display a corresponding high level of curation activity.
 
 It is expected that this unified hosts file will serve both desktop and mobile
 devices under a variety of operating systems.
+
+## Interesting Applications
+
+* [Block ads and malware via local DNS server](https://github.com/mueller-ma/block-ads-via-dns "Block ads and malware via local DNS server") (for Debian, Raspbian & Ubuntu): Set up a local DNS server with a `/etc/bind/named.conf.blocked` file, sourced from here.
