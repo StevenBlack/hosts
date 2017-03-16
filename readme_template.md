@@ -1,4 +1,4 @@
-#Unified hosts file @EXTENSIONS_HEADER@
+# Unified hosts file @EXTENSIONS_HEADER@
 
 This repository consolidates several reputable `hosts` files, and merges them
 into a unified hosts file with duplicates removed.  This repo provides several
