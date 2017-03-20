@@ -1,7 +1,7 @@
 :: This script will create in first running backup of ORIGINAL/CURRENT hosts file in hosts.skel file.
 :: If hosts.skel file exists, then NEW copy with customized unified hosts file will be copied to proper path.
 :: Next DNS Cache will be refreshed.
-:: THIS BAT FILE WILL BE LAUNCHED WITH ADMINISTRATOR PRIVILIGES
+:: THIS BAT FILE WILL BE LAUNCHED WITH ADMINISTRATOR PRIVILEGES
 @ECHO OFF
 SETLOCAL EnableDelayedExpansion
 TITLE Update Hosts
