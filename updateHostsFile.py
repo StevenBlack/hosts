@@ -333,8 +333,8 @@ def removeDupsAndExcl(mergeFile):
         line = line.decode("UTF-8")
         # replace tabs with space
         line = line.replace("\t+", " ")
-        # Trim trailing whitespace
-        line = line.rstrip() + "\n"
+        # Trim trailing whitespace, periods -- (Issue #271 - https://github.com/StevenBlack/hosts/issues/271)
+        line = line.rstrip(' .') + "\n"
         # Testing the first character doesn't require startswith
         if line[0] == "#" or re.match(r'^\s*$', line[0]):
             # Cross-python write
