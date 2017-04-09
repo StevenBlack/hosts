@@ -1,3 +1,11 @@
+#### Cloning?  Use a shallow clone and avoid 400 Mb of history
+
+A **shallow clone** is a good idea because you probably don't need many years of history.
+
+Like this:
+
+    git clone --depth 5 https://github.com/StevenBlack/hosts.git
+
 # Unified hosts file @EXTENSIONS_HEADER@
 
 This repository consolidates several reputable `hosts` files, and merges them
@@ -6,6 +14,7 @@ hosts files tailored to you need to block.
 
 * Last updated: **@GEN_DATE@**.
 * Here's the [raw hosts file @EXTENSIONS_HEADER@](https://raw.githubusercontent.com/StevenBlack/hosts/master/@SUBFOLDER@hosts) containing @NUM_ENTRIES@ entries.
+
 
 ### List of all hosts file variants
 
