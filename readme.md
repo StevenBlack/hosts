@@ -4,6 +4,16 @@ This repository consolidates several reputable `hosts` files, and merges them
 into a unified hosts file with duplicates removed.  This repo provides several
 hosts files tailored to you need to block.
 
+<div class="blankslate blankslate-large">
+	<img class="avatar left" src="https://avatars0.githubusercontent.com/u/80144?v=3&s=50" width="50" height="50">
+	<h3>Shallow clone and avoid 400 Mb of history</h3>
+	<p>I recommend a **shallow clone** because you probably don't need many years of history.</p>
+	<p>Like this:</p> 
+	<pre>
+git clone --depth 5 https://github.com/StevenBlack/hosts.git
+	</pre>
+</div>
+
 * Last updated: **April 09 2017**.
 * Here's the [raw hosts file with base extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) containing 35,460 entries.
 
