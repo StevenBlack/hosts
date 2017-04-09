@@ -1,4 +1,4 @@
-#### Cloning?  Use a shallow clone and avoid 400 Mb of history
+### Cloning?  Use a shallow clone and avoid 400 Mb of history
 
 A **shallow clone** is a good idea because you probably don't need many years of history.
 
