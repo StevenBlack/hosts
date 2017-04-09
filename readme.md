@@ -1,3 +1,11 @@
+#### Cloning?  Use a shallow clone and avoid 400 Mb of history
+
+A **shallow clone** is a good idea because you probably don't need many years of history.
+
+Like this:
+
+    git clone --depth 5 https://github.com/StevenBlack/hosts.git
+
 # Unified hosts file with base extensions
 
 This repository consolidates several reputable `hosts` files, and merges them
@@ -16,6 +24,7 @@ git clone --depth 5 https://github.com/StevenBlack/hosts.git
 
 * Last updated: **April 09 2017**.
 * Here's the [raw hosts file with base extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) containing 35,460 entries.
+
 
 ### List of all hosts file variants
 
