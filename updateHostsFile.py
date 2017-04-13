@@ -410,6 +410,7 @@ def writeOpeningHeader(finalFile):
         writeData(finalFile, "255.255.255.255 broadcasthost\n")
         writeData(finalFile, "::1 localhost\n")
         writeData(finalFile, "fe80::1%lo0 localhost\n")
+        writeData(finalFile, "0.0.0.0 0.0.0.0\n")
         if platform.system() == "Linux":
             writeData(finalFile, "127.0.1.1 " + socket.gethostname() + "\n")
         writeData(finalFile, "\n")
