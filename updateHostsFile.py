@@ -413,6 +413,7 @@ def writeOpeningHeader(finalFile):
         writeData(finalFile, "0.0.0.0 0.0.0.0\n")
         if platform.system() == "Linux":
             writeData(finalFile, "127.0.1.1 " + socket.gethostname() + "\n")
+            writeData(finalFile, "127.0.0.53 " + socket.gethostname() + "\n")
         writeData(finalFile, "\n")
 
     preamble = os.path.join(BASEDIR_PATH, "myhosts")
