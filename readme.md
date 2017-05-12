@@ -134,11 +134,11 @@ in a subfolder.  If the subfolder does not exist, it will be created.
 `--replace`, or `-r`: trigger replacing your active hosts
 
 `--skipstatichosts`, or `-s`: `false` (default) or `true`, omit the standard
-`--section, at the top containing lines like `127.0.0.1 localhost`.  This is
-`--useful for configuring proximate DNS services on the local network.
+section at the top, containing lines like `127.0.0.1 localhost`.  This is
+useful for configuring proximate DNS services on the local network.
 
 `--zip`, or `-z`: `false` (default) or `true`, additionally create a zip
-`--archive of the hosts file named `hosts.zip`.
+archive of the hosts file named `hosts.zip`.
 
 ## How do I control which sources are unified?
 
