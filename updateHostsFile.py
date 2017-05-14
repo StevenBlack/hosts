@@ -188,11 +188,6 @@ def promptForExclusions():
             print("OK, we'll only exclude domains in the whitelist.")
 
 
-def promptForMoreCustomExclusions(question="Do you have more domains "
-                                           "you want to enter?"):
-    return query_yes_no(question)
-
-
 def promptForFlushDnsCache():
     if settings["flushdnscache"]:
         flush_dns_cache()
@@ -231,17 +226,28 @@ def displayExclusionOptions():
             continue
 
     if query_yes_no("Do you want to exclude any other domains?"):
-        gatherCustomExclusions()
+        gather_custom_exclusions()
 
 
-def gatherCustomExclusions():
+def gather_custom_exclusions():
+    """
+    Gather custom exclusions from the user.
+    """
+
+    # We continue running this while-loop until the user
+    # says that they have no more domains to exclude.
     while True:
-        # Cross-python Input
-        domainFromUser = raw_input("Enter the domain you want to exclude (e.g. facebook.com): ")
-        if isValidDomainFormat(domainFromUser):
-            excludeDomain(domainFromUser)
-        if not promptForMoreCustomExclusions():
+        domain_prompt = ("Enter the domain you want "
+                         "to exclude (e.g. facebook.com): ")
+        user_domain = raw_input(domain_prompt)
+
+        if isValidDomainFormat(user_domain):
+            excludeDomain(user_domain)
+
+        continue_prompt = "Do you have more domains you want to enter?"
+        if not query_yes_no(continue_prompt):
             return
+
 
 def excludeDomain(domain):
     settings["exclusionregexs"].append(re.compile(settings["exclusionpattern"] + domain))
