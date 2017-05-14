@@ -157,6 +157,7 @@ def main():
 
     promptForMove(finalFile)
 
+
 # Prompt the User
 def promptForUpdate():
     # Create hosts file if it doesn't exists
@@ -164,30 +165,34 @@ def promptForUpdate():
         try:
             open(os.path.join(BASEDIR_PATH, "hosts"), "w+").close()
         except:
-            printFailure("ERROR: No 'hosts' file in the folder, try creating one manually")
+            printFailure("ERROR: No 'hosts' file in the folder,"
+                         "try creating one manually")
 
     if not settings["freshen"]:
         return
 
-    response = "yes" if settings["auto"] else query_yes_no("Do you want to update all data sources?")
-    if response == "yes":
+    prompt = "Do you want to update all data sources?"
+    if settings["auto"] or query_yes_no(prompt):
         updateAllSources()
-    else:
-        if not settings["auto"]:
-            print ("OK, we'll stick with what we've  got locally.")
+    elif not settings["auto"]:
+        print("OK, we'll stick with what we've  got locally.")
+
 
 def promptForExclusions():
-    response = "no" if settings["auto"] else query_yes_no("Do you want to exclude any domains?\n" +
-                            "For example, hulu.com video streaming must be able to access " +
-                            "its tracking and ad servers in order to play video.")
-    if response == "yes":
-        displayExclusionOptions()
-    else:
-        if not settings["auto"]:
-            print ("OK, we'll only exclude domains in the whitelist.")
+    prompt = ("Do you want to exclude any domains?\n"
+              "For example, hulu.com video streaming must be able to access "
+              "its tracking and ad servers in order to play video.")
 
-def promptForMoreCustomExclusions(question="Do you have more domains you want to enter?"):
-    return query_yes_no(question) == "yes"
+    if not settings["auto"]:
+        if query_yes_no(prompt):
+            displayExclusionOptions()
+        else:
+            print("OK, we'll only exclude domains in the whitelist.")
+
+
+def promptForMoreCustomExclusions(question="Do you have more domains "
+                                           "you want to enter?"):
+    return query_yes_no(question)
 
 
 def promptForFlushDnsCache():
@@ -195,37 +200,41 @@ def promptForFlushDnsCache():
         flushDnsCache()
 
     if not settings["auto"]:
-        response = query_yes_no("Attempt to flush the DNS cache?")
-
-        if response == "yes":
+        if query_yes_no("Attempt to flush the DNS cache?"):
             flushDnsCache()
 
 
 def promptForMove(finalFile):
-
     if settings["replace"] and not settings["skipstatichosts"]:
-        response = "yes"
+        move_file = True
+    elif settings["auto"] or settings["skipstatichosts"]:
+        move_file = False
     else:
-        response = "no" if settings["auto"] or settings["skipstatichosts"] else query_yes_no("Do you want to replace your existing hosts file " +
-                            "with the newly generated file?")
-    if response == "yes":
+        prompt = ("Do you want to replace your existing hosts file " +
+                  "with the newly generated file?")
+        move_file = query_yes_no(prompt)
+
+    if move_file:
         moveHostsFileIntoPlace(finalFile)
         promptForFlushDnsCache()
     else:
         return False
 # End Prompt the User
 
+
 # Exclusion logic
 def displayExclusionOptions():
     for exclusionOption in settings["commonexclusions"]:
-        response = query_yes_no("Do you want to exclude the domain " + exclusionOption + " ?")
-        if response == "yes":
+        prompt = "Do you want to exclude the domain " + exclusionOption + " ?"
+
+        if query_yes_no(prompt):
             excludeDomain(exclusionOption)
         else:
             continue
-    response = query_yes_no("Do you want to exclude any other domains?")
-    if response == "yes":
+
+    if query_yes_no("Do you want to exclude any other domains?"):
         gatherCustomExclusions()
+
 
 def gatherCustomExclusions():
     while True:
@@ -504,40 +513,59 @@ def removeOldHostsFile():               # hotfix since merging with an already e
     os.remove(oldFilePath)
     open(oldFilePath, "a").close()        # create new empty hostsfile
 
+
 # End File Logic
 
 # Helper Functions
-## {{{ http://code.activestate.com/recipes/577058/ (r2)
-def query_yes_no(question, default = "yes"):
-    """Ask a yes/no question via raw_input() and return their answer.
-
-    "question" is a string that is presented to the user.
-    "default" is the presumed answer if the user just hits <Enter>.
-        It must be "yes" (the default), "no" or None (meaning
-        an answer is required of the user).
-
-    The "answer" return value is one of "yes" or "no".
+def query_yes_no(question, default="yes"):
     """
-    valid = {"yes":"yes", "y":"yes", "ye":"yes",
-             "no":"no", "n":"no"}
+    Ask a yes/no question via raw_input() and get answer from the user.
+
+    Inspired by the following implementation:
+
+    http://code.activestate.com/recipes/577058
+
+    Parameters
+    ----------
+    question : str
+        The question presented to the user.
+    default : str, default "yes"
+        The presumed answer if the user just hits <Enter>. It must be "yes",
+        "no", or None (means an answer is required of the user).
+
+    Returns
+    -------
+    yes : Whether or not the user replied yes to the question.
+    """
+
+    valid = {"yes": "yes", "y": "yes", "ye": "yes",
+             "no": "no", "n": "no"}
     prompt = {None: " [y/n] ",
               "yes": " [Y/n] ",
               "no": " [y/N] "}.get(default, None)
+
     if not prompt:
         raise ValueError("invalid default answer: '%s'" % default)
 
-    while 1:
+    reply = None
+
+    while not reply:
         sys.stdout.write(colorize(question, colors.PROMPT) + prompt)
+
         # Changed to be cross-python
         choice = raw_input().lower()
+        reply = None
+
         if default and not choice:
-            return default
+            reply = default
         elif choice in valid:
-            return valid[choice]
+            reply = valid[choice]
         else:
-            printFailure(
-                "Please respond with 'yes' or 'no' (or 'y' or 'n').\n")
-## end of http://code.activestate.com/recipes/577058/ }}}
+            printFailure("Please respond with 'yes' or 'no' "
+                         "(or 'y' or 'n').\n")
+
+    return reply == "yes"
+
 
 def isValidDomainFormat(domain):
     if domain == "":
