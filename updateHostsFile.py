@@ -16,7 +16,6 @@ import os
 import platform
 import re
 import shutil
-import string
 import subprocess
 import sys
 import tempfile
@@ -27,7 +26,6 @@ import argparse
 import socket
 import json
 import zipfile
-import zlib
 
 # zip files are not used actually, support deleted
 # StringIO is not needed in Python 3
