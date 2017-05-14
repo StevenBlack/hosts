@@ -447,14 +447,35 @@ def updateReadmeData():
 
 
 def moveHostsFileIntoPlace(finalFile):
+    """
+    Move the newly-created hosts file into its correct location on the OS.
+
+    For UNIX systems, the hosts file is "etc/hosts." On Windows, it's
+    "C:\Windows\system32\drivers\etc\hosts."
+
+    For this move to work, you must have administrator privileges to do this.
+    On UNIX systems, this means having "sudo" access, and on Windows, it
+    means being able to run command prompt in administrator mode.
+
+    Parameters
+    ----------
+    finalFile : str
+        The name of the newly-created hosts file to move.
+    """
+
+    filename = os.path.abspath(finalFile.name)
+
     if os.name == "posix":
-        print ("Moving the file requires administrative privileges. " +
-               "You might need to enter your password.")
-        if subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"]):
+        print("Moving the file requires administrative privileges. "
+              "You might need to enter your password.")
+        if subprocess.call(["/usr/bin/sudo", "cp", filename, "/etc/hosts"]):
             printFailure("Moving the file failed.")
     elif os.name == "nt":
-        print("Automatically moving the hosts file in place is not yet supported.")
-        print("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")
+        print("Moving the file requires administrative "
+              "privileges in command prompt.")
+        if subprocess.call(["cmd", "/C", "copy", filename,
+                            "C:\Windows\system32\drivers\etc\hosts"]):
+            printFailure("Moving the file failed.")
 
 
 def flushDnsCache():
