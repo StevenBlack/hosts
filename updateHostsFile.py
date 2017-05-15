@@ -6,9 +6,6 @@
 # This Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
 
-# pylint: disable=invalid-name
-# pylint: disable=bad-whitespace
-
 from __future__ import (absolute_import, division,
                         print_function, unicode_literals)
 from glob import glob
@@ -61,46 +58,72 @@ def list_dir_no_hidden(path):
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 defaults = {
-    "numberofrules" : 0,
-    "datapath" : os.path.join(BASEDIR_PATH, "data"),
-    "freshen" : True,
-    "replace" : False,
-    "backup" : False,
+    "numberofrules": 0,
+    "datapath": os.path.join(BASEDIR_PATH, "data"),
+    "freshen": True,
+    "replace": False,
+    "backup": False,
     "skipstatichosts": False,
     "keepdomaincomments": False,
-    "extensionspath" : os.path.join(BASEDIR_PATH, "extensions"),
-    "extensions" : [],
-    "outputsubfolder" : "",
-    "hostfilename" : "hosts",
-    "targetip" : "0.0.0.0",
-    "ziphosts" : False,
-    "sourcedatafilename" : "update.json",
+    "extensionspath": os.path.join(BASEDIR_PATH, "extensions"),
+    "extensions": [],
+    "outputsubfolder": "",
+    "hostfilename": "hosts",
+    "targetip": "0.0.0.0",
+    "ziphosts": False,
+    "sourcedatafilename": "update.json",
     "sourcesdata": [],
-    "readmefilename" : "readme.md",
-    "readmetemplate" : os.path.join(BASEDIR_PATH, "readme_template.md"),
-    "readmedata" : {},
-    "readmedatafilename" : os.path.join(BASEDIR_PATH, "readmeData.json"),
-    "exclusionpattern" : "([a-zA-Z\d-]+\.){0,}",
-    "exclusionregexs" : [],
-    "exclusions" : [],
-    "commonexclusions" : ["hulu.com"],
-    "blacklistfile" : os.path.join(BASEDIR_PATH, "blacklist"),
-    "whitelistfile" : os.path.join(BASEDIR_PATH, "whitelist")}
+    "readmefilename": "readme.md",
+    "readmetemplate": os.path.join(BASEDIR_PATH, "readme_template.md"),
+    "readmedata": {},
+    "readmedatafilename": os.path.join(BASEDIR_PATH, "readmeData.json"),
+    "exclusionpattern": "([a-zA-Z\d-]+\.){0,}",
+    "exclusionregexs": [],
+    "exclusions": [],
+    "commonexclusions": ["hulu.com"],
+    "blacklistfile": os.path.join(BASEDIR_PATH, "blacklist"),
+    "whitelistfile": os.path.join(BASEDIR_PATH, "whitelist")}
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Creates a unified hosts file from hosts stored in data subfolders.")
-    parser.add_argument("--auto", "-a", dest="auto", default=False, action="store_true", help="Run without prompting.")
-    parser.add_argument("--backup", "-b", dest="backup", default=False, action="store_true", help="Backup the hosts files before they are overridden.")
-    parser.add_argument("--extensions", "-e", dest="extensions", default=[], nargs="*", help="Host extensions to include in the final hosts file.")
-    parser.add_argument("--ip", "-i", dest="targetip", default="0.0.0.0", help="Target IP address. Default is 0.0.0.0.")
-    parser.add_argument("--keepdomaincomments", "-k", dest="keepdomaincomments", default=False, help="Keep domain line comments.")
-    parser.add_argument("--zip", "-z", dest="ziphosts", default=False, action="store_true", help="Additionally create a zip archive of the hosts file.")
-    parser.add_argument("--noupdate", "-n", dest="noupdate", default=False, action="store_true", help="Don't update from host data sources.")
-    parser.add_argument("--skipstatichosts", "-s", dest="skipstatichosts", default=False, action="store_true", help="Skip static localhost entries in the final hosts file.")
-    parser.add_argument("--output", "-o", dest="outputsubfolder", default="", help="Output subfolder for generated hosts file.")
-    parser.add_argument("--replace", "-r", dest="replace", default=False, action="store_true", help="Replace your active hosts file with this new hosts file.")
-    parser.add_argument("--flush-dns-cache", "-f", dest="flushdnscache", default=False, action="store_true", help="Attempt to flush DNS cache after replacing the hosts file.")
+    parser = argparse.ArgumentParser(description="Creates a unified hosts "
+                                                 "file from hosts stored in "
+                                                 "data subfolders.")
+    parser.add_argument("--auto", "-a", dest="auto", default=False,
+                        action="store_true", help="Run without prompting.")
+    parser.add_argument("--backup", "-b", dest="backup", default=False,
+                        action="store_true", help="Backup the hosts "
+                                                  "files before they "
+                                                  "are overridden.")
+    parser.add_argument("--extensions", "-e", dest="extensions", default=[],
+                        nargs="*", help="Host extensions to include "
+                                        "in the final hosts file.")
+    parser.add_argument("--ip", "-i", dest="targetip", default="0.0.0.0",
+                        help="Target IP address. Default is 0.0.0.0.")
+    parser.add_argument("--keepdomaincomments", "-k",
+                        dest="keepdomaincomments", default=False,
+                        help="Keep domain line comments.")
+    parser.add_argument("--zip", "-z", dest="ziphosts", default=False,
+                        action="store_true", help="Additionally create "
+                                                  "a zip archive of the "
+                                                  "hosts file.")
+    parser.add_argument("--noupdate", "-n", dest="noupdate", default=False,
+                        action="store_true", help="Don't update from "
+                                                  "host data sources.")
+    parser.add_argument("--skipstatichosts", "-s", dest="skipstatichosts",
+                        default=False, action="store_true",
+                        help="Skip static localhost entries "
+                             "in the final hosts file.")
+    parser.add_argument("--output", "-o", dest="outputsubfolder", default="",
+                        help="Output subfolder for generated hosts file.")
+    parser.add_argument("--replace", "-r", dest="replace", default=False,
+                        action="store_true", help="Replace your active "
+                                                  "hosts file with this "
+                                                  "new hosts file.")
+    parser.add_argument("--flush-dns-cache", "-f", dest="flushdnscache",
+                        default=False, action="store_true",
+                        help="Attempt to flush DNS cache "
+                             "after replacing the hosts file.")
 
     global settings
 
@@ -707,6 +730,7 @@ def print_success(text):
 def print_failure(text):
     print(colorize(text, Colors.FAIL))
 # End Helper Functions
+
 
 if __name__ == "__main__":
     main()
