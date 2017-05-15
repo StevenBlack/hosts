@@ -46,7 +46,7 @@ except NameError:  # Python 3
     raw_input = input
 
 # Detecting Python 3 for version-dependent implementations
-Python3 = sys.version_info >= (3,0)
+Python3 = sys.version_info >= (3, 0)
 
 # This function handles both Python 2 and Python 3
 def getFileByUrl(url):
@@ -54,7 +54,7 @@ def getFileByUrl(url):
         f = urlopen(url)
         return f.read().decode("UTF-8")
     except:
-        print ("Problem getting file: ", url)
+        print("Problem getting file: ", url)
         # raise
 
 # In Python 3   "print" is a function, braces are added everywhere
@@ -265,7 +265,7 @@ def updateAllSources():
         updateURL  = updateData["url"]
         updateFile.close()
 
-        print ("Updating source " + os.path.dirname(source) + " from " + updateURL)
+        print("Updating source " + os.path.dirname(source) + " from " + updateURL)
         # Cross-python call
         updatedFile = getFileByUrl(updateURL)
         try:
@@ -276,7 +276,7 @@ def updateAllSources():
             writeData(hostsFile, updatedFile)
             hostsFile.close()
         except:
-            print ("Skipping.")
+            print("Skipping.")
 # End Update Logic
 
 # File Logic
@@ -380,7 +380,7 @@ def normalizeRule(rule):
             return hostname, "%s %s #%s\n" % (settings["targetip"], hostname, suffix)
         else:
             return hostname, "%s %s\n" % (settings["targetip"], hostname)
-    print ("==>%s<==" % rule)
+    print("==>%s<==" % rule)
     return None, None
 
 def finalizeFile(finalFile):
@@ -448,8 +448,8 @@ def updateReadmeData():
 
 def moveHostsFileIntoPlace(finalFile):
     if os.name == "posix":
-        print ("Moving the file requires administrative privileges. " +
-               "You might need to enter your password.")
+        print("Moving the file requires administrative privileges. "
+              "You might need to enter your password.")
         if subprocess.call(["/usr/bin/sudo", "cp", os.path.abspath(finalFile.name), "/etc/hosts"]):
             printFailure("Moving the file failed.")
     elif os.name == "nt":
@@ -567,12 +567,13 @@ def query_yes_no(question, default="yes"):
 
 def isValidDomainFormat(domain):
     if domain == "":
-        print ("You didn't enter a domain. Try again.")
+        print("You didn't enter a domain. Try again.")
         return False
     domainRegex = re.compile("www\d{0,3}[.]|https?")
     if domainRegex.match(domain):
-        print ("The domain " + domain + " is not valid. " +
-               "Do not include www.domain.com or http(s)://domain.com. Try again.")
+        print("The domain " + domain +
+              " is not valid. Do not include "
+              "www.domain.com or http(s)://domain.com. Try again.")
         return False
     else:
         return True
@@ -602,10 +603,10 @@ def colorize(text, color):
     return color + text + colors.ENDC
 
 def printSuccess(text):
-    print (colorize(text, colors.SUCCESS))
+    print(colorize(text, colors.SUCCESS))
 
 def printFailure(text):
-    print (colorize(text, colors.FAIL))
+    print(colorize(text, colors.FAIL))
 # End Helper Functions
 
 if __name__ == "__main__":
