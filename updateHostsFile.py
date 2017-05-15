@@ -9,8 +9,9 @@
 # pylint: disable=invalid-name
 # pylint: disable=bad-whitespace
 
-# Making Python 2 compatible with Python 3
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
+from glob import glob
 
 import os
 import platform
@@ -20,35 +21,22 @@ import subprocess
 import sys
 import tempfile
 import time
-from glob import glob
 import fnmatch
 import argparse
 import socket
 import json
 import zipfile
 
-# zip files are not used actually, support deleted
-# StringIO is not needed in Python 3
-# Python 3 works differently with urlopen
-
-try:                 # Python 3
-    from urllib.parse import urlparse, urlencode
-    from urllib.request import urlopen, Request
-    from urllib.error import HTTPError
-except ImportError:  # Python 2
-    from urlparse import urlparse
-    from urllib import urlencode
-    from urllib2 import urlopen, Request, HTTPError
-
-try:               # Python 2
-    raw_input
-except NameError:  # Python 3
-    raw_input = input
-
 # Detecting Python 3 for version-dependent implementations
-Python3 = sys.version_info >= (3, 0)
+PY3 = sys.version_info >= (3, 0)
 
-# This function handles both Python 2 and Python 3
+if PY3:
+    from urllib.request import urlopen
+    raw_input = input
+else:  # Python 2
+    from urllib2 import urlopen
+
+
 def getFileByUrl(url):
     try:
         f = urlopen(url)
@@ -57,11 +45,9 @@ def getFileByUrl(url):
         print("Problem getting file: ", url)
         # raise
 
-# In Python 3   "print" is a function, braces are added everywhere
 
-# Cross-python writing function
 def writeData(f, data):
-    if Python3:
+    if PY3:
         f.write(bytes(data, "UTF-8"))
     else:
         f.write(str(data).encode("UTF-8"))
@@ -272,12 +258,12 @@ def updateAllSources():
         updateFile.close()
 
         print("Updating source " + os.path.dirname(source) + " from " + updateURL)
-        # Cross-python call
+
         updatedFile = getFileByUrl(updateURL)
+
         try:
             updatedFile = updatedFile.replace("\r", "") #get rid of carriage-return symbols
 
-            # This is cross-python code
             hostsFile = open(os.path.join(BASEDIR_PATH, os.path.dirname(source), settings["hostfilename"]), "wb")
             writeData(hostsFile, updatedFile)
             hostsFile.close()
@@ -292,7 +278,6 @@ def createInitialFile():
     # spin the sources for the base file
     for source in recursiveGlob(settings["datapath"], settings["hostfilename"]):
         with open(source, "r") as curFile:
-            #Done in a cross-python way
             writeData(mergeFile, curFile.read())
 
     for source in recursiveGlob(settings["datapath"], settings["sourcedatafilename"]):
@@ -306,7 +291,6 @@ def createInitialFile():
         # filename = os.path.join(settings["extensionspath"], source, settings["hostfilename"])
         for filename in recursiveGlob(os.path.join(settings["extensionspath"], source), settings["hostfilename"]):
             with open(filename, "r") as curFile:
-                #Done in a cross-python way
                 writeData(mergeFile, curFile.read())
 
         # updateFilePath = os.path.join(settings["extensionspath"], source, settings["sourcedatafilename"])
@@ -318,7 +302,6 @@ def createInitialFile():
 
     if os.path.isfile(settings["blacklistfile"]):
         with open(settings["blacklistfile"], "r") as curFile:
-            #Done in a cross-python way
             writeData(mergeFile, curFile.read())
 
     return mergeFile
@@ -337,7 +320,7 @@ def removeDupsAndExcl(mergeFile):
 
     # Another mode is required to read and write the file in Python 3
     finalFile = open(os.path.join(settings["outputpath"], "hosts"),
-                     "w+b" if Python3 else "w+")
+                     "w+b" if PY3 else "w+")
 
     mergeFile.seek(0) # reset file pointer
     hostnames = set(["localhost", "localhost.localdomain", "local", "broadcasthost"])
@@ -352,7 +335,6 @@ def removeDupsAndExcl(mergeFile):
         line = line.rstrip(' .') + "\n"
         # Testing the first character doesn't require startswith
         if line[0] == "#" or re.match(r'^\s*$', line[0]):
-            # Cross-python write
             writeData(finalFile, line)
             continue
         if "::1" in line:
@@ -455,8 +437,10 @@ def updateReadmeData():
 def move_hosts_file_into_place(final_file):
     """
     Move the newly-created hosts file into its correct location on the OS.
+
     For UNIX systems, the hosts file is "etc/hosts." On Windows, it's
     "C:\Windows\system32\drivers\etc\hosts."
+
     For this move to work, you must have administrator privileges to do this.
     On UNIX systems, this means having "sudo" access, and on Windows, it
     means being able to run command prompt in administrator mode.
@@ -499,7 +483,7 @@ def flush_dns_cache():
     elif os.name == "nt":
         print("Automatically flushing the DNS cache is not yet supported.")
         print("Please copy and paste the command 'ipconfig /flushdns' in "
-              "command prompt after running this script.")
+              "administrator command prompt after running this script.")
     else:
         if os.path.isfile("/etc/rc.d/init.d/nscd"):
             dns_cache_found = True
@@ -602,7 +586,6 @@ def query_yes_no(question, default="yes"):
     while not reply:
         sys.stdout.write(colorize(question, colors.PROMPT) + prompt)
 
-        # Changed to be cross-python
         choice = raw_input().lower()
         reply = None
 
