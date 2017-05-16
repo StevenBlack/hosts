@@ -1,26 +1,26 @@
 #!/bin/sh
 
 # These create various alternate hosts files by combining and adding the gambling, porn, and social media extensions.
-python3 updateHostsFile.py -a -z    -o alternates/gambling -e gambling
-python3 updateHostsFile.py -a -z -n -o alternates/porn -e porn
-python3 updateHostsFile.py -a -z -n -o alternates/social -e social
-python3 updateHostsFile.py -a -z -n -o alternates/fakenews -e fakenews
+python updateHostsFile.py -a -z    -o alternates/gambling -e gambling
+python updateHostsFile.py -a -z -n -o alternates/porn -e porn
+python updateHostsFile.py -a -z -n -o alternates/social -e social
+python updateHostsFile.py -a -z -n -o alternates/fakenews -e fakenews
 
-python3 updateHostsFile.py -a -z -n -o alternates/fakenews-gambling -e fakenews gambling
-python3 updateHostsFile.py -a -z -n -o alternates/fakenews-porn -e fakenews porn
-python3 updateHostsFile.py -a -z -n -o alternates/fakenews-social -e fakenews social
-python3 updateHostsFile.py -a -z -n -o alternates/gambling-porn -e gambling porn
-python3 updateHostsFile.py -a -z -n -o alternates/gambling-social -e gambling social
-python3 updateHostsFile.py -a -z -n -o alternates/porn-social -e porn social
+python updateHostsFile.py -a -z -n -o alternates/fakenews-gambling -e fakenews gambling
+python updateHostsFile.py -a -z -n -o alternates/fakenews-porn -e fakenews porn
+python updateHostsFile.py -a -z -n -o alternates/fakenews-social -e fakenews social
+python updateHostsFile.py -a -z -n -o alternates/gambling-porn -e gambling porn
+python updateHostsFile.py -a -z -n -o alternates/gambling-social -e gambling social
+python updateHostsFile.py -a -z -n -o alternates/porn-social -e porn social
 
-python3 updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-porn -e fakenews gambling porn
-python3 updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-social -e fakenews gambling social
-python3 updateHostsFile.py -a -z -n -o alternates/fakenews-porn-social -e fakenews porn social
-python3 updateHostsFile.py -a -z -n -o alternates/gambling-porn-social -e gambling porn social
+python updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-porn -e fakenews gambling porn
+python updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-social -e fakenews gambling social
+python updateHostsFile.py -a -z -n -o alternates/fakenews-porn-social -e fakenews porn social
+python updateHostsFile.py -a -z -n -o alternates/gambling-porn-social -e gambling porn social
 
-python3 updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-porn-social -e fakenews gambling porn social
+python updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-porn-social -e fakenews gambling porn social
 
-python3 updateHostsFile.py -a -z -n
+python updateHostsFile.py -a -z -n
 
-# Update the readmes.
-python3 updateReadme.py
+# Update the README's.
+python updateReadme.py

@@ -1,38 +1,27 @@
 @ECHO OFF
 TITLE Make Hosts
 
-if not exist "%WINDIR%\py.exe" (
-	ECHO :: ERROR :: Python 3.5 Runtime NOT FOUND...
-	ECHO :: ERROR :: Download and install lastest Python 3.5 for Windows from https://www.python.org/downloads/
-	ECHO :: ERROR :: Exit...
-	GOTO END
-) ELSE (
-	GOTO PY35RT
- )
-:PY35RT
-if not exist "%LOCALAPPDATA%\Programs\Python\Python35\Python35.dll" (
-	ECHO :: ERROR :: Python 3.5 Runtime NOT FOUND...
-	ECHO :: ERROR :: Download and install lastest Python 3.5 for Windows from https://www.python.org/downloads/
-	ECHO :: ERROR :: Exit...
-	GOTO END
-) ELSE (
-	ECHO :: INFO :: Python 3.5 Runtime was found!
-	ECHO :: INFO :: Running main script...
-	GOTO :UPDATES
- )
-:UPDATES
-	::These create various alternate hosts files by combining and adding the gambling, porn, and social media extensions.
-	updateHostsFile.py -a -z    -o alternates\gambling -e gambling
-	updateHostsFile.py -a -z -n -o alternates\porn -e porn
-	updateHostsFile.py -a -z -n -o alternates\social -e social
-	updateHostsFile.py -a -z -n -o alternates\gambling-porn -e gambling porn
-	updateHostsFile.py -a -z -n -o alternates\gambling-social -e gambling social
-	updateHostsFile.py -a -z -n -o alternates\porn-social -e porn social
-	updateHostsFile.py -a -z -n -o alternates\gambling-porn-social -e gambling porn social
-	updateHostsFile.py -a -z -n
+:: These create various alternate hosts files by combining and adding the gambling, porn, and social media extensions.
+python updateHostsFile.py -a -z    -o alternates/gambling -e gambling
+python updateHostsFile.py -a -z -n -o alternates/porn -e porn
+python updateHostsFile.py -a -z -n -o alternates/social -e social
+python updateHostsFile.py -a -z -n -o alternates/fakenews -e fakenews
 
-	::Update the readmes.
-	updateReadme.py
+python updateHostsFile.py -a -z -n -o alternates/fakenews-gambling -e fakenews gambling
+python updateHostsFile.py -a -z -n -o alternates/fakenews-porn -e fakenews porn
+python updateHostsFile.py -a -z -n -o alternates/fakenews-social -e fakenews social
+python updateHostsFile.py -a -z -n -o alternates/gambling-porn -e gambling porn
+python updateHostsFile.py -a -z -n -o alternates/gambling-social -e gambling social
+python updateHostsFile.py -a -z -n -o alternates/porn-social -e porn social
 
-	GOTO END
-:END
+python updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-porn -e fakenews gambling porn
+python updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-social -e fakenews gambling social
+python updateHostsFile.py -a -z -n -o alternates/fakenews-porn-social -e fakenews porn social
+python updateHostsFile.py -a -z -n -o alternates/gambling-porn-social -e gambling porn social
+
+python updateHostsFile.py -a -z -n -o alternates/fakenews-gambling-porn-social -e fakenews gambling porn social
+
+python updateHostsFile.py -a -z -n
+
+::Update the README's.
+python updateReadme.py
