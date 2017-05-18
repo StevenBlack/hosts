@@ -20,7 +20,7 @@ hosts files tailored to you need to block.
 
 ### List of all hosts file variants
 
-The **Non Github mirror** is the link to use for some hosts file managers like
+The **Non GitHub mirror** is the link to use for some hosts file managers like
 [Hostsman for Windows](http://www.abelhadigital.com/hostsman) that don't work
 with Github download links.
 
@@ -195,25 +195,27 @@ editor.
 
 **Windows**: `%SystemRoot%\system32\drivers\etc\hosts` folder.
 
-## Reloading hosts file
-Your operating system will cache DNS lookups. You can either reboot or run the following commands to
-manually flush your DNS cache once the new hosts file is in place.
+## Updating hosts file on Windows
 
-### Mac OS X
-Open a Terminal and run:
+On Linux and Mac OS X, you can simply run the Python script, but on Windows, more
+work is required due to compatibility issues in implementing some of the functionality
+for Windows. It is preferable to run the batch file as follows:
+
 ```
-sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
+updateHostsWindows.bat
 ```
+
+This file MUST be run in command prompt with administrator privileges in
+the repository directory. In addition to updating the hosts file, it can also
+replace the existing hosts file, and reload the DNS cache. It goes without
+saying that in order for this to work, you must be connected to the internet.
 
 ### Windows
 
 |Run `updateHostsWindows.bat` BATCH file in Command Prompt with Administrator privileges in repository directory for easy update, replace hosts file and reload DNS cache in Windows System. You need to be connected to the Internet.|
 :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-|WARNING: Don't run these BAT files directly or from popup menu. You have been warned.|
-:--------------------------------------------------------------------------------------
-
-Open a Command Prompt in directory where are files from this repository:
+To open a command prompt as administrator in the repository's directory, do the following:
 
 **Windows XP**: Start -> Run -> `cmd`
 
@@ -226,15 +228,22 @@ Open a Command Prompt in directory where are files from this repository:
 **Windows 10**: Start Button -> type `cmd` -> right-click Command Prompt ->
 "Run as Administrator"
 
-and run command:
+## Reloading hosts file
+Your operating system will cache DNS lookups. You can either reboot or run the following commands to
+manually flush your DNS cache once the new hosts file is in place.
+
+### Windows
+
+Open a command prompt with administrator privileges and run this command:
+
 ```
-updateHostsWindows.bat
+ipconfig /flushdns
 ```
 
 |If you want to use a huge hosts file by merging [hphosts](https://www.hosts-file.net) (NOT INCLUDED HERE) you need to DISABLE and STOP `Dnscache` service before you replace hosts file in Windows Systems. You have been warned.|
 :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Open a Command Prompt with Administrator privileges and run once commands:
+Before flushing the DNS cache, open a command prompt with administrator privileges and run this command:
 
 ```
 sc config "Dnscache" start= disabled
@@ -242,6 +251,7 @@ sc stop "Dnscache"
 ```
 
 ### Linux
+
 Open a Terminal and run with root privileges:
 
 **Debian/Ubuntu** `sudo /etc/rc.d/init.d/nscd restart`
@@ -256,6 +266,12 @@ Open a Terminal and run with root privileges:
 
 **Others**: Consult [this wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
 
+### Mac OS X
+
+Open a Terminal and run:
+```
+sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
+```
 
 ## Goals of this unified hosts file
 
