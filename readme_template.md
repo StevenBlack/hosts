@@ -210,11 +210,6 @@ the repository directory. In addition to updating the hosts file, it can also
 replace the existing hosts file, and reload the DNS cache. It goes without
 saying that in order for this to work, you must be connected to the internet.
 
-### Windows
-
-|Run `updateHostsWindows.bat` BATCH file in Command Prompt with Administrator privileges in repository directory for easy update, replace hosts file and reload DNS cache in Windows System. You need to be connected to the Internet.|
-:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
 To open a command prompt as administrator in the repository's directory, do the following:
 
 **Windows XP**: Start -> Run -> `cmd`

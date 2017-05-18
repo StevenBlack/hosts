@@ -1,8 +1,8 @@
-:: This script will create in first running backup of ORIGINAL/CURRENT
-:: hosts file in hosts.skel file.
+:: This script will first create a backup of the original or current hosts
+:: file and save it in a file titled "hosts.skel"
 ::
-:: If hosts.skel file exists, then the NEW copy with customized unified hosts
-:: file will be copied to proper path. Next, the DNS Cache will be refreshed.
+:: If "hosts.skel" exists, the new hosts file with the customized unified hosts
+:: will be copied to the proper path. Next, the DNS cache will be refreshed.
 ::
 :: THIS BAT FILE MUST BE LAUNCHED WITH ADMINISTRATOR PRIVILEGES
 @ECHO OFF
