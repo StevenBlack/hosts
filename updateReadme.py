@@ -39,7 +39,9 @@ def main():
     else:
         keys = data.keys()
 
-    keys.sort(key=cmp_keys)
+    # Sort by the number of en-dashes in the key
+    # and then by the key string itself.
+    keys.sort(key=lambda item: (item.count("-"), item))
 
     toc_rows = ""
     for key in keys:
@@ -137,10 +139,6 @@ def decode_line(line):
     # literals that Python 2.x cannot handle.
     line = line.replace(u"\u2013", "-")
     return str(line.decode("UTF-8"))
-
-
-def cmp_keys(item):
-    return item.count('-'), item
 
 
 if __name__ == "__main__":
