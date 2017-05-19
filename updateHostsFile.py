@@ -297,9 +297,9 @@ def update_all_sources():
         print("Updating source " + os.path.dirname(
             source) + " from " + update_url)
 
-        updated_file = get_file_by_url(update_url)
-
         try:
+            updated_file = get_file_by_url(update_url)
+
             # get rid of carriage-return symbols
             updated_file = updated_file.replace("\r", "")
 
@@ -309,7 +309,7 @@ def update_all_sources():
             write_data(hosts_file, updated_file)
             hosts_file.close()
         except:
-            print("Skipping.")
+            print("Error in updating source: ", update_url)
 # End Update Logic
 
 
