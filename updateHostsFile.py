@@ -559,14 +559,17 @@ def flush_dns_cache():
         print("Please copy and paste the command 'ipconfig /flushdns' in "
               "administrator command prompt after running this script.")
     else:
-        if os.path.isfile("/etc/rc.d/init.d/nscd"):
-            dns_cache_found = True
+        nscd_caches = ["/etc/init.d/nscd",
+                       "/etc/rc.d/init.d/nscd"]
+        for nscd_cache in nscd_caches:
+            if os.path.isfile(nscd_cache):
+                dns_cache_found = True
 
-            if subprocess.call(["/usr/bin/sudo", "/etc/rc.d/init.d/nscd",
-                                "restart"]):
-                print_failure("Flushing the DNS cache failed.")
-            else:
-                print_success("Flushing DNS by restarting nscd succeeded")
+                if subprocess.call(["/usr/bin/sudo", nscd_cache,
+                                    "restart"]):
+                    print_failure("Flushing the DNS cache failed.")
+                else:
+                    print_success("Flushing DNS by restarting nscd succeeded")
 
         if os.path.isfile("/usr/lib/systemd/system/NetworkManager.service"):
             dns_cache_found = True
@@ -605,6 +608,16 @@ def flush_dns_cache():
             else:
                 print_success("Flushing DNS by restarting "
                               "networking.service succeeded")
+
+        if os.path.isfile("/etc/init.d/dns-clean"):
+            dns_cache_found = True
+
+            if subprocess.call(["/usr/bin/sudo", "/etc/init.d/dns-clean",
+                                "start"]):
+                print_failure("Flushing the DNS cache failed.")
+            else:
+                print_success("Flushing DNS via dns-clean "
+                              "executable succeeded")
 
         if not dns_cache_found:
             print_failure("Unable to determine DNS management tool.")
