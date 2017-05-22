@@ -11,7 +11,6 @@ from __future__ import (absolute_import, division,
 from glob import glob
 
 import os
-import locale
 import platform
 import re
 import shutil
@@ -52,51 +51,38 @@ def write_data(f, data):
 
 def list_dir_no_hidden(path):
     # This function doesn't list hidden files
-    return glob(path_join_robust(path, "*"))
+    return glob(os.path.join(path, "*"))
 
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
-
-def get_defaults():
-    """
-    Helper method for getting the default settings.
-
-    Returns
-    -------
-    default_settings : dict
-        A dictionary of the default settings when updating host information.
-    """
-
-    return {
-        "numberofrules": 0,
-        "datapath": path_join_robust(BASEDIR_PATH, "data"),
-        "freshen": True,
-        "replace": False,
-        "backup": False,
-        "skipstatichosts": False,
-        "keepdomaincomments": False,
-        "extensionspath": path_join_robust(BASEDIR_PATH, "extensions"),
-        "extensions": [],
-        "outputsubfolder": "",
-        "hostfilename": "hosts",
-        "targetip": "0.0.0.0",
-        "ziphosts": False,
-        "sourcedatafilename": "update.json",
-        "sourcesdata": [],
-        "readmefilename": "readme.md",
-        "readmetemplate": path_join_robust(BASEDIR_PATH,
-                                           "readme_template.md"),
-        "readmedata": {},
-        "readmedatafilename": path_join_robust(BASEDIR_PATH,
-                                               "readmeData.json"),
-        "exclusionpattern": "([a-zA-Z\d-]+\.){0,}",
-        "exclusionregexs": [],
-        "exclusions": [],
-        "commonexclusions": ["hulu.com"],
-        "blacklistfile": path_join_robust(BASEDIR_PATH, "blacklist"),
-        "whitelistfile": path_join_robust(BASEDIR_PATH, "whitelist")}
+defaults = {
+    "numberofrules": 0,
+    "datapath": os.path.join(BASEDIR_PATH, "data"),
+    "freshen": True,
+    "replace": False,
+    "backup": False,
+    "skipstatichosts": False,
+    "keepdomaincomments": False,
+    "extensionspath": os.path.join(BASEDIR_PATH, "extensions"),
+    "extensions": [],
+    "outputsubfolder": "",
+    "hostfilename": "hosts",
+    "targetip": "0.0.0.0",
+    "ziphosts": False,
+    "sourcedatafilename": "update.json",
+    "sourcesdata": [],
+    "readmefilename": "readme.md",
+    "readmetemplate": os.path.join(BASEDIR_PATH, "readme_template.md"),
+    "readmedata": {},
+    "readmedatafilename": os.path.join(BASEDIR_PATH, "readmeData.json"),
+    "exclusionpattern": "([a-zA-Z\d-]+\.){0,}",
+    "exclusionregexs": [],
+    "exclusions": [],
+    "commonexclusions": ["hulu.com"],
+    "blacklistfile": os.path.join(BASEDIR_PATH, "blacklist"),
+    "whitelistfile": os.path.join(BASEDIR_PATH, "whitelist")}
 
 
 def main():
@@ -143,11 +129,12 @@ def main():
 
     options = vars(parser.parse_args())
 
-    options["outputpath"] = path_join_robust(BASEDIR_PATH,
-                                             options["outputsubfolder"])
+    options["outputpath"] = os.path.join(BASEDIR_PATH,
+                                         options["outputsubfolder"])
     options["freshen"] = not options["noupdate"]
 
-    settings = get_defaults()
+    settings = {}
+    settings.update(defaults)
     settings.update(options)
 
     settings["sources"] = list_dir_no_hidden(settings["datapath"])
@@ -174,9 +161,9 @@ def main():
     finalize_file(final_file)
 
     if settings["ziphosts"]:
-        zf = zipfile.ZipFile(path_join_robust(settings["outputsubfolder"],
-                                              "hosts.zip"), mode='w')
-        zf.write(path_join_robust(settings["outputsubfolder"], "hosts"),
+        zf = zipfile.ZipFile(os.path.join(settings["outputsubfolder"],
+                                          "hosts.zip"), mode='w')
+        zf.write(os.path.join(settings["outputsubfolder"], "hosts"),
                  compress_type=zipfile.ZIP_DEFLATED, arcname='hosts')
         zf.close()
 
@@ -192,9 +179,9 @@ def main():
 # Prompt the User
 def prompt_for_update():
     # Create hosts file if it doesn't exists
-    if not os.path.isfile(path_join_robust(BASEDIR_PATH, "hosts")):
+    if not os.path.isfile(os.path.join(BASEDIR_PATH, "hosts")):
         try:
-            open(path_join_robust(BASEDIR_PATH, "hosts"), "w+").close()
+            open(os.path.join(BASEDIR_PATH, "hosts"), "w+").close()
         except:
             print_failure("ERROR: No 'hosts' file in the folder,"
                           "try creating one manually")
@@ -316,9 +303,9 @@ def update_all_sources():
             # get rid of carriage-return symbols
             updated_file = updated_file.replace("\r", "")
 
-            hosts_file = open(path_join_robust(BASEDIR_PATH,
-                                               os.path.dirname(source),
-                                               settings["hostfilename"]), "wb")
+            hosts_file = open(os.path.join(BASEDIR_PATH,
+                                           os.path.dirname(source),
+                                           settings["hostfilename"]), "wb")
             write_data(hosts_file, updated_file)
             hosts_file.close()
         except:
@@ -345,12 +332,12 @@ def create_initial_file():
 
     # spin the sources for extensions to the base file
     for source in settings["extensions"]:
-        for filename in recursive_glob(path_join_robust(
+        for filename in recursive_glob(os.path.join(
                 settings["extensionspath"], source), settings["hostfilename"]):
             with open(filename, "r") as curFile:
                 write_data(merge_file, curFile.read())
 
-        for update_file_path in recursive_glob(path_join_robust(
+        for update_file_path in recursive_glob(os.path.join(
                 settings["extensionspath"], source),
                 settings["sourcedatafilename"]):
             update_file = open(update_file_path, "r")
@@ -379,7 +366,7 @@ def remove_dups_and_excl(merge_file):
         os.makedirs(settings["outputpath"])
 
     # Another mode is required to read and write the file in Python 3
-    final_file = open(path_join_robust(settings["outputpath"], "hosts"),
+    final_file = open(os.path.join(settings["outputpath"], "hosts"),
                       "w+b" if PY3 else "w+")
 
     merge_file.seek(0)  # reset file pointer
@@ -479,7 +466,7 @@ def write_opening_header(final_file):
     write_data(final_file, "# Fetch the latest version of this file: "
                            "https://raw.githubusercontent.com/"
                            "StevenBlack/hosts/master/" +
-               path_join_robust(settings["outputsubfolder"], "") + "hosts\n")
+               os.path.join(settings["outputsubfolder"], "") + "hosts\n")
     write_data(final_file, "# Project home page: https://github.com/"
                            "StevenBlack/hosts\n#\n")
     write_data(final_file, "# ==============================="
@@ -499,7 +486,7 @@ def write_opening_header(final_file):
             write_data(final_file, "127.0.0.53 " + socket.gethostname() + "\n")
         write_data(final_file, "\n")
 
-    preamble = path_join_robust(BASEDIR_PATH, "myhosts")
+    preamble = os.path.join(BASEDIR_PATH, "myhosts")
     if os.path.isfile(preamble):
         with open(preamble, "r") as f:
             write_data(final_file, f.read())
@@ -512,7 +499,7 @@ def update_readme_data():
     if settings["extensions"]:
         extensions_key = "-".join(settings["extensions"])
 
-    generation_data = {"location": path_join_robust(
+    generation_data = {"location": os.path.join(
         settings["outputsubfolder"], ""),
                        "entries": settings["numberofrules"],
                        "sourcesdata": settings["sourcesdata"]}
@@ -639,12 +626,12 @@ def flush_dns_cache():
 # Hotfix since merging with an already existing
 # hosts file leads to artifacts and duplicates
 def remove_old_hosts_file():
-    old_file_path = path_join_robust(BASEDIR_PATH, "hosts")
+    old_file_path = os.path.join(BASEDIR_PATH, "hosts")
     # create if already removed, so remove wont raise an error
     open(old_file_path, "a").close()
 
     if settings["backup"]:
-        backup_file_path = path_join_robust(BASEDIR_PATH, "hosts-{}".format(
+        backup_file_path = os.path.join(BASEDIR_PATH, "hosts-{}".format(
             time.strftime("%Y-%m-%d-%H-%M-%S")))
 
         # Make a backup copy, marking the date in which the list was updated
@@ -733,36 +720,8 @@ def recursive_glob(stem, file_pattern):
         matches = []
         for root, dirnames, filenames in os.walk(stem):
             for filename in fnmatch.filter(filenames, file_pattern):
-                matches.append(path_join_robust(root, filename))
+                matches.append(os.path.join(root, filename))
     return matches
-
-
-def path_join_robust(path_one, path_two):
-    """
-    Wrapper around `os.path.join` with handling for locale issues.
-
-    Parameters
-    ----------
-    path_one : str
-        The first path to join.
-    path_two : str
-        The second path to join.
-
-    Returns
-    -------
-    joined_path : str
-        The joined path string of the two path inputs.
-
-    Raises
-    ------
-    locale.Error : A locale issue was detected that prevents path joining.
-    """
-
-    try:
-        return os.path.join(path_one, path_two)
-    except UnicodeDecodeError as e:
-        raise locale.Error("Unable to construct path. This is "
-                           "likely a LOCALE issue:\n\n" + str(e))
 
 
 # Colors
