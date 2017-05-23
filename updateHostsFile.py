@@ -728,7 +728,8 @@ def recursive_glob(stem, file_pattern):
     if sys.version_info >= (3, 5):
         return glob(stem + "/**/" + file_pattern, recursive=True)
     else:
-        if stem == "*":
+        # gh-316: this will avoid invalid unicode comparisons in Python 2.x
+        if stem == str("*"):
             stem = "."
         matches = []
         for root, dirnames, filenames in os.walk(stem):
@@ -759,6 +760,10 @@ def path_join_robust(path, *paths):
     """
 
     try:
+        # gh-316: joining unicode and str can be saddening in Python 2.x
+        path = str(path)
+        paths = [str(another_path) for another_path in paths]
+
         return os.path.join(path, *paths)
     except UnicodeDecodeError as e:
         raise locale.Error("Unable to construct path. This is "
