@@ -584,43 +584,54 @@ def flush_dns_cache():
                 else:
                     print_success("Flushing DNS by restarting nscd succeeded")
 
-        if os.path.isfile("/usr/lib/systemd/system/NetworkManager.service"):
-            dns_cache_found = True
+        system_prefixes = ["/usr", ""]
+        for system_prefix in system_prefixes:
+            if os.path.isfile(system_prefix + "/lib/systemd/system"
+                                              "/NetworkManager.service"):
+                dns_cache_found = True
 
-            if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl",
-                                "restart", "NetworkManager.service"]):
-                print_failure("Flushing the DNS cache failed.")
-            else:
-                print_success("Flushing DNS by restarting "
-                              "NetworkManager succeeded")
+                if subprocess.call(["/usr/bin/sudo",
+                                    system_prefix + "/bin/systemctl",
+                                    "restart", "NetworkManager.service"]):
+                    print_failure("Flushing the DNS cache failed.")
+                else:
+                    print_success("Flushing DNS by restarting "
+                                  "NetworkManager succeeded")
 
-        if os.path.isfile("/usr/lib/systemd/system/wicd.service"):
-            dns_cache_found = True
+            if os.path.isfile(system_prefix + "/lib/systemd/system/"
+                                              "wicd.service"):
+                dns_cache_found = True
 
-            if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl",
-                                "restart", "wicd.service"]):
-                print_failure("Flushing the DNS cache failed.")
-            else:
-                print_success("Flushing DNS by restarting wicd succeeded")
+                if subprocess.call(["/usr/bin/sudo",
+                                    system_prefix + "/bin/systemctl",
+                                    "restart", "wicd.service"]):
+                    print_failure("Flushing the DNS cache failed.")
+                else:
+                    print_success("Flushing DNS by restarting wicd succeeded")
 
-        if os.path.isfile("/usr/lib/systemd/system/dnsmasq.service"):
-            dns_cache_found = True
+            if os.path.isfile(system_prefix + "/lib/systemd/system/"
+                                              "dnsmasq.service"):
+                dns_cache_found = True
 
-            if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl",
-                                "restart", "dnsmasq.service"]):
-                print_failure("Flushing the DNS cache failed.")
-            else:
-                print_success("Flushing DNS by restarting dnsmasq succeeded")
+                if subprocess.call(["/usr/bin/sudo",
+                                    system_prefix + "/bin/systemctl",
+                                    "restart", "dnsmasq.service"]):
+                    print_failure("Flushing the DNS cache failed.")
+                else:
+                    print_success("Flushing DNS by restarting "
+                                  "dnsmasq succeeded")
 
-        if os.path.isfile("/usr/lib/systemd/system/networking.service"):
-            dns_cache_found = True
+            if os.path.isfile(system_prefix + "/lib/systemd/system/"
+                                              "networking.service"):
+                dns_cache_found = True
 
-            if subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl",
-                                "restart", "networking.service"]):
-                print_failure("Flushing the DNS cache failed.")
-            else:
-                print_success("Flushing DNS by restarting "
-                              "networking.service succeeded")
+                if subprocess.call(["/usr/bin/sudo",
+                                    system_prefix + "/bin/systemctl",
+                                    "restart", "networking.service"]):
+                    print_failure("Flushing the DNS cache failed.")
+                else:
+                    print_success("Flushing DNS by restarting "
+                                  "networking.service succeeded")
 
         if os.path.isfile("/etc/init.d/dns-clean"):
             dns_cache_found = True
