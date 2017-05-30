@@ -35,6 +35,10 @@ else:  # Python 2
     from urllib2 import urlopen
 
 
+# Syntactic sugar for "sudo" command in UNIX / Linux
+SUDO = "/usr/bin/sudo"
+
+
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -633,7 +637,7 @@ def move_hosts_file_into_place(final_file):
     if os.name == "posix":
         print("Moving the file requires administrative privileges. "
               "You might need to enter your password.")
-        if subprocess.call(["/usr/bin/sudo", "cp", filename, "/etc/hosts"]):
+        if subprocess.call([SUDO, "cp", filename, "/etc/hosts"]):
             print_failure("Moving the file failed.")
     elif os.name == "nt":
         print("Automatically moving the hosts file "
@@ -654,84 +658,59 @@ def flush_dns_cache():
     dns_cache_found = False
 
     if platform.system() == "Darwin":
-        if subprocess.call(["/usr/bin/sudo", "killall",
-                            "-HUP", "mDNSResponder"]):
+        if subprocess.call([SUDO, "killall", "-HUP", "mDNSResponder"]):
             print_failure("Flushing the DNS cache failed.")
     elif os.name == "nt":
         print("Automatically flushing the DNS cache is not yet supported.")
         print("Please copy and paste the command 'ipconfig /flushdns' in "
               "administrator command prompt after running this script.")
     else:
-        nscd_caches = ["/etc/init.d/nscd",
-                       "/etc/rc.d/init.d/nscd"]
-        for nscd_cache in nscd_caches:
+        nscd_prefixes = ["/etc", "/etc/rc.d"]
+        nscd_msg = "Flushing the DNS cache by restarting nscd {result}"
+
+        for nscd_prefix in nscd_prefixes:
+            nscd_cache = nscd_prefix + "/init.d/nscd"
+
             if os.path.isfile(nscd_cache):
                 dns_cache_found = True
 
-                if subprocess.call(["/usr/bin/sudo", nscd_cache,
-                                    "restart"]):
-                    print_failure("Flushing the DNS cache failed.")
+                if subprocess.call([SUDO, nscd_cache, "restart"]):
+                    print_failure(nscd_msg.format(result="failed"))
                 else:
-                    print_success("Flushing DNS by restarting nscd succeeded")
+                    print_success(nscd_msg.format(result="succeeded"))
 
         system_prefixes = ["/usr", ""]
+        service_types = ["NetworkManager", "wicd", "dnsmasq", "networking"]
+
         for system_prefix in system_prefixes:
-            if os.path.isfile(system_prefix + "/lib/systemd/system"
-                                              "/NetworkManager.service"):
-                dns_cache_found = True
+            systemctl = system_prefix + "/bin/systemctl"
+            system_dir = system_prefix + "/lib/systemd/system"
 
-                if subprocess.call(["/usr/bin/sudo",
-                                    system_prefix + "/bin/systemctl",
-                                    "restart", "NetworkManager.service"]):
-                    print_failure("Flushing the DNS cache failed.")
-                else:
-                    print_success("Flushing DNS by restarting "
-                                  "NetworkManager succeeded")
+            for service_type in service_types:
+                service = service_type + ".service"
+                service_file = path_join_robust(system_dir, service)
+                service_msg = ("Flushing the DNS cache by "
+                               "restarting " + service + " {result}")
 
-            if os.path.isfile(system_prefix + "/lib/systemd/system/"
-                                              "wicd.service"):
-                dns_cache_found = True
+                if os.path.isfile(service_file):
+                    dns_cache_found = True
 
-                if subprocess.call(["/usr/bin/sudo",
-                                    system_prefix + "/bin/systemctl",
-                                    "restart", "wicd.service"]):
-                    print_failure("Flushing the DNS cache failed.")
-                else:
-                    print_success("Flushing DNS by restarting wicd succeeded")
+                    if subprocess.call([SUDO, systemctl, "restart", service]):
+                        print_failure(service_msg.format(result="failed"))
+                    else:
+                        print_success(service_msg.format(result="succeeded"))
 
-            if os.path.isfile(system_prefix + "/lib/systemd/system/"
-                                              "dnsmasq.service"):
-                dns_cache_found = True
+        dns_clean_file = "/etc/init.d/dns-clean"
+        dns_clean_msg = ("Flushing the DNS cache via "
+                         "dns-clean executable {result}")
 
-                if subprocess.call(["/usr/bin/sudo",
-                                    system_prefix + "/bin/systemctl",
-                                    "restart", "dnsmasq.service"]):
-                    print_failure("Flushing the DNS cache failed.")
-                else:
-                    print_success("Flushing DNS by restarting "
-                                  "dnsmasq succeeded")
-
-            if os.path.isfile(system_prefix + "/lib/systemd/system/"
-                                              "networking.service"):
-                dns_cache_found = True
-
-                if subprocess.call(["/usr/bin/sudo",
-                                    system_prefix + "/bin/systemctl",
-                                    "restart", "networking.service"]):
-                    print_failure("Flushing the DNS cache failed.")
-                else:
-                    print_success("Flushing DNS by restarting "
-                                  "networking.service succeeded")
-
-        if os.path.isfile("/etc/init.d/dns-clean"):
+        if os.path.isfile(dns_clean_file):
             dns_cache_found = True
 
-            if subprocess.call(["/usr/bin/sudo", "/etc/init.d/dns-clean",
-                                "start"]):
-                print_failure("Flushing the DNS cache failed.")
+            if subprocess.call([SUDO, dns_clean_file, "start"]):
+                print_failure(dns_clean_msg.format(result="failed"))
             else:
-                print_success("Flushing DNS via dns-clean "
-                              "executable succeeded")
+                print_success(dns_clean_msg.format(result="succeeded"))
 
         if not dns_cache_found:
             print_failure("Unable to determine DNS management tool.")
