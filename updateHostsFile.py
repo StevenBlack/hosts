@@ -501,7 +501,8 @@ def normalize_rule(rule):
         The rule string with spelling and spacing reformatted.
     """
 
-    result = re.search(r'^[ \t]*(\d+\.\d+\.\d+\.\d+)\s+([\w\.-]+)(.*)', rule)
+    result = re.search(r'^\s*(\d{1,3}\.){3}\d{1,3}\s+([\w\.-]+[a-zA-Z])(.*)',
+                       rule)
     if result:
         hostname, suffix = result.group(2, 3)
 
