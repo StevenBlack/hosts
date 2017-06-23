@@ -14,7 +14,8 @@ python:
   - "3.6"
 
 install:
-  pip install flake8
+  pip install flake8 mock nose
 
 script:
-  flake8
+  - nosetests
+  - flake8
