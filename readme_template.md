@@ -8,6 +8,20 @@ Like this:
 
     git clone --depth 5 https://github.com/StevenBlack/hosts.git
 
+To run unit tests, in the top level directory, just run:
+
+    python testUpdateHostsFile.py
+
+You can also install `nose` with `pip` and then just run:
+
+    nosetests
+
+**Note** if you are using Python 2, you must first install the `mock` library:
+
+    pip install mock
+
+Afterwards, you can follow the instructions above.
+
 # Unified hosts file @EXTENSIONS_HEADER@
 
 This repository consolidates several reputable `hosts` files, and merges them
