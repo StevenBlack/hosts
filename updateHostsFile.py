@@ -33,7 +33,7 @@ if PY3:
     raw_input = input
 else:  # Python 2
     from urllib2 import urlopen
-
+    raw_input = raw_input  # noqa
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
 SUDO = "/usr/bin/sudo"
@@ -185,7 +185,7 @@ def prompt_for_update():
     if not os.path.isfile(path_join_robust(BASEDIR_PATH, "hosts")):
         try:
             open(path_join_robust(BASEDIR_PATH, "hosts"), "w+").close()
-        except:
+        except Exception:
             print_failure("ERROR: No 'hosts' file in the folder,"
                           "try creating one manually")
 
@@ -363,7 +363,7 @@ def update_all_sources():
                                                settings["hostfilename"]), "wb")
             write_data(hosts_file, updated_file)
             hosts_file.close()
-        except:
+        except Exception:
             print("Error in updating source: ", update_url)
 # End Update Logic
 
@@ -763,7 +763,7 @@ def get_file_by_url(url):
     try:
         f = urlopen(url)
         return f.read().decode("UTF-8")
-    except:
+    except Exception:
         print("Problem getting file: ", url)
 
 
