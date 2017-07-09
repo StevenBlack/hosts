@@ -141,7 +141,7 @@ class TestNormalizeRule(BaseStdout):
         kwargs = dict(target_ip="0.0.0.0", keep_domain_comments=False)
 
         for rule in ["foo", "128.0.0.1", "bar.com/usa", "0.0.0 google",
-                     "0.1.2.3.4 foo/bar", "twitter.com"]:
+                     "0.0.0.0 1.2.34.34", "0.1.2.3.4 foo/bar", "twitter.com"]:
             self.assertEqual(normalize_rule(rule, **kwargs), (None, None))
 
             output = sys.stdout.getvalue()
@@ -152,8 +152,8 @@ class TestNormalizeRule(BaseStdout):
 
     def test_no_comments(self):
         for target_ip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
-            rule = "127.0.0.1 google foo"
-            expected = ("google", str(target_ip) + " google\n")
+            rule = "127.0.0.1 1.google.com foo"
+            expected = ("1.google.com", str(target_ip) + " 1.google.com\n")
 
             actual = normalize_rule(rule, target_ip=target_ip,
                                     keep_domain_comments=False)
@@ -168,9 +168,10 @@ class TestNormalizeRule(BaseStdout):
     def test_with_comments(self):
         for target_ip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
             for comment in ("foo", "bar", "baz"):
-                rule = "127.0.0.1 google " + comment
-                expected = ("google", (str(target_ip) + " google # " +
-                                       comment + "\n"))
+                rule = "127.0.0.1 1.google.co.uk " + comment
+                expected = ("1.google.co.uk",
+                            (str(target_ip) + " 1.google.co.uk # " +
+                             comment + "\n"))
 
                 actual = normalize_rule(rule, target_ip=target_ip,
                                         keep_domain_comments=True)
