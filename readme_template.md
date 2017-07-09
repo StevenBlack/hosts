@@ -12,10 +12,6 @@ To run unit tests, in the top level directory, just run:
 
     python testUpdateHostsFile.py
 
-You can also install `nose` with `pip` and then just run:
-
-    nosetests
-
 **Note** if you are using Python 2, you must first install the `mock` library:
 
     pip install mock
