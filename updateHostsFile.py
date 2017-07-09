@@ -153,10 +153,12 @@ def main():
     remove_old_hosts_file(settings["backup"])
 
     extensions = settings["extensions"]
-    number_of_rules = settings["numberofrules"]
     output_subfolder = settings["outputsubfolder"]
 
     final_file = remove_dups_and_excl(merge_file)
+
+    number_of_rules = settings["numberofrules"]
+
     write_opening_header(final_file, extensions=extensions,
                          numberofrules=number_of_rules,
                          outputsubfolder=output_subfolder,
