@@ -485,7 +485,7 @@ def remove_dups_and_excl(merge_file):
             keep_domain_comments=settings["keepdomaincomments"])
 
         for exclude in exclusions:
-            if exclude in line:
+            if re.search('[\s\.]' + re.escape(exclude) + '\s', line):
                 write_line = False
                 break
 
