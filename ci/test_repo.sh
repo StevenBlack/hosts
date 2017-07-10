@@ -3,4 +3,4 @@
 echo "Running unittests..."
 source activate hosts
 
-nosetests
+python testUpdateHostsFile.py
