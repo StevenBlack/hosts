@@ -26,8 +26,8 @@ before_install:
 
 install:
   - ci/install_conda.sh
-  - ci/install_conda_env.sh
+  - ci/setup_conda_env.sh
 
 script:
-  - ci/test_repo.sh
-  - ci/lint_repo.sh
+  - ci/test.sh
+  - ci/lint.sh
