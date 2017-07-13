@@ -10,8 +10,10 @@ from updateHostsFile import (Colors, PY3, colorize, flush_dns_cache,
                              get_file_by_url, is_valid_domain_format,
                              move_hosts_file_into_place, normalize_rule,
                              path_join_robust, print_failure, print_success,
-                             supports_color, query_yes_no, recursive_glob,
-                             remove_old_hosts_file, strip_rule,
+                             prompt_for_exclusions, prompt_for_move,
+                             prompt_for_flush_dns_cache, prompt_for_update,
+                             query_yes_no, recursive_glob,
+                             remove_old_hosts_file, supports_color, strip_rule,
                              update_readme_data, write_data,
                              write_opening_header)
 import updateHostsFile
@@ -33,7 +35,7 @@ else:
     import mock
 
 
-# Base Test Classes
+# Test Helper Objects
 class Base(unittest.TestCase):
 
     @staticmethod
@@ -66,7 +68,14 @@ class BaseMockDir(Base):
 
     def tearDown(self):
         shutil.rmtree(self.test_dir)
-# End Base Test Classes
+
+
+def builtins():
+    if PY3:
+        return "builtins"
+    else:
+        return "__builtin__"
+# End Test Helper Objects
 
 
 # Project Settings
@@ -105,6 +114,303 @@ class TestGetDefaults(Base):
                         "whitelistfile": "foo" + self.sep + "whitelist"}
             self.assertDictEqual(actual, expected)
 # End Project Settings
+
+
+# Prompt the User
+class TestPromptForUpdate(BaseStdout, BaseMockDir):
+
+    def setUp(self):
+        BaseStdout.setUp(self)
+        BaseMockDir.setUp(self)
+
+    def test_no_freshen_no_new_file(self):
+        hosts_file = os.path.join(self.test_dir, "hosts")
+        hosts_data = "This data should not be overwritten"
+
+        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
+            updateHostsFile.BASEDIR_PATH = self.test_dir
+
+            with open(hosts_file, "w") as f:
+                f.write(hosts_data)
+
+        for update_auto in (False, True):
+            dir_count = self.dir_count
+            prompt_for_update(freshen=False, update_auto=update_auto)
+
+            output = sys.stdout.getvalue()
+            self.assertEqual(output, "")
+
+            sys.stdout = StringIO()
+
+            self.assertEqual(self.dir_count, dir_count)
+
+            with open(hosts_file, "r") as f:
+                contents = f.read()
+                self.assertEqual(contents, hosts_data)
+
+    def test_no_freshen_new_file(self):
+        hosts_file = os.path.join(self.test_dir, "hosts")
+
+        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
+            updateHostsFile.BASEDIR_PATH = self.test_dir
+
+            dir_count = self.dir_count
+            prompt_for_update(freshen=False, update_auto=False)
+
+            output = sys.stdout.getvalue()
+            self.assertEqual(output, "")
+
+            sys.stdout = StringIO()
+
+            self.assertEqual(self.dir_count, dir_count + 1)
+
+            with open(hosts_file, "r") as f:
+                contents = f.read()
+                self.assertEqual(contents, "")
+
+    @mock.patch(builtins() + ".open")
+    def test_no_freshen_fail_new_file(self, mock_open):
+        for exc in (IOError, OSError):
+            mock_open.side_effect = exc("failed open")
+
+            with self.mock_property("updateHostsFile.BASEDIR_PATH"):
+                updateHostsFile.BASEDIR_PATH = self.test_dir
+                prompt_for_update(freshen=False, update_auto=False)
+
+                output = sys.stdout.getvalue()
+                expected = ("ERROR: No 'hosts' file in the folder. "
+                            "Try creating one manually.")
+                self.assertIn(expected, output)
+
+                sys.stdout = StringIO()
+
+    @mock.patch("updateHostsFile.update_all_sources", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=False)
+    def test_freshen_no_update(self, _, mock_update):
+        hosts_file = os.path.join(self.test_dir, "hosts")
+        hosts_data = "This data should not be overwritten"
+
+        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
+            updateHostsFile.BASEDIR_PATH = self.test_dir
+
+            with open(hosts_file, "w") as f:
+                f.write(hosts_data)
+
+            dir_count = self.dir_count
+
+            prompt_for_update(freshen=True, update_auto=False)
+
+            mock_update.assert_not_called()
+            mock_update.reset_mock()
+
+            output = sys.stdout.getvalue()
+            expected = ("OK, we'll stick with "
+                        "what we've got locally.")
+            self.assertIn(expected, output)
+
+            sys.stdout = StringIO()
+
+            self.assertEqual(self.dir_count, dir_count)
+
+            with open(hosts_file, "r") as f:
+                contents = f.read()
+                self.assertEqual(contents, hosts_data)
+
+    @mock.patch("updateHostsFile.update_all_sources", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=True)
+    def test_freshen_update(self, _, mock_update):
+        hosts_file = os.path.join(self.test_dir, "hosts")
+        hosts_data = "This data should not be overwritten"
+
+        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
+            updateHostsFile.BASEDIR_PATH = self.test_dir
+
+            with open(hosts_file, "w") as f:
+                f.write(hosts_data)
+
+            dir_count = self.dir_count
+
+            for update_auto in (False, True):
+                prompt_for_update(freshen=True, update_auto=update_auto)
+
+                mock_update.assert_called_once()
+                mock_update.reset_mock()
+
+                output = sys.stdout.getvalue()
+                self.assertEqual(output, "")
+
+                sys.stdout = StringIO()
+
+                self.assertEqual(self.dir_count, dir_count)
+
+                with open(hosts_file, "r") as f:
+                    contents = f.read()
+                    self.assertEqual(contents, hosts_data)
+
+    def tearDown(self):
+        BaseStdout.tearDown(self)
+        BaseStdout.tearDown(self)
+
+
+class TestPromptForExclusions(BaseStdout):
+
+    @mock.patch("updateHostsFile.display_exclusion_options", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=False)
+    def testSkipPrompt(self, mock_query, mock_display):
+        prompt_for_exclusions(skip_prompt=True)
+
+        output = sys.stdout.getvalue()
+        self.assertEqual(output, "")
+
+        mock_query.assert_not_called()
+        mock_display.assert_not_called()
+
+    @mock.patch("updateHostsFile.display_exclusion_options", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=False)
+    def testNoSkipPromptNoDisplay(self, mock_query, mock_display):
+        prompt_for_exclusions(skip_prompt=False)
+
+        output = sys.stdout.getvalue()
+        expected = ("OK, we'll only exclude "
+                    "domains in the whitelist.")
+        self.assertIn(expected, output)
+
+        mock_query.assert_called_once()
+        mock_display.assert_not_called()
+
+    @mock.patch("updateHostsFile.display_exclusion_options", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=True)
+    def testNoSkipPromptDisplay(self, mock_query, mock_display):
+        prompt_for_exclusions(skip_prompt=False)
+
+        output = sys.stdout.getvalue()
+        self.assertEqual(output, "")
+
+        mock_query.assert_called_once()
+        mock_display.assert_called_once()
+
+
+class TestPromptForFlushDnsCache(Base):
+
+    @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=False)
+    def testFlushCache(self, mock_query, mock_flush):
+        for prompt_flush in (False, True):
+            prompt_for_flush_dns_cache(flush_cache=True,
+                                       prompt_flush=prompt_flush)
+
+            mock_query.assert_not_called()
+            mock_flush.assert_called_once()
+
+            mock_query.reset_mock()
+            mock_flush.reset_mock()
+
+    @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=False)
+    def testNoFlushCacheNoPrompt(self, mock_query, mock_flush):
+        prompt_for_flush_dns_cache(flush_cache=False,
+                                   prompt_flush=False)
+
+        mock_query.assert_not_called()
+        mock_flush.assert_not_called()
+
+    @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=False)
+    def testNoFlushCachePromptNoFlush(self, mock_query, mock_flush):
+        prompt_for_flush_dns_cache(flush_cache=False,
+                                   prompt_flush=True)
+
+        mock_query.assert_called_once()
+        mock_flush.assert_not_called()
+
+    @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=True)
+    def testNoFlushCachePromptFlush(self, mock_query, mock_flush):
+        prompt_for_flush_dns_cache(flush_cache=False,
+                                   prompt_flush=True)
+
+        mock_query.assert_called_once()
+        mock_flush.assert_called_once()
+
+
+class TestPromptForMove(Base):
+
+    def setUp(self):
+        Base.setUp(self)
+        self.final_file = "final.txt"
+
+    def prompt_for_move(self, **move_params):
+        return prompt_for_move(self.final_file, **move_params)
+
+    @mock.patch("updateHostsFile.move_hosts_file_into_place", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=False)
+    def testSkipStaticHosts(self, mock_query, mock_move):
+        for replace in (False, True):
+            for auto in (False, True):
+                move_file = self.prompt_for_move(replace=replace, auto=auto,
+                                                 skipstatichosts=True)
+                self.assertFalse(move_file)
+
+                mock_query.assert_not_called()
+                mock_move.assert_not_called()
+
+                mock_query.reset_mock()
+                mock_move.reset_mock()
+
+    @mock.patch("updateHostsFile.move_hosts_file_into_place", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=False)
+    def testReplaceNoSkipStaticHosts(self, mock_query, mock_move):
+        for auto in (False, True):
+            move_file = self.prompt_for_move(replace=True, auto=auto,
+                                             skipstatichosts=False)
+            self.assertTrue(move_file)
+
+            mock_query.assert_not_called()
+            mock_move.assert_called_once()
+
+            mock_query.reset_mock()
+            mock_move.reset_mock()
+
+    @mock.patch("updateHostsFile.move_hosts_file_into_place", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=False)
+    def testAutoNoSkipStaticHosts(self, mock_query, mock_move):
+        for replace in (False, True):
+            move_file = self.prompt_for_move(replace=replace, auto=True,
+                                             skipstatichosts=True)
+            self.assertFalse(move_file)
+
+            mock_query.assert_not_called()
+            mock_move.assert_not_called()
+
+            mock_query.reset_mock()
+            mock_move.reset_mock()
+
+    @mock.patch("updateHostsFile.move_hosts_file_into_place", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=False)
+    def testPromptNoMove(self, mock_query, mock_move):
+        move_file = self.prompt_for_move(replace=False, auto=False,
+                                         skipstatichosts=False)
+        self.assertFalse(move_file)
+
+        mock_query.assert_called_once()
+        mock_move.assert_not_called()
+
+        mock_query.reset_mock()
+        mock_move.reset_mock()
+
+    @mock.patch("updateHostsFile.move_hosts_file_into_place", return_value=0)
+    @mock.patch("updateHostsFile.query_yes_no", return_value=True)
+    def testPromptMove(self, mock_query, mock_move):
+        move_file = self.prompt_for_move(replace=False, auto=False,
+                                         skipstatichosts=False)
+        self.assertTrue(move_file)
+
+        mock_query.assert_called_once()
+        mock_move.assert_called_once()
+
+        mock_query.reset_mock()
+        mock_move.reset_mock()
+# End Prompt the User
 
 
 # Exclusion Logic
