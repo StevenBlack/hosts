@@ -146,8 +146,10 @@ def main():
     settings["extensions"] = sorted(list(
         set(options["extensions"]).intersection(settings["extensions"])))
 
-    prompt_for_update()
-    prompt_for_exclusions()
+    auto = settings["auto"]
+
+    prompt_for_update(freshen=settings["freshen"], update_auto=auto)
+    prompt_for_exclusions(skip_prompt=auto)
 
     merge_file = create_initial_file()
     remove_old_hosts_file(settings["backup"])
@@ -158,11 +160,12 @@ def main():
     final_file = remove_dups_and_excl(merge_file)
 
     number_of_rules = settings["numberofrules"]
+    skip_static_hosts = settings["skipstatichosts"]
 
     write_opening_header(final_file, extensions=extensions,
                          numberofrules=number_of_rules,
                          outputsubfolder=output_subfolder,
-                         skipstatichosts=settings["skipstatichosts"])
+                         skipstatichosts=skip_static_hosts)
     final_file.close()
 
     if settings["ziphosts"]:
@@ -183,63 +186,101 @@ def main():
                   "{:,}".format(number_of_rules) +
                   " unique entries.")
 
-    prompt_for_move(final_file)
+    move_file = prompt_for_move(final_file, auto=auto,
+                                replace=settings["replace"],
+                                skipstatichosts=skip_static_hosts)
+
+    # We only flush the DNS cache if we have
+    # moved a new hosts file into place.
+    if move_file:
+        prompt_for_flush_dns_cache(flush_cache=settings["flushdnscache"],
+                                   prompt_flush=not auto)
 
 
 # Prompt the User
-def prompt_for_update():
+def prompt_for_update(freshen, update_auto):
     """
     Prompt the user to update all hosts files.
+
+    If requested, the function will update all data sources after it
+    checks that a hosts file does indeed exist.
+
+    Parameters
+    ----------
+    freshen : bool
+        Whether data sources should be updated. This function will return
+        if it is requested that data sources not be updated.
+    update_auto : bool
+        Whether or not to automatically update all data sources.
     """
 
-    # Create hosts file if it doesn't exist.
-    if not os.path.isfile(path_join_robust(BASEDIR_PATH, "hosts")):
-        try:
-            open(path_join_robust(BASEDIR_PATH, "hosts"), "w+").close()
-        except Exception:
-            print_failure("ERROR: No 'hosts' file in the folder,"
-                          "try creating one manually")
+    # Create a hosts file if it doesn't exist.
+    hosts_file = path_join_robust(BASEDIR_PATH, "hosts")
 
-    if not settings["freshen"]:
+    if not os.path.isfile(hosts_file):
+        try:
+            open(hosts_file, "w+").close()
+        except (IOError, OSError):
+            # Starting in Python 3.3, IOError is aliased
+            # OSError. However, we have to catch both for
+            # Python 2.x failures.
+            print_failure("ERROR: No 'hosts' file in the folder. "
+                          "Try creating one manually.")
+
+    if not freshen:
         return
 
     prompt = "Do you want to update all data sources?"
-    if settings["auto"] or query_yes_no(prompt):
+
+    if update_auto or query_yes_no(prompt):
         update_all_sources()
-    elif not settings["auto"]:
+    elif not update_auto:
         print("OK, we'll stick with what we've got locally.")
 
 
-def prompt_for_exclusions():
+def prompt_for_exclusions(skip_prompt):
     """
     Prompt the user to exclude any custom domains from being blocked.
+
+    Parameters
+    ----------
+    skip_prompt : bool
+        Whether or not to skip prompting for custom domains to be excluded.
+        If true, the function returns immediately.
     """
 
     prompt = ("Do you want to exclude any domains?\n"
               "For example, hulu.com video streaming must be able to access "
               "its tracking and ad servers in order to play video.")
 
-    if not settings["auto"]:
+    if not skip_prompt:
         if query_yes_no(prompt):
             display_exclusion_options()
         else:
             print("OK, we'll only exclude domains in the whitelist.")
 
 
-def prompt_for_flush_dns_cache():
+def prompt_for_flush_dns_cache(flush_cache, prompt_flush):
     """
     Prompt the user to flush the DNS cache.
+
+    Parameters
+    ----------
+    flush_cache : bool
+        Whether to flush the DNS cache without prompting.
+    prompt_flush : bool
+        If `flush_cache` is False, whether we should prompt for flushing the
+        cache. Otherwise, the function returns immediately.
     """
 
-    if settings["flushdnscache"]:
+    if flush_cache:
         flush_dns_cache()
-
-    if not settings["auto"]:
+    elif prompt_flush:
         if query_yes_no("Attempt to flush the DNS cache?"):
             flush_dns_cache()
 
 
-def prompt_for_move(final_file):
+def prompt_for_move(final_file, **move_params):
     """
     Prompt the user to move the newly created hosts file to its designated
     location in the OS.
@@ -248,11 +289,25 @@ def prompt_for_move(final_file):
     ----------
     final_file : file
         The file object that contains the newly created hosts data.
+    move_params : kwargs
+        Dictionary providing additional parameters for moving the hosts file
+        into place. Currently, those fields are:
+
+        1) auto
+        2) replace
+        3) skipstatichosts
+
+    Returns
+    -------
+    move_file : bool
+        Whether or not the final hosts file was moved.
     """
 
-    if settings["replace"] and not settings["skipstatichosts"]:
+    skip_static_hosts = move_params["skipstatichosts"]
+
+    if move_params["replace"] and not skip_static_hosts:
         move_file = True
-    elif settings["auto"] or settings["skipstatichosts"]:
+    elif move_params["auto"] or skip_static_hosts:
         move_file = False
     else:
         prompt = ("Do you want to replace your existing hosts file " +
@@ -261,7 +316,8 @@ def prompt_for_move(final_file):
 
     if move_file:
         move_hosts_file_into_place(final_file)
-        prompt_for_flush_dns_cache()
+
+    return move_file
 # End Prompt the User
 
 
