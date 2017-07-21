@@ -147,9 +147,18 @@ def main():
         set(options["extensions"]).intersection(settings["extensions"])))
 
     auto = settings["auto"]
+    exclusion_regexes = settings["exclusionregexs"]
 
     prompt_for_update(freshen=settings["freshen"], update_auto=auto)
-    prompt_for_exclusions(skip_prompt=auto)
+    gather_exclusions = prompt_for_exclusions(skip_prompt=auto)
+
+    if gather_exclusions:
+        common_exclusions = settings["commonexclusions"]
+        exclusion_pattern = settings["exclusionpattern"]
+        exclusion_regexes = display_exclusion_options(
+            common_exclusions=common_exclusions,
+            exclusion_pattern=exclusion_pattern,
+            exclusion_regexes=exclusion_regexes)
 
     merge_file = create_initial_file()
     remove_old_hosts_file(settings["backup"])
@@ -157,7 +166,7 @@ def main():
     extensions = settings["extensions"]
     output_subfolder = settings["outputsubfolder"]
 
-    final_file = remove_dups_and_excl(merge_file)
+    final_file = remove_dups_and_excl(merge_file, exclusion_regexes)
 
     number_of_rules = settings["numberofrules"]
     skip_static_hosts = settings["skipstatichosts"]
@@ -247,6 +256,12 @@ def prompt_for_exclusions(skip_prompt):
     skip_prompt : bool
         Whether or not to skip prompting for custom domains to be excluded.
         If true, the function returns immediately.
+
+    Returns
+    -------
+    gather_exclusions : bool
+        Whether or not we should proceed to prompt the user to exclude any
+        custom domains beyond those in the whitelist.
     """
 
     prompt = ("Do you want to exclude any domains?\n"
@@ -255,9 +270,11 @@ def prompt_for_exclusions(skip_prompt):
 
     if not skip_prompt:
         if query_yes_no(prompt):
-            display_exclusion_options()
+            return True
         else:
             print("OK, we'll only exclude domains in the whitelist.")
+
+    return False
 
 
 def prompt_for_flush_dns_cache(flush_cache, prompt_flush):
@@ -322,29 +339,65 @@ def prompt_for_move(final_file, **move_params):
 
 
 # Exclusion logic
-def display_exclusion_options():
+def display_exclusion_options(common_exclusions, exclusion_pattern,
+                              exclusion_regexes):
     """
     Display the exclusion options to the user.
 
     This function checks whether a user wants to exclude particular domains,
     and if so, excludes them.
+
+    Parameters
+    ----------
+    common_exclusions : list
+        A list of common domains that are excluded from being blocked. One
+        example is Hulu. This setting is set directly in the script and cannot
+        be overwritten by the user.
+    exclusion_pattern : str
+        The exclusion pattern with which to create the domain regex.
+    exclusion_regexes : list
+        The list of regex patterns used to exclude domains.
+
+    Returns
+    -------
+    aug_exclusion_regexes : list
+        The original list of regex patterns potentially with additional
+        patterns from domains that user chooses to exclude.
     """
 
-    for exclusion_option in settings["commonexclusions"]:
+    for exclusion_option in common_exclusions:
         prompt = "Do you want to exclude the domain " + exclusion_option + " ?"
 
         if query_yes_no(prompt):
-            exclude_domain(exclusion_option)
+            exclusion_regexes = exclude_domain(exclusion_option,
+                                               exclusion_pattern,
+                                               exclusion_regexes)
         else:
             continue
 
     if query_yes_no("Do you want to exclude any other domains?"):
-        gather_custom_exclusions()
+        exclusion_regexes = gather_custom_exclusions(exclusion_pattern,
+                                                     exclusion_regexes)
+
+    return exclusion_regexes
 
 
-def gather_custom_exclusions():
+def gather_custom_exclusions(exclusion_pattern, exclusion_regexes):
     """
     Gather custom exclusions from the user.
+
+    Parameters
+    ----------
+    exclusion_pattern : str
+        The exclusion pattern with which to create the domain regex.
+    exclusion_regexes : list
+        The list of regex patterns used to exclude domains.
+
+    Returns
+    -------
+    aug_exclusion_regexes : list
+        The original list of regex patterns potentially with additional
+        patterns from domains that user chooses to exclude.
     """
 
     # We continue running this while-loop until the user
@@ -355,28 +408,46 @@ def gather_custom_exclusions():
         user_domain = raw_input(domain_prompt)
 
         if is_valid_domain_format(user_domain):
-            exclude_domain(user_domain)
+            exclusion_regexes = exclude_domain(user_domain, exclusion_pattern,
+                                               exclusion_regexes)
 
         continue_prompt = "Do you have more domains you want to enter?"
         if not query_yes_no(continue_prompt):
-            return
+            break
+
+    return exclusion_regexes
 
 
-def exclude_domain(domain):
+def exclude_domain(domain, exclusion_pattern, exclusion_regexes):
     """
     Exclude a domain from being blocked.
+
+    This create the domain regex by which to exclude this domain and appends
+    it a list of already-existing exclusion regexes.
 
     Parameters
     ----------
     domain : str
         The filename or regex pattern to exclude.
+    exclusion_pattern : str
+        The exclusion pattern with which to create the domain regex.
+    exclusion_regexes : list
+        The list of regex patterns used to exclude domains.
+
+    Returns
+    -------
+    aug_exclusion_regexes : list
+        The original list of regex patterns with one additional pattern from
+        the `domain` input.
     """
 
-    settings["exclusionregexs"].append(re.compile(
-        settings["exclusionpattern"] + domain))
+    exclusion_regex = re.compile(exclusion_pattern + domain)
+    exclusion_regexes.append(exclusion_regex)
+
+    return exclusion_regexes
 
 
-def matches_exclusions(stripped_rule):
+def matches_exclusions(stripped_rule, exclusion_regexes):
     """
     Check whether a rule matches an exclusion rule we already provided.
 
@@ -387,6 +458,8 @@ def matches_exclusions(stripped_rule):
     ----------
     stripped_rule : str
         The rule that we are checking.
+    exclusion_regexes : list
+        The list of regex patterns used to exclude domains.
 
     Returns
     -------
@@ -395,9 +468,11 @@ def matches_exclusions(stripped_rule):
     """
 
     stripped_domain = stripped_rule.split()[1]
-    for exclusionRegex in settings["exclusionregexs"]:
+
+    for exclusionRegex in exclusion_regexes:
         if exclusionRegex.search(stripped_domain):
             return True
+
     return False
 # End Exclusion Logic
 
@@ -479,7 +554,7 @@ def create_initial_file():
     return merge_file
 
 
-def remove_dups_and_excl(merge_file):
+def remove_dups_and_excl(merge_file, exclusion_regexes):
     """
     Remove duplicates and remove hosts that we are excluding.
 
@@ -490,6 +565,8 @@ def remove_dups_and_excl(merge_file):
     ----------
     merge_file : file
         The file object that contains the hostnames that we are pruning.
+    exclusion_regexes : list
+        The list of regex patterns used to exclude domains.
     """
 
     number_of_rules = settings["numberofrules"]
@@ -532,7 +609,8 @@ def remove_dups_and_excl(merge_file):
             continue
 
         stripped_rule = strip_rule(line)  # strip comments
-        if not stripped_rule or matches_exclusions(stripped_rule):
+        if not stripped_rule or matches_exclusions(stripped_rule,
+                                                   exclusion_regexes):
             continue
 
         # Normalize rule
