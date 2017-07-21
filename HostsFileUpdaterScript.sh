@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 # Hosts file updater
 # You will probably need root or su rights to access /etc/hosts
 # modified by Valkiry to be used withb Steven Black's Unified Hosts files.
