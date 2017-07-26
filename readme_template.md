@@ -21,8 +21,7 @@ Afterwards, you can follow the instructions above.
 # Unified hosts file @EXTENSIONS_HEADER@
 
 This repository consolidates several reputable `hosts` files, and merges them
-into a unified hosts file with duplicates removed.  This repo provides several
-hosts files tailored to you need to block.
+into a unified hosts file with duplicates removed.  A variety of tailored hosts files are provided.
 
 * Last updated: **@GEN_DATE@**.
 * Here's the [raw hosts file @EXTENSIONS_HEADER@](https://raw.githubusercontent.com/StevenBlack/hosts/master/@SUBFOLDER@hosts) containing @NUM_ENTRIES@ entries.
