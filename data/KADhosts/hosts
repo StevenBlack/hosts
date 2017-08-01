@@ -1,10 +1,15 @@
-# KAD hosts file
-# Zalecany tylko dla zaawansowanych uzytkownikow
-# Niektore funkcje oferowane przez filtr nie sa dostepne w ponizszym pliku ze wzgledu na ograniczenia hosts.
-# Aktualizacja zbiorowa: H2017072301
+# KADhosts
+# Website: https://azet12.github.io/KAD/
+# Repository: https://github.com/azet12/KADhosts
+# Based on: https://github.com/azet12/KAD
+# Check the repository for license information. / Sprawdź repozytiorium po informacje o licencji.
 
+# Version: H2017073001
 
-# Podejrzane i/lub polaczone z innymi przekretami
+# (EN) WARNING: Sites listed below can be harmful. Please, do not visit them if you don't know what you're doing!
+# (PL) UWAGA: Strony poniżej mogą być szkodliwe. Proszę, nie wchodź na nie, jeśli nie wiesz co robisz!
+
+# Podejrzane i/lub strony połączone z innymi oszustwami
 0.0.0.0 eonline.pl
 0.0.0.0 maendo.tv
 0.0.0.0 msphacks.net
@@ -566,15 +571,27 @@
 0.0.0.0 caly-film-online.pl
 0.0.0.0 xxxx.nsupdate.info
 0.0.0.0 verifycaptcha.com
+0.0.0.0 photook.vxm.pl
+0.0.0.0 supersuper.com.pl
+0.0.0.0 quizzstar.com
+0.0.0.0 testony.com
+0.0.0.0 crazydeals.pl
+0.0.0.0 shares.com.pl
+0.0.0.0 instantgiftcodes.com
+0.0.0.0 getspinner.net
+0.0.0.0 realgift.men
+0.0.0.0 findgiftcode.com
+0.0.0.0 cpabuild.com
+0.0.0.0 foto-mix.eu
+0.0.0.0 code-new.com
 
-# Strony z aliasami (lub podobne), ktore nie sa wspierane przez administratorow.
+# Strony, które nie są wspierane przez administratorów.
+# Będą one blokowane, dopóki administracja nie poradzi sobie ze spamem.
 0.0.0.0 rfv.pl
 0.0.0.0 lnfo.eu
-0.0.0.0 szort.pl
 0.0.0.0 cs-passion.pl
 
-# Przekierowuja one do innych stron z przekretami.
-# Spotykane sa na wielu stronach typu przekret lub postach i komentarzach na portalach spolecznosciowych.
+# Przekierowują do innych stron z przekrętami
 0.0.0.0 8xs.pl
 0.0.0.0 z0x.pl
 0.0.0.0 uvy3.pl
@@ -667,7 +684,8 @@
 0.0.0.0 12xa.pl
 0.0.0.0 0stcd.pl
 
-# Szybko wygaszajace
+# Szybko wygaszające
+0.0.0.0 testo.5v.pl
 0.0.0.0 facebouk.y0.pl
 0.0.0.0 5wuwe.5v.pl
 0.0.0.0 facebooklogintophoto.5v.pl
@@ -1252,8 +1270,13 @@
 0.0.0.0 top.2d1b.top
 0.0.0.0 funfone.me
 0.0.0.0 office-365.life
+0.0.0.0 rdraff.com-app1.site
 
-# Przekrety
+# Przekręty
+0.0.0.0 rejestruj-sie.pl
+0.0.0.0 pobierz-plik24.pl
+0.0.0.0 file-share.pl
+0.0.0.0 rhtrfhjrtfh.pl
 0.0.0.0 fb-zmiana-koloru.pl
 0.0.0.0 formularzkonkursowy.eu
 0.0.0.0 disc-file.pl
