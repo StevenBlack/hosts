@@ -46,6 +46,12 @@ class Base(unittest.TestCase):
     def sep(self):
         return "\\" if sys.platform == "win32" else "/"
 
+    def assert_called_once(self, mock_method):
+        if PY3 and sys.version_info < (3, 6):
+            self.assertEqual(mock_method.call_count, 1)
+        else:
+            mock_method.assert_called_once()
+
 
 class BaseStdout(Base):
 
@@ -233,7 +239,7 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
             for update_auto in (False, True):
                 prompt_for_update(freshen=True, update_auto=update_auto)
 
-                mock_update.assert_called_once()
+                self.assert_called_once(mock_update)
                 mock_update.reset_mock()
 
                 output = sys.stdout.getvalue()
@@ -275,7 +281,7 @@ class TestPromptForExclusions(BaseStdout):
                     "domains in the whitelist.")
         self.assertIn(expected, output)
 
-        mock_query.assert_called_once()
+        self.assert_called_once(mock_query)
         mock_display.assert_not_called()
 
     @mock.patch("updateHostsFile.display_exclusion_options", return_value=0)
@@ -286,8 +292,8 @@ class TestPromptForExclusions(BaseStdout):
         output = sys.stdout.getvalue()
         self.assertEqual(output, "")
 
-        mock_query.assert_called_once()
-        mock_display.assert_called_once()
+        self.assert_called_once(mock_query)
+        self.assert_called_once(mock_display)
 
 
 class TestPromptForFlushDnsCache(Base):
@@ -300,7 +306,7 @@ class TestPromptForFlushDnsCache(Base):
                                        prompt_flush=prompt_flush)
 
             mock_query.assert_not_called()
-            mock_flush.assert_called_once()
+            self.assert_called_once(mock_flush)
 
             mock_query.reset_mock()
             mock_flush.reset_mock()
@@ -320,7 +326,7 @@ class TestPromptForFlushDnsCache(Base):
         prompt_for_flush_dns_cache(flush_cache=False,
                                    prompt_flush=True)
 
-        mock_query.assert_called_once()
+        self.assert_called_once(mock_query)
         mock_flush.assert_not_called()
 
     @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
@@ -329,8 +335,8 @@ class TestPromptForFlushDnsCache(Base):
         prompt_for_flush_dns_cache(flush_cache=False,
                                    prompt_flush=True)
 
-        mock_query.assert_called_once()
-        mock_flush.assert_called_once()
+        self.assert_called_once(mock_query)
+        self.assert_called_once(mock_flush)
 
 
 class TestPromptForMove(Base):
@@ -366,7 +372,7 @@ class TestPromptForMove(Base):
             self.assertTrue(move_file)
 
             mock_query.assert_not_called()
-            mock_move.assert_called_once()
+            self.assert_called_once(mock_move)
 
             mock_query.reset_mock()
             mock_move.reset_mock()
@@ -392,7 +398,7 @@ class TestPromptForMove(Base):
                                          skipstatichosts=False)
         self.assertFalse(move_file)
 
-        mock_query.assert_called_once()
+        self.assert_called_once(mock_query)
         mock_move.assert_not_called()
 
         mock_query.reset_mock()
@@ -405,8 +411,8 @@ class TestPromptForMove(Base):
                                          skipstatichosts=False)
         self.assertTrue(move_file)
 
-        mock_query.assert_called_once()
-        mock_move.assert_called_once()
+        self.assert_called_once(mock_query)
+        self.assert_called_once(mock_move)
 
         mock_query.reset_mock()
         mock_move.reset_mock()
