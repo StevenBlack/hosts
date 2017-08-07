@@ -5,17 +5,16 @@
 #
 # Python script for testing updateHostFiles.py
 
-from updateHostsFile import (Colors, PY3, colorize, flush_dns_cache,
-                             gather_custom_exclusions, get_defaults,
-                             get_file_by_url, is_valid_domain_format,
-                             move_hosts_file_into_place, normalize_rule,
-                             path_join_robust, print_failure, print_success,
-                             prompt_for_exclusions, prompt_for_move,
-                             prompt_for_flush_dns_cache, prompt_for_update,
-                             query_yes_no, recursive_glob,
-                             remove_old_hosts_file, supports_color, strip_rule,
-                             update_readme_data, write_data,
-                             write_opening_header)
+from updateHostsFile import (
+    Colors, PY3, colorize, display_exclusion_options, exclude_domain,
+    flush_dns_cache, gather_custom_exclusions, get_defaults, get_file_by_url,
+    is_valid_domain_format, matches_exclusions, move_hosts_file_into_place,
+    normalize_rule, path_join_robust, print_failure, print_success,
+    prompt_for_exclusions, prompt_for_move, prompt_for_flush_dns_cache,
+    prompt_for_update, query_yes_no, recursive_glob, remove_old_hosts_file,
+    supports_color, strip_rule, update_readme_data, write_data,
+    write_opening_header)
+
 import updateHostsFile
 import unittest
 import tempfile
@@ -24,6 +23,7 @@ import shutil
 import json
 import sys
 import os
+import re
 
 if PY3:
     from io import BytesIO, StringIO
@@ -260,21 +260,20 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 
 class TestPromptForExclusions(BaseStdout):
 
-    @mock.patch("updateHostsFile.display_exclusion_options", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
-    def testSkipPrompt(self, mock_query, mock_display):
-        prompt_for_exclusions(skip_prompt=True)
+    def testSkipPrompt(self, mock_query):
+        gather_exclusions = prompt_for_exclusions(skip_prompt=True)
+        self.assertFalse(gather_exclusions)
 
         output = sys.stdout.getvalue()
         self.assertEqual(output, "")
 
         mock_query.assert_not_called()
-        mock_display.assert_not_called()
 
-    @mock.patch("updateHostsFile.display_exclusion_options", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
-    def testNoSkipPromptNoDisplay(self, mock_query, mock_display):
-        prompt_for_exclusions(skip_prompt=False)
+    def testNoSkipPromptNoDisplay(self, mock_query):
+        gather_exclusions = prompt_for_exclusions(skip_prompt=False)
+        self.assertFalse(gather_exclusions)
 
         output = sys.stdout.getvalue()
         expected = ("OK, we'll only exclude "
@@ -282,18 +281,16 @@ class TestPromptForExclusions(BaseStdout):
         self.assertIn(expected, output)
 
         self.assert_called_once(mock_query)
-        mock_display.assert_not_called()
 
-    @mock.patch("updateHostsFile.display_exclusion_options", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=True)
-    def testNoSkipPromptDisplay(self, mock_query, mock_display):
-        prompt_for_exclusions(skip_prompt=False)
+    def testNoSkipPromptDisplay(self, mock_query):
+        gather_exclusions = prompt_for_exclusions(skip_prompt=False)
+        self.assertTrue(gather_exclusions)
 
         output = sys.stdout.getvalue()
         self.assertEqual(output, "")
 
         self.assert_called_once(mock_query)
-        self.assert_called_once(mock_display)
 
 
 class TestPromptForFlushDnsCache(Base):
@@ -420,6 +417,52 @@ class TestPromptForMove(Base):
 
 
 # Exclusion Logic
+class TestDisplayExclusionsOptions(Base):
+
+    @mock.patch("updateHostsFile.query_yes_no", return_value=0)
+    @mock.patch("updateHostsFile.exclude_domain", return_value=None)
+    @mock.patch("updateHostsFile.gather_custom_exclusions", return_value=None)
+    def test_no_exclusions(self, mock_gather, mock_exclude, _):
+        common_exclusions = []
+        display_exclusion_options(common_exclusions, "foo", [])
+
+        mock_gather.assert_not_called()
+        mock_exclude.assert_not_called()
+
+    @mock.patch("updateHostsFile.query_yes_no", side_effect=[1, 1, 0])
+    @mock.patch("updateHostsFile.exclude_domain", return_value=None)
+    @mock.patch("updateHostsFile.gather_custom_exclusions", return_value=None)
+    def test_only_common_exclusions(self, mock_gather, mock_exclude, _):
+        common_exclusions = ["foo", "bar"]
+        display_exclusion_options(common_exclusions, "foo", [])
+
+        mock_gather.assert_not_called()
+
+        exclude_calls = [mock.call("foo", "foo", []),
+                         mock.call("bar", "foo", None)]
+        mock_exclude.assert_has_calls(exclude_calls)
+
+    @mock.patch("updateHostsFile.query_yes_no", side_effect=[0, 0, 1])
+    @mock.patch("updateHostsFile.exclude_domain", return_value=None)
+    @mock.patch("updateHostsFile.gather_custom_exclusions", return_value=None)
+    def test_gather_exclusions(self, mock_gather, mock_exclude, _):
+        common_exclusions = ["foo", "bar"]
+        display_exclusion_options(common_exclusions, "foo", [])
+
+        mock_exclude.assert_not_called()
+        self.assert_called_once(mock_gather)
+
+    @mock.patch("updateHostsFile.query_yes_no", side_effect=[1, 0, 1])
+    @mock.patch("updateHostsFile.exclude_domain", return_value=None)
+    @mock.patch("updateHostsFile.gather_custom_exclusions", return_value=None)
+    def test_mixture_gather_exclusions(self, mock_gather, mock_exclude, _):
+        common_exclusions = ["foo", "bar"]
+        display_exclusion_options(common_exclusions, "foo", [])
+
+        mock_exclude.assert_called_once_with("foo", "foo", [])
+        self.assert_called_once(mock_gather)
+
+
 class TestGatherCustomExclusions(BaseStdout):
 
     # Can only test in the invalid domain case
@@ -427,7 +470,7 @@ class TestGatherCustomExclusions(BaseStdout):
     @mock.patch("updateHostsFile.raw_input", side_effect=["foo", "no"])
     @mock.patch("updateHostsFile.is_valid_domain_format", return_value=False)
     def test_basic(self, *_):
-        gather_custom_exclusions()
+        gather_custom_exclusions("foo", [])
 
         expected = "Do you have more domains you want to enter? [Y/n]"
         output = sys.stdout.getvalue()
@@ -437,12 +480,70 @@ class TestGatherCustomExclusions(BaseStdout):
                                                           "bar", "no"])
     @mock.patch("updateHostsFile.is_valid_domain_format", return_value=False)
     def test_multiple(self, *_):
-        gather_custom_exclusions()
+        gather_custom_exclusions("foo", [])
 
         expected = ("Do you have more domains you want to enter? [Y/n] "
                     "Do you have more domains you want to enter? [Y/n]")
         output = sys.stdout.getvalue()
         self.assertIn(expected, output)
+
+
+class TestExcludeDomain(Base):
+
+    def test_invalid_exclude_domain(self):
+        exclusion_regexes = []
+        exclusion_pattern = "*.com"
+
+        for domain in ["google.com", "hulu.com", "adaway.org"]:
+            self.assertRaises(re.error, exclude_domain, domain,
+                              exclusion_pattern, exclusion_regexes)
+
+        self.assertListEqual(exclusion_regexes, [])
+
+    def test_valid_exclude_domain(self):
+        exp_count = 0
+        expected_regexes = []
+        exclusion_regexes = []
+        exclusion_pattern = "[a-z]\."
+
+        for domain in ["google.com", "hulu.com", "adaway.org"]:
+            self.assertEqual(len(exclusion_regexes), exp_count)
+
+            exclusion_regexes = exclude_domain(domain, exclusion_pattern,
+                                               exclusion_regexes)
+            expected_regex = re.compile(exclusion_pattern + domain)
+
+            expected_regexes.append(expected_regex)
+            exp_count += 1
+
+        self.assertEqual(len(exclusion_regexes), exp_count)
+        self.assertListEqual(exclusion_regexes, expected_regexes)
+
+
+class TestMatchesExclusions(Base):
+
+    def test_no_match_empty_list(self):
+        exclusion_regexes = []
+
+        for domain in ["1.2.3.4 localhost", "5.6.7.8 hulu.com",
+                       "9.1.2.3 yahoo.com", "4.5.6.7 cloudfront.net"]:
+            self.assertFalse(matches_exclusions(domain, exclusion_regexes))
+
+    def test_no_match_list(self):
+        exclusion_regexes = [".*\.org", ".*\.edu"]
+        exclusion_regexes = [re.compile(regex) for regex in exclusion_regexes]
+
+        for domain in ["1.2.3.4 localhost", "5.6.7.8 hulu.com",
+                       "9.1.2.3 yahoo.com", "4.5.6.7 cloudfront.net"]:
+            self.assertFalse(matches_exclusions(domain, exclusion_regexes))
+
+    def test_match_list(self):
+        exclusion_regexes = [".*\.com", ".*\.org", ".*\.edu"]
+        exclusion_regexes = [re.compile(regex) for regex in exclusion_regexes]
+
+        for domain in ["5.6.7.8 hulu.com", "9.1.2.3 yahoo.com",
+                       "4.5.6.7 adaway.org", "8.9.1.2 education.edu"]:
+            self.assertTrue(matches_exclusions(domain, exclusion_regexes))
 # End Exclusion Logic
 
 
