@@ -149,7 +149,12 @@ def main():
     auto = settings["auto"]
     exclusion_regexes = settings["exclusionregexs"]
 
-    prompt_for_update(freshen=settings["freshen"], update_auto=auto)
+    update_sources = prompt_for_update(freshen=settings["freshen"],
+                                       update_auto=auto)
+    if update_sources:
+        update_all_sources(settings["sourcedatafilename"],
+                           settings["hostfilename"])
+
     gather_exclusions = prompt_for_exclusions(skip_prompt=auto)
 
     if gather_exclusions:
@@ -221,6 +226,11 @@ def prompt_for_update(freshen, update_auto):
         if it is requested that data sources not be updated.
     update_auto : bool
         Whether or not to automatically update all data sources.
+
+    Returns
+    -------
+    update_sources : bool
+        Whether or not we should update data sources for exclusion files.
     """
 
     # Create a hosts file if it doesn't exist.
@@ -242,9 +252,11 @@ def prompt_for_update(freshen, update_auto):
     prompt = "Do you want to update all data sources?"
 
     if update_auto or query_yes_no(prompt):
-        update_all_sources()
+        return True
     elif not update_auto:
         print("OK, we'll stick with what we've got locally.")
+
+    return False
 
 
 def prompt_for_exclusions(skip_prompt):
@@ -478,12 +490,23 @@ def matches_exclusions(stripped_rule, exclusion_regexes):
 
 
 # Update Logic
-def update_all_sources():
+def update_all_sources(source_data_filename, host_filename):
     """
     Update all host files, regardless of folder depth.
+
+    Parameters
+    ----------
+    source_data_filename : str
+        The name of the filename where information regarding updating
+        sources for a particular URL is stored. This filename is assumed
+        to be the same for all sources.
+    host_filename : str
+        The name of the file in which the updated source information
+        in stored for a particular URL. This filename is assumed to be
+        the same for all sources.
     """
 
-    all_sources = recursive_glob("*", settings["sourcedatafilename"])
+    all_sources = recursive_glob("*", source_data_filename)
 
     for source in all_sources:
         update_file = open(source, "r")
@@ -502,7 +525,7 @@ def update_all_sources():
 
             hosts_file = open(path_join_robust(BASEDIR_PATH,
                                                os.path.dirname(source),
-                                               settings["hostfilename"]), "wb")
+                                               host_filename), "wb")
             write_data(hosts_file, updated_file)
             hosts_file.close()
         except Exception:
