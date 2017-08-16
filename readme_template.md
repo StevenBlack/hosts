@@ -232,6 +232,8 @@ To open a command prompt as administrator in the repository's directory, do the 
 **Windows 10**: Start Button -> type `cmd` -> right-click Command Prompt ->
 "Run as Administrator"
 
+You can also refer to the "Third-Party Hosts Managers" section for further recommended solutions from third parties.
+
 ## Reloading hosts file
 Your operating system will cache DNS lookups. You can either reboot or run the following commands to
 manually flush your DNS cache once the new hosts file is in place.
@@ -301,8 +303,14 @@ and doesn't currently display a corresponding high level of curation activity.
 It is expected that this unified hosts file will serve both desktop and mobile
 devices under a variety of operating systems.
 
+## Third-Party Hosts Managers
+
+* [Unified Hosts AutoUpdate](https://github.com/ScriptTiger/Unified-Hosts-AutoUpdate "Unified Hosts AutoUpdate") (for Windows): The Unified Hosts AutUpdate package is purpose-built for this unified hosts project as well as in active development by community members. It's sophisticated enough to allow any novice the ability to install and uninstall the blacklist of their choosing to their local hosts file and keep it automatically up to date, while also being minimal enough to be able to be easily placed in a shared network location and deployed across an organization via group policies. And since it is in acitive development by community members, your bug reports, feature requests, and other feedback are most welcome.
+
 ## Interesting Applications
 
-* [Block ads and malware via local DNS server](https://github.com/mueller-ma/block-ads-via-dns "Block ads and malware via local DNS server") (for Debian, Raspbian & Ubuntu): Set up a local DNS server with a `/etc/bind/named.conf.blocked` file, sourced from here.
+* [Block ads and malware via local BIND9 DNS server](https://github.com/mueller-ma/block-ads-via-dns "Block ads and malware via local DNS server") (for Debian, Raspbian & Ubuntu): Set up a local DNS server with a `/etc/bind/named.conf.blocked` file, sourced from here.
+
+* [Block ads, malware, and deploy parental controls via local DualServer DNS/DHCP server](https://github.com/ScriptTiger/DualServer "Block ads, malware, and deploy parental controls via local DualServer DNS/DHCP server") (for BSD, Windows & Linux): Set up a blacklist for everyone on your network using the power of the unified hosts reformatted for DualServer. And if you're on Windows, this project also maintains an update script to make updating DualServer's blacklist even easier.
 
 * [Blocking ads and malwares with unbound](https://deadc0de.re/articles/unbound-blocking-ads.html "Blocking ads and malwares with unbound") – [Unbound](https://www.unbound.net/ "Unbound is a validating, recursive, and caching DNS resolver.")  is a validating, recursive, and caching DNS resolver.
