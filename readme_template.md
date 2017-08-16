@@ -305,7 +305,7 @@ devices under a variety of operating systems.
 
 ## Third-Party Hosts Managers
 
-* [Unified Hosts AutoUpdate](https://github.com/ScriptTiger/Unified-Hosts-AutoUpdate "Unified Hosts AutoUpdate") (for Windows): The Unified Hosts AutUpdate package is purpose-built for this unified hosts project as well as in active development by community members. It's sophisticated enough to allow any novice the ability to install and uninstall the blacklist of their choosing to their local hosts file and keep it automatically up to date, while also being minimal enough to be able to be easily placed in a shared network location and deployed across an organization via group policies. And since it is in acitive development by community members, your bug reports, feature requests, and other feedback are most welcome.
+* [Unified Hosts AutoUpdate](https://github.com/ScriptTiger/Unified-Hosts-AutoUpdate "Unified Hosts AutoUpdate") (for Windows): The Unified Hosts AutUpdate package is purpose-built for this unified hosts project as well as in active development by community members. It's sophisticated enough to allow any novice the ability to install and uninstall the blacklist of their choosing to their local hosts file and keep it automatically up to date, while also being minimal enough to be able to be easily placed in a shared network location and deployed across an organization via group policies. And since it is in active development by community members, your bug reports, feature requests, and other feedback are most welcome.
 
 ## Interesting Applications
 
