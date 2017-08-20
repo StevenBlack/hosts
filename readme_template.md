@@ -33,8 +33,8 @@ The **Non GitHub mirror** is the link to use for some hosts file managers like
 [Hostsman for Windows](http://www.abelhadigital.com/hostsman) that don't work
 with Github download links.
 
-Host file recipe | Readme | Raw hosts | hosts (.zip) | Unique domains | Non Github mirror
----------------- |:------:|:---------:|:------------:|:--------------:|:-------------:
+Host file recipe | Readme | Raw hosts | Unique domains | Non Github mirror
+---------------- |:------:|:---------:|:--------------:|:-------------:
 @TOCROWS@
 
 **Expectation**: These unified hosts files should serve all devices, regardless 
@@ -115,9 +115,6 @@ in a subfolder.  If the subfolder does not exist, it will be created.
 `--skipstatichosts`, or `-s`: `false` (default) or `true`, omit the standard
 section at the top, containing lines like `127.0.0.1 localhost`.  This is
 useful for configuring proximate DNS services on the local network.
-
-`--zip`, or `-z`: `false` (default) or `true`, additionally create a zip
-archive of the hosts file named `hosts.zip`.
 
 ## How do I control which sources are unified?
 
