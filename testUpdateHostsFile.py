@@ -103,7 +103,6 @@ class TestGetDefaults(Base):
                         "outputsubfolder": "",
                         "hostfilename": "hosts",
                         "targetip": "0.0.0.0",
-                        "ziphosts": False,
                         "sourcedatafilename": "update.json",
                         "sourcesdata": [],
                         "readmefilename": "readme.md",
