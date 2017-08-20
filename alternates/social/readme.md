@@ -1,23 +1,5 @@
 [![Build Status](https://travis-ci.org/StevenBlack/hosts.svg?branch=master)](https://travis-ci.org/StevenBlack/hosts)
 
-### Cloning?  Use a shallow clone and avoid 400 Mb of history
-
-A **shallow clone** is a good idea because you probably don't need many years of history.
-
-Like this:
-
-    git clone --depth 5 https://github.com/StevenBlack/hosts.git
-
-To run unit tests, in the top level directory, just run:
-
-    python testUpdateHostsFile.py
-
-**Note** if you are using Python 2, you must first install the `mock` library:
-
-    pip install mock
-
-Afterwards, you can follow the instructions above.
-
 # Unified hosts file with social extensions
 
 This repository consolidates several reputable `hosts` files, and merges them
@@ -88,6 +70,14 @@ The unified hosts file is extensible.  You manage extensions by curating the
 folders.
 
 ## Generate your own unified hosts file
+
+To run unit tests, in the top level directory, just run:
+
+    python testUpdateHostsFile.py
+
+**Note** if you are using Python 2, you must first install the `mock` library:
+
+    pip install mock
 
 The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible,
 will generate a unified hosts file based on the sources in the local `data/`
