@@ -13,7 +13,7 @@ from updateHostsFile import (
     prompt_for_exclusions, prompt_for_move, prompt_for_flush_dns_cache,
     prompt_for_update, query_yes_no, recursive_glob, remove_old_hosts_file,
     supports_color, strip_rule, update_all_sources, update_readme_data,
-    write_data, write_opening_header)
+    update_sources_data, write_data, write_opening_header)
 
 import updateHostsFile
 import unittest
@@ -542,6 +542,80 @@ class TestMatchesExclusions(Base):
 
 
 # Update Logic
+class TestUpdateSourcesData(Base):
+
+    def setUp(self):
+        Base.setUp(self)
+
+        self.data_path = "data"
+        self.extensions_path = "extensions"
+        self.source_data_filename = "update.json"
+
+        self.update_kwargs = dict(datapath=self.data_path,
+                                  extensionspath=self.extensions_path,
+                                  sourcedatafilename=self.source_data_filename)
+
+    def update_sources_data(self, sources_data, extensions):
+        return update_sources_data(sources_data[:], extensions=extensions,
+                                   **self.update_kwargs)
+
+    @mock.patch("updateHostsFile.recursive_glob", return_value=[])
+    @mock.patch("updateHostsFile.path_join_robust", return_value="dirpath")
+    @mock.patch(builtins() + ".open", return_value=mock.Mock())
+    def test_no_update(self, mock_open, mock_join_robust, _):
+        extensions = []
+        sources_data = [{"source": "source1.txt"}, {"source": "source2.txt"}]
+
+        new_sources_data = self.update_sources_data(sources_data, extensions)
+        self.assertEqual(new_sources_data, sources_data)
+        mock_join_robust.assert_not_called()
+        mock_open.assert_not_called()
+
+        extensions = [".json", ".txt"]
+        new_sources_data = self.update_sources_data(sources_data, extensions)
+
+        self.assertEqual(new_sources_data, sources_data)
+        join_calls = [mock.call(self.extensions_path, ".json"),
+                      mock.call(self.extensions_path, ".txt")]
+        mock_join_robust.assert_has_calls(join_calls)
+        mock_open.assert_not_called()
+
+    @mock.patch("updateHostsFile.recursive_glob",
+                side_effect=[[], ["update1.txt", "update2.txt"]])
+    @mock.patch("json.load", return_value={"mock_source": "mock_source.ext"})
+    @mock.patch(builtins() + ".open", return_value=mock.Mock())
+    @mock.patch("updateHostsFile.path_join_robust", return_value="dirpath")
+    def test_update_only_extensions(self, mock_join_robust, *_):
+        extensions = [".json"]
+        sources_data = [{"source": "source1.txt"}, {"source": "source2.txt"}]
+        new_sources_data = self.update_sources_data(sources_data, extensions)
+
+        expected = sources_data + [{"mock_source": "mock_source.ext"}] * 2
+        self.assertEqual(new_sources_data, expected)
+        self.assert_called_once(mock_join_robust)
+
+    @mock.patch("updateHostsFile.recursive_glob",
+                side_effect=[["update1.txt", "update2.txt"],
+                             ["update3.txt", "update4.txt"]])
+    @mock.patch("json.load", side_effect=[{"mock_source": "mock_source.txt"},
+                                          {"mock_source": "mock_source2.txt"},
+                                          {"mock_source": "mock_source3.txt"},
+                                          {"mock_source": "mock_source4.txt"}])
+    @mock.patch(builtins() + ".open", return_value=mock.Mock())
+    @mock.patch("updateHostsFile.path_join_robust", return_value="dirpath")
+    def test_update_both_pathways(self, mock_join_robust, *_):
+        extensions = [".json"]
+        sources_data = [{"source": "source1.txt"}, {"source": "source2.txt"}]
+        new_sources_data = self.update_sources_data(sources_data, extensions)
+
+        expected = sources_data + [{"mock_source": "mock_source.txt"},
+                                   {"mock_source": "mock_source2.txt"},
+                                   {"mock_source": "mock_source3.txt"},
+                                   {"mock_source": "mock_source4.txt"}]
+        self.assertEqual(new_sources_data, expected)
+        self.assert_called_once(mock_join_robust)
+
+
 class TestUpdateAllSources(BaseStdout):
 
     def setUp(self):

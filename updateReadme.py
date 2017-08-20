@@ -23,8 +23,10 @@ PY3 = sys.version_info >= (3, 0)
 
 
 def main():
-    s = Template('${description} | [Readme](https://github.com/StevenBlack/hosts/blob/master/${location}readme.md) | '
-                 '[link](https://raw.githubusercontent.com/StevenBlack/hosts/master/${location}hosts) | '
+    s = Template('${description} | [Readme](https://github.com/StevenBlack/'
+                 'hosts/blob/master/${location}readme.md) | '
+                 '[link](https://raw.githubusercontent.com/StevenBlack/'
+                 'hosts/master/${location}hosts) | '
                  '${fmtentries} | '
                  '[link](http://sbc.io/hosts/${location}hosts)')
     with open(README_DATA_FILENAME, 'r') as f:
