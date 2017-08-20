@@ -59,56 +59,56 @@ def main():
                                                  "data subfolders.")
     parser.parse_args()
 
-    update_hosts_file("-a", "-z", "-o",
+    update_hosts_file("-a", "-o",
                       "alternates/gambling",
                       "-e", "gambling")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/porn",
                       "-e", "porn")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/social",
                       "-e", "social")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/fakenews",
                       "-e", "fakenews")
 
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/fakenews-gambling",
                       "-e", "fakenews", "gambling")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/fakenews-porn",
                       "-e", "fakenews", "porn")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/fakenews-social",
                       "-e", "fakenews", "social")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/gambling-porn",
                       "-e", "gambling", "porn")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/gambling-social",
                       "-e", "gambling", "social")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/porn-social",
                       "-e", "porn", "social")
 
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/fakenews-gambling-porn",
                       "-e", "fakenews", "gambling", "porn")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/fakenews-gambling-social",
                       "-e", "fakenews", "gambling", "social")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/fakenews-porn-social",
                       "-e", "fakenews", "porn", "social")
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/gambling-porn-social",
                       "-e", "gambling", "porn", "social")
 
-    update_hosts_file("-a", "-z", "-n", "-o",
+    update_hosts_file("-a", "-n", "-o",
                       "alternates/fakenews-gambling-porn-social",
                       "-e", "fakenews", "gambling", "porn", "social")
 
-    update_hosts_file("-a", "-z", "-n")
+    update_hosts_file("-a", "-n")
 
     # Update the readme files.
     update_readme_file()

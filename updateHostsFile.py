@@ -23,7 +23,6 @@ import fnmatch
 import argparse
 import socket
 import json
-import zipfile
 
 # Detecting Python 3 for version-dependent implementations
 PY3 = sys.version_info >= (3, 0)
@@ -66,7 +65,6 @@ def get_defaults():
         "outputsubfolder": "",
         "hostfilename": "hosts",
         "targetip": "0.0.0.0",
-        "ziphosts": False,
         "sourcedatafilename": "update.json",
         "sourcesdata": [],
         "readmefilename": "readme.md",
@@ -102,10 +100,6 @@ def main():
     parser.add_argument("--keepdomaincomments", "-k",
                         dest="keepdomaincomments", default=False,
                         help="Keep domain line comments.")
-    parser.add_argument("--zip", "-z", dest="ziphosts", default=False,
-                        action="store_true", help="Additionally create "
-                                                  "a zip archive of the "
-                                                  "hosts file.")
     parser.add_argument("--noupdate", "-n", dest="noupdate", default=False,
                         action="store_true", help="Don't update from "
                                                   "host data sources.")
@@ -181,13 +175,6 @@ def main():
                          outputsubfolder=output_subfolder,
                          skipstatichosts=skip_static_hosts)
     final_file.close()
-
-    if settings["ziphosts"]:
-        zf = zipfile.ZipFile(path_join_robust(output_subfolder,
-                                              "hosts.zip"), mode='w')
-        zf.write(path_join_robust(output_subfolder, "hosts"),
-                 compress_type=zipfile.ZIP_DEFLATED, arcname='hosts')
-        zf.close()
 
     update_readme_data(settings["readmedatafilename"],
                        extensions=extensions,

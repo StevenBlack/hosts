@@ -27,8 +27,6 @@ def main():
                  'hosts/blob/master/${location}readme.md) | '
                  '[link](https://raw.githubusercontent.com/StevenBlack/'
                  'hosts/master/${location}hosts) | [link]'
-                 '(https://raw.githubusercontent.com/StevenBlack/hosts/'
-                 'master/${location}hosts.zip) | ${fmtentries} | '
                  '[link](http://sbc.io/hosts/${location}hosts)')
 
     with open(README_DATA_FILENAME, 'r') as f:
