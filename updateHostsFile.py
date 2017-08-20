@@ -143,13 +143,14 @@ def main():
         set(options["extensions"]).intersection(settings["extensions"])))
 
     auto = settings["auto"]
+    host_filename = settings["hostfilename"]
     exclusion_regexes = settings["exclusionregexs"]
     source_data_filename = settings["sourcedatafilename"]
 
     update_sources = prompt_for_update(freshen=settings["freshen"],
                                        update_auto=auto)
     if update_sources:
-        update_all_sources(source_data_filename, settings["hostfilename"])
+        update_all_sources(source_data_filename, host_filename)
 
     gather_exclusions = prompt_for_exclusions(skip_prompt=auto)
 
@@ -168,7 +169,10 @@ def main():
                                        extensionspath=extensions_path,
                                        sourcedatafilename=source_data_filename)
 
-    merge_file = create_initial_file()
+    merge_file = create_initial_file(datapath=data_path, extensions=extensions,
+                                     blacklistfile=settings["blacklistfile"],
+                                     extensionspath=extensions_path,
+                                     hostfilename=host_filename)
     remove_old_hosts_file(settings["backup"])
     final_file = remove_dups_and_excl(merge_file, exclusion_regexes)
 
@@ -567,34 +571,55 @@ def update_all_sources(source_data_filename, host_filename):
                                                host_filename), "wb")
             write_data(hosts_file, updated_file)
             hosts_file.close()
+        # There are many exceptions that could be raised here,
+        # such as data I/O errors, file reading / writing errors,
+        # and even locale errors when constructing paths.
         except Exception:
             print("Error in updating source: ", update_url)
 # End Update Logic
 
 
 # File Logic
-def create_initial_file():
+def create_initial_file(**create_params):
     """
     Initialize the file in which we merge all host files for later pruning.
+
+    Parameters
+    ----------
+    create_params : kwargs
+        Dictionary providing additional parameters for creating this
+        initial file. Currently, those parameters are:
+
+        1) datapath
+        2) extensions
+        3) hostfilename
+        4) blacklistfile
+        5) extensionspath
     """
 
+    data_path = create_params["datapath"]
+    host_filename = create_params["hostfilename"]
+
+    extensions = create_params["extensions"]
+    extensions_path = create_params["extensionspath"]
+
+    blacklist_file = create_params["blacklistfile"]
     merge_file = tempfile.NamedTemporaryFile()
 
     # spin the sources for the base file
-    for source in recursive_glob(settings["datapath"],
-                                 settings["hostfilename"]):
+    for source in recursive_glob(data_path, host_filename):
         with open(source, "r") as curFile:
             write_data(merge_file, curFile.read())
 
     # spin the sources for extensions to the base file
-    for source in settings["extensions"]:
+    for source in extensions:
         for filename in recursive_glob(path_join_robust(
-                settings["extensionspath"], source), settings["hostfilename"]):
+                extensions_path, source), host_filename):
             with open(filename, "r") as curFile:
                 write_data(merge_file, curFile.read())
 
-    if os.path.isfile(settings["blacklistfile"]):
-        with open(settings["blacklistfile"], "r") as curFile:
+    if os.path.isfile(blacklist_file):
+        with open(blacklist_file, "r") as curFile:
             write_data(merge_file, curFile.read())
 
     return merge_file

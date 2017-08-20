@@ -6,14 +6,15 @@
 # Python script for testing updateHostFiles.py
 
 from updateHostsFile import (
-    Colors, PY3, colorize, display_exclusion_options, exclude_domain,
-    flush_dns_cache, gather_custom_exclusions, get_defaults, get_file_by_url,
-    is_valid_domain_format, matches_exclusions, move_hosts_file_into_place,
-    normalize_rule, path_join_robust, print_failure, print_success,
-    prompt_for_exclusions, prompt_for_move, prompt_for_flush_dns_cache,
-    prompt_for_update, query_yes_no, recursive_glob, remove_old_hosts_file,
-    supports_color, strip_rule, update_all_sources, update_readme_data,
-    update_sources_data, write_data, write_opening_header)
+    Colors, PY3, colorize, create_initial_file, display_exclusion_options,
+    exclude_domain, flush_dns_cache, gather_custom_exclusions, get_defaults,
+    get_file_by_url, is_valid_domain_format, matches_exclusions,
+    move_hosts_file_into_place, normalize_rule, path_join_robust,
+    print_failure, print_success, prompt_for_exclusions, prompt_for_move,
+    prompt_for_flush_dns_cache, prompt_for_update, query_yes_no,
+    recursive_glob, remove_old_hosts_file, supports_color, strip_rule,
+    update_all_sources, update_readme_data, update_sources_data, write_data,
+    write_opening_header)
 
 import updateHostsFile
 import unittest
@@ -686,6 +687,144 @@ class TestUpdateAllSources(BaseStdout):
 
 
 # File Logic
+class MockReader(object):
+    """
+    Simple mock reader object.
+    """
+
+    def __init__(self, data):
+        """
+        Initialize a MockReader instance.
+
+        Parameters
+        ----------
+        data : str
+            The data that will be read from the reader.
+        """
+
+        self.data = data
+
+    def __enter__(self):
+        return self
+
+    def read(self):
+        """
+        Read the data from the MockReader.
+
+        Returns
+        -------
+        data : str
+            The data initialized with the MockReader instance.
+        """
+
+        return self.data
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+
+
+class TestCreateInitialFile(Base):
+
+    def setUp(self):
+        Base.setUp(self)
+
+        self.data_path = "data"
+        self.host_filename = "hosts"
+        self.blacklist_file = "blacklist"
+        self.extensions_path = "extensions"
+
+        self.create_kwargs = dict(datapath=self.data_path,
+                                  hostfilename=self.host_filename,
+                                  blacklistfile=self.blacklist_file,
+                                  extensionspath=self.extensions_path)
+
+    def create_initial_file(self, extensions):
+        return create_initial_file(extensions=extensions, **self.create_kwargs)
+
+    def check_output(self, buffer, expected):
+        # Reset so that we can read
+        # all of the file contents.
+        buffer.seek(0)
+        actual = buffer.read().decode("UTF-8")
+
+        # Clean up the buffer before we do the
+        # comparison of the contents.
+        buffer.close()
+        self.assertEqual(actual, expected)
+
+    @mock.patch("updateHostsFile.recursive_glob", return_value=[])
+    @mock.patch("os.path.isfile", return_value=False)
+    @mock.patch(builtins() + ".open", return_value=0)
+    def test_no_write(self, mock_open, *_):
+        extensions = []
+
+        initial_file = self.create_initial_file(extensions)
+        self.check_output(initial_file, "")
+        mock_open.assert_not_called()
+
+        extensions = [".json", ".txt"]
+
+        initial_file = self.create_initial_file(extensions)
+        self.check_output(initial_file, "")
+        mock_open.assert_not_called()
+
+    @mock.patch(builtins() + ".open",
+                return_value=MockReader("datafile\n"))
+    @mock.patch("updateHostsFile.recursive_glob",
+                return_value=["source1.txt", "source2.txt"])
+    @mock.patch("os.path.isfile", return_value=False)
+    def test_data_write(self, *_):
+        extensions = []
+
+        initial_file = self.create_initial_file(extensions)
+        self.check_output(initial_file, "datafile\ndatafile\n")
+
+    @mock.patch(builtins() + ".open",
+                return_value=MockReader("ext_file\n"))
+    @mock.patch("updateHostsFile.recursive_glob",
+                side_effect=[[], ["source1.txt", "source2.txt"],
+                             ["source3.txt", "source4.txt"]])
+    @mock.patch("os.path.isfile", return_value=False)
+    def test_extension_write(self, *_):
+        extensions = [".txt", ".json"]
+
+        initial_file = self.create_initial_file(extensions)
+        self.check_output(initial_file, "ext_file\next_file\n"
+                                        "ext_file\next_file\n")
+
+    @mock.patch(builtins() + ".open", return_value=MockReader("blacklist"))
+    @mock.patch("updateHostsFile.recursive_glob", return_value=[])
+    @mock.patch("os.path.isfile", return_value=True)
+    def test_blacklist_write(self, *_):
+        extensions = []
+
+        initial_file = self.create_initial_file(extensions)
+        self.check_output(initial_file, "blacklist")
+
+        extensions = [".json", ".txt"]
+
+        initial_file = self.create_initial_file(extensions)
+        self.check_output(initial_file, "blacklist")
+
+    @mock.patch(builtins() + ".open",
+                side_effect=[MockReader("datafile\n"),
+                             MockReader("datafile\n"),
+                             MockReader("ext_file\n"),
+                             MockReader("ext_file\n"),
+                             MockReader("blacklist")])
+    @mock.patch("updateHostsFile.recursive_glob",
+                side_effect=[["source1.txt", "source2.txt"],
+                             ["source3.txt", "source4.txt"], []])
+    @mock.patch("os.path.isfile", return_value=True)
+    def test_mixture_write(self, *_):
+        extensions = [".txt", ".json"]
+
+        initial_file = self.create_initial_file(extensions)
+        self.check_output(initial_file, "datafile\ndatafile\n"
+                                        "ext_file\next_file\n"
+                                        "blacklist")
+
+
 class TestNormalizeRule(BaseStdout):
 
     def test_no_match(self):
@@ -1588,17 +1727,6 @@ class TestRecursiveGlob(Base):
             self.assertListEqual(actual, expected)
 
 
-def mock_path_join(*_):
-    """
-    Mock method for `os.path.join`.
-
-    Please refer to the documentation of `os.path.join` for information about
-    the provided parameters.
-    """
-
-    raise UnicodeDecodeError("foo", b"", 1, 5, "foo")
-
-
 class TestPathJoinRobust(Base):
 
     def test_basic(self):
@@ -1625,7 +1753,8 @@ class TestPathJoinRobust(Base):
 
             self.assertEqual(actual, expected)
 
-    @mock.patch("os.path.join", side_effect=mock_path_join)
+    @mock.patch("os.path.join", side_effect=UnicodeDecodeError(
+        "foo", b"", 1, 5, "foo"))
     def test_join_error(self, _):
         self.assertRaises(locale.Error, path_join_robust, "path")
 
