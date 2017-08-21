@@ -47,11 +47,11 @@ To run unit tests, in the top level directory, just run:
 
     pip install mock
 
-The `updateHostsFile.py` script, which is python 2.7 and Python 3-compatible,
+The `updateHostsFile.py` script, which is Python 2.7 and Python 3-compatible,
 will generate a unified hosts file based on the sources in the local `data/`
-subfolder.  The script will prompt you Whether it should fetch updated
+subfolder.  The script will prompt you whether it should fetch updated
 versions (from locations defined by the `update.json` text file in each
-source's folder), otherwise it will use the `hosts` file that's already there.
+source's folder). Otherwise, it will use the `hosts` file that's already there.
 
 ### Usage
 
