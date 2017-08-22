@@ -34,7 +34,7 @@ Host file source | Description | Home page | Raw hosts | Update frequency
 
 ## Extensions
 The unified hosts file is extensible.  You manage extensions by curating the 
-`extensions/` folder tree. See the `social`, `gambling`, and `porn` extension 
+`extensions/` folder tree. See the `fakenews`, `social`, `gambling`, and `porn` extension 
 folders.
 
 ## Generate your own unified hosts file
