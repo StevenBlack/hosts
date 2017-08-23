@@ -2,7 +2,7 @@
 
 Use subfolders under the `extensions` folder to house extensions to the final unified hosts file.
 
-Currently this repo includes four extensions: 
+Currently, this repo includes four extensions:
 
 * `gambling` for common online betting sites,
 * `social` for common social media sites,
