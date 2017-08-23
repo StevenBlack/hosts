@@ -4,10 +4,10 @@ Use subfolders under the `extensions` folder to house extensions to the final un
 
 Currently this repo includes four extensions: 
 
-* `gambling` for common online betting sites,  
-* `social` for common social media sites, and 
-* `porn` for porn sites.  
-* `fakenews` for fake news sites. 
+* `gambling` for common online betting sites,
+* `social` for common social media sites,
+* `porn` for porn sites, and
+* `fakenews` for fake news sites.
 
 
 Here are some sample calls, which vary which extensions are included.
