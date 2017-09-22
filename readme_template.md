@@ -283,8 +283,8 @@ hosts source should be frequently updated by its maintainers with both
 additions and removals.  The larger the hosts file, the higher the level of
 curation is expected.
 
-For example, the (huge) hosts file from [hosts-file.net](http://hosts-file.net)
-is **not** included here because it is very large (300,000+ entries)
+For example, the (huge) hosts file from [hosts-file.net](https://hosts-file.net)
+is **not** included here because it is very large (780,000+ entries)
 and doesn't currently display a corresponding high level of curation activity.
 
 It is expected that this unified hosts file will serve both desktop and mobile
