@@ -19,22 +19,22 @@ Host file recipe | Readme | Raw hosts | Unique domains | Non Github mirror
 ---------------- |:------:|:---------:|:--------------:|:-------------:
 @TOCROWS@
 
-**Expectation**: These unified hosts files should serve all devices, regardless 
+**Expectation**: These unified hosts files should serve all devices, regardless
 of OS.
 
 ## Sources of hosts data unified in this variant
 
-Updated `hosts` files from the following locations are always unified and 
+Updated `hosts` files from the following locations are always unified and
 included:
 
-Host file source | Description | Home page | Raw hosts | Update frequency 
------------------|-------------|:---------:|:---------:|:-------:
+Host file source | Description | Home page | Raw hosts | Update frequency | License
+-----------------|-------------|:---------:|:---------:|:-------:|:-------:
 @SOURCEROWS@
 
 
 ## Extensions
-The unified hosts file is extensible.  You manage extensions by curating the 
-`extensions/` folder tree. See the `fakenews`, `social`, `gambling`, and `porn` extension 
+The unified hosts file is extensible.  You manage extensions by curating the
+`extensions/` folder tree. See the `fakenews`, `social`, `gambling`, and `porn` extension
 folders.
 
 ## Generate your own unified hosts file
@@ -70,34 +70,34 @@ source's folder). Otherwise, it will use the `hosts` file that's already there.
 `--auto`, or `-a`: run the script without prompting. When `--auto` is invoked,
 
 * Hosts data sources, including extensions, are updated.
-* No extensions are included by default.  Use the `--extensions` or `-e` flag 
+* No extensions are included by default.  Use the `--extensions` or `-e` flag
 to include any you want.
-* Your active hosts file is *not* replaced unless you include the `--replace` 
+* Your active hosts file is *not* replaced unless you include the `--replace`
 flag.
 
-`--backup`, or `-b`: Make a backup of existing hosts file(s) as you generate 
+`--backup`, or `-b`: Make a backup of existing hosts file(s) as you generate
 over them.
 
-`--extensions <ext1> <ext2> <ext3>`, or `-e <ext1> <ext2> <ext3>`: the names 
-of subfolders below the `extensions` folder containing additional 
-category-specific hosts files to include in the amalgamation. Example: 
+`--extensions <ext1> <ext2> <ext3>`, or `-e <ext1> <ext2> <ext3>`: the names
+of subfolders below the `extensions` folder containing additional
+category-specific hosts files to include in the amalgamation. Example:
 `--extensions porn` or `-e social porn`.
 
 `--flush-dns-cache`, or `-f`: skip the prompt for flushing the DNS cache.  
 Only active when `--replace` is also active.
 
-`--ip nnn.nnn.nnn.nnn`, or `-i nnn.nnn.nnn.nnn`: the IP address to use as the 
+`--ip nnn.nnn.nnn.nnn`, or `-i nnn.nnn.nnn.nnn`: the IP address to use as the
 target.  Default is `0.0.0.0`.
 
-`--keepdomaincomments`, or `-k`: `false` (default) or `true`, keep the comments 
+`--keepdomaincomments`, or `-k`: `false` (default) or `true`, keep the comments
 that appear on the same line as domains.  The default is `false` since some
 router-based implementations can't handle comments in-line with hosts.
 
-`--skipstatichosts`, or `-s`: `false` (default) or `true`, 
+`--skipstatichosts`, or `-s`: `false` (default) or `true`,
 
 `--noupdate`, or `-n`: skip fetching updates from hosts data sources.
 
-`--output <subfolder>`, or `-o <subfolder>`: place the generated source file 
+`--output <subfolder>`, or `-o <subfolder>`: place the generated source file
 in a subfolder.  If the subfolder does not exist, it will be created.
 
 `--replace`, or `-r`: trigger replacing your active hosts
