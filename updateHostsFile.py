@@ -35,7 +35,7 @@ else:  # Python 2
     raw_input = raw_input  # noqa
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
-SUDO = "/usr/bin/sudo"
+SUDO = ["/usr/bin/env", "sudo"]
 
 
 # Project Settings
@@ -875,7 +875,7 @@ def move_hosts_file_into_place(final_file):
     if os.name == "posix":
         print("Moving the file requires administrative privileges. "
               "You might need to enter your password.")
-        if subprocess.call([SUDO, "cp", filename, "/etc/hosts"]):
+        if subprocess.call(SUDO + ["cp", filename, "/etc/hosts"]):
             print_failure("Moving the file failed.")
     elif os.name == "nt":
         print("Automatically moving the hosts file "
@@ -896,7 +896,7 @@ def flush_dns_cache():
     dns_cache_found = False
 
     if platform.system() == "Darwin":
-        if subprocess.call([SUDO, "killall", "-HUP", "mDNSResponder"]):
+        if subprocess.call(SUDO + ["killall", "-HUP", "mDNSResponder"]):
             print_failure("Flushing the DNS cache failed.")
     elif os.name == "nt":
         print("Automatically flushing the DNS cache is not yet supported.")
@@ -912,7 +912,7 @@ def flush_dns_cache():
             if os.path.isfile(nscd_cache):
                 dns_cache_found = True
 
-                if subprocess.call([SUDO, nscd_cache, "restart"]):
+                if subprocess.call(SUDO + [nscd_cache, "restart"]):
                     print_failure(nscd_msg.format(result="failed"))
                 else:
                     print_success(nscd_msg.format(result="succeeded"))
@@ -933,7 +933,7 @@ def flush_dns_cache():
                 if os.path.isfile(service_file):
                     dns_cache_found = True
 
-                    if subprocess.call([SUDO, systemctl, "restart", service]):
+                    if subprocess.call(SUDO + [systemctl, "restart", service]):
                         print_failure(service_msg.format(result="failed"))
                     else:
                         print_success(service_msg.format(result="succeeded"))
@@ -945,7 +945,7 @@ def flush_dns_cache():
         if os.path.isfile(dns_clean_file):
             dns_cache_found = True
 
-            if subprocess.call([SUDO, dns_clean_file, "start"]):
+            if subprocess.call(SUDO + [dns_clean_file, "start"]):
                 print_failure(dns_clean_msg.format(result="failed"))
             else:
                 print_success(dns_clean_msg.format(result="succeeded"))
