@@ -529,6 +529,22 @@ def update_sources_data(sources_data, **sources_params):
     return sources_data
 
 
+def jsonarray(json_array_string):
+    """
+    Transformer, converts a json array string hosts into one host per
+    line, prefixing each line with "127.0.0.1 ".
+
+    Parameters
+    ----------
+    json_array_string : str
+        The json array string in the form
+          '["example1.com", "example1.com", ...]'
+    """
+
+    temp_list = json.loads(json_array_string)
+    hostlines = "127.0.0.1 " + "\n127.0.0.1 ".join(temp_list)
+    return hostlines
+
 def update_all_sources(source_data_filename, host_filename):
     """
     Update all host files, regardless of folder depth.
@@ -545,19 +561,32 @@ def update_all_sources(source_data_filename, host_filename):
         the same for all sources.
     """
 
+    # The transforms we support
+    transform_methods = {
+        'jsonarray': jsonarray
+    }
+
     all_sources = recursive_glob("*", source_data_filename)
 
     for source in all_sources:
         update_file = open(source, "r")
         update_data = json.load(update_file)
-        update_url = update_data["url"]
         update_file.close()
+        update_url = update_data["url"]
+        update_transforms = []
+        if update_data.get("transforms"):
+            update_transforms = update_data["transforms"]
 
         print("Updating source " + os.path.dirname(
             source) + " from " + update_url)
 
         try:
             updated_file = get_file_by_url(update_url)
+
+            # spin the transforms as required
+            if len(update_transforms) > 0:
+                for transform in update_transforms:
+                    updated_file = transform_methods[transform](updated_file)
 
             # get rid of carriage-return symbols
             updated_file = updated_file.replace("\r", "")
