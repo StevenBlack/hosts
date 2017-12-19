@@ -545,6 +545,7 @@ def jsonarray(json_array_string):
     hostlines = "127.0.0.1 " + "\n127.0.0.1 ".join(temp_list)
     return hostlines
 
+
 def update_all_sources(source_data_filename, host_filename):
     """
     Update all host files, regardless of folder depth.
