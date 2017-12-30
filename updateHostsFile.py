@@ -648,8 +648,10 @@ def create_initial_file():
 
 def compress_file(input_file, target_ip, output_file):
     """
-    Reduce the file dimension removing non-necessary lines (empty lines and comments) and putting multiple domains in each line.
-    Reducing the number of lines of the file, the parsing under Microsoft Windows is much faster.
+    Reduce the file dimension removing non-necessary lines (empty lines and
+    comments) and putting multiple domains in each line.
+    Reducing the number of lines of the file, the parsing under Microsoft
+    Windows is much faster.
 
     Parameters
     ----------
@@ -672,8 +674,8 @@ def compress_file(input_file, target_ip, output_file):
             continue
 
         if line.startswith(target_ip):
-            l = len(lines[lines_index])
-            if l < 128 and (l + len(line[7:])) < 192:
+            current_len = len(lines[lines_index])
+            if current_len < 128 and (current_len + len(line[7:])) < 192:
                 lines[lines_index] += line[7:-1]
             else:
                 lines[lines_index] += '\n'
@@ -700,7 +702,8 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
     exclusion_regexes : list
         The list of regex patterns used to exclude domains.
     output_file : file
-        The file object in which the result is written. If None, the file 'settings["outputpath"]' will be created.
+        The file object in which the result is written. If None, the file
+        'settings["outputpath"]' will be created.
     """
 
     number_of_rules = settings["numberofrules"]
