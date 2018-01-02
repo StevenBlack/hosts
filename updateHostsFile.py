@@ -671,16 +671,13 @@ def compress_file(input_file, target_ip, output_file):
     lines_index = 0
     for line in input_file.readlines():
         line = line.decode("UTF-8")
-        if line.startswith(('#', '\n')):
-            continue
 
         if line.startswith(target_ip):
-            current_len = len(lines[lines_index])
-            if current_len < 128 and (current_len + len(line[7:])) < 192:
-                lines[lines_index] += line[7:-1]
+            if lines[lines_index].count(' ') < 9:
+                lines[lines_index] += ' ' + line[7:line.find('#')].strip()
             else:
                 lines[lines_index] += '\n'
-                lines.append(line[:-1])
+                lines.append(line[:line.find('#')].strip())
                 lines_index += 1
 
     for line in lines:
