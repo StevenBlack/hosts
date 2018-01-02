@@ -93,8 +93,6 @@ target.  Default is `0.0.0.0`.
 that appear on the same line as domains.  The default is `false` since some
 router-based implementations can't handle comments in-line with hosts.
 
-`--skipstatichosts`, or `-s`: `false` (default) or `true`,
-
 `--noupdate`, or `-n`: skip fetching updates from hosts data sources.
 
 `--output <subfolder>`, or `-o <subfolder>`: place the generated source file
@@ -105,6 +103,11 @@ in a subfolder.  If the subfolder does not exist, it will be created.
 `--skipstatichosts`, or `-s`: `false` (default) or `true`, omit the standard
 section at the top, containing lines like `127.0.0.1 localhost`.  This is
 useful for configuring proximate DNS services on the local network.
+
+`--compress`, or `-c`: `false` (default) or `true`, *Compress* the hosts file 
+ignoring non-necessary lines (empty lines and comments) and putting multiple 
+domains in each line. Reducing the number of lines of the hosts file improves 
+the performances under Windows (with DNS Client service enabled).
 
 ## How do I control which sources are unified?
 

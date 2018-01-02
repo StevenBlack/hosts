@@ -62,6 +62,7 @@ def get_defaults():
         "keepdomaincomments": False,
         "extensionspath": path_join_robust(BASEDIR_PATH, "extensions"),
         "extensions": [],
+        "compress": False,
         "outputsubfolder": "",
         "hostfilename": "hosts",
         "targetip": "0.0.0.0",
@@ -117,6 +118,14 @@ def main():
                         default=False, action="store_true",
                         help="Attempt to flush DNS cache "
                              "after replacing the hosts file.")
+    parser.add_argument("--compress", "-c", dest="compress",
+                        default=False, action="store_true",
+                        help="Compress the hosts file "
+                             "ignoring non-necessary lines "
+                             "(empty lines and comments) and "
+                             "putting multiple domains in "
+                             "each line. Improve the "
+                             "performances under Windows.")
 
     global settings
 
@@ -170,7 +179,15 @@ def main():
 
     merge_file = create_initial_file()
     remove_old_hosts_file(settings["backup"])
-    final_file = remove_dups_and_excl(merge_file, exclusion_regexes)
+    if settings["compress"]:
+        # Another mode is required to read and write the file in Python 3
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"),
+                          "w+b" if PY3 else "w+")
+        compressed_file = tempfile.NamedTemporaryFile()
+        remove_dups_and_excl(merge_file, exclusion_regexes, compressed_file)
+        compress_file(compressed_file, settings["targetip"], final_file)
+    else:
+        final_file = remove_dups_and_excl(merge_file, exclusion_regexes)
 
     number_of_rules = settings["numberofrules"]
     output_subfolder = settings["outputsubfolder"]
@@ -630,7 +647,46 @@ def create_initial_file():
     return merge_file
 
 
-def remove_dups_and_excl(merge_file, exclusion_regexes):
+def compress_file(input_file, target_ip, output_file):
+    """
+    Reduce the file dimension removing non-necessary lines (empty lines and
+    comments) and putting multiple domains in each line.
+    Reducing the number of lines of the file, the parsing under Microsoft
+    Windows is much faster.
+
+    Parameters
+    ----------
+    input_file : file
+        The file object that contains the hostnames that we are reducing.
+    target_ip : str
+        The target IP address.
+    output_file : file
+        The file object that will contain the reduced hostnames.
+    """
+
+    input_file.seek(0)  # reset file pointer
+    write_data(output_file, '\n')
+
+    lines = [target_ip]
+    lines_index = 0
+    for line in input_file.readlines():
+        line = line.decode("UTF-8")
+
+        if line.startswith(target_ip):
+            if lines[lines_index].count(' ') < 9:
+                lines[lines_index] += ' ' + line[7:line.find('#')].strip()
+            else:
+                lines[lines_index] += '\n'
+                lines.append(line[:line.find('#')].strip())
+                lines_index += 1
+
+    for line in lines:
+        write_data(output_file, line)
+
+    input_file.close()
+
+
+def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
     """
     Remove duplicates and remove hosts that we are excluding.
 
@@ -643,6 +699,9 @@ def remove_dups_and_excl(merge_file, exclusion_regexes):
         The file object that contains the hostnames that we are pruning.
     exclusion_regexes : list
         The list of regex patterns used to exclude domains.
+    output_file : file
+        The file object in which the result is written. If None, the file
+        'settings["outputpath"]' will be created.
     """
 
     number_of_rules = settings["numberofrules"]
@@ -656,9 +715,12 @@ def remove_dups_and_excl(merge_file, exclusion_regexes):
     if not os.path.exists(settings["outputpath"]):
         os.makedirs(settings["outputpath"])
 
-    # Another mode is required to read and write the file in Python 3
-    final_file = open(path_join_robust(settings["outputpath"], "hosts"),
-                      "w+b" if PY3 else "w+")
+    if output_file is None:
+        # Another mode is required to read and write the file in Python 3
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"),
+                          "w+b" if PY3 else "w+")
+    else:
+        final_file = output_file
 
     merge_file.seek(0)  # reset file pointer
     hostnames = {"localhost", "localhost.localdomain",
@@ -707,7 +769,8 @@ def remove_dups_and_excl(merge_file, exclusion_regexes):
     settings["numberofrules"] = number_of_rules
     merge_file.close()
 
-    return final_file
+    if output_file is None:
+        return final_file
 
 
 def normalize_rule(rule, target_ip, keep_domain_comments):

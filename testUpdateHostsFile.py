@@ -100,6 +100,7 @@ class TestGetDefaults(Base):
                         "keepdomaincomments": False,
                         "extensionspath": "foo" + self.sep + "extensions",
                         "extensions": [],
+                        "compress": False,
                         "outputsubfolder": "",
                         "hostfilename": "hosts",
                         "targetip": "0.0.0.0",
@@ -249,7 +250,7 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 
     def tearDown(self):
         BaseStdout.tearDown(self)
-        BaseStdout.tearDown(self)
+        # BaseStdout.tearDown(self)
 
 
 class TestPromptForExclusions(BaseStdout):
