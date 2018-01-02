@@ -122,9 +122,10 @@ def main():
                         default=False, action="store_true",
                         help="Compress the hosts file "
                              "ignoring non-necessary lines "
-                             "(empty lines and comments)."
-                             "Improve the performances "
-                             "under Windows.")
+                             "(empty lines and comments) and "
+                             "putting multiple domains in "
+                             "each line. Improve the "
+                             "performances under Windows.")
 
     global settings
 
@@ -670,7 +671,7 @@ def compress_file(input_file, target_ip, output_file):
     lines_index = 0
     for line in input_file.readlines():
         line = line.decode("UTF-8")
-        if line.startswith('#') or line.startswith('\n'):
+        if line.startswith(('#', '\n')):
             continue
 
         if line.startswith(target_ip):
