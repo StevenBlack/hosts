@@ -21,5 +21,6 @@ conda config --set ssl_verify false || exit 1
 conda config --set always_yes true --set changeps1 false || exit 1
 
 echo "Updating Miniconda"
+conda update conda
 conda update --all
 conda info -a || exit 1
