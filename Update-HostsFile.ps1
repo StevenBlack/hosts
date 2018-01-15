@@ -1,4 +1,4 @@
-﻿function Update-HostsFile
+function Update-HostsFile
 {
     <#
     .SYNOPSIS
