@@ -276,6 +276,24 @@ To open a command prompt as administrator in the repository's directory, do the 
 
 You can also refer to the "Third-Party Hosts Managers" section for further recommended solutions from third parties.
 
+## Updating hosts file on Windows using PowerShell (minimum version 3)((doesn´t require Python))
+
+**Windows 10**: Right click Start Button -> click on 'Windows PowerShell (Administrator)'
+Run the following command 
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex (iwr 'https://github.com/kamilkosek/hosts/raw/master/Update-HostsFile.ps1').Content
+```
+This command will load the script in memory and makes the CmdLet available in this session. To get an overview of available
+parameters just run 
+```
+Get-Help Update-HostsFile -Full
+```
+To update just the hosts file without extensions just run:
+```
+Update-HostsFile -BackupOldHostsFile
+```
+The CmdLet will run ipconfig /flushdns so you do not need to run it manually.
+
 ## Reloading hosts file
 Your operating system will cache DNS lookups. You can either reboot or run the following commands to
 manually flush your DNS cache once the new hosts file is in place.
