@@ -630,8 +630,8 @@ def create_initial_file():
     # spin the sources for the base file
     for source in recursive_glob(settings["datapath"],
                                  settings["hostfilename"]):
-        with open(source, "r") as curFile:
-            write_data(merge_file, curFile.read())
+        with open(source, "rb") as curFile:
+            write_data(merge_file, curFile.read().decode('UTF-8'))
 
     # spin the sources for extensions to the base file
     for source in settings["extensions"]:
