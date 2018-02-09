@@ -890,8 +890,10 @@ def write_opening_header(final_file, **header_params):
         write_data(final_file, "127.0.0.1 localhost.localdomain\n")
         write_data(final_file, "127.0.0.1 local\n")
         write_data(final_file, "255.255.255.255 broadcasthost\n")
-        write_data(final_file, "::1 localhost\n")
+        write_data(final_file, "::1 localhost ip6-localhost ip6-loopback\n")
         write_data(final_file, "fe80::1%lo0 localhost\n")
+        write_data(final_file, "ff02::1 ip6-allnodes\n")
+        write_data(final_file, "ff02::2 ip6-allrouters\n")
         write_data(final_file, "0.0.0.0 0.0.0.0\n")
 
         if platform.system() == "Linux":
