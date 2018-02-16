@@ -63,6 +63,7 @@ def get_defaults():
         "extensionspath": path_join_robust(BASEDIR_PATH, "extensions"),
         "extensions": [],
         "compress": False,
+        "minimise": False,
         "outputsubfolder": "",
         "hostfilename": "hosts",
         "targetip": "0.0.0.0",
@@ -126,6 +127,11 @@ def main():
                              "putting multiple domains in "
                              "each line. Improve the "
                              "performances under Windows.")
+    parser.add_argument("--minimise", "-m", dest="minimise",
+                        default=False, action="store_true",
+                        help="Minimise the hosts file "
+                             "ignoring non-necessary lines "
+                             "(empty lines and comments).")
 
     global settings
 
@@ -186,6 +192,12 @@ def main():
         compressed_file = tempfile.NamedTemporaryFile()
         remove_dups_and_excl(merge_file, exclusion_regexes, compressed_file)
         compress_file(compressed_file, settings["targetip"], final_file)
+    elif settings["minimise"]:
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"),
+                          "w+b" if PY3 else "w+")
+        minimised_file = tempfile.NamedTemporaryFile()
+        remove_dups_and_excl(merge_file, exclusion_regexes, minimised_file)
+        minimise_file(minimised_file, settings["targetip"], final_file)
     else:
         final_file = remove_dups_and_excl(merge_file, exclusion_regexes)
 
@@ -679,6 +691,37 @@ def compress_file(input_file, target_ip, output_file):
                 lines[lines_index] += '\n'
                 lines.append(line[:line.find('#')].strip())
                 lines_index += 1
+
+    for line in lines:
+        write_data(output_file, line)
+
+    input_file.close()
+
+
+def minimise_file(input_file, target_ip, output_file):
+    """
+    Reduce the file dimension removing non-necessary lines (empty lines and
+    comments).
+
+    Parameters
+    ----------
+    input_file : file
+        The file object that contains the hostnames that we are reducing.
+    target_ip : str
+        The target IP address.
+    output_file : file
+        The file object that will contain the reduced hostnames.
+    """
+
+    input_file.seek(0)  # reset file pointer
+    write_data(output_file, '\n')
+
+    lines = []
+    for line in input_file.readlines():
+        line = line.decode("UTF-8")
+
+        if line.startswith(target_ip):
+            lines.append(line[:line.find('#')].strip() + '\n')
 
     for line in lines:
         write_data(output_file, line)
