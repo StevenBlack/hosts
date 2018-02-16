@@ -667,6 +667,7 @@ def compress_file(input_file, target_ip, output_file):
     input_file.seek(0)  # reset file pointer
     write_data(output_file, '\n')
 
+    target_ip_len = len(target_ip)
     lines = [target_ip]
     lines_index = 0
     for line in input_file.readlines():
@@ -674,7 +675,8 @@ def compress_file(input_file, target_ip, output_file):
 
         if line.startswith(target_ip):
             if lines[lines_index].count(' ') < 9:
-                lines[lines_index] += ' ' + line[7:line.find('#')].strip()
+                lines[lines_index] += ' ' \
+                    + line[target_ip_len:line.find('#')].strip()
             else:
                 lines[lines_index] += '\n'
                 lines.append(line[:line.find('#')].strip())
