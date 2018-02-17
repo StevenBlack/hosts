@@ -101,6 +101,7 @@ class TestGetDefaults(Base):
                         "extensionspath": "foo" + self.sep + "extensions",
                         "extensions": [],
                         "compress": False,
+                        "minimise": False,
                         "outputsubfolder": "",
                         "hostfilename": "hosts",
                         "targetip": "0.0.0.0",
