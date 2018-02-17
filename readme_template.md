@@ -109,6 +109,11 @@ ignoring non-necessary lines (empty lines and comments) and putting multiple
 domains in each line. Reducing the number of lines of the hosts file improves 
 the performances under Windows (with DNS Client service enabled).
 
+`--minimise`, or `-m`: `false` (default) or `true`, like `--compress`, but puts
+each domain on a separate line. This is necessary because many implementations
+of URL blockers that rely on `hosts` files do not conform to the standard which
+allows multiple hosts on a single line.
+
 ## How do I control which sources are unified?
 
 Add one or more  *additional* sources, each in a subfolder of the `data/`
