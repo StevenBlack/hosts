@@ -254,6 +254,9 @@ You can also refer to the "Third-Party Hosts Managers" section for further recom
 Your operating system will cache DNS lookups. You can either reboot or run the following commands to
 manually flush your DNS cache once the new hosts file is in place.
 
+| Chromium/Google Chrome required manually cleanup DNS Cache on `chrome://net-internals/#dns` page for apply changes from custom hosts file.  See: https://superuser.com/questions/723703
+:-----------------------------------------------------------------------------------------
+
 ### Windows
 
 Open a command prompt with administrator privileges and run this command:
