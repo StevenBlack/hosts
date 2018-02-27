@@ -109,6 +109,11 @@ ignoring non-necessary lines (empty lines and comments) and putting multiple
 domains in each line. Reducing the number of lines of the hosts file improves 
 the performances under Windows (with DNS Client service enabled).
 
+`--minimise`, or `-m`: `false` (default) or `true`, like `--compress`, but puts
+each domain on a separate line. This is necessary because many implementations
+of URL blockers that rely on `hosts` files do not conform to the standard which
+allows multiple hosts on a single line.
+
 ## How do I control which sources are unified?
 
 Add one or more  *additional* sources, each in a subfolder of the `data/`
@@ -248,6 +253,9 @@ You can also refer to the "Third-Party Hosts Managers" section for further recom
 ## Reloading hosts file
 Your operating system will cache DNS lookups. You can either reboot or run the following commands to
 manually flush your DNS cache once the new hosts file is in place.
+
+| The Google Chrome browser may require manually cleaning up its DNS Cache on `chrome://net-internals/#dns` page to thereafter see the changes in your hosts file. See: https://superuser.com/questions/723703
+:-----------------------------------------------------------------------------------------
 
 ### Windows
 
