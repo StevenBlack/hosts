@@ -1150,9 +1150,9 @@ def domain_to_idna(line):
         most cases the encoding issue is due to a domain which looks like
         `b'\xc9\xa2oogle.com'.decode('idna')`.
     - About the splitting:
-        We split because we only want to encode the domain and not the full line
-            which may cause some issue. Keep in mind that we split but we still
-            concatenate once we encoded the domain.
+        We split because we only want to encode the domain and not the full
+            line which may cause some issue. Keep in mind that we split but we
+            still concatenate once we encoded the domain.
 
         - The following split the prefix `0.0.0.0` or `127.0.0.1` of a line.
         - The following also split the trailing comment of a given line.
