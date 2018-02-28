@@ -1186,6 +1186,7 @@ def domain_to_idna(line):
         return line.encode("IDNA").decode("UTF-8")
     return line.encode("UTF-8").decode("UTF-8")
 
+
 # Helper Functions
 def get_file_by_url(url):
     """
@@ -1210,7 +1211,7 @@ def get_file_by_url(url):
 
     try:
         f = urlopen(url)
-        soup = BeautifulSoup(f.read(),'lxml').get_text()
+        soup = BeautifulSoup(f.read(), 'lxml').get_text()
         return '\n'.join(list(map(domain_to_idna, soup.split('\n'))))
     except Exception:
         print("Problem getting file: ", url)
