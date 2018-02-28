@@ -1128,6 +1128,7 @@ def remove_old_hosts_file(backup):
     open(old_file_path, "a").close()
 # End File Logic
 
+
 def domain_to_idna(line):
     """
     Encode a domain which is presente into a line into `idna`. This way we avoid
