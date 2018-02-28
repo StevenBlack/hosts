@@ -24,7 +24,7 @@ import tempfile
 import time
 from glob import glob
 
-import lxml # noqa: F401
+import lxml  # noqa: F401
 from bs4 import BeautifulSoup
 
 # Detecting Python 3 for version-dependent implementations
