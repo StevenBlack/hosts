@@ -6,23 +6,26 @@
 # This Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
 
-from __future__ import (absolute_import, division,
-                        print_function, unicode_literals)
-from glob import glob
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
-import os
+import argparse
+import fnmatch
+import json
 import locale
+import os
 import platform
 import re
 import shutil
+import socket
 import subprocess
 import sys
 import tempfile
 import time
-import fnmatch
-import argparse
-import socket
-import json
+from glob import glob
+
+import lxml
+from bs4 import BeautifulSoup
 
 # Detecting Python 3 for version-dependent implementations
 PY3 = sys.version_info >= (3, 0)
@@ -1125,6 +1128,62 @@ def remove_old_hosts_file(backup):
     open(old_file_path, "a").close()
 # End File Logic
 
+def domain_to_idna(line):
+    """
+    Encode a domain which is presente into a line into `idna`. This way we avoid
+    the most encoding issue case.
+
+    Parameters
+    ----------
+    line : str
+        The line we have to encode/decode.
+
+    Returns
+    -------
+    line : str
+        The line in a converted format.
+
+    Notes
+    -----
+    - This method/function encode only the domain to `idna` format because in
+        most cases the encoding issue is due to a domain which looks like
+        `b'\xc9\xa2oogle.com'.decode('idna')`.
+    - About the splitting:
+        We split because we only want to encode the domain and not the full line
+            which may cause some issue. Keep in mind that we split but we still
+            concatenate once we encoded the domain.
+
+        - The following split the prefix `0.0.0.0` or `127.0.0.1` of a line.
+        - The following also split the trailing comment of a given line.
+    - You do not get it ?
+        - Run https://git.io/vA1Rj and enjoy the view :-).
+    """
+
+    if not line.startswith('#'):
+        for separator in [' ', '\t']:
+            comment_to_append = ''
+
+            if separator in line:
+                splited_line = line.split(separator)
+                if '#' in splited_line[1]:
+                    comment_to_append = splited_line[1].split('#')[1]
+
+                    if comment_to_append:
+                        splited_line[1] = splited_line[1] \
+                            .split(comment_to_append)[0] \
+                            .encode("IDNA").decode("UTF-8") + \
+                                '#' + comment_to_append[1]
+                    else:
+                        splited_line[1] = splited_line[1] \
+                            .encode("IDNA") \
+                            .decode("UTF-8") + '#'
+                else:
+                    splited_line[1] = splited_line[1] \
+                        .encode("IDNA") \
+                        .decode("UTF-8")
+                return separator.join(splited_line)
+        return line.encode("IDNA").decode("UTF-8")
+    return line.encode("UTF-8").decode("UTF-8")
 
 # Helper Functions
 def get_file_by_url(url):
@@ -1141,11 +1200,17 @@ def get_file_by_url(url):
     url_data : str or None
         The data retrieved at that URL from the file. Returns None if the
         attempted retrieval is unsuccessful.
+
+    Note
+    ----
+    - BeautifulSoup is used in this case to avoid having to search in which
+        format we have to encode or decode data before parsing it to UTF-8.
     """
 
     try:
         f = urlopen(url)
-        return f.read().decode("UTF-8")
+        soup = BeautifulSoup(f.read(),'lxml').get_text()
+        return '\n'.join(list(map(domain_to_idna, soup.split('\n'))))
     except Exception:
         print("Problem getting file: ", url)
 
@@ -1165,7 +1230,10 @@ def write_data(f, data):
     if PY3:
         f.write(bytes(data, "UTF-8"))
     else:
-        f.write(str(data).encode("UTF-8"))
+        try:
+            f.write(str(data))
+        except UnicodeEncodeError:
+            f.write(str(data.encode("UTF-8")))
 
 
 def list_dir_no_hidden(path):
