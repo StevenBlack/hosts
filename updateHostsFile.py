@@ -1131,8 +1131,8 @@ def remove_old_hosts_file(backup):
 
 def domain_to_idna(line):
     """
-    Encode a domain which is presente into a line into `idna`. This way we avoid
-    the most encoding issue case.
+    Encode a domain which is presente into a line into `idna`. This way we
+    avoid the most encoding issue.
 
     Parameters
     ----------
