@@ -1146,7 +1146,7 @@ def domain_to_idna(line):
 
     Notes
     -----
-    - This method/function encode only the domain to `idna` format because in
+    - This function encode only the domain to `idna` format because in
         most cases the encoding issue is due to a domain which looks like
         `b'\xc9\xa2oogle.com'.decode('idna')`.
     - About the splitting:
