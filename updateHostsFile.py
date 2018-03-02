@@ -1151,7 +1151,7 @@ def domain_to_idna(line):
         `b'\xc9\xa2oogle.com'.decode('idna')`.
     - About the splitting:
         We split because we only want to encode the domain and not the full
-        line which may cause some issue. Keep in mind that we split but we
+        line, which may cause some issues. Keep in mind that we split, but we
         still concatenate once we encoded the domain.
 
         - The following split the prefix `0.0.0.0` or `127.0.0.1` of a line.
