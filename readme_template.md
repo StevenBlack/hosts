@@ -43,9 +43,13 @@ To run unit tests, in the top level directory, just run:
 
     python testUpdateHostsFile.py
 
-**Note** if you are using Python 2, you must first install the `mock` library:
+**Note** if you are using Python 2, please install the dependencies with:
 
-    pip install mock
+    pip install -r requirements_python2.txt
+
+**Note** if you are using Python 3, please install the dependencies with:
+
+    pip install -r requirements.txt
 
 The `updateHostsFile.py` script, which is Python 2.7 and Python 3-compatible,
 will generate a unified hosts file based on the sources in the local `data/`
@@ -104,9 +108,9 @@ in a subfolder.  If the subfolder does not exist, it will be created.
 section at the top, containing lines like `127.0.0.1 localhost`.  This is
 useful for configuring proximate DNS services on the local network.
 
-`--compress`, or `-c`: `false` (default) or `true`, *Compress* the hosts file 
-ignoring non-necessary lines (empty lines and comments) and putting multiple 
-domains in each line. Reducing the number of lines of the hosts file improves 
+`--compress`, or `-c`: `false` (default) or `true`, *Compress* the hosts file
+ignoring non-necessary lines (empty lines and comments) and putting multiple
+domains in each line. Reducing the number of lines of the hosts file improves
 the performances under Windows (with DNS Client service enabled).
 
 `--minimise`, or `-m`: `false` (default) or `true`, like `--compress`, but puts
