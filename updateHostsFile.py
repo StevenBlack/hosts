@@ -1156,8 +1156,6 @@ def domain_to_idna(line):
 
         - The following split the prefix `0.0.0.0` or `127.0.0.1` of a line.
         - The following also split the trailing comment of a given line.
-    - You do not get it ?
-        - Run https://git.io/vA1Rj and enjoy the view :-).
     """
 
     if not line.startswith('#'):
