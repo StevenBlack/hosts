@@ -1177,7 +1177,7 @@ def domain_to_idna(line):
                     else:
                         splited_line[1] = splited_line[1] \
                             .encode("IDNA") \
-                            .decode("UTF-8") + '#'
+                            .decode("UTF-8")
                 else:
                     splited_line[1] = splited_line[1] \
                         .encode("IDNA") \
