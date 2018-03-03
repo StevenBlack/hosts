@@ -43,13 +43,15 @@ To run unit tests, in the top level directory, just run:
 
     python testUpdateHostsFile.py
 
-**Note** if you are using Python 2, please install the dependencies with:
-
-    pip install -r requirements_python2.txt
-
 **Note** if you are using Python 3, please install the dependencies with:
 
-    pip install -r requirements.txt
+    pip3 install --user -r requirements.txt
+
+**Note** if you are using Python 2, please install the dependencies with:
+
+    pip2 install --user -r requirements_python2.txt
+
+**Note** we recommend the `--user` flag which installs the required dependencies at the user level. More information about it can be found on pip [documentation](https://pip.pypa.io/en/stable/reference/pip_install/?highlight=--user#cmdoption-user).
 
 The `updateHostsFile.py` script, which is Python 2.7 and Python 3-compatible,
 will generate a unified hosts file based on the sources in the local `data/`
