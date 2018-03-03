@@ -1052,7 +1052,7 @@ def flush_dns_cache():
             if os.path.isfile(nscd_cache):
                 dns_cache_found = True
 
-                if subprocess.call(SUDO + [ nscd_cache, "restart"]):
+                if subprocess.call(SUDO + [nscd_cache, "restart"]):
                     print_failure(nscd_msg.format(result="failed"))
                 else:
                     print_success(nscd_msg.format(result="succeeded"))
@@ -1073,7 +1073,7 @@ def flush_dns_cache():
                 if os.path.isfile(service_file):
                     dns_cache_found = True
 
-                    if subprocess.call(SUDO + [ systemctl, "restart", service]):
+                    if subprocess.call(SUDO + [systemctl, "restart", service]):
                         print_failure(service_msg.format(result="failed"))
                     else:
                         print_success(service_msg.format(result="succeeded"))
@@ -1085,7 +1085,7 @@ def flush_dns_cache():
         if os.path.isfile(dns_clean_file):
             dns_cache_found = True
 
-            if subprocess.call(SUDO + [ dns_clean_file, "start"]):
+            if subprocess.call(SUDO + [dns_clean_file, "start"]):
                 print_failure(dns_clean_msg.format(result="failed"))
             else:
                 print_success(dns_clean_msg.format(result="succeeded"))
