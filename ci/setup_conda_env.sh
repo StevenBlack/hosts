@@ -5,4 +5,4 @@ conda create -n hosts python=$PYTHON_VERSION || exit 1
 source activate hosts
 
 echo "Installing packages..."
-conda install mock flake8
+conda install mock flake8 beautifulsoup4 lxml
