@@ -6,23 +6,26 @@
 # This Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
 
-from __future__ import (absolute_import, division,
-                        print_function, unicode_literals)
-from glob import glob
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 
-import os
+import argparse
+import fnmatch
+import json
 import locale
+import os
 import platform
 import re
 import shutil
+import socket
 import subprocess
 import sys
 import tempfile
 import time
-import fnmatch
-import argparse
-import socket
-import json
+from glob import glob
+
+import lxml  # noqa: F401
+from bs4 import BeautifulSoup
 
 # Detecting Python 3 for version-dependent implementations
 PY3 = sys.version_info >= (3, 0)
@@ -35,7 +38,10 @@ else:  # Python 2
     raw_input = raw_input  # noqa
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
-SUDO = "/usr/bin/sudo"
+if platform.system() == "OpenBSD":
+    SUDO = ["/usr/bin/doas"]
+else:
+    SUDO = ["/usr/bin/env", "sudo"]
 
 
 # Project Settings
@@ -1015,7 +1021,7 @@ def move_hosts_file_into_place(final_file):
     if os.name == "posix":
         print("Moving the file requires administrative privileges. "
               "You might need to enter your password.")
-        if subprocess.call([SUDO, "cp", filename, "/etc/hosts"]):
+        if subprocess.call(SUDO + ["cp", filename, "/etc/hosts"]):
             print_failure("Moving the file failed.")
     elif os.name == "nt":
         print("Automatically moving the hosts file "
@@ -1036,7 +1042,7 @@ def flush_dns_cache():
     dns_cache_found = False
 
     if platform.system() == "Darwin":
-        if subprocess.call([SUDO, "killall", "-HUP", "mDNSResponder"]):
+        if subprocess.call(SUDO + ["killall", "-HUP", "mDNSResponder"]):
             print_failure("Flushing the DNS cache failed.")
     elif os.name == "nt":
         print("Automatically flushing the DNS cache is not yet supported.")
@@ -1052,7 +1058,7 @@ def flush_dns_cache():
             if os.path.isfile(nscd_cache):
                 dns_cache_found = True
 
-                if subprocess.call([SUDO, nscd_cache, "restart"]):
+                if subprocess.call(SUDO + [nscd_cache, "restart"]):
                     print_failure(nscd_msg.format(result="failed"))
                 else:
                     print_success(nscd_msg.format(result="succeeded"))
@@ -1073,7 +1079,7 @@ def flush_dns_cache():
                 if os.path.isfile(service_file):
                     dns_cache_found = True
 
-                    if subprocess.call([SUDO, systemctl, "restart", service]):
+                    if subprocess.call(SUDO + [systemctl, "restart", service]):
                         print_failure(service_msg.format(result="failed"))
                     else:
                         print_success(service_msg.format(result="succeeded"))
@@ -1085,7 +1091,7 @@ def flush_dns_cache():
         if os.path.isfile(dns_clean_file):
             dns_cache_found = True
 
-            if subprocess.call([SUDO, dns_clean_file, "start"]):
+            if subprocess.call(SUDO + [dns_clean_file, "start"]):
                 print_failure(dns_clean_msg.format(result="failed"))
             else:
                 print_success(dns_clean_msg.format(result="succeeded"))
@@ -1126,6 +1132,60 @@ def remove_old_hosts_file(backup):
 # End File Logic
 
 
+def domain_to_idna(line):
+    """
+    Encode a domain which is presente into a line into `idna`. This way we
+    avoid the most encoding issue.
+
+    Parameters
+    ----------
+    line : str
+        The line we have to encode/decode.
+
+    Returns
+    -------
+    line : str
+        The line in a converted format.
+
+    Notes
+    -----
+    - This function encode only the domain to `idna` format because in
+        most cases, the encoding issue is due to a domain which looks like
+        `b'\xc9\xa2oogle.com'.decode('idna')`.
+    - About the splitting:
+        We split because we only want to encode the domain and not the full
+        line, which may cause some issues. Keep in mind that we split, but we
+        still concatenate once we encoded the domain.
+
+        - The following split the prefix `0.0.0.0` or `127.0.0.1` of a line.
+        - The following also split the trailing comment of a given line.
+    """
+
+    if not line.startswith('#'):
+        for separator in ['\t', ' ']:
+            comment = ''
+
+            if separator in line:
+                splited_line = line.split(separator)
+                if '#' in splited_line[1]:
+                    index_comment = splited_line[1].find('#')
+
+                    if index_comment > -1:
+                        comment = splited_line[1][index_comment:]
+
+                        splited_line[1] = splited_line[1] \
+                            .split(comment)[0] \
+                            .encode("IDNA").decode("UTF-8") + \
+                            comment
+
+                splited_line[1] = splited_line[1] \
+                    .encode("IDNA") \
+                    .decode("UTF-8")
+                return separator.join(splited_line)
+        return line.encode("IDNA").decode("UTF-8")
+    return line.encode("UTF-8").decode("UTF-8")
+
+
 # Helper Functions
 def get_file_by_url(url):
     """
@@ -1141,11 +1201,17 @@ def get_file_by_url(url):
     url_data : str or None
         The data retrieved at that URL from the file. Returns None if the
         attempted retrieval is unsuccessful.
+
+    Note
+    ----
+    - BeautifulSoup is used in this case to avoid having to search in which
+        format we have to encode or decode data before parsing it to UTF-8.
     """
 
     try:
         f = urlopen(url)
-        return f.read().decode("UTF-8")
+        soup = BeautifulSoup(f.read(), 'lxml').get_text()
+        return '\n'.join(list(map(domain_to_idna, soup.split('\n'))))
     except Exception:
         print("Problem getting file: ", url)
 
@@ -1165,7 +1231,10 @@ def write_data(f, data):
     if PY3:
         f.write(bytes(data, "UTF-8"))
     else:
-        f.write(str(data).encode("UTF-8"))
+        try:
+            f.write(str(data))
+        except UnicodeEncodeError:
+            f.write(str(data.encode("UTF-8")))
 
 
 def list_dir_no_hidden(path):
