@@ -38,7 +38,10 @@ else:  # Python 2
     raw_input = raw_input  # noqa
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
-SUDO = ["/usr/bin/env", "sudo"]
+if platform.system() == "OpenBSD":
+    SUDO = ["/usr/bin/doas"]
+else:
+    SUDO = ["/usr/bin/env", "sudo"]
 
 
 # Project Settings
