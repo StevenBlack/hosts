@@ -1162,7 +1162,7 @@ def domain_to_idna(line):
     """
 
     if not line.startswith('#'):
-        for separator in ['\t', ' ']:
+        for separator in [' ', '\t']:
             comment = ''
 
             if separator in line:
