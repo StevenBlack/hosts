@@ -1159,26 +1159,47 @@ def domain_to_idna(line):
     """
 
     if not line.startswith('#'):
-        for separator in ['\t', ' ']:
-            comment = ''
+        tabs = '\t'
+        space = ' '
 
-            if separator in line:
-                splited_line = line.split(separator)
-                if '#' in splited_line[1]:
-                    index_comment = splited_line[1].find('#')
+        tabs_position, space_position = (line.find(tabs), line.find(space))
 
-                    if index_comment > -1:
-                        comment = splited_line[1][index_comment:]
+        if tabs_position > -1 and space_position > -1:
+            if space_position < tabs_position:
+                separator = space
+            else:
+                separator = tabs
+        elif not tabs_position == -1:
+            separator = tabs
+        elif not space_position == -1:
+            separator = space
+        else:
+            separator = ''
 
-                        splited_line[1] = splited_line[1] \
-                            .split(comment)[0] \
-                            .encode("IDNA").decode("UTF-8") + \
-                            comment
+        if separator:
+            splited_line = line.split(separator)
 
-                splited_line[1] = splited_line[1] \
-                    .encode("IDNA") \
-                    .decode("UTF-8")
-                return separator.join(splited_line)
+            index = 1
+            while index < len(splited_line):
+                if splited_line[index]:
+                    break
+                index += 1
+
+            if '#' in splited_line[index]:
+                index_comment = splited_line[index].find('#')
+
+                if index_comment > -1:
+                    comment = splited_line[index][index_comment:]
+
+                    splited_line[index] = splited_line[index] \
+                        .split(comment)[0] \
+                        .encode("IDNA").decode("UTF-8") + \
+                        comment
+
+            splited_line[index] = splited_line[index] \
+                .encode("IDNA") \
+                .decode("UTF-8")
+            return separator.join(splited_line)
         return line.encode("IDNA").decode("UTF-8")
     return line.encode("UTF-8").decode("UTF-8")
 
