@@ -1407,7 +1407,27 @@ class DomainToIDNA(Base):
 
             self.assertEqual(actual, expected)
 
-    def test_single_line_with_comment_at_the_end(self):
+    def test_multiple_space_as_separator(self):
+        # Test with multiple space as separator.
+        for i in range(len(self.domains)):
+            data = (b"0.0.0.0      " + self.domains[i]).decode('utf-8')
+            expected = "0.0.0.0      " + self.expected_domains[i]
+
+            actual = domain_to_idna(data)
+
+            self.assertEqual(actual, expected)
+
+    def test_multiple_tabs_as_separator(self):
+        # Test with multiple tabls as separator.
+        for i in range(len(self.domains)):
+            data = (b"0.0.0.0\t\t\t\t\t\t" + self.domains[i]).decode('utf-8')
+            expected = "0.0.0.0\t\t\t\t\t\t" + self.expected_domains[i]
+
+            actual = domain_to_idna(data)
+
+            self.assertEqual(actual, expected)
+
+    def test_line_with_comment_at_the_end(self):
         # Test with a space as separator.
         for i in range(len(self.domains)):
             data = (b"0.0.0.0 " + self.domains[i] + b" # Hello World") \
@@ -1429,7 +1449,56 @@ class DomainToIDNA(Base):
 
             self.assertEqual(actual, expected)
 
-    def test_single_line_without_prefix(self):
+        # Test with tabulation as separator of domain and comment.
+        for i in range(len(self.domains)):
+            data = (b"0.0.0.0\t" + self.domains[i] + b"\t # Hello World") \
+                .decode('utf-8')
+            expected = "0.0.0.0\t" + self.expected_domains[i] + \
+                "\t # Hello World"
+
+            actual = domain_to_idna(data)
+
+            self.assertEqual(actual, expected)
+
+        # Test with space as separator of domain and tabulation as separator
+        # of comments.
+        for i in range(len(self.domains)):
+            data = (b"0.0.0.0 " + self.domains[i] + b"  \t # Hello World") \
+                .decode('utf-8')
+            expected = "0.0.0.0 " + self.expected_domains[i] + \
+                "  \t # Hello World"
+
+            actual = domain_to_idna(data)
+
+            self.assertEqual(actual, expected)
+
+        # Test with multiple space as seprator of domain and space and
+        # tabulation as separator or comments.
+        for i in range(len(self.domains)):
+            data = (b"0.0.0.0     " + self.domains[i] + b" \t # Hello World") \
+                .decode('utf-8')
+            expected = "0.0.0.0     " + self.expected_domains[i] + \
+                " \t # Hello World"
+
+            actual = domain_to_idna(data)
+
+            self.assertEqual(actual, expected)
+
+        # Test with multiple tabulations as seprator of domain and space and
+        # tabulation as separator or comments.
+        for i in range(len(self.domains)):
+            data = (b"0.0.0.0\t\t\t" +
+                    self.domains[i] +
+                    b" \t # Hello World") \
+                        .decode('utf-8')
+            expected = "0.0.0.0\t\t\t" + self.expected_domains[i] + \
+                " \t # Hello World"
+
+            actual = domain_to_idna(data)
+
+            self.assertEqual(actual, expected)
+
+    def test_line_without_prefix(self):
         for i in range(len(self.domains)):
             data = self.domains[i].decode('utf-8')
             expected = self.expected_domains[i]
