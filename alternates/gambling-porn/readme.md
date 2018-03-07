@@ -339,6 +339,13 @@ Open a Terminal and run:
 sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
 ```
 
+## Release management
+
+This repository uses [Release-It!](https://webpro.github.io/release-it/), an excellent CLI release 
+tool for Github repos and npm packages, to automate creating [releases](https://github.com/StevenBlack/hosts/releases).
+This is why the [package.json](https://github.com/StevenBlack/hosts/blob/master/package.json) and 
+[.release-it.json](https://github.com/StevenBlack/hosts/blob/master/.release-it.json) files are bundled.
+
 ## Goals of this unified hosts file
 
 The goals of this repo are to:
