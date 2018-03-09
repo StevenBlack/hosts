@@ -620,9 +620,8 @@ def update_all_sources(source_data_filename, host_filename):
             updated_file = get_file_by_url(update_url)
 
             # spin the transforms as required
-            if len(update_transforms) > 0:
-                for transform in update_transforms:
-                    updated_file = transform_methods[transform](updated_file)
+            for transform in update_transforms:
+                updated_file = transform_methods[transform](updated_file)
 
             # get rid of carriage-return symbols
             updated_file = updated_file.replace("\r", "")
