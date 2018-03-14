@@ -698,7 +698,7 @@ class TestNormalizeRule(BaseStdout):
         kwargs = dict(target_ip="0.0.0.0", keep_domain_comments=False)
 
         for rule in ["foo", "128.0.0.1", "bar.com/usa", "0.0.0 google",
-                     "0.0.0.0 1.2.34.34", "0.1.2.3.4 foo/bar", "twitter.com"]:
+                     "0.1.2.3.4 foo/bar", "twitter.com"]:
             self.assertEqual(normalize_rule(rule, **kwargs), (None, None))
 
             output = sys.stdout.getvalue()
@@ -739,6 +739,21 @@ class TestNormalizeRule(BaseStdout):
                 self.assertEqual(output, "")
 
                 sys.stdout = StringIO()
+
+    def test_two_ips(self):
+        for target_ip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
+            rule = "127.0.0.1 11.22.33.44 foo"
+            expected = ("11.22.33.44", str(target_ip) + " 11.22.33.44\n")
+
+            actual = normalize_rule(rule, target_ip=target_ip,
+                                    keep_domain_comments=False)
+            self.assertEqual(actual, expected)
+
+            # Nothing gets printed if there's a match.
+            output = sys.stdout.getvalue()
+            self.assertEqual(output, "")
+
+            sys.stdout = StringIO()
 
 
 class TestStripRule(Base):
