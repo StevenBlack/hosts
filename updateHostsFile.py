@@ -844,6 +844,10 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
         and spacing reformatted.
     """
 
+
+    """
+    first try: IP followed by domain
+    """
     regex = r'^\s*(\d{1,3}\.){3}\d{1,3}\s+([\w\.-]+[a-zA-Z])(.*)'
     result = re.search(regex, rule)
 
@@ -859,6 +863,27 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
 
         return hostname, rule + "\n"
 
+    """
+    next try: IP address followed by host IP address
+    """
+    regex = r'^\s*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\s+(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\s*(.*)'
+    result = re.search(regex, rule)
+
+    if result:
+        ip_host, suffix = result.group(2, 3)
+        # Explicitly trim the ip host.
+        ip_host = ip_host.strip()
+        rule = "%s %s" % (target_ip, ip_host)
+
+        if suffix and keep_domain_comments:
+            rule += " #%s" % suffix
+
+        return ip_host, rule + "\n"
+
+
+    """
+    finally, if we get here, just belch to screen
+    """
     print("==>%s<==" % rule)
     return None, None
 
