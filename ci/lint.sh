@@ -3,4 +3,4 @@
 echo "Linting repository..."
 source activate hosts
 
-flake8
+flake8 --max-line-length 120
