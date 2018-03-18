@@ -59,10 +59,11 @@ def main():
         "frequency": "",
         "issues": "",
         "url": "",
-        "license": ""}
+        "license": "",
+        "issues": "" }
 
     t = Template('${name} | ${description} |[link](${homeurl})'
-                 ' | [raw](${url}) | ${frequency} | ${license} ')
+                 ' | [raw](${url}) | ${frequency} | ${license}  | [issues](${issues}) ')
 
     for key in keys:
         extensions = key.replace("-", ", ")

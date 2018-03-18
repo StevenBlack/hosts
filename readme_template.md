@@ -27,8 +27,8 @@ of OS.
 Updated `hosts` files from the following locations are always unified and
 included:
 
-Host file source | Description | Home page | Raw hosts | Update frequency | License
------------------|-------------|:---------:|:---------:|:-------:|:-------:
+Host file source | Description | Home page | Raw hosts | Update frequency | License | Issues
+-----------------|-------------|:---------:|:---------:|:----------------:|:-------:|:------:
 @SOURCEROWS@
 
 
