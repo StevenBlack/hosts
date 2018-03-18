@@ -844,7 +844,6 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
         and spacing reformatted.
     """
 
-
     """
     first try: IP followed by domain
     """
@@ -879,7 +878,6 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
             rule += " #%s" % suffix
 
         return ip_host, rule + "\n"
-
 
     """
     finally, if we get here, just belch to screen
