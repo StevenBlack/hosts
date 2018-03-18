@@ -60,7 +60,7 @@ def main():
         "issues": "",
         "url": "",
         "license": "",
-        "issues": "" }
+        "issues": ""}
 
     t = Template('${name} | ${description} |[link](${homeurl})'
                  ' | [raw](${url}) | ${frequency} | ${license}  | [issues](${issues}) ')
