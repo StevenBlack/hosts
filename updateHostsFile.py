@@ -6,8 +6,7 @@
 # This Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
 
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
+from __future__ import (absolute_import, division, print_function, unicode_literals)
 
 import argparse
 import fnmatch
@@ -76,11 +75,9 @@ def get_defaults():
         "sourcedatafilename": "update.json",
         "sourcesdata": [],
         "readmefilename": "readme.md",
-        "readmetemplate": path_join_robust(BASEDIR_PATH,
-                                           "readme_template.md"),
+        "readmetemplate": path_join_robust(BASEDIR_PATH, "readme_template.md"),
         "readmedata": {},
-        "readmedatafilename": path_join_robust(BASEDIR_PATH,
-                                               "readmeData.json"),
+        "readmedatafilename": path_join_robust(BASEDIR_PATH, "readmeData.json"),
         "exclusionpattern": "([a-zA-Z\d-]+\.){0,}",
         "exclusionregexs": [],
         "exclusions": [],
@@ -143,8 +140,7 @@ def main():
 
     options = vars(parser.parse_args())
 
-    options["outputpath"] = path_join_robust(BASEDIR_PATH,
-                                             options["outputsubfolder"])
+    options["outputpath"] = path_join_robust(BASEDIR_PATH, options["outputsubfolder"])
     options["freshen"] = not options["noupdate"]
 
     settings = get_defaults()
@@ -157,8 +153,7 @@ def main():
     settings["extensionsources"] = list_dir_no_hidden(extensions_path)
 
     # All our extensions folders...
-    settings["extensions"] = [os.path.basename(item) for item in
-                              list_dir_no_hidden(extensions_path)]
+    settings["extensions"] = [os.path.basename(item) for item in list_dir_no_hidden(extensions_path)]
     # ... intersected with the extensions passed-in as arguments, then sorted.
     settings["extensions"] = sorted(list(
         set(options["extensions"]).intersection(settings["extensions"])))
@@ -193,14 +188,12 @@ def main():
     remove_old_hosts_file(settings["backup"])
     if settings["compress"]:
         # Another mode is required to read and write the file in Python 3
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"),
-                          "w+b" if PY3 else "w+")
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b" if PY3 else "w+")
         compressed_file = tempfile.NamedTemporaryFile()
         remove_dups_and_excl(merge_file, exclusion_regexes, compressed_file)
         compress_file(compressed_file, settings["targetip"], final_file)
     elif settings["minimise"]:
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"),
-                          "w+b" if PY3 else "w+")
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b" if PY3 else "w+")
         minimised_file = tempfile.NamedTemporaryFile()
         remove_dups_and_excl(merge_file, exclusion_regexes, minimised_file)
         minimise_file(minimised_file, settings["targetip"], final_file)
@@ -271,8 +264,7 @@ def prompt_for_update(freshen, update_auto):
             # Starting in Python 3.3, IOError is aliased
             # OSError. However, we have to catch both for
             # Python 2.x failures.
-            print_failure("ERROR: No 'hosts' file in the folder. "
-                          "Try creating one manually.")
+            print_failure("ERROR: No 'hosts' file in the folder. Try creating one manually.")
 
     if not freshen:
         return
@@ -367,8 +359,7 @@ def prompt_for_move(final_file, **move_params):
     elif move_params["auto"] or skip_static_hosts:
         move_file = False
     else:
-        prompt = ("Do you want to replace your existing hosts file " +
-                  "with the newly generated file?")
+        prompt = ("Do you want to replace your existing hosts file with the newly generated file?")
         move_file = query_yes_no(prompt)
 
     if move_file:
@@ -379,8 +370,7 @@ def prompt_for_move(final_file, **move_params):
 
 
 # Exclusion logic
-def display_exclusion_options(common_exclusions, exclusion_pattern,
-                              exclusion_regexes):
+def display_exclusion_options(common_exclusions, exclusion_pattern, exclusion_regexes):
     """
     Display the exclusion options to the user.
 
@@ -443,13 +433,11 @@ def gather_custom_exclusions(exclusion_pattern, exclusion_regexes):
     # We continue running this while-loop until the user
     # says that they have no more domains to exclude.
     while True:
-        domain_prompt = ("Enter the domain you want "
-                         "to exclude (e.g. facebook.com): ")
+        domain_prompt = ("Enter the domain you want to exclude (e.g. facebook.com): ")
         user_domain = raw_input(domain_prompt)
 
         if is_valid_domain_format(user_domain):
-            exclusion_regexes = exclude_domain(user_domain, exclusion_pattern,
-                                               exclusion_regexes)
+            exclusion_regexes = exclude_domain(user_domain, exclusion_pattern, exclusion_regexes)
 
         continue_prompt = "Do you have more domains you want to enter?"
         if not query_yes_no(continue_prompt):
@@ -543,8 +531,7 @@ def update_sources_data(sources_data, **sources_params):
 
     source_data_filename = sources_params["sourcedatafilename"]
 
-    for source in recursive_glob(sources_params["datapath"],
-                                 source_data_filename):
+    for source in recursive_glob(sources_params["datapath"], source_data_filename):
         update_file = open(source, "r")
         update_data = json.load(update_file)
         sources_data.append(update_data)
@@ -553,8 +540,7 @@ def update_sources_data(sources_data, **sources_params):
     for source in sources_params["extensions"]:
         source_dir = path_join_robust(
             sources_params["extensionspath"], source)
-        for update_file_path in recursive_glob(source_dir,
-                                               source_data_filename):
+        for update_file_path in recursive_glob(source_dir, source_data_filename):
             update_file = open(update_file_path, "r")
             update_data = json.load(update_file)
 
@@ -613,8 +599,7 @@ def update_all_sources(source_data_filename, host_filename):
         if update_data.get("transforms"):
             update_transforms = update_data["transforms"]
 
-        print("Updating source " + os.path.dirname(
-            source) + " from " + update_url)
+        print("Updating source " + os.path.dirname(source) + " from " + update_url)
 
         try:
             updated_file = get_file_by_url(update_url)
@@ -767,14 +752,12 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
 
     if output_file is None:
         # Another mode is required to read and write the file in Python 3
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"),
-                          "w+b" if PY3 else "w+")
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b" if PY3 else "w+")
     else:
         final_file = output_file
 
     merge_file.seek(0)  # reset file pointer
-    hostnames = {"localhost", "localhost.localdomain",
-                 "local", "broadcasthost"}
+    hostnames = {"localhost", "localhost.localdomain", "local", "broadcasthost"}
     exclusions = settings["exclusions"]
 
     for line in merge_file.readlines():
@@ -937,25 +920,19 @@ def write_opening_header(final_file, **header_params):
     write_data(final_file, "# This hosts file is a merged collection "
                            "of hosts from reputable sources,\n")
     write_data(final_file, "# with a dash of crowd sourcing via Github\n#\n")
-    write_data(final_file, "# Date: " + time.strftime(
-        "%B %d %Y", time.gmtime()) + "\n")
+    write_data(final_file, "# Date: " + time.strftime("%B %d %Y", time.gmtime()) + "\n")
 
     if header_params["extensions"]:
         write_data(final_file, "# Extensions added to this file: " + ", ".join(
             header_params["extensions"]) + "\n")
 
-    write_data(final_file, ("# Number of unique domains: " +
-                            "{:,}\n#\n".format(header_params[
-                                                   "numberofrules"])))
+    write_data(final_file, ("# Number of unique domains: {:,}\n#\n".format(header_params["numberofrules"])))
     write_data(final_file, "# Fetch the latest version of this file: "
-                           "https://raw.githubusercontent.com/"
-                           "StevenBlack/hosts/master/" +
-               path_join_robust(header_params["outputsubfolder"],
-                                "") + "hosts\n")
-    write_data(final_file, "# ==============================="
-                           "================================\n")
+                           "https://raw.githubusercontent.com/StevenBlack/hosts/master/" +
+               path_join_robust(header_params["outputsubfolder"], "") + "hosts\n")
     write_data(final_file, "# Project home page: https://github.com/StevenBlack/hosts\n")
     write_data(final_file, "# Project releases: https://github.com/StevenBlack/hosts/releases\n#\n")
+    write_data(final_file, "# ===============================================================\n")
     write_data(final_file, "\n")
 
     if not header_params["skipstatichosts"]:
@@ -1041,15 +1018,12 @@ def move_hosts_file_into_place(final_file):
     filename = os.path.abspath(final_file.name)
 
     if os.name == "posix":
-        print("Moving the file requires administrative privileges. "
-              "You might need to enter your password.")
+        print("Moving the file requires administrative privileges. You might need to enter your password.")
         if subprocess.call(SUDO + ["cp", filename, "/etc/hosts"]):
             print_failure("Moving the file failed.")
     elif os.name == "nt":
-        print("Automatically moving the hosts file "
-              "in place is not yet supported.")
-        print("Please move the generated file to "
-              "%SystemRoot%\system32\drivers\etc\hosts")
+        print("Automatically moving the hosts file in place is not yet supported.")
+        print("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")
 
 
 def flush_dns_cache():
@@ -1058,8 +1032,7 @@ def flush_dns_cache():
     """
 
     print("Flushing the DNS cache to utilize new hosts file...")
-    print("Flushing the DNS cache requires administrative privileges. " +
-          "You might need to enter your password.")
+    print("Flushing the DNS cache requires administrative privileges. You might need to enter your password.")
 
     dns_cache_found = False
 
@@ -1095,8 +1068,7 @@ def flush_dns_cache():
             for service_type in service_types:
                 service = service_type + ".service"
                 service_file = path_join_robust(system_dir, service)
-                service_msg = ("Flushing the DNS cache by "
-                               "restarting " + service + " {result}")
+                service_msg = ("Flushing the DNS cache by restarting " + service + " {result}")
 
                 if os.path.isfile(service_file):
                     dns_cache_found = True
@@ -1107,8 +1079,7 @@ def flush_dns_cache():
                         print_success(service_msg.format(result="succeeded"))
 
         dns_clean_file = "/etc/init.d/dns-clean"
-        dns_clean_msg = ("Flushing the DNS cache via "
-                         "dns-clean executable {result}")
+        dns_clean_msg = ("Flushing the DNS cache via dns-clean executable {result}")
 
         if os.path.isfile(dns_clean_file):
             dns_cache_found = True
@@ -1336,8 +1307,7 @@ def query_yes_no(question, default="yes"):
         elif choice in valid:
             reply = valid[choice]
         else:
-            print_failure("Please respond with 'yes' or 'no' "
-                          "(or 'y' or 'n').\n")
+            print_failure("Please respond with 'yes' or 'no' (or 'y' or 'n').\n")
 
     return reply == "yes"
 
@@ -1364,8 +1334,7 @@ def is_valid_domain_format(domain):
     domain_regex = re.compile("www\d{0,3}[.]|https?")
 
     if domain_regex.match(domain):
-        print("The domain " + domain +
-              " is not valid. Do not include "
+        print("The domain " + domain + " is not valid. Do not include "
               "www.domain.com or http(s)://domain.com. Try again.")
         return False
     else:
@@ -1434,8 +1403,7 @@ def path_join_robust(path, *paths):
 
         return os.path.join(path, *paths)
     except UnicodeDecodeError as e:
-        raise locale.Error("Unable to construct path. This is "
-                           "likely a LOCALE issue:\n\n" + str(e))
+        raise locale.Error("Unable to construct path. This is likely a LOCALE issue:\n\n" + str(e))
 
 
 # Colors
@@ -1461,8 +1429,7 @@ def supports_color():
     """
 
     sys_platform = sys.platform
-    supported = sys_platform != "Pocket PC" and (sys_platform != "win32"
-                                                 or "ANSICON" in os.environ)
+    supported = sys_platform != "Pocket PC" and (sys_platform != "win32" or "ANSICON" in os.environ)
 
     atty_connected = hasattr(sys.stdout, "isatty") and sys.stdout.isatty()
     return supported and atty_connected
