@@ -952,10 +952,10 @@ def write_opening_header(final_file, **header_params):
                            "StevenBlack/hosts/master/" +
                path_join_robust(header_params["outputsubfolder"],
                                 "") + "hosts\n")
-    write_data(final_file, "# Project home page: https://github.com/"
-                           "StevenBlack/hosts\n#\n")
     write_data(final_file, "# ==============================="
                            "================================\n")
+    write_data(final_file, "# Project home page: https://github.com/StevenBlack/hosts\n")
+    write_data(final_file, "# Project releases: https://github.com/StevenBlack/hosts/releases\n#\n")
     write_data(final_file, "\n")
 
     if not header_params["skipstatichosts"]:
