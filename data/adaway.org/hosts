@@ -2,9 +2,10 @@
 # Blocking mobile ad providers and some analytics providers
 # 
 # Contribute:
-# Create an issue at https://github.com/dschuermann/ad-away/issues
+# Create an issue at https://github.com/AdAway/AdAway/issues
 #
 # Changelog:
+# 2016-07-18 Now hosted on GitHub + Cloudflare
 # 2014-05-18 Now with a valid SSL certificate available at https://adaway.org/hosts.txt
 # 2013-03-29 Integrated some hosts from
 #            http://adblock.gjtech.net/?format=hostfile
@@ -33,7 +34,6 @@
 127.0.0.1 apps.buzzcity.net
 127.0.0.1 ads.mobgold.com
 127.0.0.1 android.bcfads.com
-127.0.0.1 req.appads.com
 127.0.0.1 show.buzzcity.net
 127.0.0.1 api.analytics.omgpop.com
 127.0.0.1 r.edge.inmobicdn.net
@@ -48,7 +48,6 @@
 127.0.0.1 static.estebull.com
 127.0.0.1 mobile.Banzai.it
 127.0.0.1 ads.xxxad.net
-127.0.0.1 hhbekxxw5d9e.pflexads.com
 127.0.0.1 img.ads.mojiva.com
 127.0.0.1 adcontent.saymedia.com
 127.0.0.1 ads.saymedia.com
@@ -100,7 +99,7 @@
 127.0.0.1 ads2.mediaarmor.com
 127.0.0.1 cdn.nearbyad.com
 127.0.0.1 ads.ookla.com
-127.0.0.1 mobiledl.adboe.com
+127.0.0.1 mobiledl.adobe.com
 127.0.0.1 ads.flurry.com
 127.0.0.1 gemini.yahoo.com
 
@@ -494,6 +493,9 @@
 127.0.0.1 dispatch.admixer.co.kr
 127.0.0.1 ifc.inmobi.com
 127.0.0.1 thinknear-hosted.thinknearhub.com
+
+# [https://play.google.com/store/apps/details?id=com.buymeapie.bmap]
+127.0.0.1 ads.adadapted.com
 
 #
 # ANALYTICS
