@@ -8,7 +8,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Thu, 29 Mar 2018 at 04:49:25 GMT
+# Last updated: Sun, 01 Apr 2018 at 20:20:58 GMT
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -72,6 +72,12 @@
 255.255.255.255	broadcasthost
 ::1		localhost
 127.0.0.1	local
+::1		ip6-localhost ip6-loopback
+fe00::0		ip6-localnet
+ff00::0		ip6-mcastprefix
+ff02::1		ip6-allnodes
+ff02::2		ip6-allrouters
+ff02::3		ip6-allhosts
 #fe80::1%lo0	localhost
 #
 
@@ -402,6 +408,7 @@
 0.0.0.0 api.bizographics.com
 0.0.0.0 api.gameanalytics.com
 0.0.0.0 api.infinario.com
+0.0.0.0 api.intentiq.com
 0.0.0.0 api.murdoog.com
 0.0.0.0 apis.murdoog.com
 0.0.0.0 api.tumra.com
@@ -486,7 +493,6 @@
 0.0.0.0 cashcounter.com
 0.0.0.0 cb1.counterbot.com
 0.0.0.0 cdn.oggifinogi.com
-0.0.0.0 cdns.gigya.com
 0.0.0.0 cdn-social.janrain.com
 0.0.0.0 cdn.taboolasyndication.com
 0.0.0.0 cdn.zarget.com
@@ -732,6 +738,7 @@
 0.0.0.0 delivery.loopingclick.com
 0.0.0.0 de.sitestat.com
 0.0.0.0 detectorcarecenter.in
+0.0.0.0 de.tynt.com
 0.0.0.0 dgit.com
 0.0.0.0 didtheyreadit.com		# email bugs
 0.0.0.0 digistats.westjet.com
@@ -825,6 +832,7 @@
 0.0.0.0 e-n.y-1shz2prbmdj6wvny-1sez2pra2dj6wjmyepdzadpwudj6x9ny-1seq-2-2.stats.esomniture.com
 0.0.0.0 e-ny.a-1shz2prbmdj6wvny-1sez2pra2dj6wjny-1jcpgbowsdj6x9ny-1seq-2-2.stats.esomniture.com
 0.0.0.0 es.optimost.com
+0.0.0.0 exch.quantserve.com
 0.0.0.0 extremereach.com
 0.0.0.0 eztrck.com
 0.0.0.0 fastcounter.bcentral.com
@@ -868,6 +876,7 @@
 0.0.0.0 gostats.com
 0.0.0.0 grafix.xxxcounter.com
 0.0.0.0 gscounters.us1.gigya.com
+0.0.0.0 gslbeacon.lijit.com
 0.0.0.0 gtcc1.acecounter.com
 0.0.0.0 g-wizzads.net
 0.0.0.0 hc2.humanclick.com
@@ -891,6 +900,7 @@
 0.0.0.0 htm.freelogs.com
 0.0.0.0 http300.edge.ru4.com
 0.0.0.0 iccee.com
+0.0.0.0 ic.tynt.com
 0.0.0.0 idm.hit.gemius.pl
 0.0.0.0 ieplugin.com
 0.0.0.0 iesnare.com		# See http://www.codingthewheel.com/archives/online-gambling-privacy-iesnare
@@ -954,6 +964,7 @@
 0.0.0.0 linktrack.bravenet.com
 0.0.0.0 livestats.atlanta-airport.com
 #0.0.0.0 ll.a.hulu.com	# Uncomment to block Hulu.
+0.0.0.0 loadus.exelator.com
 0.0.0.0 loc1.hitsprocessor.com
 0.0.0.0 log1.countomat.com
 0.0.0.0 log4.quintelligence.com
@@ -1014,6 +1025,7 @@
 0.0.0.0 metrics.al.com
 0.0.0.0 metrics.att.com
 0.0.0.0 metrics.boston.com
+0.0.0.0 metrics.brightcove.com
 0.0.0.0 metrics.cbc.ca
 0.0.0.0 metrics.cleveland.com
 0.0.0.0 metrics.cnn.com
@@ -1134,9 +1146,11 @@
 0.0.0.0 pix02.revsci.net
 0.0.0.0 pix03.revsci.net
 0.0.0.0 pix04.revsci.net
+0.0.0.0 pixel.advertising.com
 0.0.0.0 pixel.bilinmedia.net
 0.0.0.0 pixel-geo.prfct.co
 0.0.0.0 pixel.invitemedia.com
+0.0.0.0 pixel.staticworld.net
 0.0.0.0 pixel.tapad.com
 0.0.0.0 pmg.ad-logics.com
 0.0.0.0 pn2.adserver.yahoo.com
@@ -1158,6 +1172,7 @@
 0.0.0.0 proxy.sj3.marketscore.com
 0.0.0.0 proxy.sj4.marketscore.com
 0.0.0.0 p.twitter.com
+0.0.0.0 quantcast584928381.s.moatpixel.com
 0.0.0.0 quantserve.com #: Ad Tracking, JavaScript, etc.
 0.0.0.0 quareclk.com
 0.0.0.0 quicktrck.com
@@ -1444,6 +1459,7 @@
 0.0.0.0 s.youtube.com				# Blocking this will interfere with video watching history
 0.0.0.0 systweak.com
 #0.0.0.0 t2.hulu.com		# Uncomment to block Hulu.
+0.0.0.0 tag.crsspxl.com
 0.0.0.0 tagging.outrider.com
 0.0.0.0 tags.bkrtx.com
 0.0.0.0 talkcity.realtracker.com
@@ -4212,6 +4228,7 @@
 0.0.0.0 ac.tynt.com
 0.0.0.0 acvs.mediaonenetwork.net
 0.0.0.0 acvsrv.mediaonenetwork.net
+0.0.0.0 ad
 0.0.0.0 ad001.ru
 0.0.0.0 ad01.adonspot.com
 0.0.0.0 ad01.focalink.com
@@ -5042,6 +5059,7 @@
 0.0.0.0 ads.adroar.com
 0.0.0.0 ads.adsag.com
 0.0.0.0 ads.adsbookie.com
+0.0.0.0 ads-adseast.yldbt.com
 0.0.0.0 ads.adshareware.net
 0.0.0.0 ads.adsinimages.com
 0.0.0.0 ads.adsonar.com
@@ -5473,6 +5491,7 @@
 0.0.0.0 adserver-images.adikteev.com
 0.0.0.0 adserver.infinit.net
 0.0.0.0 adserver.infotiger.com
+0.0.0.0 adserver.intentiq.com
 0.0.0.0 adserver.interfree.it
 0.0.0.0 adserver.inwind.it
 0.0.0.0 adserver.ision.de
@@ -5604,6 +5623,8 @@
 0.0.0.0 adserv.free6.com
 0.0.0.0 adserv.geocomm.com
 0.0.0.0 adserv.iafrica.com
+0.0.0.0 adservice.google.ca
+0.0.0.0 adservice.google.com
 0.0.0.0 adservices.google.com
 0.0.0.0 adservices.picadmedia.com
 0.0.0.0 adservicestats.com
@@ -6058,6 +6079,7 @@
 0.0.0.0 ads.scabee.com
 0.0.0.0 ads.schwabtrader.com
 0.0.0.0 ads.scifi.com
+0.0.0.0 ads.scorecardresearch.com
 0.0.0.0 ads.scott-sports.com
 0.0.0.0 ads.scottusa.com
 0.0.0.0 ads.seattletimes.com
@@ -6487,6 +6509,7 @@
 0.0.0.0 ak.maxserving.com
 0.0.0.0 ako.cc
 0.0.0.0 ak.p.openx.net
+0.0.0.0 ak.sail-horizon.com
 0.0.0.0 aksdk-images.adikteev.com
 0.0.0.0 aktif.haberx.com
 0.0.0.0 al1.sharethis.com
@@ -6550,6 +6573,7 @@
 0.0.0.0 api.sagent.io
 0.0.0.0 api.shoppingminds.net
 0.0.0.0 api.viglink.com
+0.0.0.0 ap.lijit.com
 0.0.0.0 apopt.hbmediapro.com
 0.0.0.0 app1.letitbefaster.life
 0.0.0.0 app1.letitbefaster.website
@@ -6877,6 +6901,7 @@
 0.0.0.0 b.grabo.bg
 0.0.0.0 bhclicks.com
 0.0.0.0 bidclix.net
+0.0.0.0 bid.contextweb.com
 0.0.0.0 bid.openx.net
 0.0.0.0 bidsystem.com
 0.0.0.0 bidtraffic.com
@@ -7061,6 +7086,7 @@
 0.0.0.0 cd8iw9mh.cricket
 0.0.0.0 c.de.msn.com
 0.0.0.0 c.dk.msn.com
+0.0.0.0 cdm.unnoticeablegangrene.com
 0.0.0.0 cdn1.adexprt.com
 0.0.0.0 cdn1.ads.contentabc.com
 0.0.0.0 cdn1.ads.mofos.com
@@ -7125,6 +7151,7 @@
 0.0.0.0 cdn.freelac.com
 0.0.0.0 cdn.freelev.com
 0.0.0.0 cdn.geni.us
+0.0.0.0 cdn.getsmartcontent.com
 0.0.0.0 cdn.go.arbo.bbelements.com
 0.0.0.0 cdn.go.arbopl.bbelements.com
 0.0.0.0 cdn.go.cz.bbelements.com
@@ -7171,12 +7198,14 @@
 0.0.0.0 cdnw.ringtonepartner.com
 0.0.0.0 cdn.wwwpromoter.com
 0.0.0.0 cdn.yieldmedia.net
+0.0.0.0 cdn.yldbt.com
 0.0.0.0 cdn.yottos.com
 0.0.0.0 cdn.zeusclicks.com
 0.0.0.0 cds.adecn.com
 0.0.0.0 c.eblastengine.com
 0.0.0.0 cecash.com
 0.0.0.0 ced.sascdn.com
+0.0.0.0 ce.lijit.com
 0.0.0.0 cell-phone-giveaways.com
 0.0.0.0 cellphoneincentives.com
 0.0.0.0 cent.adbureau.net
@@ -7384,6 +7413,7 @@
 0.0.0.0 context5.kanoodle.com
 0.0.0.0 contextad.pl
 0.0.0.0 context.adshadow.net
+0.0.0.0 contextual.media.net
 0.0.0.0 contextweb.com
 0.0.0.0 conv.adengage.com
 0.0.0.0 conversantmedia.com
@@ -7620,6 +7650,7 @@
 0.0.0.0 downloads.larivieracasino.com
 0.0.0.0 downloads.mytvandmovies.com
 0.0.0.0 download.yesmessenger.com
+0.0.0.0 dp1.33across.com
 0.0.0.0 dqs001.adtech.de
 0.0.0.0 dqs001.adtech.fr
 0.0.0.0 dqs001.adtech.us
@@ -7632,6 +7663,7 @@
 0.0.0.0 ds.onet.pl
 0.0.0.0 ds.serving-sys.com
 0.0.0.0 d.sspcash.adxcore.com
+0.0.0.0 dt.adsafeprotected.com
 0.0.0.0 dt.linkpulse.com
 0.0.0.0 dtm.advertising.com
 0.0.0.0 dub.mobileads.msn.com
@@ -7732,6 +7764,7 @@
 0.0.0.0 eu.xtms.net
 0.0.0.0 eveley.club
 0.0.0.0 event-log.videe.tv
+0.0.0.0 events.kiosked.com
 0.0.0.0 events.streamrail.net
 0.0.0.0 eventtracker.videostrip.com
 0.0.0.0 excellent.michaelanthonyrobinson.com
@@ -7875,6 +7908,7 @@
 0.0.0.0 functional-business.com
 0.0.0.0 funtabsafe.com
 0.0.0.0 Fvid.atm.youku.com
+0.0.0.0 fw.adsafeprotected.com
 0.0.0.0 fwdservice.com
 #0.0.0.0 fwmrm.net	#may interfere with nhl.com
 0.0.0.0 fw.qq.com
@@ -7885,6 +7919,7 @@
 0.0.0.0 gadgeteer.pdamart.com
 0.0.0.0 g.admob.com
 0.0.0.0 g.adnxs.com
+0.0.0.0 gads.pubmatic.com
 0.0.0.0 gahu.hit.gemius.pl
 0.0.0.0 gam.adnxs.com
 0.0.0.0 game0516.cdn8-traffic68-server10.top
@@ -8259,6 +8294,7 @@
 0.0.0.0 images.trafficmp.com
 0.0.0.0 imarker.com
 0.0.0.0 imarker.ru
+0.0.0.0 imasdk.googleapis.com
 0.0.0.0 im.banner.t-online.de
 0.0.0.0 imc.l.qq.com
 0.0.0.0 i.media.cz
@@ -8407,6 +8443,7 @@
 0.0.0.0 j3safetyismyname.com
 0.0.0.0 j.adlooxtracking.com
 0.0.0.0 j.admob.com
+0.0.0.0 jadserve.postrelease.com
 0.0.0.0 jambocast.com
 0.0.0.0 jb9clfifs6.s.ad6media.fr
 0.0.0.0 jcarter.spinbox.net
@@ -8477,6 +8514,7 @@
 0.0.0.0 keywordblocks.com
 0.0.0.0 keywords.adtlgc.com
 0.0.0.0 khalto.info
+0.0.0.0 kiosked-d.openx.net
 0.0.0.0 kitaramarketplace.com
 0.0.0.0 kitaramedia.com
 0.0.0.0 kitaratrk.com
@@ -8745,6 +8783,7 @@
 0.0.0.0 media.elb-kind.de
 0.0.0.0 media.espace-plus.net
 0.0.0.0 media.fairlink.ru
+0.0.0.0 mediafaze.com
 0.0.0.0 media-fire.org
 0.0.0.0 mediafr.247realmedia.com
 0.0.0.0 media.funpic.de
@@ -8829,6 +8868,7 @@
 0.0.0.0 mjx.ads.nwsource.com
 0.0.0.0 mklik.gazeta.pl
 0.0.0.0 mktg-offer.com
+0.0.0.0 ml314.com
 0.0.0.0 mlntracker.com
 0.0.0.0 mlvc4zzw.space
 0.0.0.0 mm1.vip.sc1.admob.com
@@ -9485,6 +9525,7 @@
 0.0.0.0 proxy.blogads.com
 0.0.0.0 prpops.com
 0.0.0.0 pr.ydp.yahoo.com
+0.0.0.0 ps.eyeota.net
 0.0.0.0 pstatic.datafastguru.info
 0.0.0.0 ps-us.amazon-adsystem.com
 0.0.0.0 pt21na.com
@@ -9522,6 +9563,7 @@
 0.0.0.0 push-ad.com
 0.0.0.0 pussl22.com
 0.0.0.0 px10.net
+0.0.0.0 px.moatads.com
 0.0.0.0 q.admob.com
 0.0.0.0 q.azcentral.com
 0.0.0.0 q.b.h.cltomedia.info
@@ -9537,6 +9579,7 @@
 0.0.0.0 quickupdateserv.com
 0.0.0.0 quik-serv.com
 0.0.0.0 quizzitch.net
+0.0.0.0 qxxru.linknotification.com
 0.0.0.0 r1-ads.ace.advertising.com
 0.0.0.0 r2.adwo.com
 0.0.0.0 r7mediar.com
@@ -9994,6 +10037,7 @@
 0.0.0.0 sn.baventures.com
 0.0.0.0 snip.answers.com
 0.0.0.0 snipjs.answcdn.com
+0.0.0.0 s.ntv.io
 0.0.0.0 sobar.baidu.com
 0.0.0.0 sobartop.baidu.com
 0.0.0.0 sochr.com
@@ -10218,6 +10262,7 @@
 0.0.0.0 sync.credebat.com
 0.0.0.0 sync-eu.exe.bid
 0.0.0.0 sync.mathtag.com
+0.0.0.0 sync.pulseradius.com
 0.0.0.0 sync.upravel.com
 0.0.0.0 syndicated.mondominishows.com
 0.0.0.0 syndication.exdynsrv.com
@@ -10318,6 +10363,7 @@
 0.0.0.0 titan-gel-extra.com
 0.0.0.0 tk.baidu.com
 0.0.0.0 tkweb.baidu.com
+0.0.0.0 tlx.3lift.com
 0.0.0.0 t.mdn2015x1.com
 0.0.0.0 t.mdn2015x3.com
 0.0.0.0 tmp3.nexac.com
@@ -10526,6 +10572,7 @@
 0.0.0.0 usr.marketgid.com
 0.0.0.0 usswrite.com
 0.0.0.0 us-topsites.com
+0.0.0.0 us-u.openx.net
 0.0.0.0 ut.addthis.com
 0.0.0.0 utarget.ru
 0.0.0.0 utility.baidu.com
@@ -10779,6 +10826,7 @@
 0.0.0.0 welcome.pussysaga.com
 0.0.0.0 werkenbijliones.nl
 0.0.0.0 wf.basebanner.com
+0.0.0.0 whatishotnow.net
 0.0.0.0 w.ic.tynt.com
 0.0.0.0 widespace.com
 0.0.0.0 widget3.linkwithin.com
@@ -11025,6 +11073,7 @@
 0.0.0.0 www.allosponsor.com
 0.0.0.0 www.amazing-opportunities.info
 0.0.0.0 www.annuaire-autosurf.com
+0.0.0.0 www.anrdoezrs.net
 0.0.0.0 www.appafile.com
 0.0.0.0 www.apparelncs.com
 0.0.0.0 www.apparel-offer.com
