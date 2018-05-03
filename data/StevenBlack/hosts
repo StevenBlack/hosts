@@ -541,6 +541,16 @@
 # Connected User Experience and Diagnostic component endpoint for operating systems older than Windows 10
 0.0.0.0 vortex-win.data.microsoft.com
 
+Office 2016 'Connected User Experience' Telemetry
+# OneNote Telemetry Service
+0.0.0.0 mobile.pipe.aria.microsoft.com
+# Office Telemetry Upload Reporting – ‘Heartbeart’ and error events that occur on the client are uploaded to the telemetry service.
+0.0.0.0 nexus.officeapps.live.com
+# Office Rules Telemetry download – Informs the client about what data and events to upload to the telemetry service.
+0.0.0.0 nexusrules.officeapps.live.com
+# Telemetry and Reporting Service for Office apps
+0.0.0.0 telemetry.firstpartyapps.oaspapps.com
+
 # Spam domains
 # If your software is able, the below domains and all subdomains should be blocked
 127.0.0.1 angiemktg.com
