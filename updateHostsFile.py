@@ -23,7 +23,6 @@ import tempfile
 import time
 from glob import glob
 
-import lxml  # noqa: F401
 from bs4 import BeautifulSoup
 
 # Detecting Python 3 for version-dependent implementations
@@ -1229,7 +1228,7 @@ def get_file_by_url(url):
 
     try:
         f = urlopen(url)
-        soup = BeautifulSoup(f.read(), 'lxml').get_text()
+        soup = BeautifulSoup(f.read(), 'html.parser').get_text()
         return '\n'.join(list(map(domain_to_idna, soup.split('\n'))))
     except Exception:
         print("Problem getting file: ", url)
