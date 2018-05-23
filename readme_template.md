@@ -303,6 +303,8 @@ Open a Terminal and run with root privileges:
 
 **Arch Linux/Manjaro with Wicd**: `sudo systemctl restart wicd.service`
 
+**RHEL/Centos**: `sudo /etc/init.d/network restart`
+
 **Others**: Consult [this wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
 
 ### Mac OS X
