@@ -1063,6 +1063,15 @@ def flush_dns_cache():
                 else:
                     print_success(nscd_msg.format(result="succeeded"))
 
+        centos_file = "/etc/init.d/network"
+        centos_msg = "Flushing the DNS cache by restarting network {result}"
+
+        if os.path.isfile(centos_file):
+            if subprocess.call(SUDO + [centos_file, "restart"]):
+                print_failure(centos_msg.format(result="failed"))
+            else:
+                print_success(centos_msg.format(result="succeeded"))
+
         system_prefixes = ["/usr", ""]
         service_types = ["NetworkManager", "wicd", "dnsmasq", "networking"]
 

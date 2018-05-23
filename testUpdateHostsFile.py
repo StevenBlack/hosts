@@ -1186,7 +1186,7 @@ class TestFlushDnsCache(BaseStdout):
                 output = sys.stdout.getvalue()
                 self.assertIn(expected, output)
 
-    @mock.patch("os.path.isfile", side_effect=[True] + [False] * 10)
+    @mock.patch("os.path.isfile", side_effect=[True] + [False] * 11)
     @mock.patch("subprocess.call", return_value=0)
     def test_flush_posix(self, *_):
         with self.mock_property("platform.system") as obj:
@@ -1201,7 +1201,7 @@ class TestFlushDnsCache(BaseStdout):
                 output = sys.stdout.getvalue()
                 self.assertIn(expected, output)
 
-    @mock.patch("os.path.isfile", side_effect=[True] + [False] * 10)
+    @mock.patch("os.path.isfile", side_effect=[True] + [False] * 11)
     @mock.patch("subprocess.call", return_value=1)
     def test_flush_posix_fail(self, *_):
         with self.mock_property("platform.system") as obj:
@@ -1216,7 +1216,7 @@ class TestFlushDnsCache(BaseStdout):
                 output = sys.stdout.getvalue()
                 self.assertIn(expected, output)
 
-    @mock.patch("os.path.isfile", side_effect=[True, False,
+    @mock.patch("os.path.isfile", side_effect=[True, False, False,
                                                True] + [False] * 10)
     @mock.patch("subprocess.call", side_effect=[1, 0])
     def test_flush_posix_fail_then_succeed(self, *_):
