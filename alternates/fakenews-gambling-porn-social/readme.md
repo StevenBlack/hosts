@@ -1,16 +1,14 @@
 ![readme](https://user-images.githubusercontent.com/36028424/40330477-9df2c2e0-5d7f-11e8-8ac8-511d719a5eae.png)
 
+![latest release](https://img.shields.io/github/release/StevenBlack/hosts.svg)
 ![license](https://img.shields.io/github/license/StevenBlack/hosts.svg)
+![repo size](https://img.shields.io/github/repo-size/StevenBlack/hosts.svg)
 ![contributors](https://img.shields.io/github/contributors/StevenBlack/hosts.svg)
-![watchers](https://img.shields.io/github/watchers/StevenBlack/hosts.svg)
 [![Build Status](https://travis-ci.org/StevenBlack/hosts.svg?branch=master)](https://travis-ci.org/StevenBlack/hosts)
 
-![latest release](https://img.shields.io/github/release/StevenBlack/hosts.svg)
 ![commits since last release](https://img.shields.io/github/commits-since/StevenBlack/hosts/latest.svg)
 ![last commit](https://img.shields.io/github/last-commit/StevenBlack/hosts.svg)
-
 ![commit activity](https://img.shields.io/github/commit-activity/y/StevenBlack/hosts.svg)
-![repo size](https://img.shields.io/github/repo-size/StevenBlack/hosts.svg)
 
 
 # Unified hosts file with fakenews, gambling, porn, social extensions
