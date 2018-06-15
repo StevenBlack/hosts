@@ -18,7 +18,7 @@ into a unified hosts file with duplicates removed.  A variety of tailored hosts 
 
 * Last updated: **@GEN_DATE@**.
 * Here's the [raw hosts file @EXTENSIONS_HEADER@](https://raw.githubusercontent.com/StevenBlack/hosts/master/@SUBFOLDER@hosts) containing @NUM_ENTRIES@ entries.
-* Logo by @Tobaloidee
+* Logo by [@Tobaloidee](https://github.com/Tobaloidee).
 
 
 ### List of all hosts file variants
