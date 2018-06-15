@@ -18,7 +18,7 @@ into a unified hosts file with duplicates removed.  A variety of tailored hosts 
 
 * Last updated: **June 15 2018**.
 * Here's the [raw hosts file with social extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts) containing 57,699 entries.
-* Logo by @Tobaloidee
+* Logo by [@Tobaloidee](https://github.com/Tobaloidee).
 
 
 ### List of all hosts file variants
@@ -81,10 +81,10 @@ The unified hosts file is extensible.  Extensions are used to block domains by c
 
 Extensions are optional, and are added to the base hosts file.  Extensions are combined in variuous ways wth the default hosts file, and the combined products are stored in the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.
 
-For example, you may want to block porn domains in addition to the adware and malware we block by default.  That hosts file is stored in the porn subfolder of the [alternates](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.  
+For example, you may want to block porn domains in addition to the adware and malware we block by default.  That hosts file is stored in the porn subfolder of the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.  
 
-Data for extensions is stored in the [extensions folder](https://github.com/StevenBlack/hosts/tree/master/extensions). You manage extensions by curating the
-[extensions folder tree](https://github.com/StevenBlack/hosts/tree/master/extensions) where you will find the data for `fakenews`, `social`, `gambling`, and `porn` extension data that we maintain and provide for you.
+Data for extensions is stored in the [`extensions`](https://github.com/StevenBlack/hosts/tree/master/extensions) folder. You manage extensions by curating the
+[`extensions`](https://github.com/StevenBlack/hosts/tree/master/extensions)  folder tree where you will find the data for `fakenews`, `social`, `gambling`, and `porn` extension data that we maintain and provide for you.
 
 ## Generate your own unified hosts file
 
