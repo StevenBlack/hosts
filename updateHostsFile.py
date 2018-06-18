@@ -23,6 +23,10 @@ import tempfile
 import time
 from glob import glob
 
+# Set default encoding to UTF8
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 import lxml  # noqa: F401
 from bs4 import BeautifulSoup
 
