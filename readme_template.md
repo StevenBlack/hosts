@@ -304,6 +304,8 @@ Open a Terminal and run with root privileges:
 
 **Debian/Ubuntu** `sudo /etc/rc.d/init.d/nscd restart`
 
+**Linux Mint** `sudo /etc/init.d/dns-clean start`
+
 **Linux with systemd**: `sudo systemctl restart network.service`
 
 **Fedora Linux**: `sudo systemctl restart NetworkManager.service`
