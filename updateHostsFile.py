@@ -22,6 +22,7 @@ import sys
 import tempfile
 import time
 from glob import glob
+from imp import reload
 
 import lxml  # noqa: F401
 from bs4 import BeautifulSoup
