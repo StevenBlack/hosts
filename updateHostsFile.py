@@ -23,12 +23,12 @@ import tempfile
 import time
 from glob import glob
 
+import lxml  # noqa: F401
+from bs4 import BeautifulSoup
+
 # Set default encoding to UTF8
 reload(sys)
 sys.setdefaultencoding('utf8')
-
-import lxml  # noqa: F401
-from bs4 import BeautifulSoup
 
 # Detecting Python 3 for version-dependent implementations
 PY3 = sys.version_info >= (3, 0)
