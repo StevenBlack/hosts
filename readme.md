@@ -124,6 +124,7 @@ source's folder). Otherwise, it will use the `hosts` file that's already there.
 `--auto`, or `-a`: run the script without prompting. When `--auto` is invoked,
 
 * Hosts data sources, including extensions, are updated.
+* The domain hulu.com will be excluded.
 * No extensions are included by default.  Use the `--extensions` or `-e` flag
 to include any you want.
 * Your active hosts file is *not* replaced unless you include the `--replace`
