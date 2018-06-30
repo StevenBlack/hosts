@@ -31,10 +31,15 @@ PY3 = sys.version_info >= (3, 0)
 
 if PY3:
     from urllib.request import urlopen
+    from importlib import reload
     raw_input = input
 else:  # Python 2
     from urllib2 import urlopen
     raw_input = raw_input  # noqa
+
+# Set default encoding to UTF8
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
 if platform.system() == "OpenBSD":
