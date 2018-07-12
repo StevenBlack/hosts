@@ -7,7 +7,7 @@
 # This *must* be the first line: 127.0.0.1     localhost   #
 #                                                          #
 #**********************************************************#
-# --------------- Updated: April-15-2018 ----------------- #
+# --------------- Updated: July-11-2018 ------------------ #
 #**********************************************************#
 #                                                          #
 # Disclaimer: this file is free to use for personal use    #
@@ -65,6 +65,7 @@
 0.0.0.0 show.adclick.lv
 0.0.0.0 static.adclick.lv
 0.0.0.0 www.adclick.lv
+0.0.0.0 adclicks.io
 0.0.0.0 servedby.adcombination.com
 0.0.0.0 adcomplete.com
 0.0.0.0 www.adcomplete.com
@@ -2908,7 +2909,7 @@
 0.0.0.0 sb.monetate.net
 0.0.0.0 se.monetate.net
 0.0.0.0 ads2.msads.net
-0.0.0.0 cdn.mxpnl.com
+# 0.0.0.0 cdn.mxpnl.com #[affects optimum.com]
 0.0.0.0 rainbow-nl.mythings.com
 0.0.0.0 s.ntv.io
 0.0.0.0 adcache.nymag.com
@@ -3396,6 +3397,7 @@
 0.0.0.0 mcafee-home.7eer.net
 0.0.0.0 blobar.org
 0.0.0.0 api.circularhub.com
+0.0.0.0 mscom.demdex.net
 0.0.0.0 schwab.demdex.net
 0.0.0.0 geo.qualaroo.com
 0.0.0.0 collect.tealiumiq.com
@@ -3627,7 +3629,7 @@
 0.0.0.0 cdn.accelerator.arsdev.net
 0.0.0.0 d1v9u0bgi1uimx.cloudfront.net
 0.0.0.0 d169bbxks24g2u.cloudfront.net
-0.0.0.0 d2c8v52ll5s99u.cloudfront.net #[comscore][affects arstechnica.com]
+0.0.0.0 d2c8v52ll5s99u.cloudfront.net #[comscore][affects arstechnica/wired/vogue]
 0.0.0.0 d2cgumzzqhgmdu.cloudfront.net
 0.0.0.0 d24n15hnbwhuhn.cloudfront.net
 0.0.0.0 d2tgfbvjf3q6hn.cloudfront.net
@@ -3794,7 +3796,7 @@
 0.0.0.0 rumds.wpdigital.net
 0.0.0.0 i.yldbt.com
 0.0.0.0 z2.zedo.com
-0.0.0.0 segment-data.zqtk.net
+# 0.0.0.0 segment-data.zqtk.net #[affects wsj.com]
 # [Amazon.com][AS16509][54.224.0.0 - 54.239.255.255]
 0.0.0.0 s.206ads.com
 0.0.0.0 ib.3lift.com
@@ -4032,6 +4034,7 @@
 0.0.0.0 st.smartredirect.de
 0.0.0.0 tracking.sokrati.com
 0.0.0.0 traffic-offers.com
+0.0.0.0 collector-2398.tvsquared.com
 0.0.0.0 konnect.videoplaza.tv
 0.0.0.0 trk.vidible.tv
 # 0.0.0.0 id.washingtonpost.com #[affects login]
@@ -4417,6 +4420,7 @@
 0.0.0.0 ib.adnxs.com
 0.0.0.0 mob.adnxs.com
 0.0.0.0 nym1.ib.adnxs.com
+0.0.0.0 nym1-ib.adnxs.com
 0.0.0.0 sin1.g.adnxs.com
 0.0.0.0 go.adversal.com
 0.0.0.0 rtb-ads.avazu.net
@@ -11782,7 +11786,7 @@
 0.0.0.0 dnetshelter3.d.chango.com
 0.0.0.0 clkfeed.com
 0.0.0.0 clkoffers.com
-0.0.0.0 realtime.services.disqus.com
+# 0.0.0.0 realtime.services.disqus.com #[affects politicalwire.com]
 0.0.0.0 tempest.services.disqus.com
 0.0.0.0 eclkmpbn.com
 0.0.0.0 eclkmpsa.com
