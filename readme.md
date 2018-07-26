@@ -2,6 +2,7 @@
 **Take Note!**  We are in the process of [dropping support for Python 2.7](https://github.com/StevenBlack/hosts/issues/729).
 
 Soon, to self-generate hosts files, you'll need to use Python 3.
+
 ----
 
 ![readme](https://user-images.githubusercontent.com/36028424/40330477-9df2c2e0-5d7f-11e8-8ac8-511d719a5eae.png)
