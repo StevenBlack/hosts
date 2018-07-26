@@ -6,6 +6,8 @@
 # This Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
 
+from __future__ import (absolute_import, division, print_function, unicode_literals)
+
 import argparse
 import fnmatch
 import json
@@ -29,7 +31,8 @@ PY3 = sys.version_info >= (3, 0)
 
 if PY3:
     from urllib.request import urlopen
-else:
+    raw_input = input
+else:  # Python 2
     raise Exception('We do not support Python 2 anymore.')
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
@@ -74,7 +77,7 @@ def get_defaults():
         "readmetemplate": path_join_robust(BASEDIR_PATH, "readme_template.md"),
         "readmedata": {},
         "readmedatafilename": path_join_robust(BASEDIR_PATH, "readmeData.json"),
-        "exclusionpattern": r"([a-zA-Z\d-]+\.){0,}",
+        "exclusionpattern": "([a-zA-Z\d-]+\.){0,}",
         "exclusionregexs": [],
         "exclusions": [],
         "commonexclusions": ["hulu.com"],
@@ -184,12 +187,12 @@ def main():
     remove_old_hosts_file(settings["backup"])
     if settings["compress"]:
         # Another mode is required to read and write the file in Python 3
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b" if PY3 else "w+")
         compressed_file = tempfile.NamedTemporaryFile()
         remove_dups_and_excl(merge_file, exclusion_regexes, compressed_file)
         compress_file(compressed_file, settings["targetip"], final_file)
     elif settings["minimise"]:
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b" if PY3 else "w+")
         minimised_file = tempfile.NamedTemporaryFile()
         remove_dups_and_excl(merge_file, exclusion_regexes, minimised_file)
         minimise_file(minimised_file, settings["targetip"], final_file)
@@ -430,7 +433,7 @@ def gather_custom_exclusions(exclusion_pattern, exclusion_regexes):
     # says that they have no more domains to exclude.
     while True:
         domain_prompt = ("Enter the domain you want to exclude (e.g. facebook.com): ")
-        user_domain = input(domain_prompt)
+        user_domain = raw_input(domain_prompt)
 
         if is_valid_domain_format(user_domain):
             exclusion_regexes = exclude_domain(user_domain, exclusion_pattern, exclusion_regexes)
@@ -752,7 +755,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
 
     if output_file is None:
         # Another mode is required to read and write the file in Python 3
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b" if PY3 else "w+")
     else:
         final_file = output_file
 
@@ -790,7 +793,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
             keep_domain_comments=settings["keepdomaincomments"])
 
         for exclude in exclusions:
-            if re.search(r'[\s\.]' + re.escape(exclude) + r'\s', line):
+            if re.search('[\s\.]' + re.escape(exclude) + '\s', line):
                 write_line = False
                 break
 
@@ -1018,7 +1021,7 @@ def move_hosts_file_into_place(final_file):
     ----------
     final_file : file object
         The newly-created hosts file to move.
-    """  # noqa: W605
+    """
 
     filename = os.path.abspath(final_file.name)
 
@@ -1028,7 +1031,7 @@ def move_hosts_file_into_place(final_file):
             print_failure("Moving the file failed.")
     elif os.name == "nt":
         print("Automatically moving the hosts file in place is not yet supported.")
-        print("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")  # noqa: W605
+        print("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")
 
 
 def flush_dns_cache():
@@ -1256,7 +1259,13 @@ def write_data(f, data):
         The data to write to the file.
     """
 
-    f.write(bytes(data, "UTF-8"))
+    if PY3:
+        f.write(bytes(data, "UTF-8"))
+    else:
+        try:
+            f.write(str(data))
+        except UnicodeEncodeError:
+            f.write(str(data.encode("UTF-8")))
 
 
 def list_dir_no_hidden(path):
@@ -1274,7 +1283,7 @@ def list_dir_no_hidden(path):
 
 def query_yes_no(question, default="yes"):
     """
-    Ask a yes/no question via input() and get answer from the user.
+    Ask a yes/no question via raw_input() and get answer from the user.
 
     Inspired by the following implementation:
 
@@ -1307,7 +1316,7 @@ def query_yes_no(question, default="yes"):
     while not reply:
         sys.stdout.write(colorize(question, Colors.PROMPT) + prompt)
 
-        choice = input().lower()
+        choice = raw_input().lower()
         reply = None
 
         if default and not choice:
@@ -1339,7 +1348,7 @@ def is_valid_domain_format(domain):
         print("You didn't enter a domain. Try again.")
         return False
 
-    domain_regex = re.compile(r"www\d{0,3}[.]|https?")
+    domain_regex = re.compile("www\d{0,3}[.]|https?")
 
     if domain_regex.match(domain):
         print("The domain " + domain + " is not valid. Do not include "
