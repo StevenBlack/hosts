@@ -33,8 +33,7 @@ if PY3:
     from urllib.request import urlopen
     raw_input = input
 else:  # Python 2
-    from urllib2 import urlopen
-    raw_input = raw_input  # noqa
+    raise Exception('We do not support Python 2 anymore.')
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
 if platform.system() == "OpenBSD":
