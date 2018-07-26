@@ -13,9 +13,11 @@ import shutil
 import sys
 import tempfile
 import unittest
+import unittest.mock as mock
+from io import BytesIO, StringIO
 
 import updateHostsFile
-from updateHostsFile import (PY3, Colors, colorize, display_exclusion_options,
+from updateHostsFile import (Colors, colorize, display_exclusion_options,
                              domain_to_idna, exclude_domain, flush_dns_cache,
                              gather_custom_exclusions, get_defaults,
                              get_file_by_url, is_valid_domain_format,
@@ -29,14 +31,7 @@ from updateHostsFile import (PY3, Colors, colorize, display_exclusion_options,
                              update_sources_data, write_data,
                              write_opening_header)
 
-if PY3:
-    from io import BytesIO, StringIO
-    import unittest.mock as mock
-    unicode = str
-else:
-    from StringIO import StringIO
-    BytesIO = StringIO
-    import mock
+unicode = str
 
 
 # Test Helper Objects
@@ -51,10 +46,7 @@ class Base(unittest.TestCase):
         return "\\" if sys.platform == "win32" else "/"
 
     def assert_called_once(self, mock_method):
-        if PY3 and sys.version_info < (3, 6):
-            self.assertEqual(mock_method.call_count, 1)
-        else:
-            mock_method.assert_called_once()
+        self.assertEqual(mock_method.call_count, 1)
 
 
 class BaseStdout(Base):
@@ -81,10 +73,7 @@ class BaseMockDir(Base):
 
 
 def builtins():
-    if PY3:
-        return "builtins"
-    else:
-        return "__builtin__"
+    return "builtins"
 # End Test Helper Objects
 
 
