@@ -33,6 +33,7 @@ from updateHostsFile import (Colors, colorize, display_exclusion_options,
 
 unicode = str
 
+
 # Test Helper Objects
 class Base(unittest.TestCase):
 
