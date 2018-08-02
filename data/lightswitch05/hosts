@@ -1,7 +1,7 @@
 # Collection of Analytics, Ads, and tracking hosts to block.
 #
-# Released: 2018-07-26T13:21:29+00:00
-# Count: 7866 domains
+# Released: 2018-08-01T20:17:33+00:00
+# Count: 7994 domains
 # Details: https://github.com/lightswitch05/hosts
 # Issues: https://github.com/lightswitch05/hosts/issues
 # Source: https://raw.githubusercontent.com/lightswitch05/hosts/master/ads-and-tracking-extended.txt
@@ -54,6 +54,9 @@
 0.0.0.0 eb2.3lift.com
 0.0.0.0 na-eb2.3lift.com
 0.0.0.0 staging-tlx.3lift.com
+0.0.0.0 post.update.3lift.com
+0.0.0.0 s.update.3lift.com
+0.0.0.0 t.update.3lift.com
 0.0.0.0 us-east-tlx.3lift.com
 0.0.0.0 bugsnag.appstore.a2z.com
 0.0.0.0 dashboard.1p.bugsnag.appstore.a2z.com
@@ -69,9 +72,12 @@
 0.0.0.0 upload.aca.bugsnag.appstore.a2z.com
 0.0.0.0 builds.bugsnag.appstore.a2z.com
 0.0.0.0 dashboard.bugsnag.appstore.a2z.com
+0.0.0.0 builds.firetv.bugsnag.appstore.a2z.com
 0.0.0.0 dashboard.firetv.bugsnag.appstore.a2z.com
 0.0.0.0 hooks.firetv.bugsnag.appstore.a2z.com
 0.0.0.0 notify.firetv.bugsnag.appstore.a2z.com
+0.0.0.0 replicated.firetv.bugsnag.appstore.a2z.com
+0.0.0.0 sessions.firetv.bugsnag.appstore.a2z.com
 0.0.0.0 upload.firetv.bugsnag.appstore.a2z.com
 0.0.0.0 hooks.bugsnag.appstore.a2z.com
 0.0.0.0 notify.bugsnag.appstore.a2z.com
@@ -213,6 +219,22 @@
 0.0.0.0 ml.adrelevantis.com
 0.0.0.0 product.adrelevantis.com
 0.0.0.0 www.adrelevantis.com
+0.0.0.0 adrizer.com
+0.0.0.0 dashboard.adrizer.com
+0.0.0.0 www.dashboard.adrizer.com
+0.0.0.0 hooli.adrizer.com
+0.0.0.0 www.hooli.adrizer.com
+0.0.0.0 intersite.adrizer.com
+0.0.0.0 www.intersite.adrizer.com
+0.0.0.0 nucleus.adrizer.com
+0.0.0.0 periphery.adrizer.com
+0.0.0.0 pixel.adrizer.com
+0.0.0.0 www.pixel.adrizer.com
+0.0.0.0 recruiting.adrizer.com
+0.0.0.0 run.adrizer.com
+0.0.0.0 tanooki.adrizer.com
+0.0.0.0 toad.adrizer.com
+0.0.0.0 www.adrizer.com
 0.0.0.0 adroll.com
 0.0.0.0 blog.adroll.com
 0.0.0.0 content.adroll.com
@@ -247,6 +269,8 @@
 0.0.0.0 static.ads-twitter.com
 0.0.0.0 tap.ads-twitter.com
 0.0.0.0 www.ads-twitter.com
+0.0.0.0 adsorb.com
+0.0.0.0 collect.adsorb.com
 0.0.0.0 pixel.adssafeprotected.com
 0.0.0.0 adsttc.com
 0.0.0.0 afd.adsttc.com
@@ -563,6 +587,8 @@
 0.0.0.0 www.cme.adx1.com
 0.0.0.0 dad.adx1.com
 0.0.0.0 www.dad.adx1.com
+0.0.0.0 debug.adx1.com
+0.0.0.0 deploy.adx1.com
 0.0.0.0 dev.adx1.com
 0.0.0.0 www.dev.adx1.com
 0.0.0.0 dialin.adx1.com
@@ -658,6 +684,7 @@
 0.0.0.0 ww.adx1.com
 0.0.0.0 www.adx1.com
 0.0.0.0 xml.adx1.com
+0.0.0.0 1173.xml.adx1.com
 0.0.0.0 am-pops.xml.adx1.com
 0.0.0.0 www.am-pops.xml.adx1.com
 0.0.0.0 dropped.xml.adx1.com
@@ -704,6 +731,13 @@
 0.0.0.0 webmail.airvertiseme.com
 0.0.0.0 www.airvertiseme.com
 0.0.0.0 adserver.akamanda.com
+0.0.0.0 alexametrics.com
+0.0.0.0 certify.alexametrics.com
+0.0.0.0 certify-amp.alexametrics.com
+0.0.0.0 certify-js.alexametrics.com
+0.0.0.0 certify-stage.alexametrics.com
+0.0.0.0 js.alexametrics.com
+0.0.0.0 pixel.alexametrics.com
 0.0.0.0 algovid.com
 0.0.0.0 a.algovid.com
 0.0.0.0 c.algovid.com
@@ -728,6 +762,7 @@
 0.0.0.0 bis-ssp-ssl.allinviews.com
 0.0.0.0 bo.allinviews.com
 0.0.0.0 cbo.allinviews.com
+0.0.0.0 cor.allinviews.com
 0.0.0.0 dnt.allinviews.com
 0.0.0.0 inventory.allinviews.com
 0.0.0.0 openrtb.allinviews.com
@@ -789,9 +824,13 @@
 0.0.0.0 aax-us-pdx-rtb-adx.amazon-adsystem.com
 0.0.0.0 aax-us-west.amazon-adsystem.com
 0.0.0.0 aax-vx-eu-dub.amazon-adsystem.com
+0.0.0.0 aax-vx-eu-eu-west-1.amazon-adsystem.com
 0.0.0.0 aax-vx-fe-pdx.amazon-adsystem.com
+0.0.0.0 aax-vx-fe-us-west-2.amazon-adsystem.com
 0.0.0.0 aax-vx-us-iad.amazon-adsystem.com
 0.0.0.0 aax-vx-us-pdx.amazon-adsystem.com
+0.0.0.0 aax-vx-us-us-east-1.amazon-adsystem.com
+0.0.0.0 aax-vx-us-us-west-2.amazon-adsystem.com
 0.0.0.0 aax.amazon.amazon-adsystem.com
 0.0.0.0 assoc-msdk-cn.amazon-adsystem.com
 0.0.0.0 assoc-msdk-eu.amazon-adsystem.com
@@ -1046,6 +1085,8 @@
 0.0.0.0 www.secure.audiensis.com
 0.0.0.0 static.audiensis.com
 0.0.0.0 www.static.audiensis.com
+0.0.0.0 awltovhc.com
+0.0.0.0 www.awltovhc.com
 0.0.0.0 b2c.com
 0.0.0.0 adserver.b2c.com
 0.0.0.0 cdn.adserver.b2c.com
@@ -1070,6 +1111,7 @@
 0.0.0.0 bis-ssp-ssl.beeviewd.com
 0.0.0.0 bo.beeviewd.com
 0.0.0.0 cbo.beeviewd.com
+0.0.0.0 cor.beeviewd.com
 0.0.0.0 dnt.beeviewd.com
 0.0.0.0 inventory.beeviewd.com
 0.0.0.0 pl.beeviewd.com
@@ -1094,6 +1136,7 @@
 0.0.0.0 bis-ssp.bestcontentonline.com
 0.0.0.0 bis-ssp-ssl.bestcontentonline.com
 0.0.0.0 bo.bestcontentonline.com
+0.0.0.0 cor.bestcontentonline.com
 0.0.0.0 dnt.bestcontentonline.com
 0.0.0.0 inventory.bestcontentonline.com
 0.0.0.0 pl.bestcontentonline.com
@@ -1191,6 +1234,10 @@
 0.0.0.0 heatmap.buzzdeck.com
 0.0.0.0 pixel.buzzdeck.com
 0.0.0.0 www.buzzdeck.com
+0.0.0.0 campaign-archive.com
+0.0.0.0 us15.campaign-archive.com
+0.0.0.0 us16.campaign-archive.com
+0.0.0.0 us5.campaign-archive.com
 0.0.0.0 beacon.campaigndeputy.com
 0.0.0.0 casalemedia.com
 0.0.0.0 a1899.casalemedia.com
@@ -1573,6 +1620,7 @@
 0.0.0.0 start.driftt.com
 0.0.0.0 status.driftt.com
 0.0.0.0 www.driftt.com
+0.0.0.0 beacon.dropbox.com
 0.0.0.0 marketing.dropbox.com
 0.0.0.0 pixel.duckduckgo.com
 0.0.0.0 dynamicyield.com
@@ -1719,6 +1767,7 @@
 0.0.0.0 bf.dynatrace.com
 0.0.0.0 ca.dynatrace.com
 0.0.0.0 www.ca.dynatrace.com
+0.0.0.0 ci360.dynatrace.com
 0.0.0.0 community.dynatrace.com
 0.0.0.0 davis.dynatrace.com
 0.0.0.0 www.davis.dynatrace.com
@@ -1940,6 +1989,18 @@
 0.0.0.0 etinteractive.exacttarget.com
 0.0.0.0 events.exacttarget.com
 0.0.0.0 github.exacttarget.com
+0.0.0.0 assets.github.exacttarget.com
+0.0.0.0 avatars.github.exacttarget.com
+0.0.0.0 codeload.github.exacttarget.com
+0.0.0.0 gist.github.exacttarget.com
+0.0.0.0 gist-assets.github.exacttarget.com
+0.0.0.0 gist-raw.github.exacttarget.com
+0.0.0.0 media.github.exacttarget.com
+0.0.0.0 pages.github.exacttarget.com
+0.0.0.0 raw.github.exacttarget.com
+0.0.0.0 render.github.exacttarget.com
+0.0.0.0 reply.github.exacttarget.com
+0.0.0.0 uploads.github.exacttarget.com
 0.0.0.0 global.exacttarget.com
 0.0.0.0 auth.global.exacttarget.com
 0.0.0.0 prg-image.global.exacttarget.com
@@ -2259,6 +2320,13 @@
 0.0.0.0 fanbread.com
 0.0.0.0 s1.fanbread.com
 0.0.0.0 s2.fanbread.com
+0.0.0.0 fgl.com
+0.0.0.0 blog.fgl.com
+0.0.0.0 dashboard.fgl.com
+0.0.0.0 enhance.fgl.com
+0.0.0.0 enhance-config.fgl.com
+0.0.0.0 home.fgl.com
+0.0.0.0 home-staging.fgl.com
 0.0.0.0 metrics.fidelity.com
 0.0.0.0 www.metrics.fidelity.com
 0.0.0.0 fiksu.com
@@ -3895,6 +3963,7 @@
 0.0.0.0 ldap.gaeadata.com
 0.0.0.0 ldap-admin.gaeadata.com
 0.0.0.0 pixel.getchute.com
+0.0.0.0 lb0-telemetry-prod-us-east-1.servers.getgo.com
 0.0.0.0 telemetry.servers.getgo.com
 0.0.0.0 analytics.getpostman.com
 0.0.0.0 getsitecontrol.com
@@ -4090,6 +4159,7 @@
 0.0.0.0 rp.gwallet.com
 0.0.0.0 static.h-bid.com
 0.0.0.0 dev.static.h-bid.com
+0.0.0.0 smetrics.hbogo.com
 0.0.0.0 metrics.hbonow.com
 0.0.0.0 smetrics.hbonow.com
 0.0.0.0 fs-client-logger.herokuapp.com
@@ -4195,6 +4265,7 @@
 0.0.0.0 bis-ssp.installfarm.com
 0.0.0.0 bis-ssp-ssl.installfarm.com
 0.0.0.0 bo.installfarm.com
+0.0.0.0 cor.installfarm.com
 0.0.0.0 dnt.installfarm.com
 0.0.0.0 inventory.installfarm.com
 0.0.0.0 pl.installfarm.com
@@ -4350,6 +4421,7 @@
 0.0.0.0 airflow-dev.etl.us-east-1.kops.kargo.com
 0.0.0.0 airflow-prod.etl.us-east-1.kops.kargo.com
 0.0.0.0 mgmt.us-east-1.kops.kargo.com
+0.0.0.0 devops-dashboard.mgmt.us-east-1.kops.kargo.com
 0.0.0.0 rancher.mgmt.us-east-1.kops.kargo.com
 0.0.0.0 vault-ui.mgmt.us-east-1.kops.kargo.com
 0.0.0.0 prod.us-east-1.kops.kargo.com
@@ -4402,6 +4474,7 @@
 0.0.0.0 marketplace-test.kargo.com
 0.0.0.0 mason.kargo.com
 0.0.0.0 ops.kargo.com
+0.0.0.0 devops-dashboard.ops.kargo.com
 0.0.0.0 prg.kargo.com
 0.0.0.0 www.prg.kargo.com
 0.0.0.0 prg-dev.kargo.com
@@ -4480,6 +4553,13 @@
 0.0.0.0 grtb-nj.lfstmedia.com
 0.0.0.0 njadxrtb.lfstmedia.com
 0.0.0.0 s2s.lfstmedia.com
+0.0.0.0 liadm.com
+0.0.0.0 b-code.liadm.com
+0.0.0.0 ci.liadm.com
+0.0.0.0 d.liadm.com
+0.0.0.0 www.d.liadm.com
+0.0.0.0 p.liadm.com
+0.0.0.0 www.p.liadm.com
 0.0.0.0 lifestreet.com
 0.0.0.0 www.lifestreet.com
 0.0.0.0 lijit.com
@@ -4568,11 +4648,21 @@
 0.0.0.0 gw.localytics.com
 0.0.0.0 lyssh.gw.localytics.com
 0.0.0.0 two-ply.gw.localytics.com
+0.0.0.0 two-ply-dev.gw.localytics.com
 0.0.0.0 info.localytics.com
 0.0.0.0 profileview.localytics.com
 0.0.0.0 sandbox53.localytics.com
 0.0.0.0 api.sandbox53.localytics.com
+0.0.0.0 workflows.dashboard.sandbox53.localytics.com
+0.0.0.0 api.chillyc.env.sandbox53.localytics.com
+0.0.0.0 api.dans-parsley-change-test.env.sandbox53.localytics.com
+0.0.0.0 api.final.env.sandbox53.localytics.com
+0.0.0.0 api.josh.env.sandbox53.localytics.com
+0.0.0.0 api.nonewlines.env.sandbox53.localytics.com
+0.0.0.0 api.sandbox.env.sandbox53.localytics.com
 0.0.0.0 api.tutorial.env.sandbox53.localytics.com
+0.0.0.0 api.tutorial-sharing.env.sandbox53.localytics.com
+0.0.0.0 api.tutorial-sharing-again.env.sandbox53.localytics.com
 0.0.0.0 neophyte.sandbox53.localytics.com
 0.0.0.0 spa-login-ui.sandbox53.localytics.com
 0.0.0.0 spa-orch-ui.sandbox53.localytics.com
@@ -4588,6 +4678,7 @@
 0.0.0.0 data.m-freeway.com
 0.0.0.0 graph.m-freeway.com
 0.0.0.0 www.m-freeway.com
+0.0.0.0 magic-analytics.magmic.com
 0.0.0.0 telemetry.malwarebytes.com
 0.0.0.0 marinsm.com
 0.0.0.0 pro.marinsm.com
@@ -5197,6 +5288,7 @@
 0.0.0.0 bis-ssp-ssl.placeyourview.com
 0.0.0.0 bo.placeyourview.com
 0.0.0.0 cbo.placeyourview.com
+0.0.0.0 cor.placeyourview.com
 0.0.0.0 dnt.placeyourview.com
 0.0.0.0 pl.placeyourview.com
 0.0.0.0 platform-api.placeyourview.com
@@ -5483,6 +5575,12 @@
 0.0.0.0 apps.shareaholic.com
 0.0.0.0 support.shareaholic.com
 0.0.0.0 www.shareaholic.com
+0.0.0.0 shareasale.com
+0.0.0.0 miner.shareasale.com
+0.0.0.0 www.miner.shareasale.com
+0.0.0.0 recruiting.shareasale.com
+0.0.0.0 www.recruiting.shareasale.com
+0.0.0.0 static.shareasale.com
 0.0.0.0 sharethis.com
 0.0.0.0 data.sharethis.com
 0.0.0.0 developer.sharethis.com
@@ -5711,6 +5809,8 @@
 0.0.0.0 www.cf.ssacdn.com
 0.0.0.0 cncn.ssacdn.com
 0.0.0.0 www.cncn.ssacdn.com
+0.0.0.0 cxcc.ssacdn.com
+0.0.0.0 www.cxcc.ssacdn.com
 0.0.0.0 gcdn.ssacdn.com
 0.0.0.0 www.gcdn.ssacdn.com
 0.0.0.0 itcn.ssacdn.com
@@ -6049,6 +6149,7 @@
 0.0.0.0 autodiscover.tritondigital.com
 0.0.0.0 blog.tritondigital.com
 0.0.0.0 info.tritondigital.com
+0.0.0.0 int.tritondigital.com
 0.0.0.0 lt200.tritondigital.com
 0.0.0.0 lt201.tritondigital.com
 0.0.0.0 lt202.tritondigital.com
@@ -6365,6 +6466,7 @@
 0.0.0.0 rptrcks.walmart.com
 0.0.0.0 wavesecure.com
 0.0.0.0 rdp42mms.wavesecure.com
+0.0.0.0 www.wavesecure.com
 0.0.0.0 ads-resources.waze.com
 0.0.0.0 ads-resources-legacy.waze.com
 0.0.0.0 advil.waze.com
@@ -6388,6 +6490,7 @@
 0.0.0.0 playdemic.r.wbinsights.com
 0.0.0.0 zeppelin.wbinsights.com
 0.0.0.0 playdemic.zeppelin.wbinsights.com
+0.0.0.0 ad.cc.webmd.com
 0.0.0.0 tracking.weiboniu.com
 0.0.0.0 iad.mediaplex.bfp.dotomi.weighted.com
 0.0.0.0 acquisition-tracker.wix.com
@@ -6501,6 +6604,8 @@
 0.0.0.0 nj1.yext.com
 0.0.0.0 docker.jfrog-poc.nj1.yext.com
 0.0.0.0 www.docker.jfrog-poc.nj1.yext.com
+0.0.0.0 kube.nj1.yext.com
+0.0.0.0 kube-sbx.nj1.yext.com
 0.0.0.0 offers.yext.com
 0.0.0.0 office.yext.com
 0.0.0.0 directory.office.yext.com
@@ -6520,6 +6625,8 @@
 0.0.0.0 sustainability.yext.com
 0.0.0.0 techops.yext.com
 0.0.0.0 www.techops.yext.com
+0.0.0.0 kube.tx1.yext.com
+0.0.0.0 kube-sbx.tx1.yext.com
 0.0.0.0 sourcegraph.uc1.yext.com
 0.0.0.0 www.sourcegraph.uc1.yext.com
 0.0.0.0 yext-pixel.com
@@ -6573,6 +6680,11 @@
 0.0.0.0 braze.eu
 0.0.0.0 fra-01.braze.eu
 0.0.0.0 praxis.fra-01.braze.eu
+0.0.0.0 mediadelivery.fi
+0.0.0.0 is.mediadelivery.fi
+0.0.0.0 keepass.fr
+0.0.0.0 www.keepass.fr
+0.0.0.0 head
 0.0.0.0 pixel.affcamp.co.in
 0.0.0.0 www.pixel.affcamp.co.in
 0.0.0.0 applifier.info
@@ -6613,6 +6725,7 @@
 0.0.0.0 origin-console.backtrace.io
 0.0.0.0 packages.backtrace.io
 0.0.0.0 proxy01.backtrace.io
+0.0.0.0 releases.backtrace.io
 0.0.0.0 saml.backtrace.io
 0.0.0.0 www.signup.backtrace.io
 0.0.0.0 sp.backtrace.io
@@ -6770,7 +6883,6 @@
 0.0.0.0 www.heatmap.it
 0.0.0.0 checkyourmoneybox98.loan
 0.0.0.0 best5768.checkyourmoneybox98.loan
-0.0.0.0 buff.ly
 0.0.0.0 pixel.marketing
 0.0.0.0 clients.pixel.marketing
 0.0.0.0 www.clients.pixel.marketing
@@ -6875,6 +6987,8 @@
 0.0.0.0 www.x.bidswitch.net
 0.0.0.0 recommenderprodwestus.cloudapp.net
 0.0.0.0 sconsentit903.cloudapp.net
+0.0.0.0 sconsentit904.cloudapp.net
+0.0.0.0 sconsentit910.cloudapp.net
 0.0.0.0 taboola.com.cdn.cloudflare.net
 0.0.0.0 vidstat.taboola.com.cdn.cloudflare.net
 0.0.0.0 assets-auto.rbl.ms.cdn.cloudflare.net
@@ -6887,6 +7001,15 @@
 0.0.0.0 www.cxlaxexprswy01.smo.connexity.net
 0.0.0.0 cxlaxexprswy02.smo.connexity.net
 0.0.0.0 www.cxlaxexprswy02.smo.connexity.net
+0.0.0.0 content-ad.net
+0.0.0.0 api.content-ad.net
+0.0.0.0 dev1.api.content-ad.net
+0.0.0.0 dev2.api.content-ad.net
+0.0.0.0 dev3.api.content-ad.net
+0.0.0.0 banner.content-ad.net
+0.0.0.0 www.banner.content-ad.net
+0.0.0.0 click.content-ad.net
+0.0.0.0 px.content-ad.net
 0.0.0.0 criteo.net
 0.0.0.0 as.criteo.net
 0.0.0.0 hk.as.criteo.net
@@ -6945,6 +7068,7 @@
 0.0.0.0 swa.demdex.net
 0.0.0.0 fast.swa.demdex.net
 0.0.0.0 ubisoftinternational.demdex.net
+0.0.0.0 vanguard.demdex.net
 0.0.0.0 verizon.demdex.net
 0.0.0.0 doubleclick.net
 0.0.0.0 au.doubleclick.net
@@ -6970,6 +7094,7 @@
 0.0.0.0 uk.doubleclick.net
 0.0.0.0 dt-cdn.net
 0.0.0.0 rubiconproject.dyns.net
+0.0.0.0 cs254.wac.edgecastcdn.net
 0.0.0.0 measuread.com.edgekey.net
 0.0.0.0 wildcard.measuread.com.edgekey.net
 0.0.0.0 moatads.com.edgekey.net
@@ -7154,6 +7279,9 @@
 0.0.0.0 www.link.krxd.net
 0.0.0.0 maxis.krxd.net
 0.0.0.0 userdata-maxis.krxd.net
+0.0.0.0 lsimg.net
+0.0.0.0 i.lsimg.net
+0.0.0.0 www.i.lsimg.net
 0.0.0.0 marketo.net
 0.0.0.0 atl-dc01.marketo.net
 0.0.0.0 www.atl-dc01.marketo.net
@@ -7201,6 +7329,7 @@
 0.0.0.0 af.monetate.net
 0.0.0.0 af2.monetate.net
 0.0.0.0 engine.monetate.net
+0.0.0.0 looker.monetate.net
 0.0.0.0 marketer.monetate.net
 0.0.0.0 marketer-next-release.monetate.net
 0.0.0.0 sb.monetate.net
@@ -7294,6 +7423,7 @@
 0.0.0.0 adpdl.ssl.d2.sc.omtrdc.net
 0.0.0.0 cbsi.com.ssl.d2.sc.omtrdc.net
 0.0.0.0 consumerreports.org.ssl.d2.sc.omtrdc.net
+0.0.0.0 vanguard.d2.sc.omtrdc.net
 0.0.0.0 d3.sc.omtrdc.net
 0.0.0.0 kroger.sc.omtrdc.net
 0.0.0.0 pandoramedia.sc.omtrdc.net
@@ -7360,6 +7490,7 @@
 0.0.0.0 white.soju.openx.net
 0.0.0.0 yellow.soju.openx.net
 0.0.0.0 us-u.openx.net
+0.0.0.0 usatodaysports-d.openx.net
 0.0.0.0 www.openx.net
 0.0.0.0 pixel.optimalq.net
 0.0.0.0 admin.pixel.optimalq.net
@@ -7513,6 +7644,9 @@
 0.0.0.0 scrserv.ad.yieldmanager.net
 0.0.0.0 srv-wa.ad.yieldmanager.net
 0.0.0.0 dp.yieldmanager.net
+0.0.0.0 ywxi.net
+0.0.0.0 cdn.ywxi.net
+0.0.0.0 www.cdn.ywxi.net
 0.0.0.0 a.pub.network
 0.0.0.0 eazybiz.ng
 0.0.0.0 apidemo.eazybiz.ng
@@ -7563,6 +7697,7 @@
 0.0.0.0 consentmanager.mgr.consensu.org
 0.0.0.0 conversant.mgr.consensu.org
 0.0.0.0 cdn.conversant.mgr.consensu.org
+0.0.0.0 cookieinformation.mgr.consensu.org
 0.0.0.0 widget.databoxer.mgr.consensu.org
 0.0.0.0 dev.widget.databoxer.mgr.consensu.org
 0.0.0.0 widget-dev.databoxer.mgr.consensu.org
@@ -7580,6 +7715,7 @@
 0.0.0.0 www.liqwid.mgr.consensu.org
 0.0.0.0 cmp.madvertise.mgr.consensu.org
 0.0.0.0 onetag.mgr.consensu.org
+0.0.0.0 cookies-dev.onetrust.mgr.consensu.org
 0.0.0.0 cookies-prod.onetrust.mgr.consensu.org
 0.0.0.0 pluto.mgr.consensu.org
 0.0.0.0 staging.pluto.mgr.consensu.org
@@ -7792,6 +7928,7 @@
 0.0.0.0 bis-ssl.shoofle.tv
 0.0.0.0 bis-ssp.shoofle.tv
 0.0.0.0 bis-ssp-ssl.shoofle.tv
+0.0.0.0 cor.shoofle.tv
 0.0.0.0 dnt.shoofle.tv
 0.0.0.0 inventory.shoofle.tv
 0.0.0.0 openrtb.shoofle.tv
@@ -7863,16 +8000,6 @@
 0.0.0.0 wf.adserve.video
 0.0.0.0 www.wf.adserve.video
 0.0.0.0 www.adserve.video
-0.0.0.0 adis.ws
-0.0.0.0 apps.artifacts.adis.ws
-0.0.0.0 qa.aws.adis.ws
-0.0.0.0 c1.adis.ws
-0.0.0.0 dev.adis.ws
-0.0.0.0 staging-content-uat.dev.adis.ws
-0.0.0.0 apps.dev-artifacts.adis.ws
-0.0.0.0 i1.adis.ws
-0.0.0.0 i2.adis.ws
-0.0.0.0 s2.adis.ws
 0.0.0.0 marketingmachine.co.za
 0.0.0.0 autodiscover.marketingmachine.co.za
 0.0.0.0 cpanel.marketingmachine.co.za
