@@ -904,44 +904,10 @@ class TestWriteOpeningHeader(BaseMockDir):
         ):
             self.assertNotIn(expected, contents)
 
-    def test_no_preamble(self):
-        # We should not even attempt to read this, as it is a directory.
-        hosts_dir = os.path.join(self.test_dir, "myhosts")
-        os.mkdir(hosts_dir)
-
-        kwargs = dict(extensions="", outputsubfolder="",
-                      numberofrules=5, skipstatichosts=True)
-
-        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
-            updateHostsFile.BASEDIR_PATH = self.test_dir
-            write_opening_header(self.final_file, **kwargs)
-
-        contents = self.final_file.getvalue()
-        contents = contents.decode("UTF-8")
-
-        # Expected contents.
-        for expected in (
-            "# This hosts file is a merged collection",
-            "# with a dash of crowd sourcing via Github",
-            "# Number of unique domains: {count}".format(
-                count=kwargs["numberofrules"]),
-            "Fetch the latest version of this file:",
-            "Project home page: https://github.com/StevenBlack/hosts",
-        ):
-            self.assertIn(expected, contents)
-
-        # Expected non-contents.
-        for expected in (
-            "# Extensions added to this file:",
-            "127.0.0.1 localhost",
-            "127.0.0.1 local",
-            "127.0.0.53",
-            "127.0.1.1",
-        ):
-            self.assertNotIn(expected, contents)
-
-    def test_preamble(self):
+    def _check_preamble(self, check_copy):
         hosts_file = os.path.join(self.test_dir, "myhosts")
+        hosts_file += ".example" if check_copy else ""
+
         with open(hosts_file, "w") as f:
             f.write("peter-piper-picked-a-pepper")
 
@@ -976,6 +942,12 @@ class TestWriteOpeningHeader(BaseMockDir):
             "127.0.1.1",
         ):
             self.assertNotIn(expected, contents)
+
+    def test_preamble_exists(self):
+        self._check_preamble(True)
+
+    def test_preamble_copy(self):
+        self._check_preamble(False)
 
     def tearDown(self):
         super(TestWriteOpeningHeader, self).tearDown()
