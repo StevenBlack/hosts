@@ -323,6 +323,21 @@ Open a Terminal and run with root privileges:
 
 **RHEL/Centos**: `sudo /etc/init.d/network restart`
 
+**FreeBSD**: `sudo service nscd restart`
+
+To enable the `nscd` daemon initially, it is recommended that you run the following commands:
+
+```
+sudo sysrc nscd_enable="YES""
+sudo service nscd start
+```
+
+Then modify the `hosts` line in your `/etc/nsswitch.conf` file to the following:
+
+```
+hosts: cache files dns
+```
+
 **Others**: Consult [this wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
 
 ### Mac OS X

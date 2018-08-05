@@ -1097,7 +1097,7 @@ def flush_dns_cache():
                         print_success(service_msg.format(result="succeeded"))
 
         dns_clean_file = "/etc/init.d/dns-clean"
-        dns_clean_msg = ("Flushing the DNS cache via dns-clean executable {result}")
+        dns_clean_msg = "Flushing the DNS cache via dns-clean executable {result}"
 
         if os.path.isfile(dns_clean_file):
             dns_cache_found = True
