@@ -328,7 +328,7 @@ Open a Terminal and run with root privileges:
 To enable the `nscd` daemon initially, it is recommended that you run the following commands:
 
 ```
-sudo sysrc nscd_enable="YES""
+sudo sysrc nscd_enable="YES"
 sudo service nscd start
 ```
 
