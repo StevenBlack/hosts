@@ -43,7 +43,7 @@ class Base(unittest.TestCase):
 
     @property
     def sep(self):
-        return "\\" if sys.platform == "win32" else "/"
+        return os.sep
 
     def assert_called_once(self, mock_method):
         self.assertEqual(mock_method.call_count, 1)
