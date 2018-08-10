@@ -74,7 +74,7 @@ def get_defaults():
         "readmetemplate": path_join_robust(BASEDIR_PATH, "readme_template.md"),
         "readmedata": {},
         "readmedatafilename": path_join_robust(BASEDIR_PATH, "readmeData.json"),
-        "exclusionpattern": "([a-zA-Z\d-]+\.){0,}",
+        "exclusionpattern": r"([a-zA-Z\d-]+\.){0,}",
         "exclusionregexs": [],
         "exclusions": [],
         "commonexclusions": ["hulu.com"],
@@ -790,7 +790,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
             keep_domain_comments=settings["keepdomaincomments"])
 
         for exclude in exclusions:
-            if re.search('[\s\.]' + re.escape(exclude) + '\s', line):
+            if re.search(r'[\s\.]' + re.escape(exclude) + r'\s', line):
                 write_line = False
                 break
 
@@ -1018,7 +1018,7 @@ def move_hosts_file_into_place(final_file):
     ----------
     final_file : file object
         The newly-created hosts file to move.
-    """
+    """  # noqa: W605
 
     filename = os.path.abspath(final_file.name)
 
@@ -1028,7 +1028,7 @@ def move_hosts_file_into_place(final_file):
             print_failure("Moving the file failed.")
     elif os.name == "nt":
         print("Automatically moving the hosts file in place is not yet supported.")
-        print("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")
+        print("Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts")  # noqa: W605
 
 
 def flush_dns_cache():
@@ -1339,7 +1339,7 @@ def is_valid_domain_format(domain):
         print("You didn't enter a domain. Try again.")
         return False
 
-    domain_regex = re.compile("www\d{0,3}[.]|https?")
+    domain_regex = re.compile(r"www\d{0,3}[.]|https?")
 
     if domain_regex.match(domain):
         print("The domain " + domain + " is not valid. Do not include "
