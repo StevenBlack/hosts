@@ -7,7 +7,6 @@
 
 import json
 import os
-import sys
 import time
 from string import Template
 
@@ -75,17 +74,15 @@ def main():
         with open(os.path.join(data[key]["location"],
                                README_FILENAME), "wt") as out:
             for line in open(README_TEMPLATE):
-                line = line.replace('@GEN_DATE@', time.strftime("%B %d %Y",
-                                                                time.gmtime()))
-                line = line.replace('@EXTENSIONS@',extensions_str)
+                line = line.replace('@GEN_DATE@', time.strftime("%B %d %Y", time.gmtime()))
+                line = line.replace('@EXTENSIONS@', extensions_str)
                 line = line.replace('@EXTENSIONS_HEADER@', extensions_header)
-                line = line.replace('@NUM_ENTRIES@',
-                                    "{:,}".format(data[key]["entries"]))
-                line = line.replace('@SUBFOLDER@', os.path.join(
-                                        data[key]["location"], ''))
+                line = line.replace('@NUM_ENTRIES@', "{:,}".format(data[key]["entries"]))
+                line = line.replace('@SUBFOLDER@', os.path.join(data[key]["location"], ''))
                 line = line.replace('@TOCROWS@', toc_rows)
                 line = line.replace('@SOURCEROWS@', source_rows)
                 out.write(line)
+
 
 if __name__ == "__main__":
     main()
