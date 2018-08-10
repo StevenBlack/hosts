@@ -5,12 +5,11 @@
 #
 # This Python script will update the readme files in this repo.
 
-from string import Template
-
+import json
 import os
 import sys
 import time
-import json
+from string import Template
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
