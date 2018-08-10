@@ -78,7 +78,7 @@ def main():
                 line = line.replace('@GEN_DATE@', time.strftime("%B %d %Y",
                                                                 time.gmtime()))
                 line = line.replace('@EXTENSIONS@',extensions_str)
-                line = line.replace('@EXTENSIONS_HEADER@', extensions_header))
+                line = line.replace('@EXTENSIONS_HEADER@', extensions_header)
                 line = line.replace('@NUM_ENTRIES@',
                                     "{:,}".format(data[key]["entries"]))
                 line = line.replace('@SUBFOLDER@', os.path.join(
