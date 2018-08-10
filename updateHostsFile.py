@@ -6,8 +6,6 @@
 # This Python script will combine all the host files you provide
 # as sources into one, unique host file to keep you internet browsing happy.
 
-from __future__ import (absolute_import, division, print_function, unicode_literals)
-
 import argparse
 import fnmatch
 import json
@@ -31,8 +29,7 @@ PY3 = sys.version_info >= (3, 0)
 
 if PY3:
     from urllib.request import urlopen
-    raw_input = input
-else:  # Python 2
+else:
     raise Exception('We do not support Python 2 anymore.')
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
@@ -187,12 +184,12 @@ def main():
     remove_old_hosts_file(settings["backup"])
     if settings["compress"]:
         # Another mode is required to read and write the file in Python 3
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b" if PY3 else "w+")
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
         compressed_file = tempfile.NamedTemporaryFile()
         remove_dups_and_excl(merge_file, exclusion_regexes, compressed_file)
         compress_file(compressed_file, settings["targetip"], final_file)
     elif settings["minimise"]:
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b" if PY3 else "w+")
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
         minimised_file = tempfile.NamedTemporaryFile()
         remove_dups_and_excl(merge_file, exclusion_regexes, minimised_file)
         minimise_file(minimised_file, settings["targetip"], final_file)
@@ -433,7 +430,7 @@ def gather_custom_exclusions(exclusion_pattern, exclusion_regexes):
     # says that they have no more domains to exclude.
     while True:
         domain_prompt = ("Enter the domain you want to exclude (e.g. facebook.com): ")
-        user_domain = raw_input(domain_prompt)
+        user_domain = input(domain_prompt)
 
         if is_valid_domain_format(user_domain):
             exclusion_regexes = exclude_domain(user_domain, exclusion_pattern, exclusion_regexes)
@@ -755,7 +752,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
 
     if output_file is None:
         # Another mode is required to read and write the file in Python 3
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b" if PY3 else "w+")
+        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
     else:
         final_file = output_file
 
@@ -1259,13 +1256,7 @@ def write_data(f, data):
         The data to write to the file.
     """
 
-    if PY3:
-        f.write(bytes(data, "UTF-8"))
-    else:
-        try:
-            f.write(str(data))
-        except UnicodeEncodeError:
-            f.write(str(data.encode("UTF-8")))
+    f.write(bytes(data, "UTF-8"))
 
 
 def list_dir_no_hidden(path):
@@ -1283,7 +1274,7 @@ def list_dir_no_hidden(path):
 
 def query_yes_no(question, default="yes"):
     """
-    Ask a yes/no question via raw_input() and get answer from the user.
+    Ask a yes/no question via input() and get answer from the user.
 
     Inspired by the following implementation:
 
@@ -1316,7 +1307,7 @@ def query_yes_no(question, default="yes"):
     while not reply:
         sys.stdout.write(colorize(question, Colors.PROMPT) + prompt)
 
-        choice = raw_input().lower()
+        choice = input().lower()
         reply = None
 
         if default and not choice:
