@@ -244,7 +244,6 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 
     def tearDown(self):
         BaseStdout.tearDown(self)
-        # BaseStdout.tearDown(self)
 
 
 class TestPromptForExclusions(BaseStdout):
