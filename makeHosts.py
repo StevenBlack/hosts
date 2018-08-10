@@ -7,9 +7,9 @@
 
 from __future__ import print_function
 
-import sys
 import argparse
 import subprocess
+import sys
 
 
 def print_failure(msg):
