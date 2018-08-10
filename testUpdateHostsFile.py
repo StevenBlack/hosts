@@ -456,7 +456,7 @@ class TestGatherCustomExclusions(BaseStdout):
 
     # Can only test in the invalid domain case
     # because of the settings global variable.
-    @mock.patch("updateHostsFile.raw_input", side_effect=["foo", "no"])
+    @mock.patch("updateHostsFile.input", side_effect=["foo", "no"])
     @mock.patch("updateHostsFile.is_valid_domain_format", return_value=False)
     def test_basic(self, *_):
         gather_custom_exclusions("foo", [])
@@ -465,7 +465,7 @@ class TestGatherCustomExclusions(BaseStdout):
         output = sys.stdout.getvalue()
         self.assertIn(expected, output)
 
-    @mock.patch("updateHostsFile.raw_input", side_effect=["foo", "yes",
+    @mock.patch("updateHostsFile.input", side_effect=["foo", "yes",
                                                           "bar", "no"])
     @mock.patch("updateHostsFile.is_valid_domain_format", return_value=False)
     def test_multiple(self, *_):
@@ -1589,7 +1589,7 @@ class TestQueryYesOrNo(BaseStdout):
         for invalid_default in ["foo", "bar", "baz", 1, 2, 3]:
             self.assertRaises(ValueError, query_yes_no, "?", invalid_default)
 
-    @mock.patch("updateHostsFile.raw_input", side_effect=["yes"] * 3)
+    @mock.patch("updateHostsFile.input", side_effect=["yes"] * 3)
     def test_valid_default(self, _):
         for valid_default, expected in [(None, "[y/n]"), ("yes", "[Y/n]"),
                                         ("no", "[y/N]")]:
@@ -1600,7 +1600,7 @@ class TestQueryYesOrNo(BaseStdout):
 
             self.assertIn(expected, output)
 
-    @mock.patch("updateHostsFile.raw_input", side_effect=([""] * 2))
+    @mock.patch("updateHostsFile.input", side_effect=([""] * 2))
     def test_use_valid_default(self, _):
         for valid_default in ["yes", "no"]:
             expected = (valid_default == "yes")
@@ -1608,18 +1608,18 @@ class TestQueryYesOrNo(BaseStdout):
 
             self.assertEqual(actual, expected)
 
-    @mock.patch("updateHostsFile.raw_input", side_effect=["no", "NO", "N",
+    @mock.patch("updateHostsFile.input", side_effect=["no", "NO", "N",
                                                           "n", "No", "nO"])
     def test_valid_no(self, _):
         self.assertFalse(query_yes_no("?", None))
 
-    @mock.patch("updateHostsFile.raw_input", side_effect=["yes", "YES", "Y",
+    @mock.patch("updateHostsFile.input", side_effect=["yes", "YES", "Y",
                                                           "yeS", "y", "YeS",
                                                           "yES", "YEs"])
     def test_valid_yes(self, _):
         self.assertTrue(query_yes_no("?", None))
 
-    @mock.patch("updateHostsFile.raw_input", side_effect=["foo", "yes",
+    @mock.patch("updateHostsFile.input", side_effect=["foo", "yes",
                                                           "foo", "no"])
     def test_invalid_then_valid(self, _):
         expected = "Please respond with 'yes' or 'no'"
