@@ -1,7 +1,5 @@
 ----
-**Take Note!**  We are in the process of [dropping support for Python 2.7](https://github.com/StevenBlack/hosts/issues/729).
-
-Soon, to self-generate hosts files, you'll need to use Python 3.
+**Take Note!**  This version of the Hosts file generator, and tests, are for Python 3.7+ only.
 
 ----
 
@@ -63,7 +61,7 @@ Data for extensions is stored in the [`extensions`](https://github.com/StevenBla
 
 ## Generate your own unified hosts file
 
-**Note** if you are using Python 3, please install the dependencies with:
+First install the dependencies with:
 
     pip3 install --user -r requirements.txt
 
