@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Script by Ben Limmer
 # https://github.com/l1m5
