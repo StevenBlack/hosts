@@ -183,7 +183,6 @@ def main():
     merge_file = create_initial_file()
     remove_old_hosts_file(settings["backup"])
     if settings["compress"]:
-        # Another mode is required to read and write the file in Python 3
         final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
         compressed_file = tempfile.NamedTemporaryFile()
         remove_dups_and_excl(merge_file, exclusion_regexes, compressed_file)
@@ -1245,7 +1244,7 @@ def get_file_by_url(url):
 
 def write_data(f, data):
     """
-    Write data to a file object. This is a cross-Python implementation.
+    Write data to a file object.
 
     Parameters
     ----------
@@ -1351,10 +1350,6 @@ def is_valid_domain_format(domain):
 def recursive_glob(stem, file_pattern):
     """
     Recursively match files in a directory according to a pattern.
-
-    This function is a version-independent of Python 3.x's function:
-
-    glob( ... "/**/" ... )
 
     Parameters
     ----------
