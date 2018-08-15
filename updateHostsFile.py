@@ -751,7 +751,6 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
         os.makedirs(settings["outputpath"])
 
     if output_file is None:
-        # Another mode is required to read and write the file in Python 3
         final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
     else:
         final_file = output_file
