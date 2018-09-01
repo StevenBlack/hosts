@@ -12,7 +12,7 @@ Currently, this repo includes data sources for four extensions:
 
 Here are some sample calls, which vary which extensions are included.
 
-**Using Python 3**:
+**Using the `updateHostsFile.py` script**:
 
 Create a hosts file that includes domain blocking for porn, social media, and gambling.
 
@@ -21,14 +21,4 @@ Create a hosts file that includes domain blocking for porn, social media, and ga
 or, in short form:
 
     python3 updateHostsFile.py -a -e porn social gambling
-
-
-
-**Using Python 2.7**:
-
-    python updateHostsFile.py -auto --extensions porn social gambling
-
-or, in short form:
-
-    python updateHostsFile.py -a -e porn social gambling
 
