@@ -61,6 +61,8 @@ Data for extensions is stored in the [`extensions`](https://github.com/StevenBla
 
 ## Generate your own unified hosts file
 
+To generate your own unified hosts file you will need Python 3.7 or later.
+
 First install the dependencies with:
 
     pip3 install --user -r requirements.txt
