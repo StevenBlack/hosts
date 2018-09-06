@@ -641,9 +641,10 @@ def create_initial_file():
             with open(filename, "r") as curFile:
                 write_data(merge_file, curFile.read())
 
-    if os.path.isfile(settings["blacklistfile"]):
-        with open(settings["blacklistfile"], "r") as curFile:
-            write_data(merge_file, curFile.read())
+    maybe_copy_example_file(settings["blacklistfile"])
+
+    with open(settings["blacklistfile"], "r") as curFile:
+        write_data(merge_file, curFile.read())
 
     return merge_file
 
@@ -739,12 +740,13 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
     """
 
     number_of_rules = settings["numberofrules"]
-    if os.path.isfile(settings["whitelistfile"]):
-        with open(settings["whitelistfile"], "r") as ins:
-            for line in ins:
-                line = line.strip(" \t\n\r")
-                if line and not line.startswith("#"):
-                    settings["exclusions"].append(line)
+    maybe_copy_example_file(settings["whitelistfile"])
+
+    with open(settings["whitelistfile"], "r") as ins:
+        for line in ins:
+            line = line.strip(" \t\n\r")
+            if line and not line.startswith("#"):
+                settings["exclusions"].append(line)
 
     if not os.path.exists(settings["outputpath"]):
         os.makedirs(settings["outputpath"])
@@ -956,10 +958,10 @@ def write_opening_header(final_file, **header_params):
         write_data(final_file, "\n")
 
     preamble = path_join_robust(BASEDIR_PATH, "myhosts")
+    maybe_copy_example_file(preamble)
 
-    if os.path.isfile(preamble):
-        with open(preamble, "r") as f:
-            write_data(final_file, f.read())
+    with open(preamble, "r") as f:
+        write_data(final_file, f.read())
 
     final_file.write(file_contents)
 
@@ -1213,6 +1215,23 @@ def domain_to_idna(line):
 
 
 # Helper Functions
+def maybe_copy_example_file(file_path):
+    """
+    Given a file path, copy over its ".example" if the path doesn't exist.
+
+    If the path does exist, nothing happens in this function.
+
+    Parameters
+    ----------
+    file_path : str
+        The full file path to check.
+    """
+
+    if not os.path.isfile(file_path):
+        example_file_path = file_path + ".example"
+        shutil.copyfile(example_file_path, file_path)
+
+
 def get_file_by_url(url):
     """
     Get a file data located at a particular URL.
