@@ -1,5 +1,5 @@
 ----
-**Take Note!**  This version of the Hosts file generator, and tests, are for Python 3.7+ only.
+**Take Note!**  This version of the Hosts file generator, and tests, are for Python 3.5+ only.
 
 ----
 
