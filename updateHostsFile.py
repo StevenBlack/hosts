@@ -354,7 +354,7 @@ def prompt_for_move(final_file, **move_params):
     elif move_params["auto"] or skip_static_hosts:
         move_file = False
     else:
-        prompt = ("Do you want to replace your existing hosts file with the newly generated file?")
+        prompt = "Do you want to replace your existing hosts file with the newly generated file?"
         move_file = query_yes_no(prompt)
 
     if move_file:
@@ -428,7 +428,7 @@ def gather_custom_exclusions(exclusion_pattern, exclusion_regexes):
     # We continue running this while-loop until the user
     # says that they have no more domains to exclude.
     while True:
-        domain_prompt = ("Enter the domain you want to exclude (e.g. facebook.com): ")
+        domain_prompt = "Enter the domain you want to exclude (e.g. facebook.com): "
         user_domain = input(domain_prompt)
 
         if is_valid_domain_format(user_domain):
