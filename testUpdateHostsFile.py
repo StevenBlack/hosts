@@ -70,10 +70,6 @@ class BaseMockDir(Base):
 
     def tearDown(self):
         shutil.rmtree(self.test_dir)
-
-
-def builtins():
-    return "builtins"
 # End Test Helper Objects
 
 
@@ -168,7 +164,7 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
                 contents = f.read()
                 self.assertEqual(contents, "")
 
-    @mock.patch(builtins() + ".open")
+    @mock.patch("builtins.open")
     def test_no_freshen_fail_new_file(self, mock_open):
         for exc in (IOError, OSError):
             mock_open.side_effect = exc("failed open")
@@ -554,7 +550,7 @@ class TestUpdateSourcesData(Base):
 
     @mock.patch("updateHostsFile.recursive_glob", return_value=[])
     @mock.patch("updateHostsFile.path_join_robust", return_value="dirpath")
-    @mock.patch(builtins() + ".open", return_value=mock.Mock())
+    @mock.patch("builtins.open", return_value=mock.Mock())
     def test_no_update(self, mock_open, mock_join_robust, _):
         extensions = []
         sources_data = [{"source": "source1.txt"}, {"source": "source2.txt"}]
@@ -576,7 +572,7 @@ class TestUpdateSourcesData(Base):
     @mock.patch("updateHostsFile.recursive_glob",
                 side_effect=[[], ["update1.txt", "update2.txt"]])
     @mock.patch("json.load", return_value={"mock_source": "mock_source.ext"})
-    @mock.patch(builtins() + ".open", return_value=mock.Mock())
+    @mock.patch("builtins.open", return_value=mock.Mock())
     @mock.patch("updateHostsFile.path_join_robust", return_value="dirpath")
     def test_update_only_extensions(self, mock_join_robust, *_):
         extensions = [".json"]
@@ -594,7 +590,7 @@ class TestUpdateSourcesData(Base):
                                           {"mock_source": "mock_source2.txt"},
                                           {"mock_source": "mock_source3.txt"},
                                           {"mock_source": "mock_source4.txt"}])
-    @mock.patch(builtins() + ".open", return_value=mock.Mock())
+    @mock.patch("builtins.open", return_value=mock.Mock())
     @mock.patch("updateHostsFile.path_join_robust", return_value="dirpath")
     def test_update_both_pathways(self, mock_join_robust, *_):
         extensions = [".json"]
@@ -617,13 +613,13 @@ class TestUpdateAllSources(BaseStdout):
         self.source_data_filename = "data.json"
         self.host_filename = "hosts.txt"
 
-    @mock.patch(builtins() + ".open")
+    @mock.patch("builtins.open")
     @mock.patch("updateHostsFile.recursive_glob", return_value=[])
     def test_no_sources(self, _, mock_open):
         update_all_sources(self.source_data_filename, self.host_filename)
         mock_open.assert_not_called()
 
-    @mock.patch(builtins() + ".open", return_value=mock.Mock())
+    @mock.patch("builtins.open", return_value=mock.Mock())
     @mock.patch("json.load", return_value={"url": "example.com"})
     @mock.patch("updateHostsFile.recursive_glob", return_value=["foo"])
     @mock.patch("updateHostsFile.write_data", return_value=0)
@@ -638,7 +634,7 @@ class TestUpdateAllSources(BaseStdout):
 
         self.assertIn(expected, output)
 
-    @mock.patch(builtins() + ".open", return_value=mock.Mock())
+    @mock.patch("builtins.open", return_value=mock.Mock())
     @mock.patch("json.load", return_value={"url": "example.com"})
     @mock.patch("updateHostsFile.recursive_glob", return_value=["foo"])
     @mock.patch("updateHostsFile.write_data", return_value=0)
@@ -655,7 +651,7 @@ class TestUpdateAllSources(BaseStdout):
         for expected in expecteds:
             self.assertIn(expected, output)
 
-    @mock.patch(builtins() + ".open", return_value=mock.Mock())
+    @mock.patch("builtins.open", return_value=mock.Mock())
     @mock.patch("json.load", side_effect=[{"url": "example.com"},
                                           {"url": "example2.com"}])
     @mock.patch("updateHostsFile.recursive_glob", return_value=["foo", "bar"])
