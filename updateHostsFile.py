@@ -643,8 +643,9 @@ def create_initial_file():
 
     maybe_copy_example_file(settings["blacklistfile"])
 
-    with open(settings["blacklistfile"], "r") as curFile:
-        write_data(merge_file, curFile.read())
+    if os.path.isfile(settings["blacklistfile"]):
+        with open(settings["blacklistfile"], "r") as curFile:
+            write_data(merge_file, curFile.read())
 
     return merge_file
 
@@ -742,11 +743,12 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
     number_of_rules = settings["numberofrules"]
     maybe_copy_example_file(settings["whitelistfile"])
 
-    with open(settings["whitelistfile"], "r") as ins:
-        for line in ins:
-            line = line.strip(" \t\n\r")
-            if line and not line.startswith("#"):
-                settings["exclusions"].append(line)
+    if os.path.isfile(settings["whitelistfile"]):
+        with open(settings["whitelistfile"], "r") as ins:
+            for line in ins:
+                line = line.strip(" \t\n\r")
+                if line and not line.startswith("#"):
+                    settings["exclusions"].append(line)
 
     if not os.path.exists(settings["outputpath"]):
         os.makedirs(settings["outputpath"])
@@ -960,8 +962,9 @@ def write_opening_header(final_file, **header_params):
     preamble = path_join_robust(BASEDIR_PATH, "myhosts")
     maybe_copy_example_file(preamble)
 
-    with open(preamble, "r") as f:
-        write_data(final_file, f.read())
+    if os.path.isfile(preamble):
+        with open(preamble, "r") as f:
+            write_data(final_file, f.read())
 
     final_file.write(file_contents)
 
@@ -1221,6 +1224,8 @@ def maybe_copy_example_file(file_path):
 
     If the path does exist, nothing happens in this function.
 
+    If the path doesn't exist, and the ".example" file doesn't exist, nothing happens in this function.
+
     Parameters
     ----------
     file_path : str
@@ -1229,7 +1234,8 @@ def maybe_copy_example_file(file_path):
 
     if not os.path.isfile(file_path):
         example_file_path = file_path + ".example"
-        shutil.copyfile(example_file_path, file_path)
+        if os.path.isfile(example_file_path):
+            shutil.copyfile(example_file_path, file_path)
 
 
 def get_file_by_url(url):
