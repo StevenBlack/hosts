@@ -628,8 +628,8 @@ def create_initial_file():
     for source in recursive_glob(settings["datapath"],
                                  settings["hostfilename"]):
 
-        start = "# Start {}\n".format(os.path.basename(os.path.dirname(source)))
-        end = "# End {}\n".format(os.path.basename(os.path.dirname(source)))
+        start = "# Start {}\n\n".format(os.path.basename(os.path.dirname(source)))
+        end = "# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
 
         with open(source, "r") as curFile:
             write_data(merge_file, start + curFile.read() + end)
@@ -772,7 +772,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
         line = line.replace("\t+", " ")
 
         # see gh-271: trim trailing whitespace, periods
-        line = line.rstrip(' .') + "\n"
+        line = line.rstrip(' .')
 
         # Testing the first character doesn't require startswith
         if line[0] == "#" or re.match(r'^\s*$', line[0]):
