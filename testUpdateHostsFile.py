@@ -86,7 +86,7 @@ class TestGetDefaults(Base):
                         "replace": False,
                         "backup": False,
                         "skipstatichosts": False,
-                        "keepdomaincomments": False,
+                        "keepdomaincomments": True,
                         "extensionspath": "foo" + self.sep + "extensions",
                         "extensions": [],
                         "compress": False,
@@ -753,10 +753,12 @@ class TestStripRule(Base):
             self.assertEqual(output, line)
 
     def test_strip_more_than_two(self):
+        comment = " # comments here galore"
+
         for line in ["0.0.0.0 twitter.com", "127.0.0.1 facebook.com",
                      "8.8.8.8 google.com", "1.2.3.4 foo.bar.edu"]:
-            output = strip_rule(line + " # comments here galore")
-            self.assertEqual(output, line)
+            output = strip_rule(line + comment)
+            self.assertEqual(output, line + comment)
 
 
 class TestWriteOpeningHeader(BaseMockDir):
