@@ -60,7 +60,7 @@ def get_defaults():
         "replace": False,
         "backup": False,
         "skipstatichosts": False,
-        "keepdomaincomments": False,
+        "keepdomaincomments": True,
         "extensionspath": path_join_robust(BASEDIR_PATH, "extensions"),
         "extensions": [],
         "compress": False,
@@ -99,8 +99,8 @@ def main():
     parser.add_argument("--ip", "-i", dest="targetip", default="0.0.0.0",
                         help="Target IP address. Default is 0.0.0.0.")
     parser.add_argument("--keepdomaincomments", "-k",
-                        dest="keepdomaincomments", default=False,
-                        help="Keep domain line comments.")
+                        dest="keepdomaincomments", action="store_false", default=True,
+                        help="Do not keep domain line comments.")
     parser.add_argument("--noupdate", "-n", dest="noupdate", default=False,
                         action="store_true", help="Don't update from "
                                                   "host data sources.")
@@ -628,8 +628,8 @@ def create_initial_file():
     for source in recursive_glob(settings["datapath"],
                                  settings["hostfilename"]):
 
-        start = "# Start {}\n".format(os.path.basename(os.path.dirname(source)))
-        end = "# End {}\n".format(os.path.basename(os.path.dirname(source)))
+        start = "# Start {}\n\n".format(os.path.basename(os.path.dirname(source)))
+        end = "# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
 
         with open(source, "r") as curFile:
             write_data(merge_file, start + curFile.read() + end)
@@ -772,7 +772,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
         line = line.replace("\t+", " ")
 
         # see gh-271: trim trailing whitespace, periods
-        line = line.rstrip(' .') + "\n"
+        line = line.rstrip(' .')
 
         # Testing the first character doesn't require startswith
         if line[0] == "#" or re.match(r'^\s*$', line[0]):
@@ -843,7 +843,10 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
         rule = "%s %s" % (target_ip, hostname)
 
         if suffix and keep_domain_comments:
-            rule += " #%s" % suffix
+            if not suffix.strip().startswith('#'):
+                rule += " #%s" % suffix
+            else:
+                rule += " %s" % suffix
 
         return hostname, rule + "\n"
 
@@ -860,7 +863,10 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
         rule = "%s %s" % (target_ip, ip_host)
 
         if suffix and keep_domain_comments:
-            rule += " #%s" % suffix
+            if not suffix.strip().startswith('#'):
+                rule += " #%s" % suffix
+            else:
+                rule += " %s" % suffix
 
         return ip_host, rule + "\n"
 
@@ -874,9 +880,6 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
 def strip_rule(line):
     """
     Sanitize a rule string provided before writing it to the output hosts file.
-
-    Some sources put comments around their rules, for accuracy we need
-    to strip them the comments are preserved in the output hosts file.
 
     Parameters
     ----------
@@ -894,7 +897,7 @@ def strip_rule(line):
         # just return blank
         return ""
     else:
-        return split_line[0] + " " + split_line[1]
+        return " ".join(split_line)
 
 
 def write_opening_header(final_file, **header_params):
