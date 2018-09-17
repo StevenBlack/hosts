@@ -187,7 +187,7 @@ Fork this hosts this repo and add your links to [https://github.com/StevenBlack/
 
 Then, submit a pull request.
 
-**WARNING**: this is less desireable than Option 1 because the ongoing curation falls on us and what you've just done is created more work for us.
+**WARNING**: this is less desirable than Option 1 because the ongoing curation falls on us and what you've just done is created more work for us.
 
 ### Option 3: create your own hosts list as a repo on Github
 
