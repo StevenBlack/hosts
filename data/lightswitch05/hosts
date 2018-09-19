@@ -1,8 +1,8 @@
 # Collection of Analytics, Ads, and tracking hosts to block.
 #
 # Title: Lightswitch05's ads-and-tracking-extended.txt
-# Released: 2018-09-15T20:28:06+00:00
-# Count: 8761 domains
+# Released: 2018-09-18T12:43:10+00:00
+# Count: 8839 domains
 # Details: https://github.com/lightswitch05/hosts
 # Issues: https://github.com/lightswitch05/hosts/issues
 # Source: https://raw.githubusercontent.com/lightswitch05/hosts/master/ads-and-tracking-extended.txt
@@ -337,8 +337,18 @@
 0.0.0.0 vcdn.adnxs.com
 0.0.0.0 yj.adnxs.com
 0.0.0.0 yjp.adnxs.com
+0.0.0.0 campaign.adobe.com
+0.0.0.0 actest.campaign.adobe.com
+0.0.0.0 apt.campaign.adobe.com
+0.0.0.0 pandoramedia.campaign.adobe.com
 0.0.0.0 pandoramedia-mkt-prod1-lb.campaign.adobe.com
 0.0.0.0 pandoramedia-mkt-prod1-t.campaign.adobe.com
+0.0.0.0 qa.campaign.adobe.com
+0.0.0.0 campaignperf.qa.campaign.adobe.com
+0.0.0.0 reportsharing.qa.campaign.adobe.com
+0.0.0.0 ujjwaltest.qa.campaign.adobe.com
+0.0.0.0 rd.campaign.adobe.com
+0.0.0.0 svn18.rd.campaign.adobe.com
 0.0.0.0 adobedtm.com
 0.0.0.0 activation.adobedtm.com
 0.0.0.0 assets.adobedtm.com
@@ -1779,6 +1789,19 @@
 0.0.0.0 munchkin.brightfunnel.com
 0.0.0.0 www.brightfunnel.com
 0.0.0.0 app.brightinfo.com
+0.0.0.0 bronto.com
+0.0.0.0 appcenter.bronto.com
+0.0.0.0 appcentre.bronto.com
+0.0.0.0 appstatic.bronto.com
+0.0.0.0 cdhmanager-prod.bronto.com
+0.0.0.0 cdn.bronto.com
+0.0.0.0 www.cdn.bronto.com
+0.0.0.0 go.bronto.com
+0.0.0.0 hosting.bronto.com
+0.0.0.0 js.bronto.com
+0.0.0.0 snip.bronto.com
+0.0.0.0 static.bronto.com
+0.0.0.0 status.bronto.com
 0.0.0.0 browserhawk.com
 0.0.0.0 lib.browserhawk.com
 0.0.0.0 btstatic.com
@@ -2229,6 +2252,7 @@
 0.0.0.0 cjadsystems.dotomi.com
 0.0.0.0 dev.cjadsystems.dotomi.com
 0.0.0.0 production.cjadsystems.dotomi.com
+0.0.0.0 cjperso.dotomi.com
 0.0.0.0 cjpersonalizer.dotomi.com
 0.0.0.0 cjpersonalizer-dev.dotomi.com
 0.0.0.0 client.dotomi.com
@@ -3756,6 +3780,7 @@
 0.0.0.0 js.intercomcdn.com
 0.0.0.0 static.intercomcdn.com
 0.0.0.0 abtesting.intuit.com
+0.0.0.0 apppersonalization.api.intuit.com
 0.0.0.0 beyonduserpaid.api.intuit.com
 0.0.0.0 mintsurvey.api.intuit.com
 0.0.0.0 credit.finance.intuit.com
@@ -3766,6 +3791,8 @@
 0.0.0.0 sci.intuit.com
 0.0.0.0 smartlinks.intuit.com
 0.0.0.0 smartlinks-e2e.intuit.com
+0.0.0.0 ws-skreemr.origin.inverse.com
+0.0.0.0 pillager.inverse.com
 0.0.0.0 js.iodo.com
 0.0.0.0 irganalytics.com
 0.0.0.0 ascentdata.irganalytics.com
@@ -3832,6 +3859,16 @@
 0.0.0.0 when-pigs-fly.juicemobile.com
 0.0.0.0 www.juicemobile.com
 0.0.0.0 pixel.jumptap.com
+0.0.0.0 jwpltx.com
+0.0.0.0 s.c.jwpltx.com
+0.0.0.0 dev.jwpltx.com
+0.0.0.0 i.jwpltx.com
+0.0.0.0 s.n.jwpltx.com
+0.0.0.0 nc-s.jwpltx.com
+0.0.0.0 s.jwpltx.com
+0.0.0.0 www.s.jwpltx.com
+0.0.0.0 stg.jwpltx.com
+0.0.0.0 g.jwpsrv.com
 0.0.0.0 kampyle.com
 0.0.0.0 assets.kampyle.com
 0.0.0.0 cdn-usent.kampyle.com
@@ -5208,6 +5245,7 @@
 0.0.0.0 ebm.e.redbox.com
 0.0.0.0 www.ebm.e.redbox.com
 0.0.0.0 image.tx.redbox.com
+0.0.0.0 alb.reddit.com
 0.0.0.0 pixel.reddit.com
 0.0.0.0 pixel.redditmedia.com
 0.0.0.0 metrics.reebok.com
@@ -5368,6 +5406,15 @@
 0.0.0.0 webcast.rubiconproject.com
 0.0.0.0 www.webcast.rubiconproject.com
 0.0.0.0 www.rubiconproject.com
+0.0.0.0 rxthdr.com
+0.0.0.0 d.rxthdr.com
+0.0.0.0 vpn01.infra.prod.do-ams2.rxthdr.com
+0.0.0.0 pa.rxthdr.com
+0.0.0.0 prod-infra-vpn01.rxthdr.com
+0.0.0.0 r.rxthdr.com
+0.0.0.0 test.rxthdr.com
+0.0.0.0 testd.rxthdr.com
+0.0.0.0 testr.rxthdr.com
 0.0.0.0 ryke4peep.com
 0.0.0.0 secure.ryke4peep.com
 0.0.0.0 c.la1-c2-phx.salesforceliveagent.com
@@ -5798,6 +5845,8 @@
 0.0.0.0 scc.ssacdn.com
 0.0.0.0 vcc.ssacdn.com
 0.0.0.0 www.ssacdn.com
+0.0.0.0 stack-sonar.com
+0.0.0.0 www.stack-sonar.com
 0.0.0.0 metrics.starz.com
 0.0.0.0 stripcdn.com
 0.0.0.0 b-eu10.stripcdn.com
@@ -7177,6 +7226,23 @@
 0.0.0.0 www2.branch.io
 0.0.0.0 rum.conde.io
 0.0.0.0 edge-e-balw.customer.io
+0.0.0.0 districtm.io
+0.0.0.0 cdn.districtm.io
+0.0.0.0 dev.cdn.districtm.io
+0.0.0.0 data.districtm.io
+0.0.0.0 dev-cdn.districtm.io
+0.0.0.0 dev-dmx.districtm.io
+0.0.0.0 dmx.districtm.io
+0.0.0.0 dev.dmx.districtm.io
+0.0.0.0 drone.dmx.districtm.io
+0.0.0.0 grafana.dmx.districtm.io
+0.0.0.0 stats.dmx.districtm.io
+0.0.0.0 drone.districtm.io
+0.0.0.0 loader-io.districtm.io
+0.0.0.0 rtb.districtm.io
+0.0.0.0 www.rtb.districtm.io
+0.0.0.0 she.said.districtm.io
+0.0.0.0 test.districtm.io
 0.0.0.0 extole.io
 0.0.0.0 lo.extole.io
 0.0.0.0 api.lo.extole.io
@@ -7329,6 +7395,11 @@
 0.0.0.0 events.tabmo.io
 0.0.0.0 labs.tabmo.io
 0.0.0.0 www.labs.tabmo.io
+0.0.0.0 tribl.io
+0.0.0.0 p0.tribl.io
+0.0.0.0 s1.tribl.io
+0.0.0.0 s2.tribl.io
+0.0.0.0 www.tribl.io
 0.0.0.0 crosspromo.voodoo.io
 0.0.0.0 heatmap.it
 0.0.0.0 l.heatmap.it
@@ -7340,6 +7411,11 @@
 0.0.0.0 www.heatmap.it
 0.0.0.0 checkyourmoneybox98.loan
 0.0.0.0 best5768.checkyourmoneybox98.loan
+0.0.0.0 bnc.lt
+0.0.0.0 custom.bnc.lt
+0.0.0.0 dev.bnc.lt
+0.0.0.0 qa.bnc.lt
+0.0.0.0 www.bnc.lt
 0.0.0.0 count.ly
 0.0.0.0 blog.count.ly
 0.0.0.0 www.blog.count.ly
@@ -8103,6 +8179,7 @@
 0.0.0.0 adnimation-d.openx.net
 0.0.0.0 browser-tools.openx.net
 0.0.0.0 cafemedia-d.openx.net
+0.0.0.0 cosmicshovel-d.openx.net
 0.0.0.0 diply-d.openx.net
 0.0.0.0 egraffiti-d.openx.net
 0.0.0.0 faithit-d.openx.net
@@ -8119,6 +8196,7 @@
 0.0.0.0 yellow.soju.openx.net
 0.0.0.0 spikemedia-d.openx.net
 0.0.0.0 talkingpointsmemo-d.openx.net
+0.0.0.0 u.openx.net
 0.0.0.0 us-u.openx.net
 0.0.0.0 usatodaysports-d.openx.net
 0.0.0.0 www.openx.net
