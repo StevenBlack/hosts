@@ -1,8 +1,8 @@
 # Collection of Analytics, Ads, and tracking hosts to block.
 #
 # Title: Lightswitch05's ads-and-tracking-extended.txt
-# Released: 2018-10-09T02:26:44+00:00
-# Count: 9640 domains
+# Released: 2018-10-12T18:02:12+00:00
+# Count: 9700 domains
 # Details: https://github.com/lightswitch05/hosts
 # Issues: https://github.com/lightswitch05/hosts/issues
 # Source: https://raw.githubusercontent.com/lightswitch05/hosts/master/ads-and-tracking-extended.txt
@@ -1414,6 +1414,7 @@
 0.0.0.0 partners-1732315393.us-east-1.elb.amazonaws.com
 0.0.0.0 privacycollector-production-457481513.us-east-1.elb.amazonaws.com
 0.0.0.0 production-adserver-666328397.us-east-1.elb.amazonaws.com
+0.0.0.0 production-analytics-collector-592917094.us-east-1.elb.amazonaws.com
 0.0.0.0 propixel7-768394228.us-east-1.elb.amazonaws.com
 0.0.0.0 rpc-tapjoy-com-lb-1378811527.us-east-1.elb.amazonaws.com
 0.0.0.0 rumcollector-lb-304223083.us-east-1.elb.amazonaws.com
@@ -1429,6 +1430,7 @@
 0.0.0.0 anvato-api-config.s3.amazonaws.com
 0.0.0.0 btf-analytics.s3.amazonaws.com
 0.0.0.0 device-fingerprintdb-v1.s3.amazonaws.com
+0.0.0.0 whatcounts_saas.s3.amazonaws.com
 0.0.0.0 ambra.com
 0.0.0.0 t.ambra.com
 0.0.0.0 amplitude.com
@@ -3668,6 +3670,7 @@
 0.0.0.0 adserver.goodnuze.com
 0.0.0.0 goodyield.com
 0.0.0.0 insights.goodyield.com
+0.0.0.0 ampcid.google.com
 0.0.0.0 contributor.google.com
 0.0.0.0 google-analytics.com
 0.0.0.0 cctldtest.google-analytics.com
@@ -3765,6 +3768,10 @@
 0.0.0.0 productads.hlserve.com
 0.0.0.0 products.hlserve.com
 0.0.0.0 www.hlserve.com
+0.0.0.0 clickstream-killswitch.hd-personalization-prod.gcp.homedepot.com
+0.0.0.0 clickstream-killswitch-api.hd-personalization-prod.gcp.homedepot.com
+0.0.0.0 clickstream-producer.hd-personalization-prod.gcp.homedepot.com
+0.0.0.0 clickstream-producer-api.hd-personalization-prod.gcp.homedepot.com
 0.0.0.0 hs-scripts.com
 0.0.0.0 js.hs-scripts.com
 0.0.0.0 links.ibotta.com
@@ -4073,6 +4080,36 @@
 0.0.0.0 vb2.installfarm.com
 0.0.0.0 vic.installfarm.com
 0.0.0.0 www.installfarm.com
+0.0.0.0 instartlogic.com
+0.0.0.0 api.instartlogic.com
+0.0.0.0 api-dev.instartlogic.com
+0.0.0.0 api-v2.instartlogic.com
+0.0.0.0 apidocs.instartlogic.com
+0.0.0.0 apidocs-dev.instartlogic.com
+0.0.0.0 app.instartlogic.com
+0.0.0.0 app-dev.instartlogic.com
+0.0.0.0 chat.instartlogic.com
+0.0.0.0 community.instartlogic.com
+0.0.0.0 auth.corp.instartlogic.com
+0.0.0.0 unifi.corp.instartlogic.com
+0.0.0.0 customer.instartlogic.com
+0.0.0.0 www.customer.instartlogic.com
+0.0.0.0 info.instartlogic.com
+0.0.0.0 internal.instartlogic.com
+0.0.0.0 internals.instartlogic.com
+0.0.0.0 login.instartlogic.com
+0.0.0.0 login-dev.instartlogic.com
+0.0.0.0 newsite.instartlogic.com
+0.0.0.0 security.instartlogic.com
+0.0.0.0 support.instartlogic.com
+0.0.0.0 www.support.instartlogic.com
+0.0.0.0 test.instartlogic.com
+0.0.0.0 www.testns.instartlogic.com
+0.0.0.0 www.instartlogic.com
+0.0.0.0 www-le.instartlogic.com
+0.0.0.0 www-staging.instartlogic.com
+0.0.0.0 www2.instartlogic.com
+0.0.0.0 insights.integralads.com
 0.0.0.0 intelsad.com
 0.0.0.0 autodiscover.intelsad.com
 0.0.0.0 blog.intelsad.com
@@ -4595,6 +4632,15 @@
 0.0.0.0 app-ab12.marketo.com
 0.0.0.0 app-ab13.marketo.com
 0.0.0.0 app-ab14.marketo.com
+0.0.0.0 app-ab15.marketo.com
+0.0.0.0 app-ab16.marketo.com
+0.0.0.0 app-ab17.marketo.com
+0.0.0.0 app-ab18.marketo.com
+0.0.0.0 app-ab19.marketo.com
+0.0.0.0 app-ab20.marketo.com
+0.0.0.0 app-ab21.marketo.com
+0.0.0.0 app-ab22.marketo.com
+0.0.0.0 app-ab23.marketo.com
 0.0.0.0 app-ab24.marketo.com
 0.0.0.0 app-abc.marketo.com
 0.0.0.0 app-abd.marketo.com
@@ -5264,6 +5310,7 @@
 0.0.0.0 ads.nexage.com
 0.0.0.0 bos.ads.nexage.com
 0.0.0.0 sjc.ads.nexage.com
+0.0.0.0 nqs.nice264.com
 0.0.0.0 npttech.com
 0.0.0.0 www.npttech.com
 0.0.0.0 ntellicast.com
@@ -5360,6 +5407,7 @@
 0.0.0.0 www.optimizely.com
 0.0.0.0 zendesk-staging.optimizely.com
 0.0.0.0 optmnstr.com
+0.0.0.0 a.optmnstr.com
 0.0.0.0 api.optmnstr.com
 0.0.0.0 ga.optmnstr.com
 0.0.0.0 z.optmnstr.com
@@ -5412,6 +5460,7 @@
 0.0.0.0 vconf.outbrain.com
 0.0.0.0 vconfgw.outbrain.com
 0.0.0.0 widgets.outbrain.com
+0.0.0.0 analytics.paddle.com
 0.0.0.0 metrics.pagerduty.com
 0.0.0.0 adserver.panaceapublishing.com
 0.0.0.0 panadvert.com
@@ -6318,6 +6367,7 @@
 0.0.0.0 app-analytics.snapchat.com
 0.0.0.0 staging.app-analytics.snapchat.com
 0.0.0.0 pixel.socialtyze.com
+0.0.0.0 telemetry.sonarsource.com
 0.0.0.0 sonobi.com
 0.0.0.0 api.sonobi.com
 0.0.0.0 www.api.sonobi.com
@@ -6693,6 +6743,7 @@
 0.0.0.0 webdisk.terratracker.com
 0.0.0.0 webmail.terratracker.com
 0.0.0.0 www.terratracker.com
+0.0.0.0 www.thdws.com
 0.0.0.0 theappgrader.com
 0.0.0.0 22.theappgrader.com
 0.0.0.0 acd.theappgrader.com
@@ -7888,6 +7939,10 @@
 0.0.0.0 vpn2.branch.io
 0.0.0.0 vulcan.branch.io
 0.0.0.0 www2.branch.io
+0.0.0.0 calq.io
+0.0.0.0 api.calq.io
+0.0.0.0 blog.calq.io
+0.0.0.0 www.calq.io
 0.0.0.0 segmentation.k8s.us-east-1--production.containers.aws.conde.io
 0.0.0.0 rum.conde.io
 0.0.0.0 edge-e-balw.customer.io
@@ -8433,6 +8488,7 @@
 0.0.0.0 go.ezoic.net
 0.0.0.0 www.go.ezoic.net
 0.0.0.0 prod.appnexus.map.fastly.net
+0.0.0.0 brightcove.map.fastly.net
 0.0.0.0 media.brightcove.map.fastly.net
 0.0.0.0 sonobi-go.map.fastly.net
 0.0.0.0 prod.sonobi-go.map.fastly.net
@@ -8897,6 +8953,7 @@
 0.0.0.0 h-api-test.online-metrix.net
 0.0.0.0 www.h-api-test.online-metrix.net
 0.0.0.0 h-fail-test.online-metrix.net
+0.0.0.0 h-homedepot.online-metrix.net
 0.0.0.0 h-intuit.online-metrix.net
 0.0.0.0 h-sdk.online-metrix.net
 0.0.0.0 www.h-sdk.online-metrix.net
@@ -9103,6 +9160,8 @@
 0.0.0.0 cdn.userreplay.net
 0.0.0.0 smedia.webcollage.net
 0.0.0.0 gs.wixapps.net
+0.0.0.0 recommendation-hybrid.wpdigital.net
+0.0.0.0 recommendation-newsletter.wpdigital.net
 0.0.0.0 usersegment.wpdigital.net
 0.0.0.0 ads.wsrs.net
 0.0.0.0 mail.ads.wsrs.net
@@ -9647,6 +9706,7 @@
 0.0.0.0 wf.adserve.video
 0.0.0.0 www.wf.adserve.video
 0.0.0.0 www.adserve.video
+0.0.0.0 targeting.washpost.nile.works
 0.0.0.0 wpad
 0.0.0.0 marketingmachine.co.za
 0.0.0.0 autodiscover.marketingmachine.co.za
