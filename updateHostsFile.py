@@ -925,7 +925,7 @@ def write_opening_header(final_file, **header_params):
     write_data(final_file, "# This hosts file is a merged collection "
                            "of hosts from reputable sources,\n")
     write_data(final_file, "# with a dash of crowd sourcing via Github\n#\n")
-    write_data(final_file, "# Date: " + time.strftime("%d %B %Y %H:%M:%S (UTC)", time.gmtime()) + "\n")
+    write_data(final_file, "# Date: " + time.strftime("%d %B %Y %H:%M:%S (%Z)", time.gmtime()) + "\n")
 
     if header_params["extensions"]:
         write_data(final_file, "# Extensions added to this file: " + ", ".join(
