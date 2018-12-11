@@ -8,7 +8,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Thu, 29 Nov 2018 at 16:13:25 GMT
+# Last updated: Mon, 10 Dec 2018 at 06:03:53 GMT
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -4349,7 +4349,7 @@ ff02::3		ip6-allhosts
 0.0.0.0 a.as-us.falkag.net
 0.0.0.0 aax.amazon-adsystem.com
 0.0.0.0 aax-cpm.amazon-adsystem.com
-0.0.0.0 aax-eu.amazon-adsystem.com
+#0.0.0.0 aax-eu.amazon-adsystem.com 	# may interfere with Amazon ad preferences
 0.0.0.0 aax-us-east.amazon-adsystem.com
 0.0.0.0 aax-us-pdx.amazon-adsystem.com
 0.0.0.0 ab913aa797e78b3.com
@@ -9669,6 +9669,7 @@ ff02::3		ip6-allhosts
 0.0.0.0 plasmatv4free.com
 0.0.0.0 plasmatvreward.com
 0.0.0.0 platads.com
+0.0.0.0 play.heavymetalmachines.com
 0.0.0.0 playinvaders.com
 0.0.0.0 play.istlandoll.com
 0.0.0.0 play.leadzupc.com
@@ -10138,7 +10139,7 @@ ff02::3		ip6-allhosts
 0.0.0.0 safenyplanet.in
 0.0.0.0 sagent.io
 0.0.0.0 salesforcecom.tt.omtrdc.net
-0.0.0.0 s.amazon-adsystem.com
+#0.0.0.0 s.amazon-adsystem.com	# may interfere with Amazon ad preferences
 0.0.0.0 samsung3.solution.weborama.fr
 0.0.0.0 sanalreklam.com
 0.0.0.0 sarah.dntrx.com
