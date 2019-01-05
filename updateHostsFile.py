@@ -527,7 +527,7 @@ def update_sources_data(sources_data, **sources_params):
     source_data_filename = sources_params["sourcedatafilename"]
 
     for source in recursive_glob(sources_params["datapath"], source_data_filename):
-        update_file = open(source, "r", encoding="utf8")
+        update_file = open(source, "r", encoding="UTF-8")
         update_data = json.load(update_file)
         sources_data.append(update_data)
         update_file.close()
@@ -586,7 +586,7 @@ def update_all_sources(source_data_filename, host_filename):
     all_sources = recursive_glob("*", source_data_filename)
 
     for source in all_sources:
-        update_file = open(source, "r", encoding="utf8")
+        update_file = open(source, "r", encoding="UTF-8")
         update_data = json.load(update_file)
         update_file.close()
         update_url = update_data["url"]
@@ -631,7 +631,7 @@ def create_initial_file():
         start = "# Start {}\n\n".format(os.path.basename(os.path.dirname(source)))
         end = "# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
 
-        with open(source, "r", encoding="utf8") as curFile:
+        with open(source, "r", encoding="UTF-8") as curFile:
             write_data(merge_file, start + curFile.read() + end)
 
     # spin the sources for extensions to the base file
