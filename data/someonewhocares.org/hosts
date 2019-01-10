@@ -8,7 +8,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Wed, 02 Jan 2019 at 05:54:32 GMT
+# Last updated: Thu, 10 Jan 2019 at 09:07:40 GMT
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -66,7 +66,7 @@
 # this will prevent your browser from downloading banner ads, or sending
 # your information back to a company.
 
-#<localhost>
+#
 127.0.0.1	localhost
 127.0.0.1	localhost.localdomain
 255.255.255.255	broadcasthost
@@ -79,9 +79,9 @@ ff02::1		ip6-allnodes
 ff02::2		ip6-allrouters
 ff02::3		ip6-allhosts
 #fe80::1%lo0	localhost
-#</localhost>
+#
 
-#<shock-sites>
+#
 # For example, to block unpleasant pages, try:
 0.0.0.0 goatse.cx       # More information on sites such as 
 0.0.0.0 www.goatse.cx   # these can be found in this article
@@ -275,18 +275,18 @@ ff02::3		ip6-allhosts
 0.0.0.0 www.zentastic.com
 0.0.0.0 youaresogay.com
 0.0.0.0 zentastic.com
-#</shock-sites>
+#
 
-#<shortcut-examples>
+#
 # As well by specifying the ipaddress of a server, you can gain access
 #   to some of your favourite sites with a single letter, instead of
 #   using the whole domain name
 # It is perhaps a better solution to use Favourites/Bookmarks instead.
 #216.34.181.45   s        # slashdot.org
 #74.125.127.105	g        # google.com
-#</shortcut-examples>
+#
 
-#<hijack-sites>
+#
 # The sites ads234.com and ads345.com -- These sites hijack internet explorer 
 # and redirect all requests through their servers. You may need to use spyware 
 # removal programs such as SpyBotS&D, AdAware or HijackThis to remove this 
@@ -298,10 +298,10 @@ ff02::3		ip6-allhosts
 0.0.0.0 ads345.com
 0.0.0.0 www.ads234.com
 0.0.0.0 www.ads345.com
-#</hijack-sites>
+#
 
 
-#<spyware-sites>
+#
 # Spyware and user tracking
 # By entering domains here, it will prevent certain companies from
 # gathering information on your surfing habits. These servers do not
@@ -312,7 +312,7 @@ ff02::3		ip6-allhosts
 # Uncomment (remove the #) the lines that you wish to block, as some
 # may provide you with services you like.
 
-#<maybe-spy>
+#
 #0.0.0.0 auto.search.msn.com  # Microsoft uses this server to redirect
                                 # mistyped URLs to search engines. They
                                 # log all such errors.
@@ -337,7 +337,7 @@ ff02::3		ip6-allhosts
 					# problems with NPR.org
 #0.0.0.0 www.google-analytics.com		# breaks some sites
 #0.0.0.0 ads.imeem.com		# Seems to interfere with the functioning of imeem.com
-#</maybe-spy>
+#
 
 0.0.0.0 006.free-counter.co.uk
 0.0.0.0 006.freecounters.co.uk
@@ -2070,8 +2070,8 @@ ff02::3		ip6-allhosts
 0.0.0.0 xyz.freelogs.com
 0.0.0.0 zsisk.com
 0.0.0.0 zz.cqcounter.com
-#</spyware-sites>
-#<malware-sites>
+#
+#
 
 # sites with known trojans, phishing, or other malware
 0.0.0.0 05tz2e9.com
@@ -3081,9 +3081,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 zip.er.cz
 0.0.0.0 ztrf.net
 0.0.0.0 zviframe.biz
-#</malware-sites>
+#
 
-#<doubleclick-sites>
+#
 
 0.0.0.0 3ad.doubleclick.net
 0.0.0.0 ad2.doubleclick.net
@@ -3392,9 +3392,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 uunyadgda1.doubleclick.net
 0.0.0.0 uunyadgds1.doubleclick.net
 0.0.0.0 www.ukrpts.net
-#</doubleclick-sites>
+#
 
-#<intellitxt-sites>
+#
 
 0.0.0.0 1up.us.intellitxt.com
 0.0.0.0 5starhiphop.us.intellitxt.com
@@ -3500,9 +3500,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 warp2search.us.intellitxt.com
 0.0.0.0 wi-fitechnology.uk.intellitxt.com
 0.0.0.0 worldnetdaily.us.intellitxt.com
-#</intellitxt-sites>
+#
 
-#<red-sheriff-sites>
+#
 
 # Red Sheriff and imrworldwide.com  -- server side tracking
 0.0.0.0 devfw.imrworldwide.com
@@ -3557,9 +3557,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 www.imrworldwide.com
 0.0.0.0 www.imrworldwide.com.au
 0.0.0.0 www.redsheriff.com
-#</red-sheriff-sites>
+#
 
-#<cydoor-sites>
+#
 
 # cydoor -- server side tracking
 0.0.0.0 cydoor.com
@@ -3627,7 +3627,7 @@ ff02::3		ip6-allhosts
 0.0.0.0 jumcna.cjt1.net
 0.0.0.0 jwebbsense.cjt1.net
 0.0.0.0 www.cydoor.com
-#</cydoor-sites>
+#
 
 #<2o7-sites>
 
@@ -4092,9 +4092,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 yrkeve.112.2o7.net
 0.0.0.0 ziffdavisglobal.112.2o7.net
 0.0.0.0 ziffdavispennyarcade.112.2o7.net
-#</2o7-sites>
+#2o7-sites>
 
-#<oewabox-sites>
+#
 
 # oewabox.at -- 'Austrian Webanalysis Society'
 0.0.0.0 1000ps.oewabox.at
@@ -4222,10 +4222,10 @@ ff02::3		ip6-allhosts
 0.0.0.0 woche.oewabox.at
 0.0.0.0 wohnnet.oewabox.at
 0.0.0.0 zfm.oewabox.at
-#</oewabox-sites>
+#
 
-#<ad-sites>
-#<maybe-ads>
+#
+#
 #0.0.0.0 adfarm.mediaplex.com		# may interfere with ebay
 #0.0.0.0 ads.msn.com			#This may cause problems with zone.msn.com
 #0.0.0.0 ak.imgfarm.com		# may cause problems with iwon.com
@@ -4238,7 +4238,7 @@ ff02::3		ip6-allhosts
 #0.0.0.0 www.tkqlhce.com		#qksrv
 #0.0.0.0 ad.ca.doubleclick.net	#intereferes with video on globeandmail.com
 #0.0.0.0 transfer.go.com		#may interfere with Disney websites
-#</maybe-ads>
+#
 
 # ads
 0.0.0.0 0101011.com
@@ -12409,10 +12409,10 @@ ff02::3		ip6-allhosts
 0.0.0.0 zuzzer5.com
 0.0.0.0 zytpirwai.net
 0.0.0.0 zzzrtrcm2.com
-#</ad-sites>
+#
 
 # https://securehomes.esat.kuleuven.be/~gacar/persistent/index.html
-#<canvass-fingerprinting-sites>
+#
 0.0.0.0 admicro1.vcmedia.vn
 0.0.0.0 ct1.addthis.com
 0.0.0.0 cya2.net
@@ -12421,18 +12421,18 @@ ff02::3		ip6-allhosts
 0.0.0.0 shorte.st
 0.0.0.0 src.kitcode.net
 0.0.0.0 stat.ringier.cz
-#</canvass-fingerprinting-sites>
+#
 
-#<evercookies-sites>
+#
 0.0.0.0 ar.hao123.com
 0.0.0.0 irs01.net
 0.0.0.0 kiks.yandex.ru
 0.0.0.0 simg.sinajs.cn
 0.0.0.0 tv.sohu.com
 0.0.0.0 y3.ifengimg.com
-#</evercookies-sites>
+#
 
-#<yahoo-ad-sites>
+#
 
 # yahoo banner ads
 0.0.0.0 eur.a1.yimg.com
@@ -12465,9 +12465,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 us.x1.yimg.com
 0.0.0.0 us.y1.yimg.com
 0.0.0.0 us.z1.yimg.com
-#</yahoo-ad-sites>
+#
 
-#<hitbox-sites>
+#
 
 # hitbox.com web bugs
 0.0.0.0 1cgi.hitbox.com
@@ -12834,9 +12834,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 y2k.hitbox.com
 0.0.0.0 yang.hitbox.com
 0.0.0.0 ying.hitbox.com
-#</hitbox-sites>
+#
 
-#<extreme-dm-sites>
+#
 
 # www.extreme-dm.com tracking
 0.0.0.0 extreme-dm.com
@@ -12869,9 +12869,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 z0.extreme-dm.com
 0.0.0.0 z1.extreme-dm.com
 0.0.0.0 z.extreme-dm.com
-#</extreme-dm-sites>
+#
 
-#<realmedia-sites>
+#
 
 # realmedia.com's Open Ad Stream
 0.0.0.0 ap.oasfile.aftenposten.no
@@ -13055,9 +13055,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 oas.uniontrib.com
 0.0.0.0 oas.villagevoice.com
 0.0.0.0 oas.vtsgonline.com
-#</realmedia-sites>
+#
 
-#<fastclick-sites>
+#
 
 # fastclick banner ads
 0.0.0.0 media1.fastclick.net
@@ -13160,9 +13160,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 media98.fastclick.net
 0.0.0.0 media99.fastclick.net
 0.0.0.0 fastclick.net
-#</fastclick-sites>
+#
 
-#<belo-interactive-sites>
+#
 
 # belo interactive ads
 0.0.0.0 te.about.com
@@ -13208,9 +13208,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 te.trb.com
 0.0.0.0 te.versiontracker.com
 0.0.0.0 te.wsls.com
-#</belo-interactive-sites>
+#
 
-#<popup-traps>
+#
 
 # popup traps -- sites that bounce you around or won't let you leave
 0.0.0.0 24hwebsex.com
@@ -13241,9 +13241,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 www.xxxnightly.com
 0.0.0.0 www.xxxtoolbar.com
 0.0.0.0 www.yourfuckbook.com
-#</popup-traps>
+#
 
-#<ecard-scam-sites>
+#
 
 # malicious e-card -- these sites send out mass quantities of spam 
 	# and some distribute adware and spyware
@@ -13270,9 +13270,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 www.friendgreetings.net
 0.0.0.0 www.laugh-mail.com
 0.0.0.0 www.laugh-mail.net
-#</ecard-scam-sites>
+#
 
-#<IVW-sites>
+#
 
 # European network of tracking sites
 0.0.0.0 1und1.ivwbox.de
@@ -13284,9 +13284,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 onvis.ivwbox.de
 0.0.0.0 spiegel.ivwbox.de
 0.0.0.0 www.ivwbox.de
-#</IVW-sites>
+#
 
-#<wiki-spam-sites>
+#
 
 # message board and wiki spam -- these sites are linked in 
 	# message board spam and are unlikely to be real sites
@@ -14098,9 +14098,9 @@ ff02::3		ip6-allhosts
 0.0.0.0 zyrtec.1.p2l.info
 0.0.0.0 zyrtec.3.p2l.info
 0.0.0.0 zyrtec.4.p2l.info
-#</wiki-spam-sites>
+#
 
-#<Windows10>
+#
 
 # Windows 10 reporting domains. 
 0.0.0.0 a.ads2.msads.net
@@ -14136,7 +14136,7 @@ ff02::3		ip6-allhosts
 0.0.0.0 v10.vortex-win.data.microsoft.com
 0.0.0.0 vortex-win.data.microsoft.com
 0.0.0.0 wes.df.telemetry.microsoft.com
-#</Windows10>
+#
 
 # Acknowledgements
 # I'd like to thank the following people for submitting sites, and
