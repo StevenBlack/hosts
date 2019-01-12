@@ -4,8 +4,6 @@
 0.0.0.0 1493361689.rsc.cdn77.org
 0.0.0.0 30-day-change.com
 0.0.0.0 2468.go2cloud.org
-0.0.0.0 adservice.google.nl
-0.0.0.0 analytics.ff.avast.com
 0.0.0.0 adsmws.cloudapp.net
 0.0.0.0 androidads23.adcolony.com
 0.0.0.0 analytics.publitas.com
@@ -668,36 +666,12 @@
 0.0.0.0 lecap-services.fr
 0.0.0.0 www.lecap-services.fr
 
-# Windows 10 'Connected User Experience' Telemetry
-# Connected User Experience and Diagnostic component endpoint for use with Windows 10, version 1803
-0.0.0.0 v10.events.data.microsoft.com
-# Connected User Experience and Diagnostic component endpoint for Windows 10, version 1709 or earlier
-0.0.0.0 v10.vortex-win.data.microsoft.com
-# Connected User Experience and Diagnostic component endpoint for operating systems older than Windows 10
-0.0.0.0 vortex-win.data.microsoft.com
-# Connected User Experience and Diagnostic component endpoint for use with Windows versions that have KB4458469 installed (Windows 10 1803 with the september 2018 update and higher)
-0.0.0.0 v10c.events.data.microsoft.com
-
-# Office 2016 'Connected User Experience' Telemetry
-# OneNote Telemetry Service
-0.0.0.0 mobile.pipe.aria.microsoft.com
-# Office Telemetry Upload Reporting – 'Heartbeart' and error events that occur on the client are uploaded to the telemetry service.
-0.0.0.0 nexus.officeapps.live.com
-# Office Rules Telemetry download – Informs the client about what data and events to upload to the telemetry service.
-0.0.0.0 nexusrules.officeapps.live.com
-# Telemetry and Reporting Service for Office apps
-0.0.0.0 telemetry.firstpartyapps.oaspapps.com
-# Telemetry Reporting
-0.0.0.0 browser.pipe.aria.microsoft.com
-
 # Spam domains
 # If your software is able, the below domains and all subdomains should be blocked
 0.0.0.0 angiemktg.com
 #*.angiemktg.com
 0.0.0.0 weconfirmyou.com
 #*.weconfirmyou.com
-0.0.0.0 cws.conviva.com
-#*.cws.conviva.com
 
 # These stink-up yahoo finance
 0.0.0.0 beap-bc.yahoo.com
