@@ -1195,26 +1195,29 @@ def domain_to_idna(line):
         if separator:
             splited_line = line.split(separator)
 
-            index = 1
-            while index < len(splited_line):
-                if splited_line[index]:
-                    break
-                index += 1
+            try:
+                index = 1
+                while index < len(splited_line):
+                    if splited_line[index]:
+                        break
+                    index += 1
 
-            if '#' in splited_line[index]:
-                index_comment = splited_line[index].find('#')
+                if '#' in splited_line[index]:
+                    index_comment = splited_line[index].find('#')
 
-                if index_comment > -1:
-                    comment = splited_line[index][index_comment:]
+                    if index_comment > -1:
+                        comment = splited_line[index][index_comment:]
 
-                    splited_line[index] = splited_line[index] \
-                        .split(comment)[0] \
-                        .encode("IDNA").decode("UTF-8") + \
-                        comment
+                        splited_line[index] = splited_line[index] \
+                            .split(comment)[0] \
+                            .encode("IDNA").decode("UTF-8") + \
+                            comment
 
-            splited_line[index] = splited_line[index] \
-                .encode("IDNA") \
-                .decode("UTF-8")
+                splited_line[index] = splited_line[index] \
+                    .encode("IDNA") \
+                    .decode("UTF-8")
+            except IndexError:
+                pass
             return separator.join(splited_line)
         return line.encode("IDNA").decode("UTF-8")
     return line.encode("UTF-8").decode("UTF-8")
