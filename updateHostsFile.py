@@ -954,7 +954,7 @@ def write_opening_header(final_file, **header_params):
         write_data(final_file, "ff02::1 ip6-allnodes\n")
         write_data(final_file, "ff02::2 ip6-allrouters\n")
         write_data(final_file, "ff02::3 ip6-allhosts\n")
-        write_data(final_file, "0.0.0.0 0.0.0.0\n")
+        write_data(final_file, "0.0.0.0 blocked_in_hosts_file\n")
 
         if platform.system() == "Linux":
             write_data(final_file, "127.0.1.1 " + socket.gethostname() + "\n")
