@@ -1,3 +1,4 @@
+0.0.0.0 www.cyber-ad01.cc
 0.0.0.0 100234.advision-adnw.jp
 0.0.0.0 100291.adnico.jp
 0.0.0.0 100602.advision-adnw.jp
@@ -1028,7 +1029,6 @@
 0.0.0.0 gobuy678.com
 0.0.0.0 golds.lp.mydas.mobi
 0.0.0.0 goodlifess.jp
-0.0.0.0 googleadapis.l.google.com
 0.0.0.0 googleads.g.doubleclick.net
 0.0.0.0 googleadservices.com
 0.0.0.0 grangehillsurgery.co.uk
