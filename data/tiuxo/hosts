@@ -1037,7 +1037,6 @@
 0.0.0.0 gsspat.jp
 0.0.0.0 gsspcln.jp
 0.0.0.0 gssprt.jp
-0.0.0.0 gstaticadssl.l.google.com
 0.0.0.0 guccimenjpsale.com
 0.0.0.0 guile.jp
 0.0.0.0 gum.dlbooks.to
