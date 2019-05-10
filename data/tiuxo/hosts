@@ -652,7 +652,6 @@
 0.0.0.0 brucelead.com
 0.0.0.0 bs.serving-sys.com
 0.0.0.0 btstatic.com
-0.0.0.0 bufferapp.com
 0.0.0.0 burandsale.com
 0.0.0.0 burning-phoenix.kir.jp
 0.0.0.0 buyma.site
