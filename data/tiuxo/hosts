@@ -1740,7 +1740,6 @@
 0.0.0.0 s-cm.send.microad.jp
 0.0.0.0 s-cs.send.microad.jp
 0.0.0.0 s.f1.impact-ad.jp
-0.0.0.0 s.gravatar.com
 0.0.0.0 s.liveads.jp
 0.0.0.0 s.net-public.com
 0.0.0.0 s.pagoda56.com
