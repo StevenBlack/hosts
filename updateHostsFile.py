@@ -948,7 +948,7 @@ def write_opening_header(final_file, **header_params):
         write_data(final_file, "::1 localhost\n")
         write_data(final_file, "::1 ip6-localhost\n")
         write_data(final_file, "::1 ip6-loopback\n")
-        write_data(final_file, "fe80::1%lo0 localhost\n")
+        write_data(final_file, "fe80::1 lo0 localhost\n")
         write_data(final_file, "ff00::0 ip6-localnet\n")
         write_data(final_file, "ff00::0 ip6-mcastprefix\n")
         write_data(final_file, "ff02::1 ip6-allnodes\n")
