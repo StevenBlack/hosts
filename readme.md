@@ -330,7 +330,7 @@ sc stop "Dnscache"
 
 Open a Terminal and run with root privileges:
 
-**Debian/Ubuntu** `sudo service network-manager restart`
+**Debian/Ubuntu** `sudo systemctl restart NetworkManager.service`
 
 **Linux Mint** `sudo /etc/init.d/dns-clean start`
 
