@@ -7,7 +7,7 @@
 # This *must* be the first line: 127.0.0.1     localhost   #
 #                                                          #
 #**********************************************************#
-# ------------------ Updated: May-8-2019 ----------------- #
+# ---------------- Updated: June-11-2019 ----------------- #
 #**********************************************************#
 #                                                          #
 # Disclaimer: this file is free to use for personal use    #
@@ -3175,6 +3175,7 @@
 0.0.0.0 log.quora.com
 0.0.0.0 ads.viber.com
 0.0.0.0 ads.aws.viber.com
+0.0.0.0 videe.tv
 0.0.0.0 pm.w55c.net
 0.0.0.0 www.whizstats.com
 # [Amazon.com][AS39111][35.152.0.0 - 35.183.255.255]
@@ -3410,6 +3411,7 @@
 0.0.0.0 www.bundlerepositorycontent.com #[Riskware/PUP]
 0.0.0.0 www.megagiftcity.com #[Riskware/PUP]
 0.0.0.0 cdn.opensubcontent.com #[Win32/InstallCore.ACZ]
+0.0.0.0 vid-io.springserve.net
 0.0.0.0 collector-195.tvsquared.com #[Piwik.Analytics]
 # [Amazon.com][AS14618][54.160.0.0 - 54.175.255.255]
 0.0.0.0 t.acxiom-online.com
@@ -3431,6 +3433,8 @@
 0.0.0.0 trax.prostrax.com
 0.0.0.0 trends.revcontent.com
 0.0.0.0 beacon.sojern.com
+0.0.0.0 vid.springserve.com
+0.0.0.0 vid-io-dub.springserve.com
 0.0.0.0 srv.stackadapt.com
 0.0.0.0 redirect.todayreward.net
 0.0.0.0 track.todayreward.net
@@ -3526,6 +3530,7 @@
 0.0.0.0 www.i.matheranalytics.com #[WebBug]
 0.0.0.0 stats.mezzobit.com
 0.0.0.0 analytics.cnd-motionmedia.de
+0.0.0.0 redirect.com
 0.0.0.0 bomcl.richmetrics.com
 0.0.0.0 seb.scorecardresearch.com
 0.0.0.0 www.storygize.net #[WebBug]
@@ -6849,10 +6854,6 @@
 # [Interserver][66.45.224.0 - 66.45.255.255]
 0.0.0.0 rotor6.newzfind.com
 0.0.0.0 sutra.newzfind.com
-0.0.0.0 outwar.com
-0.0.0.0 sigil.outwar.com
-0.0.0.0 torax.outwar.com
-0.0.0.0 www.outwar.com #[Trojan.Win32.VB.iy][ADW_OUTWAR.A]
 0.0.0.0 php4you.biz
 0.0.0.0 ads.rampidads.com #[Tracking.Cookie]
 0.0.0.0 main.rampidads.com
@@ -7646,6 +7647,8 @@
 0.0.0.0 api.iperceptions.com
 0.0.0.0 adserver.pressboard.ca
 0.0.0.0 data.queryly.com
+# [Microsoft][AS8075][40.64.0.0/10]
+0.0.0.0 geolocation.onetrust.com
 # [Microsoft][AS8075][65.52.0.0 - 65.55.255.255]
 0.0.0.0 aidps.atdmt.com
 0.0.0.0 analytics.atdmt.com
