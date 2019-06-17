@@ -50,11 +50,11 @@ Host file source | Description | Home page | Raw hosts | Update frequency | Lice
 
 
 ## Extensions
-The unified hosts file is extensible.  Extensions are used to block domains by category.  
+The unified hosts file is extensible.  Extensions are used to block domains by category.
 
 Extensions are optional, and are added to the base hosts file.  Extensions are combined in various ways wth the default hosts file, and the combined products are stored in the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.
 
-For example, you may want to block porn domains in addition to the adware and malware we block by default.  That hosts file is stored in the porn subfolder of the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.  
+For example, you may want to block porn domains in addition to the adware and malware we block by default.  That hosts file is stored in the porn subfolder of the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.
 
 Data for extensions is stored in the [`extensions`](https://github.com/StevenBlack/hosts/tree/master/extensions) folder. You manage extensions by curating the
 [`extensions`](https://github.com/StevenBlack/hosts/tree/master/extensions)  folder tree where you will find the data for `fakenews`, `social`, `gambling`, and `porn` extension data that we maintain and provide for you.
@@ -73,9 +73,9 @@ To run unit tests, in the top level directory, just run:
 
     python3 testUpdateHostsFile.py
 
-The `updateHostsFile.py` script will generate a unified hosts file based on the sources in the 
-local `data/` subfolder.  The script will prompt you whether it should fetch updated versions 
-(from locations defined by the `update.json` text file in each source's folder). Otherwise, it 
+The `updateHostsFile.py` script will generate a unified hosts file based on the sources in the
+local `data/` subfolder.  The script will prompt you whether it should fetch updated versions
+(from locations defined by the `update.json` text file in each source's folder). Otherwise, it
 will use the `hosts` file that's already there.
 
 ### Usage
@@ -104,7 +104,7 @@ of subfolders below the `extensions` folder containing additional
 category-specific hosts files to include in the amalgamation. Example:
 `--extensions porn` or `-e social porn`.
 
-`--flush-dns-cache`, or `-f`: skip the prompt for flushing the DNS cache.  
+`--flush-dns-cache`, or `-f`: skip the prompt for flushing the DNS cache.
 Only active when `--replace` is also active.
 
 `--ip nnn.nnn.nnn.nnn`, or `-i nnn.nnn.nnn.nnn`: the IP address to use as the
@@ -339,9 +339,9 @@ sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
 
 ## Release management
 
-This repository uses [Release-It!](https://webpro.github.io/release-it/), an excellent CLI release 
+This repository uses [Release-It!](https://webpro.github.io/release-it/), an excellent CLI release
 tool for Github repos and npm packages, to automate creating [releases](https://github.com/StevenBlack/hosts/releases).
-This is why the [package.json](https://github.com/StevenBlack/hosts/blob/master/package.json) and 
+This is why the [package.json](https://github.com/StevenBlack/hosts/blob/master/package.json) and
 [.release-it.json](https://github.com/StevenBlack/hosts/blob/master/.release-it.json) files are bundled.
 
 ## Goals of this unified hosts file
@@ -372,6 +372,8 @@ devices under a variety of operating systems.
 
 * [Unified Hosts AutoUpdate](https://github.com/ScriptTiger/Unified-Hosts-AutoUpdate "Unified Hosts AutoUpdate") (for Windows): The Unified Hosts AutUpdate package is purpose-built for this unified hosts project as well as in active development by community members. It's sophisticated enough to allow any novice the ability to install and uninstall the blacklist of their choosing to their local hosts file and keep it automatically up to date, while also being minimal enough to be able to be easily placed in a shared network location and deployed across an organization via group policies. And since it is in active development by community members, your bug reports, feature requests, and other feedback are most welcome.
 
+* [ViHoMa](https://github.com/cmabad/ViHoMa) is a Visual Hosts file Manager, written in Java, by Christian Martínez.  Check it out!
+
 ## Interesting Applications
 
 * [Pi-hole](https://pi-hole.net/) is a network-wide DHCP server and ad blocker that runs on [Raspberry Pi](https://en.wikipedia.org/wiki/Raspberry_Pi). Pi-hole uses this repository as one of its sources.     This is a very interesting project to setup yourself, or you can [buy one pre-loaded](https://uk.pi-supply.com/products/pi-hole-kit-network-wide-ad-blocker).
@@ -382,4 +384,4 @@ devices under a variety of operating systems.
 
 * [Blocking ads and malwares with unbound](https://deadc0de.re/articles/unbound-blocking-ads.html "Blocking ads and malwares with unbound") – [Unbound](https://www.unbound.net/ "Unbound is a validating, recursive, and caching DNS resolver.")  is a validating, recursive, and caching DNS resolver.
 
-* [DNSMasq conversion script](https://gist.github.com/erlepereira/c11f4f7a3f60cd2071e79018e895fc8a#file-dnsmasq-antimalware) This github gist has a short shell script (bash, will work on any 'nix) and uses 'wget' & 'awk' present in most distros, to fetch a specified hosts file and convert it the format required by dnsmasq. Supports ipv4 and ipv6. Designed to be used as either a shell script, or can be dropped into /etc/cron.weekly (or wherever suits). Script is short and easily edited, also has a short document attached with notes on dnsmasq setup. 
+* [DNSMasq conversion script](https://gist.github.com/erlepereira/c11f4f7a3f60cd2071e79018e895fc8a#file-dnsmasq-antimalware) This github gist has a short shell script (bash, will work on any 'nix) and uses 'wget' & 'awk' present in most distros, to fetch a specified hosts file and convert it the format required by dnsmasq. Supports ipv4 and ipv6. Designed to be used as either a shell script, or can be dropped into /etc/cron.weekly (or wherever suits). Script is short and easily edited, also has a short document attached with notes on dnsmasq setup.
