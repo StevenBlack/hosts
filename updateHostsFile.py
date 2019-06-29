@@ -527,7 +527,7 @@ def update_sources_data(sources_data, **sources_params):
     source_data_filename = sources_params["sourcedatafilename"]
 
     for source in recursive_glob(sources_params["datapath"], source_data_filename):
-        update_file = open(source, "r")
+        update_file = open(source, "r", encoding="UTF-8")
         update_data = json.load(update_file)
         sources_data.append(update_data)
         update_file.close()
@@ -586,7 +586,7 @@ def update_all_sources(source_data_filename, host_filename):
     all_sources = recursive_glob("*", source_data_filename)
 
     for source in all_sources:
-        update_file = open(source, "r")
+        update_file = open(source, "r", encoding="UTF-8")
         update_data = json.load(update_file)
         update_file.close()
         update_url = update_data["url"]
@@ -631,7 +631,7 @@ def create_initial_file():
         start = "# Start {}\n\n".format(os.path.basename(os.path.dirname(source)))
         end = "# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
 
-        with open(source, "r") as curFile:
+        with open(source, "r", encoding="UTF-8") as curFile:
             write_data(merge_file, start + curFile.read() + end)
 
     # spin the sources for extensions to the base file
@@ -925,7 +925,7 @@ def write_opening_header(final_file, **header_params):
     write_data(final_file, "# This hosts file is a merged collection "
                            "of hosts from reputable sources,\n")
     write_data(final_file, "# with a dash of crowd sourcing via Github\n#\n")
-    write_data(final_file, "# Date: " + time.strftime("%B %d %Y", time.gmtime()) + "\n")
+    write_data(final_file, "# Date: " + time.strftime("%d %B %Y %H:%M:%S (%Z)", time.gmtime()) + "\n")
 
     if header_params["extensions"]:
         write_data(final_file, "# Extensions added to this file: " + ", ".join(
@@ -1195,26 +1195,29 @@ def domain_to_idna(line):
         if separator:
             splited_line = line.split(separator)
 
-            index = 1
-            while index < len(splited_line):
-                if splited_line[index]:
-                    break
-                index += 1
+            try:
+                index = 1
+                while index < len(splited_line):
+                    if splited_line[index]:
+                        break
+                    index += 1
 
-            if '#' in splited_line[index]:
-                index_comment = splited_line[index].find('#')
+                if '#' in splited_line[index]:
+                    index_comment = splited_line[index].find('#')
 
-                if index_comment > -1:
-                    comment = splited_line[index][index_comment:]
+                    if index_comment > -1:
+                        comment = splited_line[index][index_comment:]
 
-                    splited_line[index] = splited_line[index] \
-                        .split(comment)[0] \
-                        .encode("IDNA").decode("UTF-8") + \
-                        comment
+                        splited_line[index] = splited_line[index] \
+                            .split(comment)[0] \
+                            .encode("IDNA").decode("UTF-8") + \
+                            comment
 
-            splited_line[index] = splited_line[index] \
-                .encode("IDNA") \
-                .decode("UTF-8")
+                splited_line[index] = splited_line[index] \
+                    .encode("IDNA") \
+                    .decode("UTF-8")
+            except IndexError:
+                pass
             return separator.join(splited_line)
         return line.encode("IDNA").decode("UTF-8")
     return line.encode("UTF-8").decode("UTF-8")
