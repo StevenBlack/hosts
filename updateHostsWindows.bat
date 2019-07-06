@@ -21,7 +21,7 @@ if not exist "%WINDIR%\System32\drivers\etc\hosts.skel" (
 )
 
 :: Update hosts file
-pipenv run updateHostsFile.py -a
+python updateHostsFile.py --auto --extensions fakenews social gambling
 
 :: Move new hosts file in-place
 COPY hosts %WINDIR%\System32\drivers\etc\
