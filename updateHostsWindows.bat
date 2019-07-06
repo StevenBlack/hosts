@@ -21,7 +21,7 @@ if not exist "%WINDIR%\System32\drivers\etc\hosts.skel" (
 )
 
 :: Update hosts file
-python updateHostsFile.py -a
+pipenv run updateHostsFile.py -a
 
 :: Move new hosts file in-place
 COPY hosts %WINDIR%\System32\drivers\etc\
