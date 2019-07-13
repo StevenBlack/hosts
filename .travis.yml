@@ -12,8 +12,8 @@ cache:
 before_cache:
   - rm -rf $HOME/miniconda3/pkgs/cache
   - rm -rf $HOME/miniconda3/envs/hosts
-  - rm -rf $HOME/miniconda/conda-meta/history
-  - touch $HOME/miniconda/conda-meta/history
+  - rm -rf $HOME/miniconda3/conda-meta/history
+  - touch $HOME/miniconda3/conda-meta/history
 
 os:
   - linux
