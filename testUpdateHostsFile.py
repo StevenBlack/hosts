@@ -17,26 +17,44 @@ import unittest.mock as mock
 from io import BytesIO, StringIO
 
 import updateHostsFile
-from updateHostsFile import (Colors, colorize, display_exclusion_options,
-                             domain_to_idna, exclude_domain, flush_dns_cache,
-                             gather_custom_exclusions, get_defaults,
-                             get_file_by_url, is_valid_domain_format,
-                             matches_exclusions, move_hosts_file_into_place,
-                             normalize_rule, path_join_robust, print_failure,
-                             print_success, prompt_for_exclusions,
-                             prompt_for_flush_dns_cache, prompt_for_move,
-                             prompt_for_update, query_yes_no, recursive_glob,
-                             remove_old_hosts_file, strip_rule, supports_color,
-                             update_all_sources, update_readme_data,
-                             update_sources_data, write_data,
-                             write_opening_header)
+from updateHostsFile import (
+    Colors,
+    colorize,
+    display_exclusion_options,
+    domain_to_idna,
+    exclude_domain,
+    flush_dns_cache,
+    gather_custom_exclusions,
+    get_defaults,
+    get_file_by_url,
+    is_valid_domain_format,
+    matches_exclusions,
+    move_hosts_file_into_place,
+    normalize_rule,
+    path_join_robust,
+    print_failure,
+    print_success,
+    prompt_for_exclusions,
+    prompt_for_flush_dns_cache,
+    prompt_for_move,
+    prompt_for_update,
+    query_yes_no,
+    recursive_glob,
+    remove_old_hosts_file,
+    strip_rule,
+    supports_color,
+    update_all_sources,
+    update_readme_data,
+    update_sources_data,
+    write_data,
+    write_opening_header,
+)
 
 unicode = str
 
 
 # Test Helper Objects
 class Base(unittest.TestCase):
-
     @staticmethod
     def mock_property(name):
         return mock.patch(name, new_callable=mock.PropertyMock)
@@ -50,7 +68,6 @@ class Base(unittest.TestCase):
 
 
 class BaseStdout(Base):
-
     def setUp(self):
         sys.stdout = StringIO()
 
@@ -60,7 +77,6 @@ class BaseStdout(Base):
 
 
 class BaseMockDir(Base):
-
     @property
     def dir_count(self):
         return len(os.listdir(self.test_dir))
@@ -70,51 +86,53 @@ class BaseMockDir(Base):
 
     def tearDown(self):
         shutil.rmtree(self.test_dir)
+
+
 # End Test Helper Objects
 
 
 # Project Settings
 class TestGetDefaults(Base):
-
     def test_get_defaults(self):
         with self.mock_property("updateHostsFile.BASEDIR_PATH"):
             updateHostsFile.BASEDIR_PATH = "foo"
             actual = get_defaults()
-            expected = {"numberofrules": 0,
-                        "datapath": "foo" + self.sep + "data",
-                        "freshen": True,
-                        "replace": False,
-                        "backup": False,
-                        "skipstatichosts": False,
-                        "keepdomaincomments": True,
-                        "extensionspath": "foo" + self.sep + "extensions",
-                        "extensions": [],
-                        "compress": False,
-                        "minimise": False,
-                        "outputsubfolder": "",
-                        "hostfilename": "hosts",
-                        "targetip": "0.0.0.0",
-                        "sourcedatafilename": "update.json",
-                        "sourcesdata": [],
-                        "readmefilename": "readme.md",
-                        "readmetemplate": ("foo" + self.sep +
-                                           "readme_template.md"),
-                        "readmedata": {},
-                        "readmedatafilename": ("foo" + self.sep +
-                                               "readmeData.json"),
-                        "exclusionpattern": r"([a-zA-Z\d-]+\.){0,}",
-                        "exclusionregexs": [],
-                        "exclusions": [],
-                        "commonexclusions": ["hulu.com"],
-                        "blacklistfile": "foo" + self.sep + "blacklist",
-                        "whitelistfile": "foo" + self.sep + "whitelist"}
+            expected = {
+                "numberofrules": 0,
+                "datapath": "foo" + self.sep + "data",
+                "freshen": True,
+                "replace": False,
+                "backup": False,
+                "skipstatichosts": False,
+                "keepdomaincomments": True,
+                "extensionspath": "foo" + self.sep + "extensions",
+                "extensions": [],
+                "compress": False,
+                "minimise": False,
+                "outputsubfolder": "",
+                "hostfilename": "hosts",
+                "targetip": "0.0.0.0",
+                "sourcedatafilename": "update.json",
+                "sourcesdata": [],
+                "readmefilename": "readme.md",
+                "readmetemplate": ("foo" + self.sep + "readme_template.md"),
+                "readmedata": {},
+                "readmedatafilename": ("foo" + self.sep + "readmeData.json"),
+                "exclusionpattern": r"([a-zA-Z\d-]+\.){0,}",
+                "exclusionregexs": [],
+                "exclusions": [],
+                "commonexclusions": ["hulu.com"],
+                "blacklistfile": "foo" + self.sep + "blacklist",
+                "whitelistfile": "foo" + self.sep + "whitelist",
+            }
             self.assertDictEqual(actual, expected)
+
+
 # End Project Settings
 
 
 # Prompt the User
 class TestPromptForUpdate(BaseStdout, BaseMockDir):
-
     def setUp(self):
         BaseStdout.setUp(self)
         BaseMockDir.setUp(self)
@@ -174,8 +192,10 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
                 prompt_for_update(freshen=False, update_auto=False)
 
                 output = sys.stdout.getvalue()
-                expected = ("ERROR: No 'hosts' file in the folder. "
-                            "Try creating one manually.")
+                expected = (
+                    "ERROR: No 'hosts' file in the folder. "
+                    "Try creating one manually."
+                )
                 self.assertIn(expected, output)
 
                 sys.stdout = StringIO()
@@ -197,8 +217,7 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
             self.assertFalse(update_sources)
 
             output = sys.stdout.getvalue()
-            expected = ("OK, we'll stick with "
-                        "what we've got locally.")
+            expected = "OK, we'll stick with " "what we've got locally."
             self.assertIn(expected, output)
 
             sys.stdout = StringIO()
@@ -223,8 +242,9 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
             dir_count = self.dir_count
 
             for update_auto in (False, True):
-                update_sources = prompt_for_update(freshen=True,
-                                                   update_auto=update_auto)
+                update_sources = prompt_for_update(
+                    freshen=True, update_auto=update_auto
+                )
                 self.assertTrue(update_sources)
 
                 output = sys.stdout.getvalue()
@@ -243,7 +263,6 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 
 
 class TestPromptForExclusions(BaseStdout):
-
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testSkipPrompt(self, mock_query):
         gather_exclusions = prompt_for_exclusions(skip_prompt=True)
@@ -260,8 +279,7 @@ class TestPromptForExclusions(BaseStdout):
         self.assertFalse(gather_exclusions)
 
         output = sys.stdout.getvalue()
-        expected = ("OK, we'll only exclude "
-                    "domains in the whitelist.")
+        expected = "OK, we'll only exclude " "domains in the whitelist."
         self.assertIn(expected, output)
 
         self.assert_called_once(mock_query)
@@ -278,13 +296,11 @@ class TestPromptForExclusions(BaseStdout):
 
 
 class TestPromptForFlushDnsCache(Base):
-
     @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testFlushCache(self, mock_query, mock_flush):
         for prompt_flush in (False, True):
-            prompt_for_flush_dns_cache(flush_cache=True,
-                                       prompt_flush=prompt_flush)
+            prompt_for_flush_dns_cache(flush_cache=True, prompt_flush=prompt_flush)
 
             mock_query.assert_not_called()
             self.assert_called_once(mock_flush)
@@ -295,8 +311,7 @@ class TestPromptForFlushDnsCache(Base):
     @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testNoFlushCacheNoPrompt(self, mock_query, mock_flush):
-        prompt_for_flush_dns_cache(flush_cache=False,
-                                   prompt_flush=False)
+        prompt_for_flush_dns_cache(flush_cache=False, prompt_flush=False)
 
         mock_query.assert_not_called()
         mock_flush.assert_not_called()
@@ -304,8 +319,7 @@ class TestPromptForFlushDnsCache(Base):
     @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testNoFlushCachePromptNoFlush(self, mock_query, mock_flush):
-        prompt_for_flush_dns_cache(flush_cache=False,
-                                   prompt_flush=True)
+        prompt_for_flush_dns_cache(flush_cache=False, prompt_flush=True)
 
         self.assert_called_once(mock_query)
         mock_flush.assert_not_called()
@@ -313,15 +327,13 @@ class TestPromptForFlushDnsCache(Base):
     @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=True)
     def testNoFlushCachePromptFlush(self, mock_query, mock_flush):
-        prompt_for_flush_dns_cache(flush_cache=False,
-                                   prompt_flush=True)
+        prompt_for_flush_dns_cache(flush_cache=False, prompt_flush=True)
 
         self.assert_called_once(mock_query)
         self.assert_called_once(mock_flush)
 
 
 class TestPromptForMove(Base):
-
     def setUp(self):
         Base.setUp(self)
         self.final_file = "final.txt"
@@ -334,8 +346,9 @@ class TestPromptForMove(Base):
     def testSkipStaticHosts(self, mock_query, mock_move):
         for replace in (False, True):
             for auto in (False, True):
-                move_file = self.prompt_for_move(replace=replace, auto=auto,
-                                                 skipstatichosts=True)
+                move_file = self.prompt_for_move(
+                    replace=replace, auto=auto, skipstatichosts=True
+                )
                 self.assertFalse(move_file)
 
                 mock_query.assert_not_called()
@@ -348,8 +361,9 @@ class TestPromptForMove(Base):
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testReplaceNoSkipStaticHosts(self, mock_query, mock_move):
         for auto in (False, True):
-            move_file = self.prompt_for_move(replace=True, auto=auto,
-                                             skipstatichosts=False)
+            move_file = self.prompt_for_move(
+                replace=True, auto=auto, skipstatichosts=False
+            )
             self.assertTrue(move_file)
 
             mock_query.assert_not_called()
@@ -362,8 +376,9 @@ class TestPromptForMove(Base):
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testAutoNoSkipStaticHosts(self, mock_query, mock_move):
         for replace in (False, True):
-            move_file = self.prompt_for_move(replace=replace, auto=True,
-                                             skipstatichosts=True)
+            move_file = self.prompt_for_move(
+                replace=replace, auto=True, skipstatichosts=True
+            )
             self.assertFalse(move_file)
 
             mock_query.assert_not_called()
@@ -375,8 +390,9 @@ class TestPromptForMove(Base):
     @mock.patch("updateHostsFile.move_hosts_file_into_place", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testPromptNoMove(self, mock_query, mock_move):
-        move_file = self.prompt_for_move(replace=False, auto=False,
-                                         skipstatichosts=False)
+        move_file = self.prompt_for_move(
+            replace=False, auto=False, skipstatichosts=False
+        )
         self.assertFalse(move_file)
 
         self.assert_called_once(mock_query)
@@ -388,8 +404,9 @@ class TestPromptForMove(Base):
     @mock.patch("updateHostsFile.move_hosts_file_into_place", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=True)
     def testPromptMove(self, mock_query, mock_move):
-        move_file = self.prompt_for_move(replace=False, auto=False,
-                                         skipstatichosts=False)
+        move_file = self.prompt_for_move(
+            replace=False, auto=False, skipstatichosts=False
+        )
         self.assertTrue(move_file)
 
         self.assert_called_once(mock_query)
@@ -397,12 +414,13 @@ class TestPromptForMove(Base):
 
         mock_query.reset_mock()
         mock_move.reset_mock()
+
+
 # End Prompt the User
 
 
 # Exclusion Logic
 class TestDisplayExclusionsOptions(Base):
-
     @mock.patch("updateHostsFile.query_yes_no", return_value=0)
     @mock.patch("updateHostsFile.exclude_domain", return_value=None)
     @mock.patch("updateHostsFile.gather_custom_exclusions", return_value=None)
@@ -422,8 +440,7 @@ class TestDisplayExclusionsOptions(Base):
 
         mock_gather.assert_not_called()
 
-        exclude_calls = [mock.call("foo", "foo", []),
-                         mock.call("bar", "foo", None)]
+        exclude_calls = [mock.call("foo", "foo", []), mock.call("bar", "foo", None)]
         mock_exclude.assert_has_calls(exclude_calls)
 
     @mock.patch("updateHostsFile.query_yes_no", side_effect=[0, 0, 1])
@@ -465,21 +482,23 @@ class TestGatherCustomExclusions(BaseStdout):
     def test_multiple(self, *_):
         gather_custom_exclusions("foo", [])
 
-        expected = ("Do you have more domains you want to enter? [Y/n] "
-                    "Do you have more domains you want to enter? [Y/n]")
+        expected = (
+            "Do you have more domains you want to enter? [Y/n] "
+            "Do you have more domains you want to enter? [Y/n]"
+        )
         output = sys.stdout.getvalue()
         self.assertIn(expected, output)
 
 
 class TestExcludeDomain(Base):
-
     def test_invalid_exclude_domain(self):
         exclusion_regexes = []
         exclusion_pattern = "*.com"
 
         for domain in ["google.com", "hulu.com", "adaway.org"]:
-            self.assertRaises(re.error, exclude_domain, domain,
-                              exclusion_pattern, exclusion_regexes)
+            self.assertRaises(
+                re.error, exclude_domain, domain, exclusion_pattern, exclusion_regexes
+            )
 
         self.assertListEqual(exclusion_regexes, [])
 
@@ -492,8 +511,9 @@ class TestExcludeDomain(Base):
         for domain in ["google.com", "hulu.com", "adaway.org"]:
             self.assertEqual(len(exclusion_regexes), exp_count)
 
-            exclusion_regexes = exclude_domain(domain, exclusion_pattern,
-                                               exclusion_regexes)
+            exclusion_regexes = exclude_domain(
+                domain, exclusion_pattern, exclusion_regexes
+            )
             expected_regex = re.compile(exclusion_pattern + domain)
 
             expected_regexes.append(expected_regex)
@@ -504,35 +524,47 @@ class TestExcludeDomain(Base):
 
 
 class TestMatchesExclusions(Base):
-
     def test_no_match_empty_list(self):
         exclusion_regexes = []
 
-        for domain in ["1.2.3.4 localhost", "5.6.7.8 hulu.com",
-                       "9.1.2.3 yahoo.com", "4.5.6.7 cloudfront.net"]:
+        for domain in [
+            "1.2.3.4 localhost",
+            "5.6.7.8 hulu.com",
+            "9.1.2.3 yahoo.com",
+            "4.5.6.7 cloudfront.net",
+        ]:
             self.assertFalse(matches_exclusions(domain, exclusion_regexes))
 
     def test_no_match_list(self):
         exclusion_regexes = [r".*\.org", r".*\.edu"]
         exclusion_regexes = [re.compile(regex) for regex in exclusion_regexes]
 
-        for domain in ["1.2.3.4 localhost", "5.6.7.8 hulu.com",
-                       "9.1.2.3 yahoo.com", "4.5.6.7 cloudfront.net"]:
+        for domain in [
+            "1.2.3.4 localhost",
+            "5.6.7.8 hulu.com",
+            "9.1.2.3 yahoo.com",
+            "4.5.6.7 cloudfront.net",
+        ]:
             self.assertFalse(matches_exclusions(domain, exclusion_regexes))
 
     def test_match_list(self):
         exclusion_regexes = [r".*\.com", r".*\.org", r".*\.edu"]
         exclusion_regexes = [re.compile(regex) for regex in exclusion_regexes]
 
-        for domain in ["5.6.7.8 hulu.com", "9.1.2.3 yahoo.com",
-                       "4.5.6.7 adaway.org", "8.9.1.2 education.edu"]:
+        for domain in [
+            "5.6.7.8 hulu.com",
+            "9.1.2.3 yahoo.com",
+            "4.5.6.7 adaway.org",
+            "8.9.1.2 education.edu",
+        ]:
             self.assertTrue(matches_exclusions(domain, exclusion_regexes))
+
+
 # End Exclusion Logic
 
 
 # Update Logic
 class TestUpdateSourcesData(Base):
-
     def setUp(self):
         Base.setUp(self)
 
@@ -540,13 +572,16 @@ class TestUpdateSourcesData(Base):
         self.extensions_path = "extensions"
         self.source_data_filename = "update.json"
 
-        self.update_kwargs = dict(datapath=self.data_path,
-                                  extensionspath=self.extensions_path,
-                                  sourcedatafilename=self.source_data_filename)
+        self.update_kwargs = dict(
+            datapath=self.data_path,
+            extensionspath=self.extensions_path,
+            sourcedatafilename=self.source_data_filename,
+        )
 
     def update_sources_data(self, sources_data, extensions):
-        return update_sources_data(sources_data[:], extensions=extensions,
-                                   **self.update_kwargs)
+        return update_sources_data(
+            sources_data[:], extensions=extensions, **self.update_kwargs
+        )
 
     @mock.patch("updateHostsFile.recursive_glob", return_value=[])
     @mock.patch("updateHostsFile.path_join_robust", return_value="dirpath")
@@ -564,13 +599,17 @@ class TestUpdateSourcesData(Base):
         new_sources_data = self.update_sources_data(sources_data, extensions)
 
         self.assertEqual(new_sources_data, sources_data)
-        join_calls = [mock.call(self.extensions_path, ".json"),
-                      mock.call(self.extensions_path, ".txt")]
+        join_calls = [
+            mock.call(self.extensions_path, ".json"),
+            mock.call(self.extensions_path, ".txt"),
+        ]
         mock_join_robust.assert_has_calls(join_calls)
         mock_open.assert_not_called()
 
-    @mock.patch("updateHostsFile.recursive_glob",
-                side_effect=[[], ["update1.txt", "update2.txt"]])
+    @mock.patch(
+        "updateHostsFile.recursive_glob",
+        side_effect=[[], ["update1.txt", "update2.txt"]],
+    )
     @mock.patch("json.load", return_value={"mock_source": "mock_source.ext"})
     @mock.patch("builtins.open", return_value=mock.Mock())
     @mock.patch("updateHostsFile.path_join_robust", return_value="dirpath")
@@ -583,13 +622,19 @@ class TestUpdateSourcesData(Base):
         self.assertEqual(new_sources_data, expected)
         self.assert_called_once(mock_join_robust)
 
-    @mock.patch("updateHostsFile.recursive_glob",
-                side_effect=[["update1.txt", "update2.txt"],
-                             ["update3.txt", "update4.txt"]])
-    @mock.patch("json.load", side_effect=[{"mock_source": "mock_source.txt"},
-                                          {"mock_source": "mock_source2.txt"},
-                                          {"mock_source": "mock_source3.txt"},
-                                          {"mock_source": "mock_source4.txt"}])
+    @mock.patch(
+        "updateHostsFile.recursive_glob",
+        side_effect=[["update1.txt", "update2.txt"], ["update3.txt", "update4.txt"]],
+    )
+    @mock.patch(
+        "json.load",
+        side_effect=[
+            {"mock_source": "mock_source.txt"},
+            {"mock_source": "mock_source2.txt"},
+            {"mock_source": "mock_source3.txt"},
+            {"mock_source": "mock_source4.txt"},
+        ],
+    )
     @mock.patch("builtins.open", return_value=mock.Mock())
     @mock.patch("updateHostsFile.path_join_robust", return_value="dirpath")
     def test_update_both_pathways(self, mock_join_robust, *_):
@@ -597,16 +642,17 @@ class TestUpdateSourcesData(Base):
         sources_data = [{"source": "source1.txt"}, {"source": "source2.txt"}]
         new_sources_data = self.update_sources_data(sources_data, extensions)
 
-        expected = sources_data + [{"mock_source": "mock_source.txt"},
-                                   {"mock_source": "mock_source2.txt"},
-                                   {"mock_source": "mock_source3.txt"},
-                                   {"mock_source": "mock_source4.txt"}]
+        expected = sources_data + [
+            {"mock_source": "mock_source.txt"},
+            {"mock_source": "mock_source2.txt"},
+            {"mock_source": "mock_source3.txt"},
+            {"mock_source": "mock_source4.txt"},
+        ]
         self.assertEqual(new_sources_data, expected)
         self.assert_called_once(mock_join_robust)
 
 
 class TestUpdateAllSources(BaseStdout):
-
     def setUp(self):
         BaseStdout.setUp(self)
 
@@ -638,26 +684,29 @@ class TestUpdateAllSources(BaseStdout):
     @mock.patch("json.load", return_value={"url": "example.com"})
     @mock.patch("updateHostsFile.recursive_glob", return_value=["foo"])
     @mock.patch("updateHostsFile.write_data", return_value=0)
-    @mock.patch("updateHostsFile.get_file_by_url",
-                return_value=Exception("fail"))
+    @mock.patch("updateHostsFile.get_file_by_url", return_value=Exception("fail"))
     def test_source_fail(self, mock_get, mock_write, *_):
         update_all_sources(self.source_data_filename, self.host_filename)
         mock_write.assert_not_called()
         self.assert_called_once(mock_get)
 
         output = sys.stdout.getvalue()
-        expecteds = ["Updating source  from example.com",
-                     "Error in updating source:  example.com"]
+        expecteds = [
+            "Updating source  from example.com",
+            "Error in updating source:  example.com",
+        ]
         for expected in expecteds:
             self.assertIn(expected, output)
 
     @mock.patch("builtins.open", return_value=mock.Mock())
-    @mock.patch("json.load", side_effect=[{"url": "example.com"},
-                                          {"url": "example2.com"}])
+    @mock.patch(
+        "json.load", side_effect=[{"url": "example.com"}, {"url": "example2.com"}]
+    )
     @mock.patch("updateHostsFile.recursive_glob", return_value=["foo", "bar"])
     @mock.patch("updateHostsFile.write_data", return_value=0)
-    @mock.patch("updateHostsFile.get_file_by_url",
-                side_effect=[Exception("fail"), "file_data"])
+    @mock.patch(
+        "updateHostsFile.get_file_by_url", side_effect=[Exception("fail"), "file_data"]
+    )
     def test_sources_fail_succeed(self, mock_get, mock_write, *_):
         update_all_sources(self.source_data_filename, self.host_filename)
         self.assert_called_once(mock_write)
@@ -666,22 +715,31 @@ class TestUpdateAllSources(BaseStdout):
         mock_get.assert_has_calls(get_calls)
 
         output = sys.stdout.getvalue()
-        expecteds = ["Updating source  from example.com",
-                     "Error in updating source:  example.com",
-                     "Updating source  from example2.com"]
+        expecteds = [
+            "Updating source  from example.com",
+            "Error in updating source:  example.com",
+            "Updating source  from example2.com",
+        ]
         for expected in expecteds:
             self.assertIn(expected, output)
+
+
 # End Update Logic
 
 
 # File Logic
 class TestNormalizeRule(BaseStdout):
-
     def test_no_match(self):
         kwargs = dict(target_ip="0.0.0.0", keep_domain_comments=False)
 
-        for rule in ["foo", "128.0.0.1", "bar.com/usa", "0.0.0 google",
-                     "0.1.2.3.4 foo/bar", "twitter.com"]:
+        for rule in [
+            "foo",
+            "128.0.0.1",
+            "bar.com/usa",
+            "0.0.0 google",
+            "0.1.2.3.4 foo/bar",
+            "twitter.com",
+        ]:
             self.assertEqual(normalize_rule(rule, **kwargs), (None, None))
 
             output = sys.stdout.getvalue()
@@ -695,8 +753,9 @@ class TestNormalizeRule(BaseStdout):
             rule = "127.0.0.1 1.google.com foo"
             expected = ("1.google.com", str(target_ip) + " 1.google.com\n")
 
-            actual = normalize_rule(rule, target_ip=target_ip,
-                                    keep_domain_comments=False)
+            actual = normalize_rule(
+                rule, target_ip=target_ip, keep_domain_comments=False
+            )
             self.assertEqual(actual, expected)
 
             # Nothing gets printed if there's a match.
@@ -709,12 +768,14 @@ class TestNormalizeRule(BaseStdout):
         for target_ip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
             for comment in ("foo", "bar", "baz"):
                 rule = "127.0.0.1 1.google.co.uk " + comment
-                expected = ("1.google.co.uk",
-                            (str(target_ip) + " 1.google.co.uk # " +
-                             comment + "\n"))
+                expected = (
+                    "1.google.co.uk",
+                    (str(target_ip) + " 1.google.co.uk # " + comment + "\n"),
+                )
 
-                actual = normalize_rule(rule, target_ip=target_ip,
-                                        keep_domain_comments=True)
+                actual = normalize_rule(
+                    rule, target_ip=target_ip, keep_domain_comments=True
+                )
                 self.assertEqual(actual, expected)
 
                 # Nothing gets printed if there's a match.
@@ -728,8 +789,9 @@ class TestNormalizeRule(BaseStdout):
             rule = "127.0.0.1 11.22.33.44 foo"
             expected = ("11.22.33.44", str(target_ip) + " 11.22.33.44\n")
 
-            actual = normalize_rule(rule, target_ip=target_ip,
-                                    keep_domain_comments=False)
+            actual = normalize_rule(
+                rule, target_ip=target_ip, keep_domain_comments=False
+            )
             self.assertEqual(actual, expected)
 
             # Nothing gets printed if there's a match.
@@ -740,47 +802,56 @@ class TestNormalizeRule(BaseStdout):
 
 
 class TestStripRule(Base):
-
     def test_strip_empty(self):
         for line in ["0.0.0.0", "domain.com", "foo"]:
             output = strip_rule(line)
             self.assertEqual(output, "")
 
     def test_strip_exactly_two(self):
-        for line in ["0.0.0.0 twitter.com", "127.0.0.1 facebook.com",
-                     "8.8.8.8 google.com", "1.2.3.4 foo.bar.edu"]:
+        for line in [
+            "0.0.0.0 twitter.com",
+            "127.0.0.1 facebook.com",
+            "8.8.8.8 google.com",
+            "1.2.3.4 foo.bar.edu",
+        ]:
             output = strip_rule(line)
             self.assertEqual(output, line)
 
     def test_strip_more_than_two(self):
         comment = " # comments here galore"
 
-        for line in ["0.0.0.0 twitter.com", "127.0.0.1 facebook.com",
-                     "8.8.8.8 google.com", "1.2.3.4 foo.bar.edu"]:
+        for line in [
+            "0.0.0.0 twitter.com",
+            "127.0.0.1 facebook.com",
+            "8.8.8.8 google.com",
+            "1.2.3.4 foo.bar.edu",
+        ]:
             output = strip_rule(line + comment)
             self.assertEqual(output, line + comment)
 
 
 class TestWriteOpeningHeader(BaseMockDir):
-
     def setUp(self):
         super(TestWriteOpeningHeader, self).setUp()
         self.final_file = BytesIO()
 
     def test_missing_keyword(self):
-        kwargs = dict(extensions="", outputsubfolder="",
-                      numberofrules=5, skipstatichosts=False)
+        kwargs = dict(
+            extensions="", outputsubfolder="", numberofrules=5, skipstatichosts=False
+        )
 
         for k in kwargs.keys():
             bad_kwargs = kwargs.copy()
             bad_kwargs.pop(k)
 
-            self.assertRaises(KeyError, write_opening_header,
-                              self.final_file, **bad_kwargs)
+            self.assertRaises(
+                KeyError, write_opening_header, self.final_file, **bad_kwargs
+            )
 
     def test_basic(self):
-        kwargs = dict(extensions="", outputsubfolder="",
-                      numberofrules=5, skipstatichosts=True)
+        kwargs = dict(
+            extensions="", outputsubfolder="", numberofrules=5, skipstatichosts=True
+        )
         write_opening_header(self.final_file, **kwargs)
 
         contents = self.final_file.getvalue()
@@ -790,8 +861,7 @@ class TestWriteOpeningHeader(BaseMockDir):
         for expected in (
             "# This hosts file is a merged collection",
             "# with a dash of crowd sourcing via Github",
-            "# Number of unique domains: {count}".format(
-                count=kwargs["numberofrules"]),
+            "# Number of unique domains: {count}".format(count=kwargs["numberofrules"]),
             "Fetch the latest version of this file:",
             "Project home page: https://github.com/StevenBlack/hosts",
         ):
@@ -808,8 +878,9 @@ class TestWriteOpeningHeader(BaseMockDir):
             self.assertNotIn(expected, contents)
 
     def test_basic_include_static_hosts(self):
-        kwargs = dict(extensions="", outputsubfolder="",
-                      numberofrules=5, skipstatichosts=False)
+        kwargs = dict(
+            extensions="", outputsubfolder="", numberofrules=5, skipstatichosts=False
+        )
         with self.mock_property("platform.system") as obj:
             obj.return_value = "Windows"
             write_opening_header(self.final_file, **kwargs)
@@ -823,24 +894,20 @@ class TestWriteOpeningHeader(BaseMockDir):
             "127.0.0.1 localhost",
             "# This hosts file is a merged collection",
             "# with a dash of crowd sourcing via Github",
-            "# Number of unique domains: {count}".format(
-                count=kwargs["numberofrules"]),
+            "# Number of unique domains: {count}".format(count=kwargs["numberofrules"]),
             "Fetch the latest version of this file:",
             "Project home page: https://github.com/StevenBlack/hosts",
         ):
             self.assertIn(expected, contents)
 
         # Expected non-contents.
-        for expected in (
-            "# Extensions added to this file:",
-            "127.0.0.53",
-            "127.0.1.1",
-        ):
+        for expected in ("# Extensions added to this file:", "127.0.0.53", "127.0.1.1"):
             self.assertNotIn(expected, contents)
 
     def test_basic_include_static_hosts_linux(self):
-        kwargs = dict(extensions="", outputsubfolder="",
-                      numberofrules=5, skipstatichosts=False)
+        kwargs = dict(
+            extensions="", outputsubfolder="", numberofrules=5, skipstatichosts=False
+        )
         with self.mock_property("platform.system") as system:
             system.return_value = "Linux"
 
@@ -860,8 +927,7 @@ class TestWriteOpeningHeader(BaseMockDir):
             "127.0.0.1 localhost",
             "# This hosts file is a merged collection",
             "# with a dash of crowd sourcing via Github",
-            "# Number of unique domains: {count}".format(
-                count=kwargs["numberofrules"]),
+            "# Number of unique domains: {count}".format(count=kwargs["numberofrules"]),
             "Fetch the latest version of this file:",
             "Project home page: https://github.com/StevenBlack/hosts",
         ):
@@ -872,9 +938,12 @@ class TestWriteOpeningHeader(BaseMockDir):
         self.assertNotIn(expected, contents)
 
     def test_extensions(self):
-        kwargs = dict(extensions=["epsilon", "gamma", "mu", "phi"],
-                      outputsubfolder="", numberofrules=5,
-                      skipstatichosts=True)
+        kwargs = dict(
+            extensions=["epsilon", "gamma", "mu", "phi"],
+            outputsubfolder="",
+            numberofrules=5,
+            skipstatichosts=True,
+        )
         write_opening_header(self.final_file, **kwargs)
 
         contents = self.final_file.getvalue()
@@ -886,8 +955,7 @@ class TestWriteOpeningHeader(BaseMockDir):
             "# Extensions added to this file:",
             "# This hosts file is a merged collection",
             "# with a dash of crowd sourcing via Github",
-            "# Number of unique domains: {count}".format(
-                count=kwargs["numberofrules"]),
+            "# Number of unique domains: {count}".format(count=kwargs["numberofrules"]),
             "Fetch the latest version of this file:",
             "Project home page: https://github.com/StevenBlack/hosts",
         ):
@@ -909,8 +977,9 @@ class TestWriteOpeningHeader(BaseMockDir):
         with open(hosts_file, "w") as f:
             f.write("peter-piper-picked-a-pepper")
 
-        kwargs = dict(extensions="", outputsubfolder="",
-                      numberofrules=5, skipstatichosts=True)
+        kwargs = dict(
+            extensions="", outputsubfolder="", numberofrules=5, skipstatichosts=True
+        )
 
         with self.mock_property("updateHostsFile.BASEDIR_PATH"):
             updateHostsFile.BASEDIR_PATH = self.test_dir
@@ -924,8 +993,7 @@ class TestWriteOpeningHeader(BaseMockDir):
             "peter-piper-picked-a-pepper",
             "# This hosts file is a merged collection",
             "# with a dash of crowd sourcing via Github",
-            "# Number of unique domains: {count}".format(
-                count=kwargs["numberofrules"]),
+            "# Number of unique domains: {count}".format(count=kwargs["numberofrules"]),
             "Fetch the latest version of this file:",
             "Project home page: https://github.com/StevenBlack/hosts",
         ):
@@ -953,28 +1021,30 @@ class TestWriteOpeningHeader(BaseMockDir):
 
 
 class TestUpdateReadmeData(BaseMockDir):
-
     def setUp(self):
         super(TestUpdateReadmeData, self).setUp()
         self.readme_file = os.path.join(self.test_dir, "readmeData.json")
 
     def test_missing_keyword(self):
-        kwargs = dict(extensions="", outputsubfolder="",
-                      numberofrules="", sourcesdata="")
+        kwargs = dict(
+            extensions="", outputsubfolder="", numberofrules="", sourcesdata=""
+        )
 
         for k in kwargs.keys():
             bad_kwargs = kwargs.copy()
             bad_kwargs.pop(k)
 
-            self.assertRaises(KeyError, update_readme_data,
-                              self.readme_file, **bad_kwargs)
+            self.assertRaises(
+                KeyError, update_readme_data, self.readme_file, **bad_kwargs
+            )
 
     def test_add_fields(self):
         with open(self.readme_file, "w") as f:
             json.dump({"foo": "bar"}, f)
 
-        kwargs = dict(extensions=None, outputsubfolder="foo",
-                      numberofrules=5, sourcesdata="hosts")
+        kwargs = dict(
+            extensions=None, outputsubfolder="foo", numberofrules=5, sourcesdata="hosts"
+        )
         update_readme_data(self.readme_file, **kwargs)
 
         expected = {
@@ -983,7 +1053,7 @@ class TestUpdateReadmeData(BaseMockDir):
                 "sourcesdata": "hosts",
                 "entries": 5,
             },
-            "foo": "bar"
+            "foo": "bar",
         }
 
         with open(self.readme_file, "r") as f:
@@ -994,16 +1064,13 @@ class TestUpdateReadmeData(BaseMockDir):
         with open(self.readme_file, "w") as f:
             json.dump({"base": "soprano"}, f)
 
-        kwargs = dict(extensions=None, outputsubfolder="foo",
-                      numberofrules=5, sourcesdata="hosts")
+        kwargs = dict(
+            extensions=None, outputsubfolder="foo", numberofrules=5, sourcesdata="hosts"
+        )
         update_readme_data(self.readme_file, **kwargs)
 
         expected = {
-            "base": {
-                "location": "foo" + self.sep,
-                "sourcesdata": "hosts",
-                "entries": 5,
-            }
+            "base": {"location": "foo" + self.sep, "sourcesdata": "hosts", "entries": 5}
         }
 
         with open(self.readme_file, "r") as f:
@@ -1014,8 +1081,12 @@ class TestUpdateReadmeData(BaseMockDir):
         with open(self.readme_file, "w") as f:
             json.dump({}, f)
 
-        kwargs = dict(extensions=["com", "org"], outputsubfolder="foo",
-                      numberofrules=5, sourcesdata="hosts")
+        kwargs = dict(
+            extensions=["com", "org"],
+            outputsubfolder="foo",
+            numberofrules=5,
+            sourcesdata="hosts",
+        )
         update_readme_data(self.readme_file, **kwargs)
 
         expected = {
@@ -1032,7 +1103,6 @@ class TestUpdateReadmeData(BaseMockDir):
 
 
 class TestMoveHostsFile(BaseStdout):
-
     @mock.patch("os.path.abspath", side_effect=lambda f: f)
     def test_move_hosts_no_name(self, _):
         with self.mock_property("os.name"):
@@ -1054,10 +1124,12 @@ class TestMoveHostsFile(BaseStdout):
             mock_file = mock.Mock(name="foo")
             move_hosts_file_into_place(mock_file)
 
-            expected = ("Automatically moving the hosts "
-                        "file in place is not yet supported.\n"
-                        "Please move the generated file to "
-                        r"%SystemRoot%\system32\drivers\etc\hosts")
+            expected = (
+                "Automatically moving the hosts "
+                "file in place is not yet supported.\n"
+                "Please move the generated file to "
+                r"%SystemRoot%\system32\drivers\etc\hosts"
+            )
             output = sys.stdout.getvalue()
             self.assertIn(expected, output)
 
@@ -1070,8 +1142,10 @@ class TestMoveHostsFile(BaseStdout):
             mock_file = mock.Mock(name="foo")
             move_hosts_file_into_place(mock_file)
 
-            expected = ("Moving the file requires administrative "
-                        "privileges. You might need to enter your password.")
+            expected = (
+                "Moving the file requires administrative "
+                "privileges. You might need to enter your password."
+            )
             output = sys.stdout.getvalue()
             self.assertIn(expected, output)
 
@@ -1090,17 +1164,18 @@ class TestMoveHostsFile(BaseStdout):
 
 
 class TestFlushDnsCache(BaseStdout):
-
     @mock.patch("subprocess.call", return_value=0)
     def test_flush_darwin(self, _):
         with self.mock_property("platform.system") as obj:
             obj.return_value = "Darwin"
             flush_dns_cache()
 
-            expected = ("Flushing the DNS cache to utilize new hosts "
-                        "file...\nFlushing the DNS cache requires "
-                        "administrative privileges. You might need to "
-                        "enter your password.")
+            expected = (
+                "Flushing the DNS cache to utilize new hosts "
+                "file...\nFlushing the DNS cache requires "
+                "administrative privileges. You might need to "
+                "enter your password."
+            )
             output = sys.stdout.getvalue()
             self.assertIn(expected, output)
 
@@ -1122,11 +1197,13 @@ class TestFlushDnsCache(BaseStdout):
                 os.name = "nt"
                 flush_dns_cache()
 
-                expected = ("Automatically flushing the DNS cache is "
-                            "not yet supported.\nPlease copy and paste "
-                            "the command 'ipconfig /flushdns' in "
-                            "administrator command prompt after running "
-                            "this script.")
+                expected = (
+                    "Automatically flushing the DNS cache is "
+                    "not yet supported.\nPlease copy and paste "
+                    "the command 'ipconfig /flushdns' in "
+                    "administrator command prompt after running "
+                    "this script."
+                )
                 output = sys.stdout.getvalue()
                 self.assertIn(expected, output)
 
@@ -1153,8 +1230,7 @@ class TestFlushDnsCache(BaseStdout):
                 os.name = "posix"
                 flush_dns_cache()
 
-                expected = ("Flushing the DNS cache by "
-                            "restarting nscd succeeded")
+                expected = "Flushing the DNS cache by " "restarting nscd succeeded"
                 output = sys.stdout.getvalue()
                 self.assertIn(expected, output)
 
@@ -1168,13 +1244,11 @@ class TestFlushDnsCache(BaseStdout):
                 os.name = "posix"
                 flush_dns_cache()
 
-                expected = ("Flushing the DNS cache by "
-                            "restarting nscd failed")
+                expected = "Flushing the DNS cache by " "restarting nscd failed"
                 output = sys.stdout.getvalue()
                 self.assertIn(expected, output)
 
-    @mock.patch("os.path.isfile", side_effect=[True, False, False,
-                                               True] + [False] * 10)
+    @mock.patch("os.path.isfile", side_effect=[True, False, False, True] + [False] * 10)
     @mock.patch("subprocess.call", side_effect=[1, 0])
     def test_flush_posix_fail_then_succeed(self, *_):
         with self.mock_property("platform.system") as obj:
@@ -1185,10 +1259,13 @@ class TestFlushDnsCache(BaseStdout):
                 flush_dns_cache()
 
                 output = sys.stdout.getvalue()
-                for expected in [("Flushing the DNS cache by "
-                                  "restarting nscd failed"),
-                                 ("Flushing the DNS cache by restarting "
-                                  "NetworkManager.service succeeded")]:
+                for expected in [
+                    ("Flushing the DNS cache by " "restarting nscd failed"),
+                    (
+                        "Flushing the DNS cache by restarting "
+                        "NetworkManager.service succeeded"
+                    ),
+                ]:
                     self.assertIn(expected, output)
 
 
@@ -1202,7 +1279,6 @@ def mock_path_join_robust(*args):
 
 
 class TestRemoveOldHostsFile(BaseMockDir):
-
     def setUp(self):
         super(TestRemoveOldHostsFile, self).setUp()
         self.hosts_file = os.path.join(self.test_dir, "hosts")
@@ -1238,8 +1314,7 @@ class TestRemoveOldHostsFile(BaseMockDir):
                 contents = f.read()
                 self.assertEqual(contents, "")
 
-    @mock.patch("updateHostsFile.path_join_robust",
-                side_effect=mock_path_join_robust)
+    @mock.patch("updateHostsFile.path_join_robust", side_effect=mock_path_join_robust)
     def test_remove_hosts_file_backup(self, _):
         with open(self.hosts_file, "w") as f:
             f.write("foo")
@@ -1262,6 +1337,8 @@ class TestRemoveOldHostsFile(BaseMockDir):
             with open(new_hosts_file, "r") as f:
                 contents = f.read()
                 self.assertEqual(contents, "foo")
+
+
 # End File Logic
 
 
@@ -1337,12 +1414,11 @@ def mock_url_open_decode_fail(_):
 
 
 class DomainToIDNA(Base):
-
     def __init__(self, *args, **kwargs):
         super(DomainToIDNA, self).__init__(*args, **kwargs)
 
-        self.domains = [b'\xc9\xa2oogle.com', b'www.huala\xc3\xb1e.cl']
-        self.expected_domains = ['xn--oogle-wmc.com', 'www.xn--hualae-0wa.cl']
+        self.domains = [b"\xc9\xa2oogle.com", b"www.huala\xc3\xb1e.cl"]
+        self.expected_domains = ["xn--oogle-wmc.com", "www.xn--hualae-0wa.cl"]
 
     def test_empty_line(self):
         data = ["", "\r", "\n"]
@@ -1363,7 +1439,7 @@ class DomainToIDNA(Base):
     def test_simple_line(self):
         # Test with a space as separator.
         for i in range(len(self.domains)):
-            data = (b"0.0.0.0 " + self.domains[i]).decode('utf-8')
+            data = (b"0.0.0.0 " + self.domains[i]).decode("utf-8")
             expected = "0.0.0.0 " + self.expected_domains[i]
 
             actual = domain_to_idna(data)
@@ -1372,7 +1448,7 @@ class DomainToIDNA(Base):
 
         # Test with a tabulation as separator.
         for i in range(len(self.domains)):
-            data = (b"0.0.0.0\t" + self.domains[i]).decode('utf-8')
+            data = (b"0.0.0.0\t" + self.domains[i]).decode("utf-8")
             expected = "0.0.0.0\t" + self.expected_domains[i]
 
             actual = domain_to_idna(data)
@@ -1382,7 +1458,7 @@ class DomainToIDNA(Base):
     def test_multiple_space_as_separator(self):
         # Test with multiple space as separator.
         for i in range(len(self.domains)):
-            data = (b"0.0.0.0      " + self.domains[i]).decode('utf-8')
+            data = (b"0.0.0.0      " + self.domains[i]).decode("utf-8")
             expected = "0.0.0.0      " + self.expected_domains[i]
 
             actual = domain_to_idna(data)
@@ -1392,7 +1468,7 @@ class DomainToIDNA(Base):
     def test_multiple_tabs_as_separator(self):
         # Test with multiple tabls as separator.
         for i in range(len(self.domains)):
-            data = (b"0.0.0.0\t\t\t\t\t\t" + self.domains[i]).decode('utf-8')
+            data = (b"0.0.0.0\t\t\t\t\t\t" + self.domains[i]).decode("utf-8")
             expected = "0.0.0.0\t\t\t\t\t\t" + self.expected_domains[i]
 
             actual = domain_to_idna(data)
@@ -1402,8 +1478,7 @@ class DomainToIDNA(Base):
     def test_line_with_comment_at_the_end(self):
         # Test with a space as separator.
         for i in range(len(self.domains)):
-            data = (b"0.0.0.0 " + self.domains[i] + b" # Hello World") \
-                .decode('utf-8')
+            data = (b"0.0.0.0 " + self.domains[i] + b" # Hello World").decode("utf-8")
             expected = "0.0.0.0 " + self.expected_domains[i] + " # Hello World"
 
             actual = domain_to_idna(data)
@@ -1412,10 +1487,8 @@ class DomainToIDNA(Base):
 
         # Test with a tabulation as separator.
         for i in range(len(self.domains)):
-            data = (b"0.0.0.0\t" + self.domains[i] + b" # Hello World") \
-                .decode('utf-8')
-            expected = "0.0.0.0\t" + self.expected_domains[i] + \
-                " # Hello World"
+            data = (b"0.0.0.0\t" + self.domains[i] + b" # Hello World").decode("utf-8")
+            expected = "0.0.0.0\t" + self.expected_domains[i] + " # Hello World"
 
             actual = domain_to_idna(data)
 
@@ -1423,10 +1496,10 @@ class DomainToIDNA(Base):
 
         # Test with tabulation as separator of domain and comment.
         for i in range(len(self.domains)):
-            data = (b"0.0.0.0\t" + self.domains[i] + b"\t # Hello World") \
-                .decode('utf-8')
-            expected = "0.0.0.0\t" + self.expected_domains[i] + \
-                "\t # Hello World"
+            data = (b"0.0.0.0\t" + self.domains[i] + b"\t # Hello World").decode(
+                "utf-8"
+            )
+            expected = "0.0.0.0\t" + self.expected_domains[i] + "\t # Hello World"
 
             actual = domain_to_idna(data)
 
@@ -1435,10 +1508,10 @@ class DomainToIDNA(Base):
         # Test with space as separator of domain and tabulation as separator
         # of comments.
         for i in range(len(self.domains)):
-            data = (b"0.0.0.0 " + self.domains[i] + b"  \t # Hello World") \
-                .decode('utf-8')
-            expected = "0.0.0.0 " + self.expected_domains[i] + \
-                "  \t # Hello World"
+            data = (b"0.0.0.0 " + self.domains[i] + b"  \t # Hello World").decode(
+                "utf-8"
+            )
+            expected = "0.0.0.0 " + self.expected_domains[i] + "  \t # Hello World"
 
             actual = domain_to_idna(data)
 
@@ -1447,10 +1520,10 @@ class DomainToIDNA(Base):
         # Test with multiple space as seprator of domain and space and
         # tabulation as separator or comments.
         for i in range(len(self.domains)):
-            data = (b"0.0.0.0     " + self.domains[i] + b" \t # Hello World") \
-                .decode('utf-8')
-            expected = "0.0.0.0     " + self.expected_domains[i] + \
-                " \t # Hello World"
+            data = (b"0.0.0.0     " + self.domains[i] + b" \t # Hello World").decode(
+                "utf-8"
+            )
+            expected = "0.0.0.0     " + self.expected_domains[i] + " \t # Hello World"
 
             actual = domain_to_idna(data)
 
@@ -1459,12 +1532,10 @@ class DomainToIDNA(Base):
         # Test with multiple tabulations as seprator of domain and space and
         # tabulation as separator or comments.
         for i in range(len(self.domains)):
-            data = (b"0.0.0.0\t\t\t" +
-                    self.domains[i] +
-                    b" \t # Hello World") \
-                        .decode('utf-8')
-            expected = "0.0.0.0\t\t\t" + self.expected_domains[i] + \
-                " \t # Hello World"
+            data = (b"0.0.0.0\t\t\t" + self.domains[i] + b" \t # Hello World").decode(
+                "utf-8"
+            )
+            expected = "0.0.0.0\t\t\t" + self.expected_domains[i] + " \t # Hello World"
 
             actual = domain_to_idna(data)
 
@@ -1472,7 +1543,7 @@ class DomainToIDNA(Base):
 
     def test_line_without_prefix(self):
         for i in range(len(self.domains)):
-            data = self.domains[i].decode('utf-8')
+            data = self.domains[i].decode("utf-8")
             expected = self.expected_domains[i]
 
             actual = domain_to_idna(data)
@@ -1481,9 +1552,7 @@ class DomainToIDNA(Base):
 
 
 class GetFileByUrl(BaseStdout):
-
-    @mock.patch("updateHostsFile.urlopen",
-                side_effect=mock_url_open)
+    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open)
     def test_read_url(self, _):
         url = b"www.google.com"
 
@@ -1492,8 +1561,7 @@ class GetFileByUrl(BaseStdout):
 
         self.assertEqual(actual, expected)
 
-    @mock.patch("updateHostsFile.urlopen",
-                side_effect=mock_url_open_fail)
+    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open_fail)
     def test_read_url_fail(self, _):
         url = b"www.google.com"
         self.assertIsNone(get_file_by_url(url))
@@ -1503,8 +1571,7 @@ class GetFileByUrl(BaseStdout):
 
         self.assertIn(expected, output)
 
-    @mock.patch("updateHostsFile.urlopen",
-                side_effect=mock_url_open_read_fail)
+    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open_read_fail)
     def test_read_url_read_fail(self, _):
         url = b"www.google.com"
         self.assertIsNone(get_file_by_url(url))
@@ -1514,8 +1581,7 @@ class GetFileByUrl(BaseStdout):
 
         self.assertIn(expected, output)
 
-    @mock.patch("updateHostsFile.urlopen",
-                side_effect=mock_url_open_decode_fail)
+    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open_decode_fail)
     def test_read_url_decode_fail(self, _):
         url = b"www.google.com"
         self.assertIsNone(get_file_by_url(url))
@@ -1527,7 +1593,6 @@ class GetFileByUrl(BaseStdout):
 
 
 class TestWriteData(Base):
-
     def test_write_basic(self):
         f = BytesIO()
 
@@ -1552,15 +1617,17 @@ class TestWriteData(Base):
 
 
 class TestQueryYesOrNo(BaseStdout):
-
     def test_invalid_default(self):
         for invalid_default in ["foo", "bar", "baz", 1, 2, 3]:
             self.assertRaises(ValueError, query_yes_no, "?", invalid_default)
 
     @mock.patch("updateHostsFile.input", side_effect=["yes"] * 3)
     def test_valid_default(self, _):
-        for valid_default, expected in [(None, "[y/n]"), ("yes", "[Y/n]"),
-                                        ("no", "[y/N]")]:
+        for valid_default, expected in [
+            (None, "[y/n]"),
+            ("yes", "[Y/n]"),
+            ("no", "[y/N]"),
+        ]:
             self.assertTrue(query_yes_no("?", valid_default))
 
             output = sys.stdout.getvalue()
@@ -1571,7 +1638,7 @@ class TestQueryYesOrNo(BaseStdout):
     @mock.patch("updateHostsFile.input", side_effect=([""] * 2))
     def test_use_valid_default(self, _):
         for valid_default in ["yes", "no"]:
-            expected = (valid_default == "yes")
+            expected = valid_default == "yes"
             actual = query_yes_no("?", valid_default)
 
             self.assertEqual(actual, expected)
@@ -1580,7 +1647,10 @@ class TestQueryYesOrNo(BaseStdout):
     def test_valid_no(self, _):
         self.assertFalse(query_yes_no("?", None))
 
-    @mock.patch("updateHostsFile.input", side_effect=["yes", "YES", "Y", "yeS", "y", "YeS", "yES", "YEs"])
+    @mock.patch(
+        "updateHostsFile.input",
+        side_effect=["yes", "YES", "Y", "yeS", "y", "YeS", "yES", "YEs"],
+    )
     def test_valid_yes(self, _):
         self.assertTrue(query_yes_no("?", None))
 
@@ -1604,7 +1674,6 @@ class TestQueryYesOrNo(BaseStdout):
 
 
 class TestIsValidDomainFormat(BaseStdout):
-
     def test_empty_domain(self):
         self.assertFalse(is_valid_domain_format(""))
 
@@ -1614,11 +1683,15 @@ class TestIsValidDomainFormat(BaseStdout):
         self.assertTrue(expected in output)
 
     def test_invalid_domain(self):
-        expected = ("Do not include www.domain.com or "
-                    "http(s)://domain.com. Try again.")
+        expected = (
+            "Do not include www.domain.com or " "http(s)://domain.com. Try again."
+        )
 
-        for invalid_domain in ["www.subdomain.domain", "https://github.com",
-                               "http://www.google.com"]:
+        for invalid_domain in [
+            "www.subdomain.domain",
+            "https://github.com",
+            "http://www.google.com",
+        ]:
             self.assertFalse(is_valid_domain_format(invalid_domain))
 
             output = sys.stdout.getvalue()
@@ -1644,8 +1717,16 @@ def mock_walk(stem):
     the provided parameters.
     """
 
-    files = ["foo.txt", "bar.bat", "baz.py", "foo/foo.c", "foo/bar.doc",
-             "foo/baz/foo.py", "bar/foo/baz.c", "bar/bar/foo.bat"]
+    files = [
+        "foo.txt",
+        "bar.bat",
+        "baz.py",
+        "foo/foo.c",
+        "foo/bar.doc",
+        "foo/baz/foo.py",
+        "bar/foo/baz.c",
+        "bar/bar/foo.bat",
+    ]
 
     if stem == ".":
         stem = ""
@@ -1660,7 +1741,6 @@ def mock_walk(stem):
 
 
 class TestRecursiveGlob(Base):
-
     @staticmethod
     def sorted_recursive_glob(stem, file_pattern):
         actual = recursive_glob(stem, file_pattern)
@@ -1673,10 +1753,16 @@ class TestRecursiveGlob(Base):
         with self.mock_property("sys.version_info"):
             sys.version_info = (2, 6)
 
-            expected = ["bar.bat", "bar/bar/foo.bat",
-                        "bar/foo/baz.c", "baz.py",
-                        "foo.txt", "foo/bar.doc",
-                        "foo/baz/foo.py", "foo/foo.c"]
+            expected = [
+                "bar.bat",
+                "bar/bar/foo.bat",
+                "bar/foo/baz.c",
+                "baz.py",
+                "foo.txt",
+                "foo/bar.doc",
+                "foo/baz/foo.py",
+                "foo/foo.c",
+            ]
             actual = self.sorted_recursive_glob("*", "*")
             self.assertListEqual(actual, expected)
 
@@ -1718,7 +1804,6 @@ def mock_path_join(*_):
 
 
 class TestPathJoinRobust(Base):
-
     def test_basic(self):
         expected = "path1"
         actual = path_join_robust("path1")
@@ -1750,7 +1835,6 @@ class TestPathJoinRobust(Base):
 
 # Colors
 class TestSupportsColor(BaseStdout):
-
     def test_posix(self):
         with self.mock_property("sys.platform"):
             sys.platform = "Linux"
@@ -1802,11 +1886,9 @@ class TestSupportsColor(BaseStdout):
 
 
 class TestColorize(Base):
-
     def setUp(self):
         self.text = "house"
-        self.colors = ["red", "orange", "yellow",
-                       "green", "blue", "purple"]
+        self.colors = ["red", "orange", "yellow", "green", "blue", "purple"]
 
     @mock.patch("updateHostsFile.supports_color", return_value=False)
     def test_colorize_no_support(self, _):
@@ -1826,7 +1908,6 @@ class TestColorize(Base):
 
 
 class TestPrintSuccess(BaseStdout):
-
     def setUp(self):
         super(TestPrintSuccess, self).setUp()
         self.text = "house"
@@ -1851,7 +1932,6 @@ class TestPrintSuccess(BaseStdout):
 
 
 class TestPrintFailure(BaseStdout):
-
     def setUp(self):
         super(TestPrintFailure, self).setUp()
         self.text = "house"
@@ -1873,6 +1953,8 @@ class TestPrintFailure(BaseStdout):
         actual = sys.stdout.getvalue()
 
         self.assertEqual(actual, expected)
+
+
 # End Helper Functions
 
 
