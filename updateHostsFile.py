@@ -1015,6 +1015,31 @@ def write_opening_header(final_file, **header_params):
     file_contents = final_file.read()  # Save content.
 
     final_file.seek(0)  # Write at the top.
+
+    if header_params["extensions"]:
+        if len(header_params["extensions"]) > 1:
+            write_data(
+                final_file,
+                "# Title: StevenBlack/hosts with the {0} and {1} extensions\n#\n".format(
+                    ", ".join(header_params["extensions"][:-1]),
+                    header_params["extensions"][-1],
+                ),
+            )
+        else:
+            write_data(
+                final_file,
+                "# Title: StevenBlack/hosts with the {0} extension\n#\n".format(
+                    ", ".join(header_params["extensions"])
+                ),
+            )
+    else:
+        write_data(
+            final_file,
+            "# Title: StevenBlack/hosts\n#\n".format(
+                ", ".join(header_params["extensions"])
+            ),
+        )
+
     write_data(
         final_file,
         "# This hosts file is a merged collection "
@@ -1032,29 +1057,6 @@ def write_opening_header(final_file, **header_params):
             "# Extensions added to this file: "
             + ", ".join(header_params["extensions"])
             + "\n",
-        )
-
-        if len(header_params["extensions"]) > 1:
-            write_data(
-                final_file,
-                "# Title: StevenBlack/hosts with the {0} and {1} extensions\n".format(
-                    ", ".join(header_params["extensions"][:-1]),
-                    header_params["extensions"][-1],
-                ),
-            )
-        else:
-            write_data(
-                final_file,
-                "# Title: StevenBlack/hosts with the {0} extension\n".format(
-                    ", ".join(header_params["extensions"])
-                ),
-            )
-    else:
-        write_data(
-            final_file,
-            "# Title: StevenBlack/hosts\n".format(
-                ", ".join(header_params["extensions"])
-            ),
         )
 
     write_data(
