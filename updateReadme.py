@@ -12,19 +12,21 @@ from string import Template
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
-README_TEMPLATE = os.path.join(BASEDIR_PATH, 'readme_template.md')
-README_FILENAME = 'readme.md'
+README_TEMPLATE = os.path.join(BASEDIR_PATH, "readme_template.md")
+README_FILENAME = "readme.md"
 README_DATA_FILENAME = "readmeData.json"
 
 
 def main():
-    s = Template('${description} | [Readme](https://github.com/StevenBlack/'
-                 'hosts/blob/master/${location}readme.md) | '
-                 '[link](https://raw.githubusercontent.com/StevenBlack/'
-                 'hosts/master/${location}hosts) | '
-                 '${fmtentries} | '
-                 '[link](http://sbc.io/hosts/${location}hosts)')
-    with open(README_DATA_FILENAME, 'r') as f:
+    s = Template(
+        "${description} | [Readme](https://github.com/StevenBlack/"
+        "hosts/blob/master/${location}readme.md) | "
+        "[link](https://raw.githubusercontent.com/StevenBlack/"
+        "hosts/master/${location}hosts) | "
+        "${fmtentries} | "
+        "[link](http://sbc.io/hosts/${location}hosts)"
+    )
+    with open(README_DATA_FILENAME, "r") as f:
         data = json.load(f)
 
     keys = list(data.keys())
@@ -37,10 +39,11 @@ def main():
     for key in keys:
         data[key]["fmtentries"] = "{:,}".format(data[key]["entries"])
         if key == "base":
-            data[key]["description"] = 'Unified hosts = **(adware + malware)**'
+            data[key]["description"] = "Unified hosts = **(adware + malware)**"
         else:
-            data[key]["description"] = ('Unified hosts **+ ' +
-                                        key.replace("-", " + ") + '**')
+            data[key]["description"] = (
+                "Unified hosts **+ " + key.replace("-", " + ") + "**"
+            )
 
         toc_rows += s.substitute(data[key]) + "\n"
 
@@ -52,10 +55,13 @@ def main():
         "issues": "",
         "url": "",
         "license": "",
-        "issues": ""}
+        "issues": "",
+    }
 
-    t = Template('${name} | ${description} |[link](${homeurl})'
-                 ' | [raw](${url}) | ${frequency} | ${license}  | [issues](${issues}) ')
+    t = Template(
+        "${name} | ${description} |[link](${homeurl})"
+        " | [raw](${url}) | ${frequency} | ${license}  | [issues](${issues}) "
+    )
 
     for key in keys:
         extensions = key.replace("-", ", ")
@@ -71,16 +77,21 @@ def main():
             this_row.update(source)
             source_rows += t.substitute(this_row) + "\n"
 
-        with open(os.path.join(data[key]["location"],
-                               README_FILENAME), "wt") as out:
+        with open(os.path.join(data[key]["location"], README_FILENAME), "wt") as out:
             for line in open(README_TEMPLATE):
-                line = line.replace('@GEN_DATE@', time.strftime("%B %d %Y", time.gmtime()))
-                line = line.replace('@EXTENSIONS@', extensions_str)
-                line = line.replace('@EXTENSIONS_HEADER@', extensions_header)
-                line = line.replace('@NUM_ENTRIES@', "{:,}".format(data[key]["entries"]))
-                line = line.replace('@SUBFOLDER@', os.path.join(data[key]["location"], ''))
-                line = line.replace('@TOCROWS@', toc_rows)
-                line = line.replace('@SOURCEROWS@', source_rows)
+                line = line.replace(
+                    "@GEN_DATE@", time.strftime("%B %d %Y", time.gmtime())
+                )
+                line = line.replace("@EXTENSIONS@", extensions_str)
+                line = line.replace("@EXTENSIONS_HEADER@", extensions_header)
+                line = line.replace(
+                    "@NUM_ENTRIES@", "{:,}".format(data[key]["entries"])
+                )
+                line = line.replace(
+                    "@SUBFOLDER@", os.path.join(data[key]["location"], "")
+                )
+                line = line.replace("@TOCROWS@", toc_rows)
+                line = line.replace("@SOURCEROWS@", source_rows)
                 out.write(line)
 
 
