@@ -20,6 +20,11 @@ if not exist "%WINDIR%\System32\drivers\etc\hosts.skel" (
 	COPY %WINDIR%\System32\drivers\etc\hosts %WINDIR%\System32\drivers\etc\hosts.skel
 )
 
+:: Make sure we are in the correct working directory
+rem Path info from:
+rem https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/call#batch-parameters
+cd %~dp0
+
 :: Update hosts file
 if exist updateHostsFile.exe (
     echo run exe
@@ -36,3 +41,4 @@ COPY hosts %WINDIR%\System32\drivers\etc\
 ipconfig /flushdns
 
 :endofscript
+pause 5
