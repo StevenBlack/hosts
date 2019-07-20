@@ -21,10 +21,18 @@ if not exist "%WINDIR%\System32\drivers\etc\hosts.skel" (
 )
 
 :: Update hosts file
-python updateHostsFile.py --auto --extensions fakenews social gambling
+if exist updateHostsFile.exe (
+    echo run exe
+    updateHostsFile --auto --extensions fakenews social gambling
+) else (
+    echo run script
+    python updateHostsFile.py --auto --extensions fakenews social gambling
+)
 
 :: Move new hosts file in-place
 COPY hosts %WINDIR%\System32\drivers\etc\
 
 :: Flush the DNS cache
 ipconfig /flushdns
+
+:endofscript
