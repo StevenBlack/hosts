@@ -7,7 +7,7 @@
 # This *must* be the first line: 127.0.0.1     localhost   #
 #                                                          #
 #**********************************************************#
-# ---------------- Updated: June-11-2019 ----------------- #
+# ---------------- Updated: July-13-2019 ----------------- #
 #**********************************************************#
 #                                                          #
 # Disclaimer: this file is free to use for personal use    #
@@ -56,6 +56,7 @@
 0.0.0.0 wad.adbasket.net
 0.0.0.0 adbox.hu
 0.0.0.0 b.adbox.lv
+0.0.0.0 adboost.ro
 0.0.0.0 www.adchimp.com
 0.0.0.0 static.adclick.lt
 0.0.0.0 engine.adclick.lv
@@ -73,7 +74,6 @@
 0.0.0.0 adexc.net
 0.0.0.0 s.adexpert.cz
 0.0.0.0 static.adfclick1.com
-0.0.0.0 222-33544_999.pub.adfirmative.com
 0.0.0.0 c.adfirmative.com
 0.0.0.0 www.adfirmative.com
 0.0.0.0 adfocus.ru
@@ -1756,6 +1756,7 @@
 0.0.0.0 www.topsiteuri.ro
 0.0.0.0 ads.topwam.com
 0.0.0.0 cdn.total-media.net
+0.0.0.0 winappcenter.total-secure.info
 0.0.0.0 ams.toxity.biz
 0.0.0.0 www.tr100.net
 0.0.0.0 ad.track.us.org
@@ -2724,6 +2725,7 @@
 0.0.0.0 p0.raasnet.com
 0.0.0.0 imagec15.247realmedia.com
 0.0.0.0 pr.realvu.net
+0.0.0.0 us.rewardearners.com
 0.0.0.0 c2.rfihub.net
 0.0.0.0 b.rmgserving.com
 0.0.0.0 c.rmgserving.com
@@ -3882,6 +3884,7 @@
 # [Amazon.com][AS39111][87.238.82.0 - 87.238.83.255]
 0.0.0.0 adseu.novem.pl
 # [Amazon.com][16509][99.84.120.0/21]
+0.0.0.0 tagan.adlightning.com
 0.0.0.0 cdn-v3.conductrics.com
 # [Anexia][AS42473][37.252.228.0 - 37.252.228.255]
 0.0.0.0 cdn.qbaka.net
@@ -4683,6 +4686,7 @@
 0.0.0.0 tracker.bang.com
 0.0.0.0 srv.bebi.com
 0.0.0.0 banners.bghelp.co.uk
+0.0.0.0 buzzcpm.com
 0.0.0.0 cdnmedia.xyz
 0.0.0.0 wp1.cor-natty.com
 0.0.0.0 count.im
@@ -6056,14 +6060,18 @@
 # [Google / DoubleClick][AS6432][216.73.80.0 - 216.73.95.255]
 0.0.0.0 www3.webhostingtalk.com
 # [Google][AS15169][23.236.128.0 - 23.251.159.255]
+# [Google][AS15169][34.64.0.0/11]
+0.0.0.0 analytics.inform.com
 # [Google][AS15169][35.184.0.0 - 35.240.255.255]
 0.0.0.0 adexchangedirect.com
+0.0.0.0 cleardexchange.com
 0.0.0.0 stats.directexpose.com
 0.0.0.0 script.idvert.cz
 0.0.0.0 adoramatracksdk.optimove.net #[Piwik.Analytics]
 0.0.0.0 collector-pxel3l4xih.perimeterx.net
 0.0.0.0 star.pulseonclick.com
 0.0.0.0 app.reflectivedata.com
+0.0.0.0 track.special-promotions.online
 0.0.0.0 click.udimg.com
 # [Google / DoubleClick][AS15169][64.233.160.0 - 64.233.191.255]
 0.0.0.0 m1.2mdn.net
@@ -7097,6 +7105,8 @@
 0.0.0.0 x.fidelity-media.com
 # [Leaseweb][AS30633][207.244.64.0 - 207.244.127.255]
 0.0.0.0 static.hotjar.com
+# [Leaseweb][AS394380][209.58.144.0/20]
+0.0.0.0 img.sunmediaads.com
 # [Leaseweb][AS28753][212.95.32.0 - 212.95.63.255]
 0.0.0.0 ads.directcorp.de
 0.0.0.0 adserver.directcorp.de
@@ -7406,6 +7416,8 @@
 0.0.0.0 e.freewebhostingarea.com
 # [Limestone][AS46475][74.63.224.172]
 0.0.0.0 www.advancedmactools.com
+# [Liquid Web][AS32244][192.138.16.0/21]
+0.0.0.0 trackingclicks.xyz
 # [Liquid Web][AS32244][209.59.128.0 - 209.59.191.255]
 0.0.0.0 ad-rotator.com #[adspeed.com]
 0.0.0.0 serv.adspeed.com
@@ -7978,6 +7990,7 @@
 0.0.0.0 www.impresionesweb.com
 0.0.0.0 alternativos.iw-advertising.com
 0.0.0.0 ad.sgdgjarfpp123.com
+0.0.0.0 play.sunmediaads.com
 # [MISC NEWS SITES]
 0.0.0.0 ads.admaxasia.com
 0.0.0.0 adnet.asahi.com
@@ -9942,6 +9955,7 @@
 0.0.0.0 bttrack.com
 0.0.0.0 pixel-a.basis.net
 0.0.0.0 pixel.crosspixel.net
+0.0.0.0 pixel.programmatictrader.com
 0.0.0.0 pixel-a.sitescout.com
 # [Peer 1][209.25.128.0 - 209.25.255.255]
 0.0.0.0 tracking.aimediagroup.com
@@ -12926,16 +12940,12 @@
 0.0.0.0 oascentral.recyclebank.com
 0.0.0.0 oascentral.red7media.com
 0.0.0.0 oascentral.redstate.com
-0.0.0.0 oascentral.register.com
 0.0.0.0 oas.repubblica.it
 0.0.0.0 oas.rivals.com
 0.0.0.0 oascentral.samsclub.com
 0.0.0.0 oascentral.sfgate.com
 0.0.0.0 oascentral.sfweekly.com
 0.0.0.0 oascentral.sina.com
-0.0.0.0 oascentral.spineuniverse.com
-0.0.0.0 oascentral.southjerseylocalnews.com
-0.0.0.0 oascentral.sportsfanlive.com
 0.0.0.0 oascentral.s-t.com
 0.0.0.0 oascentral.stackmag.com
 0.0.0.0 oascentral.stansberryresearch.com
