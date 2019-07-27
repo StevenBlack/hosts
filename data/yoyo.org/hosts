@@ -1,9 +1,9 @@
-# Blocklist for use with hosts files to block ads
+# Blocklist for use with hosts files to block ads, trackers, and other nasty things
 #
 # For more information about this list, see: https://pgl.yoyo.org/adservers/
 # ----
-# last updated:   Wed, 17 Jul 2019 19:47:44 GMT
-# entries:        2981
+# last updated:   Thu, 25 Jul 2019 08:12:25 GMT
+# entries:        2994
 # format:         hosts (hosts -- in hosts file format)
 # credits:        Peter Lowe - pgl@yoyo.org - https://pgl.yoyo.org/ - https://twitter.com/pgl
 # this URL:       https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0
@@ -11,7 +11,7 @@
 # other formats:  https://pgl.yoyo.org/adservers/formats.php
 # policy:         https://pgl.yoyo.org/adservers/policy.php
 #
-# start date:    Tue, 27 Jul 1999 00:00:00
+# start date:    Sun, 01 Aug 1999 00:00:00
 0.0.0.0 101com.com
 0.0.0.0 101order.com
 0.0.0.0 123found.com
@@ -524,6 +524,7 @@
 0.0.0.0 ads.linuxfoundation.org
 0.0.0.0 ads.livenation.com
 0.0.0.0 ads.lordlucky.com
+0.0.0.0 ads.mail.bg
 0.0.0.0 ads.mariuana.it
 0.0.0.0 ads.massinfra.nl
 0.0.0.0 ads.mcafee.com
@@ -585,7 +586,6 @@
 0.0.0.0 ads.recoletos.es
 0.0.0.0 ads.rediff.com
 0.0.0.0 ads.redlightcenter.com
-0.0.0.0 ads.redtube.com
 0.0.0.0 ads.resoom.de
 0.0.0.0 ads.satyamonline.com
 0.0.0.0 ads.saymedia.com
@@ -614,6 +614,7 @@
 0.0.0.0 ads.toplayaffiliates.com
 0.0.0.0 ads.totallyfreestuff.com
 0.0.0.0 ads.townhall.com
+0.0.0.0 ads.travelaudience.com
 0.0.0.0 ads.trinitymirror.co.uk
 0.0.0.0 ads.tripod.com
 0.0.0.0 ads.tripod.lycos.co.uk
@@ -659,7 +660,6 @@
 0.0.0.0 ads.youtube.com
 0.0.0.0 ads.zdnet.com
 0.0.0.0 ads.ztod.com
-0.0.0.0 ads03.redtube.com
 0.0.0.0 ads1.canoe.ca
 0.0.0.0 ads1.mediacapital.pt
 0.0.0.0 ads1.msn.com
@@ -857,7 +857,6 @@
 0.0.0.0 adxpansion.com
 0.0.0.0 adxpose.com
 0.0.0.0 adxvalue.com
-0.0.0.0 adyea.com
 0.0.0.0 adz2you.com
 0.0.0.0 adzbazar.com
 0.0.0.0 adzerk.net
@@ -940,6 +939,7 @@
 0.0.0.0 app.pendo.io
 0.0.0.0 appsflyer.com
 0.0.0.0 aps.hearstnp.com
+0.0.0.0 apsalar.com
 0.0.0.0 apture.com
 0.0.0.0 aquaticowl.com
 0.0.0.0 ar1nvz5.com
@@ -959,6 +959,7 @@
 0.0.0.0 atdmt.com
 0.0.0.0 athena-ads.wikia.com
 0.0.0.0 attractiveafternoon.com
+0.0.0.0 attribution.report
 0.0.0.0 attributiontracker.com
 0.0.0.0 atwola.com
 0.0.0.0 auctionads.com
@@ -1216,6 +1217,7 @@
 0.0.0.0 class-act-clicks.com
 0.0.0.0 clearcomb.com
 0.0.0.0 clevernt.com
+0.0.0.0 click.absoluteagency.com
 0.0.0.0 click.fool.com
 0.0.0.0 click.kmindex.ru
 0.0.0.0 click2freemoney.com
@@ -1770,7 +1772,6 @@
 0.0.0.0 intentmedia.com
 0.0.0.0 intentmedia.net
 0.0.0.0 interactive.forthnet.gr
-0.0.0.0 intercom-mail.com
 0.0.0.0 intergi.com
 0.0.0.0 internetfuel.com
 0.0.0.0 interreklame.de
@@ -1783,7 +1784,6 @@
 0.0.0.0 iperceptions.com
 0.0.0.0 ipredictive.com
 0.0.0.0 ipro.com
-0.0.0.0 iqm.com
 0.0.0.0 ireklama.cz
 0.0.0.0 is-tracking-pixel-api-prod.appspot.com
 0.0.0.0 itfarm.com
@@ -1931,6 +1931,7 @@
 0.0.0.0 matchcraft.com
 0.0.0.0 matheranalytics.com
 0.0.0.0 mathtag.com
+0.0.0.0 matomo.activate.cz
 0.0.0.0 mautic.com
 0.0.0.0 max.i12.de
 0.0.0.0 maximiser.net
@@ -1982,6 +1983,7 @@
 0.0.0.0 metrics.consumerreports.org
 0.0.0.0 metrics.ctv.ca
 0.0.0.0 metrics.foxnews.com
+0.0.0.0 metrics.getrockerbox.com
 0.0.0.0 metrics.gfycat.com
 0.0.0.0 metrics.govexec.com
 0.0.0.0 metrics.windowsitpro.com
@@ -2184,6 +2186,7 @@
 0.0.0.0 partner-ads.com
 0.0.0.0 partner.pelikan.cz
 0.0.0.0 partnerad.l.google.com
+0.0.0.0 partnerads.ysm.yahoo.com
 0.0.0.0 partnercash.de
 0.0.0.0 partners.priceline.com
 0.0.0.0 passion-4.net
@@ -2228,8 +2231,10 @@
 0.0.0.0 pixel.adsafeprotected.com
 0.0.0.0 pixel.condenastdigital.com
 0.0.0.0 pixel.digitru.st
+0.0.0.0 pixel.mtrcs.samba.tv
 0.0.0.0 pixel.sojern.com
 0.0.0.0 pixel.watch
+0.0.0.0 placed.com
 0.0.0.0 play4traffic.com
 0.0.0.0 playhaven.com
 0.0.0.0 playmobileads.com
@@ -2250,6 +2255,7 @@
 0.0.0.0 porntrack.com
 0.0.0.0 possessivebucket.com
 0.0.0.0 possibleboats.com
+0.0.0.0 postback.iqm.com
 0.0.0.0 postrelease.com
 0.0.0.0 potenza.cz
 0.0.0.0 pr-star.de
@@ -2307,6 +2313,7 @@
 0.0.0.0 px.ads.linkedin.com
 0.0.0.0 px.dynamicyield.com
 0.0.0.0 px.gfycat.com
+0.0.0.0 pxl.iqm.com
 0.0.0.0 q.azcentral.com
 0.0.0.0 qctop.com
 0.0.0.0 qnsr.com
@@ -2348,7 +2355,6 @@
 0.0.0.0 ratings.lycos.com
 0.0.0.0 rayjump.com
 0.0.0.0 rb1.design.ru
-0.0.0.0 re-directme.com
 0.0.0.0 reachjunction.com
 0.0.0.0 reactx.com
 0.0.0.0 readgoldfish.com
@@ -2393,6 +2399,7 @@
 0.0.0.0 resonate.com
 0.0.0.0 retargeter.com
 0.0.0.0 revcontent.com
+0.0.0.0 reveal.clearbit.com
 0.0.0.0 revenue.net
 0.0.0.0 revenuedirect.com
 0.0.0.0 revenuehits.com
@@ -2619,6 +2626,7 @@
 0.0.0.0 stoveseashore.com
 0.0.0.0 straightnest.com
 0.0.0.0 straightschool.com
+0.0.0.0 stream.useriq.com
 0.0.0.0 stripedburst.com
 0.0.0.0 strivesidewalk.com
 0.0.0.0 structurerod.com
@@ -2737,6 +2745,7 @@
 0.0.0.0 track.adform.net
 0.0.0.0 track.anchorfree.com
 0.0.0.0 track.contently.com
+0.0.0.0 track.effiliation.com
 0.0.0.0 track.flexlinks.com
 0.0.0.0 track.flexlinkspro.com
 0.0.0.0 track.gawker.com
@@ -2750,12 +2759,15 @@
 0.0.0.0 tracker.bannerflow.com
 0.0.0.0 tracker.icerocket.com
 0.0.0.0 tracker.marinsm.com
+0.0.0.0 tracker.samplicio.us
 0.0.0.0 tracker.trackerfix.com
 0.0.0.0 tracking.crunchiemedia.com
 0.0.0.0 tracking.discounts-promo.ga
 0.0.0.0 tracking.gajmp.com
 0.0.0.0 tracking.ibxlink.com
 0.0.0.0 tracking.internetstores.de
+0.0.0.0 tracking.olx-st.com
+0.0.0.0 tracking.publicidees.com
 0.0.0.0 tracking01.walmart.com
 0.0.0.0 tracking101.com
 0.0.0.0 trackingsoft.com
@@ -2788,6 +2800,7 @@
 0.0.0.0 tribalfusion.com
 0.0.0.0 trickycelery.com
 0.0.0.0 trix.net
+0.0.0.0 trkn.us
 0.0.0.0 trmit.com
 0.0.0.0 truckstomatoes.com
 0.0.0.0 truehits.net
@@ -2819,7 +2832,6 @@
 0.0.0.0 urlcash.net
 0.0.0.0 us.a1.yimg.com
 0.0.0.0 usapromotravel.com
-0.0.0.0 useriq.com
 0.0.0.0 userreplay.com
 0.0.0.0 userreplay.net
 0.0.0.0 utils.mediageneral.net
@@ -2917,6 +2929,7 @@
 0.0.0.0 widget.privy.com
 0.0.0.0 widgetbucks.com
 0.0.0.0 wikia-ads.wikia.com
+0.0.0.0 win.iqm.com
 0.0.0.0 window.nixnet.cz
 0.0.0.0 wintricksbanner.googlepages.com
 0.0.0.0 wirecomic.com
