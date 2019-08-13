@@ -1,5 +1,6 @@
 # Title: hostsVN
-# Last modified: 09 Aug 2019 15:57 UTC+7
+# Last modified: 13 Aug 2019 14:28 UTC+7
+# Blocked: 869 domains
 # Only include advertisers in Vietnam
 # Home: https://bigdargon.github.io/hostsVN/
 # Github: https://github.com/bigdargon/hostsVN/
@@ -201,23 +202,35 @@
 0.0.0.0 ads-target.coccoc.com
 0.0.0.0 banners-gallery.coccoc.com
 0.0.0.0 catalog.qc.coccoc.com
+0.0.0.0 cdn-qc.coccoc.com
 0.0.0.0 cdn.comedia.coccoc.com
 0.0.0.0 cdn.qc.coccoc.com
-0.0.0.0 cdn-qc.coccoc.com
 0.0.0.0 context.qc.coccoc.com
 0.0.0.0 cp.qc.coccoc.com
 0.0.0.0 display.qc.coccoc.com
 0.0.0.0 metrics.coccoc.com
 0.0.0.0 nt-cdn.coccoc.com
 0.0.0.0 ntrb.qc.coccoc.com
-0.0.0.0 qc.coccoc.com
 0.0.0.0 qc-static.coccoc.com
+0.0.0.0 qc.coccoc.com
 0.0.0.0 searcher.qc.coccoc.com
+0.0.0.0 shop-cdn.coccoc.com
 0.0.0.0 shopping.coccoc.com
 0.0.0.0 qccoccocmedia.vn
 0.0.0.0 qc.coccoc.vn
 0.0.0.0 itim.vn
 0.0.0.0 spell.itim.vn
+#[rungrinh.vn]
+0.0.0.0 cdn.rungrinh.vn
+0.0.0.0 cdn1.rungrinh.vn
+0.0.0.0 dev-payment.rungrinh.vn
+0.0.0.0 dev.rungrinh.vn
+0.0.0.0 payment.rungrinh.vn
+0.0.0.0 rungrinh.vn
+0.0.0.0 staging.rungrinh.vn
+0.0.0.0 static.rungrinh.vn
+0.0.0.0 tds.rungrinh.vn
+0.0.0.0 www.rungrinh.vn
 #[lavanetwork]
 0.0.0.0 ad.lavanetwork.net
 0.0.0.0 ad1.lavanetwork.net
@@ -587,6 +600,61 @@
 0.0.0.0 vsteel.mangoads.vn
 0.0.0.0 webcodau.mangoads.vn
 0.0.0.0 www.mangoads.vn
+#[ad.org.vn]
+0.0.0.0 ad.org.vn
+0.0.0.0 cdn.serving.ad.org.vn
+0.0.0.0 member.ad.org.vn
+0.0.0.0 serving.ad.org.vn
+0.0.0.0 static.ad.org.vn
+0.0.0.0 www.ad.org.vn
+#[cityads.com]
+0.0.0.0 adv.cityads.com
+0.0.0.0 ali.cityads.com
+0.0.0.0 aliexpress-summer.cityads.com
+0.0.0.0 api.cityads.com
+0.0.0.0 auth.cityads.com
+0.0.0.0 auth2.cityads.com
+0.0.0.0 blog.cityads.com
+0.0.0.0 cdn.cityads.com
+0.0.0.0 cdn77.cityads.com
+0.0.0.0 challenge.cityads.com
+0.0.0.0 checker.cityads.com
+0.0.0.0 cityads.com
+0.0.0.0 cnt.cityads.com
+0.0.0.0 demobl.cityads.com
+0.0.0.0 developers.cityads.com
+0.0.0.0 dsp.cityads.com
+0.0.0.0 finance.cityads.com
+0.0.0.0 games.cityads.com
+0.0.0.0 geo.cityads.com
+0.0.0.0 grand-prix.cityads.com
+0.0.0.0 help.cityads.com
+0.0.0.0 infiniti.cityads.com
+0.0.0.0 join.cityads.com
+0.0.0.0 keitaro1.cityads.com
+0.0.0.0 love.cityads.com
+0.0.0.0 m.cityads.com
+0.0.0.0 market.cityads.com
+0.0.0.0 mvas.cityads.com
+0.0.0.0 mx00.cityads.com
+0.0.0.0 mxs01.cityads.com
+0.0.0.0 mxs02.cityads.com
+0.0.0.0 new.cityads.com
+0.0.0.0 nl-geo.cityads.com
+0.0.0.0 o.cityads.com
+0.0.0.0 out1.cityads.com
+0.0.0.0 out2.cityads.com
+0.0.0.0 out3.cityads.com
+0.0.0.0 promo.cityads.com
+0.0.0.0 redmine.cityads.com
+0.0.0.0 ru-geo.cityads.com
+0.0.0.0 september.cityads.com
+0.0.0.0 sg.cityads.com
+0.0.0.0 tinkoff.cityads.com
+0.0.0.0 us-geo.cityads.com
+0.0.0.0 userdocs.cityads.com
+0.0.0.0 wp-cdn.cityads.com
+0.0.0.0 www.cityads.com
 # --- Block ads & tracking VN ---
 #[adsVN]
 0.0.0.0 123c.vn
@@ -596,7 +664,6 @@
 0.0.0.0 ad.24h.com.vn
 0.0.0.0 ad.icheck.com.vn
 0.0.0.0 ad.mwork.vn
-0.0.0.0 ad.org.vn
 0.0.0.0 ad.vatgia.com
 0.0.0.0 ad.vietbao.vn
 0.0.0.0 ad.vkool.net
@@ -626,7 +693,6 @@
 0.0.0.0 api.app.masoffer.net
 0.0.0.0 apinas.nct.vn
 0.0.0.0 app.masoffer.net
-0.0.0.0 appapicached.vtvgo.vn
 0.0.0.0 banner.5giay.vn
 0.0.0.0 clevernet.vn
 0.0.0.0 click.phanquang.vn
@@ -659,8 +725,6 @@
 0.0.0.0 quangcao.thanhnien.vn
 0.0.0.0 quangcao.tuoitre.vn
 0.0.0.0 serving-ad.tv24.vn
-0.0.0.0 serving.ad.org.vn
-0.0.0.0 static.ad.org.vn
 0.0.0.0 static.masoffer.net
 0.0.0.0 static.mepuzz.com
 0.0.0.0 stc-nas.nixcdn.com
@@ -689,6 +753,7 @@
 0.0.0.0 analytics.bkav.com
 0.0.0.0 analytics.easyvideo.vn
 0.0.0.0 analytics.explus.vn
+0.0.0.0 analytics.thethao247.org
 0.0.0.0 analytics.vnreview.vn
 0.0.0.0 collect.ovp.vn
 0.0.0.0 fbuser.ovp.vn
@@ -698,10 +763,12 @@
 0.0.0.0 log.baomoi.com
 0.0.0.0 log.batdongsan.com.vn
 0.0.0.0 log.giaoduc.net.vn
+0.0.0.0 log.infonet.vn
 0.0.0.0 log.kienthuc.net.vn
 0.0.0.0 log.sggp.org.vn
 0.0.0.0 log.thanhnien.vn
 0.0.0.0 log.tienphong.vn
+0.0.0.0 log.vietnamdaily.net.vn
 0.0.0.0 log.vietnamplus.vn
 0.0.0.0 log.vov.vn
 0.0.0.0 log4x.nixcdn.com
@@ -714,9 +781,11 @@
 0.0.0.0 s.tuoitre.vn
 0.0.0.0 sharefb.cnnd.vn
 0.0.0.0 static.amcdn.vn
+0.0.0.0 staticad.thethao247.vn
 0.0.0.0 stats.bizweb.vn
 0.0.0.0 stats.vietnammoi.vn
 0.0.0.0 thongke.24h.com.vn
+0.0.0.0 thongke.baotintuc.vn
 0.0.0.0 track-srv.vietnamnet.vn
 0.0.0.0 track.icheck.com.vn
 0.0.0.0 track.sendo.vn
