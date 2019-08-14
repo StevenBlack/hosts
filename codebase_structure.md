@@ -27,15 +27,15 @@ automatically by`/updateHostsFile.py` which iterates all the subfolders within `
 
 ### Basic hosts
 The [basic hosts file](https://github.com/StevenBlack/hosts/blob/master/hosts), containing
-just adware, malware, etc, is store in the root folder of this repository.
+just adware, malware, etc, is stored in the root folder of this repository.
 
 The [/hosts/alternates](https://github.com/StevenBlack/hosts/tree/master/alternates) this folder
 contains the products of `updateHostsFile.py`, one subfolder for each permutation of
-fakenews, gambling, porn, and social media hosts, all of which include the base extensions
+`fakenews`, `gambling`, `porn`, and `social` media hosts, all of which include the base extensions
 containing hosts that block adware, malware, tracking, etc.
 
 ## Other notable files
 
 + [./readme_template.md](https://github.com/StevenBlack/hosts/blob/master/readme_template.md):
-is used to generate the all the various readme files in this repository.  Therefore,
+This file is used to generate the all the various readme files in this repository.  Therefore,
 if you wish to change the readme, you need to change only this file.

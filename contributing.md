@@ -1,6 +1,6 @@
 # Contributing Guide
 
-- Contributing to Hosts is easy. This document shows you how to get started
+Contributing to Hosts is easy. This document shows you how to get started
 
 ## General
 - The [Codebase Structure](https://github.com/StevenBlack/hosts/blob/master/codebase_structure.md) has
@@ -34,6 +34,6 @@ detailed information about how the various folders and files in this project are
     $ git push origin BRANCH_NAME
     ````
 - Make a pull request
-  - Make sure you send the PR to the <code>BRANCH_NAME</code> branch
+  - Make sure you send the PR to the <code>BRANCH_NAM</code> branch
 
 If you follow these instructions, your Pull Request will land safely!
