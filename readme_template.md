@@ -4,18 +4,15 @@
 ----
 
 ![readme](https://user-images.githubusercontent.com/36028424/40330477-9df2c2e0-5d7f-11e8-8ac8-511d719a5eae.png)
-
 [![latest release](https://img.shields.io/github/release/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/releases)
 [![license](https://img.shields.io/github/license/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/blob/master/license.txt)
 [![repo size](https://img.shields.io/github/repo-size/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts)
 [![contributors](https://img.shields.io/github/contributors/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/graphs/contributors)
 [![Build Status](https://travis-ci.org/StevenBlack/hosts.svg?branch=master)](https://travis-ci.org/StevenBlack/hosts)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
-
 [![commits since last release](https://img.shields.io/github/commits-since/StevenBlack/hosts/latest.svg)](https://github.com/StevenBlack/hosts/commits/master)
 [![last commit](https://img.shields.io/github/last-commit/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/commits/master)
 [![commit activity](https://img.shields.io/github/commit-activity/y/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/commits/master)
-
 
 # Unified hosts file @EXTENSIONS_HEADER@
 
@@ -388,3 +385,9 @@ devices under a variety of operating systems.
 * [Blocking ads and malwares with unbound](https://deadc0de.re/articles/unbound-blocking-ads.html "Blocking ads and malwares with unbound") – [Unbound](https://www.unbound.net/ "Unbound is a validating, recursive, and caching DNS resolver.")  is a validating, recursive, and caching DNS resolver.
 
 * [DNSMasq conversion script](https://gist.github.com/erlepereira/c11f4f7a3f60cd2071e79018e895fc8a#file-dnsmasq-antimalware) This github gist has a short shell script (bash, will work on any 'nix) and uses 'wget' & 'awk' present in most distros, to fetch a specified hosts file and convert it the format required by dnsmasq. Supports ipv4 and ipv6. Designed to be used as either a shell script, or can be dropped into /etc/cron.weekly (or wherever suits). Script is short and easily edited, also has a short document attached with notes on dnsmasq setup.
+
+## Contribute!
+
+We are always interested in discovering well-curated sources of hosts.  If you find one, please open an [issue](https://github.com/StevenBlack/hosts/issues) to draw our attention.
+
+Before you create or respond to any issue, please read our [code of conduct](https://github.com/StevenBlack/hosts/blob/master/code_of_conduct.md).
