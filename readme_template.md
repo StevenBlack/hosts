@@ -388,6 +388,8 @@ devices under a variety of operating systems.
 
 ## Contribute!
 
+Please read our [Contributing Guide](https://github.com/StevenBlack/hosts/blob/master/contributing.md). Among other things, this explains how we organize files and folders in this repository.
+
 We are always interested in discovering well-curated sources of hosts.  If you find one, please open an [issue](https://github.com/StevenBlack/hosts/issues) to draw our attention.
 
 Before you create or respond to any issue, please read our [code of conduct](https://github.com/StevenBlack/hosts/blob/master/code_of_conduct.md).
