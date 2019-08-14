@@ -26,7 +26,7 @@ into a unified hosts file with duplicates removed.  A variety of tailored hosts 
 
 ### List of all hosts file variants
 
-This repository offers 16 different host file variants, in addition to the base variant.
+This repository offers [15 different host file variants](https://github.com/StevenBlack/hosts/tree/master/alternates), in addition to the base variant.
 
 The **Non GitHub mirror** is the link to use for some hosts file managers like
 [Hostsman for Windows](http://www.abelhadigital.com/hostsman) that don't work
@@ -86,7 +86,7 @@ Tiuxo hostlist - social | Categorized hosts files for DNS based content blocking
 
 
 ## Extensions
-The unified hosts file is extensible.  Extensions are used to include domains by category.  Currently we offer the following categories: `fakenews`, `social`, `gambling`, and `porn`.
+The unified hosts file is optionally extensible.  Extensions are used to include domains by category.  Currently we offer the following categories: `fakenews`, `social`, `gambling`, and `porn`.
 
 Extensions are optional, and can be combined in various ways wth the base hosts file.  The combined products are stored in the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.
 
