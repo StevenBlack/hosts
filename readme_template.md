@@ -26,6 +26,8 @@ into a unified hosts file with duplicates removed.  A variety of tailored hosts 
 
 ### List of all hosts file variants
 
+This repository offers 16 different host file variants, in addition to the base variant.
+
 The **Non GitHub mirror** is the link to use for some hosts file managers like
 [Hostsman for Windows](http://www.abelhadigital.com/hostsman) that don't work
 with Github download links.
@@ -48,14 +50,12 @@ Host file source | Description | Home page | Raw hosts | Update frequency | Lice
 
 
 ## Extensions
-The unified hosts file is extensible.  Extensions are used to block domains by category.
+The unified hosts file is extensible.  Extensions are used to include domains by category.  Currently we offer the following categories: `fakenews`, `social`, `gambling`, and `porn`.
 
-Extensions are optional, and are added to the base hosts file.  Extensions are combined in various ways wth the default hosts file, and the combined products are stored in the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.
+Extensions are optional, and can be combined in various ways wth the base hosts file.  The combined products are stored in the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.
 
-For example, you may want to block porn domains in addition to the adware and malware we block by default.  That hosts file is stored in the porn subfolder of the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.
-
-Data for extensions is stored in the [`extensions`](https://github.com/StevenBlack/hosts/tree/master/extensions) folder. You manage extensions by curating the
-[`extensions`](https://github.com/StevenBlack/hosts/tree/master/extensions)  folder tree where you will find the data for `fakenews`, `social`, `gambling`, and `porn` extension data that we maintain and provide for you.
+Data for extensions is stored in the [`extensions`](https://github.com/StevenBlack/hosts/tree/master/extensions) folder. You manage extensions by curating this
+folder tree, where you will find the data for `fakenews`, `social`, `gambling`, and `porn` extension data that we maintain and provide for you.
 
 ## Generate your own unified hosts file
 

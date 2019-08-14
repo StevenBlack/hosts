@@ -3,9 +3,9 @@
 # This hosts file is a merged collection of hosts from reputable sources,
 # with a dash of crowd sourcing via Github
 #
-# Date: 13 August 2019 23:37:06 (UTC)
+# Date: 14 August 2019 13:35:20 (UTC)
 # Extensions added to this file: gambling
-# Number of unique domains: 44,300
+# Number of unique domains: 44,364
 #
 # Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts
 # Project home page: https://github.com/StevenBlack/hosts
@@ -2378,8 +2378,8 @@ ff02::3 ip6-allhosts
 # Start hostsVN
 
 # Title: hostsVN
-# Last modified: 13 Aug 2019 14:28 UTC+7
-# Blocked: 869 domains
+# Last modified: 14 Aug 2019 10:20 UTC+7
+# Blocked: 933 domains
 # Only include advertisers in Vietnam
 # Home: https://bigdargon.github.io/hostsVN/
 # Github: https://github.com/bigdargon/hostsVN/
@@ -2709,10 +2709,13 @@ ff02::3 ip6-allhosts
 0.0.0.0 xmas.adtima.vn
 #[ad360]
 0.0.0.0 ad360.vn
-0.0.0.0 xcache.ad360.vn
-0.0.0.0 tracking.ad360.vn
+0.0.0.0 advertiser.ad360.vn
+0.0.0.0 khuyenmaitet.ad360.vn
 0.0.0.0 provider.ad360.vn
+0.0.0.0 s.ad360.vn
+0.0.0.0 tracking.ad360.vn
 0.0.0.0 www.ad360.vn
+0.0.0.0 xcache.ad360.vn
 #[vietnamnetad]
 0.0.0.0 client.vietnamnetad.vn
 0.0.0.0 f.vietnamnetad.vn
@@ -2752,24 +2755,59 @@ ff02::3 ip6-allhosts
 0.0.0.0 log.zingmp3.vn
 0.0.0.0 zlog.zingmp3.vn
 #[vietad]
+0.0.0.0 ads.vietad.vn
+0.0.0.0 as.vietad.vn
+0.0.0.0 banner.vietad.vn
+0.0.0.0 cpd.vietad.vn
+0.0.0.0 display.vietad.vn
+0.0.0.0 embed.vietad.vn
+0.0.0.0 i.vietad.vn
+0.0.0.0 img.vietad.vn
+0.0.0.0 logb20.vietad.vn
+0.0.0.0 logb21.vietad.vn
+0.0.0.0 logb22.vietad.vn
+0.0.0.0 logb23.vietad.vn
+0.0.0.0 logb3.vietad.vn
+0.0.0.0 logw.vietad.vn
+0.0.0.0 nlb.vietad.vn
 0.0.0.0 vietad.vn
 0.0.0.0 www.vietad.vn
-0.0.0.0 app.vietad.vn
+0.0.0.0 z.vietad.vn
+0.0.0.0 zone.vietad.vn
 #[accesstrade]
+0.0.0.0 academy.accesstrade.vn
 0.0.0.0 accesstrade.vn
-0.0.0.0 static.accesstrade.vn
+0.0.0.0 ad.accesstrade.vn
+0.0.0.0 api.accesstrade.vn
 0.0.0.0 campaign.accesstrade.vn
-0.0.0.0 help.accesstrade.vn
+0.0.0.0 cdn.accesstrade.vn
+0.0.0.0 click.accesstrade.vn
 0.0.0.0 cv.accesstrade.vn
+0.0.0.0 dangky.accesstrade.vn
+0.0.0.0 docs.accesstrade.vn
 0.0.0.0 duatop.accesstrade.vn
-0.0.0.0 member.accesstrade.vn
-0.0.0.0 imp.accesstrade.vn
+0.0.0.0 fast.accesstrade.vn
 0.0.0.0 forum.accesstrade.vn
-0.0.0.0 fast.accesstrade.com.vn
+0.0.0.0 help.accesstrade.vn
+0.0.0.0 imp.accesstrade.vn
+0.0.0.0 lotte.accesstrade.vn
+0.0.0.0 mascot.accesstrade.vn
+0.0.0.0 member.accesstrade.vn
+0.0.0.0 partner.accesstrade.vn
+0.0.0.0 pub.accesstrade.vn
+0.0.0.0 restream.accesstrade.vn
+0.0.0.0 static.accesstrade.vn
+0.0.0.0 superbox.accesstrade.vn
+0.0.0.0 top2017.accesstrade.vn
+0.0.0.0 tuyendung.accesstrade.vn
+0.0.0.0 track.accesstrade.vn
+0.0.0.0 www.accesstrade.vn
 0.0.0.0 accesstrade.com.vn
-0.0.0.0 accesstrade.com
+0.0.0.0 click.accesstrade.com.vn
+0.0.0.0 fast.accesstrade.com.vn
 #[subiz.com]
 0.0.0.0 agent-data.subiz.com
+0.0.0.0 api.subiz.com
 0.0.0.0 apiv4.subiz.com
 0.0.0.0 app.subiz.com
 0.0.0.0 css-dashboard.subiz.com
@@ -2791,6 +2829,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 subiz.com
 0.0.0.0 support.subiz.com
 0.0.0.0 widget.subiz.com
+0.0.0.0 widget-4.subiz.com
 0.0.0.0 widget-api.subiz.com
 0.0.0.0 widget-css.subiz.com
 0.0.0.0 widgetv4.subiz.com
@@ -2799,26 +2838,51 @@ ff02::3 ip6-allhosts
 0.0.0.0 ws-widget-lb-2.subiz.com
 0.0.0.0 www.subiz.com
 #[anthill]
-0.0.0.0 st-a-id.anthill.vn
+0.0.0.0 a.anthill.vn
 0.0.0.0 anthill.vn
-0.0.0.0 st.a.anthill.vn
-0.0.0.0 origin-c0.anthill.vn
 0.0.0.0 atrack-a.anthill.vn
-0.0.0.0 origin-st-a.anthill.vn
-0.0.0.0 staging-e.anthill.vn
-0.0.0.0 origin-e.anthill.vn
-0.0.0.0 p.anthill.vn
-0.0.0.0 st-a.anthill.vn
-0.0.0.0 st-analytics.anthill.vn
+0.0.0.0 c0.anthill.vn
+0.0.0.0 c0.st.anthill.vn
+0.0.0.0 c0-vcdn.anthill.vn
+0.0.0.0 d.anthill.vn
+0.0.0.0 e.anthill.vn
 0.0.0.0 e-vcdn.anthill.vn
+0.0.0.0 i0.anthill.vn
+0.0.0.0 i0-vcdn.anthill.vn
+0.0.0.0 origin-c0.anthill.vn
+0.0.0.0 origin-e.anthill.vn
+0.0.0.0 origin-st-a.anthill.vn
+0.0.0.0 p.anthill.vn
+0.0.0.0 st.a.anthill.vn
+0.0.0.0 st.anthill.vn
+0.0.0.0 st-a.anthill.vn
+0.0.0.0 staging-e.anthill.vn
+0.0.0.0 staging-e-vcdn.anthill.vn
+0.0.0.0 st-a-id.anthill.vn
+0.0.0.0 st-analytics.anthill.vn
+0.0.0.0 st-vcdn.anthill.vn
+0.0.0.0 v0.anthill.vn
+0.0.0.0 v0-vcdn.anthill.vn
+0.0.0.0 v3-ads-st-vcdn.anthill.vn
+0.0.0.0 v3-st-vcdn.anthill.vn
+0.0.0.0 vcdn.anthill.vn
+0.0.0.0 www.anthill.vn
 #[gammaplatform]
+0.0.0.0 app.gammaplatform.com
+0.0.0.0 clk.gammaplatform.com
+0.0.0.0 cm.gammaplatform.com
+0.0.0.0 cm-supply-web.gammaplatform.com
 0.0.0.0 gammaplatform.com
+0.0.0.0 hb.gammaplatform.com
+0.0.0.0 imp.gammaplatform.com
+0.0.0.0 in-view.gammaplatform.com
 0.0.0.0 login.gammaplatform.com
+0.0.0.0 static.gammaplatform.com
 0.0.0.0 stc.gammaplatform.com
 0.0.0.0 t.gammaplatform.com
 0.0.0.0 tag.gammaplatform.com
-0.0.0.0 imp.gammaplatform.com
-0.0.0.0 hb.gammaplatform.com
+0.0.0.0 track.gammaplatform.com
+0.0.0.0 www.gammaplatform.com
 #[yomedia]
 0.0.0.0 yomedia.vn
 0.0.0.0 static.yomedia.vn
@@ -29388,7 +29452,7 @@ ff02::3 ip6-allhosts
 #
 # For more information about this list, see: https://pgl.yoyo.org/adservers/
 # ----
-# last updated:   Mon, 12 Aug 2019 15:06:24 GMT
+# last updated:   Wed, 14 Aug 2019 10:13:56 GMT
 # entries:        3023
 # format:         hosts (hosts -- in hosts file format)
 # credits:        Peter Lowe - pgl@yoyo.org - https://pgl.yoyo.org/ - https://twitter.com/pgl
@@ -29935,6 +29999,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 auctionads.net
 0.0.0.0 audience2media.com
 0.0.0.0 audienceinsights.com
+0.0.0.0 audit.quantcast.mgr.consensu.org
 0.0.0.0 audit.webinform.hu
 0.0.0.0 augur.io
 0.0.0.0 auto-bannertausch.de
@@ -31009,7 +31074,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 quacksquirrel.com
 0.0.0.0 quaintcan.com
 0.0.0.0 quantcast.com
-0.0.0.0 quantcast.mgr.consensu.org
 0.0.0.0 quantummetric.com
 0.0.0.0 quarterbean.com
 0.0.0.0 quarterserver.de
