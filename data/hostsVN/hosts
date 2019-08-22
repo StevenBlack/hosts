@@ -1,6 +1,6 @@
 # Title: hostsVN
-# Last modified: 14 Aug 2019 10:20 UTC+7
-# Blocked: 933 domains
+# Last modified: 22 Aug 2019 15:23 UTC+7
+# Blocked: 995 domains
 # Only include advertisers in Vietnam
 # Home: https://bigdargon.github.io/hostsVN/
 # Github: https://github.com/bigdargon/hostsVN/
@@ -402,7 +402,6 @@
 0.0.0.0 api.accesstrade.vn
 0.0.0.0 campaign.accesstrade.vn
 0.0.0.0 cdn.accesstrade.vn
-0.0.0.0 click.accesstrade.vn
 0.0.0.0 cv.accesstrade.vn
 0.0.0.0 dangky.accesstrade.vn
 0.0.0.0 docs.accesstrade.vn
@@ -425,7 +424,7 @@
 0.0.0.0 www.accesstrade.vn
 0.0.0.0 accesstrade.com.vn
 0.0.0.0 click.accesstrade.com.vn
-0.0.0.0 fast.accesstrade.com.vn	
+0.0.0.0 fast.accesstrade.com.vn
 #[subiz.com]
 0.0.0.0 agent-data.subiz.com
 0.0.0.0 api.subiz.com
@@ -505,18 +504,24 @@
 0.0.0.0 track.gammaplatform.com
 0.0.0.0 www.gammaplatform.com
 #[yomedia]
-0.0.0.0 yomedia.vn
-0.0.0.0 static.yomedia.vn
-0.0.0.0 tracking.yomedia.vn
-0.0.0.0 mail.yomedia.vn
-0.0.0.0 ss.yomedia.vn
+0.0.0.0 ad-deliver.yomedia.vn
 0.0.0.0 analytics.yomedia.vn
 0.0.0.0 delivery.yomedia.vn
+0.0.0.0 demo.yomedia.vn
+0.0.0.0 dmp-log.yomedia.vn
+0.0.0.0 media.yomedia.vn
+0.0.0.0 media1.yomedia.vn
+0.0.0.0 ss.yomedia.vn
+0.0.0.0 sslstatic.yomedia.vn
+0.0.0.0 static.yomedia.vn
+0.0.0.0 tracking.yomedia.vn
+0.0.0.0 yomedia.vn
 #[pinetech]
+0.0.0.0 demo.pinetech.vn
+0.0.0.0 file.pinetech.vn
+0.0.0.0 newsletter.pinetech.vn
 0.0.0.0 pinetech.vn
 0.0.0.0 www.pinetech.vn
-0.0.0.0 file.pinetech.vn
-0.0.0.0 demo.pinetech.vn
 #[cleverads.vn]
 0.0.0.0 business.cleverads.vn
 0.0.0.0 cleverads.vn
@@ -531,13 +536,35 @@
 #[ambient-platform]
 0.0.0.0 ambient-platform.com
 0.0.0.0 analytics.ambient-platform.com
+0.0.0.0 campaigns.ambient-platform.com
+0.0.0.0 cdn-media.ambient-platform.com
+0.0.0.0 cdn-media.m.ambient-platform.com
+0.0.0.0 cdn-media-m.ambient-platform.com
+0.0.0.0 cli.ambient-platform.com
+0.0.0.0 cli.m.ambient-platform.com
+0.0.0.0 conv.ambient-platform.com
+0.0.0.0 delivery.ambient-platform.com
+0.0.0.0 delivery.m.ambient-platform.com
+0.0.0.0 delivery-m.ambient-platform.com
+0.0.0.0 imp.ambient-platform.com
+0.0.0.0 imp.m.ambient-platform.com
+0.0.0.0 local-media.ambient-platform.com
+0.0.0.0 local-media.m.ambient-platform.com
+0.0.0.0 member.ambient-platform.com
 0.0.0.0 metrics.ambient-platform.com
+0.0.0.0 retg.ambient-platform.com
+0.0.0.0 static.ambient-platform.com
+0.0.0.0 www.ambient-platform.com
 #[klick]
-0.0.0.0 klick.vn
 0.0.0.0 adv.klick.vn
 0.0.0.0 demo.klick.vn
 0.0.0.0 euro.klick.vn
+0.0.0.0 klick.vn
+0.0.0.0 qc.klick.vn
+0.0.0.0 text1.klick.vn
+0.0.0.0 wakeup.klick.vn
 0.0.0.0 wakeup247.klick.vn
+0.0.0.0 www.klick.vn
 #[cokhach.com]
 0.0.0.0 admin.cokhach.com
 0.0.0.0 c.cokhach.com
@@ -719,6 +746,47 @@
 0.0.0.0 userdocs.cityads.com
 0.0.0.0 wp-cdn.cityads.com
 0.0.0.0 www.cityads.com
+#[adsota]
+0.0.0.0 ads.appota.com
+0.0.0.0 adsota.com
+0.0.0.0 agency.adsota.com
+0.0.0.0 app.adsota.com
+0.0.0.0 dashboard.adsota.com
+0.0.0.0 highlandscoffee.adsota.com
+0.0.0.0 static.adsota.com
+0.0.0.0 track.adsota.com
+0.0.0.0 www.adsota.com
+#[masoffer.net]
+0.0.0.0 api.app.masoffer.net
+0.0.0.0 app.masoffer.net
+0.0.0.0 beta-go.masoffer.net
+0.0.0.0 beta.go.masoffer.net
+0.0.0.0 cdn.masoffer.net
+0.0.0.0 img.masoffer.net
+0.0.0.0 m.masoffer.net
+0.0.0.0 masoffer.net
+0.0.0.0 static.masoffer.net
+0.0.0.0 tr.masoffer.net
+0.0.0.0 www.masoffer.net
+#[autoads.asia]
+0.0.0.0 api.autoads.asia
+0.0.0.0 autoads.asia
+0.0.0.0 cdn.autoads.asia
+0.0.0.0 fcd.autoads.asia
+0.0.0.0 file.autoads.asia
+0.0.0.0 indo.autoads.asia
+0.0.0.0 mantis.autoads.asia
+0.0.0.0 pixel.autoads.asia
+0.0.0.0 testcert.autoads.asia
+0.0.0.0 tracking.autoads.asia
+0.0.0.0 www.autoads.asia
+0.0.0.0 xacthuc.autoads.asia
+#[phanquang.vn]
+0.0.0.0 click.phanquang.vn
+0.0.0.0 mail.phanquang.vn
+0.0.0.0 phanquang.vn
+0.0.0.0 quangcao.phanquang.vn
+0.0.0.0 www.phanquang.vn
 # --- Block ads & tracking VN ---
 #[adsVN]
 0.0.0.0 123c.vn
@@ -754,12 +822,9 @@
 0.0.0.0 alivar.com.vn
 0.0.0.0 alivar.vn
 0.0.0.0 amobi.vn
-0.0.0.0 api.app.masoffer.net
 0.0.0.0 apinas.nct.vn
-0.0.0.0 app.masoffer.net
 0.0.0.0 banner.5giay.vn
 0.0.0.0 clevernet.vn
-0.0.0.0 click.phanquang.vn
 0.0.0.0 click.uniad.vn
 0.0.0.0 click.xdeal.vn
 0.0.0.0 client.vads.net.vn
@@ -768,28 +833,25 @@
 0.0.0.0 cms.vinaads.vn
 0.0.0.0 delivery.senvangvn.com
 0.0.0.0 deltago.com
+0.0.0.0 dev.mobilead.vn
 0.0.0.0 fptad.com
-0.0.0.0 img.masoffer.net
 0.0.0.0 imgraovat.vnecdn.net
 0.0.0.0 lrc.nct.nixcdn.com
 0.0.0.0 m.clevernet.vn
-0.0.0.0 mail.phanquang.vn
+0.0.0.0 m.mobilead.vn
 0.0.0.0 mepuzz.com
 0.0.0.0 microad.vn
 0.0.0.0 mobilead.vn
 0.0.0.0 mobileads.dieuviet.com
 0.0.0.0 myad.vn
 0.0.0.0 ng-vn-notice.gameitop.com
-0.0.0.0 phanquang.vn
 0.0.0.0 phimmedia03.com
 0.0.0.0 polyad.galaxypub.vn
 0.0.0.0 qc.yan.vn
 0.0.0.0 quangcao.24h.com.vn
-0.0.0.0 quangcao.phanquang.vn
 0.0.0.0 quangcao.thanhnien.vn
 0.0.0.0 quangcao.tuoitre.vn
 0.0.0.0 serving-ad.tv24.vn
-0.0.0.0 static.masoffer.net
 0.0.0.0 static.mepuzz.com
 0.0.0.0 stc-nas.nixcdn.com
 0.0.0.0 trenddigital.vn
@@ -807,7 +869,6 @@
 0.0.0.0 www.clevernet.vn
 0.0.0.0 www.mepuzz.com
 0.0.0.0 www.microad.vn
-0.0.0.0 www.phanquang.vn
 0.0.0.0 www.vietbuzzad.com
 0.0.0.0 www.vietdorje.com
 0.0.0.0 zone.uniad.vn
@@ -818,8 +879,11 @@
 0.0.0.0 analytics.easyvideo.vn
 0.0.0.0 analytics.explus.vn
 0.0.0.0 analytics.thethao247.org
+0.0.0.0 analytics.tiki.vn
 0.0.0.0 analytics.vnreview.vn
 0.0.0.0 collect.ovp.vn
+0.0.0.0 deqik.com
+0.0.0.0 elogs.vnexpress.net
 0.0.0.0 fbuser.ovp.vn
 0.0.0.0 hc.viam.com.vn
 0.0.0.0 hostmaster.trending.vn
@@ -838,6 +902,7 @@
 0.0.0.0 log4x.nixcdn.com
 0.0.0.0 logging.galaxypub.vn
 0.0.0.0 logging.phunuonline.com.vn
+0.0.0.0 logsbin.dantri.com.vn
 0.0.0.0 mail.viam.com.vn
 0.0.0.0 s.baomoi.xdn.vn
 0.0.0.0 s.kenh14.vn
@@ -859,6 +924,7 @@
 0.0.0.0 tracking.appwifi.com
 0.0.0.0 tracking.vht.com.vn
 0.0.0.0 trackingapi.foody.vn
+0.0.0.0 trackity.tiki.vn
 0.0.0.0 trending.vn
 0.0.0.0 userstats.shopee.vn
 0.0.0.0 viam.com.vn

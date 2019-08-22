@@ -1478,7 +1478,6 @@
 0.0.0.0 netasaka.vis1.shinobi.jp
 0.0.0.0 netdreamersad.durasite.net
 0.0.0.0 netwayz.com.sg
-0.0.0.0 newrelic.com
 0.0.0.0 newyorksportsworld.com
 0.0.0.0 newzia.jp
 0.0.0.0 nex8.net
