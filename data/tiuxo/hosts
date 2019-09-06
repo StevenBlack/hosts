@@ -1676,7 +1676,6 @@
 0.0.0.0 register.appsflyer.com
 0.0.0.0 remoraimage.xlisting.jp
 0.0.0.0 renewingfaces.com
-0.0.0.0 renta.papy.co.jp
 0.0.0.0 reon.club
 0.0.0.0 rep.exblog.jp
 0.0.0.0 reporo.net
