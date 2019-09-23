@@ -3,9 +3,9 @@
 # This hosts file is a merged collection of hosts from reputable sources,
 # with a dash of crowd sourcing via Github
 #
-# Date: 19 September 2019 15:51:35 (UTC)
+# Date: 23 September 2019 04:17:15 (UTC)
 # Extensions added to this file: gambling
-# Number of unique domains: 44,570
+# Number of unique domains: 44,625
 #
 # Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling/hosts
 # Project home page: https://github.com/StevenBlack/hosts
@@ -582,6 +582,14 @@ ff02::3 ip6-allhosts
 0.0.0.0 www.stage.tvpage.com
 0.0.0.0 appcdn.tvpage.com
 0.0.0.0 ad.wynk.in
+0.0.0.0 kt5850pjz0.com
+0.0.0.0 arcartall.club
+0.0.0.0 armantark.com
+0.0.0.0 myornamenti.com
+0.0.0.0 www.myornamenti.com
+0.0.0.0 queensiteforapp.com
+0.0.0.0 g0l32.queensiteforapp.com
+0.0.0.0 0byv9mgbn0.com
 
 # Block ads on Hotstar streaming app by @anudeepND
 0.0.0.0 app-measurement.com
@@ -1259,7 +1267,8 @@ ff02::3 ip6-allhosts
 0.0.0.0 cdn.discoveryad.castoola.tv
 0.0.0.0 cdn.castoola.com
 0.0.0.0 castoola.com
-0.0.0.0 castoola.tv.lan # End StevenBlack
+0.0.0.0 castoola.tv.lan
+# End StevenBlack
 
 # Start malwaredomainlist.com
 
@@ -2402,8 +2411,8 @@ ff02::3 ip6-allhosts
 # Start hostsVN
 
 # Title: hostsVN
-# Last modified: 18 Sep 2019 14:59 UTC+7
-# Blocked: 1,010 domains
+# Last modified: 20 Sep 2019 16:23 UTC+7
+# Blocked: 1,073 domains
 # Only include advertisers in Vietnam
 # Home: https://bigdargon.github.io/hostsVN/
 # Github: https://github.com/bigdargon/hostsVN/
@@ -3203,6 +3212,68 @@ ff02::3 ip6-allhosts
 0.0.0.0 app.ohchat.net
 0.0.0.0 hostmaster.ohchat.net
 0.0.0.0 www.ohchat.net
+#[mediaz.vn]
+0.0.0.0 adwords.mediaz.vn
+0.0.0.0 blog.mediaz.vn
+0.0.0.0 book.mediaz.vn
+0.0.0.0 booking.mediaz.vn
+0.0.0.0 brief.mediaz.vn
+0.0.0.0 creative.mediaz.vn
+0.0.0.0 dnsbak.mediaz.vn
+0.0.0.0 erp.mediaz.vn
+0.0.0.0 facebook-ads.mediaz.vn
+0.0.0.0 go.mediaz.vn
+0.0.0.0 hotro.mediaz.vn
+0.0.0.0 imc.mediaz.vn
+0.0.0.0 insight.mediaz.vn
+0.0.0.0 landing.mediaz.vn
+0.0.0.0 landingpage1.mediaz.vn
+0.0.0.0 mediaz.vn
+0.0.0.0 ns1.mediaz.vn
+0.0.0.0 ns2.mediaz.vn
+0.0.0.0 ns3.mediaz.vn
+0.0.0.0 ns4.mediaz.vn
+0.0.0.0 nsbak.mediaz.vn
+0.0.0.0 offer.mediaz.vn
+0.0.0.0 pricing.mediaz.vn
+0.0.0.0 proof.mediaz.vn
+0.0.0.0 report.mediaz.vn
+0.0.0.0 send.mediaz.vn
+0.0.0.0 seo.mediaz.vn
+0.0.0.0 thietkeweb.mediaz.vn
+0.0.0.0 tlk.mediaz.vn
+0.0.0.0 tuyendung.mediaz.vn
+0.0.0.0 viral.mediaz.vn
+0.0.0.0 wallet.mediaz.vn
+0.0.0.0 website.mediaz.vn
+0.0.0.0 www.mediaz.vn
+0.0.0.0 zalo-ads.mediaz.vn
+0.0.0.0 mediazcorp.com
+0.0.0.0 www.mediazcorp.com
+0.0.0.0 mediaz.asia
+0.0.0.0 js.mediaz.asia
+0.0.0.0 static.mediaz.asia
+0.0.0.0 www.mediaz.asia
+#[mediad.asia]
+0.0.0.0 mediad.asia
+0.0.0.0 adx.mediaz.asia
+0.0.0.0 blog.mediad.asia
+0.0.0.0 brief.mediad.asia
+0.0.0.0 dsp.mediaz.asia
+0.0.0.0 guide.mediad.asia
+0.0.0.0 www.mediad.asia
+#[bidgear]
+0.0.0.0 astats.bidgear.com
+0.0.0.0 dsp.bidgear.com
+0.0.0.0 hb.bidgear.com
+0.0.0.0 hb-ad.bidgear.com
+0.0.0.0 hb-imp.bidgear.com
+0.0.0.0 media.bidgear.com
+0.0.0.0 optimize-dsp.bidgear.com
+0.0.0.0 rtb.bidgear.com
+0.0.0.0 vn-platform.bidgear.com
+0.0.0.0 zabbix.bidgear.com
+0.0.0.0 bidgear-syndication.com
 # --- Block ads & tracking VN ---
 #[adsVN]
 0.0.0.0 123c.vn
@@ -29571,7 +29642,7 @@ ff02::3 ip6-allhosts
 # For more information about this list, see: https://pgl.yoyo.org/adservers/
 # ----
 # last updated:   Wed, 18 Sep 2019 18:47:36 GMT
-# entries:        3031
+# entries:        3026
 # format:         hosts (hosts -- in hosts file format)
 # credits:        Peter Lowe - pgl@yoyo.org - https://pgl.yoyo.org/ - https://twitter.com/pgl
 # this URL:       https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0
@@ -29579,7 +29650,7 @@ ff02::3 ip6-allhosts
 # other formats:  https://pgl.yoyo.org/adservers/formats.php
 # policy:         https://pgl.yoyo.org/adservers/policy.php
 #
-# start date:    Fri, 24 Sep 1999 00:00:00
+# start date:    Tue, 28 Sep 1999 00:00:00
 0.0.0.0 101com.com
 0.0.0.0 101order.com
 0.0.0.0 123found.com
@@ -30278,7 +30349,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 centerpointmedia.com
 0.0.0.0 ceskydomov.alias.ngs.modry.cz
 0.0.0.0 chairscrack.com
-0.0.0.0 chameleon.ad
 0.0.0.0 channel1vids.com
 0.0.0.0 channelintelligence.com
 0.0.0.0 chardwardse.club
@@ -31241,6 +31311,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 record.bonniergaming.com
 0.0.0.0 record.mrwin.com
 0.0.0.0 redirectvoluum.com
+0.0.0.0 reduxmedia.com
 0.0.0.0 referralware.com
 0.0.0.0 reflectivereward.com
 0.0.0.0 regnow.com
@@ -31271,7 +31342,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 richwebmaster.com
 0.0.0.0 ringsrecord.com
 0.0.0.0 ritzykey.com
-0.0.0.0 ritzysponge.com
 0.0.0.0 rlcdn.com
 0.0.0.0 rle.ru
 0.0.0.0 roar.com
@@ -31397,7 +31467,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 sponsorpro.de
 0.0.0.0 sponsors.thoughtsmedia.com
 0.0.0.0 spot.fitness.com
-0.0.0.0 spottysense.com
 0.0.0.0 spotx.tv
 0.0.0.0 springaftermath.com
 0.0.0.0 spulse.net
@@ -31494,7 +31563,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 teenrevenue.com
 0.0.0.0 teenyvolcano.com
 0.0.0.0 teethfan.com
-0.0.0.0 teliad.de
 0.0.0.0 temelio.com
 0.0.0.0 tendertest.com
 0.0.0.0 terriblethumb.com
@@ -31719,7 +31787,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 www-google-analytics.l.google.com
 0.0.0.0 www.dnps.com
 0.0.0.0 www.kaplanindex.com
-0.0.0.0 www.money4exit.de
 0.0.0.0 www.photo-ads.co.uk
 0.0.0.0 www8.glam.com
 0.0.0.0 wwwpromoter.com
@@ -31798,7 +31865,7 @@ ff02::3 ip6-allhosts
 
 ##### Version Information #
 ###################################################
-### Version: V1.2019.09.7977
+### Version: V1.2019.09.7980
 ##### Version Information ##
 
 # Use this file to prevent your computer or server from connecting to selected
@@ -32035,7 +32102,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 3weekdiet.com
 0.0.0.0 3wt4c.com
 0.0.0.0 3xit.net
-0.0.0.0 3xlist.com
 0.0.0.0 40cg.com
 0.0.0.0 40hardcore.galleryprogram.com
 0.0.0.0 420bankofwashington.com
@@ -32183,7 +32249,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 aa81bf391151884adfa3dd677e41f94be1.com
 0.0.0.0 aa9bd78f328a6a41279d0fad0a88df1901.com
 0.0.0.0 aa9d046aab36af4ff182f097f840430d51.com
-0.0.0.0 aaa419.com
 0.0.0.0 aaannuairex.com
 0.0.0.0 aaaurgentcare.net
 0.0.0.0 aab94f698f36684c5a852a2ef272e031bb.com
@@ -32250,7 +32315,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 acneforums.com
 0.0.0.0 acompanhantesbrasil.com.br
 0.0.0.0 acompanhantesdeportugal.com
-0.0.0.0 acompanhantesportoalegre.net
 0.0.0.0 acornpointlodge.com
 0.0.0.0 acortarurl.es
 0.0.0.0 acount-cheks0912.suport-acount-confrim12.gq
@@ -32259,7 +32323,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 acproyectos.com
 0.0.0.0 acrh.be
 0.0.0.0 acrowiswhite.com
-0.0.0.0 actingonacts.com
 0.0.0.0 actionmobilemarine.net
 0.0.0.0 actionnooz.com
 0.0.0.0 activecampaign.dreamhosters.com
@@ -32278,7 +32341,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 airmore.co
 0.0.0.0 airnetinfotech.com
 0.0.0.0 airpb.com
-0.0.0.0 airportaxi.pl
 0.0.0.0 airportsys.com
 0.0.0.0 aisiansex.com
 0.0.0.0 ajansyenimedya.com
@@ -32438,7 +32500,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 angelfuns.info
 0.0.0.0 angelinfo.com
 0.0.0.0 angelinna.free.fr
-0.0.0.0 angel-x.com
 0.0.0.0 animadulte.com
 0.0.0.0 animal36.com
 0.0.0.0 animalcum.net
@@ -32605,7 +32666,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 evkc.com
 0.0.0.0 evobill.biz
 0.0.0.0 evogarage.com
-0.0.0.0 exgrafix.com
 0.0.0.0 exhibenfrance.com
 0.0.0.0 exhibicionismo-publico.com
 0.0.0.0 exhibi-club.com
@@ -32843,7 +32903,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 internetpornbible.com
 0.0.0.0 interracial-anal1.com
 0.0.0.0 interracial-dating-services.info
-0.0.0.0 interracialfuckingporn.com
 0.0.0.0 interracialpussy.com
 0.0.0.0 interracialraw.com
 0.0.0.0 intervsem.ru
@@ -32912,7 +32971,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 katzdev.com
 0.0.0.0 kaviar-dreams.be.tc
 0.0.0.0 kavkazporno.com
-0.0.0.0 kayakingtrips.info
 0.0.0.0 kaykk.com
 0.0.0.0 kaylaxxx.com
 0.0.0.0 kazinogames.lv
@@ -32996,7 +33054,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 leyuetuan.com
 0.0.0.0 lezbiyanki.net
 0.0.0.0 lezcuties.info
-0.0.0.0 lezrotic.com
 0.0.0.0 lezzyporn.com
 0.0.0.0 lflash.ru
 0.0.0.0 lhsmidatlantic.com
@@ -33205,7 +33262,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 spankdatass.com
 0.0.0.0 spanking-sex.com
 0.0.0.0 spankmedaddy.blogspot.com
-0.0.0.0 spankme.info
 0.0.0.0 spanktown.com
 0.0.0.0 spaplanet.pl
 0.0.0.0 spasswelt.xyz
@@ -33230,7 +33286,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 stain.tv
 0.0.0.0 stairliftsarea.com
 0.0.0.0 stairliftstrue.com
-0.0.0.0 stair.registrydomainservices.com
 0.0.0.0 stal-rulon.ru
 0.0.0.0 stan1.adultmoviezone.com
 0.0.0.0 standrewsgolfclub.com
@@ -36831,8 +36886,8 @@ ff02::3 ip6-allhosts
 
 # Title: KADhosts
 # Description: Filtry chroniace przed przekretami takimi jak subskrypcje SMS
-# Last modified: Thu, 19 Sep 2019, 13:06 UTC+02
-# Version: 2019.9.19.0
+# Last modified: Sun, 22 Sep 2019, 22:22 UTC+02
+# Version: 2019.9.22.1
 # Expires: 2 days
 # Website: https://kadantiscam.netlify.com/
 # Repository: https://github.com/PolishFiltersTeam/KADhosts
@@ -38966,6 +39021,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 clic-douaisis.fr
 0.0.0.0 commanods.xyz
 0.0.0.0 d8x.pl
+0.0.0.0 ditds.xyz
 0.0.0.0 doitbetterleftside.icu
 0.0.0.0 doitbetterrightside.icu
 0.0.0.0 eastmostlitharges.online
@@ -39032,6 +39088,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 www.clickpush.biz
 0.0.0.0 www.commanods.xyz
 0.0.0.0 www.d8x.pl
+0.0.0.0 www.ditds.xyz
 0.0.0.0 www.doitbetterleftside.icu
 0.0.0.0 www.doitbetterrightside.icu
 0.0.0.0 www.eastmostlitharges.online
@@ -39446,6 +39503,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 finanse-payu.pl
 0.0.0.0 firecash.org
 0.0.0.0 fixfuturetype-restclicks.icu
+0.0.0.0 flashplayerload.com
 0.0.0.0 footoografie-pobieralnia.eu
 0.0.0.0 fotoografie-pobierz.eu
 0.0.0.0 freegiftcode.com
@@ -39803,6 +39861,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 www.filmycda.pl
 0.0.0.0 www.financial.org
 0.0.0.0 www.firecash.org
+0.0.0.0 www.flashplayerload.com
 0.0.0.0 www.freegiftcode.com
 0.0.0.0 www.freehackpl.com
 0.0.0.0 www.freeminecraftgiftcode.net
