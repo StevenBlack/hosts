@@ -234,7 +234,9 @@ We tried that.  Using `0` doesn't work universally.
 To modify your current `hosts` file, look for it in the following places and modify it with a text
 editor.
 
-**Mac OS X, iOS, Android, Linux**: `/etc/hosts` file.
+**mac OS (until 10.14.x macOS Mojave), iOS, Android, Linux**: `/etc/hosts` file.
+
+**macOS Catalina:** `/private/etc/hosts` file.
 
 **Windows**: `%SystemRoot%\system32\drivers\etc\hosts` file.
 
