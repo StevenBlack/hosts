@@ -7,7 +7,7 @@
 # This *must* be the first line: 127.0.0.1     localhost   #
 #                                                          #
 #**********************************************************#
-# ------------- Updated: September-17-2019 --------------- #
+# --------------- Updated: October-23-2019 --------------- #
 #**********************************************************#
 #                                                          #
 # Disclaimer: this file is free to use for personal use    #
@@ -1481,6 +1481,8 @@
 0.0.0.0 ads.radar.bg
 0.0.0.0 ads.radioactive.se
 0.0.0.0 stats2.radiocompanion.com
+0.0.0.0 s-bid.rmp.rakuten.com
+0.0.0.0 s-imp.rmp.rakuten.com
 0.0.0.0 www.ranking-charts.de
 0.0.0.0 srv1.rapidstats.de
 0.0.0.0 ads.recoletos.es
@@ -2862,6 +2864,8 @@
 # [Alchemy / Tagworld][AS7296][208.76.216.0 - 208.76.219.255]
 0.0.0.0 ad.flux.com
 0.0.0.0 t.flux.com #[WebBug]
+# [Alchemy][AS7296][209.132.240.0/21]
+0.0.0.0 c.channeltraffic.net
 # [Alibaba][AS37963][115.124.16.0 - 115.124.31.255]
 0.0.0.0 cnzz.mmstat.com
 # [Alibaba][AS37963][119.42.224.0 - 119.42.239.255]
@@ -3175,6 +3179,7 @@
 0.0.0.0 mscom.demdex.net
 0.0.0.0 schwab.demdex.net
 0.0.0.0 timeinc.demdex.net
+0.0.0.0 www.onesafe-software.com #[ScamFraudAlert.Antispyware]
 0.0.0.0 geo.qualaroo.com
 0.0.0.0 collect.tealiumiq.com
 0.0.0.0 collect-us-east-1.tealiumiq.com #[WebBug]
@@ -4693,6 +4698,7 @@
 0.0.0.0 tracker.bang.com
 0.0.0.0 srv.bebi.com
 0.0.0.0 banners.bghelp.co.uk
+0.0.0.0 b2u-system-err.icu #[ScamFraudAlert.Antispyware]
 0.0.0.0 buzzcpm.com
 0.0.0.0 cdnmedia.xyz
 0.0.0.0 wp1.cor-natty.com
@@ -6071,6 +6077,7 @@
 # [Google][AS15169][23.236.128.0 - 23.251.159.255]
 # [Google][AS15169][34.64.0.0/11]
 0.0.0.0 analytics.inform.com
+0.0.0.0 track.searchiq.co
 # [Google][AS15169][35.184.0.0 - 35.240.255.255]
 0.0.0.0 adexchangedirect.com
 0.0.0.0 cleardexchange.com
@@ -10735,6 +10742,7 @@
 0.0.0.0 track.justcloud.com
 0.0.0.0 www.liveadclicks.com
 # [Singlehop][AS32475][198.20.64.0 - 198.20.127.255]
+0.0.0.0 afflow.amazonpresent.info #[ScamFraudAlert.Antispyware]
 0.0.0.0 pix.impdesk.com
 # [Singlehop][AS32475][216.104.32.0 - 216.104.47.255]
 0.0.0.0 tally.upsideout.com #[Piwik.Analytics]
@@ -10745,6 +10753,8 @@
 0.0.0.0 a.gsmarena.com
 0.0.0.0 tracksitetraffic1.com
 0.0.0.0 www.universal-traffic.com
+# [Singlehop][AS32475][99.198.96.0/20]
+0.0.0.0 offers.cloackp.com #[ScamFraudAlert.Antispyware]
 # [Shiny][AS6665][195.210.96.0 - 195.210.127.255]
 0.0.0.0 codice.shinystat.com
 0.0.0.0 codicebusiness.shinystat.com
