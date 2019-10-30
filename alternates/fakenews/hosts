@@ -3,9 +3,9 @@
 # This hosts file is a merged collection of hosts from reputable sources,
 # with a dash of crowd sourcing via Github
 #
-# Date: 28 October 2019 00:56:36 (UTC)
+# Date: 30 October 2019 15:39:49 (UTC)
 # Extensions added to this file: fakenews
-# Number of unique domains: 43,819
+# Number of unique domains: 43,845
 #
 # Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts
 # Project home page: https://github.com/StevenBlack/hosts
@@ -370,6 +370,9 @@ ff02::3 ip6-allhosts
 0.0.0.0 www.flash.sec.intl.miui.com
 
 # Ads
+0.0.0.0 services.bilsyndication.com
+0.0.0.0 biltag.bilsyndication.com
+0.0.0.0 assets.bilsyndication.com
 0.0.0.0 ampmetrics.engadget.com
 0.0.0.0 c.adskeeper.co.uk
 0.0.0.0 datacollect.vmall.com
@@ -2415,8 +2418,8 @@ ff02::3 ip6-allhosts
 # Start hostsVN
 
 # Title: hostsVN
-# Last modified: 23 Oct 2019 16:18 UTC+7
-# Blocked: 1,095 domains
+# Last modified: 30 Oct 2019 11:54 UTC+7
+# Blocked: 1,120 domains
 # Only include advertisers in Vietnam
 # Home: https://bigdargon.github.io/hostsVN/
 # Github: https://github.com/bigdargon/hostsVN/
@@ -3128,6 +3131,9 @@ ff02::3 ip6-allhosts
 0.0.0.0 userdocs.cityads.com
 0.0.0.0 wp-cdn.cityads.com
 0.0.0.0 www.cityads.com
+0.0.0.0 cityadstrack.com
+0.0.0.0 p.cityadstrack.com
+0.0.0.0 stats.cityadstrack.com
 #[adsota]
 0.0.0.0 ads.appota.com
 0.0.0.0 adsota.com
@@ -3267,6 +3273,29 @@ ff02::3 ip6-allhosts
 0.0.0.0 support.dable.io
 0.0.0.0 thumb.dable.io
 0.0.0.0 www.dable.io
+#[adbro]
+0.0.0.0 adbro.me
+0.0.0.0 api.adbro.me
+0.0.0.0 apis.adbro.me
+0.0.0.0 cdn.adbro.me
+0.0.0.0 portal.adbro.me
+#[adasiaholdings]
+0.0.0.0 adasiaholdings.com
+0.0.0.0 adnetwork.adasiaholdings.com
+0.0.0.0 adpa-dooh-prod-vpn.adasiaholdings.com
+0.0.0.0 adpa.adasiaholdings.com
+0.0.0.0 ads.adasiaholdings.com
+0.0.0.0 advertisers.adasiaholdings.com
+0.0.0.0 apm.adasiaholdings.com
+0.0.0.0 bls.adasiaholdings.com
+0.0.0.0 cdn.adasiaholdings.com
+0.0.0.0 desk.adasiaholdings.com
+0.0.0.0 dev-desk.adasiaholdings.com
+0.0.0.0 media.adasiaholdings.com
+0.0.0.0 pixel.adasiaholdings.com
+0.0.0.0 publishers.adasiaholdings.com
+0.0.0.0 tags.adasiaholdings.com
+0.0.0.0 www.adasiaholdings.com
 # --- Block adsVN ---
 0.0.0.0 123c.vn
 0.0.0.0 ad-hcm.24hstatic.com
@@ -3289,6 +3318,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 ads.careerbuilder.vn
 0.0.0.0 ads.home.vn
 0.0.0.0 ads.ictnews.vn
+0.0.0.0 ads.itsgroup.vn
 0.0.0.0 ads.tiki.vn
 0.0.0.0 ads1.careerbuilder.vn
 0.0.0.0 adserver.lag.vn
@@ -29682,8 +29712,8 @@ ff02::3 ip6-allhosts
 #
 # For more information about this list, see: https://pgl.yoyo.org/adservers/
 # ----
-# last updated:   Sun, 20 Oct 2019 07:40:27 GMT
-# entries:        3051
+# last updated:   Tue, 29 Oct 2019 14:42:43 GMT
+# entries:        3061
 # format:         hosts (hosts -- in hosts file format)
 # credits:        Peter Lowe - pgl@yoyo.org - https://pgl.yoyo.org/ - https://twitter.com/pgl
 # this URL:       https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0
@@ -29691,7 +29721,7 @@ ff02::3 ip6-allhosts
 # other formats:  https://pgl.yoyo.org/adservers/formats.php
 # policy:         https://pgl.yoyo.org/adservers/policy.php
 #
-# start date:    Tue, 02 Nov 1999 00:00:00
+# start date:    Thu, 04 Nov 1999 00:00:00
 0.0.0.0 101com.com
 0.0.0.0 101order.com
 0.0.0.0 123found.com
@@ -29741,6 +29771,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 absorbingband.com
 0.0.0.0 absurdwater.com
 0.0.0.0 abz.com
+0.0.0.0 acbsearch.com
 0.0.0.0 acceptable.a-ads.com
 0.0.0.0 acridtwist.com
 0.0.0.0 actualdeals.com
@@ -30332,6 +30363,8 @@ ff02::3 ip6-allhosts
 0.0.0.0 blogherads.com
 0.0.0.0 blogtoplist.se
 0.0.0.0 blogtopsites.com
+0.0.0.0 blueconic.com
+0.0.0.0 blueconic.net
 0.0.0.0 bluelithium.com
 0.0.0.0 bluewhaleweb.com
 0.0.0.0 blushingbeast.com
@@ -30557,6 +30590,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 dispensablestranger.com
 0.0.0.0 displayadsmedia.com
 0.0.0.0 districtm.ca
+0.0.0.0 djtfkakbufpwot.com
 0.0.0.0 dk4ywix.com
 0.0.0.0 dmp.mall.tv
 0.0.0.0 dmtracker.com
@@ -30884,6 +30918,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 jadeitite.com
 0.0.0.0 jaizouji.com
 0.0.0.0 jcount.com
+0.0.0.0 jdoqocy.com
 0.0.0.0 jinkads.de
 0.0.0.0 joetec.net
 0.0.0.0 jquery-bin.com
@@ -31132,6 +31167,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 newnudecash.com
 0.0.0.0 newstarads.com
 0.0.0.0 nexage.com
+0.0.0.0 nhpfvdlbjg.com
 0.0.0.0 nitratory.com
 0.0.0.0 nitroclicks.com
 0.0.0.0 noiselessplough.com
@@ -31139,6 +31175,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 nondescriptsmile.com
 0.0.0.0 nondescriptstocking.com
 0.0.0.0 novem.pl
+0.0.0.0 npttech.com
 0.0.0.0 ns1p.net
 0.0.0.0 ntv.io
 0.0.0.0 ntvk1.ru
@@ -31288,6 +31325,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 promotion-campaigns.com
 0.0.0.0 pronetadvertising.com
 0.0.0.0 propellerads.com
+0.0.0.0 propellerclick.com
 0.0.0.0 proper.io
 0.0.0.0 props.id
 0.0.0.0 proton-tm.com
@@ -31930,7 +31968,7 @@ ff02::3 ip6-allhosts
 
 ##### Version Information #
 ###################################################
-### Version: V1.2019.10.8164
+### Version: V1.2019.10.8170
 ##### Version Information ##
 
 # Use this file to prevent your computer or server from connecting to selected
@@ -32170,7 +32208,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 4xporn.com
 0.0.0.0 4youcom.com
 0.0.0.0 50centstreetkingimmortal.com
-0.0.0.0 50h6v79p.top
 0.0.0.0 50hardcore.galleryprogram.com
 0.0.0.0 511a.cn
 0.0.0.0 51.la
@@ -32182,7 +32219,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 59cn7.com
 0.0.0.0 5finder.com
 0.0.0.0 5forex.ru
-0.0.0.0 5hmmm1mk.top
 0.0.0.0 5i2.net
 0.0.0.0 5kstore.com
 0.0.0.0 5u.com
@@ -32302,7 +32338,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 ablefull.com
 0.0.0.0 abogadodejacksonville.com
 0.0.0.0 abonne100.free.fr
-0.0.0.0 aboomnsaoq.top
 0.0.0.0 abouthomesdecorating.com
 0.0.0.0 aboutproperty.co.uk
 0.0.0.0 above.com
@@ -32330,7 +32365,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 acrowiswhite.com
 0.0.0.0 actionmobilemarine.net
 0.0.0.0 actionnooz.com
-0.0.0.0 activecampaign.dreamhosters.com
 0.0.0.0 activeideas.net
 0.0.0.0 activepr.ru
 0.0.0.0 activewatch.ro
@@ -32509,8 +32543,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 avon-ukraine.com
 0.0.0.0 avpayments.com
 0.0.0.0 avramstroy.ru
-0.0.0.0 ayerbo.xhost.ro
-0.0.0.0 babsy.foreverhorny.com
 0.0.0.0 baby.dorki.info
 0.0.0.0 babylyst.com
 0.0.0.0 baby-soft.ca
@@ -32632,7 +32664,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 falcoware.com
 0.0.0.0 familienzahnaerzte.com
 0.0.0.0 family1st.ca
-0.0.0.0 familyholiday.ml
 0.0.0.0 familyhomefinance.com.au
 0.0.0.0 famir.com
 0.0.0.0 famosasdesnudasx.com
@@ -32846,7 +32877,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 investmac.com
 0.0.0.0 investment-advisors.com
 0.0.0.0 investments.com
-0.0.0.0 investors.healthysmileclub.com
 0.0.0.0 invest-pamm.ru
 0.0.0.0 invivo.hu
 0.0.0.0 inzn.ru
@@ -32909,7 +32939,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 kdrhb.com
 0.0.0.0 kds-miit.ru
 0.0.0.0 kebbe.co.be
-0.0.0.0 keepcolletive.com
 0.0.0.0 keephide.com
 0.0.0.0 keepongoing.info
 0.0.0.0 keepvacom.com
@@ -33035,6 +33064,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 mydancexpress.com
 0.0.0.0 nackt-und-gefesselt.de
 0.0.0.0 naperehresti.info
+0.0.0.0 nokia-n8.com
 0.0.0.0 notfastfood.ru
 0.0.0.0 nubolabs.com
 0.0.0.0 nucia.biz.ly
@@ -33072,7 +33102,6 @@ ff02::3 ip6-allhosts
 0.0.0.0 porn-sluts.com
 0.0.0.0 porn-stop.com
 0.0.0.0 porn-tubes.net
-0.0.0.0 rarbg.to
 0.0.0.0 reports.cliqz.com
 0.0.0.0 repository.cliqz.com
 0.0.0.0 saltdays.de
@@ -33202,13 +33231,12 @@ ff02::3 ip6-allhosts
 0.0.0.0 startuptuesday.com
 0.0.0.0 starvirgin.com
 0.0.0.0 switch.pt
+0.0.0.0 track.nokia-n8.com
 0.0.0.0 www.cliqz.com
 0.0.0.0 xtrafficplus.com
 0.0.0.0 yellowproxy.net
 0.0.0.0 ypcpw.com
 0.0.0.0 yplassembly.in
-0.0.0.0 ytf8i5ce.top
-0.0.0.0 yuarra.pluto.ro
 0.0.0.0 yubikk.info
 0.0.0.0 yudexjr.com
 0.0.0.0 yugk.net
