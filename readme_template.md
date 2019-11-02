@@ -240,6 +240,9 @@ editor.
 
 **Windows**: `%SystemRoot%\system32\drivers\etc\hosts` file.
 
+## Gentoo
+Gentoo users may find [`sb-hosts`](https://github.com/PF4Public/gentoo-overlay/tree/master/net-misc/sb-hosts) in [::pf4public](https://github.com/PF4Public/gentoo-overlay) Gentoo overlay
+
 ## Updating hosts file on Windows
 
 On Linux and Mac OS X, you can simply run the Python script, but on Windows, more
