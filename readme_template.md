@@ -67,7 +67,7 @@ First install the dependencies with:
 
 **Note** we recommend the `--user` flag which installs the required dependencies at the user level. More information about it can be found on pip [documentation](https://pip.pypa.io/en/stable/reference/pip_install/?highlight=--user#cmdoption-user).
 
-To run unit tests, in the top level directory, just run:
+To run unit tests, in the top level directory, run:
 
     python3 testUpdateHostsFile.py
 
@@ -144,7 +144,7 @@ extension finds its updates.
 Create an *optional* `blacklist` file. The contents of this file (containing a
 listing of additional domains in `hosts` file format) are appended to the
 unified hosts file during the update process. A sample `blacklist` is
-included, and may be modified as you desire.
+included, and may be modified as you need.
 
   * NOTE: The `blacklist` is not tracked by git, so any changes you make won't
 be overridden when you `git pull`   this repo from `origin` in the future.
@@ -185,7 +185,7 @@ Fork this hosts this repo and add your links to [https://github.com/StevenBlack/
 
 Then, submit a pull request.
 
-**WARNING**: this is less desirable than Option 1 because the ongoing curation falls on us and what you've just done is created more work for us.
+**WARNING**: this is less desirable than Option 1 because the ongoing curation falls on us. So this creates more work for us.
 
 ### Option 3: create your own hosts list as a repo on Github
 
@@ -220,13 +220,12 @@ lines to your hosts file will do it:
 
 Traditionally most host files use `127.0.0.1`, the *loopback address*, to establish an IP connection to the local machine.
 
-We prefer to use `0.0.0.0`, which is defined as a non-routable meta-address used to designate an invalid, unknown,
-or non applicable target.
+We prefer to use `0.0.0.0`, which is defined as a non-routable meta-address used to designate an invalid, unknown, or non applicable target.
 
 Using `0.0.0.0` is empirically faster, possibly because there's no wait for a timeout resolution. It also does not
 interfere with a web server that may be running on the local PC.
 
-## Why not use just `0` instead of `0.0.0.0`?
+## Why not use `0` instead of `0.0.0.0`?
 We tried that.  Using `0` doesn't work universally.
 
 
@@ -245,9 +244,8 @@ Gentoo users may find [`sb-hosts`](https://github.com/PF4Public/gentoo-overlay/t
 
 ## Updating hosts file on Windows
 
-On Linux and Mac OS X, you can simply run the Python script, but on Windows, more
-work is required due to compatibility issues in implementing some of the functionality
-for Windows. It is preferable to run the batch file as follows:
+On Linux and Mac OS X, run the Python script. On Windows more
+work is required due to compatibility issues so it's preferable to run the batch file as follows:
 
 ```
 updateHostsWindows.bat
@@ -353,7 +351,7 @@ The goals of this repo are to:
 
 1. automatically combine high-quality lists of hosts,
 
-2. provide easy extensions,
+2. provide situation-appropriate extensions,
 
 3. de-dupe the resultant combined list,
 
@@ -373,7 +371,7 @@ devices under a variety of operating systems.
 
 ## Third-Party Hosts Managers
 
-* [Unified Hosts AutoUpdate](https://github.com/ScriptTiger/Unified-Hosts-AutoUpdate "Unified Hosts AutoUpdate") (for Windows): The Unified Hosts AutUpdate package is purpose-built for this unified hosts project as well as in active development by community members. It's sophisticated enough to allow any novice the ability to install and uninstall the blacklist of their choosing to their local hosts file and keep it automatically up to date, while also being minimal enough to be able to be easily placed in a shared network location and deployed across an organization via group policies. And since it is in active development by community members, your bug reports, feature requests, and other feedback are most welcome.
+* [Unified Hosts AutoUpdate](https://github.com/ScriptTiger/Unified-Hosts-AutoUpdate "Unified Hosts AutoUpdate") (for Windows): The Unified Hosts AutUpdate package is purpose-built for this unified hosts project as well as in active development by community members. You can install and uninstall any blacklist  and keep it automatically up to date, and can be placed in a shared network location and deployed across an organization via group policies. And since it is in active development by community members, your bug reports, feature requests, and other feedback are most welcome.
 
 * [ViHoMa](https://github.com/cmabad/ViHoMa) is a Visual Hosts file Manager, written in Java, by Christian Martínez.  Check it out!
 
