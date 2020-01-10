@@ -37,5 +37,5 @@ containing hosts that block adware, malware, tracking, etc.
 ## Other notable files
 
 + [./readme_template.md](https://github.com/StevenBlack/hosts/blob/master/readme_template.md):
-This file is used to generate the all the various readme files in this repository.  Therefore,
+This file is used to generate all the various readme files in this repository.  Therefore,
 if you wish to change the readme, you need to change only this file.
