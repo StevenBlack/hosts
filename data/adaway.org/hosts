@@ -1,22 +1,22 @@
 # AdAway default blocklist
 # Blocking mobile ad providers and some analytics providers
-# 
-# Contribute:
-# Create an issue at https://github.com/AdAway/AdAway/issues
 #
-# Changelog:
-# 2020-01-01 replaced with MobileAdTrackers list https://github.com/jawz101/MobileAdTrackers
-# 2016-07-18 Now hosted on GitHub + Cloudflare
-# 2014-05-18 Now with a valid SSL certificate available at https://adaway.org/hosts.txt
-# 2013-03-29 Integrated some hosts from
-#            http://adblock.gjtech.net/?format=hostfile
-# 2013-03-14 Back from the dead
-# 
+# Project home page:
+# https://github.com/AdAway/adaway.github.io/
+#
+# Fetch the latest version of this file:
+# https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
+#
 # License:
 # CC Attribution 3.0 (http://creativecommons.org/licenses/by/3.0/)
 #
 # Contributions by:
-# Kicelo, Dominik Schuermann, jawz101
+# Kicelo, Dominik Schuermann.
+# Further changes and contributors maintained in the commit history at
+# https://github.com/AdAway/adaway.github.io/commits/master
+#
+# Contribute:
+# Create an issue at https://github.com/AdAway/adaway.github.io/issues
 #
 
 127.0.0.1  localhost
@@ -861,6 +861,7 @@
 
 # [adjust.com]
 127.0.0.1 adjust.com
+127.0.0.1 app.adjust.com
 127.0.0.1 atom.adjust.com
 127.0.0.1 events.adjust.com
 127.0.0.1 s2s.adjust.com
@@ -3567,6 +3568,8 @@
 127.0.0.1 hq1.appsflyer.com
 127.0.0.1 hub.appsflyer.com
 127.0.0.1 impression.appsflyer.com
+127.0.0.1 inapps.appsflyer.com
+127.0.0.1 launches.appsflyer.com
 127.0.0.1 monitorsdk.appsflyer.com
 127.0.0.1 newclicks.appsflyer.com
 127.0.0.1 onelink.appsflyer.com
@@ -7498,22 +7501,6 @@
 # [formulas.jp]
 127.0.0.1 opr.formulas.jp
 
-# [forter.com]
-127.0.0.1 forter.com
-127.0.0.1 cdn.forter.com
-127.0.0.1 cdn0.forter.com
-127.0.0.1 cdn3.forter.com
-127.0.0.1 cdn4.forter.com
-127.0.0.1 null.cdn4.forter.com
-127.0.0.1 cdn46.forter.com
-127.0.0.1 cdn5.forter.com
-127.0.0.1 cdn8.forter.com
-127.0.0.1 cdn9.forter.com
-127.0.0.1 kp1.forter.com
-127.0.0.1 kp2.forter.com
-127.0.0.1 gg.kp2.forter.com
-127.0.0.1 kpstat.forter.com
-
 # [fortumo.com]
 127.0.0.1 a.fortumo.com
 127.0.0.1 api.fortumo.com
@@ -7636,6 +7623,9 @@
 127.0.0.1 node431.fractionalmedia.com
 127.0.0.1 node432.fractionalmedia.com
 127.0.0.1 telim.fractionalmedia.com
+
+# [freegeoip.com]
+127.0.0.1 freegeoip.com
 
 # [fulllab.com.br]
 127.0.0.1 tags.fulllab.com.br
@@ -7854,6 +7844,7 @@
 
 # [geoplugin.net]
 127.0.0.1 geoplugin.net
+127.0.0.1 www.geoplugin.net
 
 # [gepush.com]
 127.0.0.1 sdk.open.talk.gepush.com
@@ -8043,6 +8034,10 @@
 
 # [gooddata.com]
 127.0.0.1 secure.gooddata.com
+
+# [google-analytics.com]
+127.0.0.1 ssl.google-analytics.com
+127.0.0.1 www.google-analytics.com
 
 # [google.com]
 127.0.0.1 ads.google.com
@@ -10265,9 +10260,11 @@
 127.0.0.1 track.leanlab.co
 
 # [leanplum.com]
+127.0.0.1 api.leanplum.com
 127.0.0.1 dev.leanplum.com
 127.0.0.1 phabricator.leanplum.com
 127.0.0.1 reports.leanplum.com
+127.0.0.1 www.leanplum.com
 
 # [legolas-media.com]
 127.0.0.1 legolas-media.com
@@ -14181,6 +14178,7 @@
 127.0.0.1 planetactive.com
 
 # [playfabapi.com]
+127.0.0.1 1cef.playfabapi.com
 127.0.0.1 65c6.playfabapi.com
 
 # [playhaven.com]
@@ -14701,81 +14699,6 @@
 127.0.0.1 theconstructor.pushengage.com
 127.0.0.1 tipo365.pushengage.com
 127.0.0.1 upgradedpoints.pushengage.com
-
-# [pusher.com]
-127.0.0.1 nativepushclient-cluster1.pusher.com
-127.0.0.1 sock10-us2.pusher.com
-127.0.0.1 sock11-us2.pusher.com
-127.0.0.1 sock114-mt1.pusher.com
-127.0.0.1 sock117-mt1.pusher.com
-127.0.0.1 sock118-mt1.pusher.com
-127.0.0.1 sock119-mt1.pusher.com
-127.0.0.1 sock120-mt1.pusher.com
-127.0.0.1 sock121-mt1.pusher.com
-127.0.0.1 sock122-mt1.pusher.com
-127.0.0.1 sock123-mt1.pusher.com
-127.0.0.1 sock126-mt1.pusher.com
-127.0.0.1 sock127-mt1.pusher.com
-127.0.0.1 sock128-mt1.pusher.com
-127.0.0.1 sock13-us2.pusher.com
-127.0.0.1 sock134-mt1.pusher.com
-127.0.0.1 sock135-mt1.pusher.com
-127.0.0.1 sock136-mt1.pusher.com
-127.0.0.1 sock137-mt1.pusher.com
-127.0.0.1 sock138-mt1.pusher.com
-127.0.0.1 sock14-us2.pusher.com
-127.0.0.1 sock141-mt1.pusher.com
-127.0.0.1 sock142-mt1.pusher.com
-127.0.0.1 sock143-mt1.pusher.com
-127.0.0.1 sock144-mt1.pusher.com
-127.0.0.1 sock145-mt1.pusher.com
-127.0.0.1 sock146-mt1.pusher.com
-127.0.0.1 sock147-mt1.pusher.com
-127.0.0.1 sock148-mt1.pusher.com
-127.0.0.1 sock149-mt1.pusher.com
-127.0.0.1 sock150-mt1.pusher.com
-127.0.0.1 sock151-mt1.pusher.com
-127.0.0.1 sock152-mt1.pusher.com
-127.0.0.1 sock153-mt1.pusher.com
-127.0.0.1 sock154-mt1.pusher.com
-127.0.0.1 sock155-mt1.pusher.com
-127.0.0.1 sock156-mt1.pusher.com
-127.0.0.1 sock157-mt1.pusher.com
-127.0.0.1 sock158-mt1.pusher.com
-127.0.0.1 sock159-mt1.pusher.com
-127.0.0.1 sock160-mt1.pusher.com
-127.0.0.1 sock35-goguardian.pusher.com
-127.0.0.1 sock44-goguardian.pusher.com
-127.0.0.1 sock45-goguardian.pusher.com
-127.0.0.1 sock47-goguardian.pusher.com
-127.0.0.1 sock48-goguardian.pusher.com
-127.0.0.1 sock49-goguardian.pusher.com
-127.0.0.1 sock50-eu.pusher.com
-127.0.0.1 sock50-goguardian.pusher.com
-127.0.0.1 sock51-eu.pusher.com
-127.0.0.1 sock51-goguardian.pusher.com
-127.0.0.1 sock52-eu.pusher.com
-127.0.0.1 sock52-goguardian.pusher.com
-127.0.0.1 sock53-goguardian.pusher.com
-127.0.0.1 sock54-goguardian.pusher.com
-127.0.0.1 sock55-goguardian.pusher.com
-127.0.0.1 timeline44-clientstats1.pusher.com
-127.0.0.1 timeline46-clientstats1.pusher.com
-127.0.0.1 timeline47-clientstats1.pusher.com
-127.0.0.1 timeline48-clientstats1.pusher.com
-127.0.0.1 timeline49-clientstats1.pusher.com
-127.0.0.1 timeline51-clientstats1.pusher.com
-127.0.0.1 timeline52-clientstats1.pusher.com
-127.0.0.1 ws-ap1.pusher.com
-127.0.0.1 ws-ap2.pusher.com
-127.0.0.1 ws-appfolio.pusher.com
-127.0.0.1 ws-draftkings.pusher.com
-127.0.0.1 ws-draftkingseu.pusher.com
-127.0.0.1 ws-eu.pusher.com
-127.0.0.1 ws-goguardian.pusher.com
-127.0.0.1 ws-helpscout.pusher.com
-127.0.0.1 ws-us2.pusher.com
-127.0.0.1 ws-younow.pusher.com
 
 # [pushnative.com]
 127.0.0.1 pushnative.com
@@ -15315,6 +15238,9 @@
 # [rnmd.net]
 127.0.0.1 rnmd.net
 
+# [road404.com]
+127.0.0.1 metric-android-am.road404.com
+
 # [roblox.com]
 127.0.0.1 ads.roblox.com
 127.0.0.1 metrics.roblox.com
@@ -15841,6 +15767,9 @@
 
 # [sessioncam.com]
 127.0.0.1 ws.sessioncam.com
+
+# [ads.sessiongames.com]
+127.0.0.1 ads.sessiongames.com
 
 # [sessionm.com]
 127.0.0.1 sessionm.com
@@ -18148,12 +18077,15 @@
 
 # [unity3d.com]
 127.0.0.1 analytics.cloud.unity3d.com
+127.0.0.1 cdp.cloud.unity3d.com
 127.0.0.1 perf-events.cloud.unity3d.com
+127.0.0.1 config.uca.cloud.unity3d.com
 127.0.0.1 data-optout-service.uca.cloud.unity3d.com
 127.0.0.1 userreporting.cloud.unity3d.com
 127.0.0.1 hwstats.unity3d.com
 127.0.0.1 ads-game-configuration-master.ads.prd.ie.internal.unity3d.com
 127.0.0.1 tracking.prd.mz.internal.unity3d.com
+127.0.0.1 stats.unity3d.com
 127.0.0.1 unityads.unity3d.com
 127.0.0.1 admediator.unityads.unity3d.com
 127.0.0.1 ads-brand-postback.unityads.unity3d.com
@@ -19592,10 +19524,8 @@
 127.0.0.1 images2.zemanta.com
 
 # [zendesk.com]
-127.0.0.1 accelifyhelp.zendesk.com
 127.0.0.1 analytics.zendesk.com
 127.0.0.1 certify.zendesk.com
-127.0.0.1 engagenysupport.zendesk.com
 127.0.0.1 proximity.zendesk.com
 
 # [zenmxapps.com]
