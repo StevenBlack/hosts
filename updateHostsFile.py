@@ -22,7 +22,14 @@ import time
 from glob import glob
 
 import lxml  # noqa: F401
-from bs4 import BeautifulSoup
+
+# https://github.com/StevenBlack/hosts/issues/590 ModuleNotFoundError for OSX
+# sys.path.append('/usr/local/lib/python3.7/site-packages')
+
+try:
+    from bs4 import BeautifulSoup
+except ImportError:
+    from BeautifulSoup import BeautifulSoup
 
 # Detecting Python 3 for version-dependent implementations
 PY3 = sys.version_info >= (3, 0)
