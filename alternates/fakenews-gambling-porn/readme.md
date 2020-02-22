@@ -30,9 +30,9 @@ This repository offers [15 different host file variants](https://github.com/Stev
 
 The **Non GitHub mirror** is the link to use for some hosts file managers like
 [Hostsman for Windows](http://www.abelhadigital.com/hostsman) that don't work
-with Github download links.
+with GitHub download links.
 
-Host file recipe | Readme | Raw hosts | Unique domains | Non Github mirror
+Host file recipe | Readme | Raw hosts | Unique domains | Non GitHub mirror
 ---------------- |:------:|:---------:|:--------------:|:-------------:
 Unified hosts = **(adware + malware)** | [Readme](https://github.com/StevenBlack/hosts/blob/master/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | 51,679 | [link](http://sbc.io/hosts/hosts)
 Unified hosts **+ fakenews** | [Readme](https://github.com/StevenBlack/hosts/blob/master/alternates/fakenews/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts) | 52,621 | [link](http://sbc.io/hosts/alternates/fakenews/hosts)
@@ -224,7 +224,7 @@ Then, submit a pull request.
 
 **WARNING**: this is less desirable than Option 1 because the ongoing curation falls on us. So this creates more work for us.
 
-### Option 3: create your own hosts list as a repo on Github
+### Option 3: create your own hosts list as a repo on GitHub
 
 If you're able to curate your own collection of sketchy domains, then curate your own hosts list.  Then signal the existence of your repo as [a new issue](https://github.com/StevenBlack/hosts/issues) and we may include your new repo into the collection of sources we pull whenever we create new versions.
 
@@ -378,7 +378,7 @@ sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
 ## Release management
 
 This repository uses [Release-It!](https://webpro.github.io/release-it/), an excellent CLI release
-tool for Github repos and npm packages, to automate creating [releases](https://github.com/StevenBlack/hosts/releases).
+tool for GitHub repos and npm packages, to automate creating [releases](https://github.com/StevenBlack/hosts/releases).
 This is why the [package.json](https://github.com/StevenBlack/hosts/blob/master/package.json) and
 [.release-it.json](https://github.com/StevenBlack/hosts/blob/master/.release-it.json) files are bundled.
 
