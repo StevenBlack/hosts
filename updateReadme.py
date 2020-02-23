@@ -45,6 +45,9 @@ def main():
                 "Unified hosts **+ " + key.replace("-", " + ") + "**"
             )
 
+        if "\\" in data[key]["location"]:
+            data[key]["location"] = data[key]["location"].replace("\\", "/")
+
         toc_rows += s.substitute(data[key]) + "\n"
 
     row_defaults = {
