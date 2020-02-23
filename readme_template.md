@@ -8,7 +8,7 @@
 [![license](https://img.shields.io/github/license/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/blob/master/license.txt)
 [![repo size](https://img.shields.io/github/repo-size/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts)
 [![contributors](https://img.shields.io/github/contributors/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/graphs/contributors)
-[![Build Status](https://travis-ci.org/StevenBlack/hosts.svg?branch=master)](https://travis-ci.org/StevenBlack/hosts)
+[![Build Status](https://img.shields.io/travis/StevenBlack/hosts/master.svg)](https://travis-ci.org/StevenBlack/hosts)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 [![commits since last release](https://img.shields.io/github/commits-since/StevenBlack/hosts/latest.svg)](https://github.com/StevenBlack/hosts/commits/master)
 [![last commit](https://img.shields.io/github/last-commit/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/commits/master)
@@ -24,7 +24,7 @@ into a unified hosts file with duplicates removed.  A variety of tailored hosts 
 * Logo by [@Tobaloidee](https://github.com/Tobaloidee).
 
 
-### List of all hosts file variants
+## List of all hosts file variants
 
 This repository offers [15 different host file variants](https://github.com/StevenBlack/hosts/tree/master/alternates), in addition to the base variant.
 
@@ -50,26 +50,31 @@ Host file source | Description | Home page | Raw hosts | Update frequency | Lice
 
 
 ## Extensions
-The unified hosts file is optionally extensible.  Extensions are used to include domains by category.  Currently we offer the following categories: `fakenews`, `social`, `gambling`, and `porn`.
 
-Extensions are optional, and can be combined in various ways wth the base hosts file.  The combined products are stored in the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.
+The unified hosts file is optionally extensible.  Extensions are used to include domains by category.  Currently, we offer the following categories: `fakenews`, `social`, `gambling`, and `porn`.
 
-Data for extensions is stored in the [`extensions`](https://github.com/StevenBlack/hosts/tree/master/extensions) folder. You manage extensions by curating this
+Extensions are optional, and can be combined in various ways with the base hosts file.  The combined products are stored in the [`alternates`](https://github.com/StevenBlack/hosts/tree/master/alternates) folder.
+
+Data for extensions are stored in the [`extensions`](https://github.com/StevenBlack/hosts/tree/master/extensions) folder. You manage extensions by curating this
 folder tree, where you will find the data for `fakenews`, `social`, `gambling`, and `porn` extension data that we maintain and provide for you.
 
 ## Generate your own unified hosts file
 
 To generate your own unified hosts file you will need Python 3.5 or later.
 
-First install the dependencies with:
+First, install the dependencies with:
 
-    pip3 install --user -r requirements.txt
+```sh
+pip3 install --user -r requirements.txt
+```
 
 **Note** we recommend the `--user` flag which installs the required dependencies at the user level. More information about it can be found on pip [documentation](https://pip.pypa.io/en/stable/reference/pip_install/?highlight=--user#cmdoption-user).
 
-To run unit tests, in the top level directory, run:
+To run unit tests, in the top-level directory, run:
 
-    python3 testUpdateHostsFile.py
+```sh
+python3 testUpdateHostsFile.py
+```
 
 The `updateHostsFile.py` script will generate a unified hosts file based on the sources in the
 local `data/` subfolder.  The script will prompt you whether it should fetch updated versions
@@ -80,7 +85,9 @@ will use the `hosts` file that's already there.
 
 #### Using Python 3:
 
-    python3 updateHostsFile.py [--auto] [--replace] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
+```sh
+python3 updateHostsFile.py [--auto] [--replace] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
+```
 
 #### Command line options:
 
@@ -134,7 +141,7 @@ allows multiple hosts on a single line.
 
 ## How do I control which sources are unified?
 
-Add one or more  *additional* sources, each in a subfolder of the `data/`
+Add one or more *additional* sources, each in a subfolder of the `data/`
 folder, and specify the `url` key in its `update.json` file.
 
 Add one or more *optional* extensions, which originate from subfolders of the
@@ -146,8 +153,8 @@ listing of additional domains in `hosts` file format) are appended to the
 unified hosts file during the update process. A sample `blacklist` is
 included, and may be modified as you need.
 
-  * NOTE: The `blacklist` is not tracked by git, so any changes you make won't
-be overridden when you `git pull`   this repo from `origin` in the future.
+* NOTE: The `blacklist` is not tracked by git, so any changes you make won't
+be overridden when you `git pull` this repo from `origin` in the future.
 
 ### How do I include my own custom domain mappings?
 
@@ -168,7 +175,7 @@ The `whitelist` uses partial matching.  Therefore if you whitelist
 into the final hosts file.
 
 The `whitelist` is not tracked by git, so any changes you make won't be
-overridden when you `git pull` this repo  from `origin` in the future.
+overridden when you `git pull` this repo from `origin` in the future.
 
 ## How can I contribute hosts records?
 
@@ -207,39 +214,43 @@ and other irritants.
 For example, to nullify requests to some doubleclick.net servers, adding these
 lines to your hosts file will do it:
 
-    # block doubleClick's servers
-    0.0.0.0 ad.ae.doubleclick.net
-    0.0.0.0 ad.ar.doubleclick.net
-    0.0.0.0 ad.at.doubleclick.net
-    0.0.0.0 ad.au.doubleclick.net
-    0.0.0.0 ad.be.doubleclick.net
-    # etc...
-
+```
+# block doubleClick's servers
+0.0.0.0 ad.ae.doubleclick.net
+0.0.0.0 ad.ar.doubleclick.net
+0.0.0.0 ad.at.doubleclick.net
+0.0.0.0 ad.au.doubleclick.net
+0.0.0.0 ad.be.doubleclick.net
+# etc...
+```
 
 ## We recommend using `0.0.0.0` instead of `127.0.0.1`
 
 Traditionally most host files use `127.0.0.1`, the *loopback address*, to establish an IP connection to the local machine.
 
-We prefer to use `0.0.0.0`, which is defined as a non-routable meta-address used to designate an invalid, unknown, or non applicable target.
+We prefer to use `0.0.0.0`, which is defined as a non-routable meta-address used to designate an invalid, unknown, or non-applicable target.
 
 Using `0.0.0.0` is empirically faster, possibly because there's no wait for a timeout resolution. It also does not
 interfere with a web server that may be running on the local PC.
 
 ## Why not use `0` instead of `0.0.0.0`?
+
 We tried that.  Using `0` doesn't work universally.
 
 
 ## Location of your hosts file
+
 To modify your current `hosts` file, look for it in the following places and modify it with a text
 editor.
 
-**mac OS (until 10.14.x macOS Mojave), iOS, Android, Linux**: `/etc/hosts` file.
+**macOS (until 10.14.x macOS Mojave), iOS, Android, Linux**: `/etc/hosts` file.
 
 **macOS Catalina:** `/private/etc/hosts` file.
 
 **Windows**: `%SystemRoot%\system32\drivers\etc\hosts` file.
 
 ## Gentoo
+
 Gentoo users may find [`sb-hosts`](https://github.com/PF4Public/gentoo-overlay/tree/master/net-misc/sb-hosts) in [::pf4public](https://github.com/PF4Public/gentoo-overlay) Gentoo overlay
 
 ## Updating hosts file on Windows
@@ -247,14 +258,14 @@ Gentoo users may find [`sb-hosts`](https://github.com/PF4Public/gentoo-overlay/t
 On Linux and Mac OS X, run the Python script. On Windows more
 work is required due to compatibility issues so it's preferable to run the batch file as follows:
 
-```
+```sh
 updateHostsWindows.bat
 ```
 
 This file MUST be run in command prompt with administrator privileges in
 the repository directory. In addition to updating the hosts file, it can also
 replace the existing hosts file, and reload the DNS cache. It goes without
-saying that in order for this to work, you must be connected to the internet.
+saying that for this to work, you must be connected to the internet.
 
 To open a command prompt as administrator in the repository's directory, do the following:
 
@@ -272,17 +283,18 @@ To open a command prompt as administrator in the repository's directory, do the 
 You can also refer to the "Third-Party Hosts Managers" section for further recommended solutions from third parties.
 
 ## Reloading hosts file
+
 Your operating system will cache DNS lookups. You can either reboot or run the following commands to
 manually flush your DNS cache once the new hosts file is in place.
 
-| The Google Chrome browser may require manually cleaning up its DNS Cache on `chrome://net-internals/#dns` page to thereafter see the changes in your hosts file. See: https://superuser.com/questions/723703
+| The Google Chrome browser may require manually cleaning up its DNS Cache on `chrome://net-internals/#dns` page to thereafter see the changes in your hosts file. See: <https://superuser.com/questions/723703>
 :-----------------------------------------------------------------------------------------
 
 ### Windows
 
 Open a command prompt with administrator privileges and run this command:
 
-```
+```bat
 ipconfig /flushdns
 ```
 
@@ -291,8 +303,8 @@ ipconfig /flushdns
 
 Before flushing the DNS cache, open a command prompt with administrator privileges and run this command:
 
-```
-sc config "Dnscache" start= disabled
+```bat
+sc config "Dnscache" start=disabled
 sc stop "Dnscache"
 ```
 
@@ -318,7 +330,7 @@ Open a Terminal and run with root privileges:
 
 To enable the `nscd` daemon initially, it is recommended that you run the following commands:
 
-```
+```sh
 sudo sysrc nscd_enable="YES"
 sudo service nscd start
 ```
@@ -329,18 +341,19 @@ Then modify the `hosts` line in your `/etc/nsswitch.conf` file to the following:
 hosts: cache files dns
 ```
 
-**Others**: Consult [this wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
+**Others**: Consult [this Wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
 
 ### Mac OS X
 
 Open a Terminal and run:
-```
+
+```sh
 sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
 ```
 
 ## Release management
 
-This repository uses [Release-It!](https://webpro.github.io/release-it/), an excellent CLI release
+This repository uses [release-it](https://github.com/release-it/release-it), an excellent CLI release
 tool for GitHub repos and npm packages, to automate creating [releases](https://github.com/StevenBlack/hosts/releases).
 This is why the [package.json](https://github.com/StevenBlack/hosts/blob/master/package.json) and
 [.release-it.json](https://github.com/StevenBlack/hosts/blob/master/.release-it.json) files are bundled.
@@ -364,14 +377,14 @@ curation is expected.
 
 For example, the (huge) hosts file from [hosts-file.net](https://hosts-file.net)
 is **not** included here because it is very large (780,000+ entries)
-and doesn't currently display a corresponding high level of curation activity.
+and doesn't currently display a correspondingly high level of curation activity.
 
 It is expected that this unified hosts file will serve both desktop and mobile
 devices under a variety of operating systems.
 
 ## Third-Party Hosts Managers
 
-* [Unified Hosts AutoUpdate](https://github.com/ScriptTiger/Unified-Hosts-AutoUpdate "Unified Hosts AutoUpdate") (for Windows): The Unified Hosts AutUpdate package is purpose-built for this unified hosts project as well as in active development by community members. You can install and uninstall any blacklist  and keep it automatically up to date, and can be placed in a shared network location and deployed across an organization via group policies. And since it is in active development by community members, your bug reports, feature requests, and other feedback are most welcome.
+* [Unified Hosts AutoUpdate](https://github.com/ScriptTiger/Unified-Hosts-AutoUpdate "Unified Hosts AutoUpdate") (for Windows): The Unified Hosts AutoUpdate package is purpose-built for this unified hosts project as well as in active development by community members. You can install and uninstall any blacklist and keep it automatically up to date, and can be placed in a shared network location and deployed across an organization via group policies. And since it is in active development by community members, your bug reports, feature requests, and other feedback are most welcome.
 
 * [ViHoMa](https://github.com/cmabad/ViHoMa) is a Visual Hosts file Manager, written in Java, by Christian Martínez.  Check it out!
 
@@ -379,17 +392,17 @@ devices under a variety of operating systems.
 
 * [Hostile](https://github.com/feross/hostile) is a nifty command line utility to easily add or remove domains from your hosts file.  If our hosts files are too aggressive for you, you can use `hostile` to remove domains, or you can use `hostile` in a bash script to automate a post process each time you download fresh versions of hosts.
 
-* [macOS Scripting for Configuration, Backup and Restore](https://github.com/tiiiecherle/osx_install_config) helps customizing, re-installing and using macOS. It also provides a [script](https://github.com/tiiiecherle/osx_install_config/blob/master/09_launchd/9b_run_on_boot/root/1_hosts_file/launchd_and_script/hosts_file_generator.sh) to install and update the hosts file using this project on macOS. In combination with a [launchd](https://github.com/tiiiecherle/osx_install_config/blob/master/09_launchd/9b_run_on_boot/root/1_hosts_file/launchd_and_script/com.hostsfile.install_update.plist) it updates the hosts file every x days (default is 4). To install both download the github repo and run the [install script](https://github.com/tiiiecherle/osx_install_config/blob/master/09_launchd/9b_run_on_boot/root/1_hosts_file/install_hosts_file_generator_and_launchdservice.sh) from the directory one level up.
+* [macOS Scripting for Configuration, Backup and Restore](https://github.com/tiiiecherle/osx_install_config) helps customizing, re-installing and using macOS. It also provides a [script](https://github.com/tiiiecherle/osx_install_config/blob/master/09_launchd/9b_run_on_boot/root/1_hosts_file/launchd_and_script/hosts_file_generator.sh) to install and update the hosts file using this project on macOS. In combination with a [launchd](https://github.com/tiiiecherle/osx_install_config/blob/master/09_launchd/9b_run_on_boot/root/1_hosts_file/launchd_and_script/com.hostsfile.install_update.plist) it updates the hosts file every x days (default is 4). To install both download the GitHub repo and run the [install script](https://github.com/tiiiecherle/osx_install_config/blob/master/09_launchd/9b_run_on_boot/root/1_hosts_file/install_hosts_file_generator_and_launchdservice.sh) from the directory one level up.
 
-* [Pi-hole](https://pi-hole.net/) is a network-wide DHCP server and ad blocker that runs on [Raspberry Pi](https://en.wikipedia.org/wiki/Raspberry_Pi). Pi-hole uses this repository as one of its sources.     This is a very interesting project to setup yourself, or you can [buy one pre-loaded](https://uk.pi-supply.com/products/pi-hole-kit-network-wide-ad-blocker).
+* [Pi-hole](https://pi-hole.net/) is a network-wide DHCP server and ad blocker that runs on [Raspberry Pi](https://en.wikipedia.org/wiki/Raspberry_Pi). Pi-hole uses this repository as one of its sources.  This is a very interesting project to set up yourself, or you can [buy one pre-loaded](https://uk.pi-supply.com/products/pi-hole-kit-network-wide-ad-blocker).
 
 * [Block ads and malware via local BIND9 DNS server](https://github.com/mueller-ma/block-ads-via-dns "Block ads and malware via local DNS server") (for Debian, Raspbian & Ubuntu): Set up a local DNS server with a `/etc/bind/named.conf.blocked` file, sourced from here.
 
 * [Block ads, malware, and deploy parental controls via local DualServer DNS/DHCP server](https://scripttiger.github.io/dualserver "Block ads, malware, and deploy parental controls via local DualServer DNS/DHCP server") (for BSD, Windows & Linux): Set up a blacklist for everyone on your network using the power of the unified hosts reformatted for DualServer. And if you're on Windows, this project also maintains an update script to make updating DualServer's blacklist even easier.
 
-* [Blocking ads and malwares with unbound](https://deadc0de.re/articles/unbound-blocking-ads.html "Blocking ads and malwares with unbound") – [Unbound](https://www.unbound.net/ "Unbound is a validating, recursive, and caching DNS resolver.")  is a validating, recursive, and caching DNS resolver.
+* [Blocking ads and malwares with unbound](https://deadc0de.re/articles/unbound-blocking-ads.html "Blocking ads and malwares with unbound") – [Unbound](https://www.unbound.net/ "Unbound is a validating, recursive, and caching DNS resolver.") is a validating, recursive, and caching DNS resolver.
 
-* [DNSMasq conversion script](https://gist.github.com/erlepereira/c11f4f7a3f60cd2071e79018e895fc8a#file-dnsmasq-antimalware) This github gist has a short shell script (bash, will work on any 'nix) and uses 'wget' & 'awk' present in most distros, to fetch a specified hosts file and convert it the format required by dnsmasq. Supports ipv4 and ipv6. Designed to be used as either a shell script, or can be dropped into /etc/cron.weekly (or wherever suits). Script is short and easily edited, also has a short document attached with notes on dnsmasq setup.
+* [DNSMasq conversion script](https://gist.github.com/erlepereira/c11f4f7a3f60cd2071e79018e895fc8a#file-dnsmasq-antimalware) This GitHub gist has a short shell script (bash, will work on any 'nix) and uses 'wget' & 'awk' present in most distros, to fetch a specified hosts file and convert it the format required by dnsmasq. Supports IPv4 and IPv6. Designed to be used as either a shell script, or can be dropped into /etc/cron.weekly (or wherever suits). The script is short and easily edited, also has a short document attached with notes on dnsmasq setup.
 
 ## Contribute!
 
