@@ -79,7 +79,9 @@ def main():
             this_row.update(source)
             source_rows += t.substitute(this_row) + "\n"
 
-        with open(os.path.join(data[key]["location"], README_FILENAME), "wt") as out:
+        with open(
+            os.path.join(data[key]["location"], README_FILENAME), "wt", encoding="utf-8"
+        ) as out:
             for line in open(README_TEMPLATE):
                 line = line.replace(
                     "@GEN_DATE@", time.strftime("%B %d %Y", time.gmtime())
