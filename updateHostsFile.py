@@ -1071,7 +1071,7 @@ def write_opening_header(final_file, **header_params):
         final_file,
         "# Fetch the latest version of this file: "
         "https://raw.githubusercontent.com/StevenBlack/hosts/master/"
-        + path_join_robust(header_params["outputsubfolder"], "")
+        + path_join_robust(header_params["outputsubfolder"], "").replace("\\", "/")
         + "hosts\n",
     )
     write_data(
