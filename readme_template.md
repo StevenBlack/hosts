@@ -1,6 +1,8 @@
 ----
-**Take Note!**  This version of the Hosts file generator, and tests, are for Python 3.5+ only.
-
+**Take Note!**
+- This version of the Hosts file generator, and tests, are for Python 3.5+ only.
+- This repository centers around the hosts file aggregation Python script and NOT around the hosts files it produces. Issues regarding the personal management of hosts files, such as hosts file managers, are out of scope. However, as a courtesy, there are some recommended hosts manager options available.
+- With the exception of issues and PRs regarding changes to `hosts/data/StevenBlack/hosts`, all other issues regarding the content of the produced hosts files should be made with the appropriate data source that contributed the content in question. The contact information for all of the data sources can be found in the `hosts/data/` directory.
 ----
 
 ![readme](https://user-images.githubusercontent.com/36028424/40330477-9df2c2e0-5d7f-11e8-8ac8-511d719a5eae.png)
@@ -254,6 +256,8 @@ editor.
 Gentoo users may find [`sb-hosts`](https://github.com/PF4Public/gentoo-overlay/tree/master/net-misc/sb-hosts) in [::pf4public](https://github.com/PF4Public/gentoo-overlay) Gentoo overlay
 
 ## Updating hosts file on Windows
+
+(NOTE: If you love the hosts files produced by this repository but are only interested in managing the hosts files you actually use on Windows and not actually utilizing the full functionality of the awesome script that is the core of this repository, please see the below `Third-Party Hosts Managers` section for hosts manager solutions, such as [Unified Hosts AutoUpdate](https://github.com/ScriptTiger/Unified-Hosts-AutoUpdate "Unified Hosts AutoUpdate").)
 
 On Linux and Mac OS X, run the Python script. On Windows more
 work is required due to compatibility issues so it's preferable to run the batch file as follows:
