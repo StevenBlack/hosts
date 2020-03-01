@@ -2822,6 +2822,7 @@
 
 # [amazon-adsystem.com]
 127.0.0.1 aax-us-east.amazon-adsystem.com
+127.0.0.1 c.amazon-adsystem.com
 127.0.0.1 mads.amazon-adsystem.com
 127.0.0.1 s.amazon-adsystem.com
 
@@ -3949,7 +3950,6 @@
 
 # [azureedge.net]
 127.0.0.1 d365portal-prod-sdk.akstd.azureedge.net
-127.0.0.1 channelwebsdks.azureedge.net
 127.0.0.1 d365portal-prod-sdk.azureedge.net
 127.0.0.1 d365prod-sdk.azureedge.net
 127.0.0.1 masdpanalytics.azureedge.net
@@ -4183,6 +4183,9 @@
 # [beanstalkdata.com]
 127.0.0.1 t.beanstalkdata.com
 127.0.0.1 t2.beanstalkdata.com
+
+# [bee7.com]
+127.0.0.1 api.bee7.com
 
 # [behaviad.net]
 127.0.0.1 behaviad.net
@@ -5637,6 +5640,7 @@
 
 # [crossinstall.com]
 127.0.0.1 img.crossinstall.com
+127.0.0.1 rtb-east-wins.crossinstall.com
 
 # [crossinstall.io]
 127.0.0.1 creative-analytics.crossinstall.io
@@ -7057,8 +7061,17 @@
 127.0.0.1 loadus.tm.ssl.exelator.com
 127.0.0.1 vdna.exelator.com
 
+# [exitgames.com]
+127.0.0.1 ns.exitgames.com
+
 # [experian.co.uk]
 127.0.0.1 tags.experian.co.uk
+
+# [experian.com]
+127.0.0.1 smetrics1.experian.com
+
+# [extreme-ip-lookup.com]
+127.0.0.1 extreme-ip-lookup.com
 
 # [extremereach.io]
 127.0.0.1 beacons.extremereach.io
@@ -7653,6 +7666,10 @@
 # [gioneemobile.net]
 127.0.0.1 stats.gioneemobile.net
 
+# [gismart.xyz]
+127.0.0.1 cdn-prod-defaulting-gamedev-ads.gismart.xyz
+127.0.0.1 prod-defaulting-subscriptiontool.gismart.xyz
+
 # [gitter.im]
 127.0.0.1 sidecar.gitter.im
 
@@ -8055,6 +8072,10 @@
 # [herewetest.com]
 127.0.0.1 bannerwall.herewetest.com
 
+# [herocraft.com]
+127.0.0.1 adv.herocraft.com
+127.0.0.1 gamestats.herocraft.com
+
 # [herokuapp.com]
 127.0.0.1 adstage-analytics.herokuapp.com
 127.0.0.1 bundle-geoip.herokuapp.com
@@ -8118,6 +8139,7 @@
 127.0.0.1 heywire.com
 
 # [heyzap.com]
+127.0.0.1 ads.heyzap.com
 127.0.0.1 fyc.heyzap.com
 127.0.0.1 med.heyzap.com
 
@@ -9085,6 +9107,9 @@
 127.0.0.1 sd.iperceptions.com
 127.0.0.1 universal.iperceptions.com
 
+# [ipify.org]
+127.0.0.1 api.ipify.org
+
 # [ipinyou.com]
 127.0.0.1 ipinyou.com
 127.0.0.1 cm.ipinyou.com
@@ -9250,6 +9275,10 @@
 
 # [jabong.com]
 127.0.0.1 analytics.jabong.com
+
+# [jamcity.com]
+127.0.0.1 analytics-sdk.jamcity.com
+127.0.0.1 tongue.jamcity.com
 
 # [jaminfinity.tk]
 127.0.0.1 jaminfinity.tk
@@ -10054,6 +10083,9 @@
 # [linkedin.com]
 127.0.0.1 ads.linkedin.com
 127.0.0.1 analytics.pointdrive.linkedin.com
+
+# [linkitox.com]
+127.0.0.1 prod.linkitox.com
 
 # [linkprice.com]
 127.0.0.1 ad.linkprice.com
@@ -12685,9 +12717,11 @@
 127.0.0.1 allstate.sc.omtrdc.net
 127.0.0.1 audible.sc.omtrdc.net
 127.0.0.1 dsg.sc.omtrdc.net
+127.0.0.1 equifaxps.sc.omtrdc.net
 127.0.0.1 southwestairlines.sc.omtrdc.net
 127.0.0.1 allstate.tt.omtrdc.net
 127.0.0.1 audible.tt.omtrdc.net
+127.0.0.1 consumerinfo.tt.omtrdc.net
 127.0.0.1 fcanafta.tt.omtrdc.net
 127.0.0.1 mboxedge17.tt.omtrdc.net
 127.0.0.1 mboxedge28.tt.omtrdc.net
@@ -13378,6 +13412,7 @@
 127.0.0.1 cdn.outfit7.com
 127.0.0.1 cdn-o7.outfit7.com
 127.0.0.1 cdn-safe.outfit7.com
+127.0.0.1 events-api.outfit7.com
 127.0.0.1 match7-as-s1.outfit7.com
 127.0.0.1 match7-eu-w1.outfit7.com
 127.0.0.1 match7-so-e1.outfit7.com
@@ -13508,6 +13543,7 @@
 127.0.0.1 collector-a.perimeterx.net
 127.0.0.1 collector-px8fcgygk4.perimeterx.net
 127.0.0.1 collector-pxhyx10rg3.perimeterx.net
+127.0.0.1 collector-pxuarm9b04.perimeterx.net
 127.0.0.1 px-conf.perimeterx.net
 
 # [period-calendar.com]
@@ -13698,7 +13734,9 @@
 
 # [playfabapi.com]
 127.0.0.1 1cef.playfabapi.com
+127.0.0.1 4d83.playfabapi.com
 127.0.0.1 65c6.playfabapi.com
+127.0.0.1 96b6.playfabapi.com
 127.0.0.1 b343.playfabapi.com
 127.0.0.1 ca87.playfabapi.com
 
@@ -15266,6 +15304,10 @@
 # [sgdmobile.com]
 127.0.0.1 track.sgdmobile.com
 
+# [sgn.com]
+127.0.0.1 crm.sgn.com
+127.0.0.1 invenio.sgn.com
+
 # [shareaholic.com]
 127.0.0.1 analytics.shareaholic.com
 127.0.0.1 apps.shareaholic.com
@@ -15593,6 +15635,9 @@
 127.0.0.1 static.snapmobile.asia
 127.0.0.1 vast.snapmobile.asia
 
+# [snowtrial.co]
+127.0.0.1 stats.snowtrial.co
+
 # [snplow.net]
 127.0.0.1 ca-lapresse-main.collector.snplow.net
 127.0.0.1 com-bvaauctions-main.collector.snplow.net
@@ -15692,6 +15737,7 @@
 
 # [soom.la]
 127.0.0.1 assets.soom.la
+127.0.0.1 highway2.soom.la
 127.0.0.1 teleport.soom.la
 
 # [soperson.com]
@@ -15730,6 +15776,7 @@
 127.0.0.1 us8.splicky.com
 
 # [split.io]
+127.0.0.1 events.split.io
 127.0.0.1 sdk.split.io
 
 # [splkmobile.com]
@@ -17293,6 +17340,9 @@
 # [tv2phone.cn]
 127.0.0.1 appwall.tv2phone.cn
 
+# [tvsquared.com]
+127.0.0.1 collector-6271.tvsquared.com
+
 # [twilio.com]
 127.0.0.1 sdkgw.us1.twilio.com
 
@@ -18191,6 +18241,11 @@
 
 # [wdacashtrk.com]
 127.0.0.1 trk.wdacashtrk.com
+
+# [we-stats.com]
+127.0.0.1 bcdn-god.we-stats.com
+127.0.0.1 cfr.us.v2.we-stats.com
+127.0.0.1 log-dbff2e04.us.v2.we-stats.com
 
 # [weather.com]
 127.0.0.1 adstest.weather.com
