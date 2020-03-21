@@ -5,6 +5,7 @@
 ----
 
 ![readme](https://user-images.githubusercontent.com/36028424/40330477-9df2c2e0-5d7f-11e8-8ac8-511d719a5eae.png)
+
 [![latest release](https://img.shields.io/github/release/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/releases)
 [![license](https://img.shields.io/github/license/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/blob/master/license.txt)
 [![repo size](https://img.shields.io/github/repo-size/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts)
@@ -30,7 +31,7 @@ into a unified hosts file with duplicates removed.  A variety of tailored hosts 
 This repository offers [15 different host file variants](https://github.com/StevenBlack/hosts/tree/master/alternates), in addition to the base variant.
 
 The **Non GitHub mirror** is the link to use for some hosts file managers like
-[Hostsman for Windows](http://www.abelhadigital.com/hostsman) that don't work
+[Hostsman for Windows](http://www.abelhadigital.com/hostsman/) that don't work
 with GitHub download links.
 
 Host file recipe | Readme | Raw hosts | Unique domains | Non GitHub mirror
@@ -215,7 +216,7 @@ and other irritants.
 For example, to nullify requests to some doubleclick.net servers, adding these
 lines to your hosts file will do it:
 
-```
+```text
 # block doubleClick's servers
 0.0.0.0 ad.ae.doubleclick.net
 0.0.0.0 ad.ar.doubleclick.net
@@ -258,29 +259,29 @@ Gentoo users may find [`sb-hosts`](https://github.com/PF4Public/gentoo-overlay/t
 
 (NOTE: See also some third-party Hosts managers, listed below.)
 
-On Linux and Mac OS X, run the Python script. On Windows more
+On Linux and macOS, run the Python script. On Windows more
 work is required due to compatibility issues so it's preferable to run the batch file as follows:
 
 ```sh
 updateHostsWindows.bat
 ```
 
-This file MUST be run in command prompt with administrator privileges in
+This file **MUST** be run in command prompt with administrator privileges in
 the repository directory. In addition to updating the hosts file, it can also
 replace the existing hosts file, and reload the DNS cache. It goes without
 saying that for this to work, you must be connected to the internet.
 
 To open a command prompt as administrator in the repository's directory, do the following:
 
-**Windows XP**: Start -> Run -> `cmd`
+**Windows XP**: Start → Run → `cmd`
 
-**Windows Vista, 7**: Start Button -> type `cmd` -> right-click Command Prompt ->
+**Windows Vista, 7**: Start Button → type `cmd` → right-click Command Prompt →
 "Run as Administrator"
 
-**Windows 8**: Start -> Swipe Up -> All Apps -> Windows System -> right-click Command Prompt ->
+**Windows 8**: Start → Swipe Up → All Apps → Windows System → right-click Command Prompt →
 "Run as Administrator"
 
-**Windows 10**: Start Button -> type `cmd` -> right-click Command Prompt ->
+**Windows 10**: Start Button → type `cmd` → right-click Command Prompt →
 "Run as Administrator"
 
 You can also refer to the "Third-Party Hosts Managers" section for further recommended solutions from third parties.
@@ -301,7 +302,7 @@ Open a command prompt with administrator privileges and run this command:
 ipconfig /flushdns
 ```
 
-|If you want to use a huge hosts file by merging [hphosts](https://www.hosts-file.net) (NOT INCLUDED HERE) you need to DISABLE and STOP `Dnscache` service before you replace hosts file in Windows Systems. You have been warned.|
+|If you want to use a huge hosts file by merging [hphosts](https://www.hosts-file.net/) (NOT INCLUDED HERE) you need to DISABLE and STOP `Dnscache` service before you replace hosts file in Windows Systems. You have been warned.|
 :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Before flushing the DNS cache, open a command prompt with administrator privileges and run this command:
@@ -340,13 +341,13 @@ sudo service nscd start
 
 Then modify the `hosts` line in your `/etc/nsswitch.conf` file to the following:
 
-```
+```text
 hosts: cache files dns
 ```
 
 **Others**: Consult [this Wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
 
-### Mac OS X
+### macOS
 
 Open a Terminal and run:
 
@@ -378,7 +379,7 @@ hosts source should be frequently updated by its maintainers with both
 additions and removals.  The larger the hosts file, the higher the level of
 curation is expected.
 
-For example, the (huge) hosts file from [hosts-file.net](https://hosts-file.net)
+For example, the (huge) hosts file from [hosts-file.net](https://hosts-file.net/)
 is **not** included here because it is very large (780,000+ entries)
 and doesn't currently display a correspondingly high level of curation activity.
 
@@ -401,11 +402,11 @@ devices under a variety of operating systems.
 
 * [Block ads and malware via local BIND9 DNS server](https://github.com/mueller-ma/block-ads-via-dns "Block ads and malware via local DNS server") (for Debian, Raspbian & Ubuntu): Set up a local DNS server with a `/etc/bind/named.conf.blocked` file, sourced from here.
 
-* [Block ads, malware, and deploy parental controls via local DualServer DNS/DHCP server](https://scripttiger.github.io/dualserver "Block ads, malware, and deploy parental controls via local DualServer DNS/DHCP server") (for BSD, Windows & Linux): Set up a blacklist for everyone on your network using the power of the unified hosts reformatted for DualServer. And if you're on Windows, this project also maintains an update script to make updating DualServer's blacklist even easier.
+* [Block ads, malware, and deploy parental controls via local DualServer DNS/DHCP server](https://scripttiger.github.io/dualserver/ "Block ads, malware, and deploy parental controls via local DualServer DNS/DHCP server") (for BSD, Windows & Linux): Set up a blacklist for everyone on your network using the power of the unified hosts reformatted for DualServer. And if you're on Windows, this project also maintains an update script to make updating DualServer's blacklist even easier.
 
 * [Blocking ads and malwares with unbound](https://deadc0de.re/articles/unbound-blocking-ads.html "Blocking ads and malwares with unbound") – [Unbound](https://www.unbound.net/ "Unbound is a validating, recursive, and caching DNS resolver.") is a validating, recursive, and caching DNS resolver.
 
-* [DNSMasq conversion script](https://gist.github.com/erlepereira/c11f4f7a3f60cd2071e79018e895fc8a#file-dnsmasq-antimalware) This GitHub gist has a short shell script (bash, will work on any 'nix) and uses 'wget' & 'awk' present in most distros, to fetch a specified hosts file and convert it the format required by dnsmasq. Supports IPv4 and IPv6. Designed to be used as either a shell script, or can be dropped into /etc/cron.weekly (or wherever suits). The script is short and easily edited, also has a short document attached with notes on dnsmasq setup.
+* [dnsmasq conversion script](https://gist.github.com/erlepereira/c11f4f7a3f60cd2071e79018e895fc8a#file-dnsmasq-antimalware) This GitHub gist has a short shell script (bash, will work on any 'nix) and uses `wget` & `awk` present in most distros, to fetch a specified hosts file and convert it the format required by dnsmasq. Supports IPv4 and IPv6. Designed to be used as either a shell script, or can be dropped into /etc/cron.weekly (or wherever suits). The script is short and easily edited, also has a short document attached with notes on dnsmasq setup.
 
 ## Contribute!
 
