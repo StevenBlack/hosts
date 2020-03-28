@@ -426,7 +426,6 @@
 0.0.0.0 amazon.oret.jp
 0.0.0.0 amazoo.longseller.org
 0.0.0.0 ameba.d.ad-cloud.jp
-0.0.0.0 amiami.jp
 0.0.0.0 aml.valuecommerce.com
 0.0.0.0 amoad.com
 0.0.0.0 ams.exad.jp
