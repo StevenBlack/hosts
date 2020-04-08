@@ -1268,16 +1268,6 @@ class TestFlushDnsCache(BaseStdout):
                 ]:
                     self.assertIn(expected, output)
 
-
-def mock_path_join_robust(*args):
-    # We want to hard-code the backup hosts filename
-    # instead of parametrizing based on current time.
-    if len(args) == 2 and args[1].startswith("hosts-"):
-        return os.path.join(args[0], "hosts-new")
-    else:
-        return os.path.join(*args)
-
-
 class TestRemoveOldHostsFile(BaseMockDir):
     def setUp(self):
         super(TestRemoveOldHostsFile, self).setUp()

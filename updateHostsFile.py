@@ -148,12 +148,12 @@ def main():
         help="Skip static localhost entries " "in the final hosts file.",
     )
     parser.add_argument(
-        "--skip-readme-data-update",
-        "-d",
-        dest="skipreadmedataupdate",
-        default=False,
-        action="store_true",
-        help="Skip update of readme data",
+        "--genreadmedata",
+        "-g",
+        dest="genreadmedata",
+        default=True,
+        action="store_false",
+        help="Skip generation of readmeData.json",
     )
     parser.add_argument(
         "--output",
@@ -285,7 +285,7 @@ def main():
     )
     final_file.close()
 
-    if not settings["skipreadmedataupdate"]:
+    if settings["genreadmedata"]:
         update_readme_data(
             settings["readmedatafilename"],
             extensions=extensions,
