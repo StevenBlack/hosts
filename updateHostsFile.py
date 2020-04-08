@@ -257,8 +257,8 @@ def main():
 
     merge_file = create_initial_file()
     remove_old_hosts_file(
-      path_join_robust(settings["outputpath"], "hosts"),
-      settings["backup"])
+        path_join_robust(settings["outputpath"], "hosts"), settings["backup"]
+    )
     if settings["compress"]:
         final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
         compressed_file = tempfile.NamedTemporaryFile()
@@ -1300,7 +1300,9 @@ def remove_old_hosts_file(old_file_path, backup):
     open(old_file_path, "a").close()
 
     if backup:
-        backup_file_path = old_file_path + "{}".format(time.strftime("%Y-%m-%d-%H-%M-%S"))
+        backup_file_path = old_file_path + "{}".format(
+            time.strftime("%Y-%m-%d-%H-%M-%S")
+        )
 
         # Make a backup copy, marking the date in which the list was updated
         shutil.copy(old_file_path, backup_file_path)
