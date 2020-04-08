@@ -1286,16 +1286,14 @@ class TestRemoveOldHostsFile(BaseMockDir):
     def test_remove_hosts_file(self):
         old_dir_count = self.dir_count
 
-        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
-            updateHostsFile.BASEDIR_PATH = self.test_dir
-            remove_old_hosts_file(backup=False)
+        remove_old_hosts_file(self.hosts_file, backup=False)
 
-            new_dir_count = old_dir_count + 1
-            self.assertEqual(self.dir_count, new_dir_count)
+        new_dir_count = old_dir_count + 1
+        self.assertEqual(self.dir_count, new_dir_count)
 
-            with open(self.hosts_file, "r") as f:
-                contents = f.read()
-                self.assertEqual(contents, "")
+        with open(self.hosts_file, "r") as f:
+            contents = f.read()
+            self.assertEqual(contents, "")
 
     def test_remove_hosts_file_exists(self):
         with open(self.hosts_file, "w") as f:
@@ -1303,40 +1301,36 @@ class TestRemoveOldHostsFile(BaseMockDir):
 
         old_dir_count = self.dir_count
 
-        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
-            updateHostsFile.BASEDIR_PATH = self.test_dir
-            remove_old_hosts_file(backup=False)
+        remove_old_hosts_file(self.hosts_file, backup=False)
 
-            new_dir_count = old_dir_count
-            self.assertEqual(self.dir_count, new_dir_count)
+        new_dir_count = old_dir_count
+        self.assertEqual(self.dir_count, new_dir_count)
 
-            with open(self.hosts_file, "r") as f:
-                contents = f.read()
-                self.assertEqual(contents, "")
+        with open(self.hosts_file, "r") as f:
+            contents = f.read()
+            self.assertEqual(contents, "")
 
-    @mock.patch("updateHostsFile.path_join_robust", side_effect=mock_path_join_robust)
+    @mock.patch("time.strftime", return_value="-new")
     def test_remove_hosts_file_backup(self, _):
         with open(self.hosts_file, "w") as f:
             f.write("foo")
 
         old_dir_count = self.dir_count
 
-        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
-            updateHostsFile.BASEDIR_PATH = self.test_dir
-            remove_old_hosts_file(backup=True)
+        remove_old_hosts_file(self.hosts_file, backup=True)
 
-            new_dir_count = old_dir_count + 1
-            self.assertEqual(self.dir_count, new_dir_count)
+        new_dir_count = old_dir_count + 1
+        self.assertEqual(self.dir_count, new_dir_count)
 
-            with open(self.hosts_file, "r") as f:
-                contents = f.read()
-                self.assertEqual(contents, "")
+        with open(self.hosts_file, "r") as f:
+            contents = f.read()
+            self.assertEqual(contents, "")
 
-            new_hosts_file = self.hosts_file + "-new"
+        new_hosts_file = self.hosts_file + "-new"
 
-            with open(new_hosts_file, "r") as f:
-                contents = f.read()
-                self.assertEqual(contents, "foo")
+        with open(new_hosts_file, "r") as f:
+            contents = f.read()
+            self.assertEqual(contents, "foo")
 
 
 # End File Logic
