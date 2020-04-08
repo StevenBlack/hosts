@@ -10,7 +10,7 @@
 [![license](https://img.shields.io/github/license/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/blob/master/license.txt)
 [![repo size](https://img.shields.io/github/repo-size/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts)
 [![contributors](https://img.shields.io/github/contributors/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/graphs/contributors)
-[![Build Status](https://img.shields.io/travis/StevenBlack/hosts/master.svg)](https://travis-ci.org/StevenBlack/hosts)
+[![Build Status](https://img.shields.io/github/workflow/status/StevenBlack/hosts/CI/master)](https://github.com/StevenBlack/hosts/actions?workflow=CI)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 [![commits since last release](https://img.shields.io/github/commits-since/StevenBlack/hosts/latest.svg)](https://github.com/StevenBlack/hosts/commits/master)
 [![last commit](https://img.shields.io/github/last-commit/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/commits/master)

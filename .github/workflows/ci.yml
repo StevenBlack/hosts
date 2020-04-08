@@ -1,0 +1,45 @@
+name: CI
+on: [push, pull_request]
+env:
+  CI: true
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python: [3.5, 3.6, 3.7]
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python }}
+          architecture: 'x64'
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/miniconda3
+          key: ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('ci/*.sh') }}-${{ hashFiles('.github/workflows/ci.yml') }}
+          restore-keys: ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('ci/*.sh') }}-${{ hashFiles('.github/workflows/ci.yml') }}
+
+      - name: Install conda
+        env:
+          PYTHON_VERSION: ${{ matrix.python }}
+        run: |
+          export PATH="$HOME/miniconda3/bin:$PATH"
+          ci/install_conda.sh
+          ci/setup_conda_env.sh
+
+      - name: Run tests
+        run: |
+          export PATH="$HOME/miniconda3/bin:$PATH"
+          ci/test.sh
+          ci/lint.sh
