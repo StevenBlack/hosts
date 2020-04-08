@@ -4,7 +4,7 @@
 # https://github.com/l1m5
 #
 # This Python script will combine all the host files you provide
-# as sources into one, unique host file to keep you internet browsing happy.
+# as sources into one, unique host file to keep your internet browsing happy.
 
 import argparse
 import fnmatch
