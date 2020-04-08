@@ -148,11 +148,11 @@ def main():
         help="Skip static localhost entries " "in the final hosts file.",
     )
     parser.add_argument(
-        "--genreadmedata",
+        "--nogendata",
         "-g",
-        dest="genreadmedata",
-        default=True,
-        action="store_false",
+        dest="nogendata",
+        default=False,
+        action="store_true",
         help="Skip generation of readmeData.json",
     )
     parser.add_argument(
@@ -285,7 +285,7 @@ def main():
     )
     final_file.close()
 
-    if settings["genreadmedata"]:
+    if not settings["nogendata"]:
         update_readme_data(
             settings["readmedatafilename"],
             extensions=extensions,
