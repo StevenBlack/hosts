@@ -163,11 +163,6 @@ in a subfolder.  If the subfolder does not exist, it will be created.
 section at the top, containing lines like `127.0.0.1 localhost`.  This is
 useful for configuring proximate DNS services on the local network.
 
-`--nogendata`, or `-g`: `false` (default) or `true`, skip the generation of the
-readmeData.json file used for generating readme.md files.  This is useful if you are
-generating host files with additional whitelists or blacklists and want to keep your
-local checkout of this repo unmodified.
-
 `--compress`, or `-c`: `false` (default) or `true`, *Compress* the hosts file
 ignoring non-necessary lines (empty lines and comments) and putting multiple
 domains in each line. Reducing the number of lines of the hosts file improves
