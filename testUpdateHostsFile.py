@@ -1268,6 +1268,7 @@ class TestFlushDnsCache(BaseStdout):
                 ]:
                     self.assertIn(expected, output)
 
+
 class TestRemoveOldHostsFile(BaseMockDir):
     def setUp(self):
         super(TestRemoveOldHostsFile, self).setUp()
