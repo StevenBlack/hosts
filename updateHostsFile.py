@@ -344,7 +344,6 @@ def prompt_for_update(freshen, update_auto):
 
     if not os.path.isfile(hosts_file):
         try:
-            print("HERE HERE")
             open(hosts_file, "w+").close()
         except (IOError, OSError):
             # Starting in Python 3.3, IOError is aliased
