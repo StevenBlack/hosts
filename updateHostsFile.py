@@ -148,6 +148,14 @@ def main():
         help="Skip static localhost entries " "in the final hosts file.",
     )
     parser.add_argument(
+        "--nogendata",
+        "-g",
+        dest="nogendata",
+        default=False,
+        action="store_true",
+        help="Skip generation of readmeData.json",
+    )
+    parser.add_argument(
         "--output",
         "-o",
         dest="outputsubfolder",
@@ -248,7 +256,9 @@ def main():
     )
 
     merge_file = create_initial_file()
-    remove_old_hosts_file(settings["backup"])
+    remove_old_hosts_file(
+        path_join_robust(settings["outputpath"], "hosts"), settings["backup"]
+    )
     if settings["compress"]:
         final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
         compressed_file = tempfile.NamedTemporaryFile()
@@ -275,13 +285,14 @@ def main():
     )
     final_file.close()
 
-    update_readme_data(
-        settings["readmedatafilename"],
-        extensions=extensions,
-        numberofrules=number_of_rules,
-        outputsubfolder=output_subfolder,
-        sourcesdata=sources_data,
-    )
+    if not settings["nogendata"]:
+        update_readme_data(
+            settings["readmedatafilename"],
+            extensions=extensions,
+            numberofrules=number_of_rules,
+            outputsubfolder=output_subfolder,
+            sourcesdata=sources_data,
+        )
 
     print_success(
         "Success! The hosts file has been saved in folder "
@@ -1272,7 +1283,7 @@ def flush_dns_cache():
             print_failure("Unable to determine DNS management tool.")
 
 
-def remove_old_hosts_file(backup):
+def remove_old_hosts_file(old_file_path, backup):
     """
     Remove the old hosts file.
 
@@ -1285,14 +1296,12 @@ def remove_old_hosts_file(backup):
         Whether or not to backup the existing hosts file.
     """
 
-    old_file_path = path_join_robust(BASEDIR_PATH, "hosts")
-
     # Create if already removed, so remove won't raise an error.
     open(old_file_path, "a").close()
 
     if backup:
-        backup_file_path = path_join_robust(
-            BASEDIR_PATH, "hosts-{}".format(time.strftime("%Y-%m-%d-%H-%M-%S"))
+        backup_file_path = old_file_path + "{}".format(
+            time.strftime("%Y-%m-%d-%H-%M-%S")
         )
 
         # Make a backup copy, marking the date in which the list was updated
