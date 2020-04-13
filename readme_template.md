@@ -146,6 +146,13 @@ each domain on a separate line. This is necessary because many implementations
 of URL blockers that rely on `hosts` files do not conform to the standard which
 allows multiple hosts on a single line.
 
+`--blacklist <blacklistfile>`, or `-x <blacklistfile>`: Append the given blacklist file
+in hosts format to the generated hosts file.
+
+`--whitelist <whitelistfile>`, or `-w <whitelistfile>`: Use the given whitelist file
+to remove hosts from the generated hosts file.
+
+
 ## How do I control which sources are unified?
 
 Add one or more *additional* sources, each in a subfolder of the `data/`
