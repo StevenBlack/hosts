@@ -201,6 +201,20 @@ def main():
         "ignoring non-necessary lines "
         "(empty lines and comments).",
     )
+    parser.add_argument(
+        "--whitelist",
+        "-w",
+        dest="whitelistfile",
+        default="",
+        help="Whitelist file to use while generating hosts files.",
+    )
+    parser.add_argument(
+        "--blacklist",
+        "-x",
+        dest="blacklistfile",
+        default="",
+        help="Blacklist file to use while generating hosts files.",
+    )
 
     global settings
 
@@ -1296,21 +1310,21 @@ def remove_old_hosts_file(old_file_path, backup):
         Whether or not to backup the existing hosts file.
     """
 
-    # Create if already removed, so remove won't raise an error.
-    open(old_file_path, "a").close()
+    # only go through possible backup and removal if the file exists
+    if os.path.isfile(old_file_path):
 
-    if backup:
-        backup_file_path = old_file_path + "{}".format(
-            time.strftime("%Y-%m-%d-%H-%M-%S")
-        )
+        if backup:
+            backup_file_path = old_file_path + "{}".format(
+                time.strftime("%Y-%m-%d-%H-%M-%S")
+            )
 
-        # Make a backup copy, marking the date in which the list was updated
-        shutil.copy(old_file_path, backup_file_path)
+            # Make a backup copy, marking the date in which the list was updated
+            shutil.copy(old_file_path, backup_file_path)
 
-    os.remove(old_file_path)
+        os.remove(old_file_path)
 
     # Create new empty hosts file
-    open(old_file_path, "a").close()
+    open(old_file_path, "wb").close()
 
 
 # End File Logic
