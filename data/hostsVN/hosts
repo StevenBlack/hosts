@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 13 Apr 2020 16:06 UTC+7
-# Version: 2004131606
-# Blocked: 1,256 domains
+# Last modified: 18 Apr 2020 20:59 UTC+7
+# Version: 2004182059
+# Blocked: 1,316 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -405,13 +405,17 @@
 0.0.0.0 vietnamnetad.vn
 0.0.0.0 widget.vietnamnetad.vn
 0.0.0.0 www.vietnamnetad.vn
-#[zing]
+#[zing.vn]
 0.0.0.0 ad.zing.vn
 0.0.0.0 log.news.zing.vn
 0.0.0.0 logv2.mp3.zing.vn
 0.0.0.0 tracking.playzing.g6.zing.vn
+#[zalo.me]
+0.0.0.0 ads.zalo.me
+0.0.0.0 px.za.zalo.me
 0.0.0.0 shop.zalo.me
 0.0.0.0 sp.zalo.me
+#[zaloapp.com]
 0.0.0.0 ads.zaloapp.com
 0.0.0.0 log.api.zaloapp.com
 0.0.0.0 px.za.zaloapp.com
@@ -419,19 +423,23 @@
 0.0.0.0 static-ads.zaloapp.com
 0.0.0.0 stats.zaloapp.com
 0.0.0.0 zminer.zaloapp.com
+#[zadn.vn]
 0.0.0.0 adtima-media.zadn.vn
 0.0.0.0 adtima-media-td.zadn.vn
 0.0.0.0 adtima-static.zadn.vn
 0.0.0.0 log.sdk.zadn.vn
 0.0.0.0 zalo-ads.zadn.vn
 0.0.0.0 zalo-ads-td.zadn.vn
+#[zdn.vn]
 0.0.0.0 ads.zdn.vn
 0.0.0.0 org.zaloapp.ads.zdn.vn
 0.0.0.0 zaloapp.ads.zdn.vn
 0.0.0.0 zplayer-trk.zdn.vn
 0.0.0.0 zplayer.trk.zapps.vn
+#[log.zing*.vn]
 0.0.0.0 log.zingmp3.vn
 0.0.0.0 zlog.zingmp3.vn
+0.0.0.0 log.zingnews.vn
 #[vietad]
 0.0.0.0 ads.vietad.vn
 0.0.0.0 as.vietad.vn
@@ -846,22 +854,38 @@
 0.0.0.0 dsp.mediaz.asia
 0.0.0.0 guide.mediad.asia
 0.0.0.0 www.mediad.asia
-#[bidgear]
+#[bidgear.com]
+0.0.0.0 asset.bidgear.com
 0.0.0.0 astats.bidgear.com
+0.0.0.0 bfp.bidgear.com
 0.0.0.0 bidgear.com
+0.0.0.0 cdn.bidgear.com
+0.0.0.0 demand.bidgear.com
 0.0.0.0 dsp.bidgear.com
 0.0.0.0 hb.bidgear.com
 0.0.0.0 hb-ad.bidgear.com
 0.0.0.0 hb-imp.bidgear.com
+0.0.0.0 imp.bidgear.com
+0.0.0.0 imp-dsp.bidgear.com
 0.0.0.0 media.bidgear.com
 0.0.0.0 optimize-dsp.bidgear.com
 0.0.0.0 platform.bidgear.com
+0.0.0.0 platform1.bidgear.com
 0.0.0.0 rtb.bidgear.com
+0.0.0.0 sg-cdn.bidgear.com
+0.0.0.0 source.bidgear.com
 0.0.0.0 stats.bidgear.com
 0.0.0.0 vn-platform.bidgear.com
+0.0.0.0 vt-cdn.bidgear.com
 0.0.0.0 www.bidgear.com
 0.0.0.0 zabbix.bidgear.com
+#[bidgear-syndication.com]
 0.0.0.0 bidgear-syndication.com
+0.0.0.0 demand.bidgear-syndication.com
+0.0.0.0 imp-dsp.bidgear-syndication.com
+0.0.0.0 vegacdn1.bidgear-syndication.com
+0.0.0.0 vt-cdn.bidgear-syndication.com
+0.0.0.0 www.bidgear-syndication.com
 #[sharks.vn]
 0.0.0.0 delivery.sharks.vn
 0.0.0.0 sharks.vn
@@ -1154,10 +1178,43 @@
 0.0.0.0 static.yeah1media.vn
 0.0.0.0 system.yeah1media.vn
 0.0.0.0 yeah1media.vn
-# --- Block adsVN ---
-0.0.0.0 123c.vn
+#[pushdy.vn]
+0.0.0.0 pushdy.vn
+0.0.0.0 www.pushdy.vn
+0.0.0.0 pushdy.com
+0.0.0.0 cdn.pushdy.com
+0.0.0.0 www.pushdy.com
+0.0.0.0 pushdi.com
+0.0.0.0 api.pushdi.com
+0.0.0.0 sdk.pushdi.com
+0.0.0.0 d2ox6x0y9xhicd.cloudfront.net
+#[ad*.24hstatic.com]
+0.0.0.0 24h-ad.24hstatic.com
+0.0.0.0 24h-ipad-ad.24hstatic.com
+0.0.0.0 ad-eva.24hstatic.com
 0.0.0.0 ad-hcm.24hstatic.com
 0.0.0.0 ad-hn.24hstatic.com
+0.0.0.0 ad-m.24hstatic.com
+0.0.0.0 ad-us.24hstatic.com
+0.0.0.0 eva-ad.24hstatic.com
+0.0.0.0 eva-ipad-ad.24hstatic.com
+0.0.0.0 eva-m-ad.24hstatic.com
+0.0.0.0 nv-ad.24hstatic.com
+0.0.0.0 nv-ad-hcm.24hstatic.com
+0.0.0.0 nv-ad-hn.24hstatic.com
+#[vnnayngaytin.vn]
+0.0.0.0 vnnayngaytin.vn
+0.0.0.0 ad.vnnayngaytin.vn
+#[donglogs.com]
+0.0.0.0 analytics.donglogs.com
+0.0.0.0 api.donglogs.com
+0.0.0.0 donglogs.com
+0.0.0.0 rec.donglogs.com
+0.0.0.0 scripts.donglogs.com
+0.0.0.0 www.donglogs.com
+# --- Block adsVN ---
+0.0.0.0 123c.vn
+0.0.0.0 ad-admin.vnay.vn
 0.0.0.0 ad-img.icheck.com.vn
 0.0.0.0 ad.24h.com.vn
 0.0.0.0 ad.accesstrade.vn
@@ -1167,6 +1224,7 @@
 0.0.0.0 ad.vatgia.com
 0.0.0.0 ad.vietbao.vn
 0.0.0.0 ad.vkool.net
+0.0.0.0 adadmin.headlines.pw
 0.0.0.0 adc.quantrimang.com
 0.0.0.0 adchoice.com
 0.0.0.0 adchoice.com.vn
@@ -1175,6 +1233,7 @@
 0.0.0.0 admedia.com.vn
 0.0.0.0 admin.sothuchi.vn
 0.0.0.0 adnetwork.5imedia.vn
+0.0.0.0 adpostback.headlines.pw
 0.0.0.0 ads-cdn.fptplay.net
 0.0.0.0 ads.baodatviet.vn
 0.0.0.0 ads.careerbuilder.vn
@@ -1195,6 +1254,7 @@
 0.0.0.0 adsweb.vn
 0.0.0.0 adt.com.vn
 0.0.0.0 adv.baotintuc.vn
+0.0.0.0 advert-admin.vnay.vn
 0.0.0.0 adx.kul.vn
 0.0.0.0 adx.xemvtv.net
 0.0.0.0 affiliate.k4.tinhte.vn
@@ -1228,13 +1288,17 @@
 0.0.0.0 dt.vnecdn.com
 0.0.0.0 events.vungtv.com
 0.0.0.0 fptad.com
+0.0.0.0 ghimc.vn
 0.0.0.0 go.vnecdn.com
 0.0.0.0 landingpagelagi.vn
+0.0.0.0 lottery.headlines.pw
+0.0.0.0 lottery.vntoday.news
 0.0.0.0 m.clevernet.vn
 0.0.0.0 microad.vn
 0.0.0.0 mobileads.dieuviet.com
 0.0.0.0 myad.vn
 0.0.0.0 ng-vn-notice.gameitop.com
+0.0.0.0 offerwall.headlines.pw
 0.0.0.0 ox1.vietstock.vn
 0.0.0.0 phimmedia03.com
 0.0.0.0 polyad.galaxypub.vn
@@ -1243,9 +1307,11 @@
 0.0.0.0 quangcao.thanhnien.vn
 0.0.0.0 quangcao.tuoitre.vn
 0.0.0.0 quangcao247.com.vn
+0.0.0.0 r.tinmoi24.vn
 0.0.0.0 realclick.vn
 0.0.0.0 sbbanner.com
 0.0.0.0 serving-ad.tv24.vn
+0.0.0.0 shop.vnay.vn
 0.0.0.0 stc-nas.nixcdn.com
 0.0.0.0 stc.nas.nixcdn.com
 0.0.0.0 toppage.vn
@@ -1282,6 +1348,7 @@
 0.0.0.0 deqik.com
 0.0.0.0 elogs.vnexpress.net
 0.0.0.0 event.headlines.pw
+0.0.0.0 event.vntoday.news
 0.0.0.0 la.vietid.net
 0.0.0.0 lg.lotus.vn
 0.0.0.0 log.anninhthudo.vn
@@ -1296,12 +1363,15 @@
 0.0.0.0 log.tienphong.vn
 0.0.0.0 log.vietnamdaily.net.vn
 0.0.0.0 log.vietnamplus.vn
+0.0.0.0 log.vnay.vn
+0.0.0.0 log.vntoday.news
 0.0.0.0 log.vov.vn
 0.0.0.0 log4x.nixcdn.com
 0.0.0.0 logging.galaxypub.vn
 0.0.0.0 logging.phunuonline.com.vn
 0.0.0.0 logsbin.dantri.com.vn
 0.0.0.0 nstat.headlines.pw
+0.0.0.0 report.vnay.vn
 0.0.0.0 s.baomoi.xdn.vn
 0.0.0.0 s.kenh14.vn
 0.0.0.0 s.soha.vn
