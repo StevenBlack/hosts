@@ -772,7 +772,9 @@ def create_initial_file():
     merge_file = tempfile.NamedTemporaryFile()
 
     # spin the sources for the base file
-    for source in recursive_glob(settings["datapath"], settings["hostfilename"]):
+    for source in sort_sources(
+        recursive_glob(settings["datapath"], settings["hostfilename"])
+    ):
 
         start = "# Start {}\n\n".format(os.path.basename(os.path.dirname(source)))
         end = "# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
@@ -782,9 +784,11 @@ def create_initial_file():
 
     # spin the sources for extensions to the base file
     for source in settings["extensions"]:
-        for filename in recursive_glob(
-            path_join_robust(settings["extensionspath"], source),
-            settings["hostfilename"],
+        for filename in sort_sources(
+            recursive_glob(
+                path_join_robust(settings["extensionspath"], source),
+                settings["hostfilename"],
+            )
         ):
             with open(filename, "r") as curFile:
                 write_data(merge_file, curFile.read())
