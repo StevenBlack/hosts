@@ -41,6 +41,7 @@ from updateHostsFile import (
     query_yes_no,
     recursive_glob,
     remove_old_hosts_file,
+    sort_sources,
     strip_rule,
     supports_color,
     update_all_sources,
@@ -129,6 +130,80 @@ class TestGetDefaults(Base):
 
 
 # End Project Settings
+
+
+class TestSortSources(Base):
+    def test_sort_sources_simple(self):
+        given = [
+            "sbc.io",
+            "example.com",
+            "github.com",
+        ]
+
+        expected = ["example.com", "github.com", "sbc.io"]
+
+        actual = sort_sources(given)
+
+        self.assertEqual(actual, expected)
+
+    def test_live_data(self):
+        given = [
+            "data/KADhosts/update.json",
+            "data/someonewhocares.org/update.json",
+            "data/StevenBlack/update.json",
+            "data/adaway.org/update.json",
+            "data/URLHaus/update.json",
+            "data/UncheckyAds/update.json",
+            "data/add.2o7Net/update.json",
+            "data/mvps.org/update.json",
+            "data/add.Spam/update.json",
+            "data/add.Dead/update.json",
+            "data/malwaredomainlist.com/update.json",
+            "data/Badd-Boyz-Hosts/update.json",
+            "data/hostsVN/update.json",
+            "data/yoyo.org/update.json",
+            "data/add.Risk/update.json",
+            "data/tiuxo/update.json",
+            "extensions/gambling/update.json",
+            "extensions/porn/clefspeare13/update.json",
+            "extensions/porn/sinfonietta-snuff/update.json",
+            "extensions/porn/tiuxo/update.json",
+            "extensions/porn/sinfonietta/update.json",
+            "extensions/fakenews/update.json",
+            "extensions/social/tiuxo/update.json",
+            "extensions/social/sinfonietta/update.json",
+        ]
+
+        expected = [
+            "data/StevenBlack/update.json",
+            "data/adaway.org/update.json",
+            "data/add.2o7Net/update.json",
+            "data/add.Dead/update.json",
+            "data/add.Risk/update.json",
+            "data/add.Spam/update.json",
+            "data/Badd-Boyz-Hosts/update.json",
+            "data/hostsVN/update.json",
+            "data/KADhosts/update.json",
+            "data/malwaredomainlist.com/update.json",
+            "data/mvps.org/update.json",
+            "data/someonewhocares.org/update.json",
+            "data/tiuxo/update.json",
+            "data/UncheckyAds/update.json",
+            "data/URLHaus/update.json",
+            "data/yoyo.org/update.json",
+            "extensions/fakenews/update.json",
+            "extensions/gambling/update.json",
+            "extensions/porn/clefspeare13/update.json",
+            "extensions/porn/sinfonietta/update.json",
+            "extensions/porn/sinfonietta-snuff/update.json",
+            "extensions/porn/tiuxo/update.json",
+            "extensions/social/sinfonietta/update.json",
+            "extensions/social/tiuxo/update.json",
+        ]
+
+        actual = sort_sources(given)
+
+        self.assertEqual(actual, expected)
 
 
 # Prompt the User
