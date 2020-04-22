@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 18 Apr 2020 20:59 UTC+7
-# Version: 2004182059
-# Blocked: 1,316 domains
+# Last modified: 22 Apr 2020 15:19 UTC+7
+# Version: 2004221519
+# Blocked: 1,340 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -418,18 +418,24 @@
 #[zaloapp.com]
 0.0.0.0 ads.zaloapp.com
 0.0.0.0 log.api.zaloapp.com
+0.0.0.0 photo-ads.zaloapp.com
 0.0.0.0 px.za.zaloapp.com
 0.0.0.0 shop.zaloapp.com
 0.0.0.0 static-ads.zaloapp.com
 0.0.0.0 stats.zaloapp.com
 0.0.0.0 zminer.zaloapp.com
 #[zadn.vn]
-0.0.0.0 adtima-media.zadn.vn
 0.0.0.0 adtima-media-td.zadn.vn
+0.0.0.0 adtima-media.zadn.vn
+0.0.0.0 adtima-static-td.zadn.vn
 0.0.0.0 adtima-static.zadn.vn
 0.0.0.0 log.sdk.zadn.vn
-0.0.0.0 zalo-ads.zadn.vn
+0.0.0.0 zalo-ads-240-td.zadn.vn
+0.0.0.0 zalo-ads-240.zadn.vn
+0.0.0.0 zalo-ads-480-td.zadn.vn
+0.0.0.0 zalo-ads-480.zadn.vn
 0.0.0.0 zalo-ads-td.zadn.vn
+0.0.0.0 zalo-ads.zadn.vn
 #[zdn.vn]
 0.0.0.0 ads.zdn.vn
 0.0.0.0 org.zaloapp.ads.zdn.vn
@@ -1212,8 +1218,23 @@
 0.0.0.0 rec.donglogs.com
 0.0.0.0 scripts.donglogs.com
 0.0.0.0 www.donglogs.com
-# --- Block adsVN ---
+#[123c.vn]
 0.0.0.0 123c.vn
+0.0.0.0 b.123c.vn
+0.0.0.0 b.staging.123c.vn
+0.0.0.0 d.123c.vn
+0.0.0.0 dev.d.123c.vn
+0.0.0.0 failover.123c.vn
+0.0.0.0 hit.123c.vn
+0.0.0.0 l.123c.vn
+0.0.0.0 qos-talk.123c.vn
+0.0.0.0 qos-zdn.123c.vn
+0.0.0.0 st.123c.vn
+0.0.0.0 stats.123c.vn
+0.0.0.0 t.123c.vn
+0.0.0.0 trk.123c.vn
+0.0.0.0 trk.staging.123c.vn
+# --- Block adsVN ---
 0.0.0.0 ad-admin.vnay.vn
 0.0.0.0 ad-img.icheck.com.vn
 0.0.0.0 ad.24h.com.vn
@@ -1243,8 +1264,10 @@
 0.0.0.0 ads.itsgroup.vn
 0.0.0.0 ads.khoahocdoisong.vn
 0.0.0.0 ads.phunuonline.com.vn
+0.0.0.0 ads.thesaigontimes.vn
 0.0.0.0 ads.tiki.vn
 0.0.0.0 ads.tinmoi.vn
+0.0.0.0 ads.vietbao.vn
 0.0.0.0 ads.vkool.info
 0.0.0.0 ads.xemphimso.com
 0.0.0.0 ads1.careerbuilder.vn
@@ -1270,6 +1293,7 @@
 0.0.0.0 banhtv.org
 0.0.0.0 banner.5giay.vn
 0.0.0.0 bgadx.com
+0.0.0.0 cdn-ads.thesaigontimes.vn
 0.0.0.0 chiasephim.xyz
 0.0.0.0 clevernet.vn
 0.0.0.0 click.xdeal.vn
@@ -1394,6 +1418,7 @@
 0.0.0.0 tracking.appwifi.com
 0.0.0.0 tracking.meete.co
 0.0.0.0 tracking.vht.com.vn
+0.0.0.0 tracking.vietbao.vn
 0.0.0.0 tracking.vtcnew.com.vn
 0.0.0.0 trackingapi.foody.vn
 0.0.0.0 trackity.tiki.vn
