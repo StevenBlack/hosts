@@ -474,6 +474,34 @@ def prompt_for_move(final_file, **move_params):
 # End Prompt the User
 
 
+def sort_sources(sources):
+    """
+    Sorts the sources.
+    The idea is that all Steven Black's list, file or entries
+    get on top and the rest sorted alphabetically.
+
+    Parameters
+    ----------
+    sources: list
+        The sources to sort.
+    """
+
+    result = sorted(
+        sources.copy(),
+        key=lambda x: x.lower().replace("-", "").replace("_", "").replace(" ", ""),
+    )
+
+    # Steven Black's repositories/files/lists should be on top!
+    steven_black_positions = [
+        x for x, y in enumerate(result) if "stevenblack" in y.lower()
+    ]
+
+    for index in steven_black_positions:
+        result.insert(0, result.pop(index))
+
+    return result
+
+
 # Exclusion logic
 def display_exclusion_options(common_exclusions, exclusion_pattern, exclusion_regexes):
     """
@@ -641,7 +669,9 @@ def update_sources_data(sources_data, **sources_params):
 
     source_data_filename = sources_params["sourcedatafilename"]
 
-    for source in recursive_glob(sources_params["datapath"], source_data_filename):
+    for source in sort_sources(
+        recursive_glob(sources_params["datapath"], source_data_filename)
+    ):
         update_file = open(source, "r", encoding="UTF-8")
         update_data = json.load(update_file)
         sources_data.append(update_data)
@@ -649,7 +679,9 @@ def update_sources_data(sources_data, **sources_params):
 
     for source in sources_params["extensions"]:
         source_dir = path_join_robust(sources_params["extensionspath"], source)
-        for update_file_path in recursive_glob(source_dir, source_data_filename):
+        for update_file_path in sort_sources(
+            recursive_glob(source_dir, source_data_filename)
+        ):
             update_file = open(update_file_path, "r")
             update_data = json.load(update_file)
 
@@ -695,7 +727,7 @@ def update_all_sources(source_data_filename, host_filename):
     # The transforms we support
     transform_methods = {"jsonarray": jsonarray}
 
-    all_sources = recursive_glob("*", source_data_filename)
+    all_sources = sort_sources(recursive_glob("*", source_data_filename))
 
     for source in all_sources:
         update_file = open(source, "r", encoding="UTF-8")
@@ -740,7 +772,9 @@ def create_initial_file():
     merge_file = tempfile.NamedTemporaryFile()
 
     # spin the sources for the base file
-    for source in recursive_glob(settings["datapath"], settings["hostfilename"]):
+    for source in sort_sources(
+        recursive_glob(settings["datapath"], settings["hostfilename"])
+    ):
 
         start = "# Start {}\n\n".format(os.path.basename(os.path.dirname(source)))
         end = "# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
@@ -750,9 +784,11 @@ def create_initial_file():
 
     # spin the sources for extensions to the base file
     for source in settings["extensions"]:
-        for filename in recursive_glob(
-            path_join_robust(settings["extensionspath"], source),
-            settings["hostfilename"],
+        for filename in sort_sources(
+            recursive_glob(
+                path_join_robust(settings["extensionspath"], source),
+                settings["hostfilename"],
+            )
         ):
             with open(filename, "r") as curFile:
                 write_data(merge_file, curFile.read())
