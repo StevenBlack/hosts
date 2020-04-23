@@ -292,7 +292,7 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
             self.assertFalse(update_sources)
 
             output = sys.stdout.getvalue()
-            expected = "OK, we'll stick with " "what we've got locally."
+            expected = "OK, we'll stick with what we've got locally."
             self.assertIn(expected, output)
 
             sys.stdout = StringIO()
@@ -354,7 +354,7 @@ class TestPromptForExclusions(BaseStdout):
         self.assertFalse(gather_exclusions)
 
         output = sys.stdout.getvalue()
-        expected = "OK, we'll only exclude " "domains in the whitelist."
+        expected = "OK, we'll only exclude domains in the whitelist."
         self.assertIn(expected, output)
 
         self.assert_called_once(mock_query)
@@ -1305,7 +1305,7 @@ class TestFlushDnsCache(BaseStdout):
                 os.name = "posix"
                 flush_dns_cache()
 
-                expected = "Flushing the DNS cache by " "restarting nscd succeeded"
+                expected = "Flushing the DNS cache by restarting nscd succeeded"
                 output = sys.stdout.getvalue()
                 self.assertIn(expected, output)
 
@@ -1319,7 +1319,7 @@ class TestFlushDnsCache(BaseStdout):
                 os.name = "posix"
                 flush_dns_cache()
 
-                expected = "Flushing the DNS cache by " "restarting nscd failed"
+                expected = "Flushing the DNS cache by restarting nscd failed"
                 output = sys.stdout.getvalue()
                 self.assertIn(expected, output)
 
@@ -1335,7 +1335,7 @@ class TestFlushDnsCache(BaseStdout):
 
                 output = sys.stdout.getvalue()
                 for expected in [
-                    ("Flushing the DNS cache by " "restarting nscd failed"),
+                    ("Flushing the DNS cache by restarting nscd failed"),
                     (
                         "Flushing the DNS cache by restarting "
                         "NetworkManager.service succeeded"
@@ -1744,7 +1744,7 @@ class TestIsValidDomainFormat(BaseStdout):
 
     def test_invalid_domain(self):
         expected = (
-            "Do not include www.domain.com or " "http(s)://domain.com. Try again."
+            "Do not include www.domain.com or http(s)://domain.com. Try again."
         )
 
         for invalid_domain in [

@@ -89,8 +89,7 @@ def get_defaults():
 def main():
     parser = argparse.ArgumentParser(
         description="Creates a unified hosts "
-        "file from hosts stored in "
-        "data subfolders."
+        "file from hosts stored in the data subfolders."
     )
     parser.add_argument(
         "--auto",
@@ -106,7 +105,7 @@ def main():
         dest="backup",
         default=False,
         action="store_true",
-        help="Backup the hosts " "files before they " "are overridden.",
+        help="Backup the hosts files before they are overridden.",
     )
     parser.add_argument(
         "--extensions",
@@ -114,7 +113,7 @@ def main():
         dest="extensions",
         default=[],
         nargs="*",
-        help="Host extensions to include " "in the final hosts file.",
+        help="Host extensions to include in the final hosts file.",
     )
     parser.add_argument(
         "--ip",
@@ -137,7 +136,7 @@ def main():
         dest="noupdate",
         default=False,
         action="store_true",
-        help="Don't update from " "host data sources.",
+        help="Don't update from host data sources.",
     )
     parser.add_argument(
         "--skipstatichosts",
@@ -145,7 +144,7 @@ def main():
         dest="skipstatichosts",
         default=False,
         action="store_true",
-        help="Skip static localhost entries " "in the final hosts file.",
+        help="Skip static localhost entries in the final hosts file.",
     )
     parser.add_argument(
         "--nogendata",
@@ -168,7 +167,7 @@ def main():
         dest="replace",
         default=False,
         action="store_true",
-        help="Replace your active " "hosts file with this " "new hosts file.",
+        help="Replace your active hosts file with this new hosts file.",
     )
     parser.add_argument(
         "--flush-dns-cache",
@@ -176,7 +175,7 @@ def main():
         dest="flushdnscache",
         default=False,
         action="store_true",
-        help="Attempt to flush DNS cache " "after replacing the hosts file.",
+        help="Attempt to flush DNS cache after replacing the hosts file.",
     )
     parser.add_argument(
         "--compress",
@@ -184,12 +183,9 @@ def main():
         dest="compress",
         default=False,
         action="store_true",
-        help="Compress the hosts file "
-        "ignoring non-necessary lines "
-        "(empty lines and comments) and "
-        "putting multiple domains in "
-        "each line. Improve the "
-        "performances under Windows.",
+        help="Compress the hosts file ignoring non-necessary lines "
+        "(empty lines and comments) and putting multiple domains in "
+        "each line. Improve the performance under Windows.",
     )
     parser.add_argument(
         "--minimise",
@@ -197,8 +193,7 @@ def main():
         dest="minimise",
         default=False,
         action="store_true",
-        help="Minimise the hosts file "
-        "ignoring non-necessary lines "
+        help="Minimise the hosts file ignoring non-necessary lines "
         "(empty lines and comments).",
     )
     parser.add_argument(
@@ -525,7 +520,7 @@ def display_exclusion_options(common_exclusions, exclusion_pattern, exclusion_re
     -------
     aug_exclusion_regexes : list
         The original list of regex patterns potentially with additional
-        patterns from domains that user chooses to exclude.
+        patterns from domains that the user chooses to exclude.
     """
 
     for exclusion_option in common_exclusions:
@@ -561,7 +556,7 @@ def gather_custom_exclusions(exclusion_pattern, exclusion_regexes):
     -------
     aug_exclusion_regexes : list
         The original list of regex patterns potentially with additional
-        patterns from domains that user chooses to exclude.
+        patterns from domains that the user chooses to exclude.
     """
 
     # We continue running this while-loop until the user
@@ -586,7 +581,7 @@ def exclude_domain(domain, exclusion_pattern, exclusion_regexes):
     """
     Exclude a domain from being blocked.
 
-    This create the domain regex by which to exclude this domain and appends
+    This creates the domain regex by which to exclude this domain and appends
     it a list of already-existing exclusion regexes.
 
     Parameters
@@ -720,7 +715,7 @@ def update_all_sources(source_data_filename, host_filename):
         to be the same for all sources.
     host_filename : str
         The name of the file in which the updated source information
-        in stored for a particular URL. This filename is assumed to be
+        is stored for a particular URL. This filename is assumed to be
         the same for all sources.
     """
 
@@ -1368,8 +1363,8 @@ def remove_old_hosts_file(old_file_path, backup):
 
 def domain_to_idna(line):
     """
-    Encode a domain which is presente into a line into `idna`. This way we
-    avoid the most encoding issue.
+    Encode a domain that is present into a line into `idna`. This way we
+    avoid most encoding issues.
 
     Parameters
     ----------
@@ -1383,7 +1378,7 @@ def domain_to_idna(line):
 
     Notes
     -----
-    - This function encode only the domain to `idna` format because in
+    - This function encodes only the domain to `idna` format because in
         most cases, the encoding issue is due to a domain which looks like
         `b'\xc9\xa2oogle.com'.decode('idna')`.
     - About the splitting:
