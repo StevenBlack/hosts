@@ -1345,7 +1345,7 @@ def remove_old_hosts_file(old_file_path, backup):
     open(old_file_path, "a").close()
 
     if backup:
-        backup_file_path = old_file_path + "{}".format(
+        backup_file_path = old_file_path + "-{}".format(
             time.strftime("%Y-%m-%d-%H-%M-%S")
         )
 
