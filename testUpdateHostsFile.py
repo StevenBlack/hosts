@@ -1376,7 +1376,7 @@ class TestRemoveOldHostsFile(BaseMockDir):
             contents = f.read()
             self.assertEqual(contents, "")
 
-    @mock.patch("time.strftime", return_value="-new")
+    @mock.patch("time.strftime", return_value="new")
     def test_remove_hosts_file_backup(self, _):
         with open(self.hosts_file, "w") as f:
             f.write("foo")
