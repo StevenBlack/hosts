@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: [3.5, 3.6, 3.7]
+        python: [3.5, 3.6, 3.7, 3.8]
         os: [ubuntu-latest, macos-latest]
 
     steps:
@@ -41,5 +41,5 @@ jobs:
       - name: Run tests
         run: |
           export PATH="$HOME/miniconda3/bin:$PATH"
-          ci/test.sh
           ci/lint.sh
+          ci/test.sh
