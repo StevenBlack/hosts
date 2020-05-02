@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 22 Apr 2020 15:19 UTC+7
-# Version: 2004221519
-# Blocked: 1,340 domains
+# Last modified: 02 May 2020 21:33 UTC+7
+# Version: 2005022133
+# Blocked: 1,364 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -423,6 +423,7 @@
 0.0.0.0 shop.zaloapp.com
 0.0.0.0 static-ads.zaloapp.com
 0.0.0.0 stats.zaloapp.com
+0.0.0.0 wg.zaloapp.com
 0.0.0.0 zminer.zaloapp.com
 #[zadn.vn]
 0.0.0.0 adtima-media-td.zadn.vn
@@ -444,8 +445,9 @@
 0.0.0.0 zplayer.trk.zapps.vn
 #[log.zing*.vn]
 0.0.0.0 log.zingmp3.vn
-0.0.0.0 zlog.zingmp3.vn
 0.0.0.0 log.zingnews.vn
+0.0.0.0 log.zingtv.vn
+0.0.0.0 zlog.zingmp3.vn
 #[vietad]
 0.0.0.0 ads.vietad.vn
 0.0.0.0 as.vietad.vn
@@ -1234,6 +1236,13 @@
 0.0.0.0 t.123c.vn
 0.0.0.0 trk.123c.vn
 0.0.0.0 trk.staging.123c.vn
+#[nanda.vn]
+0.0.0.0 ai.nanda.vn
+0.0.0.0 analytics.nanda.vn
+0.0.0.0 cdn.nanda.vn
+0.0.0.0 lg.nanda.vn
+0.0.0.0 nanda.vn
+0.0.0.0 static.nanda.vn
 # --- Block adsVN ---
 0.0.0.0 ad-admin.vnay.vn
 0.0.0.0 ad-img.icheck.com.vn
@@ -1251,6 +1260,7 @@
 0.0.0.0 adchoice.com.vn
 0.0.0.0 adclient.vietnamnetjsc.vn
 0.0.0.0 adfox.vn
+0.0.0.0 adjusts.info
 0.0.0.0 admedia.com.vn
 0.0.0.0 admin.sothuchi.vn
 0.0.0.0 adnetwork.5imedia.vn
@@ -1289,6 +1299,7 @@
 0.0.0.0 an.motphim.net
 0.0.0.0 an.xemvtv.net
 0.0.0.0 api.nas.nct.vn
+0.0.0.0 apia.headlines.pw
 0.0.0.0 apinas.nct.vn
 0.0.0.0 banhtv.org
 0.0.0.0 banner.5giay.vn
@@ -1311,7 +1322,10 @@
 0.0.0.0 demopage.me
 0.0.0.0 dt.vnecdn.com
 0.0.0.0 events.vungtv.com
+0.0.0.0 financial-agent.headlines.pw
 0.0.0.0 fptad.com
+0.0.0.0 game.hotngay.vn
+0.0.0.0 genmonet.com
 0.0.0.0 ghimc.vn
 0.0.0.0 go.vnecdn.com
 0.0.0.0 landingpagelagi.vn
@@ -1336,8 +1350,11 @@
 0.0.0.0 sbbanner.com
 0.0.0.0 serving-ad.tv24.vn
 0.0.0.0 shop.vnay.vn
+0.0.0.0 static.mvot.vn
 0.0.0.0 stc-nas.nixcdn.com
 0.0.0.0 stc.nas.nixcdn.com
+0.0.0.0 sv-api-lottery.headlines.pw
+0.0.0.0 sv-static-lottery.headlines.pw
 0.0.0.0 toppage.vn
 0.0.0.0 trenddigital.vn
 0.0.0.0 truoctran.com
@@ -1347,6 +1364,7 @@
 0.0.0.0 vietbuzzad.com
 0.0.0.0 vietdorje.com
 0.0.0.0 vinaads.vn
+0.0.0.0 vnd247.vn
 0.0.0.0 www.adsweb.vn
 0.0.0.0 www.adt.com.vn
 0.0.0.0 www.alivar.vn
@@ -1368,11 +1386,16 @@
 0.0.0.0 analytics.sohatv.vn
 0.0.0.0 analytics.thethao247.org
 0.0.0.0 analytics.tiki.vn
+0.0.0.0 analytics.videocloud.top
 0.0.0.0 analytics.vnreview.vn
+0.0.0.0 apl.headlines.pw
+0.0.0.0 cnnd.vn
 0.0.0.0 deqik.com
 0.0.0.0 elogs.vnexpress.net
 0.0.0.0 event.headlines.pw
 0.0.0.0 event.vntoday.news
+0.0.0.0 follow.vnay.vn
+0.0.0.0 invite.baomoi.com
 0.0.0.0 la.vietid.net
 0.0.0.0 lg.lotus.vn
 0.0.0.0 log.anninhthudo.vn
@@ -1393,19 +1416,21 @@
 0.0.0.0 log4x.nixcdn.com
 0.0.0.0 logging.galaxypub.vn
 0.0.0.0 logging.phunuonline.com.vn
+0.0.0.0 logs.thethaovanhoa.vn
 0.0.0.0 logsbin.dantri.com.vn
+0.0.0.0 lp.baomoi.com
 0.0.0.0 nstat.headlines.pw
 0.0.0.0 report.vnay.vn
 0.0.0.0 s.baomoi.xdn.vn
 0.0.0.0 s.kenh14.vn
 0.0.0.0 s.soha.vn
 0.0.0.0 s.tuoitre.vn
-0.0.0.0 sharefb.cnnd.vn
 0.0.0.0 stat.headlines.pw
 0.0.0.0 staticad.thethao247.vn
 0.0.0.0 stats.bizweb.vn
 0.0.0.0 stats.dongphim.net
 0.0.0.0 stats.vietnammoi.vn
+0.0.0.0 sv-api-event.headlines.pw
 0.0.0.0 thongke.24h.com.vn
 0.0.0.0 thongke.baotintuc.vn
 0.0.0.0 track-srv.vietnamnet.vn
