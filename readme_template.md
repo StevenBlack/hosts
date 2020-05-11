@@ -152,6 +152,20 @@ in hosts format to the generated hosts file.
 `--whitelist <whitelistfile>`, or `-w <whitelistfile>`: Use the given whitelist file
 to remove hosts from the generated hosts file.
 
+#### Using NixOS:
+
+To install hosts file on your machine add the following into your `configuration.nix`:
+
+```haskell
+  networking.extraHosts = let 
+    hostsPath = https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts;
+    hostsFile = builtins.fetchurl hostsPath;
+  in builtins.readFile "${hostsFile}";
+```
+
+* NOTE: The call to `fetchurl` is impure. 
+Use `fetchFromGitHub` with the exact commit if you want to always get the same result.
+
 
 ## How do I control which sources are unified?
 
