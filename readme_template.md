@@ -155,14 +155,14 @@ to remove hosts from the generated hosts file.
 #### Using NixOS:
 
 To install hosts file on your machine add the following into your `configuration.nix`:
-
 ```haskell
   networking.extraHosts = let 
-    hostsPath = https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts;
+    hostsPath = https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts;
     hostsFile = builtins.fetchurl hostsPath;
   in builtins.readFile "${hostsFile}";
 ```
 
+* NOTE: Change `hostsPath` if you need other versions of hosts file. 
 * NOTE: The call to `fetchurl` is impure. 
 Use `fetchFromGitHub` with the exact commit if you want to always get the same result.
 
