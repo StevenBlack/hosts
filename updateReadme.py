@@ -26,7 +26,7 @@ def main():
         "${fmtentries} | "
         "[link](http://sbc.io/hosts/${location}hosts)"
     )
-    with open(README_DATA_FILENAME, "r", encoding="utf-8") as f:
+    with open(README_DATA_FILENAME, "r", encoding="utf-8", newline="\n") as f:
         data = json.load(f)
 
     keys = list(data.keys())
@@ -80,9 +80,9 @@ def main():
             source_rows += t.substitute(this_row) + "\n"
 
         with open(
-            os.path.join(data[key]["location"], README_FILENAME), "wt", encoding="utf-8"
+            os.path.join(data[key]["location"], README_FILENAME), "wt", encoding="utf-8", newline="\n"
         ) as out:
-            for line in open(README_TEMPLATE, encoding="utf-8"):
+            for line in open(README_TEMPLATE, encoding="utf-8", newline="\n"):
                 line = line.replace(
                     "@GEN_DATE@", time.strftime("%B %d %Y", time.gmtime())
                 )
