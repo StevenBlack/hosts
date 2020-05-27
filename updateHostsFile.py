@@ -1242,8 +1242,8 @@ def move_hosts_file_into_place(final_file):
     elif os.name == "nt":
         print("Automatically moving the hosts file in place is not yet supported.")
         print(
-            "Please move the generated file to %SystemRoot%\system32\drivers\etc\hosts"
-        )  # noqa: W605
+            "Please move the generated file to %SystemRoot%\\system32\\drivers\\etc\\hosts"
+        )
 
 
 def flush_dns_cache():
