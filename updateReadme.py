@@ -80,7 +80,10 @@ def main():
             source_rows += t.substitute(this_row) + "\n"
 
         with open(
-            os.path.join(data[key]["location"], README_FILENAME), "wt", encoding="utf-8", newline="\n"
+            os.path.join(data[key]["location"], README_FILENAME),
+            "wt",
+            encoding="utf-8",
+            newline="\n",
         ) as out:
             for line in open(README_TEMPLATE, encoding="utf-8", newline="\n"):
                 line = line.replace(
