@@ -80,7 +80,7 @@ Tiuxo hostlist - ads | Categorized hosts files for DNS based content blocking |[
 UncheckyAds | Windows installers ads sources sites based on https://unchecky.com/ content. |[link](https://github.com/FadeMind/hosts.extras) | [raw](https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts) | occasionally | MIT | [issues](https://github.com/FadeMind/hosts.extras/issues)
 URLHaus | A project from [abuse.ch](https://abuse.ch/) with the goal of sharing malicious URLs. |[link](https://urlhaus.abuse.ch/) | [raw](https://urlhaus.abuse.ch/downloads/hostfile/) | weekly | CC0 | [issues](mailto:cosntacptamem@abuse.ch)
 yoyo.org | Blocking with ad server and tracking server hostnames. |[link](https://pgl.yoyo.org/adservers/) | [raw](https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0) | frequently |  | [issues](mailto:pgl@yoyo.org)
-dHosts | @dalisoft's hosts file to block tracking and ads |[link](https://github.com/dalisoft/hosts) | [raw](https://github.com/dalisoft/hosts/raw/master/dalisoft-hosts) | frequently |  | [issues](https://github.com/dalisoft/hosts/issues)
+dHosts | @dalisoft's hosts file to block tracking and ads |[link](https://github.com/dalisoft/hosts) | [raw](https://github.com/dalisoft/hosts/raw/master/dalisoft-hosts) | frequently | [MIT](https://github.com/dalisoft/hosts/blob/master/LICENSE) | [issues](https://github.com/dalisoft/hosts/issues)
 
 
 
