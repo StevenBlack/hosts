@@ -6,6 +6,9 @@ trim_trailing_whitespace = true
 indent_size = 4
 end_of_line = LF
 
+[*.bat]
+end_of_line = CRLF
+
 [*.md]
 trim_trailing_whitespace = false
 insert_final_newline = true

@@ -1,0 +1,4 @@
+# Enforce Unix newlines for all files
+* text=auto eol=lf
+# Enforce Windows newlines for .bat files
+*.bat text eol=crlf

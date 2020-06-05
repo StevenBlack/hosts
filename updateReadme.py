@@ -26,7 +26,7 @@ def main():
         "${fmtentries} | "
         "[link](http://sbc.io/hosts/${location}hosts)"
     )
-    with open(README_DATA_FILENAME, "r") as f:
+    with open(README_DATA_FILENAME, "r", encoding="utf-8", newline="\n") as f:
         data = json.load(f)
 
     keys = list(data.keys())
@@ -45,6 +45,9 @@ def main():
                 "Unified hosts **+ " + key.replace("-", " + ") + "**"
             )
 
+        if "\\" in data[key]["location"]:
+            data[key]["location"] = data[key]["location"].replace("\\", "/")
+
         toc_rows += s.substitute(data[key]) + "\n"
 
     row_defaults = {
@@ -52,7 +55,6 @@ def main():
         "description": "",
         "homeurl": "",
         "frequency": "",
-        "issues": "",
         "url": "",
         "license": "",
         "issues": "",
@@ -60,7 +62,7 @@ def main():
 
     t = Template(
         "${name} | ${description} |[link](${homeurl})"
-        " | [raw](${url}) | ${frequency} | ${license}  | [issues](${issues}) "
+        " | [raw](${url}) | ${frequency} | ${license} | [issues](${issues})"
     )
 
     for key in keys:
@@ -77,8 +79,10 @@ def main():
             this_row.update(source)
             source_rows += t.substitute(this_row) + "\n"
 
-        with open(os.path.join(data[key]["location"], README_FILENAME), "wt") as out:
-            for line in open(README_TEMPLATE):
+        with open(
+            os.path.join(data[key]["location"], README_FILENAME), "wt", encoding="utf-8", newline="\n"
+        ) as out:
+            for line in open(README_TEMPLATE, encoding="utf-8", newline="\n"):
                 line = line.replace(
                     "@GEN_DATE@", time.strftime("%B %d %Y", time.gmtime())
                 )

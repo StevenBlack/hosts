@@ -1,26 +1,28 @@
 #!/bin/bash
 
+set -e
+
 if [ -d "$HOME/miniconda3" ] && [ -e "$HOME/miniconda3/bin/conda" ]; then
-    echo "Miniconda install already present from cache: $HOME/miniconda3"
-    rm -rf $HOME/miniconda3/envs/hosts  # Just in case...
+    echo "Miniconda install already present in cache: $HOME/miniconda3"
+    rm -rf "$HOME"/miniconda3/envs/hosts  # Just in case...
 else
     echo "Installing Miniconda..."
-    rm -rf $HOME/miniconda3  # Just in case...
+    rm -rf "$HOME"/miniconda3  # Just in case...
 
-    if [ "${TRAVIS_OS_NAME}" == "osx" ]; then
-        wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh || exit 1
+    if [ "$(uname)" == "Darwin" ]; then
+        wget -nv https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
     else
-        wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh || exit 1
+        wget -nv https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
     fi
 
-    bash miniconda.sh -b -p "$HOME/miniconda3" || exit 1
+    bash miniconda.sh -b -p "$HOME/miniconda3"
 fi
 
 echo "Configuring Miniconda..."
-conda config --set ssl_verify false || exit 1
-conda config --set always_yes true --set changeps1 false || exit 1
+conda config --set ssl_verify false
+conda config --set always_yes true --set changeps1 false
 
 echo "Updating Miniconda"
 conda update conda
 conda update --all
-conda info -a || exit 1
+conda info -a
