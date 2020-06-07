@@ -21,14 +21,14 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python }}
-          architecture: 'x64'
+          architecture: "x64"
 
       - name: Cache dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/miniconda3
-          key: ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('ci/*.sh') }}-${{ hashFiles('.github/workflows/ci.yml') }}
-          restore-keys: ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('ci/*.sh') }}-${{ hashFiles('.github/workflows/ci.yml') }}
+          key: ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('ci/*.sh') }}
+          restore-keys: ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('ci/*.sh') }}
 
       - name: Install conda
         env:
