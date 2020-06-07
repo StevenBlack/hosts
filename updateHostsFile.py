@@ -1089,12 +1089,7 @@ def write_opening_header(final_file, **header_params):
                 ),
             )
     else:
-        write_data(
-            final_file,
-            "# Title: StevenBlack/hosts\n#\n".format(
-                ", ".join(header_params["extensions"])
-            ),
-        )
+        write_data(final_file, "# Title: StevenBlack/hosts\n#\n")
 
     write_data(
         final_file,
