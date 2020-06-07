@@ -1089,12 +1089,7 @@ def write_opening_header(final_file, **header_params):
                 ),
             )
     else:
-        write_data(
-            final_file,
-            "# Title: StevenBlack/hosts\n#\n".format(
-                ", ".join(header_params["extensions"])
-            ),
-        )
+        write_data(final_file, "# Title: StevenBlack/hosts\n#\n")
 
     write_data(
         final_file,
@@ -1209,6 +1204,11 @@ def update_readme_data(readme_file, **readme_updates):
     with open(readme_file, "r") as f:
         readme_data = json.load(f)
         readme_data[extensions_key] = generation_data
+
+    for denomination, data in readme_data.copy().items():
+        if "location" in data and data["location"] and "\\" in data["location"]:
+            # Windows compatibility: #1166
+            readme_data[denomination]["location"] = data["location"].replace("\\", "/")
 
     with open(readme_file, "w") as f:
         json.dump(readme_data, f)

@@ -1743,9 +1743,7 @@ class TestIsValidDomainFormat(BaseStdout):
         self.assertTrue(expected in output)
 
     def test_invalid_domain(self):
-        expected = (
-            "Do not include www.domain.com or http(s)://domain.com. Try again."
-        )
+        expected = "Do not include www.domain.com or http(s)://domain.com. Try again."
 
         for invalid_domain in [
             "www.subdomain.domain",
