@@ -1306,6 +1306,9 @@ def flush_dns_cache():
                 )
 
                 if os.path.isfile(service_file):
+                    if 0 != subprocess.call([systemctl, "status", service],
+                                            stdout=subprocess.DEVNULL):
+                        continue
                     dns_cache_found = True
 
                     if subprocess.call(SUDO + [systemctl, "restart", service]):
