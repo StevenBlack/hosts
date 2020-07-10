@@ -1,7 +1,8 @@
 ----
 **Take Note!**
-- This version of the Hosts file generator, and tests, are for Python 3.5+ only.
-- With the exception of issues and PRs regarding changes to `hosts/data/StevenBlack/hosts`, all other issues regarding the content of the produced hosts files should be made with the appropriate data source that contributed the content in question. The contact information for all of the data sources can be found in the `hosts/data/` directory.
+
+* This version of the Hosts file generator, and tests, are for Python 3.5+ only.
+* With the exception of issues and PRs regarding changes to `hosts/data/StevenBlack/hosts`, all other issues regarding the content of the produced hosts files should be made with the appropriate data source that contributed the content in question. The contact information for all of the data sources can be found in the `hosts/data/` directory.
 ----
 
 ![Logo](https://raw.githubusercontent.com/StevenBlack/hosts/master/.github/logo.png)
@@ -155,15 +156,18 @@ to remove hosts from the generated hosts file.
 #### Using NixOS:
 
 To install hosts file on your machine add the following into your `configuration.nix`:
-```haskell
-  networking.extraHosts = let 
+
+```nix
+{
+  networking.extraHosts = let
     hostsPath = https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts;
     hostsFile = builtins.fetchurl hostsPath;
   in builtins.readFile "${hostsFile}";
+}
 ```
 
-* NOTE: Change `hostsPath` if you need other versions of hosts file. 
-* NOTE: The call to `fetchurl` is impure. 
+* NOTE: Change `hostsPath` if you need other versions of hosts file.
+* NOTE: The call to `fetchurl` is impure.
 Use `fetchFromGitHub` with the exact commit if you want to always get the same result.
 
 
