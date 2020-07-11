@@ -1316,7 +1316,7 @@ def flush_dns_cache():
                         print_failure(service_msg.format(result="failed"))
                     else:
                         print_success(service_msg.format(result="succeeded"))
-                    restarted_services += [service]
+                    restarted_services.append(service)
 
         dns_clean_file = "/etc/init.d/dns-clean"
         dns_clean_msg = "Flushing the DNS cache via dns-clean executable {result}"
