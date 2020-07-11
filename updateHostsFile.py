@@ -1483,9 +1483,9 @@ def get_file_by_url(url):
     """
 
     try:
-        f = urlopen(url)
-        soup = BeautifulSoup(f.read(), "lxml").get_text()
-        return "\n".join(list(map(domain_to_idna, soup.split("\n"))))
+        with urlopen(url) as f:
+            soup = BeautifulSoup(f.read(), "lxml").get_text()
+            return "\n".join(list(map(domain_to_idna, soup.split("\n"))))
     except Exception:
         print("Problem getting file: ", url)
 
