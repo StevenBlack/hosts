@@ -242,8 +242,7 @@ def main():
 
     update_sources = prompt_for_update(freshen=settings["freshen"], update_auto=auto)
     if update_sources:
-        if await_network_connection():
-            update_all_sources(source_data_filename, settings["hostfilename"])
+        update_all_sources(source_data_filename, settings["hostfilename"])
 
     gather_exclusions = prompt_for_exclusions(skip_prompt=auto)
 
@@ -325,34 +324,6 @@ def main():
         prompt_for_flush_dns_cache(
             flush_cache=settings["flushdnscache"], prompt_flush=not auto
         )
-
-def await_network_connection(retries=3, delay=10):
-    """
-    Check if we have a proper name resolution and connectivity
-    By pinging a common domain
-
-    Parameters
-    ----------
-    retries : int
-        Number of times to retry again (on ping failure)
-    delay : int
-        How many seconds to wait before retrying again (on ping failure)
-
-    Returns
-    -------
-    -> bool
-        True : A ping succeded
-        False : All retries have failed
-    """
-    while retries:
-        if 0 == subprocess.call(['ping', 'one.one.one.one', '-c', '1'],
-                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL):
-            return True
-
-        print(f'No internet connection! Retrying in {delay} seconds')
-        time.sleep(delay)
-        retries -= 1
-    return False
 
 
 # Prompt the User
