@@ -1293,6 +1293,7 @@ def flush_dns_cache():
 
         system_prefixes = ["/usr", ""]
         service_types = ["NetworkManager", "wicd", "dnsmasq", "networking"]
+        restarted_services = []
 
         for system_prefix in system_prefixes:
             systemctl = system_prefix + "/bin/systemctl"
@@ -1300,6 +1301,9 @@ def flush_dns_cache():
 
             for service_type in service_types:
                 service = service_type + ".service"
+                if service in restarted_services:
+                    continue
+
                 service_file = path_join_robust(system_dir, service)
                 service_msg = (
                     "Flushing the DNS cache by restarting " + service + " {result}"
@@ -1315,6 +1319,7 @@ def flush_dns_cache():
                         print_failure(service_msg.format(result="failed"))
                     else:
                         print_success(service_msg.format(result="succeeded"))
+                    restarted_services.append(service)
 
         dns_clean_file = "/etc/init.d/dns-clean"
         dns_clean_msg = "Flushing the DNS cache via dns-clean executable {result}"
