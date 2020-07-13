@@ -64,7 +64,7 @@ class Base(unittest.TestCase):
     @property
     def sep(self):
         if platform.system().lower() == "windows":
-            return "\\"
+            return "/"
         return os.sep
 
     def assert_called_once(self, mock_method):
