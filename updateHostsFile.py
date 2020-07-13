@@ -1492,7 +1492,9 @@ def get_file_by_url(url, retries=3, delay=10):
                 print('No internet connection! Retrying in {} seconds'.format(delay))
                 time.sleep(delay)
                 retries -= 1
-            return print("Problem getting file: ", url)
+                continue
+            break
+    print("Problem getting file: ", url)
 
 
 def write_data(f, data):
