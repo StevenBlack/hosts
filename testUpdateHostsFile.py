@@ -8,6 +8,7 @@
 import json
 import locale
 import os
+import platform
 import re
 import shutil
 import sys
@@ -62,6 +63,8 @@ class Base(unittest.TestCase):
 
     @property
     def sep(self):
+        if platform.system().lower() == "windows":
+            return "\\"
         return os.sep
 
     def assert_called_once(self, mock_method):
@@ -1122,12 +1125,13 @@ class TestUpdateReadmeData(BaseMockDir):
         )
         update_readme_data(self.readme_file, **kwargs)
 
+        if platform.system().lower() == "windows":
+            sep = "/"
+        else:
+            sep = self.sep
+
         expected = {
-            "base": {
-                "location": "foo" + self.sep,
-                "sourcesdata": "hosts",
-                "entries": 5,
-            },
+            "base": {"location": "foo" + sep, "sourcesdata": "hosts", "entries": 5},
             "foo": "bar",
         }
 
@@ -1144,8 +1148,13 @@ class TestUpdateReadmeData(BaseMockDir):
         )
         update_readme_data(self.readme_file, **kwargs)
 
+        if platform.system().lower() == "windows":
+            sep = "/"
+        else:
+            sep = self.sep
+
         expected = {
-            "base": {"location": "foo" + self.sep, "sourcesdata": "hosts", "entries": 5}
+            "base": {"location": "foo" + sep, "sourcesdata": "hosts", "entries": 5}
         }
 
         with open(self.readme_file, "r") as f:
@@ -1164,12 +1173,13 @@ class TestUpdateReadmeData(BaseMockDir):
         )
         update_readme_data(self.readme_file, **kwargs)
 
+        if platform.system().lower() == "windows":
+            sep = "/"
+        else:
+            sep = self.sep
+
         expected = {
-            "com-org": {
-                "location": "foo" + self.sep,
-                "sourcesdata": "hosts",
-                "entries": 5,
-            }
+            "com-org": {"location": "foo" + sep, "sourcesdata": "hosts", "entries": 5}
         }
 
         with open(self.readme_file, "r") as f:
