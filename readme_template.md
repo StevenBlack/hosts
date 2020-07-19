@@ -217,8 +217,7 @@ If you discover sketchy domains you feel should be included here, here are some 
 
 The best way to get new domains included is to submit an issue to any of the data providers whose home pages are [listed here](https://github.com/StevenBlack/hosts#sources-of-hosts-data-unified-in-this-variant). This is best because once you submit new domains, they will be curated and updated by the dedicated folks who maintain these sources.
 
-
-### Option 2: add your domains to Steven Black's personal data file
+### Option 2: Fork this repository, add your domains to Steven Black's personal data file, and submit a pull request
 
 Fork this hosts this repo and add your links to [https://github.com/StevenBlack/hosts/blob/master/data/StevenBlack/hosts](https://github.com/StevenBlack/hosts/blob/master/data/StevenBlack/hosts).
 
