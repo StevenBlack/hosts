@@ -381,7 +381,7 @@ sc stop "Dnscache"
 
 ### Linux
 
-Open a Terminal and run with root privileges:
+Open a Terminal and run:
 
 **Debian/Ubuntu** `sudo service network-manager restart`
 
