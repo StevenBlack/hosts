@@ -10,8 +10,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: [3.5, 3.6, 3.7, 3.8]
-        os: [ubuntu-latest, macos-latest]
+        python:
+          - 3.5
+          - 3.6
+          - 3.7
+          - 3.8
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
 
     steps:
       - name: Clone repository
@@ -23,23 +30,28 @@ jobs:
           python-version: ${{ matrix.python }}
           architecture: "x64"
 
+      - run: python --version
+      - run: pip --version
+
+      - name: Get pip cache directory
+        id: pip-cache
+        run: |
+          echo "::set-output name=dir::$(pip cache dir)"
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: ~/miniconda3
-          key: ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('ci/*.sh') }}
-          restore-keys: ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('ci/*.sh') }}
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('**/requirements.txt') }}
+            ${{ runner.os }}-python-v${{ matrix.python }}-
 
-      - name: Install conda
-        env:
-          PYTHON_VERSION: ${{ matrix.python }}
-        run: |
-          export PATH="$HOME/miniconda3/bin:$PATH"
-          ci/install_conda.sh
-          ci/setup_conda_env.sh
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run lint
+        run: flake8 --max-line-length 120
 
       - name: Run tests
-        run: |
-          export PATH="$HOME/miniconda3/bin:$PATH"
-          ci/lint.sh
-          ci/test.sh
+        run: python testUpdateHostsFile.py
