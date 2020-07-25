@@ -1,0 +1,3 @@
+FROM arm32v7/debian:focal
+RUN apt-get update && apt-get install -y dnsmasq && rm -rf /var/lib/apt/lists/*
+ENTRYPOINT ["/usr/sbin/dnsmasq", "--no-daemon", "--addn-hosts=/tmp/app/build/hosts"]
