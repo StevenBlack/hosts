@@ -51,7 +51,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run lint
-        run: flake8 --max-line-length 120
+        run: flake8
 
       - name: Run tests
         run: python testUpdateHostsFile.py
