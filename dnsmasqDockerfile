@@ -1,4 +1,4 @@
-FROM arm32v7/debian:stretch-backports
+FROM debian:stretch-backports
 RUN apt-get update && apt-get install -y dnsmasq && rm -rf /var/lib/apt/lists/*
 COPY build/hosts /tmp/app/build/hosts
 EXPOSE 53/udp

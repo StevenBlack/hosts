@@ -476,9 +476,6 @@ class TestPromptForMove(Base):
         self.assert_called_once(mock_query)
         mock_move.assert_not_called()
 
-        mock_query.reset_mock()
-        mock_move.reset_mock()
-
     @mock.patch("updateHostsFile.move_hosts_file_into_place", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=True)
     def testPromptMove(self, mock_query, mock_move):
@@ -489,9 +486,6 @@ class TestPromptForMove(Base):
 
         self.assert_called_once(mock_query)
         self.assert_called_once(mock_move)
-
-        mock_query.reset_mock()
-        mock_move.reset_mock()
 
 
 # End Prompt the User
