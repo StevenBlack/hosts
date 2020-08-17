@@ -21,15 +21,12 @@ import tempfile
 import time
 from glob import glob
 
-import lxml  # noqa: F401
-from bs4 import BeautifulSoup
+import requests
 
 # Detecting Python 3 for version-dependent implementations
 PY3 = sys.version_info >= (3, 0)
 
-if PY3:
-    from urllib.request import urlopen
-else:
+if not PY3:
     raise Exception("We do not support Python 2 anymore.")
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
@@ -1469,40 +1466,8 @@ def maybe_copy_example_file(file_path):
             shutil.copyfile(example_file_path, file_path)
 
 
-def get_file_by_url(url, retries=3, delay=10):
-    """
-    Get a file data located at a particular URL.
-
-    Parameters
-    ----------
-    url : str
-        The URL at which to access the data.
-
-    Returns
-    -------
-    url_data : str or None
-        The data retrieved at that URL from the file. Returns None if the
-        attempted retrieval is unsuccessful.
-
-    Note
-    ----
-    - BeautifulSoup is used in this case to avoid having to search in which
-        format we have to encode or decode data before parsing it to UTF-8.
-    """
-
-    while retries:
-        try:
-            with urlopen(url) as f:
-                soup = BeautifulSoup(f.read(), "lxml").get_text()
-                return "\n".join(list(map(domain_to_idna, soup.split("\n"))))
-        except Exception as e:
-            if 'failure in name resolution' in str(e):
-                print('No internet connection! Retrying in {} seconds'.format(delay))
-                time.sleep(delay)
-                retries -= 1
-                continue
-            break
-    print("Problem getting file: ", url)
+def get_file_by_url(url, params, **kwargs):
+    return requests.get(url=url, params=params, **kwargs).text
 
 
 def write_data(f, data):

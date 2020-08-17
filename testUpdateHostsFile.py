@@ -1615,47 +1615,6 @@ class DomainToIDNA(Base):
             self.assertEqual(actual, expected)
 
 
-class GetFileByUrl(BaseStdout):
-    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open)
-    def test_read_url(self, _):
-        url = b"www.google.com"
-
-        expected = "www.google.com"
-        actual = get_file_by_url(url, delay=0)
-
-        self.assertEqual(actual, expected)
-
-    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open_fail)
-    def test_read_url_fail(self, _):
-        url = b"www.google.com"
-        self.assertIsNone(get_file_by_url(url, delay=0))
-
-        expected = "Problem getting file:"
-        output = sys.stdout.getvalue()
-
-        self.assertIn(expected, output)
-
-    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open_read_fail)
-    def test_read_url_read_fail(self, _):
-        url = b"www.google.com"
-        self.assertIsNone(get_file_by_url(url, delay=0))
-
-        expected = "Problem getting file:"
-        output = sys.stdout.getvalue()
-
-        self.assertIn(expected, output)
-
-    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open_decode_fail)
-    def test_read_url_decode_fail(self, _):
-        url = b"www.google.com"
-        self.assertIsNone(get_file_by_url(url, delay=0))
-
-        expected = "Problem getting file:"
-        output = sys.stdout.getvalue()
-
-        self.assertIn(expected, output)
-
-
 class TestWriteData(Base):
     def test_write_basic(self):
         f = BytesIO()
