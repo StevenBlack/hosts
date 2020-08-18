@@ -1467,7 +1467,9 @@ def maybe_copy_example_file(file_path):
 
 
 def get_file_by_url(url, params, **kwargs):
-    return requests.get(url=url, params=params, **kwargs).text
+    req = requests.get(url=url, params=params, **kwargs)
+    req.encoding = req.apparent_encoding
+    return req.text
 
 
 def write_data(f, data):
