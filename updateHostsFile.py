@@ -1466,10 +1466,11 @@ def maybe_copy_example_file(file_path):
             shutil.copyfile(example_file_path, file_path)
 
 
-def get_file_by_url(url, params, **kwargs):
+def get_file_by_url(url, params=None, **kwargs):
     req = requests.get(url=url, params=params, **kwargs)
     req.encoding = req.apparent_encoding
-    return req.text
+    res_text = "\n".join([domain_to_idna(line) for line in req.text.splitlines()])
+    return res_text
 
 
 def write_data(f, data):
