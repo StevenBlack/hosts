@@ -1467,6 +1467,21 @@ def maybe_copy_example_file(file_path):
 
 
 def get_file_by_url(url, params=None, **kwargs):
+    """
+    Retrieve the contents of the hosts file at a certain URL, then pass it through domain_to_idna().
+
+    Simple wrapper around the requests.get() function, uses the same parameters.
+
+    Parameters
+    ----------
+    url
+    params
+    kwargs
+
+    Returns
+    -------
+    content: str
+    """
     req = requests.get(url=url, params=params, **kwargs)
     req.encoding = req.apparent_encoding
     res_text = "\n".join([domain_to_idna(line) for line in req.text.splitlines()])
