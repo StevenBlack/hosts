@@ -1468,9 +1468,9 @@ def maybe_copy_example_file(file_path):
 
 def get_file_by_url(url, params=None, **kwargs):
     """
-    Retrieve the contents of the hosts file at a certain URL, then pass it through domain_to_idna().
+    Retrieve the contents of the hosts file at the URL, then pass it through domain_to_idna().
 
-    Simple wrapper around the requests.get() function, uses the same parameters.
+    Parameters are passed to the requests.get() function.
 
     Parameters
     ----------
