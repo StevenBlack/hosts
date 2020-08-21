@@ -27,7 +27,6 @@ from updateHostsFile import (
     flush_dns_cache,
     gather_custom_exclusions,
     get_defaults,
-    get_file_by_url,
     is_valid_domain_format,
     matches_exclusions,
     move_hosts_file_into_place,
