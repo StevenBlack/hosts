@@ -1482,9 +1482,10 @@ def get_file_by_url(url, params=None, **kwargs):
     -------
     content: str
     """
+    
     req = requests.get(url=url, params=params, **kwargs)
     req.encoding = req.apparent_encoding
-    res_text = "\n".join([domain_to_idna(line) for line in req.text.splitlines()])
+    res_text = "\n".join([domain_to_idna(line) for line in req.text.splitlines()]) + "\n"
     return res_text
 
 
