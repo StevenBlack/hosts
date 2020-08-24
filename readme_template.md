@@ -416,6 +416,8 @@ devices under a variety of operating systems.
 
 ## Interesting Applications
 
+* [Maza ad blocking](https://github.com/tanrax/maza-ad-blocking) is a bash script that automatically updates host file. You can also update a fresh copy. And each time it generates a dnsmasq-compatible configuration file. Fast installation, compatible with MacOS, Linux and BSD.
+
 * [Hostile](https://github.com/feross/hostile) is a nifty command line utility to easily add or remove domains from your hosts file.  If our hosts files are too aggressive for you, you can use `hostile` to remove domains, or you can use `hostile` in a bash script to automate a post process each time you download fresh versions of hosts.
 
 * [macOS Scripting for Configuration, Backup and Restore](https://github.com/tiiiecherle/osx_install_config) helps customizing, re-installing and using macOS. It also provides a [script](https://github.com/tiiiecherle/osx_install_config/blob/master/09_launchd/9b_run_on_boot/root/1_hosts_file/launchd_and_script/hosts_file_generator.sh) to install and update the hosts file using this project on macOS. In combination with a [launchd](https://github.com/tiiiecherle/osx_install_config/blob/master/09_launchd/9b_run_on_boot/root/1_hosts_file/launchd_and_script/com.hostsfile.install_update.plist) it updates the hosts file every x days (default is 4). To install both download the GitHub repo and run the [install script](https://github.com/tiiiecherle/osx_install_config/blob/master/09_launchd/9b_run_on_boot/root/1_hosts_file/install_hosts_file_generator_and_launchdservice.sh) from the directory one level up.
