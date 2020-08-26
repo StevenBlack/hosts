@@ -17,6 +17,8 @@ import unittest
 import unittest.mock as mock
 from io import BytesIO, StringIO
 
+import requests
+
 import updateHostsFile
 from updateHostsFile import (
     Colors,
@@ -27,6 +29,7 @@ from updateHostsFile import (
     flush_dns_cache,
     gather_custom_exclusions,
     get_defaults,
+    get_file_by_url,
     is_valid_domain_format,
     matches_exclusions,
     move_hosts_file_into_place,
@@ -1612,6 +1615,32 @@ class DomainToIDNA(Base):
             actual = domain_to_idna(data)
 
             self.assertEqual(actual, expected)
+
+
+class GetFileByUrl(BaseStdout):
+    def test_basic(self):
+        raw_resp_content = "hello, ".encode("ascii") + "world".encode("utf-8")
+        resp_obj = requests.Response()
+        resp_obj.__setstate__({"_content": raw_resp_content})
+
+        expected = "hello, world"
+
+        with mock.patch("requests.get", return_value=resp_obj):
+            actual = get_file_by_url("www.test-url.com")
+
+        self.assertEqual(expected, actual)
+
+    def test_with_idna(self):
+        raw_resp_content = b"www.huala\xc3\xb1e.cl"
+        resp_obj = requests.Response()
+        resp_obj.__setstate__({"_content": raw_resp_content})
+
+        expected = "www.xn--hualae-0wa.cl"
+
+        with mock.patch("requests.get", return_value=resp_obj):
+            actual = get_file_by_url("www.test-url.com")
+
+        self.assertEqual(expected, actual)
 
 
 class TestWriteData(Base):
