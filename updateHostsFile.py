@@ -1495,16 +1495,8 @@ def get_file_by_url(url, params=None, **kwargs):
         return None
 
     req.encoding = req.apparent_encoding
-
-    try:
-        res_text = req.text
-    except UnicodeDecodeError:
-        print("Decoding error when retrieving data from {}".format(url))
-        return None
-
-    res = "\n".join([domain_to_idna(line) for line in res_text.split("\n")])
-
-    return res
+    res_text = "\n".join([domain_to_idna(line) for line in req.text.split("\n")])
+    return res_text
 
 
 def write_data(f, data):
