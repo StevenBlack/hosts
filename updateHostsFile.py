@@ -21,13 +21,19 @@ import tempfile
 import time
 from glob import glob
 
-import requests
-
 # Detecting Python 3 for version-dependent implementations
 PY3 = sys.version_info >= (3, 0)
 
 if not PY3:
     raise Exception("We do not support Python 2 anymore.")
+
+
+try:
+    import requests
+except ModuleNotFoundError:  # noqa: F821
+    raise ModuleNotFoundError("This project's dependencies have changed. The Requests library ("  # noqa: F821
+                              "https://requests.readthedocs.io/en/master/) is now required.")
+
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
 if platform.system() == "OpenBSD":
