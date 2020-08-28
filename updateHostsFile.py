@@ -30,9 +30,9 @@ if not PY3:
 
 try:
     import requests
-except ModuleNotFoundError:  # noqa: F821
-    raise ModuleNotFoundError("This project's dependencies have changed. The Requests library ("  # noqa: F821
-                              "https://requests.readthedocs.io/en/master/) is now required.")
+except ImportError:
+    raise ImportError("This project's dependencies have changed. The Requests library ("
+                      "https://requests.readthedocs.io/en/master/) is now required.")
 
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
