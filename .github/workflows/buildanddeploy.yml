@@ -17,4 +17,4 @@ jobs:
         FIRST_NAME: Mona
         MIDDLE_NAME: The
         LAST_NAME: Octocat
-      run: ls -la
+      run: bash build.sh
