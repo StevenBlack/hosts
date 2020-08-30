@@ -1,15 +1,18 @@
 name: Continous Integration
 
 # This workflow is triggered on pushes to the repository.
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - master
 
 jobs:
   my-job:
-    name: Checkout and build Pull Requests
+    name: Checkout and build and deploy PR only on master.
     runs-on: [ self-hosted, linux ]
     steps:
     - uses: actions/checkout@v2
-    - name: Runi build-script
+    - name: Run build-script
       shell: bash
       working-directory: ${{ github.workspace }}
       env:
