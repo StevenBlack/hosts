@@ -16,8 +16,5 @@ jobs:
       shell: bash
       working-directory: ${{ github.workspace }}
       env:
-        MY_VAR: Hi there! My name is
-        FIRST_NAME: Mona
-        MIDDLE_NAME: The
-        LAST_NAME: Octocat
+        DOCKER_ADBLOCK_IP: 168.119.55.241
       run: bash build.sh
