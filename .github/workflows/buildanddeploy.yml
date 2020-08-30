@@ -9,12 +9,12 @@ jobs:
     runs-on: [ self-hosted, linux ]
     steps:
     - uses: actions/checkout@v2
-    - name: Run build-script
+    - name: Runi build-script
+      shell: bash
       working-directory: ./hosts
       env:
         MY_VAR: Hi there! My name is
         FIRST_NAME: Mona
         MIDDLE_NAME: The
         LAST_NAME: Octocat
-      run: |
-        echo $PWD
+      run: echo $PATH
