@@ -1,11 +1,11 @@
 name: Continous Integration
 
 # This workflow is triggered on pushes to the repository.
-on: [push,pull_request]
+on: [pull_request]
 
 jobs:
   my-job:
-    name: Checkout and build.sh
+    name: Checkout and build Pull Requests
     runs-on: [ self-hosted, linux ]
     steps:
     - uses: actions/checkout@v2
