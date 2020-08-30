@@ -1,7 +1,7 @@
 name: Build and print a greeting
 
 # This workflow is triggered on pushes to the repository.
-on: [push]
+on: [push,pull-request]
 
 jobs:
   my-job:
