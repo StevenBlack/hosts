@@ -9,8 +9,6 @@ jobs:
     runs-on: [ self-hosted, linux ]
     steps:
     - uses: actions/checkout@v2
-      with:
-         path: .
     - name: Run build-script
       env:
         MY_VAR: Hi there! My name is
