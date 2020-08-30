@@ -5,7 +5,7 @@ git pull origin master
 
 echo "Building build-context"
 docker build -t hosts:builder -f Dockerfile .
-docker run -v $PWD/build:/tmp/app/build  -it hosts:builder python3 updateHostsFile.py --ip $(dig mjay.engineering +short) -a -n -s -e fakenews -e gambling -o build -b
+docker run -v $PWD:/tmp/app  -it hosts:builder python3 updateHostsFile.py --ip $(dig mjay.engineering +short) -a -n -s -e fakenews -e gambling --blacklist blacklist -o build -b
 
 echo "Building container, with source-code generated above"
 docker build -t dnsmasq:latest -f dnsmasqDockerfile .
