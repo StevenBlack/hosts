@@ -1,18 +1,23 @@
-name: Build and print a greeting
+name: Continous Integration
 
 # This workflow is triggered on pushes to the repository.
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   my-job:
-    name: execute
+    name: Checkout and build and deploy PR only on master.
     runs-on: [ self-hosted, linux ]
     steps:
-    - name: Print a greeting
+    - uses: actions/checkout@v2
+    - name: Run build-script
+      shell: bash
+      working-directory: ${{ github.workspace }}
       env:
         MY_VAR: Hi there! My name is
         FIRST_NAME: Mona
         MIDDLE_NAME: The
         LAST_NAME: Octocat
-      run: |
-        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+      run: bash build.sh
