@@ -11,10 +11,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Runi build-script
       shell: bash
-      working-directory: ./hosts
+      working-directory: ${{ github.workspace }}
       env:
         MY_VAR: Hi there! My name is
         FIRST_NAME: Mona
         MIDDLE_NAME: The
         LAST_NAME: Octocat
-      run: echo $PATH
+      run: ls -la
