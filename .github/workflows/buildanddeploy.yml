@@ -6,7 +6,7 @@ on: [push]
 jobs:
   my-job:
     name: execute
-    runs-on: sdwan01-2gb-fsn1-2
+    runs-on: [ self-hosted, linux ]
     steps:
     - name: Print a greeting
       env:
