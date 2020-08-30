@@ -1,19 +1,20 @@
-name: Build and print a greeting
+name: Build new container
 
 # This workflow is triggered on pushes to the repository.
 on: [push,pull_request]
 
 jobs:
   my-job:
-    name: execute
+    name: Checkout and build.sh
     runs-on: [ self-hosted, linux ]
     steps:
     - uses: actions/checkout@v2
     - name: Run build-script
+      working-directory: ./hosts
       env:
         MY_VAR: Hi there! My name is
         FIRST_NAME: Mona
         MIDDLE_NAME: The
         LAST_NAME: Octocat
       run: |
-        bash hosts/build.sh
+        echo $PWD
