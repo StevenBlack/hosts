@@ -1,5 +1,0 @@
-FROM debian:stretch-backports
-RUN apt-get update && apt-get install -y dnsmasq && rm -rf /var/lib/apt/lists/*
-COPY build/hosts /tmp/app/build/hosts
-EXPOSE 53/udp
-ENTRYPOINT ["/usr/sbin/dnsmasq", "--no-daemon", "--addn-hosts=/tmp/app/build/hosts"]

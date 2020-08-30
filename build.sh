@@ -1,12 +1,10 @@
 #!/bin/bash
 
-echo "Using DOCKER_ADBLOCK_IP ${DOCKER_ADBLOCK_IP}"
-echo "* Building build-context, to use"
-docker build -t hosts:builder -f Dockerfile .
-docker run -v $PWD:/tmp/app  hosts:builder python3 updateHostsFile.py --ip ${DOCKER_ADBLOCK_IP} -a -n -s -e fakenews -e gambling --blacklist blacklist -o build -b
+ADBLOCK_IP=${DOCKER_ADBLOCK_IP:-"0.0.0.0"}
+echo "Using DOCKER_ADBLOCK_IP ${ADBLOCK_IP}"
 
 echo "* Building container, with source-code generated above"
-docker build -t dnsmasq:latest -f dnsmasqDockerfile .
+docker build --build-arg "ADBLOCK_IP=$ADBLOCK_IP" -t dnsmasq:latest -f Dockerfile .
 
 echo "* Deploying new container"
 docker stop dnsmasq 
