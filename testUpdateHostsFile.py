@@ -1572,15 +1572,17 @@ class GetFileByUrl(BaseStdout):
         self.assertEqual(expected, actual)
 
     def test_connect_unknown_domain(self):
-        test_url = "http://doesnotexist.google.com"
-        return_value = get_file_by_url(test_url)
+        test_url = "http://doesnotexist.google.com"  # leads to exception: ConnectionError
+        with mock.patch("requests.get", side_effect=requests.exceptions.ConnectionError):
+            return_value = get_file_by_url(test_url)
         self.assertIsNone(return_value)
         printed_output = sys.stdout.getvalue()
         self.assertEqual(printed_output, "Error retrieving data from {}\n".format(test_url))
 
     def test_invalid_url(self):
-        test_url = "http://fe80::5054:ff:fe5a:fc0"
-        return_value = get_file_by_url(test_url)
+        test_url = "http://fe80::5054:ff:fe5a:fc0"  # leads to exception: InvalidURL
+        with mock.patch("requests.get", side_effect=requests.exceptions.ConnectionError):
+            return_value = get_file_by_url(test_url)
         self.assertIsNone(return_value)
         printed_output = sys.stdout.getvalue()
         self.assertEqual(printed_output, "Error retrieving data from {}\n".format(test_url))
