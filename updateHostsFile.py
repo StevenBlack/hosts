@@ -21,16 +21,19 @@ import tempfile
 import time
 from glob import glob
 
-import lxml  # noqa: F401
-from bs4 import BeautifulSoup
-
 # Detecting Python 3 for version-dependent implementations
 PY3 = sys.version_info >= (3, 0)
 
-if PY3:
-    from urllib.request import urlopen
-else:
+if not PY3:
     raise Exception("We do not support Python 2 anymore.")
+
+
+try:
+    import requests
+except ImportError:
+    raise ImportError("This project's dependencies have changed. The Requests library ("
+                      "https://requests.readthedocs.io/en/master/) is now required.")
+
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
 if platform.system() == "OpenBSD":
@@ -1469,40 +1472,37 @@ def maybe_copy_example_file(file_path):
             shutil.copyfile(example_file_path, file_path)
 
 
-def get_file_by_url(url, retries=3, delay=10):
+def get_file_by_url(url, params=None, **kwargs):
     """
-    Get a file data located at a particular URL.
+    Retrieve the contents of the hosts file at the URL, then pass it through domain_to_idna().
+
+    Parameters are passed to the requests.get() function.
 
     Parameters
     ----------
-    url : str
-        The URL at which to access the data.
+    url : str or bytes
+        URL for the new Request object.
+    params :
+        Dictionary, list of tuples or bytes to send in the query string for the Request.
+    kwargs :
+        Optional arguments that request takes.
 
     Returns
     -------
     url_data : str or None
         The data retrieved at that URL from the file. Returns None if the
         attempted retrieval is unsuccessful.
-
-    Note
-    ----
-    - BeautifulSoup is used in this case to avoid having to search in which
-        format we have to encode or decode data before parsing it to UTF-8.
     """
 
-    while retries:
-        try:
-            with urlopen(url) as f:
-                soup = BeautifulSoup(f.read(), "lxml").get_text()
-                return "\n".join(list(map(domain_to_idna, soup.split("\n"))))
-        except Exception as e:
-            if 'failure in name resolution' in str(e):
-                print('No internet connection! Retrying in {} seconds'.format(delay))
-                time.sleep(delay)
-                retries -= 1
-                continue
-            break
-    print("Problem getting file: ", url)
+    try:
+        req = requests.get(url=url, params=params, **kwargs)
+    except requests.exceptions.RequestException:
+        print("Error retrieving data from {}".format(url))
+        return None
+
+    req.encoding = req.apparent_encoding
+    res_text = "\n".join([domain_to_idna(line) for line in req.text.split("\n")])
+    return res_text
 
 
 def write_data(f, data):
