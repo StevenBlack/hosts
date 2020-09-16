@@ -1,4 +1,4 @@
-name: Continous Integration
+name: Continous Deployment
 
 # This workflow is triggered on pushes to the repository.
 on:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   my-job:
-    name: Checkout and build and deploy PR only on master.
+    name: Checkout, build and deploy PR (master).
     runs-on: [ self-hosted, linux ]
     steps:
     - uses: actions/checkout@v2
