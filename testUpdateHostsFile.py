@@ -8,6 +8,7 @@
 import json
 import locale
 import os
+import platform
 import re
 import shutil
 import sys
@@ -15,6 +16,8 @@ import tempfile
 import unittest
 import unittest.mock as mock
 from io import BytesIO, StringIO
+
+import requests
 
 import updateHostsFile
 from updateHostsFile import (
@@ -41,6 +44,7 @@ from updateHostsFile import (
     query_yes_no,
     recursive_glob,
     remove_old_hosts_file,
+    sort_sources,
     strip_rule,
     supports_color,
     update_all_sources,
@@ -61,6 +65,8 @@ class Base(unittest.TestCase):
 
     @property
     def sep(self):
+        if platform.system().lower() == "windows":
+            return "\\"
         return os.sep
 
     def assert_called_once(self, mock_method):
@@ -129,6 +135,80 @@ class TestGetDefaults(Base):
 
 
 # End Project Settings
+
+
+class TestSortSources(Base):
+    def test_sort_sources_simple(self):
+        given = [
+            "sbc.io",
+            "example.com",
+            "github.com",
+        ]
+
+        expected = ["example.com", "github.com", "sbc.io"]
+
+        actual = sort_sources(given)
+
+        self.assertEqual(actual, expected)
+
+    def test_live_data(self):
+        given = [
+            "data/KADhosts/update.json",
+            "data/someonewhocares.org/update.json",
+            "data/StevenBlack/update.json",
+            "data/adaway.org/update.json",
+            "data/URLHaus/update.json",
+            "data/UncheckyAds/update.json",
+            "data/add.2o7Net/update.json",
+            "data/mvps.org/update.json",
+            "data/add.Spam/update.json",
+            "data/add.Dead/update.json",
+            "data/malwaredomainlist.com/update.json",
+            "data/Badd-Boyz-Hosts/update.json",
+            "data/hostsVN/update.json",
+            "data/yoyo.org/update.json",
+            "data/add.Risk/update.json",
+            "data/tiuxo/update.json",
+            "extensions/gambling/update.json",
+            "extensions/porn/clefspeare13/update.json",
+            "extensions/porn/sinfonietta-snuff/update.json",
+            "extensions/porn/tiuxo/update.json",
+            "extensions/porn/sinfonietta/update.json",
+            "extensions/fakenews/update.json",
+            "extensions/social/tiuxo/update.json",
+            "extensions/social/sinfonietta/update.json",
+        ]
+
+        expected = [
+            "data/StevenBlack/update.json",
+            "data/adaway.org/update.json",
+            "data/add.2o7Net/update.json",
+            "data/add.Dead/update.json",
+            "data/add.Risk/update.json",
+            "data/add.Spam/update.json",
+            "data/Badd-Boyz-Hosts/update.json",
+            "data/hostsVN/update.json",
+            "data/KADhosts/update.json",
+            "data/malwaredomainlist.com/update.json",
+            "data/mvps.org/update.json",
+            "data/someonewhocares.org/update.json",
+            "data/tiuxo/update.json",
+            "data/UncheckyAds/update.json",
+            "data/URLHaus/update.json",
+            "data/yoyo.org/update.json",
+            "extensions/fakenews/update.json",
+            "extensions/gambling/update.json",
+            "extensions/porn/clefspeare13/update.json",
+            "extensions/porn/sinfonietta/update.json",
+            "extensions/porn/sinfonietta-snuff/update.json",
+            "extensions/porn/tiuxo/update.json",
+            "extensions/social/sinfonietta/update.json",
+            "extensions/social/tiuxo/update.json",
+        ]
+
+        actual = sort_sources(given)
+
+        self.assertEqual(actual, expected)
 
 
 # Prompt the User
@@ -217,7 +297,7 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
             self.assertFalse(update_sources)
 
             output = sys.stdout.getvalue()
-            expected = "OK, we'll stick with " "what we've got locally."
+            expected = "OK, we'll stick with what we've got locally."
             self.assertIn(expected, output)
 
             sys.stdout = StringIO()
@@ -279,7 +359,7 @@ class TestPromptForExclusions(BaseStdout):
         self.assertFalse(gather_exclusions)
 
         output = sys.stdout.getvalue()
-        expected = "OK, we'll only exclude " "domains in the whitelist."
+        expected = "OK, we'll only exclude domains in the whitelist."
         self.assertIn(expected, output)
 
         self.assert_called_once(mock_query)
@@ -398,9 +478,6 @@ class TestPromptForMove(Base):
         self.assert_called_once(mock_query)
         mock_move.assert_not_called()
 
-        mock_query.reset_mock()
-        mock_move.reset_mock()
-
     @mock.patch("updateHostsFile.move_hosts_file_into_place", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=True)
     def testPromptMove(self, mock_query, mock_move):
@@ -411,9 +488,6 @@ class TestPromptForMove(Base):
 
         self.assert_called_once(mock_query)
         self.assert_called_once(mock_move)
-
-        mock_query.reset_mock()
-        mock_move.reset_mock()
 
 
 # End Prompt the User
@@ -860,7 +934,7 @@ class TestWriteOpeningHeader(BaseMockDir):
         # Expected contents.
         for expected in (
             "# This hosts file is a merged collection",
-            "# with a dash of crowd sourcing via Github",
+            "# with a dash of crowd sourcing via GitHub",
             "# Number of unique domains: {count}".format(count=kwargs["numberofrules"]),
             "Fetch the latest version of this file:",
             "Project home page: https://github.com/StevenBlack/hosts",
@@ -893,7 +967,7 @@ class TestWriteOpeningHeader(BaseMockDir):
             "127.0.0.1 local",
             "127.0.0.1 localhost",
             "# This hosts file is a merged collection",
-            "# with a dash of crowd sourcing via Github",
+            "# with a dash of crowd sourcing via GitHub",
             "# Number of unique domains: {count}".format(count=kwargs["numberofrules"]),
             "Fetch the latest version of this file:",
             "Project home page: https://github.com/StevenBlack/hosts",
@@ -926,7 +1000,7 @@ class TestWriteOpeningHeader(BaseMockDir):
             "127.0.0.1 local",
             "127.0.0.1 localhost",
             "# This hosts file is a merged collection",
-            "# with a dash of crowd sourcing via Github",
+            "# with a dash of crowd sourcing via GitHub",
             "# Number of unique domains: {count}".format(count=kwargs["numberofrules"]),
             "Fetch the latest version of this file:",
             "Project home page: https://github.com/StevenBlack/hosts",
@@ -954,7 +1028,7 @@ class TestWriteOpeningHeader(BaseMockDir):
             ", ".join(kwargs["extensions"]),
             "# Extensions added to this file:",
             "# This hosts file is a merged collection",
-            "# with a dash of crowd sourcing via Github",
+            "# with a dash of crowd sourcing via GitHub",
             "# Number of unique domains: {count}".format(count=kwargs["numberofrules"]),
             "Fetch the latest version of this file:",
             "Project home page: https://github.com/StevenBlack/hosts",
@@ -992,7 +1066,7 @@ class TestWriteOpeningHeader(BaseMockDir):
         for expected in (
             "peter-piper-picked-a-pepper",
             "# This hosts file is a merged collection",
-            "# with a dash of crowd sourcing via Github",
+            "# with a dash of crowd sourcing via GitHub",
             "# Number of unique domains: {count}".format(count=kwargs["numberofrules"]),
             "Fetch the latest version of this file:",
             "Project home page: https://github.com/StevenBlack/hosts",
@@ -1047,12 +1121,13 @@ class TestUpdateReadmeData(BaseMockDir):
         )
         update_readme_data(self.readme_file, **kwargs)
 
+        if platform.system().lower() == "windows":
+            sep = "/"
+        else:
+            sep = self.sep
+
         expected = {
-            "base": {
-                "location": "foo" + self.sep,
-                "sourcesdata": "hosts",
-                "entries": 5,
-            },
+            "base": {"location": "foo" + sep, "sourcesdata": "hosts", "entries": 5},
             "foo": "bar",
         }
 
@@ -1069,8 +1144,13 @@ class TestUpdateReadmeData(BaseMockDir):
         )
         update_readme_data(self.readme_file, **kwargs)
 
+        if platform.system().lower() == "windows":
+            sep = "/"
+        else:
+            sep = self.sep
+
         expected = {
-            "base": {"location": "foo" + self.sep, "sourcesdata": "hosts", "entries": 5}
+            "base": {"location": "foo" + sep, "sourcesdata": "hosts", "entries": 5}
         }
 
         with open(self.readme_file, "r") as f:
@@ -1089,12 +1169,13 @@ class TestUpdateReadmeData(BaseMockDir):
         )
         update_readme_data(self.readme_file, **kwargs)
 
+        if platform.system().lower() == "windows":
+            sep = "/"
+        else:
+            sep = self.sep
+
         expected = {
-            "com-org": {
-                "location": "foo" + self.sep,
-                "sourcesdata": "hosts",
-                "entries": 5,
-            }
+            "com-org": {"location": "foo" + sep, "sourcesdata": "hosts", "entries": 5}
         }
 
         with open(self.readme_file, "r") as f:
@@ -1230,7 +1311,7 @@ class TestFlushDnsCache(BaseStdout):
                 os.name = "posix"
                 flush_dns_cache()
 
-                expected = "Flushing the DNS cache by " "restarting nscd succeeded"
+                expected = "Flushing the DNS cache by restarting nscd succeeded"
                 output = sys.stdout.getvalue()
                 self.assertIn(expected, output)
 
@@ -1244,12 +1325,12 @@ class TestFlushDnsCache(BaseStdout):
                 os.name = "posix"
                 flush_dns_cache()
 
-                expected = "Flushing the DNS cache by " "restarting nscd failed"
+                expected = "Flushing the DNS cache by restarting nscd failed"
                 output = sys.stdout.getvalue()
                 self.assertIn(expected, output)
 
     @mock.patch("os.path.isfile", side_effect=[True, False, False, True] + [False] * 10)
-    @mock.patch("subprocess.call", side_effect=[1, 0])
+    @mock.patch("subprocess.call", side_effect=[1, 0, 0])
     def test_flush_posix_fail_then_succeed(self, *_):
         with self.mock_property("platform.system") as obj:
             obj.return_value = "Linux"
@@ -1260,22 +1341,13 @@ class TestFlushDnsCache(BaseStdout):
 
                 output = sys.stdout.getvalue()
                 for expected in [
-                    ("Flushing the DNS cache by " "restarting nscd failed"),
+                    ("Flushing the DNS cache by restarting nscd failed"),
                     (
                         "Flushing the DNS cache by restarting "
                         "NetworkManager.service succeeded"
                     ),
                 ]:
                     self.assertIn(expected, output)
-
-
-def mock_path_join_robust(*args):
-    # We want to hard-code the backup hosts filename
-    # instead of parametrizing based on current time.
-    if len(args) == 2 and args[1].startswith("hosts-"):
-        return os.path.join(args[0], "hosts-new")
-    else:
-        return os.path.join(*args)
 
 
 class TestRemoveOldHostsFile(BaseMockDir):
@@ -1286,16 +1358,14 @@ class TestRemoveOldHostsFile(BaseMockDir):
     def test_remove_hosts_file(self):
         old_dir_count = self.dir_count
 
-        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
-            updateHostsFile.BASEDIR_PATH = self.test_dir
-            remove_old_hosts_file(backup=False)
+        remove_old_hosts_file(self.hosts_file, backup=False)
 
-            new_dir_count = old_dir_count + 1
-            self.assertEqual(self.dir_count, new_dir_count)
+        new_dir_count = old_dir_count + 1
+        self.assertEqual(self.dir_count, new_dir_count)
 
-            with open(self.hosts_file, "r") as f:
-                contents = f.read()
-                self.assertEqual(contents, "")
+        with open(self.hosts_file, "r") as f:
+            contents = f.read()
+            self.assertEqual(contents, "")
 
     def test_remove_hosts_file_exists(self):
         with open(self.hosts_file, "w") as f:
@@ -1303,114 +1373,39 @@ class TestRemoveOldHostsFile(BaseMockDir):
 
         old_dir_count = self.dir_count
 
-        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
-            updateHostsFile.BASEDIR_PATH = self.test_dir
-            remove_old_hosts_file(backup=False)
+        remove_old_hosts_file(self.hosts_file, backup=False)
 
-            new_dir_count = old_dir_count
-            self.assertEqual(self.dir_count, new_dir_count)
+        new_dir_count = old_dir_count
+        self.assertEqual(self.dir_count, new_dir_count)
 
-            with open(self.hosts_file, "r") as f:
-                contents = f.read()
-                self.assertEqual(contents, "")
+        with open(self.hosts_file, "r") as f:
+            contents = f.read()
+            self.assertEqual(contents, "")
 
-    @mock.patch("updateHostsFile.path_join_robust", side_effect=mock_path_join_robust)
+    @mock.patch("time.strftime", return_value="new")
     def test_remove_hosts_file_backup(self, _):
         with open(self.hosts_file, "w") as f:
             f.write("foo")
 
         old_dir_count = self.dir_count
 
-        with self.mock_property("updateHostsFile.BASEDIR_PATH"):
-            updateHostsFile.BASEDIR_PATH = self.test_dir
-            remove_old_hosts_file(backup=True)
+        remove_old_hosts_file(self.hosts_file, backup=True)
 
-            new_dir_count = old_dir_count + 1
-            self.assertEqual(self.dir_count, new_dir_count)
+        new_dir_count = old_dir_count + 1
+        self.assertEqual(self.dir_count, new_dir_count)
 
-            with open(self.hosts_file, "r") as f:
-                contents = f.read()
-                self.assertEqual(contents, "")
+        with open(self.hosts_file, "r") as f:
+            contents = f.read()
+            self.assertEqual(contents, "")
 
-            new_hosts_file = self.hosts_file + "-new"
+        new_hosts_file = self.hosts_file + "-new"
 
-            with open(new_hosts_file, "r") as f:
-                contents = f.read()
-                self.assertEqual(contents, "foo")
+        with open(new_hosts_file, "r") as f:
+            contents = f.read()
+            self.assertEqual(contents, "foo")
 
 
 # End File Logic
-
-
-# Helper Functions
-def mock_url_open(url):
-    """
-    Mock of `urlopen` that returns the url in a `BytesIO` stream.
-
-    Parameters
-    ----------
-    url : str
-        The URL associated with the file to open.
-
-    Returns
-    -------
-    bytes_stream : BytesIO
-        The `url` input wrapped in a `BytesIO` stream.
-    """
-
-    return BytesIO(url)
-
-
-def mock_url_open_fail(_):
-    """
-    Mock of `urlopen` that fails with an Exception.
-    """
-
-    raise Exception()
-
-
-def mock_url_open_read_fail(_):
-    """
-    Mock of `urlopen` that returns an object that fails on `read`.
-
-    Returns
-    -------
-    file_mock : mock.Mock
-        A mock of a file object that fails when reading.
-    """
-
-    def fail_read():
-        raise Exception()
-
-    m = mock.Mock()
-
-    m.read = fail_read
-    return m
-
-
-def mock_url_open_decode_fail(_):
-    """
-    Mock of `urlopen` that returns an object that fails on during decoding
-    the output of `urlopen`.
-
-    Returns
-    -------
-    file_mock : mock.Mock
-        A mock of a file object that fails when decoding the output.
-    """
-
-    def fail_decode(_):
-        raise Exception()
-
-    def read():
-        s = mock.Mock()
-        s.decode = fail_decode
-
-        return s
-
-    m = mock.Mock()
-    m.read = read
-    return m
 
 
 class DomainToIDNA(Base):
@@ -1552,44 +1547,45 @@ class DomainToIDNA(Base):
 
 
 class GetFileByUrl(BaseStdout):
-    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open)
-    def test_read_url(self, _):
-        url = b"www.google.com"
+    def test_basic(self):
+        raw_resp_content = "hello, ".encode("ascii") + "world".encode("utf-8")
+        resp_obj = requests.Response()
+        resp_obj.__setstate__({"_content": raw_resp_content})
 
-        expected = "www.google.com"
-        actual = get_file_by_url(url)
+        expected = "hello, world"
 
-        self.assertEqual(actual, expected)
+        with mock.patch("requests.get", return_value=resp_obj):
+            actual = get_file_by_url("www.test-url.com")
 
-    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open_fail)
-    def test_read_url_fail(self, _):
-        url = b"www.google.com"
-        self.assertIsNone(get_file_by_url(url))
+        self.assertEqual(expected, actual)
 
-        expected = "Problem getting file:"
-        output = sys.stdout.getvalue()
+    def test_with_idna(self):
+        raw_resp_content = b"www.huala\xc3\xb1e.cl"
+        resp_obj = requests.Response()
+        resp_obj.__setstate__({"_content": raw_resp_content})
 
-        self.assertIn(expected, output)
+        expected = "www.xn--hualae-0wa.cl"
 
-    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open_read_fail)
-    def test_read_url_read_fail(self, _):
-        url = b"www.google.com"
-        self.assertIsNone(get_file_by_url(url))
+        with mock.patch("requests.get", return_value=resp_obj):
+            actual = get_file_by_url("www.test-url.com")
 
-        expected = "Problem getting file:"
-        output = sys.stdout.getvalue()
+        self.assertEqual(expected, actual)
 
-        self.assertIn(expected, output)
+    def test_connect_unknown_domain(self):
+        test_url = "http://doesnotexist.google.com"  # leads to exception: ConnectionError
+        with mock.patch("requests.get", side_effect=requests.exceptions.ConnectionError):
+            return_value = get_file_by_url(test_url)
+        self.assertIsNone(return_value)
+        printed_output = sys.stdout.getvalue()
+        self.assertEqual(printed_output, "Error retrieving data from {}\n".format(test_url))
 
-    @mock.patch("updateHostsFile.urlopen", side_effect=mock_url_open_decode_fail)
-    def test_read_url_decode_fail(self, _):
-        url = b"www.google.com"
-        self.assertIsNone(get_file_by_url(url))
-
-        expected = "Problem getting file:"
-        output = sys.stdout.getvalue()
-
-        self.assertIn(expected, output)
+    def test_invalid_url(self):
+        test_url = "http://fe80::5054:ff:fe5a:fc0"  # leads to exception: InvalidURL
+        with mock.patch("requests.get", side_effect=requests.exceptions.ConnectionError):
+            return_value = get_file_by_url(test_url)
+        self.assertIsNone(return_value)
+        printed_output = sys.stdout.getvalue()
+        self.assertEqual(printed_output, "Error retrieving data from {}\n".format(test_url))
 
 
 class TestWriteData(Base):
@@ -1683,9 +1679,7 @@ class TestIsValidDomainFormat(BaseStdout):
         self.assertTrue(expected in output)
 
     def test_invalid_domain(self):
-        expected = (
-            "Do not include www.domain.com or " "http(s)://domain.com. Try again."
-        )
+        expected = "Do not include www.domain.com or http(s)://domain.com. Try again."
 
         for invalid_domain in [
             "www.subdomain.domain",

@@ -1,0 +1,57 @@
+name: CI
+on: [push, pull_request]
+env:
+  CI: true
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python:
+          - 3.5
+          - 3.6
+          - 3.7
+          - 3.8
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python }}
+          architecture: "x64"
+
+      - run: python --version
+      - run: pip --version
+
+      - name: Get pip cache directory
+        id: pip-cache
+        run: |
+          echo "::set-output name=dir::$(pip cache dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-python-v${{ matrix.python }}-${{ hashFiles('**/requirements.txt') }}
+            ${{ runner.os }}-python-v${{ matrix.python }}-
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run lint
+        run: flake8
+
+      - name: Run tests
+        run: python testUpdateHostsFile.py
