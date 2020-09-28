@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 20 Sep 2020 13:06 UTC+7
-# Version: 2009201306
-# Blocked: 1,396 domains
+# Last modified: 25 Sep 2020 09:08 UTC+7
+# Version: 2009250908
+# Blocked: 1,417 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -328,7 +328,7 @@
 0.0.0.0 st.core.polyad.net
 0.0.0.0 st.html.polyad.net
 0.0.0.0 st.polyad.net
-#[ambientplatform]
+#[ambientplatform.vn]
 0.0.0.0 ambientplatform.vn
 0.0.0.0 campaigns.ambientplatform.vn
 0.0.0.0 cdn.ambientplatform.vn
@@ -341,12 +341,63 @@
 0.0.0.0 media.m.ambientplatform.vn
 0.0.0.0 metrics.m.ambientplatform.vn
 0.0.0.0 rd.ambientplatform.vn
-#[ants]
+#[gammaplatform.com]
+0.0.0.0 app.gammaplatform.com
+0.0.0.0 clk.gammaplatform.com
+0.0.0.0 cm.gammaplatform.com
+0.0.0.0 cm-supply-web.gammaplatform.com
+0.0.0.0 d.gammaplatform.com
+0.0.0.0 gammaplatform.com
+0.0.0.0 hb.gammaplatform.com
+0.0.0.0 imp.gammaplatform.com
+0.0.0.0 imp2.gammaplatform.com
+0.0.0.0 in-view.gammaplatform.com
+0.0.0.0 login.gammaplatform.com
+0.0.0.0 static.gammaplatform.com
+0.0.0.0 stc.gammaplatform.com
+0.0.0.0 t.gammaplatform.com
+0.0.0.0 tag.gammaplatform.com
+0.0.0.0 track.gammaplatform.com
+0.0.0.0 www.gammaplatform.com
+#[gammassp.com]
+0.0.0.0 gammassp.com
+0.0.0.0 test-places.gammassp.com
+0.0.0.0 www.gammassp.com
+#[serving-system.com]
+0.0.0.0 b.serving-system.com
+0.0.0.0 optimize.serving-system.com
+0.0.0.0 serving-system.com
+0.0.0.0 ut-static.serving-system.com
+0.0.0.0 ut.serving-system.com
+#[ambient-platform.com]
+0.0.0.0 ambient-platform.com
+0.0.0.0 analytics.ambient-platform.com
+0.0.0.0 campaigns.ambient-platform.com
+0.0.0.0 cdn-media.ambient-platform.com
+0.0.0.0 cdn-media.m.ambient-platform.com
+0.0.0.0 cdn-media-m.ambient-platform.com
+0.0.0.0 cli.ambient-platform.com
+0.0.0.0 cli.m.ambient-platform.com
+0.0.0.0 conv.ambient-platform.com
+0.0.0.0 delivery.ambient-platform.com
+0.0.0.0 delivery.m.ambient-platform.com
+0.0.0.0 delivery-m.ambient-platform.com
+0.0.0.0 imp.ambient-platform.com
+0.0.0.0 imp.m.ambient-platform.com
+0.0.0.0 imp-m.ambient-platform.com
+0.0.0.0 local-media.ambient-platform.com
+0.0.0.0 local-media.m.ambient-platform.com
+0.0.0.0 metrics.ambient-platform.com
+0.0.0.0 retg.ambient-platform.com
+0.0.0.0 static.ambient-platform.com
+0.0.0.0 www.ambient-platform.com
+#[ants.vn]
 0.0.0.0 a.ants.vn
 0.0.0.0 abs.ants.vn
 0.0.0.0 ad.ants.vn
 0.0.0.0 ads.ants.vn
 0.0.0.0 adx.ants.vn
+0.0.0.0 antalyser.ants.vn
 0.0.0.0 ants.vn
 0.0.0.0 api-app.ants.vn
 0.0.0.0 app.ants.vn
@@ -356,19 +407,58 @@
 0.0.0.0 babe.ants.vn
 0.0.0.0 crm.ants.vn
 0.0.0.0 d.ants.vn
+0.0.0.0 developers.ants.vn
 0.0.0.0 dsp-d.ants.vn
 0.0.0.0 e.ants.vn
 0.0.0.0 insight.ants.vn
+0.0.0.0 ma.ants.vn
 0.0.0.0 m-a.ants.vn
 0.0.0.0 ogs.ants.vn
 0.0.0.0 oms-t.ants.vn
 0.0.0.0 p.ants.vn
 0.0.0.0 prebid.ants.vn
 0.0.0.0 schemas.ants.vn
+0.0.0.0 staging-d.ants.vn
+0.0.0.0 staging-d-tiki.ants.vn
 0.0.0.0 st-au.ants.vn
 0.0.0.0 t.ants.vn
 0.0.0.0 t.d.ants.vn
+0.0.0.0 tiki.ants.vn
 0.0.0.0 www.ants.vn
+#[anthill.vn]
+0.0.0.0 a.anthill.vn
+0.0.0.0 analytics.anthill.vn
+0.0.0.0 anthill.vn
+0.0.0.0 atrack-a.anthill.vn
+0.0.0.0 c0.anthill.vn
+0.0.0.0 c0.st.anthill.vn
+0.0.0.0 c0-vcdn.anthill.vn
+0.0.0.0 d.anthill.vn
+0.0.0.0 e.anthill.vn
+0.0.0.0 e-vcdn.anthill.vn
+0.0.0.0 i0.anthill.vn
+0.0.0.0 i0-vcdn.anthill.vn
+0.0.0.0 id.anthill.vn
+0.0.0.0 origin-c0.anthill.vn
+0.0.0.0 origin-e.anthill.vn
+0.0.0.0 origin-st-a.anthill.vn
+0.0.0.0 p.anthill.vn
+0.0.0.0 st.a.anthill.vn
+0.0.0.0 st.anthill.vn
+0.0.0.0 st-a.anthill.vn
+0.0.0.0 st-a1.anthill.vn
+0.0.0.0 staging-e.anthill.vn
+0.0.0.0 staging-e-vcdn.anthill.vn
+0.0.0.0 st-a-id.anthill.vn
+0.0.0.0 st-analytics.anthill.vn
+0.0.0.0 st-ssp.anthill.vn
+0.0.0.0 st-vcdn.anthill.vn
+0.0.0.0 v0.anthill.vn
+0.0.0.0 v0-vcdn.anthill.vn
+0.0.0.0 v3-ads-st-vcdn.anthill.vn
+0.0.0.0 v3-st-vcdn.anthill.vn
+0.0.0.0 vcdn.anthill.vn
+0.0.0.0 www.anthill.vn
 #[adtima.vn]
 0.0.0.0 admin.billing.adtima.vn
 0.0.0.0 adtima.vn
@@ -453,51 +543,6 @@
 0.0.0.0 log.zingnews.vn
 0.0.0.0 log.zingtv.vn
 0.0.0.0 zlog.zingmp3.vn
-#[anthill]
-0.0.0.0 a.anthill.vn
-0.0.0.0 anthill.vn
-0.0.0.0 atrack-a.anthill.vn
-0.0.0.0 c0.anthill.vn
-0.0.0.0 c0.st.anthill.vn
-0.0.0.0 c0-vcdn.anthill.vn
-0.0.0.0 d.anthill.vn
-0.0.0.0 e.anthill.vn
-0.0.0.0 e-vcdn.anthill.vn
-0.0.0.0 i0.anthill.vn
-0.0.0.0 i0-vcdn.anthill.vn
-0.0.0.0 origin-c0.anthill.vn
-0.0.0.0 origin-e.anthill.vn
-0.0.0.0 origin-st-a.anthill.vn
-0.0.0.0 p.anthill.vn
-0.0.0.0 st.a.anthill.vn
-0.0.0.0 st.anthill.vn
-0.0.0.0 st-a.anthill.vn
-0.0.0.0 staging-e.anthill.vn
-0.0.0.0 staging-e-vcdn.anthill.vn
-0.0.0.0 st-a-id.anthill.vn
-0.0.0.0 st-analytics.anthill.vn
-0.0.0.0 st-vcdn.anthill.vn
-0.0.0.0 v0.anthill.vn
-0.0.0.0 v0-vcdn.anthill.vn
-0.0.0.0 v3-ads-st-vcdn.anthill.vn
-0.0.0.0 v3-st-vcdn.anthill.vn
-0.0.0.0 vcdn.anthill.vn
-0.0.0.0 www.anthill.vn
-#[gammaplatform]
-0.0.0.0 app.gammaplatform.com
-0.0.0.0 clk.gammaplatform.com
-0.0.0.0 cm.gammaplatform.com
-0.0.0.0 cm-supply-web.gammaplatform.com
-0.0.0.0 gammaplatform.com
-0.0.0.0 hb.gammaplatform.com
-0.0.0.0 imp.gammaplatform.com
-0.0.0.0 in-view.gammaplatform.com
-0.0.0.0 static.gammaplatform.com
-0.0.0.0 stc.gammaplatform.com
-0.0.0.0 t.gammaplatform.com
-0.0.0.0 tag.gammaplatform.com
-0.0.0.0 track.gammaplatform.com
-0.0.0.0 www.gammaplatform.com
 #[yomedia]
 0.0.0.0 ad-deliver.yomedia.vn
 0.0.0.0 analytics.yomedia.vn
@@ -528,28 +573,6 @@
 0.0.0.0 wifiads.cleverads.vn
 0.0.0.0 www.cleverads.vn
 0.0.0.0 youtube.cleverads.vn
-#[ambient-platform]
-0.0.0.0 ambient-platform.com
-0.0.0.0 analytics.ambient-platform.com
-0.0.0.0 campaigns.ambient-platform.com
-0.0.0.0 cdn-media.ambient-platform.com
-0.0.0.0 cdn-media.m.ambient-platform.com
-0.0.0.0 cdn-media-m.ambient-platform.com
-0.0.0.0 cli.ambient-platform.com
-0.0.0.0 cli.m.ambient-platform.com
-0.0.0.0 conv.ambient-platform.com
-0.0.0.0 delivery.ambient-platform.com
-0.0.0.0 delivery.m.ambient-platform.com
-0.0.0.0 delivery-m.ambient-platform.com
-0.0.0.0 imp.ambient-platform.com
-0.0.0.0 imp.m.ambient-platform.com
-0.0.0.0 local-media.ambient-platform.com
-0.0.0.0 local-media.m.ambient-platform.com
-0.0.0.0 member.ambient-platform.com
-0.0.0.0 metrics.ambient-platform.com
-0.0.0.0 retg.ambient-platform.com
-0.0.0.0 static.ambient-platform.com
-0.0.0.0 www.ambient-platform.com
 #[klick]
 0.0.0.0 adv.klick.vn
 0.0.0.0 demo.klick.vn
@@ -1260,6 +1283,7 @@
 0.0.0.0 ad.accesstrade.vn
 0.0.0.0 ad.icheck.com.vn
 0.0.0.0 ad.mwork.vn
+0.0.0.0 ad.qtcs.com.vn
 0.0.0.0 ad.sunflower.vn
 0.0.0.0 ad.vkool.net
 0.0.0.0 adadmin.headlines.pw
@@ -1325,6 +1349,7 @@
 0.0.0.0 bgadx.com
 0.0.0.0 boxpr.aiservice.vn
 0.0.0.0 cdn-ads.thesaigontimes.vn
+0.0.0.0 cdnasset.dantri.com.vn
 0.0.0.0 chiasephim.xyz
 0.0.0.0 click-ads.saoteen.net
 0.0.0.0 clipbongda.info
@@ -1481,7 +1506,6 @@
 0.0.0.0 tracker.tintucvietnam.vn
 0.0.0.0 tracking.appwifi.com
 0.0.0.0 tracking.dantri.com.vn
-0.0.0.0 tracking.meete.co
 0.0.0.0 tracking.vht.com.vn
 0.0.0.0 tracking.vietbao.vn
 0.0.0.0 tracking.vtcnew.com.vn
@@ -1493,8 +1517,6 @@
 0.0.0.0 userstats.shopee.vn
 0.0.0.0 vn.alexajstrack.com
 0.0.0.0 vtrack.vht.com.vn
-0.0.0.0 web.stagingf8.pycogroup.com
-0.0.0.0 widget.nhaccuatui.com
 0.0.0.0 widget.sbz.vn
 0.0.0.0 widget.subiz.xyz
 # --- Block scamVN ---
@@ -1504,5 +1526,6 @@
 0.0.0.0 quangcaotructuyen247.com
 0.0.0.0 rituationscardb.info
 0.0.0.0 sacchaeleduk.com
+0.0.0.0 smilitygorb.club
 0.0.0.0 www.fuckbookvietnam.com
 0.0.0.0 www.quangcaotructuyen247.com
