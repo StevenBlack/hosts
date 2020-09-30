@@ -49,7 +49,7 @@ if not exist "%WINDIR%\System32\drivers\etc\hosts.skel" (
 
 :UpdateHosts
 :: Update hosts file
-python updateHostsFile.py --auto --minimise
+py updateHostsFile.py --auto --minimise
 
 :: Copy over the new hosts file in-place
 copy /y /v hosts "%WINDIR%\System32\drivers\etc\"
