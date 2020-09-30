@@ -331,13 +331,6 @@ Open a command prompt with administrator privileges and run this command:
 ipconfig /flushdns
 ```
 
-Before flushing the DNS cache, open a command prompt with administrator privileges and run this command:
-
-```bat
-sc config "Dnscache" start=disabled
-sc stop "Dnscache"
-```
-
 ### Linux
 
 Open a Terminal and run with root privileges:
