@@ -35,6 +35,8 @@ The **Non GitHub mirror** is the link to use for some hosts file managers like
 [Hostsman for Windows](http://www.abelhadigital.com/hostsman/) that don't work
 with GitHub download links.
 
+**Note on fake news** - Defining what is or is not "fake news" in today’s political environment is challenging. The `fakenews` list below is curated by a [single (left-leaning) person](https://github.com/marktron/fakenews#personal-bias-disclosure), and as such may contain sites which would be judged differently by another curator.
+
 Host file recipe | Readme | Raw hosts | Unique domains | Non GitHub mirror
 ---------------- |:------:|:---------:|:--------------:|:-------------:
 Unified hosts = **(adware + malware)** | [Readme](https://github.com/StevenBlack/hosts/blob/master/readme.md) | [link](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) | 60,248 | [link](http://sbc.io/hosts/hosts)
