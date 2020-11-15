@@ -775,7 +775,7 @@ def create_initial_file():
     ):
 
         start = "# Start {}\n\n".format(os.path.basename(os.path.dirname(source)))
-        end = "# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
+        end = "\n# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
 
         with open(source, "r", encoding="UTF-8") as curFile:
             write_data(merge_file, start + curFile.read() + end)
