@@ -1650,9 +1650,6 @@
 # [adztec.com]
 127.0.0.1 adztec.com
 
-# [adzuna.co.uk]
-127.0.0.1 adzuna.co.uk
-
 # [aerserv.com]
 127.0.0.1 ads.aerserv.com
 127.0.0.1 alpha-events.aerserv.com
@@ -1920,27 +1917,80 @@
 127.0.0.1 aax-us-east.amazon-adsystem.com
 127.0.0.1 c.amazon-adsystem.com
 127.0.0.1 cdn-a.amazon-adsystem.com
+127.0.0.1 fls-eu.amazon-adsystem.com
+127.0.0.1 fls-fe.amazon-adsystem.com
+127.0.0.1 fls-na.amazon-adsystem.com
 127.0.0.1 mads.amazon-adsystem.com
 127.0.0.1 s.amazon-adsystem.com
 127.0.0.1 vaes.amazon-adsystem.com
 127.0.0.1 ws-eu.amazon-adsystem.com
 127.0.0.1 z-eu.amazon-adsystem.com
 
+# [amazon.ae]
+127.0.0.1 fls-eu.amazon.ae
+
+# [amazon.ca]
+127.0.0.1 fls-na.amazon.ca
+
+# [amazon.cn]
+127.0.0.1 fls-cn.amazon.cn
+
 # [amazon.co.jp]
 127.0.0.1 aan.amazon.co.jp
 127.0.0.1 advertising.amazon.co.jp
+127.0.0.1 fls-fe.amazon.co.jp
 
 # [amazon.co.uk]
 127.0.0.1 aan.amazon.co.uk
 127.0.0.1 advertising.amazon.co.uk
+127.0.0.1 fls-eu.amazon.co.uk
 
 # [amazon.com]
 127.0.0.1 aan.amazon.com
 127.0.0.1 aax-us-iad.amazon.com
 127.0.0.1 device-metrics-us.amazon.com
 127.0.0.1 device-metrics-us-2.amazon.com
+127.0.0.1 fls-cn.amazon.com
+127.0.0.1 fls-eu.amazon.com
+127.0.0.1 fls-fe.amazon.com
 127.0.0.1 fls-na.amazon.com
 127.0.0.1 mads.amazon.com
+
+# [amazon.com.au]
+127.0.0.1 fls-fe.amazon.com.au
+
+# [amazon.com.br]
+127.0.0.1 fls-na.amazon.com.br
+
+# [amazon.com.mx]
+127.0.0.1 fls-na.amazon.com.mx
+
+# [amazon.de]
+127.0.0.1 fls-eu.amazon.de
+
+# [amazon.es]
+127.0.0.1 fls-eu.amazon.es
+
+# [amazon.fr]
+127.0.0.1 fls-eu.amazon.fr
+
+# [amazon.in]
+127.0.0.1 fls-eu.amazon.in
+
+# [amazon.it]
+127.0.0.1 fls-eu.amazon.it
+
+# [amazon.nl]
+127.0.0.1 fls-eu.amazon.nl
+
+# [amazon.sa]
+127.0.0.1 fls-eu.amazon.sa
+
+# [amazon.se]
+127.0.0.1 fls-eu.amazon.se
+
+# [amazon.sg]
+127.0.0.1 fls-fe.amazon.sg
 
 # [amazonaws.com]
 127.0.0.1 ads-api-new-2052271615.ap-northeast-1.elb.amazonaws.com
@@ -2361,7 +2411,7 @@
 # [applanga.com]
 127.0.0.1 sdkapicdn.applanga.com
 
-# [apple.com] 
+# [apple.com]
 127.0.0.1 iadsdk.apple.com
 127.0.0.1 ca.iadsdk.apple.com
 127.0.0.1 cf.iadsdk.apple.com
@@ -4596,6 +4646,7 @@
 127.0.0.1 ad-emea.doubleclick.net
 127.0.0.1 ad-g.doubleclick.net
 127.0.0.1 ff.doubleclick.net
+127.0.0.1 fls.doubleclick.net
 127.0.0.1 3243857.fls.doubleclick.net
 127.0.0.1 adx.g.doubleclick.net
 127.0.0.1 bid.g.doubleclick.net
@@ -11494,11 +11545,8 @@
 127.0.0.1 30912.api.swrve.com
 127.0.0.1 30913.api.swrve.com
 127.0.0.1 31035.api.swrve.com
-127.0.0.1 31035.api.swrve.com
 127.0.0.1 3193.api.swrve.com
 127.0.0.1 3285.api.swrve.com
-127.0.0.1 3285.api.swrve.com
-127.0.0.1 3340.api.swrve.com
 127.0.0.1 3340.api.swrve.com
 127.0.0.1 3426.api.swrve.com
 127.0.0.1 3444.api.swrve.com
@@ -11529,7 +11577,6 @@
 127.0.0.1 758.api.swrve.com
 127.0.0.1 854.api.swrve.com
 127.0.0.1 content.swrve.com
-127.0.0.1 content.swrve.com
 127.0.0.1 1170.content.swrve.com
 127.0.0.1 1188.content.swrve.com
 127.0.0.1 1353.content.swrve.com
@@ -11551,10 +11598,7 @@
 127.0.0.1 30912.content.swrve.com
 127.0.0.1 30913.content.swrve.com
 127.0.0.1 31035.content.swrve.com
-127.0.0.1 31035.content.swrve.com
 127.0.0.1 3285.content.swrve.com
-127.0.0.1 3285.content.swrve.com
-127.0.0.1 3340.content.swrve.com
 127.0.0.1 3340.content.swrve.com
 127.0.0.1 3616.content.swrve.com
 127.0.0.1 3694.content.swrve.com
@@ -11581,14 +11625,12 @@
 127.0.0.1 854.content.swrve.com
 127.0.0.1 content-cdn.swrve.com
 127.0.0.1 eu-api.swrve.com
-127.0.0.1 eu-api.swrve.com
 127.0.0.1 6285.eu-api.swrve.com
 127.0.0.1 6379.eu-api.swrve.com
 127.0.0.1 6384.eu-api.swrve.com
 127.0.0.1 6674.eu-api.swrve.com
 127.0.0.1 6688.eu-api.swrve.com
 127.0.0.1 6696.eu-api.swrve.com
-127.0.0.1 eu-content.swrve.com
 127.0.0.1 eu-content.swrve.com
 127.0.0.1 6379.eu-content.swrve.com
 127.0.0.1 6384.eu-content.swrve.com
@@ -11612,33 +11654,21 @@
 127.0.0.1 actions-nj.taboola.com
 127.0.0.1 actions-sg.taboola.com
 127.0.0.1 am-match.taboola.com
-127.0.0.1 am-match.taboola.com
-127.0.0.1 am-sync.taboola.com
 127.0.0.1 am-sync.taboola.com
 127.0.0.1 am-trc-events.taboola.com
-127.0.0.1 am-trc-events.taboola.com
 127.0.0.1 am-vid-events.taboola.com
-127.0.0.1 am-vid-events.taboola.com
-127.0.0.1 am-wf.taboola.com
 127.0.0.1 am-wf.taboola.com
 127.0.0.1 api.taboola.com
 127.0.0.1 assets.taboola.com
-127.0.0.1 assets.taboola.com
 127.0.0.1 backstage.taboola.com
 127.0.0.1 beacon.taboola.com
-127.0.0.1 beacon.taboola.com
 127.0.0.1 c2.taboola.com
-127.0.0.1 c3.taboola.com
 127.0.0.1 c3.taboola.com
 127.0.0.1 cdn.taboola.com
 127.0.0.1 cds.taboola.com
 127.0.0.1 ch-match.taboola.com
-127.0.0.1 ch-match.taboola.com
-127.0.0.1 ch-sync.taboola.com
 127.0.0.1 ch-sync.taboola.com
 127.0.0.1 ch-vid-events.taboola.com
-127.0.0.1 ch-vid-events.taboola.com
-127.0.0.1 ch-wf.taboola.com
 127.0.0.1 ch-wf.taboola.com
 127.0.0.1 convchmp.taboola.com
 127.0.0.1 convhkmp.taboola.com
@@ -11646,12 +11676,8 @@
 127.0.0.1 convnjmp.taboola.com
 127.0.0.1 convsgmp.taboola.com
 127.0.0.1 hk-match.taboola.com
-127.0.0.1 hk-match.taboola.com
-127.0.0.1 hk-sync.taboola.com
 127.0.0.1 hk-sync.taboola.com
 127.0.0.1 hk-vid-events.taboola.com
-127.0.0.1 hk-vid-events.taboola.com
-127.0.0.1 hk-wf.taboola.com
 127.0.0.1 hk-wf.taboola.com
 127.0.0.1 images.taboola.com
 127.0.0.1 images-dl.taboola.com
@@ -11668,52 +11694,34 @@
 127.0.0.1 imprnjmp.taboola.com
 127.0.0.1 imprsgmp.taboola.com
 127.0.0.1 la-match.taboola.com
-127.0.0.1 la-match.taboola.com
-127.0.0.1 la-sync.taboola.com
 127.0.0.1 la-sync.taboola.com
 127.0.0.1 la-trc.taboola.com
 127.0.0.1 la-trc-events.taboola.com
-127.0.0.1 la-trc-events.taboola.com
 127.0.0.1 la-vid-events.taboola.com
-127.0.0.1 la-vid-events.taboola.com
-127.0.0.1 la-wf.taboola.com
 127.0.0.1 la-wf.taboola.com
 127.0.0.1 match.taboola.com
 127.0.0.1 mb.taboola.com
 127.0.0.1 mpg.taboola.com
 127.0.0.1 nr.taboola.com
 127.0.0.1 nr-events.taboola.com
-127.0.0.1 nr-events.taboola.com
 127.0.0.1 opps.taboola.com
 127.0.0.1 pages.taboola.com
 127.0.0.1 popup.taboola.com
 127.0.0.1 resources.taboola.com
 127.0.0.1 sg-match.taboola.com
-127.0.0.1 sg-match.taboola.com
-127.0.0.1 sg-sync.taboola.com
 127.0.0.1 sg-sync.taboola.com
 127.0.0.1 sg-trc-events.taboola.com
-127.0.0.1 sg-trc-events.taboola.com
-127.0.0.1 sg-vid-events.taboola.com
 127.0.0.1 sg-vid-events.taboola.com
 127.0.0.1 sg-wf.taboola.com
-127.0.0.1 sg-wf.taboola.com
 127.0.0.1 sync.taboola.com
-127.0.0.1 sync.taboola.com
-127.0.0.1 sync-t1.taboola.com
 127.0.0.1 sync-t1.taboola.com
 127.0.0.1 tracking.taboola.com
 127.0.0.1 trc.taboola.com
 127.0.0.1 timeinc.trc.taboola.com
 127.0.0.1 trc-events.taboola.com
-127.0.0.1 trc-events.taboola.com
-127.0.0.1 us-match.taboola.com
 127.0.0.1 us-match.taboola.com
 127.0.0.1 us-sync.taboola.com
-127.0.0.1 us-sync.taboola.com
 127.0.0.1 us-vid-events.taboola.com
-127.0.0.1 us-vid-events.taboola.com
-127.0.0.1 us-wf.taboola.com
 127.0.0.1 us-wf.taboola.com
 127.0.0.1 vidanalytics.taboola.com
 127.0.0.1 vidstat.taboola.com
@@ -11736,13 +11744,10 @@
 # [tagcommander.com]
 127.0.0.1 cdn.tagcommander.com
 127.0.0.1 serverside4285.tagcommander.com
-127.0.0.1 serverside4285.tagcommander.com
 
 # [tagsrvcs.com]
 127.0.0.1 s.tagsrvcs.com
 127.0.0.1 static.tagsrvcs.com
-127.0.0.1 static.tagsrvcs.com
-127.0.0.1 tracker.tagsrvcs.com
 127.0.0.1 tracker.tagsrvcs.com
 
 # [tagular.com]
@@ -11750,14 +11755,11 @@
 
 # [tailtarget.com]
 127.0.0.1 t.tailtarget.com
-127.0.0.1 t.tailtarget.com
-127.0.0.1 cm.t.tailtarget.com
 127.0.0.1 cm.t.tailtarget.com
 127.0.0.1 tags.t.tailtarget.com
 
 # [talkingdata.net]
 127.0.0.1 gaandroid.talkingdata.net
-127.0.0.1 tdcv3.talkingdata.net
 127.0.0.1 tdcv3.talkingdata.net
 
 # [talkspace.com]
@@ -11772,8 +11774,6 @@
 # [tanx.com]
 127.0.0.1 tanx.com
 127.0.0.1 advertisement.tanx.com
-127.0.0.1 advertisement.tanx.com
-127.0.0.1 wagbridge.advertisement.tanx.com
 127.0.0.1 wagbridge.advertisement.tanx.com
 127.0.0.1 na61-na62.wagbridge.advertisement.tanx.com
 127.0.0.1 na61-na62-st3.wagbridge.advertisement.tanx.com
