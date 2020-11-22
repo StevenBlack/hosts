@@ -1,14 +1,11 @@
-FROM debian:stretch-backports
-RUN apt-get update && apt-get install -y python3-lxml dnsmasq python3-requests && rm -rf /var/lib/apt/lists/*
-WORKDIR /tmp/app
-ARG ADBLOCK_IP
+FROM python:3
 
-#COPY ./requirements.txt /tmp/app/requirements.txt
-#RUN pip3 install -r requirements.txt
+WORKDIR /usr/src
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+RUN git clone --depth 1 https://github.com/StevenBlack/hosts.git
+WORKDIR /usr/src/hosts
 
-COPY ./ /tmp/app
-RUN python3 updateHostsFile.py --ip ${ADBLOCK_IP} -a -n -s -e fakenews -e gambling --blacklist blacklist -o /tmp/app -b
-
-EXPOSE 53/udp
-ENTRYPOINT ["/usr/sbin/dnsmasq", "--no-daemon", "--addn-hosts=/tmp/app/hosts"]
-
+# Now you launch this with
+#  $ docker build ./
+#  $ docker run -it (containerid) bash

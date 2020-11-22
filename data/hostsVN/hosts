@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 13 Oct 2020 16:13 UTC+7
-# Version: 2010131613
-# Blocked: 1,443 domains
+# Last modified: 18 Nov 2020 10:20 UTC+7
+# Version: 2011181020
+# Blocked: 1,458 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -86,8 +86,6 @@
 0.0.0.0 b.logging.admicro.vn
 0.0.0.0 banners.admicro.vn
 0.0.0.0 benk.logging.admicro.vn
-0.0.0.0 beta.admicro.vn
-0.0.0.0 beta.sspapi.admicro.vn
 0.0.0.0 bi.admicro.vn
 0.0.0.0 boxapp.admicro.vn
 0.0.0.0 boxpr.admicro.vn
@@ -512,7 +510,6 @@
 0.0.0.0 interactive.brand.zing.vn
 0.0.0.0 media.brand.zing.vn
 0.0.0.0 notify.brand.zing.vn
-0.0.0.0 staging-ads-dashboard.brand.zing.vn
 0.0.0.0 stc.interactive.brand.zing.vn
 0.0.0.0 streaming.interactive.brand.zing.vn
 0.0.0.0 zevent.brand.zing.vn
@@ -535,11 +532,12 @@
 0.0.0.0 zminer.zaloapp.com
 0.0.0.0 ztevents.zaloapp.com
 #[zadn.vn]
+0.0.0.0 adtima-common.zadn.vn
 0.0.0.0 adtima-media-td.zadn.vn
 0.0.0.0 adtima-media.zadn.vn
 0.0.0.0 adtima-static-td.zadn.vn
 0.0.0.0 adtima-static.zadn.vn
-0.0.0.0 adtima-common.zadn.vn
+0.0.0.0 api.sdk.zadn.vn
 0.0.0.0 log.sdk.zadn.vn
 0.0.0.0 zalo-ads-240-td.zadn.vn
 0.0.0.0 zalo-ads-240.zadn.vn
@@ -678,7 +676,6 @@
 0.0.0.0 uptime.adpia.vn
 0.0.0.0 www.adpia.vn
 #[younetmedia.com]
-0.0.0.0 beta.younetmedia.com
 0.0.0.0 digital.younetmedia.com
 0.0.0.0 facebookid.younetmedia.com
 0.0.0.0 gandalf.younetmedia.com
@@ -784,7 +781,6 @@
 0.0.0.0 sg.cityads.com
 0.0.0.0 tinkoff.cityads.com
 0.0.0.0 us-geo.cityads.com
-0.0.0.0 userdocs.cityads.com
 0.0.0.0 wp-cdn.cityads.com
 0.0.0.0 www.cityads.com
 0.0.0.0 cityadstrack.com
@@ -795,7 +791,6 @@
 0.0.0.0 adsota.com
 0.0.0.0 agency.adsota.com
 0.0.0.0 app.adsota.com
-0.0.0.0 dashboard.adsota.com
 0.0.0.0 highlandscoffee.adsota.com
 0.0.0.0 static.adsota.com
 0.0.0.0 track.adsota.com
@@ -803,8 +798,6 @@
 #[masoffer.net]
 0.0.0.0 api.app.masoffer.net
 0.0.0.0 app.masoffer.net
-0.0.0.0 beta-go.masoffer.net
-0.0.0.0 beta.go.masoffer.net
 0.0.0.0 cdn.masoffer.net
 0.0.0.0 img.masoffer.net
 0.0.0.0 m.masoffer.net
@@ -1176,8 +1169,6 @@
 0.0.0.0 schemas.adflex.vn
 0.0.0.0 sdk.adflex.vn
 0.0.0.0 static2.adflex.vn
-0.0.0.0 status.adflex.vn
-0.0.0.0 status-cpo.adflex.vn
 0.0.0.0 tmp.adflex.vn
 0.0.0.0 track.adflex.vn
 0.0.0.0 tracking.adflex.vn
@@ -1279,7 +1270,6 @@
 #[oncustomer.asia]
 0.0.0.0 api-internal.oncustomer.asia
 0.0.0.0 app.oncustomer.asia
-0.0.0.0 beta.oncustomer.asia
 0.0.0.0 company.oncustomer.asia
 0.0.0.0 hook.oncustomer.asia
 0.0.0.0 livechat.oncustomer.asia
@@ -1291,7 +1281,6 @@
 0.0.0.0 widget.oncustomer.asia
 0.0.0.0 widget-1.oncustomer.asia
 0.0.0.0 widget-2.oncustomer.asia
-0.0.0.0 widget-beta.oncustomer.asia
 #[pushtimize.com]
 0.0.0.0 adv.pushtimize.com
 0.0.0.0 cdn01.pushtimize.com
@@ -1300,12 +1289,28 @@
 #[anymind360.com]
 0.0.0.0 anymind360.com
 0.0.0.0 stg.anymind360.com
+#[smartconvert.co]
+0.0.0.0 cworth.smartconvert.co
+0.0.0.0 growth.smartconvert.co
+0.0.0.0 plo.smartconvert.co
+0.0.0.0 promo.smartconvert.co
+0.0.0.0 promo-stage.smartconvert.co
+0.0.0.0 promo-staging.smartconvert.co
+0.0.0.0 promo-v2.smartconvert.co
+0.0.0.0 recsite.smartconvert.co
+0.0.0.0 site-dev.smartconvert.co
+0.0.0.0 smartconvert.co
+0.0.0.0 st.smartconvert.co
+0.0.0.0 worth.smartconvert.co
+0.0.0.0 wsite.smartconvert.co
+0.0.0.0 www.smartconvert.co
 # --- Block adsVN ---
 0.0.0.0 703531862.vws.vegacdn.vn
 0.0.0.0 ad-admin.vnay.vn
 0.0.0.0 ad.24h.com.vn
 0.0.0.0 ad.accesstrade.vn
 0.0.0.0 ad.icheck.com.vn
+0.0.0.0 ad.lapa.pub
 0.0.0.0 ad.mwork.vn
 0.0.0.0 ad.qtcs.com.vn
 0.0.0.0 ad.sunflower.vn
@@ -1385,6 +1390,7 @@
 0.0.0.0 crocopop.com
 0.0.0.0 delecpuzz.com
 0.0.0.0 delivery.senvangvn.com
+0.0.0.0 delivery.vtc.vn
 0.0.0.0 delivery.vtcnew.com.vn
 0.0.0.0 deltago.com
 0.0.0.0 demopage.me
@@ -1438,6 +1444,7 @@
 0.0.0.0 vietdorje.com
 0.0.0.0 vinaads.vn
 0.0.0.0 vnd247.vn
+0.0.0.0 vtvcab.xyz
 0.0.0.0 widget.headlines.pw
 0.0.0.0 www.adsweb.vn
 0.0.0.0 www.adt.com.vn
@@ -1453,7 +1460,9 @@
 0.0.0.0 www.sbbanner.com
 0.0.0.0 www.vietbuzzad.com
 0.0.0.0 www.vietdorje.com
+0.0.0.0 www.vtvcab.xyz
 # --- Block trackingVN ---
+0.0.0.0 addlog.thuvienphapluat.vn
 0.0.0.0 admin.phunusuckhoe.vn
 0.0.0.0 alexajstrack.com
 0.0.0.0 analytics.bkav.com
@@ -1471,6 +1480,7 @@
 0.0.0.0 elogs.vnexpress.net
 0.0.0.0 event.headlines.pw
 0.0.0.0 event.vntoday.news
+0.0.0.0 fa.fpt.shop
 0.0.0.0 follow.vnay.vn
 0.0.0.0 hit.123c.vn
 0.0.0.0 invite.baomoi.com
@@ -1480,6 +1490,7 @@
 0.0.0.0 log.baodatviet.vn
 0.0.0.0 log.baodauthau.vn
 0.0.0.0 log.baomoi.com
+0.0.0.0 log.baonghean.vn
 0.0.0.0 log.baophapluat.vn
 0.0.0.0 log.batdongsan.com.vn
 0.0.0.0 log.daidoanket.vn
@@ -1498,6 +1509,7 @@
 0.0.0.0 log.vietnamdaily.net.vn
 0.0.0.0 log.vietnamfinance.vn
 0.0.0.0 log.vietnamplus.vn
+0.0.0.0 log.viettimes.vn
 0.0.0.0 log.vnay.vn
 0.0.0.0 log.vntoday.news
 0.0.0.0 log.vov.vn
@@ -1529,17 +1541,21 @@
 0.0.0.0 thongke.24h.com.vn
 0.0.0.0 thongke.baotintuc.vn
 0.0.0.0 thongke99.baogiaothong.vn
+0.0.0.0 tka.tiki.vn
 0.0.0.0 track-srv.vietnamnet.vn
 0.0.0.0 track.accesstrade.vn
 0.0.0.0 track.icheck.com.vn
+0.0.0.0 track.lapa.pub
 0.0.0.0 track.pregmomvietnam.com
 0.0.0.0 track.sendo.vn
+0.0.0.0 tracker.bongngo.store
 0.0.0.0 tracker.phunuvagiadinh.vn
 0.0.0.0 tracker.tintucvietnam.vn
 0.0.0.0 tracking.appwifi.com
 0.0.0.0 tracking.dantri.com.vn
 0.0.0.0 tracking.vht.com.vn
 0.0.0.0 tracking.vietbao.vn
+0.0.0.0 tracking.vtc.vn
 0.0.0.0 tracking.vtcnew.com.vn
 0.0.0.0 trackingapi.foody.vn
 0.0.0.0 trackity.tiki.vn
