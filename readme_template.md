@@ -63,7 +63,28 @@ folder tree, where you will find the data for `fakenews`, `social`, `gambling`, 
 
 ## Generate your own unified hosts file
 
-To generate your own unified hosts file you will need Python 3.5 or later.
+You have two options to generate your own hosts file.  You can do it in your own environment, or within a Docker container.  We'll cover Docker first because it's a short section.
+
+### Option 1: Generate in a Docker container
+
+We provide a [Dockerfile](https://github.com/StevenBlack/hosts/blob/master/Dockerfile) that you can use to create a Docker container with everything you need.
+The container will contain Python 3 and all its dependency requirements, and a copy of the latest version of this repository.
+
+Build the Docker container like this:
+
+```
+docker build ./
+```
+
+Access the terminal like this:
+
+```
+docker run -it (containerid) bash
+```
+
+### Option 2: Generate it in your own environment.
+
+To generate your own amalgamated hosts files you will need Python 3.5 or later.
 
 First, install the dependencies with:
 
@@ -73,7 +94,9 @@ pip3 install --user -r requirements.txt
 
 **Note** we recommend the `--user` flag which installs the required dependencies at the user level. More information about it can be found on pip [documentation](https://pip.pypa.io/en/stable/reference/pip_install/?highlight=--user#cmdoption-user).
 
-To run unit tests, in the top-level directory, run:
+### Common steps regardless of your development environment.
+
+To **run unit tests**, in the top-level directory, run:
 
 ```sh
 python3 testUpdateHostsFile.py
@@ -83,10 +106,6 @@ The `updateHostsFile.py` script will generate a unified hosts file based on the 
 local `data/` subfolder.  The script will prompt you whether it should fetch updated versions
 (from locations defined by the `update.json` text file in each source's folder). Otherwise, it
 will use the `hosts` file that's already there.
-
-### Usage
-
-#### Using Python 3:
 
 ```sh
 python3 updateHostsFile.py [--auto] [--replace] [--ip nnn.nnn.nnn.nnn] [--extensions ext1 ext2 ext3]
