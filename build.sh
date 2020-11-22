@@ -4,7 +4,7 @@ ADBLOCK_IP=${DOCKER_ADBLOCK_IP:-"0.0.0.0"}
 echo "Using DOCKER_ADBLOCK_IP ${ADBLOCK_IP}"
 
 echo "* Building container, with source-code generated above"
-docker build --build-arg "ADBLOCK_IP=$ADBLOCK_IP" -t dnsmasq:latest -f Dockerfile .
+docker build --build-arg "ADBLOCK_IP=$ADBLOCK_IP" -t dnsmasq:latest -f Dockerfile-mj .
 
 echo "* Deploying new container"
 docker stop dnsmasq 
