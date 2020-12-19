@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 09 Dec 2020 10:42 UTC+7
-# Version: 2012091042
-# Blocked: 1,476 domains
+# Last modified: 19 Dec 2020 19:49 UTC+7
+# Version: 2012191949
+# Blocked: 1,492 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -256,23 +256,27 @@
 #[coccoc]
 0.0.0.0 ads-target.coccoc.com
 0.0.0.0 banners-gallery.coccoc.com
-0.0.0.0 catalog.qc.coccoc.com
 0.0.0.0 cdn-qc.coccoc.com
 0.0.0.0 cdn.comedia.coccoc.com
+0.0.0.0 metrics.coccoc.com
+0.0.0.0 nt-cdn.coccoc.com
+0.0.0.0 qc-static.coccoc.com
+0.0.0.0 shop-cdn.coccoc.com
+0.0.0.0 shopping.coccoc.com
+#[qc.coccoc.com]
+0.0.0.0 catalog.qc.coccoc.com
 0.0.0.0 cdn.qc.coccoc.com
 0.0.0.0 context.qc.coccoc.com
 0.0.0.0 cp.qc.coccoc.com
 0.0.0.0 display.qc.coccoc.com
-0.0.0.0 metrics.coccoc.com
-0.0.0.0 nt-cdn.coccoc.com
 0.0.0.0 ntrb.qc.coccoc.com
-0.0.0.0 qc-static.coccoc.com
 0.0.0.0 qc.coccoc.com
 0.0.0.0 searcher.qc.coccoc.com
-0.0.0.0 shop-cdn.coccoc.com
-0.0.0.0 shopping.coccoc.com
-0.0.0.0 qccoccocmedia.vn
+0.0.0.0 ssp.qc.coccoc.com
+#[qc.coccoc.vn]
 0.0.0.0 qc.coccoc.vn
+0.0.0.0 qccoccocmedia.vn
+#[itim.vn]
 0.0.0.0 itim.vn
 0.0.0.0 spell.itim.vn
 #[rungrinh.vn]
@@ -389,6 +393,15 @@
 0.0.0.0 retg.ambient-platform.com
 0.0.0.0 static.ambient-platform.com
 0.0.0.0 www.ambient-platform.com
+#[ambientdsp.com]
+0.0.0.0 ambientdsp.com
+0.0.0.0 clk.ambientdsp.com
+0.0.0.0 cm.ambientdsp.com
+0.0.0.0 imp.ambientdsp.com
+0.0.0.0 metrics.ambientdsp.com
+0.0.0.0 static.ambientdsp.com
+0.0.0.0 trk.ambientdsp.com
+0.0.0.0 www.ambientdsp.com
 #[ants.vn]
 0.0.0.0 a.ants.vn
 0.0.0.0 abs.ants.vn
@@ -1338,6 +1351,7 @@
 0.0.0.0 admin.sothuchi.vn
 0.0.0.0 adpostback.headlines.pw
 0.0.0.0 ads-cdn.fptplay.net
+0.0.0.0 ads.1thegioi.vn
 0.0.0.0 ads.baodatviet.vn
 0.0.0.0 ads.baotainguyenmoitruong.vn
 0.0.0.0 ads.bkitsoftware.com
@@ -1346,15 +1360,20 @@
 0.0.0.0 ads.home.vn
 0.0.0.0 ads.ictnews.vn
 0.0.0.0 ads.khoahocdoisong.vn
+0.0.0.0 ads.kiemsat.vn
+0.0.0.0 ads.lamchame.vn
+0.0.0.0 ads.laodongnghean.vn
 0.0.0.0 ads.nghenhinvietnam.vn
 0.0.0.0 ads.phunuonline.com.vn
 0.0.0.0 ads.phunusuckhoe.vn
 0.0.0.0 ads.phunuvagiadinh.vn
 0.0.0.0 ads.thegioitiepthi.vn
 0.0.0.0 ads.thesaigontimes.vn
+0.0.0.0 ads.thitruongtaichinhtiente.vn
 0.0.0.0 ads.tiki.vn
 0.0.0.0 ads.vietbao.vn
 0.0.0.0 ads.vkool.info
+0.0.0.0 ads.vovlive.vn
 0.0.0.0 ads.xemphimso.com
 0.0.0.0 ads1.careerbuilder.vn
 0.0.0.0 adserver.lag.vn
@@ -1393,6 +1412,7 @@
 0.0.0.0 bgadx.com
 0.0.0.0 boxpr.aiservice.vn
 0.0.0.0 cdn-ads.thesaigontimes.vn
+0.0.0.0 cdn2.cache.vn
 0.0.0.0 cdnasset.dantri.com.vn
 0.0.0.0 chiasephim.xyz
 0.0.0.0 click-ads.saoteen.net
