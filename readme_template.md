@@ -444,6 +444,8 @@ devices under a variety of operating systems.
 
 * [dnsmasq conversion script](https://gist.github.com/erlepereira/c11f4f7a3f60cd2071e79018e895fc8a#file-dnsmasq-antimalware) This GitHub gist has a short shell script (bash, will work on any 'nix) and uses `wget` & `awk` present in most distros, to fetch a specified hosts file and convert it the format required by dnsmasq. Supports IPv4 and IPv6. Designed to be used as either a shell script, or can be dropped into /etc/cron.weekly (or wherever suits). The script is short and easily edited, also has a short document attached with notes on dnsmasq setup.
 
+* [BlackHosts - Command Line Installer/Updater](https://github.com/Lateralus138/blackhosts) This is a cross-platform command line utility to help install/update hosts files found at this repository.
+
 ## Contribute!
 
 Please read our [Contributing Guide](https://github.com/StevenBlack/hosts/blob/master/contributing.md). Among other things, this explains how we organize files and folders in this repository.
