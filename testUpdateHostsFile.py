@@ -1512,7 +1512,7 @@ class DomainToIDNA(Base):
 
             self.assertEqual(actual, expected)
 
-        # Test with multiple space as seprator of domain and space and
+        # Test with multiple space as separator of domain and space and
         # tabulation as separator or comments.
         for i in range(len(self.domains)):
             data = (b"0.0.0.0     " + self.domains[i] + b" \t # Hello World").decode(
@@ -1524,7 +1524,7 @@ class DomainToIDNA(Base):
 
             self.assertEqual(actual, expected)
 
-        # Test with multiple tabulations as seprator of domain and space and
+        # Test with multiple tabulations as separator of domain and space and
         # tabulation as separator or comments.
         for i in range(len(self.domains)):
             data = (b"0.0.0.0\t\t\t" + self.domains[i] + b" \t # Hello World").decode(
