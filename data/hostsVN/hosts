@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 30 Dec 2020 20:43 UTC+7
-# Version: 2012302043
-# Blocked: 1,509 domains
+# Last modified: 03 Jan 2021 19:22 UTC+7
+# Version: 2101031922
+# Blocked: 1,499 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -599,29 +599,6 @@
 0.0.0.0 wakeup.klick.vn
 0.0.0.0 wakeup247.klick.vn
 0.0.0.0 www.klick.vn
-#[cokhach.com]
-0.0.0.0 admin.cokhach.com
-0.0.0.0 c.cokhach.com
-0.0.0.0 cokhach.com
-0.0.0.0 w.cokhach.com
-0.0.0.0 www.cokhach.com
-#[fff.com.vn]
-0.0.0.0 a.fff.com.vn
-0.0.0.0 admin.fff.com.vn
-0.0.0.0 client.fff.com.vn
-0.0.0.0 crm.fff.com.vn
-0.0.0.0 chanclickao.fff.com.vn
-0.0.0.0 chat.fff.com.vn
-0.0.0.0 f.fff.com.vn
-0.0.0.0 fb.fff.com.vn
-0.0.0.0 fff.com.vn
-0.0.0.0 files.fff.com.vn
-0.0.0.0 hmt.fff.com.vn
-0.0.0.0 khachhang.fff.com.vn
-0.0.0.0 report.fff.com.vn
-0.0.0.0 tracking.fff.com.vn
-0.0.0.0 ws.fff.com.vn
-0.0.0.0 www.fff.com.vn
 #[ladipage.vn]
 0.0.0.0 api.ladipage.vn
 0.0.0.0 builder.ladipage.vn
@@ -648,6 +625,9 @@
 0.0.0.0 v.ladicdn.com
 0.0.0.0 w.ladicdn.com
 0.0.0.0 www.ladicdn.com
+#[ladisales.com]
+0.0.0.0 api.ladisales.com
+0.0.0.0 ladisales.com
 #[ezimar.com]
 0.0.0.0 caohavan.ezimar.com
 0.0.0.0 ezdns.ezimar.com
@@ -824,17 +804,9 @@
 0.0.0.0 phanquang.vn
 0.0.0.0 quangcao.phanquang.vn
 0.0.0.0 www.phanquang.vn
-#[laydata.com]
-0.0.0.0 api.laydata.com
-0.0.0.0 cms.laydata.com
-0.0.0.0 databox.laydata.com
-0.0.0.0 facefone.laydata.com
-0.0.0.0 laydata.com
-0.0.0.0 www.laydata.com
 #[ohchat.net]
 0.0.0.0 ohchat.net
 0.0.0.0 app.ohchat.net
-0.0.0.0 hostmaster.ohchat.net
 0.0.0.0 www.ohchat.net
 #[mediaz.vn]
 0.0.0.0 adwords.mediaz.vn
@@ -1337,6 +1309,7 @@
 0.0.0.0 images.kabbmedia.com
 0.0.0.0 kabbmedia.com
 # --- Block adsVN ---
+0.0.0.0 5734a40f2d.vws.vegacdn.vn
 0.0.0.0 703531862.vws.vegacdn.vn
 0.0.0.0 ad-admin.vnay.vn
 0.0.0.0 ad.24h.com.vn
@@ -1382,10 +1355,12 @@
 0.0.0.0 ads.vietbao.vn
 0.0.0.0 ads.vkool.info
 0.0.0.0 ads.vovlive.vn
+0.0.0.0 ads.xedoisong.vn
 0.0.0.0 ads.xemphimso.com
 0.0.0.0 ads1.careerbuilder.vn
 0.0.0.0 adserver.lag.vn
 0.0.0.0 adserver.luzu.vn
+0.0.0.0 adserver.trangphim.net
 0.0.0.0 adsgo.nhipcaudautu.vn
 0.0.0.0 adsplus.vn
 0.0.0.0 adsv2.autodaily.vn
@@ -1398,6 +1373,7 @@
 0.0.0.0 advserver.cgv.vn
 0.0.0.0 adx.baolongan.vn
 0.0.0.0 adx.edutimes.com.vn
+0.0.0.0 adx.hongtinnhanh.com
 0.0.0.0 adx.kul.vn
 0.0.0.0 adx.xemvtv.net
 0.0.0.0 affiliate.k4.tinhte.vn
@@ -1418,6 +1394,7 @@
 0.0.0.0 banner.5giay.vn
 0.0.0.0 banner.vietnamfinance.vn
 0.0.0.0 bgadx.com
+0.0.0.0 bluemaulpuffs.com
 0.0.0.0 boxpr.aiservice.vn
 0.0.0.0 cdn-ads.thesaigontimes.vn
 0.0.0.0 cdn2.cache.vn
@@ -1435,7 +1412,9 @@
 0.0.0.0 delivery.vtcnew.com.vn
 0.0.0.0 deltago.com
 0.0.0.0 demopage.me
+0.0.0.0 deqik.com
 0.0.0.0 dt.vnecdn.com
+0.0.0.0 duamilsyr.com
 0.0.0.0 ff.imacdn.com
 0.0.0.0 financial-agent.headlines.pw
 0.0.0.0 fptad.com
@@ -1461,6 +1440,7 @@
 0.0.0.0 qcv5.blogtruyen.vn
 0.0.0.0 quangcao.24h.com.vn
 0.0.0.0 quangcao.baovannghe.com.vn
+0.0.0.0 quangcao.fff.com.vn
 0.0.0.0 quangcao.thanhnien.vn
 0.0.0.0 quangcao.tuoitre.vn
 0.0.0.0 quangcao247.com.vn
@@ -1517,6 +1497,7 @@
 0.0.0.0 analytics.easyvideo.vn
 0.0.0.0 analytics.explus.vn
 0.0.0.0 analytics.hub-js.com
+0.0.0.0 analytics.nhattao.com
 0.0.0.0 analytics.sohatv.vn
 0.0.0.0 analytics.thethao247.org
 0.0.0.0 analytics.tiki.vn
@@ -1526,7 +1507,8 @@
 0.0.0.0 apl.headlines.pw
 0.0.0.0 clientinfo.phimmoizz.net
 0.0.0.0 counter.ntdvn.com
-0.0.0.0 deqik.com
+0.0.0.0 crm.bizfly.vn
+0.0.0.0 crmbizfly.todo.vn
 0.0.0.0 elogs.vnexpress.net
 0.0.0.0 event.headlines.pw
 0.0.0.0 event.vntoday.news
@@ -1566,6 +1548,7 @@
 0.0.0.0 log.vnay.vn
 0.0.0.0 log.vntoday.news
 0.0.0.0 log.vov.vn
+0.0.0.0 log.zamba.vn
 0.0.0.0 log4x.nixcdn.com
 0.0.0.0 logg4u.cnnd.vn
 0.0.0.0 logging.galaxypub.vn
@@ -1583,6 +1566,7 @@
 0.0.0.0 s.tuoitre.vn
 0.0.0.0 sharefb.cnnd.vn
 0.0.0.0 stat.headlines.pw
+0.0.0.0 static.accesstrade.vn
 0.0.0.0 static.subiz.com
 0.0.0.0 staticad.thethao247.vn
 0.0.0.0 statistics.vov.vn
@@ -1610,6 +1594,8 @@
 0.0.0.0 tracking.appwifi.com
 0.0.0.0 tracking.dantri.com.vn
 0.0.0.0 tracking.fado.vn
+0.0.0.0 tracking.fff.com.vn
+0.0.0.0 tracking.hongtinnhanh.com
 0.0.0.0 tracking.vht.com.vn
 0.0.0.0 tracking.vietbao.vn
 0.0.0.0 tracking.vtc.vn
@@ -1622,6 +1608,8 @@
 0.0.0.0 userstats.shopee.vn
 0.0.0.0 vn.alexajstrack.com
 0.0.0.0 vtrack.vht.com.vn
+0.0.0.0 webpush.bizfly.vn
+0.0.0.0 webpush.todo.vn
 0.0.0.0 widget.sbz.vn
 0.0.0.0 widget.subiz.xyz
 # --- Block scamVN ---
