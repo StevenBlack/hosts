@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 03 Jan 2021 19:22 UTC+7
-# Version: 2101031922
-# Blocked: 1,499 domains
+# Last modified: 12 Jan 2021 15:01 UTC+7
+# Version: 2101121501
+# Blocked: 1,538 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -265,6 +265,10 @@
 0.0.0.0 qc.coccoc.com
 0.0.0.0 searcher.qc.coccoc.com
 0.0.0.0 ssp.qc.coccoc.com
+#[takataka.coccoc.com]
+0.0.0.0 cdn.takataka.coccoc.com
+0.0.0.0 searcher.takataka.coccoc.com
+0.0.0.0 takataka.coccoc.com
 #[qc.coccoc.vn]
 0.0.0.0 qc.coccoc.vn
 0.0.0.0 qccoccocmedia.vn
@@ -531,6 +535,7 @@
 0.0.0.0 px.za.zaloapp.com
 0.0.0.0 static-ads.zaloapp.com
 0.0.0.0 stats.zaloapp.com
+0.0.0.0 trk-pcweb.api.zaloapp.com
 0.0.0.0 wg.zaloapp.com
 0.0.0.0 zminer.zaloapp.com
 0.0.0.0 ztevents.zaloapp.com
@@ -1179,7 +1184,6 @@
 0.0.0.0 pushdi.com
 0.0.0.0 api.pushdi.com
 0.0.0.0 sdk.pushdi.com
-0.0.0.0 d2ox6x0y9xhicd.cloudfront.net
 #[ad*.24hstatic.com]
 0.0.0.0 24h-ad.24hstatic.com
 0.0.0.0 24h-ipad-ad.24hstatic.com
@@ -1308,6 +1312,23 @@
 0.0.0.0 delivery.kabbmedia.com
 0.0.0.0 images.kabbmedia.com
 0.0.0.0 kabbmedia.com
+#[testcentre.vn]
+0.0.0.0 k8s2.testcentre.vn
+0.0.0.0 testcentre.vn
+#[subiz-cdn.com]
+0.0.0.0 public-gcs.subiz-cdn.com
+0.0.0.0 subiz-cdn.com
+0.0.0.0 www.subiz-cdn.com
+#[piads.vn]
+0.0.0.0 api.piads.vn
+0.0.0.0 piads.vn
+0.0.0.0 static.piads.vn
+#[adnet.vn]
+0.0.0.0 adnet.vn
+0.0.0.0 s0.adnet.vn
+0.0.0.0 services.adnet.vn
+0.0.0.0 widget.adnet.vn
+0.0.0.0 www.adnet.vn
 # --- Block adsVN ---
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
 0.0.0.0 703531862.vws.vegacdn.vn
@@ -1321,9 +1342,11 @@
 0.0.0.0 ad.sunflower.vn
 0.0.0.0 ad.vkool.net
 0.0.0.0 adadmin.headlines.pw
+0.0.0.0 adapi.tuyensinh247.com
 0.0.0.0 adc.quantrimang.com
 0.0.0.0 adchoice.com
 0.0.0.0 adclient.vietnamnetjsc.vn
+0.0.0.0 addtop.trangvangvietnam.com
 0.0.0.0 adfox.vn
 0.0.0.0 adjusts.info
 0.0.0.0 adm.phunuvagiadinh.vn
@@ -1332,6 +1355,7 @@
 0.0.0.0 adpostback.headlines.pw
 0.0.0.0 ads-cdn.fptplay.net
 0.0.0.0 ads.1thegioi.vn
+0.0.0.0 ads.baoangiang.com.vn
 0.0.0.0 ads.baobinhduong.vn
 0.0.0.0 ads.baodatviet.vn
 0.0.0.0 ads.baotainguyenmoitruong.vn
@@ -1340,6 +1364,7 @@
 0.0.0.0 ads.fptplay.net.vn
 0.0.0.0 ads.home.vn
 0.0.0.0 ads.ictnews.vn
+0.0.0.0 ads.itsgroup.vn
 0.0.0.0 ads.khoahocdoisong.vn
 0.0.0.0 ads.kiemsat.vn
 0.0.0.0 ads.lamchame.vn
@@ -1372,10 +1397,12 @@
 0.0.0.0 advertisement-nhatanh.com
 0.0.0.0 advserver.cgv.vn
 0.0.0.0 adx.baolongan.vn
+0.0.0.0 adx.chinmedia.vn
 0.0.0.0 adx.edutimes.com.vn
 0.0.0.0 adx.hongtinnhanh.com
 0.0.0.0 adx.kul.vn
 0.0.0.0 adx.xemvtv.net
+0.0.0.0 adx.xtv.vn
 0.0.0.0 affiliate.k4.tinhte.vn
 0.0.0.0 ailamtrieuphu.com
 0.0.0.0 ak9.6895588.com
@@ -1392,6 +1419,7 @@
 0.0.0.0 avoadsservices.com
 0.0.0.0 banhtv.org
 0.0.0.0 banner.5giay.vn
+0.0.0.0 banner.trangvangvietnam.com
 0.0.0.0 banner.vietnamfinance.vn
 0.0.0.0 bgadx.com
 0.0.0.0 bluemaulpuffs.com
@@ -1437,6 +1465,7 @@
 0.0.0.0 phimmedia03.com
 0.0.0.0 polyad.galaxypub.vn
 0.0.0.0 qc.designervn.net
+0.0.0.0 qc.itsgroup.vn
 0.0.0.0 qcv5.blogtruyen.vn
 0.0.0.0 quangcao.24h.com.vn
 0.0.0.0 quangcao.baovannghe.com.vn
@@ -1488,6 +1517,7 @@
 0.0.0.0 www.vietdorje.com
 0.0.0.0 www.vtvcab.xyz
 # --- Block trackingVN ---
+0.0.0.0 a.vtvdigital.vn
 0.0.0.0 addlog.thuvienphapluat.vn
 0.0.0.0 admin.phunusuckhoe.vn
 0.0.0.0 alexajstrack.com
@@ -1498,12 +1528,15 @@
 0.0.0.0 analytics.explus.vn
 0.0.0.0 analytics.hub-js.com
 0.0.0.0 analytics.nhattao.com
+0.0.0.0 analytics.rever.vn
 0.0.0.0 analytics.sohatv.vn
 0.0.0.0 analytics.thethao247.org
 0.0.0.0 analytics.tiki.vn
+0.0.0.0 analytics.viblo.asia
 0.0.0.0 analytics.videocloud.top
 0.0.0.0 analytics.vietnamfinance.vn
 0.0.0.0 analytics.vnreview.vn
+0.0.0.0 api.sbz.vn
 0.0.0.0 apl.headlines.pw
 0.0.0.0 clientinfo.phimmoizz.net
 0.0.0.0 counter.ntdvn.com
@@ -1526,6 +1559,7 @@
 0.0.0.0 log.baonghean.vn
 0.0.0.0 log.baophapluat.vn
 0.0.0.0 log.batdongsan.com.vn
+0.0.0.0 log.beecost.vn
 0.0.0.0 log.daidoanket.vn
 0.0.0.0 log.dantocmiennui.vn
 0.0.0.0 log.doanhnhan.vn
@@ -1534,6 +1568,7 @@
 0.0.0.0 log.kienthuc.net.vn
 0.0.0.0 log.ngaynay.vn
 0.0.0.0 log.nhipcaudautu.vn
+0.0.0.0 log.oto.com.vn
 0.0.0.0 log.sggp.org.vn
 0.0.0.0 log.tapchimattran.vn
 0.0.0.0 log.tapchitaichinh.vn
@@ -1541,11 +1576,13 @@
 0.0.0.0 log.theleader.vn
 0.0.0.0 log.tienphong.vn
 0.0.0.0 log.tinnhanhchungkhoan.vn
+0.0.0.0 log.tinxe.vn
 0.0.0.0 log.vietnamdaily.net.vn
 0.0.0.0 log.vietnamfinance.vn
 0.0.0.0 log.vietnamplus.vn
 0.0.0.0 log.viettimes.vn
 0.0.0.0 log.vnay.vn
+0.0.0.0 log.vnfinance.vn
 0.0.0.0 log.vntoday.news
 0.0.0.0 log.vov.vn
 0.0.0.0 log.zamba.vn
@@ -1564,7 +1601,9 @@
 0.0.0.0 s.kenh14.vn
 0.0.0.0 s.soha.vn
 0.0.0.0 s.tuoitre.vn
+0.0.0.0 sentry.mediacdn.vn
 0.0.0.0 sharefb.cnnd.vn
+0.0.0.0 st-a.vtvdigital.vn
 0.0.0.0 stat.headlines.pw
 0.0.0.0 static.accesstrade.vn
 0.0.0.0 static.subiz.com
@@ -1584,6 +1623,7 @@
 0.0.0.0 track-srv.vietnamnet.vn
 0.0.0.0 track.accesstrade.vn
 0.0.0.0 track.icheck.com.vn
+0.0.0.0 track.kyna.vn
 0.0.0.0 track.lapa.pub
 0.0.0.0 track.pregmomvietnam.com
 0.0.0.0 track.sendo.vn
@@ -1596,6 +1636,7 @@
 0.0.0.0 tracking.fado.vn
 0.0.0.0 tracking.fff.com.vn
 0.0.0.0 tracking.hongtinnhanh.com
+0.0.0.0 tracking.tinxe.vn
 0.0.0.0 tracking.vht.com.vn
 0.0.0.0 tracking.vietbao.vn
 0.0.0.0 tracking.vtc.vn
@@ -1611,6 +1652,7 @@
 0.0.0.0 webpush.bizfly.vn
 0.0.0.0 webpush.todo.vn
 0.0.0.0 widget.sbz.vn
+0.0.0.0 widget.subiz.net
 0.0.0.0 widget.subiz.xyz
 # --- Block scamVN ---
 0.0.0.0 bloodleian.club
@@ -1620,3 +1662,6 @@
 0.0.0.0 sacchaeleduk.com
 0.0.0.0 smilitygorb.club
 0.0.0.0 ucesreferre.club
+# --- Block popupVN ---
+0.0.0.0 h6o2z0pwx5ja7dwxn0wx4fhv7mp0qoladm8vj6do4h1c6gja8evrn6g5fixk.me
+0.0.0.0 m6pz5h8qi18jq1s7hjkytxn7sjc0zpxw5gks3vyk8dcxs2cstjgdxkp7t1eb.me
