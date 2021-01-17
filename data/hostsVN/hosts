@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 12 Jan 2021 15:01 UTC+7
-# Version: 2101121501
-# Blocked: 1,538 domains
+# Last modified: 15 Jan 2021 22:04 UTC+7
+# Version: 2101152204
+# Blocked: 1,566 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -231,18 +231,15 @@
 0.0.0.0 report.novaon.asia
 0.0.0.0 www.novaon.asia
 #[novaonx.com]
-0.0.0.0 novaonx.com
-0.0.0.0 accounts.novaonx.com
-0.0.0.0 crm.novaonx.com
-0.0.0.0 chatbot.novaonx.com
+0.0.0.0 api-ldp.novaonx.com
 0.0.0.0 chatbot-staging.novaonx.com
-0.0.0.0 chatbottudong.novaonx.com
+0.0.0.0 chatbot-tracking.novaonx.com
+0.0.0.0 chatbot.novaonx.com
 0.0.0.0 chatbotthoitrang.novaonx.com
-0.0.0.0 drone.novaonx.com
-0.0.0.0 git.novaonx.com
+0.0.0.0 chatbottudong.novaonx.com
 0.0.0.0 landingpage.novaonx.com
-0.0.0.0 novaonxsupport.novaonx.com
-0.0.0.0 registry.novaonx.com
+0.0.0.0 novaonx.com
+0.0.0.0 pub-dev.novaonx.com
 0.0.0.0 staging.novaonx.com
 0.0.0.0 www.novaonx.com
 #[coccoc]
@@ -793,8 +790,12 @@
 0.0.0.0 tr.masoffer.net
 0.0.0.0 www.masoffer.net
 #[autoads.asia]
+0.0.0.0 alpha2.autoads.asia
+0.0.0.0 alphaapi.autoads.asia
 0.0.0.0 api.autoads.asia
 0.0.0.0 autoads.asia
+0.0.0.0 betaapi.autoads.asia
+0.0.0.0 betacdn.autoads.asia
 0.0.0.0 cdn.autoads.asia
 0.0.0.0 fcd.autoads.asia
 0.0.0.0 file.autoads.asia
@@ -804,6 +805,32 @@
 0.0.0.0 tracking.autoads.asia
 0.0.0.0 www.autoads.asia
 0.0.0.0 xacthuc.autoads.asia
+#[onfluencer.net]
+0.0.0.0 alpha.onfluencer.net
+0.0.0.0 analytics.onfluencer.net
+0.0.0.0 beta.onfluencer.net
+0.0.0.0 hub.onfluencer.net
+0.0.0.0 iosalpha.onfluencer.net
+0.0.0.0 l.onfluencer.net
+0.0.0.0 onfluencer.net
+0.0.0.0 tracking.onfluencer.net
+0.0.0.0 www.onfluencer.net
+#[oncustomer.asia]
+0.0.0.0 api-internal-dev.oncustomer.asia
+0.0.0.0 api-internal.oncustomer.asia
+0.0.0.0 app.oncustomer.asia
+0.0.0.0 beta.oncustomer.asia
+0.0.0.0 hook.oncustomer.asia
+0.0.0.0 live-api.oncustomer.asia
+0.0.0.0 livechat.oncustomer.asia
+0.0.0.0 oncustomer.asia
+0.0.0.0 push.oncustomer.asia
+0.0.0.0 reports-api.oncustomer.asia
+0.0.0.0 webbot.oncustomer.asia
+0.0.0.0 widget-1.oncustomer.asia
+0.0.0.0 widget-2.oncustomer.asia
+0.0.0.0 widget.oncustomer.asia
+0.0.0.0 www.oncustomer.asia
 #[phanquang.vn]
 0.0.0.0 click.phanquang.vn
 0.0.0.0 phanquang.vn
@@ -1010,7 +1037,6 @@
 0.0.0.0 www.vads.net.vn
 #[mepuzz.com]
 0.0.0.0 mepuzz.com
-0.0.0.0 mysql.mepuzz.com
 0.0.0.0 static.mepuzz.com
 0.0.0.0 www.mepuzz.com
 #[mobilead.vn]
@@ -1258,25 +1284,12 @@
 0.0.0.0 clickbuy.bz
 0.0.0.0 lp.clickbuy.bz
 0.0.0.0 www.clickbuy.bz
-#[oncustomer.asia]
-0.0.0.0 api-internal.oncustomer.asia
-0.0.0.0 app.oncustomer.asia
-0.0.0.0 company.oncustomer.asia
-0.0.0.0 hook.oncustomer.asia
-0.0.0.0 livechat.oncustomer.asia
-0.0.0.0 oncall.oncustomer.asia
-0.0.0.0 oncustomer.asia
-0.0.0.0 push.oncustomer.asia
-0.0.0.0 reports-api.oncustomer.asia
-0.0.0.0 style.oncustomer.asia
-0.0.0.0 widget.oncustomer.asia
-0.0.0.0 widget-1.oncustomer.asia
-0.0.0.0 widget-2.oncustomer.asia
 #[pushtimize.com]
 0.0.0.0 adv.pushtimize.com
 0.0.0.0 cdn01.pushtimize.com
 0.0.0.0 feed.pushtimize.com
 0.0.0.0 pushtimize.com
+0.0.0.0 www.pushtimize.com
 #[anymind360.com]
 0.0.0.0 anymind360.com
 0.0.0.0 stg.anymind360.com
@@ -1329,6 +1342,17 @@
 0.0.0.0 services.adnet.vn
 0.0.0.0 widget.adnet.vn
 0.0.0.0 www.adnet.vn
+#[haravan.com]
+0.0.0.0 buyxgety-omni.haravan.com
+0.0.0.0 buyxgety.haravan.com
+0.0.0.0 combo-omni.haravan.com
+0.0.0.0 combo.haravan.com
+0.0.0.0 haravan.com
+0.0.0.0 onapp.haravan.com
+#[starseed.fr]
+0.0.0.0 cdn.starseed.fr
+0.0.0.0 log.starseed.fr
+0.0.0.0 starseed.fr
 # --- Block adsVN ---
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
 0.0.0.0 703531862.vws.vegacdn.vn
@@ -1532,6 +1556,7 @@
 0.0.0.0 analytics.sohatv.vn
 0.0.0.0 analytics.thethao247.org
 0.0.0.0 analytics.tiki.vn
+0.0.0.0 analytics.tintuc.vn
 0.0.0.0 analytics.viblo.asia
 0.0.0.0 analytics.videocloud.top
 0.0.0.0 analytics.vietnamfinance.vn
@@ -1547,6 +1572,7 @@
 0.0.0.0 event.vntoday.news
 0.0.0.0 fa.fpt.shop
 0.0.0.0 follow.vnay.vn
+0.0.0.0 google-shopping.sapoapps.vn
 0.0.0.0 hit.123c.vn
 0.0.0.0 invite.baomoi.com
 0.0.0.0 la.vietid.net
@@ -1577,6 +1603,8 @@
 0.0.0.0 log.tienphong.vn
 0.0.0.0 log.tinnhanhchungkhoan.vn
 0.0.0.0 log.tinxe.vn
+0.0.0.0 log.trithuctructuyen.com.vn
+0.0.0.0 log.trithuctructuyen.vn
 0.0.0.0 log.vietnamdaily.net.vn
 0.0.0.0 log.vietnamfinance.vn
 0.0.0.0 log.vietnamplus.vn
@@ -1596,6 +1624,7 @@
 0.0.0.0 logscafef.channelvn.net
 0.0.0.0 newlog.daidoanket.vn
 0.0.0.0 nstat.headlines.pw
+0.0.0.0 partner.accesstrade.vn
 0.0.0.0 report.vnay.vn
 0.0.0.0 s.baomoi.xdn.vn
 0.0.0.0 s.kenh14.vn
@@ -1654,6 +1683,7 @@
 0.0.0.0 widget.sbz.vn
 0.0.0.0 widget.subiz.net
 0.0.0.0 widget.subiz.xyz
+0.0.0.0 widgetv4.subiz.com
 # --- Block scamVN ---
 0.0.0.0 bloodleian.club
 0.0.0.0 celerantatters.com
@@ -1665,3 +1695,4 @@
 # --- Block popupVN ---
 0.0.0.0 h6o2z0pwx5ja7dwxn0wx4fhv7mp0qoladm8vj6do4h1c6gja8evrn6g5fixk.me
 0.0.0.0 m6pz5h8qi18jq1s7hjkytxn7sjc0zpxw5gks3vyk8dcxs2cstjgdxkp7t1eb.me
+0.0.0.0 wfgo5vjs6cp0cdjx7bms3cn9lof2p01xho0pxgm1fd2fah3j5d8qd7x1d6eu.me
