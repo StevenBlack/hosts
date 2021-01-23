@@ -1,7 +1,7 @@
-----
 **Take Note!**
 
 * With the exception of issues and PRs regarding changes to `hosts/data/StevenBlack/hosts`, all other issues regarding the content of the produced hosts files should be made with the appropriate data source that contributed the content in question. The contact information for all of the data sources can be found in the `hosts/data/` directory.
+
 ----
 
 ![Logo](https://raw.githubusercontent.com/StevenBlack/hosts/master/.github/logo.png)
@@ -24,7 +24,6 @@ into a unified hosts file with duplicates removed.  A variety of tailored hosts 
 * Last updated: **@GEN_DATE@**.
 * Here's the [raw hosts file @EXTENSIONS_HEADER@](https://raw.githubusercontent.com/StevenBlack/hosts/master/@SUBFOLDER@hosts) containing @NUM_ENTRIES@ entries.
 * Logo by [@Tobaloidee](https://github.com/Tobaloidee).
-
 
 ## List of all hosts file variants
 
@@ -50,7 +49,6 @@ Host file source | Description | Home page | Raw hosts | Update frequency | Lice
 -----------------|-------------|:---------:|:---------:|:----------------:|:-------:|:------:
 @SOURCEROWS@
 
-
 ## Extensions
 
 The unified hosts file is optionally extensible.  Extensions are used to include domains by category.  Currently, we offer the following categories: `fakenews`, `social`, `gambling`, and `porn`.
@@ -71,20 +69,19 @@ The container will contain Python 3 and all its dependency requirements, and a c
 
 Build the Docker container like this:
 
-```
+```sh
 docker build ./
 ```
 
 Access the terminal like this:
 
-```
+```sh
 docker run -it (containerid) bash
 ```
 
 ### Option 2: Generate it in your own environment.
 
 To generate your own amalgamated hosts files you will need Python 3.5 or later.
-
 
 First, install the dependencies with:
 
@@ -189,7 +186,6 @@ To install hosts file on your machine add the following into your `configuration
 * NOTE: The call to `fetchurl` is impure.
 Use `fetchFromGitHub` with the exact commit if you want to always get the same result.
 
-
 ## How do I control which sources are unified?
 
 Add one or more *additional* sources, each in a subfolder of the `data/`
@@ -248,7 +244,6 @@ Then, submit a pull request.
 
 If you're able to curate your own collection of sketchy domains, then curate your own hosts list.  Then signal the existence of your repo as [a new issue](https://github.com/StevenBlack/hosts/issues) and we may include your new repo into the collection of sources we pull whenever we create new versions.
 
-
 ## What is a hosts file?
 
 A hosts file, named `hosts` (with no file extension), is a plain-text file
@@ -286,7 +281,6 @@ interfere with a web server that may be running on the local PC.
 ## Why not use `0` instead of `0.0.0.0`?
 
 We tried that.  Using `0` doesn't work universally.
-
 
 ## Location of your hosts file
 
