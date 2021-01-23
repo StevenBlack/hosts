@@ -1,7 +1,6 @@
 ----
 **Take Note!**
 
-* This version of the Hosts file generator, and tests, are for Python 3.5+ only.
 * With the exception of issues and PRs regarding changes to `hosts/data/StevenBlack/hosts`, all other issues regarding the content of the produced hosts files should be made with the appropriate data source that contributed the content in question. The contact information for all of the data sources can be found in the `hosts/data/` directory.
 ----
 
@@ -85,6 +84,7 @@ docker run -it (containerid) bash
 ### Option 2: Generate it in your own environment.
 
 To generate your own amalgamated hosts files you will need Python 3.5 or later.
+
 
 First, install the dependencies with:
 
