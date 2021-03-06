@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 28 Feb 2021 21:45 UTC+7
-# Version: 2102282145
-# Blocked: 1,755 domains
+# Last modified: 04 Mar 2021 10:08 UTC+7
+# Version: 2103041008
+# Blocked: 1,733 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -168,18 +168,11 @@
 0.0.0.0 vote.admicro.vn
 0.0.0.0 wcc.admicro.vn
 0.0.0.0 www.admicro.vn
-#[vcmedia]
-0.0.0.0 admicro.vcmedia.com
+#[admicro*.vcmedia.vn]
 0.0.0.0 admicro1.vcmedia.vn
-0.0.0.0 admicro2.vcmedia.vn
-0.0.0.0 admicro3.vcmedia.vn
 0.0.0.0 admicro4.vcmedia.vn
 0.0.0.0 admicro5.vcmedia.vn
 0.0.0.0 admicro6.vcmedia.vn
-0.0.0.0 admicro7.vcmedia.vn
-0.0.0.0 admicro8.vcmedia.vn
-0.0.0.0 admicro9.vcmedia.vn
-0.0.0.0 ads.hosting.vcmedia.vn
 #[adnetwork]
 0.0.0.0 adnetwork.vn
 0.0.0.0 client-pages.adnetwork.vn
@@ -615,23 +608,9 @@
 0.0.0.0 theme.ladipage.vn
 0.0.0.0 themes.ladipage.vn
 0.0.0.0 www.ladipage.vn
-#[ladipage.com]
-0.0.0.0 api.forms.ladipage.com
-0.0.0.0 api.ladipage.com
-0.0.0.0 builder.ladipage.com
-0.0.0.0 la.ladipage.com
-0.0.0.0 ladipage.com
-0.0.0.0 ladi.me
 #[ladipage.net]
 0.0.0.0 ladipage.net
 0.0.0.0 static.ladipage.net
-#[ladicdn.com]
-0.0.0.0 cdn.ladicdn.com
-0.0.0.0 g.ladicdn.com
-0.0.0.0 ladicdn.com
-0.0.0.0 v.ladicdn.com
-0.0.0.0 w.ladicdn.com
-0.0.0.0 www.ladicdn.com
 #[ladisales.com]
 0.0.0.0 api.ladisales.com
 0.0.0.0 ladisales.com
@@ -1218,17 +1197,9 @@
 #[ad*.24hstatic.com]
 0.0.0.0 24h-ad.24hstatic.com
 0.0.0.0 24h-ipad-ad.24hstatic.com
-0.0.0.0 ad-eva.24hstatic.com
-0.0.0.0 ad-hcm.24hstatic.com
-0.0.0.0 ad-hn.24hstatic.com
-0.0.0.0 ad-m.24hstatic.com
 0.0.0.0 ad-us.24hstatic.com
 0.0.0.0 eva-ad.24hstatic.com
-0.0.0.0 eva-ipad-ad.24hstatic.com
-0.0.0.0 eva-m-ad.24hstatic.com
 0.0.0.0 nv-ad.24hstatic.com
-0.0.0.0 nv-ad-hcm.24hstatic.com
-0.0.0.0 nv-ad-hn.24hstatic.com
 #[vnnayngaytin.vn]
 0.0.0.0 vnnayngaytin.vn
 0.0.0.0 ad.vnnayngaytin.vn
@@ -1463,12 +1434,21 @@
 0.0.0.0 piwik.dsp.vn
 0.0.0.0 piwik.rta.vn
 0.0.0.0 piwik.tienhiep.com.vn
+#[logger.vsmarty.vn]
+0.0.0.0 logger.vsmarty.vn
+0.0.0.0 recommend-29.logger.vsmarty.vn
+0.0.0.0 tracker-29.logger.vsmarty.vn
+#[accesstrade.vn]
+0.0.0.0 ad.accesstrade.vn
+0.0.0.0 partner.accesstrade.vn
+0.0.0.0 service-api.accesstrade.vn
+0.0.0.0 static.accesstrade.vn
+0.0.0.0 track.accesstrade.vn
 # --- Block adsVN ---
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
 0.0.0.0 703531862.vws.vegacdn.vn
 0.0.0.0 ad-admin.vnay.vn
 0.0.0.0 ad.24h.com.vn
-0.0.0.0 ad.accesstrade.vn
 0.0.0.0 ad.chieuhoa.com
 0.0.0.0 ad.eva.vn
 0.0.0.0 ad.happynest.vn
@@ -1819,7 +1799,6 @@
 0.0.0.0 mysapo.net
 0.0.0.0 newlog.daidoanket.vn
 0.0.0.0 nstat.headlines.pw
-0.0.0.0 partner.accesstrade.vn
 0.0.0.0 report.vnay.vn
 0.0.0.0 s.baomoi.xdn.vn
 0.0.0.0 s.homedy.com
@@ -1831,7 +1810,6 @@
 0.0.0.0 smetrics.kone.vn
 0.0.0.0 st-a.vtvdigital.vn
 0.0.0.0 stat.headlines.pw
-0.0.0.0 static.accesstrade.vn
 0.0.0.0 staticad.thethao247.vn
 0.0.0.0 statistic.batdongsan.com.vn
 0.0.0.0 statistics.tapchimypham.com.vn
@@ -1849,10 +1827,10 @@
 0.0.0.0 sv-api-event.headlines.pw
 0.0.0.0 thongke.24h.com.vn
 0.0.0.0 thongke.baotintuc.vn
+0.0.0.0 thongke.opencps.vn
 0.0.0.0 thongke99.baogiaothong.vn
 0.0.0.0 tka.tiki.vn
 0.0.0.0 track-srv.vietnamnet.vn
-0.0.0.0 track.accesstrade.vn
 0.0.0.0 track.icheck.com.vn
 0.0.0.0 track.kyna.vn
 0.0.0.0 track.lapa.pub

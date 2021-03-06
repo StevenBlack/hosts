@@ -3,7 +3,7 @@
 # Homepage: https://orca.pet/notonmyshift/
 # Licence: https://orca.pet/#license
 # Expires: 4h
-# Last update: 2021-02-17T14:45:54Z
+# Last update: 2021-03-03T22:49:15Z
 
 # === PHISING ===
 # These filters block pages that are not yet blocked by Google Safe Search
@@ -151,11 +151,6 @@
 0.0.0.0 todaypeaks.com
 0.0.0.0 www.todaypeaks.com
 
-# 2020-10-27 Amazon phishing. The link currently redirects to Google, but was received on an Amazon "billing issue" email.
-#  - https://purajaibngenskuy.com/RWTJnih
-0.0.0.0 purajaibngenskuy.com
-0.0.0.0 www.purajaibngenskuy.com
-
 # 2020-11-01 Fake USA Covid relief fund
 #  - http://pandemic-reliefnygov.net/?labor_department
 0.0.0.0 pandemic-reliefnygov.net
@@ -166,23 +161,36 @@
 0.0.0.0 stammtisch-design.de
 0.0.0.0 www.stammtisch-design.de
 
-# 2020-11-08 Amazon phishing
+# 2021-03-03 Amazon phishing
+#  - http://findout.eu.com
+#  - http://vivarrq324.mama92901.com/ScJfk5gt
 #  - http://www.congreso-hidalgo.gob.mx/urls/hallomatefak
+#  - https://amzon-serviceaccountunsualacitiviteam.com/?recovery234
+#  - https://classiclimb.com
+#  - https://daddygangz.com
+#  - https://einfoxfunds.com
+#  - https://purajaibngenskuy.com/RWTJnih
 #  - https://skacuhrilalauhccrikal.com/JSsLgFv
+#  - https://thienlongcnc.com/vendor/composer/killbot.php/ScJfk5gt
+0.0.0.0 findout.eu.com
+0.0.0.0 www.findout.eu.com
+0.0.0.0 vivarrq324.mama92901.com
 0.0.0.0 congreso-hidalgo.gob.mx
 0.0.0.0 www.congreso-hidalgo.gob.mx
-0.0.0.0 skacuhrilalauhccrikal.com
-0.0.0.0 www.skacuhrilalauhccrikal.com
-
-# 2020-11-18 Amazon phishing
-#  - http://vivarrq324.mama92901.com/ScJfk5gt
-#  - https://thienlongcnc.com/vendor/composer/killbot.php/ScJfk5gt
-#  - https://amzon-serviceaccountunsualacitiviteam.com/?recovery234
-0.0.0.0 vivarrq324.mama92901.com
-0.0.0.0 thienlongcnc.com
-0.0.0.0 www.thienlongcnc.com
 0.0.0.0 amzon-serviceaccountunsualacitiviteam.com
 0.0.0.0 www.amzon-serviceaccountunsualacitiviteam.com
+0.0.0.0 classiclimb.com
+0.0.0.0 www.classiclimb.com
+0.0.0.0 daddygangz.com
+0.0.0.0 www.daddygangz.com
+0.0.0.0 einfoxfunds.com
+0.0.0.0 www.einfoxfunds.com
+0.0.0.0 purajaibngenskuy.com
+0.0.0.0 www.purajaibngenskuy.com
+0.0.0.0 skacuhrilalauhccrikal.com
+0.0.0.0 www.skacuhrilalauhccrikal.com
+0.0.0.0 thienlongcnc.com
+0.0.0.0 www.thienlongcnc.com
 
 # 2020-11-18 Apple ID phishing
 #  - https://ausculti.org/
@@ -209,203 +217,193 @@
 0.0.0.0 alexwasiwo.com
 0.0.0.0 www.alexwasiwo.com
 
-# 2021-02-16 Fedex phishing, received via SMS
+# 2021-03-02 Fedex phishing, received via SMS
 #  - https://geeklevi.com/fedex/
 0.0.0.0 s.update.fbsbx.com
 0.0.0.0 k.hencoder.com
-0.0.0.0 212sennakliyat.com
-0.0.0.0 www.212sennakliyat.com
+0.0.0.0 42sf.net
+0.0.0.0 www.42sf.net
+0.0.0.0 84blog.xyz
+0.0.0.0 www.84blog.xyz
+0.0.0.0 918kiss.newworld88.com
 0.0.0.0 afedgh.org
 0.0.0.0 www.afedgh.org
-0.0.0.0 apartmentsinklaipeda.lt
-0.0.0.0 www.apartmentsinklaipeda.lt
-0.0.0.0 aqua-by.com
-0.0.0.0 www.aqua-by.com
+0.0.0.0 ailnoir.com
+0.0.0.0 www.ailnoir.com
+0.0.0.0 alercehistorico.cl
+0.0.0.0 www.alercehistorico.cl
+0.0.0.0 amirapache.ir
+0.0.0.0 www.amirapache.ir
+0.0.0.0 amzstudy.com
+0.0.0.0 www.amzstudy.com
+0.0.0.0 app.crconsultoriacontable.com
+0.0.0.0 appulse.de
+0.0.0.0 www.appulse.de
 0.0.0.0 asfand.fahadmarketing.com
-0.0.0.0 avacoper.com
-0.0.0.0 www.avacoper.com
-0.0.0.0 avantas.org
-0.0.0.0 www.avantas.org
+0.0.0.0 bamperbolspb.ru
+0.0.0.0 www.bamperbolspb.ru
 0.0.0.0 bestgoldenretrieverbreeder.com
 0.0.0.0 www.bestgoldenretrieverbreeder.com
-0.0.0.0 bilgelerhuzurevi.com.tr
-0.0.0.0 www.bilgelerhuzurevi.com.tr
 0.0.0.0 bks.tv
 0.0.0.0 www.bks.tv
 0.0.0.0 blog.envision.agency
-0.0.0.0 bonanzanvan.com
-0.0.0.0 www.bonanzanvan.com
-0.0.0.0 brokenbootstraps.com
-0.0.0.0 www.brokenbootstraps.com
-0.0.0.0 bxc.net.au
-0.0.0.0 www.bxc.net.au
+0.0.0.0 blog.sidmach.com
 0.0.0.0 canopusbd.com
 0.0.0.0 www.canopusbd.com
+0.0.0.0 cashboxcafe.ru
+0.0.0.0 www.cashboxcafe.ru
 0.0.0.0 castllypay.com
 0.0.0.0 www.castllypay.com
-0.0.0.0 childofthesouth.co.za
-0.0.0.0 www.childofthesouth.co.za
-0.0.0.0 cliffcb.com
-0.0.0.0 www.cliffcb.com
-0.0.0.0 creatiste.com
-0.0.0.0 www.creatiste.com
-0.0.0.0 dclifechanging.com
-0.0.0.0 www.dclifechanging.com
-0.0.0.0 demirayasansor.com.tr
-0.0.0.0 www.demirayasansor.com.tr
-0.0.0.0 don-diesell.ru
-0.0.0.0 www.don-diesell.ru
-0.0.0.0 dostavka.gruzinskie-istorii.ru
-0.0.0.0 eigrealty.net
-0.0.0.0 www.eigrealty.net
-0.0.0.0 esarengineering.com
-0.0.0.0 www.esarengineering.com
-0.0.0.0 eutopia.cl
-0.0.0.0 www.eutopia.cl
+0.0.0.0 cbd-and-epilepsy.com
+0.0.0.0 www.cbd-and-epilepsy.com
+0.0.0.0 cbd-and-seizures.com
+0.0.0.0 www.cbd-and-seizures.com
+0.0.0.0 celestinfreinet.mx
+0.0.0.0 www.celestinfreinet.mx
+0.0.0.0 clickedgesolutions.com
+0.0.0.0 www.clickedgesolutions.com
+0.0.0.0 clone.app.home-cost.com
+0.0.0.0 contornosdesign.pt
+0.0.0.0 www.contornosdesign.pt
+0.0.0.0 cssincronbucuresti.ro
+0.0.0.0 www.cssincronbucuresti.ro
+0.0.0.0 dgeneration.in
+0.0.0.0 www.dgeneration.in
+0.0.0.0 divam.ir
+0.0.0.0 www.divam.ir
+0.0.0.0 escuelaargentina.cl
+0.0.0.0 www.escuelaargentina.cl
+0.0.0.0 events.playakasha.com
 0.0.0.0 fallenjewellery.com
 0.0.0.0 www.fallenjewellery.com
-0.0.0.0 fbfolheados.com.br
-0.0.0.0 www.fbfolheados.com.br
-0.0.0.0 femalevoiceclub.com
-0.0.0.0 www.femalevoiceclub.com
-0.0.0.0 frizzyhub.net
-0.0.0.0 www.frizzyhub.net
+0.0.0.0 fraternitykerala.org
+0.0.0.0 www.fraternitykerala.org
+0.0.0.0 galaxyfunbowl.gr
+0.0.0.0 www.galaxyfunbowl.gr
 0.0.0.0 gardendeur.site
 0.0.0.0 www.gardendeur.site
+0.0.0.0 garveylibertyhall.com
+0.0.0.0 www.garveylibertyhall.com
 0.0.0.0 geeklevi.com
 0.0.0.0 www.geeklevi.com
+0.0.0.0 gladiadoresdevendas.com.br
+0.0.0.0 www.gladiadoresdevendas.com.br
+0.0.0.0 godynamo.co
+0.0.0.0 www.godynamo.co
+0.0.0.0 gojordanbusiness.com
+0.0.0.0 www.gojordanbusiness.com
 0.0.0.0 grandprov.com
 0.0.0.0 www.grandprov.com
-0.0.0.0 haatura.com
-0.0.0.0 www.haatura.com
+0.0.0.0 guzelbil.com
+0.0.0.0 www.guzelbil.com
 0.0.0.0 habulex.com
 0.0.0.0 www.habulex.com
 0.0.0.0 hackersweb.org
 0.0.0.0 www.hackersweb.org
-0.0.0.0 healthylifeamazingdays.com
-0.0.0.0 www.healthylifeamazingdays.com
-0.0.0.0 hencoder.com
-0.0.0.0 www.hencoder.com
-0.0.0.0 hopech.net
-0.0.0.0 www.hopech.net
-0.0.0.0 illuminaticult.org
-0.0.0.0 www.illuminaticult.org
-0.0.0.0 investisho.com
-0.0.0.0 www.investisho.com
-0.0.0.0 kakagems.com
-0.0.0.0 www.kakagems.com
-0.0.0.0 lavazzem.com
-0.0.0.0 www.lavazzem.com
-0.0.0.0 lgklgklgk.com
-0.0.0.0 www.lgklgklgk.com
+0.0.0.0 hmsounds.com.br
+0.0.0.0 www.hmsounds.com.br
+0.0.0.0 homzbasix.com
+0.0.0.0 www.homzbasix.com
+0.0.0.0 imrt.ac.in
+0.0.0.0 www.imrt.ac.in
+0.0.0.0 industrial-land.vn
+0.0.0.0 www.industrial-land.vn
+0.0.0.0 justparty.com.br
+0.0.0.0 www.justparty.com.br
+0.0.0.0 kidimy.org
+0.0.0.0 www.kidimy.org
 0.0.0.0 lova.network
 0.0.0.0 www.lova.network
-0.0.0.0 magicbalm.co.uk
-0.0.0.0 www.magicbalm.co.uk
+0.0.0.0 machupicchutraveling.com
+0.0.0.0 www.machupicchutraveling.com
+0.0.0.0 magicboximportados.com.br
+0.0.0.0 www.magicboximportados.com.br
 0.0.0.0 marincr.com
 0.0.0.0 www.marincr.com
-0.0.0.0 metalsur.cl
-0.0.0.0 www.metalsur.cl
-0.0.0.0 miflebalarts.com
-0.0.0.0 www.miflebalarts.com
-0.0.0.0 miggster.net
-0.0.0.0 www.miggster.net
-0.0.0.0 monroe.attorney
-0.0.0.0 www.monroe.attorney
-0.0.0.0 nbkfinance.ru
-0.0.0.0 www.nbkfinance.ru
-0.0.0.0 newsancai.com
-0.0.0.0 www.newsancai.com
+0.0.0.0 mouwz.nl
+0.0.0.0 www.mouwz.nl
+0.0.0.0 mucc.com.au
+0.0.0.0 www.mucc.com.au
+0.0.0.0 nbkangxi.com
+0.0.0.0 www.nbkangxi.com
+0.0.0.0 nen.vacad.net
+0.0.0.0 new.deso.cz
 0.0.0.0 nextgearup.com
 0.0.0.0 www.nextgearup.com
 0.0.0.0 nguen.net
 0.0.0.0 www.nguen.net
-0.0.0.0 nightlifenn.ru
-0.0.0.0 www.nightlifenn.ru
 0.0.0.0 njzmfcls.com
 0.0.0.0 www.njzmfcls.com
 0.0.0.0 nogdec.com
 0.0.0.0 www.nogdec.com
-0.0.0.0 nsoft.fr
-0.0.0.0 www.nsoft.fr
-0.0.0.0 openpaytestandtrain.com.au
-0.0.0.0 www.openpaytestandtrain.com.au
-0.0.0.0 padangbulan.co.id
-0.0.0.0 www.padangbulan.co.id
-0.0.0.0 pbzaimu.co.jp
-0.0.0.0 www.pbzaimu.co.jp
+0.0.0.0 parikhinfosolutions.in
+0.0.0.0 www.parikhinfosolutions.in
+0.0.0.0 perfect-blinds.com.au
+0.0.0.0 www.perfect-blinds.com.au
 0.0.0.0 persianwoodkitchen.com
 0.0.0.0 www.persianwoodkitchen.com
-0.0.0.0 photomag.bg
-0.0.0.0 www.photomag.bg
-0.0.0.0 poddonof.ru
-0.0.0.0 www.poddonof.ru
 0.0.0.0 pornvillla.com
 0.0.0.0 www.pornvillla.com
-0.0.0.0 prinzip.ru
-0.0.0.0 www.prinzip.ru
+0.0.0.0 psspine.org
+0.0.0.0 www.psspine.org
 0.0.0.0 redlog.cl
 0.0.0.0 www.redlog.cl
-0.0.0.0 rengwuxian.com
-0.0.0.0 www.rengwuxian.com
-0.0.0.0 riverdell.org.au
-0.0.0.0 www.riverdell.org.au
-0.0.0.0 rsdesentupidora.com.br
-0.0.0.0 www.rsdesentupidora.com.br
-0.0.0.0 saavetamedico.com
-0.0.0.0 www.saavetamedico.com
-0.0.0.0 safemarkglobal.com
-0.0.0.0 www.safemarkglobal.com
-0.0.0.0 shopontario.ca
-0.0.0.0 www.shopontario.ca
-0.0.0.0 slymeletronicos.com.br
-0.0.0.0 www.slymeletronicos.com.br
+0.0.0.0 rees.games
+0.0.0.0 www.rees.games
+0.0.0.0 rishipes.co.nz
+0.0.0.0 www.rishipes.co.nz
+0.0.0.0 runyixs.com
+0.0.0.0 www.runyixs.com
+0.0.0.0 ryansa.com
+0.0.0.0 www.ryansa.com
 0.0.0.0 smcsme.com
 0.0.0.0 www.smcsme.com
+0.0.0.0 smecom.it
+0.0.0.0 www.smecom.it
 0.0.0.0 socialfact.in
 0.0.0.0 www.socialfact.in
-0.0.0.0 sonema.holiday
-0.0.0.0 www.sonema.holiday
 0.0.0.0 soundwavesprodjs.com
 0.0.0.0 www.soundwavesprodjs.com
 0.0.0.0 sourmet.com
 0.0.0.0 www.sourmet.com
-0.0.0.0 spotify-upgrade.co.uk
-0.0.0.0 www.spotify-upgrade.co.uk
-0.0.0.0 sprintintercom.com.au
-0.0.0.0 www.sprintintercom.com.au
-0.0.0.0 store.fursa-tech.com
-0.0.0.0 store.matriztica.org
+0.0.0.0 spave.com.pk
+0.0.0.0 www.spave.com.pk
 0.0.0.0 superztechnoz.com
 0.0.0.0 www.superztechnoz.com
-0.0.0.0 svgart.org
-0.0.0.0 www.svgart.org
-0.0.0.0 thevixenslair.com
-0.0.0.0 www.thevixenslair.com
+0.0.0.0 synoviz.com
+0.0.0.0 www.synoviz.com
+0.0.0.0 tacloban.gov.ph
+0.0.0.0 www.tacloban.gov.ph
+0.0.0.0 testargames.cl
+0.0.0.0 www.testargames.cl
 0.0.0.0 thietkelq.com
 0.0.0.0 www.thietkelq.com
-0.0.0.0 topbullybreeders.com
-0.0.0.0 www.topbullybreeders.com
-0.0.0.0 tshirtworld.co.za
-0.0.0.0 www.tshirtworld.co.za
-0.0.0.0 ubirecruit.com
-0.0.0.0 www.ubirecruit.com
-0.0.0.0 vb4free.co
-0.0.0.0 www.vb4free.co
+0.0.0.0 topblackfridaydealz.com
+0.0.0.0 www.topblackfridaydealz.com
+0.0.0.0 tubies.com
+0.0.0.0 www.tubies.com
+0.0.0.0 tuyennvtb.com
+0.0.0.0 www.tuyennvtb.com
+0.0.0.0 twospoonsfleet.co.uk
+0.0.0.0 www.twospoonsfleet.co.uk
 0.0.0.0 veljko.id
 0.0.0.0 www.veljko.id
-0.0.0.0 videoout.ca
-0.0.0.0 www.videoout.ca
-0.0.0.0 viralfeeds.net
-0.0.0.0 www.viralfeeds.net
-0.0.0.0 whistlebranding.com
-0.0.0.0 www.whistlebranding.com
-0.0.0.0 wickedsuga.com
-0.0.0.0 www.wickedsuga.com
+0.0.0.0 visotka.in
+0.0.0.0 www.visotka.in
+0.0.0.0 vladimirherzog.org
+0.0.0.0 www.vladimirherzog.org
+0.0.0.0 weboyal.com
+0.0.0.0 www.weboyal.com
+0.0.0.0 wordpress.mrcentertainment.com
 0.0.0.0 wowfollowers.com
 0.0.0.0 www.wowfollowers.com
-0.0.0.0 zelinaworld.com
-0.0.0.0 www.zelinaworld.com
+0.0.0.0 xn--thvitstore-c7a.com
+0.0.0.0 www.xn--thvitstore-c7a.com
+0.0.0.0 ylem222.com
+0.0.0.0 www.ylem222.com
+
+# 2021-03-02 Fedex phishing, manual domains
+0.0.0.0 s.update.fbsbx.com
 0.0.0.0 update.fbsbx.com
 
 # === SCAMS ===
