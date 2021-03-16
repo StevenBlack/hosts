@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 07 Mar 2021 21:47 UTC+7
-# Version: 2103072147
-# Blocked: 1,736 domains
+# Last modified: 16 Mar 2021 15:03 UTC+7
+# Version: 2103161503
+# Blocked: 1,749 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -500,6 +500,7 @@
 0.0.0.0 log.news.zing.vn
 0.0.0.0 log.tv.zing.vn
 0.0.0.0 logv2.mp3.zing.vn
+0.0.0.0 tracking.banner.g6.zing.vn
 0.0.0.0 tracking.playzing.g6.zing.vn
 0.0.0.0 tracking.tv.zing.vn
 0.0.0.0 zlog.mp3.zing.vn
@@ -519,7 +520,9 @@
 #[zalo.me]
 0.0.0.0 ads.platform.zalo.me
 0.0.0.0 ads.zalo.me
+#[za.zalo.me]
 0.0.0.0 px.za.zalo.me
+0.0.0.0 za.zalo.me
 #[zaloapp.com]
 0.0.0.0 ads.zaloapp.com
 0.0.0.0 centralized.zaloapp.com
@@ -558,6 +561,7 @@
 0.0.0.0 zaloads-480.zdn.vn
 0.0.0.0 zplayer-trk.zdn.vn
 #[zapps.vn]
+0.0.0.0 analytics.zapps.vn
 0.0.0.0 tracking.api.media.zapps.vn
 0.0.0.0 zplayer.trk.zapps.vn
 #[yomedia]
@@ -1406,6 +1410,11 @@
 0.0.0.0 tracking.gafin.vn
 0.0.0.0 widget.gafin.vn
 0.0.0.0 www.gafin.vn
+#[matomo.*.vn]
+0.0.0.0 matomo.ecoe.vn
+0.0.0.0 matomo.energyfacility.vn
+0.0.0.0 matomo.shac.vn
+0.0.0.0 matomo.vepg.vn
 #[mautic.*.vn]
 0.0.0.0 mautic.akhoe.vn
 0.0.0.0 mautic.bizgift.vn
@@ -1503,6 +1512,7 @@
 0.0.0.0 ads.netlinkad.vn
 0.0.0.0 ads.nghenhinvietnam.vn
 0.0.0.0 ads.nhadatmoi.net
+0.0.0.0 ads.pcccdongduong.vn
 0.0.0.0 ads.phunuonline.com.vn
 0.0.0.0 ads.phunusuckhoe.vn
 0.0.0.0 ads.phunuvagiadinh.vn
@@ -1567,6 +1577,7 @@
 0.0.0.0 avoadsservices.com
 0.0.0.0 banhtv.org
 0.0.0.0 banner.5giay.vn
+0.0.0.0 banner.etargeting.mobifone.vn
 0.0.0.0 banner.thadaco.vn
 0.0.0.0 banner.trangvangvietnam.com
 0.0.0.0 banner.vietnamfinance.vn
@@ -1723,6 +1734,7 @@
 0.0.0.0 counter.ntdvn.com
 0.0.0.0 crm.bizfly.vn
 0.0.0.0 crmbizfly.todo.vn
+0.0.0.0 elink.nhanlucnganhluat.vn
 0.0.0.0 elogs.vnexpress.net
 0.0.0.0 event.headlines.pw
 0.0.0.0 event.vntoday.news
@@ -1826,17 +1838,19 @@
 0.0.0.0 stats.vietnammoi.vn
 0.0.0.0 stracking.zalopay.vn
 0.0.0.0 sv-api-event.headlines.pw
+0.0.0.0 ta.toprework.vn
 0.0.0.0 thongke.24h.com.vn
 0.0.0.0 thongke.baotintuc.vn
 0.0.0.0 thongke.opencps.vn
 0.0.0.0 thongke99.baogiaothong.vn
-0.0.0.0 tka.tiki.vn
+0.0.0.0 tr.topdevvn.com
 0.0.0.0 track-srv.vietnamnet.vn
 0.0.0.0 track.icheck.com.vn
 0.0.0.0 track.kyna.vn
 0.0.0.0 track.lapa.pub
 0.0.0.0 track.pregmomvietnam.com
 0.0.0.0 track.sendo.vn
+0.0.0.0 track.vio.edu.vn
 0.0.0.0 tracker.anime47.com
 0.0.0.0 tracker.bongngo.store
 0.0.0.0 tracker.fado.vn
@@ -1874,6 +1888,7 @@
 0.0.0.0 bloodleian.club
 0.0.0.0 celerantatters.com
 0.0.0.0 hashearog.com
+0.0.0.0 i-vietcombank.com
 0.0.0.0 larpollicwilli.club
 0.0.0.0 rituationscardb.info
 0.0.0.0 sacchaeleduk.com
