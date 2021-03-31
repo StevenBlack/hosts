@@ -32,8 +32,10 @@ if not PY3:
 try:
     import requests
 except ImportError:
-    raise ImportError("This project's dependencies have changed. The Requests library ("
-                      "https://requests.readthedocs.io/en/master/) is now required.")
+    raise ImportError(
+        "This project's dependencies have changed. The Requests library ("
+        "https://requests.readthedocs.io/en/master/) is now required."
+    )
 
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
@@ -986,7 +988,9 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
         and spacing reformatted.
     """
 
-    def normalize_response(extracted_hostname: str, extracted_suffix: Optional[str]) -> Tuple[str, str]:
+    def normalize_response(
+        extracted_hostname: str, extracted_suffix: Optional[str]
+    ) -> Tuple[str, str]:
         """
         Normalizes the responses after the provision of the extracted
         hostname and suffix - if exist.
@@ -1342,8 +1346,9 @@ def flush_dns_cache():
                 )
 
                 if os.path.isfile(service_file):
-                    if 0 != subprocess.call([systemctl, "status", service],
-                                            stdout=subprocess.DEVNULL):
+                    if 0 != subprocess.call(
+                        [systemctl, "status", service], stdout=subprocess.DEVNULL
+                    ):
                         continue
                     dns_cache_found = True
 
