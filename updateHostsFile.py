@@ -20,6 +20,7 @@ import sys
 import tempfile
 import time
 from glob import glob
+from typing import Optional, Tuple
 
 # Detecting Python 3 for version-dependent implementations
 PY3 = sys.version_info >= (3, 0)
@@ -31,8 +32,10 @@ if not PY3:
 try:
     import requests
 except ImportError:
-    raise ImportError("This project's dependencies have changed. The Requests library ("
-                      "https://requests.readthedocs.io/en/master/) is now required.")
+    raise ImportError(
+        "This project's dependencies have changed. The Requests library ("
+        "https://requests.readthedocs.io/en/master/) is now required."
+    )
 
 
 # Syntactic sugar for "sudo" command in UNIX / Linux
@@ -629,7 +632,11 @@ def matches_exclusions(stripped_rule, exclusion_regexes):
         Whether or not the rule string matches a provided exclusion.
     """
 
-    stripped_domain = stripped_rule.split()[1]
+    try:
+        stripped_domain = stripped_rule.split()[1]
+    except IndexError:
+        # Example: 'example.org' instead of '0.0.0.0 example.org'
+        stripped_domain = stripped_rule
 
     for exclusionRegex in exclusion_regexes:
         if exclusionRegex.search(stripped_domain):
@@ -981,6 +988,37 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
         and spacing reformatted.
     """
 
+    def normalize_response(
+        extracted_hostname: str, extracted_suffix: Optional[str]
+    ) -> Tuple[str, str]:
+        """
+        Normalizes the responses after the provision of the extracted
+        hostname and suffix - if exist.
+
+        Parameters
+        ----------
+        extracted_hostname: str
+            The extracted hostname to work with.
+        extracted_suffix: str
+            The extracted suffix to with.
+
+        Returns
+        -------
+        normalized_response: tuple
+            A tuple of the hostname and the rule string with spelling
+            and spacing reformatted.
+        """
+
+        rule = "%s %s" % (target_ip, extracted_hostname)
+
+        if keep_domain_comments and extracted_suffix:
+            if not extracted_suffix.strip().startswith("#"):
+                rule += " #%s" % extracted_suffix
+            else:
+                rule += " %s" % extracted_suffix
+
+        return extracted_hostname, rule + "\n"
+
     """
     first try: IP followed by domain
     """
@@ -992,15 +1030,8 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
 
         # Explicitly lowercase and trim the hostname.
         hostname = hostname.lower().strip()
-        rule = "%s %s" % (target_ip, hostname)
 
-        if suffix and keep_domain_comments:
-            if not suffix.strip().startswith("#"):
-                rule += " #%s" % suffix
-            else:
-                rule += " %s" % suffix
-
-        return hostname, rule + "\n"
+        return normalize_response(hostname, suffix)
 
     """
     next try: IP address followed by host IP address
@@ -1012,15 +1043,22 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
         ip_host, suffix = result.group(2, 3)
         # Explicitly trim the ip host.
         ip_host = ip_host.strip()
-        rule = "%s %s" % (target_ip, ip_host)
 
-        if suffix and keep_domain_comments:
-            if not suffix.strip().startswith("#"):
-                rule += " #%s" % suffix
-            else:
-                rule += " %s" % suffix
+        return normalize_response(ip_host, suffix)
 
-        return ip_host, rule + "\n"
+    """
+    next try: Keep RAW domain.
+    """
+    regex = r"^\s*([\w\.-]+[a-zA-Z])(.*)"
+    result = re.search(regex, rule)
+
+    if result:
+        hostname, suffix = result.group(1, 2)
+
+        # Explicitly lowercase and trim the hostname.
+        hostname = hostname.lower().strip()
+
+        return normalize_response(hostname, suffix)
 
     """
     finally, if we get here, just belch to screen
@@ -1044,12 +1082,7 @@ def strip_rule(line):
         The sanitized rule.
     """
 
-    split_line = line.split()
-    if len(split_line) < 2:
-        # just return blank
-        return ""
-    else:
-        return " ".join(split_line)
+    return " ".join(line.split())
 
 
 def write_opening_header(final_file, **header_params):
@@ -1313,8 +1346,9 @@ def flush_dns_cache():
                 )
 
                 if os.path.isfile(service_file):
-                    if 0 != subprocess.call([systemctl, "status", service],
-                                            stdout=subprocess.DEVNULL):
+                    if 0 != subprocess.call(
+                        [systemctl, "status", service], stdout=subprocess.DEVNULL
+                    ):
                         continue
                     dns_cache_found = True
 

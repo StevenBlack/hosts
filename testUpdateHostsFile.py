@@ -633,6 +633,30 @@ class TestMatchesExclusions(Base):
         ]:
             self.assertTrue(matches_exclusions(domain, exclusion_regexes))
 
+    def test_match_raw_list(self):
+        exclusion_regexes = [r".*\.com", r".*\.org", r".*\.edu"]
+        exclusion_regexes = [re.compile(regex) for regex in exclusion_regexes]
+
+        for domain in [
+            "hulu.com",
+            "yahoo.com",
+            "adaway.org",
+            "education.edu",
+        ]:
+            self.assertTrue(matches_exclusions(domain, exclusion_regexes))
+
+    def test_no_match_raw_list(self):
+        exclusion_regexes = [r".*\.org", r".*\.edu"]
+        exclusion_regexes = [re.compile(regex) for regex in exclusion_regexes]
+
+        for domain in [
+            "localhost",
+            "hulu.com",
+            "yahoo.com",
+            "cloudfront.net",
+        ]:
+            self.assertFalse(matches_exclusions(domain, exclusion_regexes))
+
 
 # End Exclusion Logic
 
@@ -806,13 +830,11 @@ class TestNormalizeRule(BaseStdout):
     def test_no_match(self):
         kwargs = dict(target_ip="0.0.0.0", keep_domain_comments=False)
 
+        # Note: "Bare"- Domains are accepted. IP are excluded.
         for rule in [
-            "foo",
             "128.0.0.1",
-            "bar.com/usa",
             "0.0.0 google",
             "0.1.2.3.4 foo/bar",
-            "twitter.com",
         ]:
             self.assertEqual(normalize_rule(rule, **kwargs), (None, None))
 
@@ -874,13 +896,43 @@ class TestNormalizeRule(BaseStdout):
 
             sys.stdout = StringIO()
 
+    def test_no_comment_raw(self):
+        for rule in ("twitter.com", "google.com", "foo.bar.edu"):
+            expected = (rule, "0.0.0.0 " + rule + "\n")
 
-class TestStripRule(Base):
-    def test_strip_empty(self):
-        for line in ["0.0.0.0", "domain.com", "foo"]:
-            output = strip_rule(line)
+            actual = normalize_rule(
+                rule, target_ip="0.0.0.0", keep_domain_comments=False
+            )
+            self.assertEqual(actual, expected)
+
+            # Nothing gets printed if there's a match.
+            output = sys.stdout.getvalue()
             self.assertEqual(output, "")
 
+            sys.stdout = StringIO()
+
+    def test_with_comments_raw(self):
+        for target_ip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
+            for comment in ("foo", "bar", "baz"):
+                rule = "1.google.co.uk " + comment
+                expected = (
+                    "1.google.co.uk",
+                    (str(target_ip) + " 1.google.co.uk # " + comment + "\n"),
+                )
+
+                actual = normalize_rule(
+                    rule, target_ip=target_ip, keep_domain_comments=True
+                )
+                self.assertEqual(actual, expected)
+
+                # Nothing gets printed if there's a match.
+                output = sys.stdout.getvalue()
+                self.assertEqual(output, "")
+
+                sys.stdout = StringIO()
+
+
+class TestStripRule(Base):
     def test_strip_exactly_two(self):
         for line in [
             "0.0.0.0 twitter.com",
@@ -899,6 +951,28 @@ class TestStripRule(Base):
             "127.0.0.1 facebook.com",
             "8.8.8.8 google.com",
             "1.2.3.4 foo.bar.edu",
+        ]:
+            output = strip_rule(line + comment)
+            self.assertEqual(output, line + comment)
+
+    def test_strip_raw(self):
+        for line in [
+            "twitter.com",
+            "facebook.com",
+            "google.com",
+            "foo.bar.edu",
+        ]:
+            output = strip_rule(line)
+            self.assertEqual(output, line)
+
+    def test_strip_raw_with_comment(self):
+        comment = " # comments here galore"
+
+        for line in [
+            "twitter.com",
+            "facebook.com",
+            "google.com",
+            "foo.bar.edu",
         ]:
             output = strip_rule(line + comment)
             self.assertEqual(output, line + comment)
@@ -1572,20 +1646,30 @@ class GetFileByUrl(BaseStdout):
         self.assertEqual(expected, actual)
 
     def test_connect_unknown_domain(self):
-        test_url = "http://doesnotexist.google.com"  # leads to exception: ConnectionError
-        with mock.patch("requests.get", side_effect=requests.exceptions.ConnectionError):
+        test_url = (
+            "http://doesnotexist.google.com"  # leads to exception: ConnectionError
+        )
+        with mock.patch(
+            "requests.get", side_effect=requests.exceptions.ConnectionError
+        ):
             return_value = get_file_by_url(test_url)
         self.assertIsNone(return_value)
         printed_output = sys.stdout.getvalue()
-        self.assertEqual(printed_output, "Error retrieving data from {}\n".format(test_url))
+        self.assertEqual(
+            printed_output, "Error retrieving data from {}\n".format(test_url)
+        )
 
     def test_invalid_url(self):
         test_url = "http://fe80::5054:ff:fe5a:fc0"  # leads to exception: InvalidURL
-        with mock.patch("requests.get", side_effect=requests.exceptions.ConnectionError):
+        with mock.patch(
+            "requests.get", side_effect=requests.exceptions.ConnectionError
+        ):
             return_value = get_file_by_url(test_url)
         self.assertIsNone(return_value)
         printed_output = sys.stdout.getvalue()
-        self.assertEqual(printed_output, "Error retrieving data from {}\n".format(test_url))
+        self.assertEqual(
+            printed_output, "Error retrieving data from {}\n".format(test_url)
+        )
 
 
 class TestWriteData(Base):
