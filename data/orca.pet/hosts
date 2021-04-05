@@ -3,7 +3,7 @@
 # Homepage: https://orca.pet/notonmyshift/
 # Licence: https://orca.pet/#license
 # Expires: 4h
-# Last update: 2021-03-23T15:26:39Z
+# Last update: 2021-04-01T18:45:44Z
 
 # === PHISING ===
 # These filters block pages that are not yet blocked by Google Safe Search
@@ -586,6 +586,15 @@
 0.0.0.0 www.piesescuter.eu
 0.0.0.0 fabyboutique.com
 0.0.0.0 www.fabyboutique.com
+
+# 2021-04-01 Chronopost phising
+#  - https://www.airsoftgunbcm.com/Tls_Newsletters
+#  - https://iberweb-12a.ibername.com/
+0.0.0.0 iberweb-12a.ibername.com
+0.0.0.0 airsoftgunbcm.com
+0.0.0.0 www.airsoftgunbcm.com
+0.0.0.0 ibername.com
+0.0.0.0 www.ibername.com
 
 # === SCAMS ===
 # These filters block pages which are known to scam people for money or gift cards
