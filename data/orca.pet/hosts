@@ -3,7 +3,7 @@
 # Homepage: https://orca.pet/notonmyshift/
 # Licence: https://orca.pet/#license
 # Expires: 4h
-# Last update: 2021-04-01T18:45:44Z
+# Last update: 2021-04-06T12:01:05Z
 
 # === PHISING ===
 # These filters block pages that are not yet blocked by Google Safe Search
@@ -3261,4 +3261,10 @@
 
 # 2020-05-21 Minecraft telemetry
 0.0.0.0 minecraftprod.rtep.msgamestudios.com
+
+# 2021-04-06 tweakers.net telemetry
+#  - https://fbc.wcfbc.net/v1/fbc
+0.0.0.0 fbc.wcfbc.net
+0.0.0.0 wcfbc.net
+0.0.0.0 www.wcfbc.net
 
