@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 06 Apr 2021 14:46 UTC+7
-# Version: 2104061446
-# Blocked: 1,776 domains
+# Last modified: 13 Apr 2021 11:46 UTC+7
+# Version: 2104131146
+# Blocked: 1,775 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -17,10 +17,12 @@
 0.0.0.0 log.adtimaserver.vn
 0.0.0.0 media.adtimaserver.vn
 0.0.0.0 media.org.adtimaserver.vn
+0.0.0.0 staging.api.adtimaserver.vn
 0.0.0.0 static.adtimaserver.vn
 0.0.0.0 static2.adtimaserver.vn
 0.0.0.0 stream.adtimaserver.vn
 0.0.0.0 stream.org.adtimaserver.vn
+0.0.0.0 web.api.adtimaserver.vn
 #[eclick]
 0.0.0.0 admin.iad.eclick.vn
 0.0.0.0 analytics.eclick.vn
@@ -768,16 +770,6 @@
 0.0.0.0 static.adsota.com
 0.0.0.0 track.adsota.com
 0.0.0.0 www.adsota.com
-#[masoffer.net]
-0.0.0.0 api.app.masoffer.net
-0.0.0.0 app.masoffer.net
-0.0.0.0 cdn.masoffer.net
-0.0.0.0 img.masoffer.net
-0.0.0.0 m.masoffer.net
-0.0.0.0 masoffer.net
-0.0.0.0 static.masoffer.net
-0.0.0.0 tr.masoffer.net
-0.0.0.0 www.masoffer.net
 #[autoads.asia]
 0.0.0.0 alpha2.autoads.asia
 0.0.0.0 alphaapi.autoads.asia
@@ -1852,6 +1844,7 @@
 0.0.0.0 smetrics.kone.vn
 0.0.0.0 st-a.vtvdigital.vn
 0.0.0.0 stat.headlines.pw
+0.0.0.0 static.masoffer.net
 0.0.0.0 staticad.thethao247.vn
 0.0.0.0 statis.dsp.vn
 0.0.0.0 statistic.batdongsan.com.vn
@@ -1917,12 +1910,17 @@
 0.0.0.0 zlog.zingmp3.vn
 # --- Block scamVN ---
 0.0.0.0 bloodleian.club
+0.0.0.0 byonlym.com
 0.0.0.0 celerantatters.com
+0.0.0.0 cettiarl.com
+0.0.0.0 drakeesh.com
 0.0.0.0 hashearog.com
+0.0.0.0 irduwhojas.ga
 0.0.0.0 larpollicwilli.club
 0.0.0.0 rituationscardb.info
 0.0.0.0 sacchaeleduk.com
 0.0.0.0 smilitygorb.club
+0.0.0.0 tammenaa.com
 0.0.0.0 ucesreferre.club
 # --- Block popupVN ---
 0.0.0.0 h6o2z0pwx5ja7dwxn0wx4fhv7mp0qoladm8vj6do4h1c6gja8evrn6g5fixk.me
