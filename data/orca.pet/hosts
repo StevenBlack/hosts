@@ -3,7 +3,7 @@
 # Homepage: https://orca.pet/notonmyshift/
 # Licence: https://orca.pet/#license
 # Expires: 4h
-# Last update: 2021-04-16T07:49:37Z
+# Last update: 2021-04-23T17:36:26Z
 
 # === PHISING ===
 # These filters block pages that are not yet blocked by Google Safe Search
@@ -692,8 +692,11 @@
 
 # 2021-03-09 Royalmail phising
 #  - https://royaimaii.com/schedule-delivery/?GV656872065GB
+#  - https://royalmaii.co/schedule-delivery/?GV673798065GB
 0.0.0.0 royaimaii.com
 0.0.0.0 www.royaimaii.com
+0.0.0.0 royalmaii.co
+0.0.0.0 www.royalmaii.co
 
 # 2021-03-18 DHL phishing, received via email
 #  - https://piesescuter.eu/webservice/track/DHL-EXPRESS/my-shopping-cart.php?client=H7PV3OD48RB5YZJM2EXQNSILWT1CFA0KUG69
@@ -721,6 +724,14 @@
 0.0.0.0 www.ibername.com
 0.0.0.0 mktcor.com.br
 0.0.0.0 www.mktcor.com.br
+
+# 2021-04-23 ING phising
+#  - https://cpdsalerno.com/re
+#  - https://www.gruppoemotion.net/ng/ji/ing-es/
+0.0.0.0 cpdsalerno.com
+0.0.0.0 www.cpdsalerno.com
+0.0.0.0 gruppoemotion.net
+0.0.0.0 www.gruppoemotion.net
 
 # === SCAMS ===
 # These filters block pages which are known to scam people for money or gift cards
