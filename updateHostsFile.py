@@ -81,7 +81,7 @@ def get_defaults():
         "readmedata": {},
         "readmedatafilename": path_join_robust(BASEDIR_PATH, "readmeData.json"),
         "exclusionpattern": r"([a-zA-Z\d-]+\.){0,}",
-        "exclusionregexs": [],
+        "exclusionregexes": [],
         "exclusions": [],
         "commonexclusions": ["hulu.com"],
         "blacklistfile": path_join_robust(BASEDIR_PATH, "blacklist"),
@@ -243,7 +243,7 @@ def main():
     )
 
     auto = settings["auto"]
-    exclusion_regexes = settings["exclusionregexs"]
+    exclusion_regexes = settings["exclusionregexes"]
     source_data_filename = settings["sourcedatafilename"]
 
     update_sources = prompt_for_update(freshen=settings["freshen"], update_auto=auto)
