@@ -30,7 +30,7 @@ from updateHostsFile import (
     gather_custom_exclusions,
     get_defaults,
     get_file_by_url,
-    is_valid_domain_format,
+    is_valid_user_provided_domain_format,
     matches_exclusions,
     move_hosts_file_into_place,
     normalize_rule,
@@ -125,7 +125,7 @@ class TestGetDefaults(Base):
                 "readmedata": {},
                 "readmedatafilename": ("foo" + self.sep + "readmeData.json"),
                 "exclusionpattern": r"([a-zA-Z\d-]+\.){0,}",
-                "exclusionregexs": [],
+                "exclusionregexes": [],
                 "exclusions": [],
                 "commonexclusions": ["hulu.com"],
                 "blacklistfile": "foo" + self.sep + "blacklist",
@@ -543,7 +543,7 @@ class TestGatherCustomExclusions(BaseStdout):
     # Can only test in the invalid domain case
     # because of the settings global variable.
     @mock.patch("updateHostsFile.input", side_effect=["foo", "no"])
-    @mock.patch("updateHostsFile.is_valid_domain_format", return_value=False)
+    @mock.patch("updateHostsFile.is_valid_user_provided_domain_format", return_value=False)
     def test_basic(self, *_):
         gather_custom_exclusions("foo", [])
 
@@ -552,7 +552,7 @@ class TestGatherCustomExclusions(BaseStdout):
         self.assertIn(expected, output)
 
     @mock.patch("updateHostsFile.input", side_effect=["foo", "yes", "bar", "no"])
-    @mock.patch("updateHostsFile.is_valid_domain_format", return_value=False)
+    @mock.patch("updateHostsFile.is_valid_user_provided_domain_format", return_value=False)
     def test_multiple(self, *_):
         gather_custom_exclusions("foo", [])
 
@@ -1753,9 +1753,9 @@ class TestQueryYesOrNo(BaseStdout):
         self.assertIn(expected, output)
 
 
-class TestIsValidDomainFormat(BaseStdout):
+class TestIsValidUserProvidedDomainFormat(BaseStdout):
     def test_empty_domain(self):
-        self.assertFalse(is_valid_domain_format(""))
+        self.assertFalse(is_valid_user_provided_domain_format(""))
 
         output = sys.stdout.getvalue()
         expected = "You didn't enter a domain. Try again."
@@ -1770,7 +1770,7 @@ class TestIsValidDomainFormat(BaseStdout):
             "https://github.com",
             "http://www.google.com",
         ]:
-            self.assertFalse(is_valid_domain_format(invalid_domain))
+            self.assertFalse(is_valid_user_provided_domain_format(invalid_domain))
 
             output = sys.stdout.getvalue()
             sys.stdout = StringIO()
@@ -1779,7 +1779,7 @@ class TestIsValidDomainFormat(BaseStdout):
 
     def test_valid_domain(self):
         for valid_domain in ["github.com", "travis.org", "twitter.com"]:
-            self.assertTrue(is_valid_domain_format(valid_domain))
+            self.assertTrue(is_valid_user_provided_domain_format(valid_domain))
 
             output = sys.stdout.getvalue()
             sys.stdout = StringIO()

@@ -571,7 +571,7 @@ def gather_custom_exclusions(exclusion_pattern, exclusion_regexes):
         domain_prompt = "Enter the domain you want to exclude (e.g. facebook.com): "
         user_domain = input(domain_prompt)
 
-        if is_valid_domain_format(user_domain):
+        if is_valid_user_provided_domain_format(user_domain):
             exclusion_regexes = exclude_domain(
                 user_domain, exclusion_pattern, exclusion_regexes
             )
@@ -1612,7 +1612,7 @@ def query_yes_no(question, default="yes"):
     return reply == "yes"
 
 
-def is_valid_domain_format(domain):
+def is_valid_user_provided_domain_format(domain):
     """
     Check whether a provided domain is valid.
 
