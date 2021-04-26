@@ -943,6 +943,10 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
         if not stripped_rule or matches_exclusions(stripped_rule, exclusion_regexes):
             continue
 
+        # Issue #1628
+        if ("@" in stripped_rule):
+            continue
+
         # Normalize rule
         hostname, normalized_rule = normalize_rule(
             stripped_rule,

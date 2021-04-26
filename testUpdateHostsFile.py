@@ -634,7 +634,7 @@ class TestMatchesExclusions(Base):
             self.assertTrue(matches_exclusions(domain, exclusion_regexes))
 
     def test_match_raw_list(self):
-        exclusion_regexes = [r".*\.com", r".*\.org", r".*\.edu"]
+        exclusion_regexes = [r".*\.com", r".*\.org", r".*\.edu", r".*@.*"]
         exclusion_regexes = [re.compile(regex) for regex in exclusion_regexes]
 
         for domain in [
@@ -642,6 +642,7 @@ class TestMatchesExclusions(Base):
             "yahoo.com",
             "adaway.org",
             "education.edu",
+            "a.stro.lo.gy@45.144.225.135",
         ]:
             self.assertTrue(matches_exclusions(domain, exclusion_regexes))
 
