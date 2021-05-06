@@ -328,20 +328,20 @@ To open a command prompt as administrator in the repository's directory, do the 
 
 You can also refer to the "Third-Party Hosts Managers" section for further recommended solutions from third parties.
 
-## Reloading hosts file
-
-Your operating system will cache DNS lookups. You can either reboot or run the following commands to
-manually flush your DNS cache once the new hosts file is in place.
-
-| The Google Chrome browser may require manually cleaning up its DNS Cache on `chrome://net-internals/#dns` page to thereafter see the changes in your hosts file. See: <https://superuser.com/questions/723703>
-
-## Warning: Using this `hosts` file in Windows may require disabling DNS Cache service.
+### Warning: Using this `hosts` file in Windows may require disabling DNS Cache service.
 
 Windows has issues with larger hosts files. Recent changes in security within Windows 10 denies
 access to changing services via other tools except registry hacks. Use the `disable-dnscache-service-win.cmd`
 file to make proper changes to the Windows registry. You will need to reboot your device once that's done.
 See the [the comments within the `cmd` file](https://github.com/StevenBlack/hosts/blob/master/disable-dnscache-service-win.cmd)
 for more details.
+
+## Reloading hosts file
+
+Your operating system will cache DNS lookups. You can either reboot or run the following commands to
+manually flush your DNS cache once the new hosts file is in place.
+
+| The Google Chrome browser may require manually cleaning up its DNS Cache on `chrome://net-internals/#dns` page to thereafter see the changes in your hosts file. See: <https://superuser.com/questions/723703>
 
 ### Windows
 
