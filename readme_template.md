@@ -343,8 +343,6 @@ file to make proper changes to the Windows registry. You will need to reboot you
 See the [the comments within the `cmd` file](https://github.com/StevenBlack/hosts/blob/master/disable-dnscache-service-win.cmd)
 for more details.
 
-:-----------------------------------------------------------------------------------------
-
 ### Windows
 
 Open a command prompt with administrator privileges and run this command:
