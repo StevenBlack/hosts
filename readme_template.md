@@ -334,6 +334,13 @@ Your operating system will cache DNS lookups. You can either reboot or run the f
 manually flush your DNS cache once the new hosts file is in place.
 
 | The Google Chrome browser may require manually cleaning up its DNS Cache on `chrome://net-internals/#dns` page to thereafter see the changes in your hosts file. See: <https://superuser.com/questions/723703>
+
+## Using huge `hosts` file in Windows required disabling DNS Cache service. You have been warned.
+
+Latest changes in security Windows 10 denied access to changing services via other tools except registry hack. Use file
+`disable-dnscache-service-win.cmd` for made proper changes in registry. After you need to reboot device. 
+Futher see details in cmd file code comment. 
+
 :-----------------------------------------------------------------------------------------
 
 ### Windows
