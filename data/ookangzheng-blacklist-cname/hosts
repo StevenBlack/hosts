@@ -1,0 +1,505 @@
+## This blacklist maintaince by @ookangzheng
+## Attribution-NonCommercial 4.0 International (CC BY-NC-SA 4.0)
+
+# Scam fake android warning
+system-update-new-2021.com
+buildingdoodlesquare.com
+envyindebted.com
+audacitydipping.com
+derangemathsreply.com
+
+# Apple in-mail safebrowsing url check
+token.safebrowsing.apple
+safebrowsing.g.aaplimg.com
+
+# China Smart TV scan entire home wifi network and phone home
+# https://archive.is/x5CUC
+# https://archive.is/YQfn4
+gzads.com
+gozendata.com
+gz-data.com
+service.gz-data.com
+upgrade.gz-data.com
+
+# Line Messenger Android 
+torimochi.line-apps.com
+uts-front.line-apps.com
+graph.instagram.com
+
+# Shareit App (Android https://play.google.com/store/apps/details?id=com.lenovo.anyshare.gps)
+# reported by: What-Zit-Tooya
+receiver-metis.infeng.site
+adconf.rqmob.com
+tracker.hellay.net
+dt.beyla.site
+www.pullcm.com
+www.pullcf.com
+ascribe.rqmob.com
+cdn.shareitgames.com
+
+# DeepL
+sentry.deepl.com
+
+# VS Code 
+default.exp-tas.com # https://www.reddit.com/r/vscode/comments/f0bh69/suspicious_connection_to_defaultexptascom/fkfeluz
+
+# WPS.cn (Android)
+activity.wps.com
+shuc-js.ksord.com
+movip.wps.com
+service-mopdf.wps.com
+dw-online.ksosoft.com
+
+# Notion.so
+nexus-websocket-a.intercom.io
+api-iam.intercom.io
+js.intercomcdn.com
+widget.intercom.io
+analytics.pgncs.notion.so
+
+# Binance (Android)
+cdngarenanow-a.akamaihd.net
+static-file-1259603563.file.myqcloud.com
+jpush.binance.im
+nbstream.binance.com
+fstream.binance.com
+launchpad.binance.com
+report.binance.gg
+domain-config-1259603563.file.myqcloud.com
+report.binance.im
+sensors.binance.cloud
+goodusahost.cn
+www.goodusahost.cn
+hanqiweb.net
+www.hanqiweb.net
+shyqxxy.com
+www.shyqxxy.com
+
+# hpplay.cn
+logu.hpplay.cn
+ssdkauth.hpplay.cn
+rp.hpplay.cn
+imdns.hpplay.cn
+
+# branch.io
+api.branch.io
+api2.branch.io
+
+# braze.com | Marketing analytics on mobile
+api.appboy.eu
+sdk.api.appboy.eu
+
+# Macpaw
+api-lytics.macpaw.com
+
+## Udemy android 
+mobile-http-intake.logs.datadoghq.com
+crashlyticsreports-pa.googleapis.com
+kinesis.us-east-1.amazonaws.com
+
+## Mozilla
+self-repair.mozilla.org # https://spyware.neocities.org/articles/firefox.html
+
+## Apple 
+ocsp.apple.com # Apple being evil, phone home, https://blog.jacopo.io/en/post/apple-ocsp/ & https://www.reddit.com/r/pihole/comments/jt3wyq/pihole_saves_the_day_ocspapplecom_outage/
+cu-cn-north00002.gala.convection.cn # Bogus upload in China (iPhone)
+cu-cn-north00001.gala.convection.cn 
+
+# Uservoice.com
+by.uservoice.com
+by2.uservoice.com
+widget.uservoice.com
+
+# App usage static
+appstatico.electronic.us
+
+# Glassbox screen record
+report-anf.glassboxcloud.com
+glassbox.aircanada.ca
+
+# Shopee.tw
+games.shopee.tw
+userstats.shopee.tw
+f.shopee.sg
+
+# castbox.fm 
+# everest.castbox.fm (Too mush phone home
+
+# icolorfast.com
+norma-external-collect.meizu.com
+appinstall.click
+ccloud.sdkclickurl.com
+logger.suibyuming.com
+kswj.unionapps.info
+global.ymtracking.com
+logger.icolorfast.com
+ctobsnssdk.com
+toblog.ctobsnssdk.com
+toblog.ctobsnssdk.com.w.cdngslb.com
+
+# adstack.com
+track.adstack.co
+
+# Manhuaren.com - android comic app
+setting.rayjump.com
+api.exc.mob.com
+ulogs.umeng.com
+ulogs.umengcloud.com
+net.rayjump.com
+sdk.adtiming.com
+plbslog.umeng.com
+f.gm.mob.com
+logger.c1oudmobi.net
+tkup.uparpu.com
+searchhtt.com
+api.c1oudmobi.net
+api.icolorfast.com
+uparpu.com
+api.uparpu.com
+daup.uparpu.com
+tkup.uparpu.com
+bi.manhuaren.com
+video.manhuaren.com
+
+# luckyorange.net -- Dynamic web recording user heat map and behaviour
+settings.luckyorange.net # https://www.editage.com.tw/inquire.html use it to track user
+
+# notifyvisitors.com # web site heat map
+analytics.notifyvisitors.com
+cdn.notifyvisitors.com
+
+#Japan i-mobile ad fraud 
+spcdnresource-akcf.i-mobile.co.jp
+
+# Leapmobs ads tracking
+clk.cpi.leapmobs.com
+
+# Samsung knox
+analytics.samsungknox.com
+
+# Vizio.com 
+rlog_sem.vizio.com #https://www.reddit.com/r/pihole/comments/aytpge/excessive_dns_queries_to_rlog_semviziocom/
+
+# www.bostonglobe.com
+meter.bostonglobe.com
+
+# Amazon
+click.dl-now.app
+adserver-prod-1937829349.us-east-2.elb.amazonaws.com
+cdn.krxd.net
+dz9qn8fh4jznm.cloudfront.net
+
+# 蘋果日報
+useg.nextdigital.com.hk
+lptag.liveperson.net
+imp.appledaily.com
+
+# EttToday
+wurfl.io
+ad.ettoday.net
+
+# mob.com
+l.gm.mob.com
+api.applink.mob.com
+f.gm.mob.com
+
+# XiaoMi ads tracker https://gist.github.com/yalu/3113699c7c4d1daee11ade977d93049b
+web-analytics-us.huami.com # Mifit android
+web-analytics.us-west-2.elasticbeanstalk.com # Mifit android
+cdn.awsbj0.fds.api.mi-img.com #Mifit android
+cdn.awsbj0.fds.api.mi-img.com.mgslb.com
+app-analytics.huami.com
+app-analytics-us.huami.com
+app-analytics-india.huami.com
+ad.state.mi.us
+tastesk.net
+api.ad.xiaomi.com
+api.admob.xiaomi.com
+api.d.xiaomi.com
+a.stat.xiaomi.com
+tracking.miui.com
+cdn.ad.xiaomi.com
+e.ad.xiaomi.com
+globalapi.ad.xiaomi.com
+new.api.ad.xiaomi.com
+sdkconfig.ad.xiaomi.com
+ssp.ad.xiaomi.com
+test.ad.xiaomi.com
+test.e.ad.xiaomi.com
+test.new.api.ad.xiaomi.com
+cc.sys.intl.xiaomi.com
+cc.sys.miui.com
+ccc.sys.miui.com
+ccc.sys.intl.xiaomi.com
+adv.sec.miui.com
+geofence.sys.miui.com
+abtest.mistat.xiaomi.com
+logupdate.avlyun.sec.miui.com
+mazu.sec.miui.com
+feedback.miui.com
+data.sec.miui.com
+
+# 看漫畫 Android comic viewer app 
+api.adthor.com # show ads on mahuaren.com android ads (outside china, singapore server) 
+api.zcoup.com
+sdk.adtiming.com
+ad.sitemaji.com
+logger.zcoup.com
+ulogs.umeng.com
+userdata.andrcool.com
+ad4.com.cn
+static.youappi.com
+
+# CERT Vulnerability (#598349)
+wpad.example.com 
+
+# Chinese tracker
+discuz.gtimg.cn
+hao.360.cn
+ip.ia22.com
+l.ad4.com.cn
+log.sina.cn
+log.tbs.qq.com
+main.exoclick.com
+mathtype.cn
+sa.tuisong.baidu.com
+sa1.tuisong.baidu.com
+
+# APP tracker
+api.branch.io
+api.segment.io
+cdn.segment.com
+onesignal.com
+api.mixpanel.com
+go.ero-advertising.com
+www.eroadvertising.com
+
+# Panda.tv
+aplay.wan.panda.tv
+caesar.wan.panda.tv
+play.wan.panda.tv
+wan.panda.tv
+
+# 斗鱼
+g.wan.douyu.com
+cdn.g.wan.douyu.com
+
+# ggsafe.com
+wifi.ggsafe.com
+
+# 游族的公司投放页游广告
+v3m.youzu.com
+
+# Unlisted
+adver7.clickmon.co.kr
+adver11.clickmon.co.kr
+e5019.e2.akamaiedge.net
+wahaha.work
+notify.zhushou.sogou.com
+i10c.net
+ad2iction.com
+adcl.pchome.com.tw
+ads.yap.yahoo.com
+appier.net
+appsflyer.com
+gemini.yahoo.com
+dable.io
+doublemax.net
+s.zimedia.com.tw
+popin.cc
+r.search.yahoo.com
+securegfm.com
+tenmax.io
+
+# Mostly Microsoft telemetry, spying smartTVs, IG/Facebook trackers, analytics, and mobile app analytics. Google Ads, Amazon Ads, and MoatAds
+mobiledataplansharing.googleapis.com
+people-pa.googleapis.com
+trk.pinterest.com
+v10.vortex-win.data.microsoft.com
+settings-win.data.microsoft.com
+redirector.gvt1.com
+watson.telemetry.microsoft.com
+win1710.ipv6.microsoft.com
+device-api.urbanairship.com
+littlefield.logs.roku.com
+ichnaea.netflix.com
+mss.handmark.com
+scribe.logs.roku.com
+cooper.logs.roku.com
+e.reddit.com
+mobile.pipe.aria.microsoft.com
+cdn.samsungcloudsolution.com
+mobile-collector.newrelic.com
+log-ingestion.samsungacr.com
+graph.instagram.com
+ssl.google-analytics.com
+video-stats.l.google.com
+# cdn-content.ampproject.org
+googleads.g.doubleclick.net
+e.crashlytics.com
+www.googleadservices.com
+nexus.officeapps.live.com
+z.moatads.com
+settings.crashlytics.com
+v10.events.data.microsoft.com
+combine.urbanairship.com
+mads.amazon.com
+secure-dcr-cert.imrworldwide.com
+app.adjust.com
+graph.accountkit.com
+pagead2.googlesyndication.com
+pubads.g.doubleclick.net
+secure-dcr.imrworldwide.com
+reports.crashlytics.com
+watson.telemetry.microsoft.com
+control2.tvinteractive.tv
+i10c.net
+ad2iction.com
+adcl.pchome.com.tw
+ads.yap.yahoo.com
+appier.net
+appsflyer.com
+gemini.yahoo.com
+dable.io
+doublemax.net
+s.zimedia.com.tw
+popin.cc
+r.search.yahoo.com
+securegfm.com
+tenmax.io
+adver10.clickmon.co.kr
+littlefield.logs.roku.com
+s.amazon-adsystem.com
+nexusrules.officeapps.live.com
+sb.scorecardresearch.com
+www.google-analytics.com
+config2.mparticle.com
+pbcde.com
+m-shes.ru
+pl14960438.pvclouds.com
+adsbb.depositfiles.com
+sb.scorecardresearch.com
+ads.exdynsrv.com
+bj1110.online
+wpad.example.com
+2ip.ru
+sky.2ip.ru
+syndication.twitter.com
+sp2.baidu.com
+m.henxg.cn
+m.lsiwd.cn
+photo.0234408.cn
+# staticxx.facebook.com
+photo.yingtaiboli.cn
+yingtaiboli.cn
+m.syxsa.cn
+m.sdfvk.cn
+
+# Akamai DNS tools
+# https://developer.akamai.com/blog/2018/05/10/introducing-new-whoami-tool-dns-resolver-information
+# whoami.akamai.net # will block and discontinue, pls use whoami.ds.akahelp.net
+
+# Others
+log.quora.com
+count-server.sharethis.com
+data.sharethis.com
+ead.sharethis.com
+edge.sharethis.com
+emu.sharethis.com
+engineering.sharethis.com
+kiwi.sharethis.com
+l.sharethis.com
+platform-api.sharethis.com
+px.sharethis.com
+pxcel.sharethis.com
+rest.sharethis.com
+s.sharethis.com
+sad.sharethis.com
+sd.sharethis.com
+seg.sharethis.com
+t.sharethis.com
+w.sharethis.com
+wd.sharethis.com
+wd-edge.sharethis.com
+ws.sharethis.com
+sharethis.com
+capture.trackjs.com
+cdn.trackjs.com
+my.trackjs.com
+usage.trackjs.com
+trackjs.com
+hcs084epsepa004.som.ad.state.mi.us
+mx-gw.floraa.wales
+bv4p.xgx3f3588.com
+xgx3f3588.com
+a9v8.cn
+c.y.qq.com
+play.aniview.com
+ssp.lkgd.net
+ads.stickyadstv.com
+algovid.com
+ssp.streamrail.net
+v.algovid.com
+events.streamrail.net
+predictionai.com
+duologinsupersdk.ewan.cn
+engagethepower.org
+analytics.localytics.com
+dr.sg.baidu.com
+useg.nextdigital.com.hk
+lptag.liveperson.net
+imp.appledaily.com
+meter.bostonglobe.com
+dz9qn8fh4jznm.cloudfront.net
+rlog_sem.vizio.com
+analytics.samsungknox.com
+clk.cpi.leapmobs.com
+a6709203f34992a5095d2bc7ceaf2ec504f651a8.cws.conviva.com
+lap-click.tr.line.me
+vj.quanjingpay.com
+www.r1oman.com
+kenzz9.xyz
+m.bchchk.cn
+m.drrcns.cn
+drrcns.cn
+api.zhy333.com
+m.yyfymj.com
+m.bihutg.com
+m.zhaibei112.top
+www.khlgauqt2000.com
+m.fexiaen.com
+e.oul78c.cn
+abs.ireaderm.net
+api.ireaderm.net
+app.adjust.com
+logger.suibyuming.com
+
+# Report from user 
+## by Eden
+appgiftwall.oss-us-west-1.aliyuncs.com
+www.bjhdrx.com
+www.qcoldtui1999.com
+www.victory1999.com
+www.tuigang1999.com
+dartmotif.net
+ssv.admost.com
+mobile.admost.com
+adserver.admost.com
+api.admost.com
+config.unityads.unitychina.cn
+hb.rayjump.com
+
+## Antifraud
+s.update.fbsbx.com
+
+## SafeURL to china
+safeurl.maxthon.cn
+www.urlsec.qq.com
+urlsec.qq.com
+
+## Prevent Chinese phone back to HOME
+picanalysis.vivo.com.cn
+
+## Fraud chinese site
+wwtsg.xyz # fake chrome url let you download chrome.apk (Chinese)
+sfcxv.xyz # fake chrome url let you download chrome.apk (Chinese)
