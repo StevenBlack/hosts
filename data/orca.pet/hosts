@@ -3,7 +3,7 @@
 # Homepage: https://orca.pet/notonmyshift/
 # Licence: https://orca.pet/#license
 # Expires: 4h
-# Last update: 2021-05-11T16:42:48Z
+# Last update: 2021-05-13T20:06:34Z
 
 # === PHISING ===
 # These filters block pages that are not yet blocked by Google Safe Search
@@ -83,38 +83,35 @@
 
 # 2020-09-15 Correos phishing
 #  - https://lora-lutsk.site/wp-admin/rap/USERS/3387fbecd8e99e0/index.php?view=login&appIdKey=79.108.139.220&country=ES
+#  - https://correosrastreos.com/
 0.0.0.0 lora-lutsk.site
 0.0.0.0 www.lora-lutsk.site
+0.0.0.0 correosrastreos.com
+0.0.0.0 www.correosrastreos.com
 
-# 2020-09-21 AEAT phishing
+# 2021-05-13 AEAT phishing
 #  - https://metalcarpenteriedalfovo.it/prova/index.php?web=bWVAcjJkMnJpZ28uZXM=
 #  - https://agenciatributaria.email/?web=bWVAcjJkMnJpZ28uZXM=
+#  - https://bluemarble-advt.com/mame//?hash=contacto
 0.0.0.0 metalcarpenteriedalfovo.it
 0.0.0.0 www.metalcarpenteriedalfovo.it
 0.0.0.0 agenciatributaria.email
 0.0.0.0 www.agenciatributaria.email
-
-# 2020-09-29 Correos phishing
-#  - https://correosrastreos.com/
-0.0.0.0 correosrastreos.com
-0.0.0.0 www.correosrastreos.com
-
-# 2020-09-29 EDF phishing
-#  - https://www.m-esage.com/fr/info.php?&_signin_id=a6ade3da9bc7b88efdc59f16e8994099
-0.0.0.0 m-esage.com
-0.0.0.0 www.m-esage.com
+0.0.0.0 bluemarble-advt.com
+0.0.0.0 www.bluemarble-advt.com
 
 # 2020-09-29 Santander phishing
 #  - https://www.s-banco.es/
 0.0.0.0 s-banco.es
 0.0.0.0 www.s-banco.es
 
-# 2020-12-03 Email phishing
+# 2021-05-13 Email phishing
 #  - https://mciegroup.ru/muhammadwalii2sep/login.html
 #  - https://seatwave.ru/nathy11aug/next.php
 #  - https://investfactapi.cloud/kiwj3anderson39kd/post.php
 #  - https://virtualbox.work/defdonwilly39jkfhkdhf/post.php
 #  - https://statesbox.monster/bk7azmy0xo4jandersonkg8k0acq9/post.php
+#  - https://mail-links3.info/?rts=cp&uid=
 0.0.0.0 mciegroup.ru
 0.0.0.0 www.mciegroup.ru
 0.0.0.0 seatwave.ru
@@ -125,6 +122,8 @@
 0.0.0.0 www.virtualbox.work
 0.0.0.0 statesbox.monster
 0.0.0.0 www.statesbox.monster
+0.0.0.0 mail-links3.info
+0.0.0.0 www.mail-links3.info
 
 # 2020-10-23 Ministerio de Trabajo phishing with trojan
 #  - http://www.ocmwr.com/stlinter?117840615_292336938732339_7623365132391156747_n.png
@@ -135,10 +134,6 @@
 #  - https://skylarstetten.com/pop
 0.0.0.0 skylarstetten.com
 0.0.0.0 www.skylarstetten.com
-
-# 2020-10-23 Correos phishing
-#  - http://oficinadecorreos.eastus.cloudapp.azure.com/
-0.0.0.0 oficinadecorreos.eastus.cloudapp.azure.com
 
 # 2020-10-24 Amazon phishing and BTC bullshit
 #  - http://365abcd.net/r.php?t=c&d=47763&l=8299&c=60356
@@ -3361,6 +3356,16 @@
 #  - https://bnmjjwinf292.com/kr683tjxkd?key=0f22c1fd609f13cb7947c8cabfe1a90d&submetric=14892298
 0.0.0.0 bnmjjwinf292.com
 0.0.0.0 www.bnmjjwinf292.com
+
+# 2021-05-13 Ads serving malware
+0.0.0.0 centomor.xyz
+0.0.0.0 www.centomor.xyz
+0.0.0.0 faizabeauty.xyz
+0.0.0.0 www.faizabeauty.xyz
+0.0.0.0 fusenz.xyz
+0.0.0.0 www.fusenz.xyz
+0.0.0.0 thirstycrow.xyz
+0.0.0.0 www.thirstycrow.xyz
 
 # === MAIL BEACONS ===
 # These entries block beacons on mail which companies use to check if bulk email/spam is read for obvious privacy reasons
