@@ -3,7 +3,7 @@
 # Homepage: https://orca.pet/notonmyshift/
 # Licence: https://orca.pet/#license
 # Expires: 4h
-# Last update: 2021-05-26T21:40:09Z
+# Last update: 2021-06-05T14:40:36Z
 
 # === PHISING ===
 # These filters block pages that are not yet blocked by Google Safe Search
@@ -61,11 +61,6 @@
 0.0.0.0 soflock.com
 0.0.0.0 www.soflock.com
 
-# 2020-08-06 Correos email phishing
-#  - https://www.rioforpartiers.com/Correos
-0.0.0.0 rioforpartiers.com
-0.0.0.0 www.rioforpartiers.com
-
 # 2020-08-06 Hacked website
 #  - https://litocen.com/wp-includes/js/exe/upxls.php
 0.0.0.0 litocen.com
@@ -84,10 +79,13 @@
 # 2020-09-15 Correos phishing
 #  - https://lora-lutsk.site/wp-admin/rap/USERS/3387fbecd8e99e0/index.php?view=login&appIdKey=79.108.139.220&country=ES
 #  - https://correosrastreos.com/
+#  - https://www.rioforpartiers.com/Correos
 0.0.0.0 lora-lutsk.site
 0.0.0.0 www.lora-lutsk.site
 0.0.0.0 correosrastreos.com
 0.0.0.0 www.correosrastreos.com
+0.0.0.0 rioforpartiers.com
+0.0.0.0 www.rioforpartiers.com
 
 # 2021-05-13 AEAT phishing
 #  - https://metalcarpenteriedalfovo.it/prova/index.php?web=bWVAcjJkMnJpZ28uZXM=
@@ -735,6 +733,12 @@
 0.0.0.0 gruppoemotion.net
 0.0.0.0 www.gruppoemotion.net
 
+# 2021-06-05 Fake snail mail parcel website
+#  - https://sysitemff.customeronline.top/fr/ips/
+0.0.0.0 sysitemff.customeronline.top
+0.0.0.0 customeronline.top
+0.0.0.0 www.customeronline.top
+
 # === SCAMS ===
 # These filters block pages which are known to scam people for money or gift cards
 
@@ -954,6 +958,13 @@
 0.0.0.0 www.dropmuskx.ir
 0.0.0.0 tweetelonmusk.ir
 0.0.0.0 www.tweetelonmusk.ir
+
+# === MALWARE ===
+# Domains used as C&C or hosting malware
+
+# 2020-05-31 Malware browser plugin
+0.0.0.0 vssl-on.com
+0.0.0.0 www.vssl-on.com
 
 # === ADVERTISEMENTS ===
 # These entries block good old advertisements, which are annoying but pose no threat
