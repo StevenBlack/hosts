@@ -3,7 +3,7 @@
 # Homepage: https://orca.pet/notonmyshift/
 # Licence: https://orca.pet/#license
 # Expires: 4h
-# Last update: 2021-06-05T14:40:36Z
+# Last update: 2021-06-14T22:02:49Z
 
 # === PHISING ===
 # These filters block pages that are not yet blocked by Google Safe Search
@@ -155,14 +155,20 @@
 0.0.0.0 pandemic-reliefnygov.net
 0.0.0.0 www.pandemic-reliefnygov.net
 
-# 2021-05-11 CaixaBank phishing
+# 2021-06-13 CaixaBank phishing
 #  - http://stammtisch-design.de/ONQ70ZV4HHONQ70ZV4HHONQ70ZV4HH.html
 #  - https://business.caixaessigne.com/nqbgdh/nqbcolq/?kfukf
+#  - http://wtm.infos-lifestyle.fr/redirection.html?m=2f2de1c2f8ab4abc52a69c6cd6e91cd2&c=fr&u=https://additainment.de/app&dc=
 0.0.0.0 business.caixaessigne.com
+0.0.0.0 wtm.infos-lifestyle.fr
 0.0.0.0 stammtisch-design.de
 0.0.0.0 www.stammtisch-design.de
 0.0.0.0 caixaessigne.com
 0.0.0.0 www.caixaessigne.com
+0.0.0.0 infos-lifestyle.fr
+0.0.0.0 www.infos-lifestyle.fr
+0.0.0.0 caixabankapp.digital
+0.0.0.0 www.caixabankapp.digital
 
 # 2021-03-03 Amazon phishing
 #  - http://findout.eu.com
@@ -203,16 +209,22 @@
 0.0.0.0 thienlongcnc.com
 0.0.0.0 www.thienlongcnc.com
 
-# 2020-11-22 PayPal phishing
+# 2021-06-15 PayPal phishing
 #  - http://mysupply.beforese.com/
 #  - https://deringanbangnada.tevkhkoztp.com/?sign
-#  - http://resolution-centre-id1212.com/?p=4
+#  - http://resolution-centre-id1212.com/?p=4ç
+#  - http://ssp-click.i-mobile.co.jp/click.ashx?dspid=4&asid=153852&dspadvid=cieliacom_1810191439186604605&ru=https://summarylimitedaccspypl.com/r/bHt8OKc
+#  - https://summarylimitedaccspypl.com/r/bHt8OKc
+0.0.0.0 ssp-click.i-mobile.co.jp
 0.0.0.0 mysupply.beforese.com
 0.0.0.0 tevkhkoztp.com
 0.0.0.0 www.tevkhkoztp.com
 0.0.0.0 supporttech-pay-com.preview-domain.com
 0.0.0.0 resolution-centre-id1212.com
 0.0.0.0 www.resolution-centre-id1212.com
+0.0.0.0 ssp-click.i-mobile.co.jp
+0.0.0.0 summarylimitedaccspypl.com
+0.0.0.0 www.summarylimitedaccspypl.com
 
 # 2021-01-02 Amazon phishing
 #  - http://akepolsa.hiabaik.alexwasiwo.com/FPWKZUPZUT
@@ -3401,7 +3413,7 @@
 0.0.0.0 xiti.com
 0.0.0.0 www.xiti.com
 
-# 2020-05-30 El Corte InglÃ©s mail beacon
+# 2020-05-30 El Corte Inglés mail beacon
 0.0.0.0 tracker.elcorteingles.es
 
 # 2020-06-01 Uber mail beacon

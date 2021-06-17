@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 07 Jun 2021 15:05 UTC+7
-# Version: 2106071505
-# Blocked: 1,788 domains
+# Last modified: 16 Jun 2021 15:21 UTC+7
+# Version: 2106161521
+# Blocked: 1,794 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -541,6 +541,10 @@
 0.0.0.0 adtima-media.zadn.vn
 0.0.0.0 adtima-static-td.zadn.vn
 0.0.0.0 adtima-static.zadn.vn
+#[adtima*.zascdn.me]
+0.0.0.0 adtima-media.zascdn.me
+0.0.0.0 adtima-static.zascdn.me
+0.0.0.0 adtima-video.zascdn.me
 #[sdk.zadn.vn]
 0.0.0.0 api.sdk.zadn.vn
 0.0.0.0 log.sdk.zadn.vn
@@ -1463,6 +1467,13 @@
 0.0.0.0 tricker.vn
 0.0.0.0 vongquaymienphi.tricker.vn
 0.0.0.0 www.tricker.vn
+#[sapoapps.vn]
+0.0.0.0 blogstatistics.sapoapps.vn
+0.0.0.0 bwstatistics.sapoapps.vn
+0.0.0.0 google-shopping.sapoapps.vn
+0.0.0.0 googleshopping.sapoapps.vn
+0.0.0.0 popup.sapoapps.vn
+0.0.0.0 promotionpopup.sapoapps.vn
 # --- Block adsVN ---
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
 0.0.0.0 703531862.vws.vegacdn.vn
@@ -1624,6 +1635,7 @@
 0.0.0.0 hexapinow.xyz
 0.0.0.0 imgcdnbet.com
 0.0.0.0 interactive.tinnhanhchungkhoan.vn
+0.0.0.0 ketquaxosotoancau.org
 0.0.0.0 landingpagelagi.vn
 0.0.0.0 lottery.headlines.pw
 0.0.0.0 lottery.vntoday.news
@@ -1638,7 +1650,6 @@
 0.0.0.0 offerwall.headlines.pw
 0.0.0.0 ox1.vietstock.vn
 0.0.0.0 phimmedia03.com
-0.0.0.0 promotionpopup.sapoapps.vn
 0.0.0.0 qc.5giay.vn
 0.0.0.0 qc.designervn.net
 0.0.0.0 qc.itsgroup.vn
@@ -1691,6 +1702,7 @@
 0.0.0.0 www.chiasephim.xyz
 0.0.0.0 www.delecpuzz.com
 0.0.0.0 www.hexapinow.xyz
+0.0.0.0 www.ketquaxosotoancau.org
 0.0.0.0 www.landingpagelagi.vn
 0.0.0.0 www.microad.vn
 0.0.0.0 www.realclick.vn
@@ -1736,10 +1748,8 @@
 0.0.0.0 apl.headlines.pw
 0.0.0.0 app.hstatic.net
 0.0.0.0 app.sbz.workers.dev
-0.0.0.0 blogstatistics.sapoapps.vn
 0.0.0.0 btrack.homedy.com
 0.0.0.0 bwstatistics.bizwebapps.vn
-0.0.0.0 bwstatistics.sapoapps.vn
 0.0.0.0 cdn.doke.app
 0.0.0.0 cdn.tekoapis.com
 0.0.0.0 clicker.chiaki.vn
@@ -1757,8 +1767,6 @@
 0.0.0.0 fbuser.ovp.vn
 0.0.0.0 file-subiz.com
 0.0.0.0 follow.vnay.vn
-0.0.0.0 google-shopping.sapoapps.vn
-0.0.0.0 googleshopping.sapoapps.vn
 0.0.0.0 gtmjs.com
 0.0.0.0 hit.123c.vn
 0.0.0.0 invite.baomoi.com
