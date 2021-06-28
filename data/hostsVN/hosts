@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 22 Jun 2021 20:20 UTC+7
-# Version: 2106222020
-# Blocked: 1,794 domains
+# Last modified: 24 Jun 2021 21:05 UTC+7
+# Version: 2106242105
+# Blocked: 1,813 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -541,7 +541,9 @@
 0.0.0.0 adtima-media.zadn.vn
 0.0.0.0 adtima-static-td.zadn.vn
 0.0.0.0 adtima-static.zadn.vn
+0.0.0.0 adtima-video.zadn.vn
 #[adtima*.zascdn.me]
+0.0.0.0 adtima-common.zascdn.me
 0.0.0.0 adtima-media.zascdn.me
 0.0.0.0 adtima-static.zascdn.me
 0.0.0.0 adtima-video.zascdn.me
@@ -1455,6 +1457,8 @@
 0.0.0.0 stats.vng.com.vn
 #[tpmedia.online]
 0.0.0.0 cdn.tpmedia.online
+0.0.0.0 cdn1.tpmedia.online
+0.0.0.0 cdnv.tpmedia.online
 0.0.0.0 mvideo.tpmedia.online
 0.0.0.0 tpmedia.online
 0.0.0.0 www.tpmedia.online
@@ -1474,6 +1478,22 @@
 0.0.0.0 googleshopping.sapoapps.vn
 0.0.0.0 popup.sapoapps.vn
 0.0.0.0 promotionpopup.sapoapps.vn
+#[onmarketer.net]
+0.0.0.0 onmarketer.net
+0.0.0.0 beta.onmarketer.net
+0.0.0.0 www.onmarketer.net
+0.0.0.0 hub.onmarketer.net
+#[omarketer.viettelpost.vn]
+0.0.0.0 api.omarketer.viettelpost.vn
+0.0.0.0 app.omarketer.viettelpost.vn
+0.0.0.0 cdn.omarketer.viettelpost.vn
+0.0.0.0 hub.omarketer.viettelpost.vn
+0.0.0.0 omarketer.viettelpost.vn
+0.0.0.0 url.omarketer.viettelpost.vn
+0.0.0.0 wss.omarketer.viettelpost.vn
+#[adconnect.vn]
+0.0.0.0 adconnect.vn
+0.0.0.0 static.adconnect.vn
 # --- Block adsVN ---
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
 0.0.0.0 703531862.vws.vegacdn.vn
@@ -1796,6 +1816,7 @@
 0.0.0.0 log.ngaynay.vn
 0.0.0.0 log.nhipcaudautu.vn
 0.0.0.0 log.oto.com.vn
+0.0.0.0 log.plo.vn
 0.0.0.0 log.saleup88.vn
 0.0.0.0 log.sggp.org.vn
 0.0.0.0 log.tapchimattran.vn
@@ -1838,6 +1859,7 @@
 0.0.0.0 mysapo.net
 0.0.0.0 newlog.daidoanket.vn
 0.0.0.0 nstat.headlines.pw
+0.0.0.0 pixel.chotot.com
 0.0.0.0 production-tracking.riviu.co
 0.0.0.0 report.vnay.vn
 0.0.0.0 rsyslog.24h.com.vn

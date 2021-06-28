@@ -3,7 +3,7 @@
 # Homepage: https://orca.pet/notonmyshift/
 # Licence: https://orca.pet/#license
 # Expires: 4h
-# Last update: 2021-06-17T11:20:42Z
+# Last update: 2021-06-26T13:13:06Z
 
 # === PHISING ===
 # These filters block pages that are not yet blocked by Google Safe Search
@@ -155,12 +155,13 @@
 0.0.0.0 pandemic-reliefnygov.net
 0.0.0.0 www.pandemic-reliefnygov.net
 
-# 2021-06-13 CaixaBank phishing
+# 2021-06-26 CaixaBank phishing
 #  - http://stammtisch-design.de/ONQ70ZV4HHONQ70ZV4HHONQ70ZV4HH.html
 #  - https://business.caixaessigne.com/nqbgdh/nqbcolq/?kfukf
 #  - http://wtm.infos-lifestyle.fr/redirection.html?m=2f2de1c2f8ab4abc52a69c6cd6e91cd2&c=fr&u=https://additainment.de/app&dc=
 0.0.0.0 business.caixaessigne.com
 0.0.0.0 wtm.infos-lifestyle.fr
+0.0.0.0 es.conectar-caixabank.com
 0.0.0.0 stammtisch-design.de
 0.0.0.0 www.stammtisch-design.de
 0.0.0.0 caixaessigne.com
@@ -169,6 +170,8 @@
 0.0.0.0 www.infos-lifestyle.fr
 0.0.0.0 caixabankapp.digital
 0.0.0.0 www.caixabankapp.digital
+0.0.0.0 conectar-caixabank.com
+0.0.0.0 www.conectar-caixabank.com
 
 # 2021-03-03 Amazon phishing
 #  - http://findout.eu.com
