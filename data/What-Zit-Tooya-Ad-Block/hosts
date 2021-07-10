@@ -2,8 +2,8 @@
 ! Expires: Never
 ! Description: Supplementary mobile ads filters. HOSTS 0.0.0.0 version of my Ad-Block.
 ! Author: WhatZitTooya
-! Last modified: 08 Jul 2021 04:45 PM UTC+7
-! Version: 08/07/2021
+! Last modified: 10 Jul 2021 09:00 AM UTC+7
+! Version: 10/07/2021
 ! Homepage: https://github.com/What-Zit-Tooya/Ad-Block
 ! Issues: https://github.com/What-Zit-Tooya/Ad-Block/issues
 ! License: https://github.com/What-Zit-Tooya/Ad-Block/blob/main/LICENSE
@@ -30,6 +30,7 @@
 0.0.0.0 litix.io
 0.0.0.0 metric-api.newrelic.com
 0.0.0.0 oth.eve.mdt.qq.com
+0.0.0.0 popin.cc
 0.0.0.0 pagead2.googlesyndication.com
 0.0.0.0 scorecardresearch.com
 0.0.0.0 sg.tdatamaster.com
@@ -39,25 +40,6 @@
 
 # SHAREit: com.lenovo.anyshare.gps
 ### Block NSFW and Fuc*king video ads. Blame SHAREit devs ###
-0.0.0.0 104.19.128.78
-0.0.0.0 104.19.129.78
-0.0.0.0 104.19.130.78
-0.0.0.0 104.19.131.78
-0.0.0.0 104.19.143.77
-0.0.0.0 107.23.178.199
-0.0.0.0 13.224.250.223
-0.0.0.0 13.227.228.19
-0.0.0.0 13.248.218.66
-0.0.0.0 13.35.13.120
-0.0.0.0 13.35.13.120
-0.0.0.0 159.138.101.104
-0.0.0.0 159.138.102.255
-0.0.0.0 159.138.103.42
-0.0.0.0 159.138.106.8
-0.0.0.0 159.138.84.44
-0.0.0.0 34.199.12.244
-0.0.0.0 75.2.70.67
-0.0.0.0 76.223.65.142
 0.0.0.0 active.wshareit.com
 0.0.0.0 adconf.rqmob.com
 0.0.0.0 ads.mopub.com
@@ -155,10 +137,6 @@
 0.0.0.0 telemetry.mozilla.org
 
 # Lazada Indonesia: com.lazada.android
-0.0.0.0 47.246.32.33
-0.0.0.0 47.8.94.32
-0.0.0.0 47.89.74.75
-0.0.0.0 47.89.74.76
 0.0.0.0 acs-m.lazada.sg
 0.0.0.0 adash.man.aliyuncs.com
 0.0.0.0 adashbc.m.taobao.com
@@ -226,7 +204,6 @@
 0.0.0.0 xml.opera.com
 
 # Drakor.ID: com.stream.drakorindoawet
-0.0.0.0 104.18.226.52
 0.0.0.0 achcdn.com
 0.0.0.0 ad.foxnetworks.com
 0.0.0.0 ads.twitter.com
@@ -266,28 +243,6 @@
 
 # HAGO: com.yy.hiyo
 # Noizz - formerly Biugo: com.yy.biu
-0.0.0.0 103.230.236.20
-0.0.0.0 103.230.236.25
-0.0.0.0 103.230.236.32
-0.0.0.0 121.46.20.38
-0.0.0.0 121.46.30.51
-0.0.0.0 121.46.30.59
-0.0.0.0 124.202.138.11
-0.0.0.0 124.202.138.29
-0.0.0.0 124.202.138.30
-0.0.0.0 124.202.138.31
-0.0.0.0 124.202.138.32
-0.0.0.0 175.25.50.15
-0.0.0.0 175.25.50.16
-0.0.0.0 175.25.50.70
-0.0.0.0 183.232.58.233
-0.0.0.0 183.232.58.234
-0.0.0.0 183.232.58.236
-0.0.0.0 183.232.58.237
-0.0.0.0 183.232.58.238
-0.0.0.0 183.232.58.241
-0.0.0.0 43.247.88.106
-0.0.0.0 43.247.88.107
 0.0.0.0 act.umeng.com
 0.0.0.0 activity.umeng.com
 0.0.0.0 adashx4sg.ut.taobao.com
@@ -442,23 +397,28 @@
 0.0.0.0 bitcoloan.info
 0.0.0.0 blog.tapdaq.com
 0.0.0.0 brtcjmnplmzo.com
+0.0.0.0 cdn.mondiad.net
 0.0.0.0 config.inmobi.com
 0.0.0.0 config.unityads.unity3d.com
 0.0.0.0 config.unityads.unitychina.cn
 0.0.0.0 connect.tapjoy.com
 0.0.0.0 crash-metrics.sdk.inmobi.com
-0.0.0.0 daijopimlo.com
 0.0.0.0 d.applovin.com
 0.0.0.0 d.applvn.com
+0.0.0.0 daijopimlo.com
 0.0.0.0 dashboard-api.staging.tapdaq.com
 0.0.0.0 dashboard-api.tapdaq.com
 0.0.0.0 dvwvqeddi.com
 0.0.0.0 exeptingincludedelivering.com
 0.0.0.0 flongshartail.com
+0.0.0.0 freychang.fun
 0.0.0.0 goofypismica.com
 0.0.0.0 hugregregy.pro
+0.0.0.0 i.wmgtr.com
+0.0.0.0 icotrack.net
 0.0.0.0 img.applovin.com
 0.0.0.0 insideoftech.com
+0.0.0.0 ipmbnqqaon.com
 0.0.0.0 itstuffnews.com
 0.0.0.0 kibana.tapdaq.com
 0.0.0.0 kotikinar2ko8tiki09.com
@@ -466,6 +426,7 @@
 0.0.0.0 ms.applovin.com
 0.0.0.0 ms.applvn.com
 0.0.0.0 ngbbpwyrv.com
+0.0.0.0 ovgylabitru.biz
 0.0.0.0 pdn.applovin.com
 0.0.0.0 placements.tapjoy.com
 0.0.0.0 practisecolander.com
@@ -477,6 +438,7 @@
 0.0.0.0 rt.applovin.com
 0.0.0.0 rt.applvn.com
 0.0.0.0 ruinedhang.com
+0.0.0.0 serve.mondiad.net
 0.0.0.0 staging.tapdaq.com
 0.0.0.0 static.tapdaq.com
 0.0.0.0 status.tapdaq.com
@@ -484,7 +446,9 @@
 0.0.0.0 tapdaq.com
 0.0.0.0 telemetry.sdk.inmobi.com
 0.0.0.0 trk.lot-impossible-mouth-twice.xyz
+0.0.0.0 twspuq.com
 0.0.0.0 tywzyhfliwdbu.com
+0.0.0.0 ulukaris.com
 0.0.0.0 unityads.unity3d.com
 0.0.0.0 unityads.unitychina.cn
 0.0.0.0 vid.applovin.com
@@ -496,6 +460,7 @@
 0.0.0.0 www.staging.tapdaq.com
 0.0.0.0 www.tapdaq.com
 0.0.0.0 www.weeklyordinaryrewardextra.cyou
+0.0.0.0 xpbbyiqbcawamy.com
 0.0.0.0 yititsimplyd.club
 0.0.0.0 z.moatads.com
 
@@ -574,9 +539,6 @@
 0.0.0.0 videosnap.like.video
 
 # SnackVideo: com.kwai.bulldog
-0.0.0.0 101.32.133.79
-0.0.0.0 34.117.196.186
-0.0.0.0 75.2.122.31
 0.0.0.0 acs-m.lazada.sg
 0.0.0.0 ak-static.snackvideo.in
 0.0.0.0 aws-logsdk.snackvideo.com
@@ -600,10 +562,6 @@
 0.0.0.0 wlog.kuaishou.com
 
 # HUAWEI PHONES
-0.0.0.0 159.138.109.22
-0.0.0.0 159.138.80.62
-0.0.0.0 159.138.90.32
-0.0.0.0 159.138.99.194
 0.0.0.0 activity5.hicloud.com
 0.0.0.0 adx-dra-op-hicloud-com-dra.appacc.dbankedge.net
 0.0.0.0 adx-dra.op.hicloud.com
@@ -648,28 +606,6 @@
 
 # XIAOMI PHONES
 # Pulled from Xiaomi's subdomains, also tested on Global ROM
-0.0.0.0 10.235.124.13
-0.0.0.0 10.99.168.145
-0.0.0.0 13.107.13.80
-0.0.0.0 161.117.190.13
-0.0.0.0 161.117.196.127
-0.0.0.0 161.117.198.51
-0.0.0.0 161.117.200.61
-0.0.0.0 161.117.71.226
-0.0.0.0 47.74.236.76
-0.0.0.0 47.88.231.18
-0.0.0.0 47.88.232.213
-0.0.0.0 47.88.232.28
-0.0.0.0 47.241.75.41
-0.0.0.0 47.241.68.222
-0.0.0.0 8.25.82.225
-0.0.0.0 8.25.82.226
-0.0.0.0 8.25.82.227
-0.0.0.0 8.25.82.228
-0.0.0.0 8.25.82.229
-0.0.0.0 8.25.82.230
-0.0.0.0 8.25.82.231
-0.0.0.0 8.25.82.232
 0.0.0.0 a.stat.xiaomi.com
 0.0.0.0 abroad.api.comm.intl.miui.com
 0.0.0.0 abtest.mistat.india.xiaomi.com
@@ -1163,7 +1099,6 @@
 0.0.0.0 push.snaptube.app
 
 # CamScanner: com.intsig.camscanner
-0.0.0.0 157.185.169.206
 0.0.0.0 b1a924c7-af54-11e9-8b36-0017fa01187e.trafficmanager.cn
 0.0.0.0 ss-static.intsig.net.mcchcdn.com
 0.0.0.0 ss-static.intsig.net.whecloud.com
@@ -1172,7 +1107,7 @@
 
 # OPPO PHONES
 # Maybe REALME too, need test throughly
-# 0.0.0.0 i-sg.magazine.heytapmobile.com
+0.0.0.0 i-sg.magazine.heytapmobile.com
 0.0.0.0 aax-fe.amazon-adsystem.com
 0.0.0.0 adx-id.ads.heytapmobile.com
 0.0.0.0 album-sg01a.ocloud.heytapmobi.com
@@ -1253,7 +1188,6 @@
 
 # AVAST & AVL
 # From built-in Anti-Virus Chinese phones
-0.0.0.0 47.88.65.115
 0.0.0.0 analytics-stage.ff.avast.com
 0.0.0.0 analytics-test.ff.avast.com
 0.0.0.0 analytics.ff.avast.com
@@ -1275,13 +1209,6 @@
 0.0.0.0 vanheim.ff.avast.com
 
 # WPS Office: cn.wps.moffice_eng
-0.0.0.0 104.22.6.60
-0.0.0.0 104.22.7.60
-0.0.0.0 114.119.186.87
-0.0.0.0 172.67.20.166
-0.0.0.0 44.242.92.133
-0.0.0.0 50.112.59.136
-0.0.0.0 52.88.152.228
 0.0.0.0 abroad-ad.kingsoft-office-service.com
 0.0.0.0 ads.api.vungle.com
 0.0.0.0 ap-device-pro.csftr.com
@@ -1301,19 +1228,6 @@
 0.0.0.0 wh-nginx-gateway-service.default.us.entry.4wps.net
 
 # UC Browser: com.UCMobile.intl
-0.0.0.0 157.185.188.1
-0.0.0.0 157.185.188.2
-0.0.0.0 157.185.189.159
-0.0.0.0 168.235.199.34
-0.0.0.0 168.235.199.81
-0.0.0.0 168.235.206.10
-0.0.0.0 168.235.206.11
-0.0.0.0 180.179.9.133
-0.0.0.0 198.11.146.6
-0.0.0.0 198.11.190.12
-0.0.0.0 203.119.169.44
-0.0.0.0 205.204.101.55
-0.0.0.0 23.195.153.4
 0.0.0.0 acs.maribacaberita.com
 0.0.0.0 adn.insight.ucweb.com
 0.0.0.0 airflow.maribacaberita.com
@@ -1414,24 +1328,11 @@
 0.0.0.0 kiwisearchservices.net
 
 # Puffin Web Browser: com.cloudmosa.puffinFree
-0.0.0.0 38.111.215.248
 0.0.0.0 collector.cloudmosa.net
 
 # Brave Browser: com.brave.browser
 # Brave Browser (Beta): com.brave.browser_beta
 # Brave Browser (Nightly): com.brave.browser_nightly
-0.0.0.0 13.224.249.22
-0.0.0.0 13.224.249.43
-0.0.0.0 13.224.249.6
-0.0.0.0 13.224.249.61
-0.0.0.0 13.227.142.9
-0.0.0.0 13.227.252.117
-0.0.0.0 199.232.45.32
-0.0.0.0 52.10.120.178
-0.0.0.0 54.182.0.38
-0.0.0.0 54.182.0.75
-0.0.0.0 54.182.0.98
-0.0.0.0 54.182.0.99
 0.0.0.0 ads-serve.brave.com
 0.0.0.0 ads-static.brave.com
 0.0.0.0 api.rewards.brave.com
@@ -1453,18 +1354,6 @@
 # It's famous application is Clean Master
 # app id: com.cleanmaster.mguard
 # Remove it from your phone, ASAP
-0.0.0.0 119.36.62.42
-0.0.0.0 3d.cmcm.com
-0.0.0.0 4.34.42.102
-0.0.0.0 4.34.42.103
-0.0.0.0 4.34.42.104
-0.0.0.0 47.91.4.251
-0.0.0.0 54.193.110.22
-0.0.0.0 54.193.2.171
-0.0.0.0 54.193.42.169
-0.0.0.0 54.213.47.148
-0.0.0.0 54.241.0.117
-0.0.0.0 54.241.15.95
 0.0.0.0 a.ns.edm.cmcm.com
 0.0.0.0 ab.cmcm.com
 0.0.0.0 abccmproxy.cmcm.com
