@@ -543,7 +543,9 @@ class TestGatherCustomExclusions(BaseStdout):
     # Can only test in the invalid domain case
     # because of the settings global variable.
     @mock.patch("updateHostsFile.input", side_effect=["foo", "no"])
-    @mock.patch("updateHostsFile.is_valid_user_provided_domain_format", return_value=False)
+    @mock.patch(
+        "updateHostsFile.is_valid_user_provided_domain_format", return_value=False
+    )
     def test_basic(self, *_):
         gather_custom_exclusions("foo", [])
 
@@ -552,7 +554,9 @@ class TestGatherCustomExclusions(BaseStdout):
         self.assertIn(expected, output)
 
     @mock.patch("updateHostsFile.input", side_effect=["foo", "yes", "bar", "no"])
-    @mock.patch("updateHostsFile.is_valid_user_provided_domain_format", return_value=False)
+    @mock.patch(
+        "updateHostsFile.is_valid_user_provided_domain_format", return_value=False
+    )
     def test_multiple(self, *_):
         gather_custom_exclusions("foo", [])
 

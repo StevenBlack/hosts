@@ -944,7 +944,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
             continue
 
         # Issue #1628
-        if ("@" in stripped_rule):
+        if "@" in stripped_rule:
             continue
 
         # Normalize rule
