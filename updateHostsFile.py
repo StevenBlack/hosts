@@ -944,7 +944,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
             continue
 
         # Issue #1628
-        if ("@" in stripped_rule):
+        if "@" in stripped_rule:
             continue
 
         # Normalize rule
@@ -955,7 +955,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
         )
 
         for exclude in exclusions:
-            if re.search(r"[\s\.]" + re.escape(exclude) + r"\s", line):
+            if re.search(r"(^|[\s\.])" + re.escape(exclude) + r"\s", line):
                 write_line = False
                 break
 
