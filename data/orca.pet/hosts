@@ -3,7 +3,7 @@
 # Homepage: https://orca.pet/notonmyshift/
 # Licence: https://orca.pet/#license
 # Expires: 4h
-# Last update: 2021-06-26T13:13:06Z
+# Last update: 2021-07-12T08:27:24Z
 
 # === PHISING ===
 # These filters block pages that are not yet blocked by Google Safe Search
@@ -753,6 +753,24 @@
 0.0.0.0 sysitemff.customeronline.top
 0.0.0.0 customeronline.top
 0.0.0.0 www.customeronline.top
+
+# 2021-07-06 Amazon.co.jp phishing
+#  - https://www.amazon.co.jp.secmyityr.com/
+0.0.0.0 amazon.co.jp.secmyityr.com
+0.0.0.0 www.amazon.co.jp.secmyityr.com
+0.0.0.0 secmyityr.com
+0.0.0.0 www.secmyityr.com
+
+# 2021-07-08 Ibercaja phishing
+#  - https://seguro-ibercaja.com/iber/clients/loginm.php?verification
+0.0.0.0 seguro-ibercaja.com
+0.0.0.0 www.seguro-ibercaja.com
+
+# 2021-07-12 DOCOMO phishing
+#  - https://docomn.ne.oirt.xyz/
+0.0.0.0 docomn.ne.oirt.xyz
+0.0.0.0 oirt.xyz
+0.0.0.0 www.oirt.xyz
 
 # === SCAMS ===
 # These filters block pages which are known to scam people for money or gift cards
