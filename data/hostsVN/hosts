@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 11 Jul 2021 20:26 UTC+7
-# Version: 2107112026
-# Blocked: 1,817 domains
+# Last modified: 14 Jul 2021 14:22 UTC+7
+# Version: 2107141422
+# Blocked: 1,823 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -1041,8 +1041,14 @@
 0.0.0.0 sourcetobin.com
 0.0.0.0 static.sourcetobin.com
 #[philacct.com]
+0.0.0.0 fgp.philacct.com
 0.0.0.0 philacct.com
 0.0.0.0 static.philacct.com
+#[contineljs.com]
+0.0.0.0 cdn.contineljs.com
+0.0.0.0 contineljs.com
+0.0.0.0 defaultdsp.contineljs.com
+0.0.0.0 static.contineljs.com
 #[surfcountor.com]
 0.0.0.0 cdn.surfcountor.com
 0.0.0.0 ck.surfcountor.com
@@ -1495,6 +1501,9 @@
 0.0.0.0 bongdadem.net
 0.0.0.0 cdn.bongdadem.net
 0.0.0.0 www.bongdadem.net
+#[ampproject.org]
+0.0.0.0 ads-thanhnien-vn.cdn.ampproject.org
+0.0.0.0 cdn-bongdadem-net.cdn.ampproject.org
 # --- Block adsVN ---
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
 0.0.0.0 703531862.vws.vegacdn.vn
@@ -1628,7 +1637,6 @@
 0.0.0.0 bluemaulpuffs.com
 0.0.0.0 boxpr.aiservice.vn
 0.0.0.0 cdn-ads.thesaigontimes.vn
-0.0.0.0 cdn-bongdadem-net.cdn.ampproject.org
 0.0.0.0 cdnasset.dantri.com.vn
 0.0.0.0 chiasephim.xyz
 0.0.0.0 click-ads.saoteen.net
