@@ -466,6 +466,8 @@ devices under a variety of operating systems.
 
 ## Interesting Applications
 
+* [Host Minder](https://github.com/jeremehancock/hostminder#readme) is a simple GUI that allows you to easily update your /etc/hosts file to one of four consolidated hosts files from StevenBlack/hosts. It is provided as a deb package and comes pre-installed on [UbuntuCE](https://ubuntuce.com/).
+
 * [Maza ad blocking](https://github.com/tanrax/maza-ad-blocking) is a bash script that automatically updates host file. You can also update a fresh copy. And each time it generates a dnsmasq-compatible configuration file. Fast installation, compatible with MacOS, Linux and BSD.
 
 * [Hostile](https://github.com/feross/hostile) is a nifty command line utility to easily add or remove domains from your hosts file.  If our hosts files are too aggressive for you, you can use `hostile` to remove domains, or you can use `hostile` in a bash script to automate a post process each time you download fresh versions of hosts.
