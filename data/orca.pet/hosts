@@ -3,7 +3,7 @@
 # Homepage: https://orca.pet/notonmyshift/
 # Licence: https://orca.pet/#license
 # Expires: 4h
-# Last update: 2021-08-19T15:52:25Z
+# Last update: 2021-08-23T12:23:10Z
 
 # === PHISING ===
 # These filters block pages that are not yet blocked by Google Safe Search
@@ -781,10 +781,16 @@
 # 2021-08-19 Santander phishing
 #  - https://cartellowine.com/1A/
 #  - https://kws-santander-es.org/rar/santa/particulares/home.php?web=succes&local=_&id=53086475
+#  - https://pfm-santander-es.org/Banco/
+#  - https://www.santader-online.com/es/particulares/home.php?web=succes&local=_&id=7549209
 0.0.0.0 cartellowine.com
 0.0.0.0 www.cartellowine.com
 0.0.0.0 kws-santander-es.org
 0.0.0.0 www.kws-santander-es.org
+0.0.0.0 pfm-santander-es.org
+0.0.0.0 www.pfm-santander-es.org
+0.0.0.0 santader-online.com
+0.0.0.0 www.santader-online.com
 
 # === SCAMS ===
 # These filters block pages which are known to scam people for money or gift cards
