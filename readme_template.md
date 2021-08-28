@@ -429,6 +429,8 @@ devices under a variety of operating systems.
 
 ## Interesting Applications
 
+* [Hosts-BL](https://github.com/ScriptTiger/Hosts-BL "Hosts-BL") is a simple tool to handle hosts file black lists. It can remove comments, remove duplicates, compress to 9 domains per line, add IPv6 entries. In addition, it can also convert black lists to multiple other black list formats compatible with other software, such as dnsmasq, DualServer, RPZ, Privoxy, and Unbound, to name a few.
+
 * [Host Minder](https://github.com/jeremehancock/hostminder#readme) is a simple GUI that allows you to easily update your /etc/hosts file to one of four consolidated hosts files from StevenBlack/hosts. It is provided as a deb package and comes pre-installed on [UbuntuCE](https://ubuntuce.com/).
 
 * [Maza ad blocking](https://github.com/tanrax/maza-ad-blocking) is a bash script that automatically updates host file. You can also update a fresh copy. And each time it generates a dnsmasq-compatible configuration file. Fast installation, compatible with MacOS, Linux and BSD.
