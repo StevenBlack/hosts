@@ -419,6 +419,8 @@ Then modify the `hosts` line in your `/etc/nsswitch.conf` file to the following:
 hosts: cache files dns
 ```
 
+**NixOS**: The `nscd.service` is automatically restarted when the option `networking.extraHosts` was changed.
+
 **Others**: Consult [this Wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
 
 ### macOS
