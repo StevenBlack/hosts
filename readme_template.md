@@ -169,23 +169,6 @@ in hosts format to the generated hosts file.
 `--whitelist <whitelistfile>`, or `-w <whitelistfile>`: Use the given whitelist file
 to remove hosts from the generated hosts file.
 
-#### Using NixOS
-
-To install hosts file on your machine add the following into your `configuration.nix`:
-
-```nix
-{
-  networking.extraHosts = let
-    hostsPath = https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts;
-    hostsFile = builtins.fetchurl hostsPath;
-  in builtins.readFile "${hostsFile}";
-}
-```
-
-* NOTE: Change `hostsPath` if you need other versions of hosts file.
-* NOTE: The call to `fetchurl` is impure.
-Use `fetchFromGitHub` with the exact commit if you want to always get the same result.
-
 ## How do I control which sources are unified?
 
 Add one or more *additional* sources, each in a subfolder of the `data/`
@@ -297,6 +280,58 @@ editor.
 
 Gentoo users may find [`sb-hosts`](https://github.com/PF4Public/gentoo-overlay/tree/master/net-misc/sb-hosts) in [::pf4public](https://github.com/PF4Public/gentoo-overlay) Gentoo overlay
 
+## NixOS
+
+To install hosts file on your machine add the following into your `configuration.nix`:
+
+```nix
+{
+  networking.extraHosts = let
+    hostsPath = https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts;
+    hostsFile = builtins.fetchurl hostsPath;
+  in builtins.readFile "${hostsFile}";
+}
+```
+
+* NOTE: Change `hostsPath` if you need other versions of hosts file.
+* NOTE: The call to `fetchurl` is impure.
+Use `fetchFromGitHub` with the exact commit if you want to always get the same result.
+
+### Nix Flake
+
+NixOS installations which are managed through *flakes* can use the hosts file like this:
+
+```nix
+{
+  inputs.hosts.url = github:StevenBlack/hosts;
+  outputs = { self, nixpkgs, hosts }: {
+    nixosConfigurations.my-hostname = {
+      system = "<architecture>";
+      modules = [
+
+        hosts.nixosModule {
+          networking.stevenBlackHosts.enable = true;
+        }
+
+      ];
+    };
+  };
+}
+```
+
+The hosts extensions are also available with the following options:
+
+```nix
+{
+  networking.stevenBlackHosts = {
+    blockFakenews = true;
+    blockGambling = true;
+    blockPorn = true;
+    blockSocial = true;
+  };
+}
+```
+
 ## Updating hosts file on Windows
 
 (NOTE: See also some third-party Hosts managers, listed below.)
@@ -383,6 +418,8 @@ Then modify the `hosts` line in your `/etc/nsswitch.conf` file to the following:
 ```text
 hosts: cache files dns
 ```
+
+**NixOS**: The `nscd.service` is automatically restarted when the option `networking.extraHosts` was changed.
 
 **Others**: Consult [this Wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
 
