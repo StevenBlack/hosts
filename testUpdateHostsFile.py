@@ -1605,8 +1605,8 @@ class DomainToIDNA(Base):
 
         # Test with multiple tabulations as separator of domain and space and
         # tabulation as separator or comments.
-        for i in range(len(self.domains)):
-            data = (b"0.0.0.0\t\t\t" + self.domains[i] + b" \t # Hello World").decode(
+        for i, domain in enumerate(self.domains):
+            data = (b"0.0.0.0\t\t\t" + domain + b" \t # Hello World").decode(
                 "utf-8"
             )
             expected = "0.0.0.0\t\t\t" + self.expected_domains[i] + " \t # Hello World"
