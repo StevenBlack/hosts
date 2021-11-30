@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 21 Nov 2021 19:33 UTC+7
-# Version: 2111211933
-# Blocked: 1.660 domains
+# Last modified: 28 Nov 2021 20:02 UTC+7
+# Version: 2111282002
+# Blocked: 1.670 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -412,7 +412,10 @@
 #[zalo.me]
 0.0.0.0 ads.platform.zalo.me
 0.0.0.0 ads.zalo.me
+0.0.0.0 api.widget.zalo.me
+0.0.0.0 page.widget.zalo.me
 0.0.0.0 px.za.zalo.me
+0.0.0.0 widget.chat.zalo.me
 #[zaloapp.com]
 0.0.0.0 ads.zaloapp.com
 0.0.0.0 log.api.zaloapp.com
@@ -1336,6 +1339,12 @@
 0.0.0.0 u-dmp.urekamedia.com
 0.0.0.0 ulead.urekamedia.com
 0.0.0.0 www.urekamedia.com
+#[modestsunf.com]
+0.0.0.0 dest.modestsunf.com
+0.0.0.0 modestsunf.com
+#[daleriki.com]
+0.0.0.0 daleriki.com
+0.0.0.0 iki.daleriki.com
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
@@ -1536,6 +1545,8 @@
 0.0.0.0 sv-static-lottery.headlines.pw
 0.0.0.0 sv-static1-lottery.headlines.pw
 0.0.0.0 syncwowsails.com
+0.0.0.0 tkpopup.asia
+0.0.0.0 tkpopup.vn
 0.0.0.0 toppage.vn
 0.0.0.0 trenddigital.vn
 0.0.0.0 truoctran.com
@@ -1802,6 +1813,7 @@
 0.0.0.0 ucesreferre.club
 0.0.0.0 vongquaymienphi.net
 0.0.0.0 www.facebookz.co
+0.0.0.0 www.uqoxh.icu
 0.0.0.0 www.vongquaymienphi.net
 # --- Block popupVN ---
 0.0.0.0 ch6p2aj2gh8zy5cm0px9ow7aj3tmzhtk6lzx2ch9xj7gx2jq1cj8v4jklz6b.me
