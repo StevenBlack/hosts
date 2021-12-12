@@ -34,7 +34,7 @@ try:
 except ImportError:
     raise ImportError(
         "This project's dependencies have changed. The Requests library ("
-        "https://requests.readthedocs.io/en/master/) is now required."
+        "https://docs.python-requests.org/en/latest/) is now required."
     )
 
 
