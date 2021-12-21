@@ -1834,6 +1834,9 @@
 # [wildcard-ads-448740142.us-west-2.elb.amazonaws.com]
 127.0.0.1 wildcard-ads-448740142.us-west-2.elb.amazonaws.com
 
+# [elb.eu-west-1.amazonaws.com]
+127.0.0.1 huq-query-loggers-europe-west1-32ef7f4bbf54ce27.elb.eu-west-1.amazonaws.com
+
 # [admarvel.s3.amazonaws.com]
 127.0.0.1 admarvel.s3.amazonaws.com
 
@@ -1872,6 +1875,9 @@
 
 # [mobileanalytics.us-east-1.amazonaws.com]
 127.0.0.1 mobileanalytics.us-east-1.amazonaws.com
+
+# [us-west-1.amazonaws.com]
+127.0.0.1 huq-query-loggers-california-3cec807da3e9dc0d.elb.us-west-1.amazonaws.com
 
 # [amoad.com]
 127.0.0.1 amoad.com
@@ -2951,12 +2957,6 @@
 # [bypass.jp]
 127.0.0.1 bypass.jp
 
-# [byteoversea.com]
-127.0.0.1 mon-va.byteoversea.com
-127.0.0.1 starling-va.byteoversea.com
-127.0.0.1 vcs-va.byteoversea.com
-127.0.0.1 verification-va.byteoversea.com
-
 # [c1exchange.com]
 127.0.0.1 c1exchange.com
 
@@ -3058,6 +3058,10 @@
 127.0.0.1 ids.cdnwidget.com
 127.0.0.1 pixel.cdnwidget.com
 127.0.0.1 u.cdnwidget.com
+
+# [cellrebel.com]
+127.0.0.1 api.monedata.iomericreceiver.cellrebel.com
+127.0.0.1 metricreceiver.cellrebel.com
 
 # [celltick.com]
 127.0.0.1 celltick.com
@@ -3517,6 +3521,9 @@
 
 # [count.ly]
 127.0.0.1 count.ly
+
+# [coveo.com]
+127.0.0.1 static.cloud.coveo.com
 
 # [cox.com]
 127.0.0.1 smetrics.cox.com
@@ -4192,10 +4199,6 @@
 127.0.0.1 mobile.controller.duokanbox.com
 127.0.0.1 fm.duokanbox.com
 127.0.0.1 stat.duokanbox.com
-
-# [dwell.com]
-127.0.0.1 assets.dwell.com
-127.0.0.1 images.dwell.com
 
 # [dxsvr.com]
 127.0.0.1 ak.dxsvr.com
@@ -5102,6 +5105,7 @@
 
 # [googleadservices.com]
 127.0.0.1 googleadservices.com
+127.0.0.1 pagead2.googleadservices.com
 127.0.0.1 www.googleadservices.com
 
 # [googleadsserving.cn]
@@ -5115,13 +5119,6 @@
 127.0.0.1 ade.googlesyndication.com
 127.0.0.1 pagead2.googlesyndication.com
 127.0.0.1 tpc.googlesyndication.com
-
-# [googletagmanager.com]
-127.0.0.1 googletagmanager.com
-127.0.0.1 www.googletagmanager.com
-
-# [googletagservices.com]
-127.0.0.1 www.googletagservices.com
 
 # [googleusercontent.com]
 127.0.0.1 displayads-formats.googleusercontent.com
@@ -5366,6 +5363,10 @@
 # [humann.com]
 127.0.0.1 segment.humann.com
 127.0.0.1 segment-api.humann.com
+
+# [huq.io]
+127.0.0.1 huq.io
+127.0.0.1 api.huq.io
 
 # [huqindustries.co.uk]
 127.0.0.1 api.huqindustries.co.uk
@@ -6953,6 +6954,9 @@
 127.0.0.1 measuread.com
 127.0.0.1 b.measuread.com
 
+# [measurelib.com]
+127.0.0.1 mobile.measurelib.com
+
 # [measurementapi.com]
 127.0.0.1 measurementapi.com
 
@@ -7096,6 +7100,9 @@
 127.0.0.1 p.metrilo.com
 127.0.0.1 shoparty.metrilo.com
 127.0.0.1 t.metrilo.com
+
+# [metrix.ir]
+127.0.0.1 analytics.metrix.ir
 
 # [mfadsrvr.com]
 127.0.0.1 rtb.mfadsrvr.com
@@ -7580,6 +7587,9 @@
 # [mologiq.net]
 127.0.0.1 mologiq.net
 
+# [monedata.io]
+127.0.0.1 api.monedata.io
+
 # [monetate.net]
 127.0.0.1 ad.monetate.net
 127.0.0.1 af.monetate.net
@@ -8005,6 +8015,9 @@
 127.0.0.1 mobfloral.offerstrack.net
 127.0.0.1 mobnerve.offerstrack.net
 
+# [ogury.co]
+127.0.0.1 sdk-monitoring.ogury.co
+
 # [ogury.io]
 127.0.0.1 cloud.ogury.io
 127.0.0.1 medias.cloud.ogury.io
@@ -8019,6 +8032,7 @@
 127.0.0.1 wsback2b.prod.cloud.ogury.io
 127.0.0.1 consent-manager-events.ogury.io
 127.0.0.1 dsp-1.ogury.io
+127.0.0.1 sdk-monitoring.ogury.io
 
 # [ojooo.com]
 127.0.0.1 wad.ojooo.com
@@ -10071,6 +10085,7 @@
 # [startappservice.com]
 127.0.0.1 startappservice.com
 127.0.0.1 adimpression.startappservice.com
+127.0.0.1 adsmetadata.startappservice.com
 127.0.0.1 adwin.startappservice.com
 127.0.0.1 click.startappservice.com
 127.0.0.1 dts.startappservice.com
@@ -10496,6 +10511,10 @@
 # [taps.io]
 127.0.0.1 api.taps.io
 
+# [tapsell.ir]
+127.0.0.1 api.tapsell.ir
+127.0.0.1 plus.tapsell.ir
+
 # [tapstream.com]
 127.0.0.1 api.tapstream.com
 127.0.0.1 reporting.tapstream.com
@@ -10586,6 +10605,9 @@
 
 # [teenvogue.com]
 127.0.0.1 sstats.teenvogue.com
+
+# [telematicsdirect.com]
+127.0.0.1 nav.telematicsdirect.com
 
 # [tencent-cloud.net]
 127.0.0.1 beacon.sparta.mig.tencent-cloud.net
