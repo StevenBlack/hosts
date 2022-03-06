@@ -35,7 +35,7 @@ if '%errorlevel%' NEQ '0' (
 ::sc config Dnscache start= disabled
 ::sc stop Dnscache
 
-:: VALUE 
+:: VALUE
 :: 2 (Automatic) (DEFAULT)
 :: 4 (Disabled) (prevent freeze network after applying huge hosts file)
 ::

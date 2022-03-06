@@ -401,9 +401,9 @@ You can also refer to the "Third-Party Hosts Managers" section for further recom
 ### Warning: Using this `hosts` file in Windows may require disabling DNS Cache service
 
 Windows has issues with larger hosts files. Recent changes in security within Windows 10 denies
-access to changing services via other tools except registry hacks. Use the `disable-dnscache-service-win.cmd`
+access to changing services via other tools except registry hacks. Use the `disable-dnscache-service-win.bat`
 file to make proper changes to the Windows registry. You will need to reboot your device once that's done.
-See the [the comments within the `cmd` file](https://github.com/StevenBlack/hosts/blob/master/disable-dnscache-service-win.cmd)
+See the [the comments within the `bat` file](https://github.com/StevenBlack/hosts/blob/master/disable-dnscache-service-win.bat)
 for more details.
 
 ## Reloading hosts file
