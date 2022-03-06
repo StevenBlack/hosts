@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 19 Feb 2022 12:40 UTC+7
-# Version: 2202191240
-# Blocked: 1.718 domains
+# Last modified: 02 Mar 2022 15:26 UTC+7
+# Version: 2203021526
+# Blocked: 1.720 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -414,6 +414,7 @@
 0.0.0.0 ads.zalo.me
 0.0.0.0 api.widget.zalo.me
 0.0.0.0 button-follow.zalo.me
+0.0.0.0 button-share.zalo.me
 0.0.0.0 page.widget.zalo.me
 0.0.0.0 px.za.zalo.me
 0.0.0.0 widget.chat.zalo.me
@@ -430,14 +431,14 @@
 0.0.0.0 wg.zaloapp.com
 0.0.0.0 zminer.zaloapp.com
 0.0.0.0 ztevents.zaloapp.com
-#[adtima*.zadn.vn]
+#[zadn.vn]
 0.0.0.0 adtima-common.zadn.vn
 0.0.0.0 adtima-media-td.zadn.vn
 0.0.0.0 adtima-media.zadn.vn
 0.0.0.0 adtima-static-td.zadn.vn
 0.0.0.0 adtima-static.zadn.vn
 0.0.0.0 adtima-video.zadn.vn
-#[adtima*.zascdn.me]
+#[zascdn.me]
 0.0.0.0 adtima-common.zascdn.me
 0.0.0.0 adtima-media.zascdn.me
 0.0.0.0 adtima-static.zascdn.me
@@ -445,7 +446,7 @@
 #[sdk.zadn.vn]
 0.0.0.0 api.sdk.zadn.vn
 0.0.0.0 log.sdk.zadn.vn
-#[zalo-ads*.zadn.vn]
+#[zadn.vn]
 0.0.0.0 zalo-ads-240-td.zadn.vn
 0.0.0.0 zalo-ads-240.zadn.vn
 0.0.0.0 zalo-ads-480-td.zadn.vn
@@ -457,6 +458,7 @@
 0.0.0.0 480.zaloapp.ads.zdn.vn
 0.0.0.0 org.zaloapp.ads.zdn.vn
 #[zdn.vn]
+0.0.0.0 za.zdn.vn
 0.0.0.0 zaloads-480.zdn.vn
 0.0.0.0 zplayer-trk.zdn.vn
 #[zapps.vn]
