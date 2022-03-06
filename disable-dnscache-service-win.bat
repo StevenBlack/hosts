@@ -1,49 +1,43 @@
-@ECHO OFF
-:: Check if we are administrator. If not, exit immediately.
+@echo off
+
+title Disable DNS Cache Service
+
+:: Check if we are an administrator. If not, exit immediately.
 :: BatchGotAdmin
-:-------------------------------------
-REM  --> Check for permissions
-    IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
->nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
-) ELSE (
->nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+:: Check for permissions
+if "%PROCESSOR_ARCHITECTURE%" equ "amd64" (
+    >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
+) else (
+    >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 )
 
-REM --> If error flag set, we do not have admin.
-if '%errorlevel%' NEQ '0' (
+:: If the error flag set, we do not have admin rights.
+if %ERRORLEVEL% neq 0 (
     echo Requesting administrative privileges...
     goto UACPrompt
-) else ( goto gotAdmin )
+) else (
+    goto gotAdmin
+)
 
 :UACPrompt
-    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
-    set params= %*
-    echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%temp%\getadmin.vbs"
+echo Set UAC = CreateObject^("Shell.Application"^) > "%TEMP%\getadmin.vbs"
+set params= %*
+echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%TEMP%\getadmin.vbs"
 
-    "%temp%\getadmin.vbs"
-    del "%temp%\getadmin.vbs"
-    exit /B
+wscript.exe "%TEMP%\getadmin.vbs"
+del "%TEMP%\getadmin.vbs"
+exit /b
 
 :gotAdmin
-    pushd "%CD%"
-    CD /D "%~dp0"
-    goto SCset
 
 :SCset
-:: https://superuser.com/a/1217703
-:: https://stackoverflow.com/a/133926
-::sc config Dnscache start= disabled
-::sc stop Dnscache
-
 :: VALUE
 :: 2 (Automatic) (DEFAULT)
-:: 4 (Disabled) (prevent freeze network after applying huge hosts file)
-::
-:: Latest changes in security Windows 10 denied access to changing services via other tools except registry hack
+:: 4 (Disabled) (to prevent network freeze after applying a huge hosts file)
 ::
 :: See https://superuser.com/a/1277960
 ::
-REG add "HKLM\SYSTEM\CurrentControlSet\services\Dnscache" /v Start /t REG_DWORD /d 4 /f
-echo "Reboot your system now!"
-echo .
-@PAUSE
+reg add "HKLM\SYSTEM\CurrentControlSet\services\Dnscache" /v Start /t REG_DWORD /d 4 /f
+echo Reboot your system now!
+echo.
+pause
