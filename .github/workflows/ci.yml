@@ -34,8 +34,10 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
-      - run: python --version
-      - run: pip --version
+      - name: Print versions
+        run: |
+          python --version
+          pip --version
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
