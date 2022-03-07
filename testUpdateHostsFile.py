@@ -1765,7 +1765,7 @@ class TestIsValidUserProvidedDomainFormat(BaseStdout):
         output = sys.stdout.getvalue()
         expected = "You didn't enter a domain. Try again."
 
-        self.assertTrue(expected in output)
+        self.assertIn(expected, output)
 
     def test_invalid_domain(self):
         expected = "Do not include www.domain.com or http(s)://domain.com. Try again."
