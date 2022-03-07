@@ -270,11 +270,9 @@ We tried that.  Using `0` doesn't work universally.
 To modify your current `hosts` file, look for it in the following places and modify it with a text
 editor.
 
-**macOS (until 10.14.x macOS Mojave), iOS, Android, Linux**: `/etc/hosts` file.
-
-**macOS Catalina:** `/private/etc/hosts` file.
-
-**Windows**: `%SystemRoot%\system32\drivers\etc\hosts` file.
+* **macOS (until 10.14.x macOS Mojave), iOS, Android, Linux**: `/etc/hosts` file.
+* **macOS Catalina:** `/private/etc/hosts` file.
+* **Windows**: `%SystemRoot%\system32\drivers\etc\hosts` file.
 
 ## Gentoo
 
@@ -348,16 +346,10 @@ saying that for this to work, you must be connected to the internet.
 
 To open a command prompt as administrator in the repository's directory, do the following:
 
-**Windows XP**: Start → Run → `cmd`
-
-**Windows Vista, 7**: Start Button → type `cmd` → right-click Command Prompt →
-"Run as Administrator"
-
-**Windows 8**: Start → Swipe Up → All Apps → Windows System → right-click Command Prompt →
-"Run as Administrator"
-
-**Windows 10**: Start Button → type `cmd` → right-click Command Prompt →
-"Run as Administrator"
+* **Windows XP**: Start → Run → `cmd`
+* **Windows Vista, 7**: Start Button → type `cmd` → right-click Command Prompt → "Run as Administrator"
+* **Windows 8**: Start → Swipe Up → All Apps → Windows System → right-click Command Prompt → "Run as Administrator"
+* **Windows 10**: Start Button → type `cmd` → right-click Command Prompt → "Run as Administrator"
 
 You can also refer to the "Third-Party Hosts Managers" section for further recommended solutions from third parties.
 
@@ -374,7 +366,7 @@ for more details.
 Your operating system will cache DNS lookups. You can either reboot or run the following commands to
 manually flush your DNS cache once the new hosts file is in place.
 
-| The Google Chrome browser may require manually cleaning up its DNS Cache on `chrome://net-internals/#dns` page to thereafter see the changes in your hosts file. See: <https://superuser.com/questions/723703>
+The Google Chrome browser may require manually cleaning up its DNS Cache on `chrome://net-internals/#dns` page to thereafter see the changes in your hosts file. See: <https://superuser.com/questions/723703>
 
 ### Windows
 
@@ -388,38 +380,30 @@ ipconfig /flushdns
 
 Open a Terminal and run with root privileges:
 
-**Debian/Ubuntu** `sudo service network-manager restart`
+* **Debian/Ubuntu** `sudo service network-manager restart`
+* **Linux Mint** `sudo /etc/init.d/dns-clean start`
+* **Linux with systemd**: `sudo systemctl restart network.service`
+* **Fedora Linux**: `sudo systemctl restart NetworkManager.service`
+* **Arch Linux/Manjaro with Network Manager**: `sudo systemctl restart NetworkManager.service`
+* **Arch Linux/Manjaro with Wicd**: `sudo systemctl restart wicd.service`
+* **RHEL/Centos**: `sudo /etc/init.d/network restart`
+* **FreeBSD**: `sudo service nscd restart`
 
-**Linux Mint** `sudo /etc/init.d/dns-clean start`
+  To enable the `nscd` daemon initially, it is recommended that you run the following commands:
 
-**Linux with systemd**: `sudo systemctl restart network.service`
+  ```sh
+  sudo sysrc nscd_enable="YES"
+  sudo service nscd start
+  ```
 
-**Fedora Linux**: `sudo systemctl restart NetworkManager.service`
+  Then modify the `hosts` line in your `/etc/nsswitch.conf` file to the following:
 
-**Arch Linux/Manjaro with Network Manager**: `sudo systemctl restart NetworkManager.service`
+  ```text
+  hosts: cache files dns
+  ```
 
-**Arch Linux/Manjaro with Wicd**: `sudo systemctl restart wicd.service`
-
-**RHEL/Centos**: `sudo /etc/init.d/network restart`
-
-**FreeBSD**: `sudo service nscd restart`
-
-To enable the `nscd` daemon initially, it is recommended that you run the following commands:
-
-```sh
-sudo sysrc nscd_enable="YES"
-sudo service nscd start
-```
-
-Then modify the `hosts` line in your `/etc/nsswitch.conf` file to the following:
-
-```text
-hosts: cache files dns
-```
-
-**NixOS**: The `nscd.service` is automatically restarted when the option `networking.extraHosts` was changed.
-
-**Others**: Consult [this Wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
+* **NixOS**: The `nscd.service` is automatically restarted when the option `networking.extraHosts` was changed.
+* **Others**: Consult [this Wikipedia article](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system).
 
 ### macOS
 
@@ -469,10 +453,9 @@ devices under a variety of operating systems.
 * [Block ads and malware via local BIND9 DNS server](https://github.com/mueller-ma/block-ads-via-dns "Block ads and malware via local DNS server") (for Debian, Raspbian & Ubuntu): Set up a local DNS server with a `/etc/bind/named.conf.blocked` file, sourced from here.
 * [Block ads, malware, and deploy parental controls via local DualServer DNS/DHCP server](https://scripttiger.github.io/dualserver/ "Block ads, malware, and deploy parental controls via local DualServer DNS/DHCP server") (for BSD, Windows & Linux): Set up a blacklist for everyone on your network using the power of the unified hosts reformatted for DualServer. And if you're on Windows, this project also maintains an update script to make updating DualServer's blacklist even easier.
 * [Blocking ads and malwares with unbound](https://deadc0de.re/articles/unbound-blocking-ads.html "Blocking ads and malwares with unbound") – [Unbound](https://www.unbound.net/ "Unbound is a validating, recursive, and caching DNS resolver.") is a validating, recursive, and caching DNS resolver.
-* [dnsmasq conversion script](https://gist.github.com/erlepereira/c11f4f7a3f60cd2071e79018e895fc8a#file-dnsmasq-antimalware) This GitHub gist has a short shell script (bash, will work on any 'nix) and uses `wget` & `awk` present in most distros, to fetch a specified hosts file and convert it to the format required by dnsmasq. Supports IPv4 and IPv6. Designed to be used as either a shell script, or can be dropped into /etc/cron.weekly (or wherever suits). The script is short and easily edited, also has a short document attached with notes on dnsmasq setup.
+* [dnsmasq conversion script](https://gist.github.com/erlepereira/c11f4f7a3f60cd2071e79018e895fc8a#file-dnsmasq-antimalware) This GitHub gist has a short shell script (bash, will work on any 'nix) and uses `wget` & `awk` present in most distros, to fetch a specified hosts file and convert it to the format required by dnsmasq. Supports IPv4 and IPv6. Designed to be used as either a shell script, or can be dropped into `/etc/cron.weekly` (or wherever suits). The script is short and easily edited, also has a short document attached with notes on dnsmasq setup.
 * [BlackHosts - Command Line Installer/Updater](https://github.com/Lateralus138/blackhosts) This is a cross-platform command line utility to help install/update hosts files found at this repository.
 * [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Combining-Blocklists) provides a tool to build block lists from local and remote lists in common formats.
-
 
 ## Contribute
 
