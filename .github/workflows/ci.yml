@@ -33,7 +33,6 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python }}
-          cache: pip
 
       - run: python --version
       - run: pip --version
