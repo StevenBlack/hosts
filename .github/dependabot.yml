@@ -7,7 +7,7 @@ updates:
     labels:
       - dependencies
       - python
-    versioning-strategy: increase
+    versioning-strategy: lockfile-only
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
