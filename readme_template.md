@@ -81,7 +81,7 @@ docker run -it (containerid) bash
 
 ### Option 2: Generate it in your own environment
 
-To generate your own amalgamated hosts files you will need Python 3.5 or later.
+To generate your own amalgamated hosts files you will need Python 3.6 or later.
 
 First, install the dependencies with:
 
