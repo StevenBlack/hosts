@@ -14,7 +14,6 @@ jobs:
       fail-fast: false
       matrix:
         python:
-          - '3.5'
           - '3.6'
           - '3.7'
           - '3.8'
@@ -33,6 +32,7 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python }}
+          cache: pip
 
       - name: Print versions
         run: |
@@ -44,6 +44,9 @@ jobs:
 
       - name: Run lint
         run: flake8
+
+      - name: Run makeHosts.py
+        run: python makeHosts.py
 
       - name: Run tests
         run: python testUpdateHostsFile.py
