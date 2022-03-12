@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+      - python
+    versioning-strategy: increase
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: monthly
+    labels:
+      - dependencies
+      - github_actions
