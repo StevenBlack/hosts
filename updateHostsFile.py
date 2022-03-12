@@ -1577,7 +1577,7 @@ def query_yes_no(question, default="yes"):
 
     Inspired by the following implementation:
 
-    http://code.activestate.com/recipes/577058
+    https://code.activestate.com/recipes/577058/
 
     Parameters
     ----------

@@ -30,7 +30,7 @@ into a unified hosts file with duplicates removed.  A variety of tailored hosts 
 This repository offers [15 different host file variants](https://github.com/StevenBlack/hosts/tree/master/alternates), in addition to the base variant.
 
 The **Non GitHub mirror** is the link to use for some hosts file managers like
-[Hostsman for Windows](http://www.abelhadigital.com/hostsman/) that don't work
+[Hostsman for Windows](https://www.abelhadigital.com/hostsman/) that don't work
 with GitHub download links.
 
 Host file recipe | Readme | Raw hosts | Unique domains | Non GitHub mirror
