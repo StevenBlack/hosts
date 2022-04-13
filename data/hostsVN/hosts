@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 08 Apr 2022 23:00 UTC+7
-# Version: 2204082300
-# Blocked: 1.681 domains
+# Last modified: 12 Apr 2022 13:57 UTC+7
+# Version: 2204121357
+# Blocked: 1.683 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -1292,6 +1292,9 @@
 #[analytics.saas-vn.network]
 0.0.0.0 analytics.saas-vn.network
 0.0.0.0 congnb.analytics.saas-vn.network
+#[dtadnetwork.com]
+0.0.0.0 dtadnetwork.com
+0.0.0.0 static.dtadnetwork.com
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
@@ -1495,7 +1498,6 @@
 0.0.0.0 sharks.vn
 0.0.0.0 shop.vnay.vn
 0.0.0.0 static.adconnect.vn
-0.0.0.0 static.dtadnetwork.com
 0.0.0.0 static.mvot.vn
 0.0.0.0 stc-nas.nixcdn.com
 0.0.0.0 stc.nas.nixcdn.com
@@ -1680,6 +1682,7 @@
 0.0.0.0 s.kenh14.vn
 0.0.0.0 s.soha.vn
 0.0.0.0 s.tuoitre.vn
+0.0.0.0 sentry.dantri.com.vn
 0.0.0.0 sentry.mediacdn.vn
 0.0.0.0 sharefb.cnnd.vn
 0.0.0.0 smetrics.kone.vn
