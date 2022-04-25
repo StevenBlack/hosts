@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 21 Apr 2022 15:31 UTC+7
-# Version: 2204211531
-# Blocked: 1.704 domains
+# Last modified: 24 Apr 2022 14:10 UTC+7
+# Version: 2204241410
+# Blocked: 1,712 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -406,6 +406,10 @@
 0.0.0.0 campaign.brand.zing.vn
 0.0.0.0 interactive.brand.zing.vn
 0.0.0.0 stc.interactive.brand.zing.vn
+#[zingmp3.vn]
+0.0.0.0 log.zingmp3.vn
+0.0.0.0 za.zingmp3.vn
+0.0.0.0 zlog.zingmp3.vn
 #[zingnews.vn]
 0.0.0.0 log.zingnews.vn
 0.0.0.0 za.zingnews.vn
@@ -1310,6 +1314,11 @@
 0.0.0.0 cdn.unibots.in
 0.0.0.0 unibots.in
 0.0.0.0 vdo.unibots.in
+#[botbanhang.vn]
+0.0.0.0 ads.botbanhang.vn
+0.0.0.0 chatbox-static.botbanhang.vn
+0.0.0.0 chatbox-tracking.botbanhang.vn
+0.0.0.0 chatbox-widget.botbanhang.vn
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
@@ -1459,6 +1468,7 @@
 0.0.0.0 delivery.senvangvn.com
 0.0.0.0 delivery.vtc.vn
 0.0.0.0 delivery.vtcnew.com.vn
+0.0.0.0 deltago.com
 0.0.0.0 demopage.me
 0.0.0.0 deqik.com
 0.0.0.0 dt.vnecdn.com
@@ -1673,7 +1683,6 @@
 0.0.0.0 log.vov.vn
 0.0.0.0 log.vovplus.vn
 0.0.0.0 log.zamba.vn
-0.0.0.0 log.zingmp3.vn
 0.0.0.0 log4x.nixcdn.com
 0.0.0.0 logapi.misa.com.vn
 0.0.0.0 logen.vietnamplus.vn
@@ -1760,6 +1769,7 @@
 0.0.0.0 tracking.phunuadong.vn
 0.0.0.0 tracking.tekoapis.com
 0.0.0.0 tracking.tinxe.vn
+0.0.0.0 tracking.vegaid.vn
 0.0.0.0 tracking.vht.com.vn
 0.0.0.0 tracking.vietbao.vn
 0.0.0.0 tracking.vnncdn.net
@@ -1783,7 +1793,6 @@
 0.0.0.0 widget.kyna.vn
 0.0.0.0 za.baomoi.com
 0.0.0.0 zigzag.vn
-0.0.0.0 zlog.zingmp3.vn
 # --- Block scamVN ---
 0.0.0.0 atspace.tv
 0.0.0.0 bloodleian.club
@@ -1858,6 +1867,7 @@
 0.0.0.0 q2h0x5l7gj8xdm5wdx8ht5szd4jw8nzq5klt8sr9sk2zjg6mtk0q8xzi0i9z.me
 0.0.0.0 rei9jc56oyqux0rcpcquqmm7jc5freirpsquqkope3n3axrjacg8ipolxvbm.codes
 0.0.0.0 t2zc6vo8zj2ch6sh6kvu5vq8cjz4iv8v2aj1ckjy8zktaj8vm6visk6als8l.me
+0.0.0.0 u7z5fgj3k9c0vkah2v8zj1zj7v6gkm2f8zjc9j2vk6o9p2zks3a6sjc2mj6h.me
 0.0.0.0 v0h8c6kcd8wd9lzg2mtlo0gj7cju82latost2c8qjs2gj6yti8zhs5kltx7d.me
 0.0.0.0 wfgo5vjs6cp0cdjx7bms3cn9lof2p01xho0pxgm1fd2fah3j5d8qd7x1d6eu.me
 0.0.0.0 y8z5nv0slz06vj2k5vh6akv7dj2c8aj62zhj2v7zj8vp0zq7fj2gf4mv6zsb.me
