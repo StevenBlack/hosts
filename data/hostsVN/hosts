@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 24 Apr 2022 14:10 UTC+7
-# Version: 2204241410
-# Blocked: 1,712 domains
+# Last modified: 03 May 2022 18:31 UTC+7
+# Version: 2205031831
+# Blocked: 1.736 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -454,6 +454,7 @@
 0.0.0.0 adtima-media.zascdn.me
 0.0.0.0 adtima-static.zascdn.me
 0.0.0.0 adtima-video.zascdn.me
+0.0.0.0 mplaylist-ads.zascdn.me
 #[sdk.zadn.vn]
 0.0.0.0 api.sdk.zadn.vn
 0.0.0.0 log.sdk.zadn.vn
@@ -462,6 +463,7 @@
 0.0.0.0 480.zaloapp.ads.zdn.vn
 0.0.0.0 org.zaloapp.ads.zdn.vn
 #[zdn.vn]
+0.0.0.0 stc-support-app-brand.zdn.vn
 0.0.0.0 za.zdn.vn
 0.0.0.0 zaloads-480.zdn.vn
 0.0.0.0 zplayer-trk.zdn.vn
@@ -1120,12 +1122,14 @@
 #[matomo.*.vn]
 0.0.0.0 matomo.ecoe.vn
 0.0.0.0 matomo.energyfacility.vn
+0.0.0.0 matomo.magicmarketing.vn
 0.0.0.0 matomo.shac.vn
 0.0.0.0 matomo.vepg.vn
 #[mautic.*.vn]
 0.0.0.0 mautic.akhoe.vn
 0.0.0.0 mautic.casso.vn
 0.0.0.0 mautic.chetaomaysaigon.vn
+0.0.0.0 mautic.cloudify.vn
 0.0.0.0 mautic.datium.vn
 0.0.0.0 mautic.dongdomedia.vn
 0.0.0.0 mautic.easygroup.vn
@@ -1319,6 +1323,12 @@
 0.0.0.0 chatbox-static.botbanhang.vn
 0.0.0.0 chatbox-tracking.botbanhang.vn
 0.0.0.0 chatbox-widget.botbanhang.vn
+#[tebrand.vn]
+0.0.0.0 static.tebrand.vn
+0.0.0.0 tebrand.vn
+#[tebrand.asia]
+0.0.0.0 static.tebrand.asia
+0.0.0.0 tebrand.asia
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
@@ -1345,6 +1355,7 @@
 0.0.0.0 adm.phunusuckhoe.vn
 0.0.0.0 adm.phunuvagiadinh.vn
 0.0.0.0 admin.sothuchi.vn
+0.0.0.0 adms.phunusuckhoe.vn
 0.0.0.0 adpostback.headlines.pw
 0.0.0.0 ads-api.playfun.vn
 0.0.0.0 ads-backend.nhadatmoi.net
@@ -1427,6 +1438,8 @@
 0.0.0.0 adx.chinmedia.vn
 0.0.0.0 adx.edutimes.com.vn
 0.0.0.0 adx.golfnews.vn
+0.0.0.0 adx.hoanggia.net
+0.0.0.0 adx.hoanggia.net.vn
 0.0.0.0 adx.hongtinnhanh.com
 0.0.0.0 adx.kul.vn
 0.0.0.0 adx.phunuadong.vn
@@ -1588,6 +1601,7 @@
 0.0.0.0 analytics.bkav.com.vn
 0.0.0.0 analytics.diamondstarfinancial.com.vn
 0.0.0.0 analytics.explus.vn
+0.0.0.0 analytics.fsoft.com.vn
 0.0.0.0 analytics.hub-js.com
 0.0.0.0 analytics.mfocus.vn
 0.0.0.0 analytics.molistar.com
@@ -1619,6 +1633,7 @@
 0.0.0.0 core.vchat.vn
 0.0.0.0 counter.24h.com.vn
 0.0.0.0 counter.ntdvn.com
+0.0.0.0 counter.ntdvn.net
 0.0.0.0 crm.bizfly.vn
 0.0.0.0 crmbizfly.todo.vn
 0.0.0.0 elink.nhanlucnganhluat.vn
@@ -1635,6 +1650,9 @@
 0.0.0.0 invite.baomoi.com
 0.0.0.0 kv-analytics.kiotviet.vn
 0.0.0.0 la.vietid.net
+0.0.0.0 la.vnecdn.net
+0.0.0.0 la2.vnecdn.net
+0.0.0.0 la3.vnecdn.net
 0.0.0.0 lg.lotus.vn
 0.0.0.0 live.vnpgroup.net
 0.0.0.0 log-collector.shopee.vn
@@ -1647,6 +1665,7 @@
 0.0.0.0 log.batdongsan.com.vn
 0.0.0.0 log.beecost.com
 0.0.0.0 log.beecost.vn
+0.0.0.0 log.bizlive.vn
 0.0.0.0 log.daidoanket.vn
 0.0.0.0 log.dantocmiennui.vn
 0.0.0.0 log.doanhnhan.vn
@@ -1679,6 +1698,7 @@
 0.0.0.0 log.vietnamplus.vn
 0.0.0.0 log.viettimes.vn
 0.0.0.0 log.vnay.vn
+0.0.0.0 log.vneconomy.vn
 0.0.0.0 log.vnfinance.vn
 0.0.0.0 log.vov.vn
 0.0.0.0 log.vovplus.vn
@@ -1688,6 +1708,7 @@
 0.0.0.0 logen.vietnamplus.vn
 0.0.0.0 logg4u.cnnd.vn
 0.0.0.0 logperf.vnexpress.net
+0.0.0.0 logs.docnhanh.com.vn
 0.0.0.0 logs.giaoducthoidai.vn
 0.0.0.0 logs.thethaovanhoa.vn
 0.0.0.0 logs1.reatimes.vn
@@ -1744,6 +1765,7 @@
 0.0.0.0 tr.topdevvn.com
 0.0.0.0 tracer.concung.com
 0.0.0.0 track-srv.vietnamnet.vn
+0.0.0.0 track.adshay.vn
 0.0.0.0 track.icheck.com.vn
 0.0.0.0 track.kyna.vn
 0.0.0.0 track.lapa.pub
@@ -1753,17 +1775,21 @@
 0.0.0.0 track.vio.edu.vn
 0.0.0.0 tracker.anime47.com
 0.0.0.0 tracker.bongngo.bar
+0.0.0.0 tracker.edupia.vn
 0.0.0.0 tracker.fado.vn
 0.0.0.0 tracker.gigaphim.com
 0.0.0.0 tracker.nhandaovadoisong.vn
+0.0.0.0 tracker.phunusuckhoe.vn
 0.0.0.0 tracker.phunuvagiadinh.vn
 0.0.0.0 tracker.thichxemphim.net
 0.0.0.0 tracking-amp.vnexpress.net
+0.0.0.0 tracking-web.smobgame.com
 0.0.0.0 tracking.appwifi.com
 0.0.0.0 tracking.dantri.com.vn
 0.0.0.0 tracking.fado.vn
 0.0.0.0 tracking.fff.com.vn
 0.0.0.0 tracking.gapone.vn
+0.0.0.0 tracking.hapiwork.vn
 0.0.0.0 tracking.hongtinnhanh.com
 0.0.0.0 tracking.meta.vn
 0.0.0.0 tracking.phunuadong.vn
