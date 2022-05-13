@@ -738,6 +738,12 @@ def update_all_sources(source_data_filename, host_filename):
         update_file = open(source, "r", encoding="UTF-8")
         update_data = json.load(update_file)
         update_file.close()
+
+        # we can pause updating any given hosts source.
+        # if the update.json "pause" key is missing, don't pause.
+        if update_data.get('pause', False):
+            continue
+
         update_url = update_data["url"]
         update_transforms = []
         if update_data.get("transforms"):
