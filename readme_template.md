@@ -45,8 +45,8 @@ of OS.
 Updated `hosts` files from the following locations are always unified and
 included:
 
-Host file source | Description | Home page | Raw hosts | License | Issues
------------------|-------------|:---------:|:---------:|:-------:|:------:
+Host file source | Home page | Raw hosts | License | Issues| Description 
+-----------------|:---------:|:---------:|:-------:|:-----:|-------------
 @SOURCEROWS@
 
 ## Extensions

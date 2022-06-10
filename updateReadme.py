@@ -52,16 +52,16 @@ def main():
 
     row_defaults = {
         "name": "",
-        "description": "",
         "homeurl": "",
         "url": "",
         "license": "",
         "issues": "",
+        "description": "",
     }
 
     t = Template(
-        "${name} | ${description} |[link](${homeurl})"
-        " | [raw](${url}) | ${license} | [issues](${issues})"
+        "${name} |[link](${homeurl})"
+        " | [raw](${url}) | ${license} | [issues](${issues})| ${description}"
     )
 
     for key in keys:
