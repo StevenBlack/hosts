@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 07 Jun 2022 09:40 UTC+7
-# Version: 2206070940
-# Blocked: 1.789 domains
+# Last modified: 08 Jun 2022 15:09 UTC+7
+# Version: 2206081509
+# Blocked: 1.792 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -1352,7 +1352,11 @@
 #[bongdadem.net]
 0.0.0.0 bongdadem.net
 0.0.0.0 cdn.bongdadem.net
+#[fptplay.net]
+0.0.0.0 ads-cdn.fptplay.net
+0.0.0.0 sentry.fptplay.net
 # --- Block adsVN ---
+0.0.0.0 ads.fptplay.vn
 0.0.0.0 xl.plvb.xyz
 0.0.0.0 vb.plvb.xyz
 0.0.0.0 ads.admatrix.vn
@@ -1385,7 +1389,6 @@
 0.0.0.0 adpostback.headlines.pw
 0.0.0.0 ads-api.playfun.vn
 0.0.0.0 ads-backend.nhadatmoi.net
-0.0.0.0 ads-cdn.fptplay.net
 0.0.0.0 ads.1thegioi.vn
 0.0.0.0 ads.247phim.com
 0.0.0.0 ads.568play.vn
@@ -1612,6 +1615,7 @@
 0.0.0.0 www.vietbuzzad.com
 0.0.0.0 www.vietdorje.com
 # --- Block trackingVN ---
+0.0.0.0 sentry-mini.zalo.me
 0.0.0.0 tracking.cystack.net
 0.0.0.0 analytics.vnncdn.net
 0.0.0.0 mautic.200lab.io
