@@ -54,7 +54,6 @@ def main():
         "name": "",
         "description": "",
         "homeurl": "",
-        "frequency": "",
         "url": "",
         "license": "",
         "issues": "",
@@ -62,7 +61,7 @@ def main():
 
     t = Template(
         "${name} | ${description} |[link](${homeurl})"
-        " | [raw](${url}) | ${frequency} | ${license} | [issues](${issues})"
+        " | [raw](${url}) | ${license} | [issues](${issues})"
     )
 
     for key in keys:
