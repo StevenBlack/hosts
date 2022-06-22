@@ -21,6 +21,14 @@
 This repository consolidates several reputable `hosts` files, and merges them
 into a unified hosts file with duplicates removed.  A variety of tailored hosts files are provided.
 
+**Therefore this repository is a hosts file aggregator.**
+
+![Aggregator](https://raw.githubusercontent.com/StevenBlack/hosts/master/aggregator.png)
+
+
+
+
+
 * Last updated: **@GEN_DATE@**.
 * Here's the [raw hosts file @EXTENSIONS_HEADER@](https://raw.githubusercontent.com/StevenBlack/hosts/master/@SUBFOLDER@hosts) containing @NUM_ENTRIES@ entries.
 * Logo by [@Tobaloidee](https://github.com/Tobaloidee).
@@ -45,7 +53,7 @@ of OS.
 Updated `hosts` files from the following locations are always unified and
 included:
 
-Host file source | Home page | Raw hosts | License | Issues| Description 
+Host file source | Home page | Raw hosts | License | Issues| Description
 -----------------|:---------:|:---------:|:-------:|:-----:|-------------
 @SOURCEROWS@
 
