@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 25 Jun 2022 21:19 UTC+7
-# Version: 2206252119
-# Blocked: 1.790 domains
+# Last modified: 02 Jul 2022 23:16 UTC+7
+# Version: 2207022316
+# Blocked: 1.814 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -97,6 +97,7 @@
 0.0.0.0 rec.admicro.vn
 0.0.0.0 sspapi.admicro.vn
 0.0.0.0 static-cmsads.admicro.vn
+0.0.0.0 systracking.admicro.vn
 0.0.0.0 wcc.admicro.vn
 0.0.0.0 www.admicro.vn
 #[admicro*.vcmedia.vn]
@@ -421,6 +422,8 @@
 0.0.0.0 button-share.zalo.me
 0.0.0.0 page.widget.zalo.me
 0.0.0.0 px.za.zalo.me
+0.0.0.0 sentry-mini.zalo.me
+0.0.0.0 sentry.ministore.h5.zalo.me
 0.0.0.0 widget.chat.zalo.me
 #[zaloapp.com]
 0.0.0.0 ads.zaloapp.com
@@ -1122,6 +1125,7 @@
 #[matomo.*.vn]
 0.0.0.0 matomo.ecoe.vn
 0.0.0.0 matomo.energyfacility.vn
+0.0.0.0 matomo.hicity.vn
 0.0.0.0 matomo.magicmarketing.vn
 0.0.0.0 matomo.shac.vn
 0.0.0.0 matomo.vepg.vn
@@ -1138,7 +1142,6 @@
 0.0.0.0 mautic.haproinfo.vn
 0.0.0.0 mautic.hicity.vn
 0.0.0.0 mautic.icsc.vn
-0.0.0.0 mautic.itnavi.com.vn
 0.0.0.0 mautic.jagodo.vn
 0.0.0.0 mautic.paa.vn
 0.0.0.0 mautic.serverhub.vn
@@ -1146,8 +1149,11 @@
 0.0.0.0 mautic.thietkexaynhadep.vn
 0.0.0.0 mautic.vmax.vn
 0.0.0.0 mautic.yte-suckhoe.vn
+#[mautic.*.com.vn]
+0.0.0.0 mautic.itnavi.com.vn
 #[piwik.*.vn]
 0.0.0.0 piwik.rta.vn
+#[piwik.*.com.vn]
 0.0.0.0 piwik.tienhiep.com.vn
 #[accesstrade.vn]
 0.0.0.0 ad.accesstrade.vn
@@ -1355,6 +1361,25 @@
 #[fptplay.net]
 0.0.0.0 ads-cdn.fptplay.net
 0.0.0.0 sentry.fptplay.net
+#[vietnamplus.vn]
+0.0.0.0 log.vietnamplus.vn
+0.0.0.0 logen.vietnamplus.vn
+0.0.0.0 loges.vietnamplus.vn
+0.0.0.0 logfr.vietnamplus.vn
+0.0.0.0 logru.vietnamplus.vn
+0.0.0.0 logzh.vietnamplus.vn
+#[dantocmiennui.vn]
+0.0.0.0 log.dantocmiennui.vn
+0.0.0.0 logkm.dantocmiennui.vn
+0.0.0.0 logzh.dantocmiennui.vn
+#[nct.vn]
+0.0.0.0 api.nas.nct.vn
+0.0.0.0 apinas.nct.vn
+0.0.0.0 nct2-logging.nct.vn
+#[affmates.com]
+0.0.0.0 affmates.com
+0.0.0.0 api.affmates.com
+0.0.0.0 storage.affmates.com
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
@@ -1372,6 +1397,7 @@
 0.0.0.0 ad.sunflower.vn
 0.0.0.0 ad.vietbao.vn
 0.0.0.0 ad.vkool.net
+0.0.0.0 ad.zinimedia.com
 0.0.0.0 adadmin.headlines.pw
 0.0.0.0 adapi.tuyensinh247.com
 0.0.0.0 adchoice.com
@@ -1422,6 +1448,7 @@
 0.0.0.0 ads.phunuonline.com.vn
 0.0.0.0 ads.phunusuckhoe.vn
 0.0.0.0 ads.phunuvagiadinh.vn
+0.0.0.0 ads.sexyland.vn
 0.0.0.0 ads.songmoi.vn
 0.0.0.0 ads.suckhoegiadinh.com.vn
 0.0.0.0 ads.thanhnien.vn
@@ -1478,10 +1505,8 @@
 0.0.0.0 an.dongphim.net
 0.0.0.0 an.xemvtv.net
 0.0.0.0 api.boclinkads.com
-0.0.0.0 api.nas.nct.vn
 0.0.0.0 api2.boclinkads.com
 0.0.0.0 apia.headlines.pw
-0.0.0.0 apinas.nct.vn
 0.0.0.0 as.gamevui.com
 0.0.0.0 avoadsservices.com
 0.0.0.0 banhtv.org
@@ -1489,6 +1514,7 @@
 0.0.0.0 banner.etargeting.mobifone.vn
 0.0.0.0 banner.thadaco.vn
 0.0.0.0 banner.trangvangvietnam.com
+0.0.0.0 banner.uto.vn
 0.0.0.0 bgadx.com
 0.0.0.0 bidgear-syndication.com
 0.0.0.0 bluemaulpuffs.com
@@ -1501,6 +1527,7 @@
 0.0.0.0 clix.vn
 0.0.0.0 core.vnecdn.com
 0.0.0.0 cpx.vnecdn.com
+0.0.0.0 cre-ads.com
 0.0.0.0 crocopop.com
 0.0.0.0 csmads.gameclick.vn
 0.0.0.0 delecpuzz.com
@@ -1544,6 +1571,7 @@
 0.0.0.0 qc.kqbd88.com
 0.0.0.0 qc.mhsolution.vn
 0.0.0.0 qc.violet.vn
+0.0.0.0 qcao.happyskin.vn
 0.0.0.0 qctt24h.24h.com.vn
 0.0.0.0 qcv5.blogtruyen.vn
 0.0.0.0 quangcao.24h.com.vn
@@ -1625,12 +1653,15 @@
 0.0.0.0 analytic.vnanet.vn
 0.0.0.0 analytics.admon.com.vn
 0.0.0.0 analytics.aita.gov.vn
+0.0.0.0 analytics.bachtuongphat.com
 0.0.0.0 analytics.bkav.com
 0.0.0.0 analytics.bkav.com.vn
+0.0.0.0 analytics.bluemotionmedia.vn
 0.0.0.0 analytics.diamondstarfinancial.com.vn
 0.0.0.0 analytics.explus.vn
 0.0.0.0 analytics.fsoft.com.vn
 0.0.0.0 analytics.hub-js.com
+0.0.0.0 analytics.jamstackvietnam.com
 0.0.0.0 analytics.mfocus.vn
 0.0.0.0 analytics.molistar.com
 0.0.0.0 analytics.moneycat.vn
@@ -1694,6 +1725,7 @@
 0.0.0.0 lg.lotus.vn
 0.0.0.0 live.vnpgroup.net
 0.0.0.0 liveonline.nhanhoa.com
+0.0.0.0 lmsreport.systems.vn
 0.0.0.0 log-collector.shopee.vn
 0.0.0.0 log.anninhthudo.vn
 0.0.0.0 log.baodatviet.vn
@@ -1706,9 +1738,9 @@
 0.0.0.0 log.beecost.vn
 0.0.0.0 log.bizlive.vn
 0.0.0.0 log.daidoanket.vn
-0.0.0.0 log.dantocmiennui.vn
 0.0.0.0 log.dav.edu.vn
 0.0.0.0 log.doanhnhan.vn
+0.0.0.0 log.dubaotiente.com
 0.0.0.0 log.giaoduc.net.vn
 0.0.0.0 log.hemera.com.vn
 0.0.0.0 log.infonet.vn
@@ -1736,7 +1768,6 @@
 0.0.0.0 log.trithuctructuyen.vn
 0.0.0.0 log.tv360.vn
 0.0.0.0 log.vietnamdaily.net.vn
-0.0.0.0 log.vietnamplus.vn
 0.0.0.0 log.viettimes.vn
 0.0.0.0 log.vnay.vn
 0.0.0.0 log.vneconomy.vn
@@ -1746,7 +1777,6 @@
 0.0.0.0 log.zamba.vn
 0.0.0.0 log4x.nixcdn.com
 0.0.0.0 logapi.misa.com.vn
-0.0.0.0 logen.vietnamplus.vn
 0.0.0.0 logg4u.cnnd.vn
 0.0.0.0 logging.kinhtedothi.vn
 0.0.0.0 logperf.vnexpress.net
@@ -1757,6 +1787,7 @@
 0.0.0.0 logsbin.dantri.com.vn
 0.0.0.0 logscafef.channelvn.net
 0.0.0.0 marketing.itgeek.vn
+0.0.0.0 matomo.quan.hoabinh.vn
 0.0.0.0 mautic.200lab.io
 0.0.0.0 mautic.teky.edu.vn
 0.0.0.0 mkt.hoanghamobile.com
@@ -1777,7 +1808,6 @@
 0.0.0.0 s.kenh14.vn
 0.0.0.0 s.soha.vn
 0.0.0.0 s.tuoitre.vn
-0.0.0.0 sentry-mini.zalo.me
 0.0.0.0 sentry.dantri.com.vn
 0.0.0.0 sentry.mediacdn.vn
 0.0.0.0 sentry.sendo.vn
