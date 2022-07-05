@@ -97,7 +97,7 @@ This will replace your `/etc/hosts` and optionally add any custom hosts.
 
 (Optionally) First create custom hosts files as per [the instructions](#how-do-i-control-which-sources-are-unified).
 
-Then run the following command to have everything setup.
+Then run the following command in that same directory. Set extensions to your preference.
 
 ```sh
 docker run --pull always --rm -it -v /etc/hosts:/etc/hosts -v "${PWD}:/pwd" \
