@@ -43,7 +43,7 @@ except ImportError:
 if platform.system() == "OpenBSD":
     SUDO = ["/usr/bin/doas"]
 elif platform.system() == "Windows":
-    SUDO = ["Start-Process", "powershell", "-Verb", "runAs"]
+    SUDO = ["powershell", "Start-Process", "powershell", "-Verb", "runAs"]
 else:
     SUDO = ["/usr/bin/env", "sudo"]
 
@@ -1282,7 +1282,7 @@ def move_hosts_file_into_place(final_file):
 
     filename = os.path.abspath(final_file.name)
     if platform.system() == "Windows":
-        target_file = Path(os.getenv("SystemRoot")) / "system32" / "drivers" / "etc" / "hosts"
+        target_file = str(Path(os.getenv("SystemRoot")) / "system32" / "drivers" / "etc" / "hosts")
     else:
         target_file = "/etc/hosts"
 
@@ -1299,13 +1299,11 @@ def move_hosts_file_into_place(final_file):
             print_failure(f"Replacing content of {target_file} failed.")
             return False
     elif platform.system() == "Linux" or platform.system() == "Windows":
-
-        
         print(
             f"Replacing {target_file} requires root privileges. You might need to enter your password."
         )
         try:
-            subprocess.run(SUDO + ["cp", filename, target_file], check=True)
+            subprocess.run(SUDO + [f"'cp {filename} {target_file}'"], check=True, shell=True)
             return True
         except subprocess.CalledProcessError:
             print_failure(f"Replacing {target_file} failed.")
