@@ -4,8 +4,8 @@ ENV IN_CONTAINER 1
 
 RUN apk add --no-cache git sudo
 
-COPY . /usr/src/hosts
+COPY . /hosts
 
-RUN pip install --no-cache-dir --upgrade -r /usr/src/hosts/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /hosts/requirements.txt
 
-ENV PATH $PATH:/usr/src/hosts
+ENV PATH $PATH:/hosts

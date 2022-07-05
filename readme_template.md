@@ -84,25 +84,31 @@ docker build --no-cache . -t stevenblack-hosts
 Then run your command as such:
 
 ```sh
-docker run --rm -it -v "${PWD}/test:/pwd" stevenblack-hosts updateHostsFile.py
+docker run --rm -it ghcr.io/StevenBlack/hosts updateHostsFile.py
 ```
 
-> It is recommended to mount a host directory, so your changes are saved when you exit
-the container. Add `-v "${PWD}:/pwd" -w /pwd` after `-it` to mount your current working
-directory, and have that as current working directory in your container.
+> This will create the file, and remove it with the container when done, so not very
+> useful. Use the following example to automatically update your hosts file in place.
 
 #### Linux example
 
-This will replace your `/etc/hosts` and optionally add any custom hosts.
+This will replace your `/etc/hosts`.
 
-(Optionally) First create custom hosts files as per [the instructions](#how-do-i-control-which-sources-are-unified).
-
-Then run the following command in that same directory. Set extensions to your preference.
+Just run the following command. Set extensions to your preference.
 
 ```sh
-docker run --pull always --rm -it -v /etc/hosts:/etc/hosts -v "${PWD}:/pwd" \
--w /pwd ghcr.io/StevenBlack/hosts updateHostsFile.py --auto \
+docker run --pull always --rm -it -v /etc/hosts:/etc/hosts \
+ghcr.io/StevenBlack/hosts updateHostsFile.py --auto \
 --replace --extensions gambling porn
+```
+
+If you want to add custom hosts or a whitelist, create either ot both files as per
+[the instructions](#how-do-i-control-which-sources-are-unified) and add the following
+arguments _before_ `ghcr.io/StevenBlack/hosts` depending on which you wish to use.
+
+```sh
+-v "path/to/myhosts:/hosts/myhosts" \
+-v "path/to/whitelist:/hosts/whitelist"
 ```
 
 ### Option 2: Generate it in your own environment
