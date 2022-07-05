@@ -84,10 +84,10 @@ docker build --no-cache . -t stevenblack-hosts
 Then run your command as such:
 
 ```sh
-docker run --rm -it ghcr.io/StevenBlack/hosts updateHostsFile.py
+docker run --rm -it stevenblack-hosts updateHostsFile.py
 ```
 
-> This will create the file, and remove it with the container when done, so not very
+> This will create the hosts file, and remove it with the container when done, so not very
 > useful. Use the following example to automatically update your hosts file in place.
 
 #### Linux example
