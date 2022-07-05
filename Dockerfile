@@ -1,14 +1,11 @@
-# using container digest is recommended https://github.com/opencontainers/image-spec/blob/main/descriptor.md#digests 
-# https://cloud.google.com/architecture/using-container-images
+FROM docker.io/python:3-alpine
 
-FROM python:3@sha256:b7bfea0126f539ba570a01fb595ee84cc4e7dcac971ad83d12c848942fa52cb6
+ENV IN_CONTAINER 1
 
-WORKDIR /usr/src
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-RUN git clone --depth 1 https://github.com/StevenBlack/hosts.git
-WORKDIR /usr/src/hosts
+RUN apk add --no-cache git sudo
 
-# Now you launch this with
-#  $ docker build ./
-#  $ docker run -it (containerid) bash
+COPY . /usr/src/hosts
+
+RUN pip install --no-cache-dir --upgrade -r /usr/src/hosts/requirements.txt
+
+ENV PATH $PATH:/usr/src/hosts

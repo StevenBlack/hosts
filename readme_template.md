@@ -72,19 +72,37 @@ You have two options to generate your own hosts file.  You can do it in your own
 
 ### Option 1: Generate in a Docker container
 
-We provide a [Dockerfile](https://github.com/StevenBlack/hosts/blob/master/Dockerfile) that you can use to create a Docker container with everything you need.
+We provide a [Dockerfile](https://github.com/StevenBlack/hosts/blob/master/Dockerfile) that you can use to create a container image with everything you need.
 The container will contain Python 3 and all its dependency requirements, and a copy of the latest version of this repository.
 
 Build the Docker container like this:
 
 ```sh
-docker build ./
+docker build --no-cache . -t stevenblack-hosts
 ```
 
-Access the terminal like this:
+Then run your command as such:
 
 ```sh
-docker run -it (containerid) bash
+docker run --rm -it -v "${PWD}/test:/pwd" stevenblack-hosts updateHostsFile.py
+```
+
+> It is recommended to mount a host directory, so your changes are saved when you exit
+the container. Add `-v "${PWD}:/pwd" -w /pwd` after `-it` to mount your current working
+directory, and have that as current working directory in your container.
+
+#### Linux example
+
+This will replace your `/etc/hosts` and optionally add any custom hosts.
+
+(Optionally) First create custom hosts files as per [the instructions](#how-do-i-control-which-sources-are-unified).
+
+Then run the following command to have everything setup.
+
+```sh
+docker run --pull always --rm -it -v /etc/hosts:/etc/hosts -v "${PWD}:/pwd" \
+-w /pwd ghcr.io/StevenBlack/hosts updateHostsFile.py --auto \
+--replace --extensions gambling porn
 ```
 
 ### Option 2: Generate it in your own environment

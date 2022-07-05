@@ -12,6 +12,7 @@ import json
 import locale
 import os
 import platform
+from pathlib import Path
 import re
 import shutil
 import socket
@@ -467,7 +468,7 @@ def prompt_for_move(final_file, **move_params):
         move_file = query_yes_no(prompt)
 
     if move_file:
-        move_hosts_file_into_place(final_file)
+        move_file = move_hosts_file_into_place(final_file)
 
     return move_file
 
@@ -1279,17 +1280,41 @@ def move_hosts_file_into_place(final_file):
 
     filename = os.path.abspath(final_file.name)
 
-    if os.name == "posix":
-        print(
-            "Moving the file requires administrative privileges. You might need to enter your password."
-        )
-        if subprocess.call(SUDO + ["cp", filename, "/etc/hosts"]):
-            print_failure("Moving the file failed.")
-    elif os.name == "nt":
-        print("Automatically moving the hosts file in place is not yet supported.")
-        print(
-            "Please move the generated file to %SystemRoot%\\system32\\drivers\\etc\\hosts"
-        )
+    if sys.platform == "linux":
+        target_file = "/etc/hosts"
+
+        if os.getenv("IN_CONTAINER"):
+            # It's not allowed to remove/replace a mounted /etc/hosts, so we replace the content.
+            # This requires running the container user as root, as is the default.
+            print(f"Running in container, so we will replace the content of {target_file}.")
+            try:
+                with open(target_file, "w") as target_stream:
+                    with open(filename, "r") as source_stream:
+                        target_stream.write(source_stream.read())
+                return True
+            except Exception:
+                print_failure(f"Replacing content of {target_file} failed.")
+                return False
+        else:
+            print(
+                f"Replacing {target_file} requires root privileges. You might need to enter your password."
+            )
+            try:
+                subprocess.run(SUDO + ["cp", filename, target_file], check=True)
+                return True
+            except subprocess.CalledProcessError:
+                print_failure(f"Replacing {target_file} failed.")
+                return False
+    elif sys.platform == "win32":
+        target_file = Path(os.getenv("SystemRoot")) / "system32" / "drivers" / "etc" / "hosts"
+        try:
+            with open(target_file, "w") as target_stream:
+                with open(filename, "r") as source_stream:
+                    target_stream.write(source_stream.read())
+            return True
+        except Exception:
+                print_failure(f"Replacing content of {target_file} failed.")
+                return False
 
 
 def flush_dns_cache():
