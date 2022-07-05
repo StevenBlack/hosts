@@ -9,3 +9,5 @@ COPY . /hosts
 RUN pip install --no-cache-dir --upgrade -r /hosts/requirements.txt
 
 ENV PATH $PATH:/hosts
+
+WORKDIR /hosts
