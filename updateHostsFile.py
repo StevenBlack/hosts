@@ -1281,6 +1281,14 @@ def move_hosts_file_into_place(final_file):
     """  # noqa: W605
 
     filename = os.path.abspath(final_file.name)
+
+    try:
+        if not Path(filename).exists():
+            raise FileNotFoundError
+    except Exception:
+        print_failure(f"{filename} does not exist.")
+        return False
+
     if platform.system() == "Windows":
         target_file = str(Path(os.getenv("SystemRoot")) / "system32" / "drivers" / "etc" / "hosts")
     else:
