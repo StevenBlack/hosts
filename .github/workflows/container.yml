@@ -1,11 +1,11 @@
-# Based on https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#publishing-a-package-using-an-action
-
 name: Create and publish a container image
 
 on:
   push:
     branches:
       - master
+    tags:
+      - "*"
 
 env:
   REGISTRY: ghcr.io
@@ -38,6 +38,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
