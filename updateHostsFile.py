@@ -1301,7 +1301,8 @@ def move_hosts_file_into_place(final_file):
         try:
             with open(target_file, "w") as target_stream:
                 with open(filename, "r") as source_stream:
-                    target_stream.write(source_stream.read())
+                    source = source_stream.read()
+                    target_stream.write(source)
             return True
         except Exception:
             print_failure(f"Replacing content of {target_file} failed.")
