@@ -68,14 +68,37 @@ folder tree, where you will find the data for `fakenews`, `social`, `gambling`, 
 
 ## Generate your own unified hosts file
 
-You have two options to generate your own hosts file.  You can do it in your own environment, or within a Docker container.  We'll cover Docker first because it's a short section.
+You have three options to generate your own hosts file. You can use our container image, build your own image, or do it in your own environment. Option #1 is easiest if you have Linux with Docker installed.
 
-### Option 1: Generate in a Docker container
+### Option 1: Use our container image (Linux only)
 
-We provide a [Dockerfile](https://github.com/StevenBlack/hosts/blob/master/Dockerfile) that you can use to create a container image with everything you need.
+> This will replace your `/etc/hosts`.
+
+We assume you have Docker available on your host. Just run the following command. Set extensions to your preference.
+
+```sh
+docker run --pull always --rm -it -v /etc/hosts:/etc/hosts \
+ghcr.io/stevenblack/hosts:latest updateHostsFile.py --auto \
+--replace --extensions gambling porn
+```
+
+If you want to add custom hosts or a whitelist, create either or both files as per
+[the instructions](#how-do-i-control-which-sources-are-unified) and add the following
+arguments _before_ `ghcr.io/stevenblack/hosts:latest` depending on which you wish to use.
+
+```sh
+-v "path/to/myhosts:/hosts/myhosts" \
+-v "path/to/whitelist:/hosts/whitelist" \
+```
+
+You can rerun this exact command later to update based on the latest available hosts (for example, add it to a weekly cron job).
+
+### Option 2: Generate your own container image
+
+We provide the [Dockerfile](https://github.com/StevenBlack/hosts/blob/master/Dockerfile) used by the previous step, which you can use to create a container image with everything you need.
 The container will contain Python 3 and all its dependency requirements, and a copy of the latest version of this repository.
 
-Build the Docker container like this:
+Build the Docker container from the root of this repo like this:
 
 ```sh
 docker build --no-cache . -t stevenblack-hosts
@@ -88,30 +111,9 @@ docker run --rm -it stevenblack-hosts updateHostsFile.py
 ```
 
 > This will create the hosts file, and remove it with the container when done, so not very
-> useful. Use the following example to automatically update your hosts file in place.
+> useful. You can use the example in option #1 to add volumes so files on your host are replaced.
 
-#### Linux example
-
-This will replace your `/etc/hosts`.
-
-Just run the following command. Set extensions to your preference.
-
-```sh
-docker run --pull always --rm -it -v /etc/hosts:/etc/hosts \
-ghcr.io/StevenBlack/hosts updateHostsFile.py --auto \
---replace --extensions gambling porn
-```
-
-If you want to add custom hosts or a whitelist, create either ot both files as per
-[the instructions](#how-do-i-control-which-sources-are-unified) and add the following
-arguments _before_ `ghcr.io/StevenBlack/hosts` depending on which you wish to use.
-
-```sh
--v "path/to/myhosts:/hosts/myhosts" \
--v "path/to/whitelist:/hosts/whitelist"
-```
-
-### Option 2: Generate it in your own environment
+### Option 3: Generate it in your own environment
 
 To generate your own amalgamated hosts files you will need Python 3.6 or later.
 
