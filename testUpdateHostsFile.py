@@ -444,7 +444,7 @@ class TestPromptForMove(Base):
             move_file = self.prompt_for_move(
                 replace=True, auto=auto, skipstatichosts=False
             )
-            self.assertTrue(move_file)
+            self.assertFalse(move_file)
 
             mock_query.assert_not_called()
             self.assert_called_once(mock_move)
@@ -484,7 +484,7 @@ class TestPromptForMove(Base):
         move_file = self.prompt_for_move(
             replace=False, auto=False, skipstatichosts=False
         )
-        self.assertTrue(move_file)
+        self.assertFalse(move_file)
 
         self.assert_called_once(mock_query)
         self.assert_called_once(mock_move)
@@ -1264,61 +1264,53 @@ class TestUpdateReadmeData(BaseMockDir):
 
 class TestMoveHostsFile(BaseStdout):
     @mock.patch("os.path.abspath", side_effect=lambda f: f)
-    def test_move_hosts_no_name(self, _):
-        with self.mock_property("os.name"):
-            os.name = "foo"
+    def test_move_hosts_no_name(self, _):  # TODO: Create test which tries to move actual file
+        with self.mock_property("platform.system") as obj:
+            obj.return_value = "foo"
+
+            mock_file = mock.Mock(name="foo")
+            move_hosts_file_into_place(mock_file)
+
+            expected = "does not exist"
+            output = sys.stdout.getvalue()
+
+            self.assertIn(expected, output)
+
+    @mock.patch("os.path.abspath", side_effect=lambda f: f)
+    def test_move_hosts_windows(self, _):
+        with self.mock_property("platform.system") as obj:
+            obj.return_value = "Windows"
 
             mock_file = mock.Mock(name="foo")
             move_hosts_file_into_place(mock_file)
 
             expected = ""
             output = sys.stdout.getvalue()
-
-            self.assertEqual(output, expected)
-
-    @mock.patch("os.path.abspath", side_effect=lambda f: f)
-    def test_move_hosts_windows(self, _):
-        with self.mock_property("os.name"):
-            os.name = "nt"
-
-            mock_file = mock.Mock(name="foo")
-            move_hosts_file_into_place(mock_file)
-
-            expected = (
-                "Automatically moving the hosts "
-                "file in place is not yet supported.\n"
-                "Please move the generated file to "
-                r"%SystemRoot%\system32\drivers\etc\hosts"
-            )
-            output = sys.stdout.getvalue()
             self.assertIn(expected, output)
 
     @mock.patch("os.path.abspath", side_effect=lambda f: f)
     @mock.patch("subprocess.call", return_value=0)
-    def test_move_hosts_posix(self, *_):
-        with self.mock_property("os.name"):
-            os.name = "posix"
+    def test_move_hosts_posix(self, *_):  # TODO: create test which tries to move an actual file
+        with self.mock_property("platform.system") as obj:
+            obj.return_value = "Linux"
 
             mock_file = mock.Mock(name="foo")
             move_hosts_file_into_place(mock_file)
 
-            expected = (
-                "Moving the file requires administrative "
-                "privileges. You might need to enter your password."
-            )
+            expected = "does not exist."
             output = sys.stdout.getvalue()
             self.assertIn(expected, output)
 
     @mock.patch("os.path.abspath", side_effect=lambda f: f)
     @mock.patch("subprocess.call", return_value=1)
     def test_move_hosts_posix_fail(self, *_):
-        with self.mock_property("os.name"):
-            os.name = "posix"
+        with self.mock_property("platform.system") as obj:
+            obj.return_value = "Linux"
 
             mock_file = mock.Mock(name="foo")
             move_hosts_file_into_place(mock_file)
 
-            expected = "Moving the file failed."
+            expected = "does not exist."
             output = sys.stdout.getvalue()
             self.assertIn(expected, output)
 

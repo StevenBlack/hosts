@@ -12,6 +12,7 @@ import json
 import locale
 import os
 import platform
+from pathlib import Path
 import re
 import shutil
 import socket
@@ -41,6 +42,8 @@ except ImportError:
 # Syntactic sugar for "sudo" command in UNIX / Linux
 if platform.system() == "OpenBSD":
     SUDO = ["/usr/bin/doas"]
+elif platform.system() == "Windows":
+    SUDO = ["powershell", "Start-Process", "powershell", "-Verb", "runAs"]
 else:
     SUDO = ["/usr/bin/env", "sudo"]
 
@@ -467,7 +470,7 @@ def prompt_for_move(final_file, **move_params):
         move_file = query_yes_no(prompt)
 
     if move_file:
-        move_hosts_file_into_place(final_file)
+        move_file = move_hosts_file_into_place(final_file)
 
     return move_file
 
@@ -1279,17 +1282,41 @@ def move_hosts_file_into_place(final_file):
 
     filename = os.path.abspath(final_file.name)
 
-    if os.name == "posix":
+    try:
+        if not Path(filename).exists():
+            raise FileNotFoundError
+    except Exception:
+        print_failure(f"{filename} does not exist.")
+        return False
+
+    if platform.system() == "Windows":
+        target_file = str(Path(os.getenv("SystemRoot")) / "system32" / "drivers" / "etc" / "hosts")
+    else:
+        target_file = "/etc/hosts"
+
+    if os.getenv("IN_CONTAINER"):
+        # It's not allowed to remove/replace a mounted /etc/hosts, so we replace the content.
+        # This requires running the container user as root, as is the default.
+        print(f"Running in container, so we will replace the content of {target_file}.")
+        try:
+            with open(target_file, "w") as target_stream:
+                with open(filename, "r") as source_stream:
+                    source = source_stream.read()
+                    target_stream.write(source)
+            return True
+        except Exception:
+            print_failure(f"Replacing content of {target_file} failed.")
+            return False
+    elif platform.system() == "Linux" or platform.system() == "Windows":
         print(
-            "Moving the file requires administrative privileges. You might need to enter your password."
+            f"Replacing {target_file} requires root privileges. You might need to enter your password."
         )
-        if subprocess.call(SUDO + ["cp", filename, "/etc/hosts"]):
-            print_failure("Moving the file failed.")
-    elif os.name == "nt":
-        print("Automatically moving the hosts file in place is not yet supported.")
-        print(
-            "Please move the generated file to %SystemRoot%\\system32\\drivers\\etc\\hosts"
-        )
+        try:
+            subprocess.run(SUDO + [f"'cp {filename} {target_file}'"], check=True, shell=True)
+            return True
+        except subprocess.CalledProcessError:
+            print_failure(f"Replacing {target_file} failed.")
+            return False
 
 
 def flush_dns_cache():
