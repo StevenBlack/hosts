@@ -48,7 +48,6 @@ with GitHub download links.
 
 | Host file recipe | Readme | Raw hosts | Unique domains | Non GitHub mirror |
 | ---------------- | :----: | :-------: | :------------: | :---------------: |
-
 @TOCROWS@
 
 **Expectation**: These unified hosts files should serve all devices, regardless
@@ -61,7 +60,6 @@ included:
 
 | Host file source | Home page | Raw hosts | License | Issues | Description |
 | ---------------- | :-------: | :-------: | :-----: | :----: | ----------- |
-
 @SOURCEROWS@
 
 ## Extensions
