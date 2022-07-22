@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       161,          7]
-NotebookDataLength[     30446,        750]
-NotebookOptionsPosition[     29873,        732]
-NotebookOutlinePosition[     30269,        748]
-CellTagsIndexPosition[     30226,        745]
+NotebookDataLength[     30668,        756]
+NotebookOptionsPosition[     30095,        738]
+NotebookOutlinePosition[     30491,        754]
+CellTagsIndexPosition[     30448,        751]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -28,11 +28,13 @@ Cell[BoxData[{
    RowBox[{"Import", "[", "\"\<stats.out\>\"", "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"graphtitle", "=", "\"\<Base hosts file size\>\""}], 
+  RowBox[{"graphtitle", "=", "\"\<Hosts file size history\>\""}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"graphsubtitle", " ", "=", " ", "\"\<(adware + malware) only\>\""}],
-   ";"}], "\[IndentingNewLine]", 
+  RowBox[{
+  "graphsubtitle", " ", "=", " ", 
+   "\"\<base version: (adware + malware) only\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"data", "=", 
    RowBox[{
@@ -77,8 +79,10 @@ Cell[BoxData[{
    3.867191411094434*^9}, {3.867191451576531*^9, 3.867191464669776*^9}, {
    3.867191517397131*^9, 3.867191585673174*^9}, {3.867191623805966*^9, 
    3.867191637345644*^9}, {3.867191694067857*^9, 3.867191832972144*^9}, {
-   3.867443529594183*^9, 3.867443565893339*^9}},
- CellLabel->"In[60]:=",ExpressionUUID->"e5e34011-aa3d-4e95-90b1-863054ac32f5"],
+   3.867443529594183*^9, 3.867443565893339*^9}, {3.867445761749815*^9, 
+   3.86744582007928*^9}, {3.867445877108981*^9, 
+   3.867445877563551*^9}},ExpressionUUID->"e5e34011-aa3d-4e95-90b1-\
+863054ac32f5"],
 
 Cell[CellGroupData[{
 
@@ -119,7 +123,7 @@ Cell[BoxData[{
            RowBox[{"graphtitle", ",", "16", ",", "Bold"}], "]"}], 
           "\[IndentingNewLine]", ",", 
           RowBox[{"Style", "[", 
-           RowBox[{"graphsubtitle", ",", "14", ",", "Bold"}], "]"}], 
+           RowBox[{"graphsubtitle", ",", "12", ",", "Bold"}], "]"}], 
           "\[IndentingNewLine]", ",", 
           RowBox[{"Style", "[", 
            RowBox[{
@@ -150,9 +154,9 @@ Cell[BoxData[{
    3.8671875851202183`*^9, 3.8671875923328257`*^9}, {3.867190421572784*^9, 
    3.867190455350173*^9}, {3.867191170483214*^9, 3.867191170658471*^9}, {
    3.8671912032969103`*^9, 3.867191245177144*^9}, {3.867443579626745*^9, 
-   3.867443615991692*^9}},
+   3.867443615991692*^9}, {3.867445864801002*^9, 3.867445865695055*^9}},
  NumberMarks->False,
- CellLabel->"In[67]:=",ExpressionUUID->"55c17c4f-14a9-40f1-a01c-ab0b0c9b3309"],
+ CellLabel->"In[87]:=",ExpressionUUID->"55c17c4f-14a9-40f1-a01c-ab0b0c9b3309"],
 
 Cell[BoxData[
  GraphicsBox[{{}, {{{}, {}, 
@@ -223,7 +227,7 @@ XwC+bNI=
        "]]}}, 
     TagBox[
      {Opacity[0.], PointBox[{{3.8673504*^9, 130963.}}]},
-     Annotation[#, {{Callout}, Charting`Private`Tag$312313, {
+     Annotation[#, {{Callout}, Charting`Private`Tag$316887, {
        446}}]& ]}, {{{}, {{}, GraphicsGroupBox[{
         {RGBColor[0.87, 0.94, 1], AbsoluteThickness[4], Opacity[
           NCache[
@@ -696,11 +700,12 @@ XwC+bNI=
     TagBox[
      GridBox[{{
         StyleBox[
-        "\"Base hosts file size\"", 16, Bold, StripOnInput -> False]}, {
+        "\"Hosts file size history\"", 16, Bold, StripOnInput -> False]}, {
         StyleBox[
-        "\"(adware + malware) only\"", 14, Bold, StripOnInput -> False]}, {
+        "\"Base version: (adware + malware) only\"", 12, Bold, StripOnInput -> 
+         False]}, {
         StyleBox[
-        "\"updated: Thu 21 Jul 2022 22:15:44\"", 12, StripOnInput -> False]}},
+        "\"updated: Thu 21 Jul 2022 22:31:10\"", 12, StripOnInput -> False]}},
        GridBoxAlignment -> {"Columns" -> {{Center}}}, DefaultBaseStyle -> 
       "Column", 
       GridBoxItemSize -> {
@@ -726,8 +731,9 @@ XwC+bNI=
    3.867191469212702*^9, 3.867191534117766*^9, {3.867191566041802*^9, 
    3.867191590853747*^9}, {3.867191700666916*^9, 3.8671917705466948`*^9}, {
    3.867191813970607*^9, 3.867191837153657*^9}, {3.8674436061237383`*^9, 
-   3.867443624613255*^9}, 3.867444944515202*^9},
- CellLabel->"Out[69]=",ExpressionUUID->"cd3a3841-e7b7-4066-981a-4465ba31186e"]
+   3.867443624613255*^9}, 3.867444944515202*^9, 3.867445839945568*^9, 
+   3.867445870303279*^9},
+ CellLabel->"Out[89]=",ExpressionUUID->"b0b05425-2f95-4edd-b9a0-b9c53759c8d3"]
 }, Open  ]]
 },
 WindowSize->{1055, 911},
@@ -747,10 +753,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[561, 20, 2590, 60, 157, "Input",ExpressionUUID->"e5e34011-aa3d-4e95-90b1-863054ac32f5"],
+Cell[561, 20, 2691, 64, 157, "Input",ExpressionUUID->"e5e34011-aa3d-4e95-90b1-863054ac32f5"],
 Cell[CellGroupData[{
-Cell[3176, 84, 3116, 70, 409, "Input",ExpressionUUID->"55c17c4f-14a9-40f1-a01c-ab0b0c9b3309"],
-Cell[6295, 156, 23562, 573, 427, "Output",ExpressionUUID->"cd3a3841-e7b7-4066-981a-4465ba31186e"]
+Cell[3277, 88, 3162, 70, 409, "Input",ExpressionUUID->"55c17c4f-14a9-40f1-a01c-ab0b0c9b3309"],
+Cell[6442, 160, 23637, 575, 427, "Output",ExpressionUUID->"b0b05425-2f95-4edd-b9a0-b9c53759c8d3"]
 }, Open  ]]
 }
 ]
