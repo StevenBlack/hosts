@@ -30,7 +30,6 @@ def main():
         data = json.load(f)
 
     keys = list(data.keys())
-
     # Sort by the number of en-dashes in the key
     # and then by the key string itself.
     keys.sort(key=lambda item: (item.count("-"), item))
@@ -63,7 +62,7 @@ def main():
         "${name} |[link](${homeurl})"
         " | [raw](${url}) | ${license} | [issues](${issues})| ${description}"
     )
-
+    size_history_graph = "![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/base_hosts_file_size.png)"
     for key in keys:
         extensions = key.replace("-", ", ")
         extensions_str = "* Extensions: **" + extensions + "**."
@@ -98,6 +97,14 @@ def main():
                 )
                 line = line.replace("@TOCROWS@", toc_rows)
                 line = line.replace("@SOURCEROWS@", source_rows)
+                # insert the size graph on the home readme only, for now.
+                if key == "base":
+                    line = line.replace(
+                        "@SIZEHISTORY@", size_history_graph
+                    )
+                else:
+                    line = line.replace("@SIZEHISTORY@", "")
+
                 out.write(line)
 
 
