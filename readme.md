@@ -35,7 +35,7 @@ files are provided.
   [raw hosts file with base extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts)
   containing 130,963 entries.
 
-![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/base_hosts_file_size.png)
+![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts_file_size_history.png)
 
 ## List of all hosts file variants
 

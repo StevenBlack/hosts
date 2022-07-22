@@ -62,7 +62,7 @@ def main():
         "${name} |[link](${homeurl})"
         " | [raw](${url}) | ${license} | [issues](${issues})| ${description}"
     )
-    size_history_graph = "![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/base_hosts_file_size.png)"
+    size_history_graph = "![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts_file_size_history.png)"
     for key in keys:
         extensions = key.replace("-", ", ")
         extensions_str = "* Extensions: **" + extensions + "**."
