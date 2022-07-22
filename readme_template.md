@@ -35,6 +35,8 @@ files are provided.
   [raw hosts file @EXTENSIONS_HEADER@](https://raw.githubusercontent.com/StevenBlack/hosts/master/@SUBFOLDER@hosts)
   containing @NUM_ENTRIES@ entries.
 
+@SIZEHISTORY@
+
 ## List of all hosts file variants
 
 This repository offers
