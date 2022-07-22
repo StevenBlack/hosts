@@ -34,7 +34,6 @@ files are provided.
 - Here's the
   [raw hosts file @EXTENSIONS_HEADER@](https://raw.githubusercontent.com/StevenBlack/hosts/master/@SUBFOLDER@hosts)
   containing @NUM_ENTRIES@ entries.
-- Logo by [@Tobaloidee](https://github.com/Tobaloidee).
 
 ## List of all hosts file variants
 
@@ -619,3 +618,5 @@ draw our attention.
 
 Before you create or respond to any issue, please read our
 [code of conduct](https://github.com/StevenBlack/hosts/blob/master/code_of_conduct.md).
+
+Logo by [@Tobaloidee](https://github.com/Tobaloidee) Thank you!.
