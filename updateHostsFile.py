@@ -1312,7 +1312,7 @@ def move_hosts_file_into_place(final_file):
             f"Replacing {target_file} requires root privileges. You might need to enter your password."
         )
         try:
-            subprocess.run(SUDO + [f"'cp {filename} {target_file}'"], check=True, shell=True)
+            subprocess.run(SUDO + ["cp", filename, target_file], check=True)
             return True
         except subprocess.CalledProcessError:
             print_failure(f"Replacing {target_file} failed.")
