@@ -1307,7 +1307,7 @@ def move_hosts_file_into_place(final_file):
         except Exception:
             print_failure(f"Replacing content of {target_file} failed.")
             return False
-    elif platform.system() == "Linux" or platform.system() == "Windows":
+    elif platform.system() == "Linux" or platform.system() == "Windows" or platform.system() == "Darwin":
         print(
             f"Replacing {target_file} requires root privileges. You might need to enter your password."
         )
