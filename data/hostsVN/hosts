@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 02 Jul 2022 23:16 UTC+7
-# Version: 2207022316
-# Blocked: 1.814 domains
+# Last modified: 28 Jul 2022 16:37 UTC+7
+# Version: 2207281637
+# Blocked: 1.833 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -75,6 +75,7 @@
 0.0.0.0 boxpr.admicro.vn
 0.0.0.0 brand.admicro.vn
 0.0.0.0 cmsanalytics.admicro.vn
+0.0.0.0 content-ml.admicro.vn
 0.0.0.0 corenlp.admicro.vn
 0.0.0.0 defaultdsp.admicro.vn
 0.0.0.0 demo.corenlp.admicro.vn
@@ -422,8 +423,6 @@
 0.0.0.0 button-share.zalo.me
 0.0.0.0 page.widget.zalo.me
 0.0.0.0 px.za.zalo.me
-0.0.0.0 sentry-mini.zalo.me
-0.0.0.0 sentry.ministore.h5.zalo.me
 0.0.0.0 widget.chat.zalo.me
 #[zaloapp.com]
 0.0.0.0 ads.zaloapp.com
@@ -1358,9 +1357,6 @@
 #[bongdadem.net]
 0.0.0.0 bongdadem.net
 0.0.0.0 cdn.bongdadem.net
-#[fptplay.net]
-0.0.0.0 ads-cdn.fptplay.net
-0.0.0.0 sentry.fptplay.net
 #[vietnamplus.vn]
 0.0.0.0 log.vietnamplus.vn
 0.0.0.0 logen.vietnamplus.vn
@@ -1380,6 +1376,29 @@
 0.0.0.0 affmates.com
 0.0.0.0 api.affmates.com
 0.0.0.0 storage.affmates.com
+#[vnpt]
+0.0.0.0 ipcc.shop.vnpt.vn
+0.0.0.0 ipcc.vinaphone.com.vn
+0.0.0.0 ipcc.vnpt.com.vn
+#[vnptmedia.vn]
+0.0.0.0 cjm.vnptmedia.vn
+0.0.0.0 cjmgw.vnptmedia.vn
+0.0.0.0 ipcc-vnp1.vnptmedia.vn
+0.0.0.0 ipccegov.vnptmedia.vn
+#[mytvnet.vn]
+0.0.0.0 apilog.mytvnet.vn
+0.0.0.0 apilogduration.mytvnet.vn
+#[wiinvent.tv]
+0.0.0.0 api.wiinvent.tv
+0.0.0.0 embed.wiinvent.tv
+0.0.0.0 wiinvent.tv
+#[wiinvent.com.vn]
+0.0.0.0 wiinvent.com.vn
+0.0.0.0 embed.wiinvent.com.vn
+#[hubs.vn]
+0.0.0.0 ads-admin.hubs.vn
+0.0.0.0 mautic.hubs.vn
+0.0.0.0 tracking.hubs.vn
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 5734a40f2d.vws.vegacdn.vn
@@ -1411,6 +1430,7 @@
 0.0.0.0 adpostback.headlines.pw
 0.0.0.0 ads-api.playfun.vn
 0.0.0.0 ads-backend.nhadatmoi.net
+0.0.0.0 ads-cdn.fptplay.net
 0.0.0.0 ads.1thegioi.vn
 0.0.0.0 ads.247phim.com
 0.0.0.0 ads.568play.vn
@@ -1679,17 +1699,18 @@
 0.0.0.0 analytics.vnncdn.net
 0.0.0.0 analytics.vnpt.vn
 0.0.0.0 analytics.vnreview.vn
+0.0.0.0 analytics.yts.vn
 0.0.0.0 analytics.zim.vn
 0.0.0.0 api.ozui.vn
 0.0.0.0 apiv2.tiin.vn
 0.0.0.0 apl.headlines.pw
 0.0.0.0 app.hstatic.net
 0.0.0.0 app.sbz.workers.dev
+0.0.0.0 bi.vhost.vn
 0.0.0.0 btrack.homedy.com
 0.0.0.0 campaign.gitiho.com
 0.0.0.0 cdn.api-connect.io
 0.0.0.0 cdn.doke.app
-0.0.0.0 cdn.tekoapis.com
 0.0.0.0 clicker.chiaki.vn
 0.0.0.0 clientinfo.phimmoizz.net
 0.0.0.0 collect.ovp.vn
@@ -1697,9 +1718,11 @@
 0.0.0.0 counter.24h.com.vn
 0.0.0.0 counter.ntdvn.com
 0.0.0.0 counter.ntdvn.net
+0.0.0.0 countervov.emitech.vn
 0.0.0.0 crm.bizfly.vn
 0.0.0.0 crm.englishtown.edu.vn
 0.0.0.0 crmbizfly.todo.vn
+0.0.0.0 crmx.eqvn.net
 0.0.0.0 cskh.onlinecrm.vn
 0.0.0.0 digi.vinut.com.vn
 0.0.0.0 elink.nhanlucnganhluat.vn
@@ -1714,6 +1737,7 @@
 0.0.0.0 follow.vnay.vn
 0.0.0.0 gtmjs.com
 0.0.0.0 hit.123c.vn
+0.0.0.0 intranet.dcorp.com.vn
 0.0.0.0 invite.baomoi.com
 0.0.0.0 kh.suno.vn
 0.0.0.0 kv-analytics.kiotviet.vn
@@ -1723,6 +1747,7 @@
 0.0.0.0 la2.vnecdn.net
 0.0.0.0 la3.vnecdn.net
 0.0.0.0 lg.lotus.vn
+0.0.0.0 live.careplusvn.com
 0.0.0.0 live.vnpgroup.net
 0.0.0.0 liveonline.nhanhoa.com
 0.0.0.0 lmsreport.systems.vn
@@ -1754,6 +1779,7 @@
 0.0.0.0 log.plo.vn
 0.0.0.0 log.saleup88.vn
 0.0.0.0 log.sggp.org.vn
+0.0.0.0 log.smoney.vn
 0.0.0.0 log.tapchimattran.vn
 0.0.0.0 log.tapchitaichinh.vn
 0.0.0.0 log.thanhnien.vn
@@ -1808,10 +1834,6 @@
 0.0.0.0 s.kenh14.vn
 0.0.0.0 s.soha.vn
 0.0.0.0 s.tuoitre.vn
-0.0.0.0 sentry.dantri.com.vn
-0.0.0.0 sentry.mediacdn.vn
-0.0.0.0 sentry.sendo.vn
-0.0.0.0 sentry.thucuc.vn
 0.0.0.0 sharefb.cnnd.vn
 0.0.0.0 smetrics.kone.vn
 0.0.0.0 socialloginplus-apps.haravan.com
@@ -1939,6 +1961,7 @@
 0.0.0.0 garena.mobi
 0.0.0.0 garenaa.vn
 0.0.0.0 garenaj.vn
+0.0.0.0 garenalqm.com
 0.0.0.0 garera.vn
 0.0.0.0 garrena.vn
 0.0.0.0 giftcode-lienquanmobile-vn.com
@@ -1963,6 +1986,7 @@
 0.0.0.0 sacchaeleduk.com
 0.0.0.0 simpliftsbefore.info
 0.0.0.0 smilitygorb.club
+0.0.0.0 support-maps.live
 0.0.0.0 tammenaa.com
 0.0.0.0 thegioididong.me
 0.0.0.0 thseaeing.fun
