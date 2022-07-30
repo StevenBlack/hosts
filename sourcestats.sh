@@ -52,16 +52,6 @@ extensions/social/tiuxo
 IFS='
 '
 
-# git log --format="%t,%as"  -- extensions/gambling
-#   9cd4e69c,2022-07-23
-#   f85b5457,2022-05-29
-#   35b339c9,2022-04-05
-#   2352ff85,2022-02-12
-#   9bca8cc3,2022-01-21
-#   5bf04400,2021-10-03
-# git checkout 58e94360 extensions/gambling/hosts
-# git checkout head^ extensions/gambling/hosts
-
 for item in $lists
 do
   echo -n "" > $item/stats.out
