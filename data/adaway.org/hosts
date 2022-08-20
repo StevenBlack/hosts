@@ -51,6 +51,7 @@
 # [33across.com]
 127.0.0.1 cms-xch-chicago.33across.com
 127.0.0.1 ssc.33across.com
+127.0.0.1 ssc-cms.33across.com
 
 # [360in.com]
 127.0.0.1 360in.com
@@ -698,6 +699,7 @@
 127.0.0.1 prebids.adnsx.com
 
 # [adnxs-simple.com]
+127.0.0.1 acdn.adnxs-simple.com
 127.0.0.1 nym1-ib.adnxs-simple.com
 
 # [adnxs.com]
@@ -2491,7 +2493,9 @@
 # [bidswitch.net]
 127.0.0.1 gce-or.bidswitch.net
 127.0.0.1 gce-sc.bidswitch.net
+127.0.0.1 ghent-gce-sc.bidswitch.net
 127.0.0.1 grid.bidswitch.net
+127.0.0.1 us-east-sync.bidswitch.net
 127.0.0.1 x.bidswitch.net
 
 # [bing.com]
@@ -2859,7 +2863,137 @@
 127.0.0.1 gcheck.carthook.com
 
 # [casalemedia.com]
+127.0.0.1 a1000.casalemedia.com
+127.0.0.1 a1015.casalemedia.com
+127.0.0.1 a1020.casalemedia.com
+127.0.0.1 a1222.casalemedia.com
+127.0.0.1 a1223.casalemedia.com
+127.0.0.1 a1232.casalemedia.com
+127.0.0.1 a1233.casalemedia.com
+127.0.0.1 a1234.casalemedia.com
+127.0.0.1 a1235.casalemedia.com
+127.0.0.1 a1238.casalemedia.com
+127.0.0.1 a1243.casalemedia.com
+127.0.0.1 a1246.casalemedia.com
+127.0.0.1 a1247.casalemedia.com
+127.0.0.1 a1249.casalemedia.com
+127.0.0.1 a1261.casalemedia.com
+127.0.0.1 a1263.casalemedia.com
+127.0.0.1 a1264.casalemedia.com
+127.0.0.1 a1269.casalemedia.com
+127.0.0.1 a1273.casalemedia.com
+127.0.0.1 a1276.casalemedia.com
+127.0.0.1 a1277.casalemedia.com
+127.0.0.1 a1278.casalemedia.com
+127.0.0.1 a1279.casalemedia.com
+127.0.0.1 a1287.casalemedia.com
+127.0.0.1 a1289.casalemedia.com
+127.0.0.1 a1297.casalemedia.com
+127.0.0.1 a1312.casalemedia.com
+127.0.0.1 a1313.casalemedia.com
+127.0.0.1 a1317.casalemedia.com
+127.0.0.1 a1319.casalemedia.com
+127.0.0.1 a1327.casalemedia.com
+127.0.0.1 a1329.casalemedia.com
+127.0.0.1 a1333.casalemedia.com
+127.0.0.1 a1341.casalemedia.com
+127.0.0.1 a1344.casalemedia.com
+127.0.0.1 a1351.casalemedia.com
+127.0.0.1 a1352.casalemedia.com
+127.0.0.1 a1359.casalemedia.com
+127.0.0.1 a1365.casalemedia.com
+127.0.0.1 a1366.casalemedia.com
+127.0.0.1 a1369.casalemedia.com
+127.0.0.1 a1370.casalemedia.com
+127.0.0.1 a1372.casalemedia.com
+127.0.0.1 a1382.casalemedia.com
+127.0.0.1 a1394.casalemedia.com
+127.0.0.1 a1396.casalemedia.com
+127.0.0.1 a1408.casalemedia.com
+127.0.0.1 a1410.casalemedia.com
+127.0.0.1 a1411.casalemedia.com
+127.0.0.1 a1413.casalemedia.com
+127.0.0.1 a1416.casalemedia.com
+127.0.0.1 a1420.casalemedia.com
+127.0.0.1 a1423.casalemedia.com
+127.0.0.1 a1424.casalemedia.com
+127.0.0.1 a1430.casalemedia.com
+127.0.0.1 a1440.casalemedia.com
+127.0.0.1 a1441.casalemedia.com
+127.0.0.1 a1442.casalemedia.com
+127.0.0.1 a1444.casalemedia.com
+127.0.0.1 a1447.casalemedia.com
+127.0.0.1 a1451.casalemedia.com
+127.0.0.1 a1453.casalemedia.com
+127.0.0.1 a1457.casalemedia.com
 127.0.0.1 a1726.casalemedia.com
+127.0.0.1 a3409.casalemedia.com
+127.0.0.1 a3426.casalemedia.com
+127.0.0.1 a3427.casalemedia.com
+127.0.0.1 a3428.casalemedia.com
+127.0.0.1 a3435.casalemedia.com
+127.0.0.1 a3448.casalemedia.com
+127.0.0.1 a3449.casalemedia.com
+127.0.0.1 a3453.casalemedia.com
+127.0.0.1 a3457.casalemedia.com
+127.0.0.1 a3468.casalemedia.com
+127.0.0.1 a3473.casalemedia.com
+127.0.0.1 a3485.casalemedia.com
+127.0.0.1 a3489.casalemedia.com
+127.0.0.1 a3493.casalemedia.com
+127.0.0.1 a3495.casalemedia.com
+127.0.0.1 a3514.casalemedia.com
+127.0.0.1 a3518.casalemedia.com
+127.0.0.1 a3536.casalemedia.com
+127.0.0.1 a3543.casalemedia.com
+127.0.0.1 a3559.casalemedia.com
+127.0.0.1 a3560.casalemedia.com
+127.0.0.1 a3561.casalemedia.com
+127.0.0.1 a3571.casalemedia.com
+127.0.0.1 a3585.casalemedia.com
+127.0.0.1 a3586.casalemedia.com
+127.0.0.1 a3587.casalemedia.com
+127.0.0.1 a3595.casalemedia.com
+127.0.0.1 a3610.casalemedia.com
+127.0.0.1 a3614.casalemedia.com
+127.0.0.1 a3618.casalemedia.com
+127.0.0.1 a3623.casalemedia.com
+127.0.0.1 a3630.casalemedia.com
+127.0.0.1 a3653.casalemedia.com
+127.0.0.1 a3670.casalemedia.com
+127.0.0.1 a3680.casalemedia.com
+127.0.0.1 a3686.casalemedia.com
+127.0.0.1 a3689.casalemedia.com
+127.0.0.1 a3700.casalemedia.com
+127.0.0.1 a3718.casalemedia.com
+127.0.0.1 a3719.casalemedia.com
+127.0.0.1 a3727.casalemedia.com
+127.0.0.1 a3729.casalemedia.com
+127.0.0.1 a3791.casalemedia.com
+127.0.0.1 a3793.casalemedia.com
+127.0.0.1 a3795.casalemedia.com
+127.0.0.1 a3796.casalemedia.com
+127.0.0.1 a3800.casalemedia.com
+127.0.0.1 a3806.casalemedia.com
+127.0.0.1 a3811.casalemedia.com
+127.0.0.1 a3828.casalemedia.com
+127.0.0.1 a3835.casalemedia.com
+127.0.0.1 a3859.casalemedia.com
+127.0.0.1 a3862.casalemedia.com
+127.0.0.1 a3863.casalemedia.com
+127.0.0.1 a3865.casalemedia.com
+127.0.0.1 a3868.casalemedia.com
+127.0.0.1 a3871.casalemedia.com
+127.0.0.1 a3880.casalemedia.com
+127.0.0.1 a527.casalemedia.com
+127.0.0.1 a531.casalemedia.com
+127.0.0.1 a545.casalemedia.com
+127.0.0.1 a546.casalemedia.com
+127.0.0.1 a547.casalemedia.com
+127.0.0.1 a556.casalemedia.com
+127.0.0.1 a985.casalemedia.com
+127.0.0.1 a987.casalemedia.com
+127.0.0.1 a998.casalemedia.com
 127.0.0.1 amp.casalemedia.com
 127.0.0.1 as.casalemedia.com
 127.0.0.1 as-sec.casalemedia.com
@@ -3704,6 +3838,7 @@
 127.0.0.1 pythagore.demdex.net
 127.0.0.1 swa.demdex.net
 127.0.0.1 tdameritrade.demdex.net
+127.0.0.1 ups.demdex.net
 127.0.0.1 vanguard.demdex.net
 127.0.0.1 verizon.demdex.net
 127.0.0.1 vivaki.demdex.net
@@ -3822,6 +3957,7 @@
 127.0.0.1 ff.doubleclick.net
 127.0.0.1 fls.doubleclick.net
 127.0.0.1 3243857.fls.doubleclick.net
+127.0.0.1 4394967.fls.doubleclick.net
 127.0.0.1 8272590.fls.doubleclick.net
 127.0.0.1 8397396.fls.doubleclick.net
 127.0.0.1 g.doubleclick.net
@@ -4260,6 +4396,7 @@
 127.0.0.1 everesttech.net
 127.0.0.1 ads.everesttech.net
 127.0.0.1 cm.everesttech.net
+127.0.0.1 statsf-tm.everesttech.net
 127.0.0.1 sync-tm.everesttech.net
 
 # [evidon.com]
@@ -4553,6 +4690,7 @@
 127.0.0.1 nbcu.prd.ads.aws.fwmrm.net
 127.0.0.1 v.fwmrm.net
 127.0.0.1 7f077.v.fwmrm.net
+127.0.0.1 dsp.v.fwmrm.net
 
 # [fyber.com]
 127.0.0.1 api.fyber.com
@@ -5318,6 +5456,7 @@
 127.0.0.1 s.iff.inmobi.com
 127.0.0.1 dspbeacons.error.ihasdsp.inmobi.com
 127.0.0.1 imces.inmobi.com
+127.0.0.1 mcg-ads.inmobi.com
 127.0.0.1 pulse.inmobi.com
 127.0.0.1 carpet.pulse.inmobi.com
 127.0.0.1 sdk.inmobi.com
@@ -6501,6 +6640,7 @@
 127.0.0.1 res.media.net
 127.0.0.1 search.media.net
 127.0.0.1 static.media.net
+127.0.0.1 warp.media.net
 127.0.0.1 whitelabel.media.net
 
 # [media6degrees.com]
@@ -7506,6 +7646,7 @@
 127.0.0.1 bamtech.sc.omtrdc.net
 127.0.0.1 carfax.sc.omtrdc.net
 127.0.0.1 coxcommunications.sc.omtrdc.net
+127.0.0.1 amazoncustomerservice.d2.sc.omtrdc.net
 127.0.0.1 fox.com.ssl.d2.sc.omtrdc.net
 127.0.0.1 philipslighting.d3.sc.omtrdc.net
 127.0.0.1 deutschebahn.sc.omtrdc.net
@@ -7513,9 +7654,11 @@
 127.0.0.1 nbcstreaming.sc.omtrdc.net
 127.0.0.1 nbcume.sc.omtrdc.net
 127.0.0.1 subwayfranchiseeadvertising.sc.omtrdc.net
+127.0.0.1 unitedparcelservice.sc.omtrdc.net
 127.0.0.1 viacom.sc.omtrdc.net
 127.0.0.1 tt.omtrdc.net
 127.0.0.1 abcnews.tt.omtrdc.net
+127.0.0.1 adobe.tt.omtrdc.net
 127.0.0.1 aetv.tt.omtrdc.net
 127.0.0.1 allstate.tt.omtrdc.net
 127.0.0.1 audible.tt.omtrdc.net
@@ -7568,6 +7711,7 @@
 # [online-metrix.net]
 127.0.0.1 online-metrix.net
 127.0.0.1 aa.online-metrix.net
+127.0.0.1 h.online-metrix.net
 
 # [onscroll.com]
 127.0.0.1 impl.onscroll.com
@@ -7606,6 +7750,8 @@
 
 # [openx.net]
 127.0.0.1 rtb.openx.net
+127.0.0.1 samyonews-d.openx.net
+127.0.0.1 u.openx.net
 127.0.0.1 us-u.openx.net
 
 # [opera.com]
@@ -7639,6 +7785,7 @@
 127.0.0.1 api.optimizely.com
 127.0.0.1 app.optimizely.com
 127.0.0.1 cdn.optimizely.com
+127.0.0.1 cdn3.optimizely.com
 127.0.0.1 logx.optimizely.com
 127.0.0.1 events.mobile.optimizely.com
 
@@ -7838,6 +7985,7 @@
 
 # [permutive.app]
 127.0.0.1 cdn.permutive.app
+127.0.0.1 6093eccf-6734-4877-ac8b-83d6d0e27b46.edge.permutive.app
 
 # [permutive.com]
 127.0.0.1 permutive.com
@@ -8278,7 +8426,6 @@
 
 # [qualtrics.com]
 127.0.0.1 siteintercept.qualtrics.com
-127.0.0.1 zn42v6draxyafsjmv-homedepot.siteintercept.qualtrics.com
 
 # [quantcount.com]
 127.0.0.1 quantcount.com
@@ -8595,6 +8742,8 @@
 127.0.0.1 aws.rubiconproject.com
 127.0.0.1 stats.aws.rubiconproject.com
 127.0.0.1 beacon-eu-ams3.rubiconproject.com
+127.0.0.1 beacon-iad2.rubiconproject.com
+127.0.0.1 beacon-iad3.rubiconproject.com
 127.0.0.1 beacon-nf.rubiconproject.com
 127.0.0.1 beacon-us-west.rubiconproject.com
 127.0.0.1 cca-iad2.rubiconproject.com
@@ -9003,6 +9152,8 @@
 127.0.0.1 sitemaji.com
 
 # [sitescout.com]
+127.0.0.1 node-p2e-zii3oh.sitescout.com
+127.0.0.1 pixel.sitescout.com
 127.0.0.1 pixel-sync.sitescout.com
 
 # [skimresources.com]
@@ -10195,6 +10346,7 @@
 127.0.0.1 cdn.geodns.tubemogul.com
 127.0.0.1 cmp.geodns.tubemogul.com
 127.0.0.1 lasteventf.tubemogul.com
+127.0.0.1 playtime.tubemogul.com
 127.0.0.1 psi.tubemogul.com
 127.0.0.1 rtd.tubemogul.com
 127.0.0.1 statsf.tubemogul.com
@@ -10248,6 +10400,7 @@
 # [tvsquared.com]
 127.0.0.1 tvsquared.com
 127.0.0.1 collector-12255.tvsquared.com
+127.0.0.1 collector-6651.tvsquared.com
 127.0.0.1 collector-9306.us.tvsquared.com
 127.0.0.1 collectoru.us.tvsquared.com
 
@@ -10499,6 +10652,7 @@
 
 # [userzoom.com]
 127.0.0.1 cdn4.userzoom.com
+127.0.0.1 cdn5.userzoom.com
 
 # [utarget.ru]
 127.0.0.1 utarget.ru
@@ -11266,8 +11420,13 @@
 127.0.0.1 zplayer-trk.zdn.vn
 
 # [zemanta.com]
+127.0.0.1 b1-chidc2.zemanta.com
+127.0.0.1 b1-nydc1.zemanta.com
 127.0.0.1 b1sync.zemanta.com
+127.0.0.1 b1t-chidc2.zemanta.com
+127.0.0.1 b1t-nydc1.zemanta.com
 127.0.0.1 images2.zemanta.com
+127.0.0.1 widgets.zemanta.com
 
 # [zendesk.com]
 127.0.0.1 analytics.zendesk.com
