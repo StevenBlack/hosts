@@ -581,6 +581,15 @@ devices under a variety of operating systems.
   most welcome.
 - [ViHoMa](https://github.com/cmabad/ViHoMa) is a Visual Hosts file Manager,
   written in Java, by Christian Martínez. Check it out!
+  
+## Anycast Mirrors
+- [Control D](https://controld.com/free-dns)
+  offers a public anycast network hosted mirror of the Unified (Adware + Malware) blocklist using the following endpoints:
+  - IPv4: `76.76.2.35` and `76.76.10.35`
+  - IPv6: `2606:1a40::35` and `2606:1a40:1::35`
+  - DNS-over-HTTPS: `https://freedns.controld.com/x-stevenblack`
+  - DNS-over-TLS: `x-stevenblack.freedns.controld.com`
+  - [Source](https://kb.controld.com/en/3rd-party-filters)
 
 ## Interesting Applications
 
