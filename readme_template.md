@@ -606,6 +606,10 @@ devices under a variety of operating systems.
 - [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Combining-Blocklists)
   provides a tool to build block lists from local and remote lists in common
   formats.
+- [Control D](https://controld.com/free-dns)
+  offers a public anycast network hosted mirror of the Unified (Adware + Malware) blocklist: 
+  - Legacy DNS: `76.76.2.35`, `76.76.10.35`, `2606:1a40::35`, `2606:1a40:1::35`
+  - DNS-over-HTTPS/TLS/DOQ: `https://freedns.controld.com/x-stevenblack`, `x-stevenblack.freedns.controld.com`
 
 ## Contribute
 
