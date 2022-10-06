@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 27 Sep 2022 13:58 UTC+7
-# Version: 2209271358
-# Blocked: 1.813 domains
+# Last modified: 06 Oct 2022 22:24 UTC+7
+# Version: 2210062224
+# Blocked: 1.815 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -1403,6 +1403,10 @@
 0.0.0.0 ads-admin.hubs.vn
 0.0.0.0 mautic.hubs.vn
 0.0.0.0 tracking.hubs.vn
+#[cnnd.vn]
+0.0.0.0 logg4u.cnnd.vn
+0.0.0.0 sharefb.cnnd.vn
+0.0.0.0 v20.cnnd.vn
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 ad-admin.vnay.vn
@@ -1675,6 +1679,7 @@
 0.0.0.0 analytics.bkav.com.vn
 0.0.0.0 analytics.bluemotionmedia.vn
 0.0.0.0 analytics.diamondstarfinancial.com.vn
+0.0.0.0 analytics.evgcdn.net
 0.0.0.0 analytics.fsoft.com.vn
 0.0.0.0 analytics.hub-js.com
 0.0.0.0 analytics.jamstackvietnam.com
@@ -1797,7 +1802,6 @@
 0.0.0.0 log.zamba.vn
 0.0.0.0 log4x.nixcdn.com
 0.0.0.0 logapi.misa.com.vn
-0.0.0.0 logg4u.cnnd.vn
 0.0.0.0 logging.kinhtedothi.vn
 0.0.0.0 logperf.vnexpress.net
 0.0.0.0 logs.docnhanh.com.vn
@@ -1826,7 +1830,6 @@
 0.0.0.0 s.soha.vn
 0.0.0.0 s.tuoitre.vn
 0.0.0.0 sentry-track.vietnamworks.com
-0.0.0.0 sharefb.cnnd.vn
 0.0.0.0 smetrics.kone.vn
 0.0.0.0 socialloginplus-apps.haravan.com
 0.0.0.0 st-a.vtvdigital.vn
