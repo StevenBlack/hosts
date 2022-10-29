@@ -392,7 +392,7 @@ in [::pf4public](https://github.com/PF4Public/gentoo-overlay) Gentoo overlay
 ## NixOS
 
 To install hosts file on your machine add the following into your
-`configuration.nix`:
+`/etc/nixos/configuration.nix`:
 
 ```nix
 {
