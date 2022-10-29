@@ -396,16 +396,21 @@ To install hosts file on your machine add the following into your
 
 ```nix
 {
-  networking.extraHosts = let
-    hostsPath = https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts;
-    hostsFile = builtins.fetchurl hostsPath;
-  in builtins.readFile "${hostsFile}";
+  networking.extraHosts = builtins.readFile (
+    builtins.fetchurl {
+      url = "https://github.com/StevenBlack/hosts/raw/3.11.26/hosts";
+      sha256 = "0p3szhnfn3bb479pcwnwdgvansdgwmkcxk432fl1bm7gcqwpgzfh";
+    }
+  );
 }
 ```
 
-- NOTE: Change `hostsPath` if you need other versions of hosts file.
-- NOTE: The call to `fetchurl` is impure. Use `fetchFromGitHub` with the exact
-  commit if you want to always get the same result.
+To upgrade:
+
+1. Change `3.11.26` to another
+  [release tag](https://github.com/StevenBlack/hosts/tags).
+1. Run `nix-prefetch-url --quiet URL` with the new `url`.
+1. Replace the `sha256` value with the one printed by the above command.
 
 ### Nix Flake
 
