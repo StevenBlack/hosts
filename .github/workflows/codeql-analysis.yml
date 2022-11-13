@@ -6,7 +6,6 @@ on:
       - master
       - "!dependabot/**"
   pull_request:
-    # The branches below must be a subset of the branches above
     branches:
       - master
       - "!dependabot/**"
@@ -31,6 +30,12 @@ jobs:
         uses: github/codeql-action/init@v2
         with:
           languages: "python"
+          queries: +security-and-quality
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:python"
