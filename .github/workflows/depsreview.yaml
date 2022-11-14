@@ -8,7 +8,10 @@ jobs:
   dependency-review:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout Repository'
+      - name: Clone repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v2

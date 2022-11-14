@@ -21,6 +21,7 @@ jobs:
           - '3.8'
           - '3.9'
           - '3.10'
+          - '3.11'
         os:
           - ubuntu-latest
           - macos-latest
@@ -29,6 +30,8 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v4
