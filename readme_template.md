@@ -500,7 +500,8 @@ Open a Terminal and run with root privileges:
 
 ### macOS
 
-Open a Terminal and run:
+As described in [this article](https://osxdaily.com/2022/11/21/how-clear-dns-cache-macos-ventura-monterey/), 
+open a Terminal and run:
 
 ```sh
 sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
