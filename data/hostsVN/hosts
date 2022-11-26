@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 21 Nov 2022 10:40 UTC+7
-# Version: 2211211040
-# Blocked: 1.702 domains
+# Last modified: 26 Nov 2022 23:32 UTC+7
+# Version: 2211262332
+# Blocked: 1.708 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -425,10 +425,14 @@
 0.0.0.0 ads.platform.zalo.me
 0.0.0.0 ads.zalo.me
 0.0.0.0 api.widget.zalo.me
+0.0.0.0 button-call.zalo.me
 0.0.0.0 button-follow.zalo.me
 0.0.0.0 button-share.zalo.me
+0.0.0.0 groupstats.event.zalo.me
 0.0.0.0 page.widget.zalo.me
 0.0.0.0 px.za.zalo.me
+0.0.0.0 sentry-mini.zalo.me
+0.0.0.0 stats.hc.score.dmp.zalo.me
 0.0.0.0 widget.chat.zalo.me
 #[zaloapp.com]
 0.0.0.0 ads.zaloapp.com
@@ -438,6 +442,7 @@
 0.0.0.0 px.dmp.zaloapp.com
 0.0.0.0 px.za.zaloapp.com
 0.0.0.0 static-ads.zaloapp.com
+0.0.0.0 stats.dev.zaloapp.com
 0.0.0.0 stats.zaloapp.com
 0.0.0.0 trk-pcweb.api.zaloapp.com
 0.0.0.0 wg.zaloapp.com
@@ -1337,7 +1342,11 @@
 0.0.0.0 apilogduration.mytvnet.vn
 #[wiinvent.tv]
 0.0.0.0 api.wiinvent.tv
+0.0.0.0 cdn-embed.wiinvent.tv
+0.0.0.0 dev.embed.wiinvent.tv
 0.0.0.0 embed.wiinvent.tv
+0.0.0.0 games.wiinvent.tv
+0.0.0.0 static1.wiinvent.tv
 0.0.0.0 wiinvent.tv
 #[wiinvent.com.vn]
 0.0.0.0 wiinvent.com.vn
@@ -1353,6 +1362,11 @@
 #[akadigital.vn]
 0.0.0.0 delivery.akadigital.vn
 0.0.0.0 pub.akadigital.vn
+#[vnecdn.net]
+0.0.0.0 adp.vnecdn.net
+0.0.0.0 la.vnecdn.net
+0.0.0.0 la2.vnecdn.net
+0.0.0.0 la3.vnecdn.net
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 ad-admin.vnay.vn
@@ -1405,7 +1419,6 @@
 0.0.0.0 ads.home.vn
 0.0.0.0 ads.homedy.net
 0.0.0.0 ads.ictnews.vn
-0.0.0.0 ads.khoahocdoisong.vn
 0.0.0.0 ads.kiemsat.vn
 0.0.0.0 ads.lamchame.vn
 0.0.0.0 ads.laodongbinhduong.org.vn
@@ -1437,7 +1450,6 @@
 0.0.0.0 adserver.muaban.net
 0.0.0.0 adserver.trangphim.net
 0.0.0.0 adsgo.nhipcaudautu.vn
-0.0.0.0 adsnetonline.work
 0.0.0.0 adsplus.vn
 0.0.0.0 adsv2.autodaily.vn
 0.0.0.0 adsweb.vn
@@ -1476,7 +1488,6 @@
 0.0.0.0 api2.boclinkads.com
 0.0.0.0 apia.headlines.pw
 0.0.0.0 avoadsservices.com
-0.0.0.0 banhtv.org
 0.0.0.0 banner.5giay.vn
 0.0.0.0 banner.etargeting.mobifone.vn
 0.0.0.0 banner.thadaco.vn
@@ -1484,7 +1495,6 @@
 0.0.0.0 banner.uto.vn
 0.0.0.0 bgadx.com
 0.0.0.0 bidgear-syndication.com
-0.0.0.0 bluemaulpuffs.com
 0.0.0.0 cdn-ads.thesaigontimes.vn
 0.0.0.0 cdn.rongzhouxing.com
 0.0.0.0 cdn2.cache.vn
@@ -1688,9 +1698,6 @@
 0.0.0.0 kv-analytics.kiotviet.vn
 0.0.0.0 la.vietid.net
 0.0.0.0 la.vnbusiness.vn
-0.0.0.0 la.vnecdn.net
-0.0.0.0 la2.vnecdn.net
-0.0.0.0 la3.vnecdn.net
 0.0.0.0 lg.lotus.vn
 0.0.0.0 live.careplusvn.com
 0.0.0.0 live.vnpgroup.net
