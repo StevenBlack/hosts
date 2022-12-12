@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo \n "" > stats.out
+echo > stats.out
 for TAG_DATE in $(git tag --sort=creatordate  --format='%(refname:short),%(creatordate:short)'); do
     # echo "$TAG_DATE"
     split=(${TAG_DATE//,/ })
