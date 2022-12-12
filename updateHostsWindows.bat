@@ -32,6 +32,7 @@ if %ERRORLEVEL% neq 0 (
 
 exit /b 0
 
+
 :UACPrompt
     set "output_file=%TEMP%\getadmin.vbs"
     echo Set UAC = CreateObject^("Shell.Application"^) > "%output_file%"
