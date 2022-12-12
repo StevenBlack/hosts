@@ -10,6 +10,7 @@
 ::
 
 @echo off
+setlocal
 title Update Hosts
 
 :: Check if we are an administrator. If not, exit immediately.
