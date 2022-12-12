@@ -13,13 +13,16 @@
 setlocal
 title Update Hosts
 
+set "calcs_executable=%SYSTEMROOT%\SysWOW64\cacls.exe"
+set "calcs_file=%SYSTEMROOT%\system32\config\system"
+
 :: Check if we are an administrator. If not, exit immediately.
 :: BatchGotAdmin
 :: Check for permissions
 if "%PROCESSOR_ARCHITECTURE%" equ "amd64" (
-    >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
+    >nul 2>&1 "%calcs_executable%" "%calcs_file%"
 ) else (
-    >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+    >nul 2>&1 "%calcs_executable%" "%calcs_file%"
 )
 
 :: If the error flag set, we do not have admin rights.
