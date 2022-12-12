@@ -34,12 +34,13 @@ if %ERRORLEVEL% neq 0 (
 )
 
 :UACPrompt
-echo Set UAC = CreateObject^("Shell.Application"^) > "%TEMP%\getadmin.vbs"
+set "output_file=%TEMP%\getadmin.vbs"
+echo Set UAC = CreateObject^("Shell.Application"^) > "%output_file%"
 set params= %*
-echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%TEMP%\getadmin.vbs"
+echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%output_file%"
 
-wscript.exe "%TEMP%\getadmin.vbs"
-del "%TEMP%\getadmin.vbs"
+wscript.exe "%output_file%"
+del "%output_file%"
 exit /b
 
 :gotAdmin
