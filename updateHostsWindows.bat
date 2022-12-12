@@ -28,20 +28,20 @@ if "%PROCESSOR_ARCHITECTURE%" equ "amd64" (
 :: If the error flag set, we do not have admin rights.
 if %ERRORLEVEL% neq 0 (
     echo Requesting administrative privileges...
-    goto UACPrompt
+    call :UACPrompt
 ) else (
     goto gotAdmin
 )
 
 :UACPrompt
-set "output_file=%TEMP%\getadmin.vbs"
-echo Set UAC = CreateObject^("Shell.Application"^) > "%output_file%"
-set params= %*
-echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%output_file%"
+    set "output_file=%TEMP%\getadmin.vbs"
+    echo Set UAC = CreateObject^("Shell.Application"^) > "%output_file%"
+    set params= %*
+    echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%output_file%"
 
-wscript.exe "%output_file%"
-del "%output_file%"
-exit /b
+    wscript.exe "%output_file%"
+    del "%output_file%"
+exit /b 0
 
 :gotAdmin
 cd /d "%~dp0"
