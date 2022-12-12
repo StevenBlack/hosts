@@ -25,6 +25,11 @@ if "%PROCESSOR_ARCHITECTURE%" equ "amd64" (
     >nul 2>&1 "%calcs_executable%" "%calcs_file%"
 )
 
+:: Summary note
+pause
+exit /b 0
+
+
 :: If the error flag set, we do not have admin rights.
 if %ERRORLEVEL% neq 0 (
     echo Requesting administrative privileges...
@@ -61,6 +66,3 @@ exit /b 0
     :: Flush the DNS cache
     ipconfig /flushdns
 exit /b 0
-
-:: Summary note
-pause
