@@ -30,7 +30,7 @@ if %ERRORLEVEL% neq 0 (
     echo Requesting administrative privileges...
     call :UACPrompt
 ) else (
-    goto gotAdmin
+    call :gotAdmin
 )
 
 :UACPrompt
@@ -44,24 +44,23 @@ if %ERRORLEVEL% neq 0 (
 exit /b 0
 
 :gotAdmin
-cd /d "%~dp0"
+    cd /d "%~dp0"
 
-:BackupHosts
-set "common_prefix=%WINDIR%\System32\drivers\etc\hosts"
-:: Backup the default hosts file
-if not exist "%common_prefix%.skel" (
-    copy /v "%common_prefix%" "%common_prefix%.skel"
-)
+    set "common_prefix=%WINDIR%\System32\drivers\etc\hosts"
+    :: Backup the default hosts file
+    if not exist "%common_prefix%.skel" (
+        copy /v "%common_prefix%" "%common_prefix%.skel"
+    )
 
-:UpdateHosts
-:: Update hosts file
-py updateHostsFile.py --auto --minimise %*
+    :: Update hosts file
+    py updateHostsFile.py --auto --minimise %*
 
-:: Copy over the new hosts file in-place
-copy /y /v hosts "%WINDIR%\System32\drivers\etc\"
+    :: Copy over the new hosts file in-place
+    copy /y /v hosts "%WINDIR%\System32\drivers\etc\"
 
-:: Flush the DNS cache
-ipconfig /flushdns
+    :: Flush the DNS cache
+    ipconfig /flushdns
+exit /b 0
 
 :: Summary note
 pause
