@@ -22,11 +22,6 @@ if "%PROCESSOR_ARCHITECTURE%" equ "amd64" (
     >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 )
 
-:: Summary note
-pause
-exit /b 0
-
-
 :: If the error flag set, we do not have admin rights.
 if %ERRORLEVEL% neq 0 (
     echo Requesting administrative privileges...
@@ -34,6 +29,8 @@ if %ERRORLEVEL% neq 0 (
 ) else (
     call :gotAdmin
 )
+
+exit /b 0
 
 :UACPrompt
     set "output_file=%TEMP%\getadmin.vbs"
@@ -62,4 +59,7 @@ exit /b 0
 
     :: Flush the DNS cache
     ipconfig /flushdns
+
+    :: Summary note
+    pause
 exit /b 0
