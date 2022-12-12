@@ -47,9 +47,10 @@ exit /b
 cd /d "%~dp0"
 
 :BackupHosts
+set "common_prefix=%WINDIR%\System32\drivers\etc\hosts"
 :: Backup the default hosts file
-if not exist "%WINDIR%\System32\drivers\etc\hosts.skel" (
-    copy /v "%WINDIR%\System32\drivers\etc\hosts" "%WINDIR%\System32\drivers\etc\hosts.skel"
+if not exist "%common_prefix%.skel" (
+    copy /v "%common_prefix%" "%common_prefix%.skel"
 )
 
 :UpdateHosts
