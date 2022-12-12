@@ -1,5 +1,5 @@
 @echo off
-
+setlocal
 title Disable DNS Cache Service
 
 :: Check if we are an administrator. If not, exit immediately.
