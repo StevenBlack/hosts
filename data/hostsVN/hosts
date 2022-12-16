@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 13 Dec 2022 14:33 UTC+7
-# Version: 2212131433
-# Blocked: 1.714 domains
+# Last modified: 15 Dec 2022 11:23 UTC+7
+# Version: 2212151123
+# Blocked: 1,720 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -1247,7 +1247,12 @@
 0.0.0.0 ccxj.opencoccoc.com
 0.0.0.0 sr.opencoccoc.com
 #[aiactiv.io]
+0.0.0.0 adnetwork-adserver.aiactiv.io
+0.0.0.0 adnetwork-core-lb7.aiactiv.io
+0.0.0.0 adnetwork-core.aiactiv.io
+0.0.0.0 identify.aiactiv.io
 0.0.0.0 sdk-cdn.aiactiv.io
+0.0.0.0 static.aiactiv.io
 0.0.0.0 tag-cdn.aiactiv.io
 0.0.0.0 tags.aiactiv.io
 #[smartadnetwork.net]
@@ -1643,6 +1648,7 @@
 0.0.0.0 analytics.diamondstarfinancial.com.vn
 0.0.0.0 analytics.evgcdn.net
 0.0.0.0 analytics.fsoft.com.vn
+0.0.0.0 analytics.hebela.vn
 0.0.0.0 analytics.hub-js.com
 0.0.0.0 analytics.jamstackvietnam.com
 0.0.0.0 analytics.mfocus.vn
