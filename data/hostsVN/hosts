@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 20 Dec 2022 15:40 UTC+7
-# Version: 2212201540
-# Blocked: 1,720 domains
+# Last modified: 26 Dec 2022 12:08 UTC+7
+# Version: 2212261208
+# Blocked: 1,725 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -1375,6 +1375,24 @@
 #[imacdn.com]
 0.0.0.0 ff.imacdn.com
 0.0.0.0 sponsor.imacdn.com
+#[epicdn.me]
+0.0.0.0 log-giaoducthoidai.epicdn.me
+0.0.0.0 quangcao-thanhnien.epicdn.me
+#[thanhnien.vn]
+0.0.0.0 ads.thanhnien.vn
+0.0.0.0 ai.thanhnien.vn
+0.0.0.0 log.thanhnien.vn
+0.0.0.0 quangcao.thanhnien.vn
+#[tuoitre.vn]
+0.0.0.0 quangcao.tuoitre.vn
+0.0.0.0 s.tuoitre.vn
+#[vnexpress.net]
+0.0.0.0 elogs.vnexpress.net
+0.0.0.0 logperf.vnexpress.net
+0.0.0.0 tracking-amp.vnexpress.net
+#[fly-ads.net]
+0.0.0.0 fly-ads.net
+0.0.0.0 tags.fly-ads.net
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 ad-admin.vnay.vn
@@ -1444,7 +1462,6 @@
 0.0.0.0 ads.sexyland.vn
 0.0.0.0 ads.songmoi.vn
 0.0.0.0 ads.suckhoegiadinh.com.vn
-0.0.0.0 ads.thanhnien.vn
 0.0.0.0 ads.thegioitiepthi.vn
 0.0.0.0 ads.thesaigontimes.vn
 0.0.0.0 ads.thitruongtaichinhtiente.vn
@@ -1567,8 +1584,6 @@
 0.0.0.0 quangcao.24h.com.vn
 0.0.0.0 quangcao.baovannghe.com.vn
 0.0.0.0 quangcao.fff.com.vn
-0.0.0.0 quangcao.thanhnien.vn
-0.0.0.0 quangcao.tuoitre.vn
 0.0.0.0 quangcao247.com.vn
 0.0.0.0 r.tinmoi24.vn
 0.0.0.0 realclick.vn
@@ -1636,7 +1651,6 @@
 0.0.0.0 admin.voh.com.vn
 0.0.0.0 aff.atp.vn
 0.0.0.0 affiliate.chiaki.vn
-0.0.0.0 ai.thanhnien.vn
 0.0.0.0 alexajstrack.com
 0.0.0.0 analytic.baodantoc.vn
 0.0.0.0 analytic.vnanet.vn
@@ -1693,7 +1707,6 @@
 0.0.0.0 cskh.onlinecrm.vn
 0.0.0.0 digi.vinut.com.vn
 0.0.0.0 elink.nhanlucnganhluat.vn
-0.0.0.0 elogs.vnexpress.net
 0.0.0.0 ema.hostvn.net
 0.0.0.0 event.filum.ai
 0.0.0.0 event.headlines.pw
@@ -1732,6 +1745,7 @@
 0.0.0.0 log.dubaotiente.com
 0.0.0.0 log.giacngo.vn
 0.0.0.0 log.giaoduc.net.vn
+0.0.0.0 log.giaoducthoidai.vn
 0.0.0.0 log.hemera.com.vn
 0.0.0.0 log.infonet.vn
 0.0.0.0 log.kaka.me
@@ -1746,7 +1760,6 @@
 0.0.0.0 log.smoney.vn
 0.0.0.0 log.tapchimattran.vn
 0.0.0.0 log.tapchitaichinh.vn
-0.0.0.0 log.thanhnien.vn
 0.0.0.0 log.theleader.vn
 0.0.0.0 log.tienphong.vn
 0.0.0.0 log.tieudungthoinay.vn
@@ -1768,7 +1781,6 @@
 0.0.0.0 log4x.nixcdn.com
 0.0.0.0 logapi.misa.com.vn
 0.0.0.0 logging.kinhtedothi.vn
-0.0.0.0 logperf.vnexpress.net
 0.0.0.0 logs-ott.fbox.fpt.vn
 0.0.0.0 logs.docnhanh.com.vn
 0.0.0.0 logs.thethaovanhoa.vn
@@ -1794,7 +1806,6 @@
 0.0.0.0 s.homedy.com
 0.0.0.0 s.kenh14.vn
 0.0.0.0 s.soha.vn
-0.0.0.0 s.tuoitre.vn
 0.0.0.0 sentry-track.vietnamworks.com
 0.0.0.0 smetrics.kone.vn
 0.0.0.0 socialloginplus-apps.haravan.com
@@ -1847,7 +1858,6 @@
 0.0.0.0 tracker.phunusuckhoe.vn
 0.0.0.0 tracker.phunuvagiadinh.vn
 0.0.0.0 tracker.thichxemphim.net
-0.0.0.0 tracking-amp.vnexpress.net
 0.0.0.0 tracking-web.smobgame.com
 0.0.0.0 tracking.appwifi.com
 0.0.0.0 tracking.cystack.net
