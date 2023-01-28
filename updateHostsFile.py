@@ -1062,16 +1062,17 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
     """
     next try: Keep RAW domain.
     """
-    regex = r"^\s*([\w\.-]+[a-zA-Z])(.*)"
-    result = re.search(regex, rule)
+    # deny any potential IPv6 address here.
+    if not ":" in rule:
+        regex = r"^\s*([\w\.-]+[a-zA-Z])(.*)"
+        result = re.search(regex, rule)
 
-    if result:
-        hostname, suffix = result.group(1, 2)
+        if result:
+            hostname, suffix = result.group(1, 2)
+            # Explicitly lowercase and trim the hostname.
+            hostname = hostname.lower().strip()
 
-        # Explicitly lowercase and trim the hostname.
-        hostname = hostname.lower().strip()
-
-        return normalize_response(hostname, suffix)
+            return normalize_response(hostname, suffix)
 
     """
     finally, if we get here, just belch to screen
