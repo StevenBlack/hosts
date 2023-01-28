@@ -1063,7 +1063,7 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
     next try: Keep RAW domain.
     """
     # deny any potential IPv6 address here.
-    if not ":" in rule:
+    if ":" not in rule:
         regex = r"^\s*([\w\.-]+[a-zA-Z])(.*)"
         result = re.search(regex, rule)
 
