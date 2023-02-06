@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 31 Jan 2023 11:10 UTC+7
-# Version: 2301311110
-# Blocked: 1,732 domains
+# Last modified: 03 Feb 2023 10:10 UTC+7
+# Version: 2302031010
+# Blocked: 1,739 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -405,6 +405,10 @@
 0.0.0.0 tracking.playzing.g6.zing.vn
 0.0.0.0 tracking.tv.zing.vn
 0.0.0.0 zlog.mp3.zing.vn
+#[me.zing.vn]
+0.0.0.0 zads.me.zing.vn
+0.0.0.0 zt.me.zing.vn
+0.0.0.0 zt1.me.zing.vn
 #[brand.zing.vn]
 0.0.0.0 adtima.brand.zing.vn
 0.0.0.0 adtimabox.brand.zing.vn
@@ -1399,6 +1403,15 @@
 #[viraads.com]
 0.0.0.0 cdn.viraads.com
 0.0.0.0 viraads.com
+#[vtc.vn]
+0.0.0.0 ads.vtc.vn
+0.0.0.0 delivery.vtc.vn
+0.0.0.0 tracking.vtc.vn
+#[vtcnews.vn]
+0.0.0.0 delivery.vtcnews.vn
+#[vtcnew.com.vn]
+0.0.0.0 delivery.vtcnew.com.vn
+0.0.0.0 tracking.vtcnew.com.vn
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 ad-admin.vnay.vn
@@ -1545,8 +1558,6 @@
 0.0.0.0 csmads.gameclick.vn
 0.0.0.0 delecpuzz.com
 0.0.0.0 delivery.senvangvn.com
-0.0.0.0 delivery.vtc.vn
-0.0.0.0 delivery.vtcnew.com.vn
 0.0.0.0 deltago.com
 0.0.0.0 demopage.me
 0.0.0.0 deqik.com
@@ -1840,6 +1851,7 @@
 0.0.0.0 sv-api-event.headlines.pw
 0.0.0.0 ta.toprework.vn
 0.0.0.0 tagging-qadkfoj6ha-as.a.run.app
+0.0.0.0 tech.zapps.me
 0.0.0.0 thongke.24h.com.vn
 0.0.0.0 thongke.arttimes.vn
 0.0.0.0 thongke.baotintuc.vn
@@ -1884,7 +1896,6 @@
 0.0.0.0 tracking.vegaid.vn
 0.0.0.0 tracking.vht.com.vn
 0.0.0.0 tracking.vietbao.vn
-0.0.0.0 tracking.vtcnew.com.vn
 0.0.0.0 trackingapi.foody.vn
 0.0.0.0 trackingvn.zingplay.com
 0.0.0.0 trackity.tiki.vn
