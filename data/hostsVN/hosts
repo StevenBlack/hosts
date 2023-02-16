@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 07 Feb 2023 13:50 UTC+7
-# Version: 2302071350
-# Blocked: 1,739 domains
+# Last modified: 16 Feb 2023 16:34 UTC+7
+# Version: 2302161634
+# Blocked: 1,777 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -401,6 +401,7 @@
 0.0.0.0 log.news.zing.vn
 0.0.0.0 log.tv.zing.vn
 0.0.0.0 logv2.mp3.zing.vn
+0.0.0.0 stat.play.zing.vn
 0.0.0.0 tracking.banner.g6.zing.vn
 0.0.0.0 tracking.playzing.g6.zing.vn
 0.0.0.0 tracking.tv.zing.vn
@@ -430,32 +431,46 @@
 0.0.0.0 za.zingnews.com.vn
 #[zalo.me]
 0.0.0.0 ads.platform.zalo.me
-0.0.0.0 ads.zalo.me
 0.0.0.0 button-call.zalo.me
 0.0.0.0 button-follow.zalo.me
 0.0.0.0 button-share.zalo.me
 0.0.0.0 groupstats.event.zalo.me
 0.0.0.0 px.za.zalo.me
-0.0.0.0 sentry-mini.zalo.me
 0.0.0.0 stats.hc.score.dmp.zalo.me
+#[ads.zalo.me]
+0.0.0.0 ads.zalo.me
+0.0.0.0 beta.ads.zalo.me
+0.0.0.0 jr.ads.zalo.me
+0.0.0.0 jr.stg.ads.zalo.me
+0.0.0.0 m.ads.zalo.me
+0.0.0.0 preview.ads.zalo.me
+#[chat.zalo.me]
+0.0.0.0 groupstats.chat.zalo.me
 0.0.0.0 widget.chat.zalo.me
 #[widget.zalo.me]
 0.0.0.0 api.widget.zalo.me
 0.0.0.0 page.widget.zalo.me
+#[zalo.ai]
+0.0.0.0 stats.lab.zalo.ai
 #[zaloapp.com]
-0.0.0.0 ads.zaloapp.com
 0.0.0.0 centralized.zaloapp.com
-0.0.0.0 log.api.zaloapp.com
-0.0.0.0 photo-ads.zaloapp.com
 0.0.0.0 px.dmp.zaloapp.com
 0.0.0.0 px.za.zaloapp.com
-0.0.0.0 static-ads.zaloapp.com
 0.0.0.0 stats.dev.zaloapp.com
 0.0.0.0 stats.zaloapp.com
-0.0.0.0 trk-pcweb.api.zaloapp.com
 0.0.0.0 wg.zaloapp.com
 0.0.0.0 zminer.zaloapp.com
 0.0.0.0 ztevents.zaloapp.com
+0.0.0.0 stats.stg.zaloapp.com
+#[ads.zaloapp.com]
+0.0.0.0 ads.zaloapp.com
+0.0.0.0 jr.ads.zaloapp.com
+0.0.0.0 media-ads.zaloapp.com
+0.0.0.0 photo-ads.zaloapp.com
+0.0.0.0 static-ads.zaloapp.com
+#[api.zaloapp.com]
+0.0.0.0 log.api.zaloapp.com
+0.0.0.0 trk-pcweb.api.zaloapp.com
 #[zadn.vn]
 0.0.0.0 adtima-common.zadn.vn
 0.0.0.0 adtima-media-td.zadn.vn
@@ -471,6 +486,24 @@
 0.0.0.0 zalo-ads-480.zadn.vn
 0.0.0.0 zalo-ads-td.zadn.vn
 0.0.0.0 zalo-ads.zadn.vn
+#[log-*.zadn.vn]
+0.0.0.0 log-anninhthudo.zadn.vn
+0.0.0.0 log-baobackan.zadn.vn
+0.0.0.0 log-baonghean.zadn.vn
+0.0.0.0 log-baophapluat.zadn.vn
+0.0.0.0 log-bizlive.zadn.vn
+0.0.0.0 log-giacngo.zadn.vn
+0.0.0.0 log-giaoduc.zadn.vn
+0.0.0.0 log-giaoducthoidai.zadn.vn
+0.0.0.0 log-kienthucnet.zadn.vn
+0.0.0.0 log-nhandan.zadn.vn
+0.0.0.0 log-plo.zadn.vn
+0.0.0.0 log-sggp.zadn.vn
+0.0.0.0 log-thanhnien.zadn.vn
+0.0.0.0 log-tienphong.zadn.vn
+0.0.0.0 log-tinnhanhchungkhoan.zadn.vn
+0.0.0.0 log-vietnamdaily.zadn.vn
+0.0.0.0 log-vovworld.zadn.vn
 #[zascdn.me]
 0.0.0.0 adtima-common.zascdn.me
 0.0.0.0 adtima-media.zascdn.me
@@ -1166,6 +1199,7 @@
 0.0.0.0 google-shopping.sapoapps.vn
 0.0.0.0 googleshopping.sapoapps.vn
 0.0.0.0 popup.sapoapps.vn
+0.0.0.0 promotionbar.sapoapps.vn
 0.0.0.0 promotionpopup.sapoapps.vn
 0.0.0.0 statistic-blog-v2.sapoapps.vn
 #[onmarketer.net]
@@ -1373,8 +1407,16 @@
 0.0.0.0 ff.imacdn.com
 0.0.0.0 sponsor.imacdn.com
 #[epicdn.me]
-0.0.0.0 log-giaoducthoidai.epicdn.me
 0.0.0.0 quangcao-thanhnien.epicdn.me
+#[log-*.epicdn.me]
+0.0.0.0 log-baodauthau.epicdn.me
+0.0.0.0 log-baogialai.epicdn.me
+0.0.0.0 log-giaoduc.epicdn.me
+0.0.0.0 log-giaoducthoidai.epicdn.me
+0.0.0.0 log-kienthucnet.epicdn.me
+0.0.0.0 log-nhandan.epicdn.me
+0.0.0.0 log-thanhnien.epicdn.me
+0.0.0.0 log-tinnhanhchungkhoan.epicdn.me
 #[thanhnien.vn]
 0.0.0.0 ads.thanhnien.vn
 0.0.0.0 ai.thanhnien.vn
@@ -1708,6 +1750,7 @@
 0.0.0.0 apl.headlines.pw
 0.0.0.0 app.hstatic.net
 0.0.0.0 app.sbz.workers.dev
+0.0.0.0 beta-log.anninhthudo.vn
 0.0.0.0 bi.vhost.vn
 0.0.0.0 btrack.homedy.com
 0.0.0.0 campaign.gitiho.com
@@ -1751,8 +1794,10 @@
 0.0.0.0 lmsreport.systems.vn
 0.0.0.0 log-collector.shopee.vn
 0.0.0.0 log.anninhthudo.vn
+0.0.0.0 log.baocaobang.vn
 0.0.0.0 log.baodatviet.vn
 0.0.0.0 log.baodauthau.vn
+0.0.0.0 log.baogialai.com.vn
 0.0.0.0 log.baomoi.com
 0.0.0.0 log.baonghean.vn
 0.0.0.0 log.baophapluat.vn
@@ -1803,6 +1848,7 @@
 0.0.0.0 logapi.misa.com.vn
 0.0.0.0 logging.kinhtedothi.vn
 0.0.0.0 logs-ott.fbox.fpt.vn
+0.0.0.0 logs.1cdn.vn
 0.0.0.0 logs.docnhanh.com.vn
 0.0.0.0 logs.thethaovanhoa.vn
 0.0.0.0 logsbin.dantri.com.vn
@@ -1827,7 +1873,6 @@
 0.0.0.0 s.homedy.com
 0.0.0.0 s.kenh14.vn
 0.0.0.0 s.soha.vn
-0.0.0.0 sentry-track.vietnamworks.com
 0.0.0.0 smetrics.kone.vn
 0.0.0.0 socialloginplus-apps.haravan.com
 0.0.0.0 st-a.vtvdigital.vn
