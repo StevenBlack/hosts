@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 22 Feb 2023 16:42 UTC+7
-# Version: 2302221642
-# Blocked: 1,784 domains
+# Last modified: 28 Feb 2023 13:57 UTC+7
+# Version: 2302281357
+# Blocked: 1,788 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -506,6 +506,7 @@
 0.0.0.0 log-vietnamdaily.zadn.vn
 0.0.0.0 log-vovworld.zadn.vn
 #[zascdn.me]
+0.0.0.0 ads.zascdn.me
 0.0.0.0 adtima-common.zascdn.me
 0.0.0.0 adtima-media.zascdn.me
 0.0.0.0 adtima-static.zascdn.me
@@ -517,6 +518,8 @@
 #[ads.zdn.vn]
 0.0.0.0 240.zaloapp.ads.zdn.vn
 0.0.0.0 480.zaloapp.ads.zdn.vn
+#[aka.zdn.vn]
+0.0.0.0 adtima-static.aka.zdn.vn
 #[zdn.vn]
 0.0.0.0 stc-support-app-brand.zdn.vn
 0.0.0.0 zaloads-480.zdn.vn
@@ -1874,6 +1877,8 @@
 0.0.0.0 pixel.chotot.com
 0.0.0.0 production-tracking.riviu.co
 0.0.0.0 proof.sudo.vn
+0.0.0.0 px-cdn.saostar.vn
+0.0.0.0 px.saostar.vn
 0.0.0.0 report.mediahub.vn
 0.0.0.0 report.vnay.vn
 0.0.0.0 report2.mediahub.vn
