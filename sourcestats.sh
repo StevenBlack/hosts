@@ -52,14 +52,12 @@ extensions/social/tiuxo
 IFS='
 '
 
-for item in $lists
-do
+for item in $lists; do
   echo -n "" > $item/stats.out
 
-  for HASH_DATE in $(git log --reverse --format="%t,%as"  -- $item) 
-  do
+  for HASH_DATE in $(git log --reverse --format="%t,%as" -- $item);  do
     # echo $item $HASH_DATE
-    IFS=" " 
+    IFS=" "
     split=(${HASH_DATE//,/ })
     git checkout ${split[0]} ${item}/hosts 1> /dev/null 2> /dev/null
     domains=$(rh -q -m $item/hosts)
