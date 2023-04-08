@@ -2,6 +2,9 @@ name: CI
 
 on:
   push:
+    branches:
+      - master
+      - "!dependabot/**"
   pull_request:
   workflow_dispatch:
 
