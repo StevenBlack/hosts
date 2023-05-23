@@ -72,6 +72,7 @@ def get_defaults():
         "keepdomaincomments": True,
         "extensionspath": path_join_robust(BASEDIR_PATH, "extensions"),
         "extensions": [],
+        "nounifiedhosts": False,
         "compress": False,
         "minimise": False,
         "outputsubfolder": "",
@@ -123,6 +124,13 @@ def main():
         default=[],
         nargs="*",
         help="Host extensions to include in the final hosts file.",
+    )
+    parser.add_argument(
+        "--nounifiedhosts",
+        dest="nounifiedhosts",
+        default=False,
+        action="store_true",
+        help="Do not include the unified hosts file in the final hosts file. Usually used together with `--extensions`.",
     )
     parser.add_argument(
         "--ip",
@@ -248,6 +256,7 @@ def main():
     auto = settings["auto"]
     exclusion_regexes = settings["exclusionregexes"]
     source_data_filename = settings["sourcedatafilename"]
+    no_unified_hosts = settings["nounifiedhosts"]
 
     update_sources = prompt_for_update(freshen=settings["freshen"], update_auto=auto)
     if update_sources:
@@ -271,9 +280,12 @@ def main():
         extensions=extensions,
         extensionspath=extensions_path,
         sourcedatafilename=source_data_filename,
+        nounifiedhosts=no_unified_hosts,
     )
 
-    merge_file = create_initial_file()
+    merge_file = create_initial_file(
+        nounifiedhosts=no_unified_hosts,
+    )
     remove_old_hosts_file(settings["outputpath"], "hosts", settings["backup"])
     if settings["compress"]:
         final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
@@ -298,6 +310,7 @@ def main():
         numberofrules=number_of_rules,
         outputsubfolder=output_subfolder,
         skipstatichosts=skip_static_hosts,
+        nounifiedhosts=no_unified_hosts,
     )
     final_file.close()
 
@@ -308,6 +321,7 @@ def main():
             numberofrules=number_of_rules,
             outputsubfolder=output_subfolder,
             sourcesdata=sources_data,
+            nounifiedhosts=no_unified_hosts,
         )
 
     print_success(
@@ -666,6 +680,7 @@ def update_sources_data(sources_data, **sources_params):
         2) extensions
         3) extensionspath
         4) sourcedatafilename
+        5) nounifiedhosts
 
     Returns
     -------
@@ -675,13 +690,14 @@ def update_sources_data(sources_data, **sources_params):
 
     source_data_filename = sources_params["sourcedatafilename"]
 
-    for source in sort_sources(
-        recursive_glob(sources_params["datapath"], source_data_filename)
-    ):
-        update_file = open(source, "r", encoding="UTF-8")
-        update_data = json.load(update_file)
-        sources_data.append(update_data)
-        update_file.close()
+    if not sources_params["nounifiedhosts"]:
+        for source in sort_sources(
+            recursive_glob(sources_params["datapath"], source_data_filename)
+        ):
+            update_file = open(source, "r", encoding="UTF-8")
+            update_data = json.load(update_file)
+            sources_data.append(update_data)
+            update_file.close()
 
     for source in sources_params["extensions"]:
         source_dir = path_join_robust(sources_params["extensionspath"], source)
@@ -776,23 +792,32 @@ def update_all_sources(source_data_filename, host_filename):
 
 
 # File Logic
-def create_initial_file():
+def create_initial_file(**initial_file_params):
     """
     Initialize the file in which we merge all host files for later pruning.
+
+    Parameters
+    ----------
+    header_params : kwargs
+        Dictionary providing additional parameters for populating the initial file
+        information. Currently, those fields are:
+
+        1) nounifiedhosts
     """
 
     merge_file = tempfile.NamedTemporaryFile()
 
-    # spin the sources for the base file
-    for source in sort_sources(
-        recursive_glob(settings["datapath"], settings["hostfilename"])
-    ):
+    if not initial_file_params["nounifiedhosts"]:
+        # spin the sources for the base file
+        for source in sort_sources(
+            recursive_glob(settings["datapath"], settings["hostfilename"])
+        ):
 
-        start = "# Start {}\n\n".format(os.path.basename(os.path.dirname(source)))
-        end = "\n# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
+            start = "# Start {}\n\n".format(os.path.basename(os.path.dirname(source)))
+            end = "\n# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
 
-        with open(source, "r", encoding="UTF-8") as curFile:
-            write_data(merge_file, start + curFile.read() + end)
+            with open(source, "r", encoding="UTF-8") as curFile:
+                write_data(merge_file, start + curFile.read() + end)
 
     # spin the sources for extensions to the base file
     for source in settings["extensions"]:
@@ -1113,6 +1138,7 @@ def write_opening_header(final_file, **header_params):
         2) numberofrules
         3) outputsubfolder
         4) skipstatichosts
+        5) nounifiedhosts
     """
 
     final_file.seek(0)  # Reset file pointer.
@@ -1120,22 +1146,41 @@ def write_opening_header(final_file, **header_params):
 
     final_file.seek(0)  # Write at the top.
 
+    no_unified_hosts = header_params["nounifiedhosts"]
+
     if header_params["extensions"]:
-        if len(header_params["extensions"]) > 1:
-            write_data(
-                final_file,
-                "# Title: StevenBlack/hosts with the {0} and {1} extensions\n#\n".format(
-                    ", ".join(header_params["extensions"][:-1]),
-                    header_params["extensions"][-1],
-                ),
-            )
+        if no_unified_hosts:
+            if len(header_params["extensions"]) > 1:
+                write_data(
+                    final_file,
+                    "# Title: StevenBlack/hosts extensions {0} and {1} \n#\n".format(
+                        ", ".join(header_params["extensions"][:-1]),
+                        header_params["extensions"][-1],
+                    ),
+                )
+            else:
+                write_data(
+                    final_file,
+                    "# Title: StevenBlack/hosts extension {0}\n#\n".format(
+                        ", ".join(header_params["extensions"])
+                    ),
+                )
         else:
-            write_data(
-                final_file,
-                "# Title: StevenBlack/hosts with the {0} extension\n#\n".format(
-                    ", ".join(header_params["extensions"])
-                ),
-            )
+            if len(header_params["extensions"]) > 1:
+                write_data(
+                    final_file,
+                    "# Title: StevenBlack/hosts with the {0} and {1} extensions\n#\n".format(
+                        ", ".join(header_params["extensions"][:-1]),
+                        header_params["extensions"][-1],
+                    ),
+                )
+            else:
+                write_data(
+                    final_file,
+                    "# Title: StevenBlack/hosts with the {0} extension\n#\n".format(
+                        ", ".join(header_params["extensions"])
+                    ),
+                )
     else:
         write_data(final_file, "# Title: StevenBlack/hosts\n#\n")
 
@@ -1151,12 +1196,21 @@ def write_opening_header(final_file, **header_params):
     )
 
     if header_params["extensions"]:
-        write_data(
-            final_file,
-            "# Extensions added to this file: "
-            + ", ".join(header_params["extensions"])
-            + "\n",
-        )
+        if header_params["nounifiedhosts"]:
+            write_data(
+                final_file,
+                "# The unified hosts file was not used while generating this file.\n"
+                "# Extensions used to generate this file: "
+                + ", ".join(header_params["extensions"])
+                + "\n",
+            )
+        else:
+            write_data(
+                final_file,
+                "# Extensions added to this file: "
+                + ", ".join(header_params["extensions"])
+                + "\n",
+            )
 
     write_data(
         final_file,
@@ -1234,17 +1288,22 @@ def update_readme_data(readme_file, **readme_updates):
         2) sourcesdata
         3) numberofrules
         4) outputsubfolder
+        5) nounifiedhosts
     """
 
     extensions_key = "base"
     extensions = readme_updates["extensions"]
+    no_unified_hosts = readme_updates["nounifiedhosts"]
 
     if extensions:
         extensions_key = "-".join(extensions)
+        if no_unified_hosts:
+            extensions_key = extensions_key + "-only"
 
     output_folder = readme_updates["outputsubfolder"]
     generation_data = {
         "location": path_join_robust(output_folder, ""),
+        "no_unified_hosts": no_unified_hosts,
         "entries": readme_updates["numberofrules"],
         "sourcesdata": readme_updates["sourcesdata"],
     }

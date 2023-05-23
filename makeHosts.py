@@ -52,6 +52,7 @@ def update_readme_file():
     if subprocess.call([sys.executable, "updateReadme.py"]):
         print_failure("Failed to update readme file")
 
+
 def recursively_loop_extensions(extension, extensions, current_extensions):
     """
     Helper function that recursively calls itself to prevent manually creating
@@ -59,6 +60,7 @@ def recursively_loop_extensions(extension, extensions, current_extensions):
 
     Will call update_hosts_file for all combinations of extensions
     """
+
     c_extensions = extensions.copy()
     c_current_extensions = current_extensions.copy()
     c_current_extensions.append(extension)
@@ -66,6 +68,9 @@ def recursively_loop_extensions(extension, extensions, current_extensions):
     name = "-".join(c_current_extensions)
 
     params = ("-a", "-n", "-o", "alternates/"+name, "-e") + tuple(c_current_extensions)
+    update_hosts_file(*params)
+
+    params = ("-a", "-n", "-s", "--nounifiedhosts", "-o", "alternates/"+name+"-only", "-e") + tuple(c_current_extensions)
     update_hosts_file(*params)
 
     while len(c_extensions) > 0:

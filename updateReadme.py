@@ -32,7 +32,7 @@ def main():
     keys = list(data.keys())
     # Sort by the number of en-dashes in the key
     # and then by the key string itself.
-    keys.sort(key=lambda item: (item.count("-"), item))
+    keys.sort(key=lambda item: (item.replace("-only", "").count("-"), item.replace("-only", "")))
 
     toc_rows = ""
     for key in keys:
@@ -40,9 +40,14 @@ def main():
         if key == "base":
             data[key]["description"] = "Unified hosts = **(adware + malware)**"
         else:
-            data[key]["description"] = (
-                "Unified hosts **+ " + key.replace("-", " + ") + "**"
-            )
+            if data[key]["no_unified_hosts"]:
+                data[key]["description"] = (
+                    "**" + key.replace("-only", "").replace("-", " + ") + "**"
+                )
+            else:
+                data[key]["description"] = (
+                    "Unified hosts **+ " + key.replace("-", " + ") + "**"
+                )
 
         if "\\" in data[key]["location"]:
             data[key]["location"] = data[key]["location"].replace("\\", "/")
@@ -64,9 +69,12 @@ def main():
     )
     size_history_graph = "![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts_file_size_history.png)"
     for key in keys:
-        extensions = key.replace("-", ", ")
+        extensions = key.replace("-only", "").replace("-", ", ")
         extensions_str = "* Extensions: **" + extensions + "**."
-        extensions_header = "with " + extensions + " extensions"
+        if data[key]["no_unified_hosts"]:
+            extensions_header = "Limited to the extensions: " + extensions
+        else:
+            extensions_header = "Unified hosts file with " + extensions + " extensions"
 
         source_rows = ""
         source_list = data[key]["sourcesdata"]
