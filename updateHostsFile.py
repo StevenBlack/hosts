@@ -274,9 +274,7 @@ def main():
     )
 
     merge_file = create_initial_file()
-    remove_old_hosts_file(
-        path_join_robust(settings["outputpath"], "hosts"), settings["backup"]
-    )
+    remove_old_hosts_file(settings["outputpath"], "hosts", settings["backup"])
     if settings["compress"]:
         final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
         compressed_file = tempfile.NamedTemporaryFile()
@@ -1411,7 +1409,7 @@ def flush_dns_cache():
             print_failure("Unable to determine DNS management tool.")
 
 
-def remove_old_hosts_file(old_file_path, backup):
+def remove_old_hosts_file(path_to_file, file_name, backup):
     """
     Remove the old hosts file.
 
@@ -1424,21 +1422,25 @@ def remove_old_hosts_file(old_file_path, backup):
         Whether or not to backup the existing hosts file.
     """
 
-    # Create if already removed, so remove won't raise an error.
-    open(old_file_path, "a").close()
+    full_file_path = path_join_robust(path_to_file, file_name)
 
-    if backup:
-        backup_file_path = old_file_path + "-{}".format(
-            time.strftime("%Y-%m-%d-%H-%M-%S")
-        )
+    if os.path.exists(full_file_path):
+        if backup:
+            backup_file_path = full_file_path + "-{}".format(
+                time.strftime("%Y-%m-%d-%H-%M-%S")
+            )
 
-        # Make a backup copy, marking the date in which the list was updated
-        shutil.copy(old_file_path, backup_file_path)
+            # Make a backup copy, marking the date in which the list was updated
+            shutil.copy(full_file_path, backup_file_path)
 
-    os.remove(old_file_path)
+        os.remove(full_file_path)
+
+    # Create directory if not exists
+    if not os.path.exists(path_to_file):
+        os.makedirs(path_to_file)
 
     # Create new empty hosts file
-    open(old_file_path, "a").close()
+    open(full_file_path, "a").close()
 
 
 # End File Logic
