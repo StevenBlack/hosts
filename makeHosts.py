@@ -52,6 +52,25 @@ def update_readme_file():
     if subprocess.call([sys.executable, "updateReadme.py"]):
         print_failure("Failed to update readme file")
 
+def recursively_loop_extensions(extension, extensions, current_extensions):
+    """
+    Helper function that recursively calls itself to prevent manually creating
+    all possible combinations of extensions.
+
+    Will call update_hosts_file for all combinations of extensions
+    """
+    c_extensions = extensions.copy()
+    c_current_extensions = current_extensions.copy()
+    c_current_extensions.append(extension)
+
+    name = "-".join(c_current_extensions)
+
+    params = ("-a", "-n", "-o", "alternates/"+name, "-e") + tuple(c_current_extensions)
+    update_hosts_file(*params)
+
+    while len(c_extensions) > 0:
+        recursively_loop_extensions(c_extensions.pop(0), c_extensions, c_current_extensions)
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -61,84 +80,15 @@ def main():
     )
     parser.parse_args()
 
-    update_hosts_file("-a", "-o", "alternates/gambling", "-e", "gambling")
-    update_hosts_file("-a", "-n", "-o", "alternates/porn", "-e", "porn")
-    update_hosts_file("-a", "-n", "-o", "alternates/social", "-e", "social")
-    update_hosts_file("-a", "-n", "-o", "alternates/fakenews", "-e", "fakenews")
+    # Update the unified hosts file
+    update_hosts_file("-a")
 
-    update_hosts_file(
-        "-a", "-n", "-o", "alternates/fakenews-gambling", "-e", "fakenews", "gambling"
-    )
-    update_hosts_file(
-        "-a", "-n", "-o", "alternates/fakenews-porn", "-e", "fakenews", "porn"
-    )
-    update_hosts_file(
-        "-a", "-n", "-o", "alternates/fakenews-social", "-e", "fakenews", "social"
-    )
-    update_hosts_file(
-        "-a", "-n", "-o", "alternates/gambling-porn", "-e", "gambling", "porn"
-    )
-    update_hosts_file(
-        "-a", "-n", "-o", "alternates/gambling-social", "-e", "gambling", "social"
-    )
-    update_hosts_file(
-        "-a", "-n", "-o", "alternates/porn-social", "-e", "porn", "social"
-    )
+    # List of extensions we want to generate, we will loop over them recursively to prevent manual definitions
+    # Only add new extensions to the end of the array, to avoid relocating existing hosts-files
+    extensions = ["fakenews", "gambling", "porn", "social"]
 
-    update_hosts_file(
-        "-a",
-        "-n",
-        "-o",
-        "alternates/fakenews-gambling-porn",
-        "-e",
-        "fakenews",
-        "gambling",
-        "porn",
-    )
-    update_hosts_file(
-        "-a",
-        "-n",
-        "-o",
-        "alternates/fakenews-gambling-social",
-        "-e",
-        "fakenews",
-        "gambling",
-        "social",
-    )
-    update_hosts_file(
-        "-a",
-        "-n",
-        "-o",
-        "alternates/fakenews-porn-social",
-        "-e",
-        "fakenews",
-        "porn",
-        "social",
-    )
-    update_hosts_file(
-        "-a",
-        "-n",
-        "-o",
-        "alternates/gambling-porn-social",
-        "-e",
-        "gambling",
-        "porn",
-        "social",
-    )
-
-    update_hosts_file(
-        "-a",
-        "-n",
-        "-o",
-        "alternates/fakenews-gambling-porn-social",
-        "-e",
-        "fakenews",
-        "gambling",
-        "porn",
-        "social",
-    )
-
-    update_hosts_file("-a", "-n")
+    while len(extensions) > 0:
+        recursively_loop_extensions(extensions.pop(0), extensions, [])
 
     # Update the readme files.
     update_readme_file()
