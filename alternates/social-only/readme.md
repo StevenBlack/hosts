@@ -20,7 +20,7 @@ sources can be found in the `hosts/data/` directory.
 [![last commit](https://img.shields.io/github/last-commit/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/commits/master)
 [![commit activity](https://img.shields.io/github/commit-activity/y/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/commits/master)
 
-# Unified hosts file with fakenews extensions
+# Limited to the extensions: social
 
 This repository consolidates several reputable `hosts` files, and merges them
 into a unified hosts file with duplicates removed. A variety of tailored hosts
@@ -30,10 +30,10 @@ files are provided.
 
 ![Aggregator](https://raw.githubusercontent.com/StevenBlack/hosts/master/aggregator.png)
 
-- Last updated: **May 25 2023**.
+- Last updated: **May 26 2023**.
 - Here's the
-  [raw hosts file Unified hosts file with fakenews extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts)
-  containing 188,553 entries.
+  [raw hosts file Limited to the extensions: social](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social-only/hosts)
+  containing 2,841 entries.
 
 
 
@@ -92,25 +92,8 @@ included:
 
 | Host file source | Home page | Raw hosts | License | Issues | Description |
 | ---------------- | :-------: | :-------: | :-----: | :----: | ----------- |
-Steven Black's ad-hoc list |[link](https://github.com/StevenBlack/hosts/blob/master/data/StevenBlack/hosts) | [raw](https://raw.githubusercontent.com/StevenBlack/hosts/master/data/StevenBlack/hosts) | MIT | [issues](https://github.com/StevenBlack/hosts/issues)| Additional sketch domains as I come across them.
-AdAway |[link](https://adaway.org/) | [raw](https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt) | CC BY 3.0 | [issues](https://github.com/AdAway/adaway.github.io/issues)| AdAway is an open source ad blocker for Android using the hosts file.
-add.2o7Net |[link](https://github.com/FadeMind/hosts.extras) | [raw](https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts) | MIT | [issues](https://github.com/FadeMind/hosts.extras/issues)| 2o7Net tracking sites based on [hostsfile.org](https://www.hostsfile.org/hosts.html) content.
-add.Dead |[link](https://github.com/FadeMind/hosts.extras) | [raw](https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Dead/hosts) | MIT | [issues](https://github.com/FadeMind/hosts.extras/issues)| Dead sites based on [hostsfile.org](https://www.hostsfile.org/hosts.html) content.
-add.Risk |[link](https://github.com/FadeMind/hosts.extras) | [raw](https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts) | MIT | [issues](https://github.com/FadeMind/hosts.extras/issues)| Risk content sites based on [hostsfile.org](https://www.hostsfile.org/hosts.html) content.
-add.Spam |[link](https://github.com/FadeMind/hosts.extras) | [raw](https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts) | MIT | [issues](https://github.com/FadeMind/hosts.extras/issues)| Spam sites based on [hostsfile.org](https://www.hostsfile.org/hosts.html) content.
-Mitchell Krog's - Badd Boyz Hosts |[link](https://github.com/mitchellkrogza/Badd-Boyz-Hosts) | [raw](https://raw.githubusercontent.com/mitchellkrogza/Badd-Boyz-Hosts/master/hosts) | MIT | [issues](https://github.com/mitchellkrogza/Badd-Boyz-Hosts/issues)| Sketchy domains and Bad Referrers from my Nginx and Apache Bad Bot and Spam Referrer Blockers
-hostsVN |[link](https://github.com/bigdargon/hostsVN) | [raw](https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hosts-VN) | MIT | [issues](https://github.com/bigdargon/hostsVN/issues)| Hosts block ads of Vietnamese
-KADhosts |[link](https://kadantiscam.netlify.app/) | [raw](https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt) | CC BY-SA 4.0 | [issues](https://github.com/PolishFiltersTeam/KADhosts/issues)| Fraud/adware/scam websites.
-MetaMask eth-phishing-detect |[link](https://github.com/MetaMask/eth-phishing-detect) | [raw](https://raw.githubusercontent.com/MetaMask/eth-phishing-detect/master/src/hosts.txt) | DON'T BE A DICK PUBLIC LICENSE | [issues](https://github.com/MetaMask/eth-phishing-detect/issues)| Phishing domains targeting Ethereum users.
-minecraft-hosts |[link](https://github.com/jamiemansfield/minecraft-hosts) | [raw](https://raw.githubusercontent.com/jamiemansfield/minecraft-hosts/master/lists/tracking.txt) | CC0-1.0 | [issues](https://github.com/jamiemansfield/minecraft-hosts/issues)| Minecraft related tracker hosts
-MVPS hosts file |[link](https://winhelp2002.mvps.org/) | [raw](https://winhelp2002.mvps.org/hosts.txt) | CC BY-NC-SA 4.0 | [issues](mailto:winhelp2002@gmail.com)| The purpose of this site is to provide the user with a high quality custom HOSTS file.
-shady-hosts |[link](https://github.com/shreyasminocha/shady-hosts) | [raw](https://raw.githubusercontent.com/shreyasminocha/shady-hosts/main/hosts) | CC0-1.0 | [issues](https://github.com/shreyasminocha/shady-hosts/issues)| Analytics, ad, and activity monitoring hosts
-Dan Pollock – [someonewhocares](https://someonewhocares.org/) |[link](https://someonewhocares.org/hosts/) | [raw](https://someonewhocares.org/hosts/zero/hosts) | non-commercial with attribution | [issues](mailto:hosts@someonewhocares.org)| How to make the internet not suck (as much).
-Tiuxo hostlist - ads |[link](https://github.com/tiuxo/hosts) | [raw](https://raw.githubusercontent.com/tiuxo/hosts/master/ads) | CC BY 4.0 | [issues](https://github.com/tiuxo/hosts/issues)| Categorized hosts files for DNS based content blocking
-UncheckyAds |[link](https://github.com/FadeMind/hosts.extras) | [raw](https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts) | MIT | [issues](https://github.com/FadeMind/hosts.extras/issues)| Windows installers ads sources sites based on https://unchecky.com/ content.
-URLHaus |[link](https://urlhaus.abuse.ch/) | [raw](https://urlhaus.abuse.ch/downloads/hostfile/) | CC0 | [issues](mailto:contactme@abuse.ch)| A project from [abuse.ch](https://abuse.ch/) with the goal of sharing malicious URLs.
-yoyo.org |[link](https://pgl.yoyo.org/adservers/) | [raw](https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext&useip=0.0.0.0) |  | [issues](mailto:pgl@yoyo.org)| Blocking with ad server and tracking server hostnames.
-Fake News |[link](https://github.com/marktron/fakenews) | [raw](https://raw.githubusercontent.com/marktron/fakenews/master/fakenews) | MIT | [issues](https://github.com/marktron/fakenews/issues)| An in-progress collection of fake news outlets.
+Sinfonietta's social media blocking hosts file |[link](https://github.com/Sinfonietta/hostfiles) | [raw](https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/social-hosts) | MIT | [issues](https://github.com/Sinfonietta/hostfiles/issues)| A collection of category-specific host files.
+Tiuxo hostlist - social |[link](https://github.com/tiuxo/hosts) | [raw](https://raw.githubusercontent.com/tiuxo/hosts/master/social) | CC BY 4.0 | [issues](https://github.com/tiuxo/hosts/issues)| Categorized hosts files for DNS based content blocking
 
 
 ## Extensions
