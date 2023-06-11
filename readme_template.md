@@ -138,6 +138,8 @@ docker run --rm -it stevenblack-hosts updateHostsFile.py
 
 ### Option 3: Generate it in your own environment
 
+You can also alternatively use either your own local or remote environment, such as quickly and easily spinning up a free [Google Colab](https://colab.research.google.com/drive/1tYWXpU2iuPDqN_o03JW9ml3ExO80eBLq?usp=sharing) environment.
+
 To generate your own amalgamated hosts files you will need Python 3.6 or later.
 
 First, install the dependencies with:
