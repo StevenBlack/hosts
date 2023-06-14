@@ -150,6 +150,10 @@ pip3 install --user -r requirements.txt
 at the user level. More information about it can be found on pip
 [documentation](https://pip.pypa.io/en/stable/reference/pip_install/?highlight=--user#cmdoption-user).
 
+### Option 4: Generate it in Google Colab
+
+Spin up a free remote [Google Colab](https://colab.research.google.com/drive/1tYWXpU2iuPDqN_o03JW9ml3ExO80eBLq?usp=sharing) environment.
+
 ### Common steps regardless of your development environment
 
 To **run unit tests**, in the top-level directory, run:
