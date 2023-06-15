@@ -40,7 +40,7 @@ files are provided.
 ## List of all hosts file variants
 
 This repository offers
-[15 different host file variants](https://github.com/StevenBlack/hosts/tree/master/alternates),
+[31 different host file variants](https://github.com/StevenBlack/hosts/tree/master/alternates),
 in addition to the base variant, with and without the unified hosts included.
 
 The **Non GitHub mirror** is the link to use for some hosts file managers like
