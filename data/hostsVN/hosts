@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 17 Jun 2023 21:26 UTC+7
-# Version: 2306172126
-# Blocked: 1,798 domains
+# Last modified: 21 Jun 2023 16:26 UTC+7
+# Version: 2306211626
+# Blocked: 1,804 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -1408,7 +1408,7 @@
 #[imacdn.com]
 0.0.0.0 ff.imacdn.com
 0.0.0.0 sponsor.imacdn.com
-#[epicdn.me]
+#[quangcao-*.epicdn.me]
 0.0.0.0 quangcao-thanhnien.epicdn.me
 #[log-*.epicdn.me]
 0.0.0.0 log-baodauthau.epicdn.me
@@ -1416,6 +1416,7 @@
 0.0.0.0 log-giaoduc.epicdn.me
 0.0.0.0 log-giaoducthoidai.epicdn.me
 0.0.0.0 log-kienthucnet.epicdn.me
+0.0.0.0 log-mekongasean.epicdn.me
 0.0.0.0 log-nhandan.epicdn.me
 0.0.0.0 log-thanhnien.epicdn.me
 0.0.0.0 log-tinnhanhchungkhoan.epicdn.me
@@ -1473,6 +1474,9 @@
 0.0.0.0 facebookinbox-omni-onapp.haravan.com
 0.0.0.0 promotion.haravan.com
 0.0.0.0 onapp.haravan.com
+#[ultraviewer.net]
+0.0.0.0 ads.ultraviewer.net
+0.0.0.0 qc.ultraviewer.net
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 ad-admin.vnay.vn
@@ -1661,6 +1665,7 @@
 0.0.0.0 quangcao.baovannghe.com.vn
 0.0.0.0 quangcao.fff.com.vn
 0.0.0.0 quangcao247.com.vn
+0.0.0.0 quangcaodantri.vn
 0.0.0.0 r.tinmoi24.vn
 0.0.0.0 realclick.vn
 0.0.0.0 s.cntqk.com
@@ -1833,6 +1838,7 @@
 0.0.0.0 log.kienthuc.net.vn
 0.0.0.0 log.kinhdoanhhoinhap.vn
 0.0.0.0 log.kinhtedouong.vn
+0.0.0.0 log.mekongasean.vn
 0.0.0.0 log.ngaynay.vn
 0.0.0.0 log.nhandan.vn
 0.0.0.0 log.nhipcaudautu.vn
@@ -1920,6 +1926,7 @@
 0.0.0.0 ta.toprework.vn
 0.0.0.0 tagging-qadkfoj6ha-as.a.run.app
 0.0.0.0 tech.zapps.me
+0.0.0.0 textlink.vn
 0.0.0.0 thongke.24h.com.vn
 0.0.0.0 thongke.arttimes.vn
 0.0.0.0 thongke.baotintuc.vn
