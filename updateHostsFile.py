@@ -1061,7 +1061,7 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
     """
     first try: IP followed by domain
     """
-    regex = r"^\s*(\d{1,3}\.){3}\d{1,3}\s+((?:\w+\.)+[a-zA-Z]+)(.*)"
+    regex = r"^\s*(\d{1,3}\.){3}\d{1,3}\s+([\w\.-]+[a-zA-Z])(.*)"
     result = re.search(regex, rule)
 
     if result:
@@ -1090,7 +1090,7 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
     """
     # deny any potential IPv6 address here.
     if ":" not in rule:
-        regex = r"^\s*((?:\w+\.)+[a-zA-Z]+)(.*)"
+        regex = r"^\s*([\w\.-]+[a-zA-Z])(.*)"
         result = re.search(regex, rule)
 
         if result:
