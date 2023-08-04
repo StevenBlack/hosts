@@ -453,6 +453,8 @@ the
 [the comments within the `cmd` file](https://github.com/StevenBlack/hosts/blob/master/disable-dnscache-service-win.bat)
 for more details.
 
+Disabling the DNS Cache Service can cause issues with services and applications like *WSL* and it's possible to compress the hosts file and negate the need to disable the DNS caching service. You can try the PowerShell compression script and check out the guide located at the [Hosts Compression Scripts repository](https://github.com/Lateralus138/hosts-compression-scripts).
+
 ## Reloading hosts file
 
 Your operating system will cache DNS lookups. You can either reboot or run the
@@ -611,6 +613,7 @@ devices under a variety of operating systems.
 - [BlackHosts - Command Line Installer/Updater](https://github.com/Lateralus138/blackhosts)
   This is a cross-platform command line utility to help install/update hosts
   files found at this repository.
+- [Hosts Compression Scripts](https://github.com/Lateralus138/hosts-compression-scripts) These are various scripts to help compress hosts files (by the author of BlackHosts).
 - [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Combining-Blocklists)
   provides a tool to build block lists from local and remote lists in common
   formats.
