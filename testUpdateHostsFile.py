@@ -842,7 +842,7 @@ class TestNormalizeRule(BaseStdout):
             "128.0.0.1",
             "0.0.0 google",
             "0.1.2.3.4 foo/bar",
-            "0.0.0.0 https"
+            "0.0.0.0 https",
         ]:
             self.assertEqual(normalize_rule(rule, **kwargs), (None, None))
 
@@ -905,7 +905,7 @@ class TestNormalizeRule(BaseStdout):
             sys.stdout = StringIO()
 
     def test_no_comment_raw(self):
-        for rule in ("twitter.com", "google.com", "foo.bar.edu"):
+        for rule in ("twitter.com", "google.com", "foo.bar.edu", "www.example-foo.bar.edu"):
             expected = (rule, "0.0.0.0 " + rule + "\n")
 
             actual = normalize_rule(
