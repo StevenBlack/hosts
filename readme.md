@@ -201,7 +201,7 @@ at the user level. More information about it can be found on pip
 
 ### Option 4: Generate it in Google Colab
 
-Spin up a free remote [Google Colab](https://colab.research.google.com/github/ScriptTiger/hosts/hosts.ipynb) environment.
+Spin up a free remote [Google Colab](https://colab.research.google.com/github/ScriptTiger/hosts/blob/master/hosts.ipynb) environment.
 
 ### Common steps regardless of your development environment
 
