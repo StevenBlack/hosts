@@ -201,7 +201,7 @@ at the user level. More information about it can be found on pip
 
 ### Option 4: Generate it in Google Colab
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ScriptTiger/hosts/blob/master/hosts.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/StevenBlack/hosts/blob/master/hosts.ipynb)
 
 ### Common steps regardless of your development environment
 
