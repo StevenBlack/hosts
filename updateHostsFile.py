@@ -1126,7 +1126,8 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
         if (
             is_ip(hostname)
             or re.search(static_ip_regex, hostname)
-            or ("." not in hostname and ":" not in hostname)
+            or "." not in hostname
+            or ":" in hostname
         ):
             # Example: 0.0.0.0 127.0.0.1
 
