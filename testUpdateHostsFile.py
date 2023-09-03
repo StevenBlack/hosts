@@ -908,7 +908,14 @@ class TestNormalizeRule(BaseStdout):
             sys.stdout = StringIO()
 
     def test_no_comment_raw(self):
-        for rule in ("twitter.com", "google.com", "foo.bar.edu", "www.example-foo.bar.edu", "www.example-3045.foobar.com", "www.example.xn--p1ai"):
+        for rule in (
+            "twitter.com",
+            "google.com",
+            "foo.bar.edu",
+            "www.example-foo.bar.edu",
+            "www.example-3045.foobar.com",
+            "www.example.xn--p1ai"
+        ):
             expected = (rule, "0.0.0.0 " + rule + "\n")
 
             actual = normalize_rule(
