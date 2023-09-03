@@ -33,7 +33,7 @@ files are provided.
 - Last updated: **August 08 2023**.
 - Here's the
   [raw hosts file Limited to the extensions: gambling, social](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-social-only/hosts)
-  containing 10,251 entries.
+  containing 10,309 entries.
 
 
 
