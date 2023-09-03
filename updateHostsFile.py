@@ -8,6 +8,7 @@
 
 import argparse
 import fnmatch
+import ipaddress
 import json
 import locale
 import os
@@ -761,7 +762,7 @@ def update_all_sources(source_data_filename, host_filename):
 
         # we can pause updating any given hosts source.
         # if the update.json "pause" key is missing, don't pause.
-        if update_data.get('pause', False):
+        if update_data.get("pause", False):
             continue
 
         update_url = update_data["url"]
@@ -815,7 +816,6 @@ def create_initial_file(**initial_file_params):
         for source in sort_sources(
             recursive_glob(settings["datapath"], settings["hostfilename"])
         ):
-
             start = "# Start {}\n\n".format(os.path.basename(os.path.dirname(source)))
             end = "\n# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
 
@@ -1052,64 +1052,97 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
 
         if keep_domain_comments and extracted_suffix:
             if not extracted_suffix.strip().startswith("#"):
-                rule += " #%s" % extracted_suffix
+                # Strings are stripped, therefore we need to add the space back.
+                rule += " # %s" % extracted_suffix
             else:
                 rule += " %s" % extracted_suffix
 
         return extracted_hostname, rule + "\n"
 
+    def is_ip(dataset: str) -> bool:
+        """
+        Checks whether the given dataset is an IP.
+
+        Parameters
+        ----------
+
+        dataset: str
+            The dataset to work with.
+
+        Returns
+        -------
+        is_ip: bool
+            Whether the dataset is an IP.
+        """
+
+        try:
+            _ = ipaddress.ip_address(dataset)
+            return True
+        except ValueError:
+            return False
+
+    def belch_unwanted(unwanted: str) -> Tuple[None, None]:
+        """
+        Belches unwanted to screen.
+
+        Parameters
+        ----------
+        unwanted: str
+            The unwanted string to belch.
+
+        Returns
+        -------
+        belched: tuple
+            A tuple of None, None.
+        """
+
+        """
+        finally, if we get here, just belch to screen
+        """
+        print("==>%s<==" % unwanted)
+        return None, None
+
+
     """
     first try: IP followed by domain
     """
 
-    # WARNING:
-    #   [a-zA-Z0-9\-]+ is NOT an issue. (e.g., xn--p1ai TLD - and others).
-    regex = r"^\s*(\d{1,3}\.){3}\d{1,3}\s+((?:[\w\-\.]+\.)+[a-zA-Z0-9\-]+)(.*)"
-    result = re.search(regex, rule)
+    static_ip_regex = r"^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$"
+    split_rule = rule.split(maxsplit=1)
 
-    if result:
-        hostname, suffix = result.group(2, 3)
+    if is_ip(split_rule[0]):
+        # Assume that the first item is an IP address following the rule.
 
-        # Explicitly lowercase and trim the hostname.
-        hostname = hostname.lower().strip()
+        if " " or "\t" in split_rule[-1]:
+            try:
+                # Example: 0.0.0.0 example.org # hello, world!
+                hostname, suffix = split_rule[-1].split(maxsplit=1)
+            except ValueError:
+                # Example: 0.0.0.0 example.org[:space:]
+                hostname, suffix = split_rule[-1], None
+        else:
+            # Example: 0.0.0.0 example.org
+            hostname, suffix = split_rule[-1], None
+
+        if is_ip(hostname):
+            # Example: 0.0.0.0 127.0.0.1
+
+            # If the hostname is an IP, we don't want to normalize it.
+            return belch_unwanted(rule)
 
         return normalize_response(hostname, suffix)
 
-    """
-    next try: IP address followed by host IP address
-    """
-    regex = r"^\s*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\s+(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\s*(.*)"
-    result = re.search(regex, rule)
+    if not re.search(static_ip_regex, split_rule[0]) and ":" not in split_rule[0]:
+        # Deny anything that looks like an IP.
 
-    if result:
-        ip_host, suffix = result.group(2, 3)
-        # Explicitly trim the ip host.
-        ip_host = ip_host.strip()
+        try:
+            hostname, suffix = split_rule
+        except ValueError:
+            hostname, suffix = split_rule[0], None
 
-        return normalize_response(ip_host, suffix)
+        return normalize_response(hostname, suffix)
 
-    """
-    next try: Keep RAW domain.
-    """
-    # deny any potential IPv6 address here.
-    if ":" not in rule:
-        # WARNING:
-        #   [a-zA-Z0-9\-]+ is NOT an issue. (e.g., xn--p1ai TLD - and others).
-        regex = r"^\s*((?:[\w\-\.]+\.)+[a-zA-Z0-9\-]+)(.*)"
-        result = re.search(regex, rule)
-
-        if result:
-            hostname, suffix = result.group(1, 2)
-            # Explicitly lowercase and trim the hostname.
-            hostname = hostname.lower().strip()
-
-            return normalize_response(hostname, suffix)
-
-    """
-    finally, if we get here, just belch to screen
-    """
-    print("==>%s<==" % rule)
-    return None, None
+    return belch_unwanted(rule)
 
 
 def strip_rule(line):
@@ -1356,7 +1389,9 @@ def move_hosts_file_into_place(final_file):
         return False
 
     if platform.system() == "Windows":
-        target_file = str(Path(os.getenv("SystemRoot")) / "system32" / "drivers" / "etc" / "hosts")
+        target_file = str(
+            Path(os.getenv("SystemRoot")) / "system32" / "drivers" / "etc" / "hosts"
+        )
     else:
         target_file = "/etc/hosts"
 
@@ -1373,7 +1408,11 @@ def move_hosts_file_into_place(final_file):
         except Exception:
             print_failure(f"Replacing content of {target_file} failed.")
             return False
-    elif platform.system() == "Linux" or platform.system() == "Windows" or platform.system() == "Darwin":
+    elif (
+        platform.system() == "Linux"
+        or platform.system() == "Windows"
+        or platform.system() == "Darwin"
+    ):
         print(
             f"Replacing {target_file} requires root privileges. You might need to enter your password."
         )
