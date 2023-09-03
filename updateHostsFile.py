@@ -1102,7 +1102,6 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
         print("==>%s<==" % unwanted)
         return None, None
 
-
     """
     first try: IP followed by domain
     """
@@ -1124,16 +1123,30 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
             # Example: 0.0.0.0 example.org
             hostname, suffix = split_rule[-1], None
 
-        if is_ip(hostname):
+        if (
+            is_ip(hostname)
+            or re.search(static_ip_regex, split_rule[0])
+            or "." not in hostname
+            or ":" in hostname
+            or ""
+        ):
             # Example: 0.0.0.0 127.0.0.1
 
-            # If the hostname is an IP, we don't want to normalize it.
+            # If the hostname is:
+            #   - an IP - or looks like it,
+            #   - doesn't contain dots, or
+            #   - contains a colon,
+            # we don't want to normalize it.
             return belch_unwanted(rule)
 
         return normalize_response(hostname, suffix)
 
-    if not re.search(static_ip_regex, split_rule[0]) and ":" not in split_rule[0]:
-        # Deny anything that looks like an IP.
+    if (
+        not re.search(static_ip_regex, split_rule[0])
+        and ":" not in split_rule[0]
+        and "." in split_rule[0]
+    ):
+        # Deny anything that looks like an IP & doesn't container dots.
 
         try:
             hostname, suffix = split_rule
