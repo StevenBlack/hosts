@@ -33,7 +33,7 @@ files are provided.
 - Last updated: **August 08 2023**.
 - Here's the
   [raw hosts file Limited to the extensions: fakenews, gambling, social](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-social-only/hosts)
-  containing 12,503 entries.
+  containing 12,545 entries.
 
 
 
