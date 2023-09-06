@@ -1127,6 +1127,7 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
             is_ip(hostname)
             or re.search(static_ip_regex, hostname)
             or "." not in hostname
+            or ".." in hostname
             or ":" in hostname
         ):
             # Example: 0.0.0.0 127.0.0.1
@@ -1143,9 +1144,10 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
     if (
         not re.search(static_ip_regex, split_rule[0])
         and ":" not in split_rule[0]
+        and ".." not in split_rule[0]
         and "." in split_rule[0]
     ):
-        # Deny anything that looks like an IP & doesn't container dots.
+        # Deny anything that looks like an IP; doesn't container dots or INVALID.
 
         try:
             hostname, suffix = split_rule
