@@ -854,6 +854,25 @@ class TestNormalizeRule(BaseStdout):
             expected = "==>" + rule + "<=="
             self.assertIn(expected, output)
 
+    def test_mixed_cases(self):
+        for rule, expected_target in (
+            ("tWiTTer.cOM", "twitter.com"),
+            ("goOgLe.Com", "google.com"),
+            ("FoO.bAR.edu", "foo.bar.edu"),
+        ):
+            expected = (expected_target, "0.0.0.0 " + expected_target + "\n")
+
+            actual = normalize_rule(
+                rule, target_ip="0.0.0.0", keep_domain_comments=False
+            )
+            self.assertEqual(actual, expected)
+
+            # Nothing gets printed if there's a match.
+            output = sys.stdout.getvalue()
+            self.assertEqual(output, "")
+
+            sys.stdout = StringIO()
+
     def test_no_comments(self):
         for target_ip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
             rule = "127.0.0.1 1.google.com foo"
