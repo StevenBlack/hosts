@@ -843,6 +843,7 @@ class TestNormalizeRule(BaseStdout):
             "::1",
             "0.0.0.0 128.0.0.2",
             "0.1.2.3 foo/bar",
+            "0.3.4.5 example.org/hello/world",
             "0.0.0.0 https",
             "0.0.0.0 https..",
         ]:
