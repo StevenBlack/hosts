@@ -8,8 +8,8 @@ sources can be found in the `hosts/data/` directory.
 
 ---
 
-![Logo (light)](https://raw.githubusercontent.com/StevenBlack/hosts/master/.github/logo.png#gh-light-mode-only)
-![Logo (dark)](https://raw.githubusercontent.com/StevenBlack/hosts/master/.github/logo-dark.png#gh-dark-mode-only)
+![Logo (light)](.github/logo.png#gh-light-mode-only)
+![Logo (dark)](.github/logo-dark.png#gh-dark-mode-only)
 
 [![latest release](https://img.shields.io/github/release/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/releases)
 [![license](https://img.shields.io/github/license/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/blob/master/license.txt)
@@ -29,14 +29,14 @@ files are provided.
 
 **Therefore this repository is a hosts file aggregator.**
 
-![Aggregator](https://raw.githubusercontent.com/StevenBlack/hosts/master/aggregator.png)
+![Aggregator](aggregator.png)
 
 - Last updated: **October 04 2023**.
 - Here's the
   [raw hosts file Unified hosts file with base extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts)
   containing 137,889 entries.
 
-![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts_file_size_history.png)
+![Size history](hosts_file_size_history.png)
 
 ## List of all hosts file variants
 
