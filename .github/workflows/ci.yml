@@ -27,8 +27,15 @@ jobs:
           - '3.12'
         os:
           - ubuntu-latest
-          - macos-latest
-          - windows-latest
+        include:
+          - os: macos-latest
+            python: '3.8'
+          - os: macos-latest
+            python: '3.12'
+          - os: windows-latest
+            python: '3.8'
+          - os: windows-latest
+            python: '3.12'
 
     steps:
       - name: Clone repository
