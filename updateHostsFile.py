@@ -385,7 +385,7 @@ def prompt_for_update(freshen, update_auto):
             )
 
     if not freshen:
-        return
+        return False
 
     prompt = "Do you want to update all data sources?"
 
