@@ -20,15 +20,22 @@ jobs:
       fail-fast: false
       matrix:
         python:
-          - '3.7'
           - '3.8'
           - '3.9'
           - '3.10'
           - '3.11'
+          - '3.12'
         os:
           - ubuntu-latest
-          - macos-latest
-          - windows-latest
+        include:
+          - os: macos-latest
+            python: '3.8'
+          - os: macos-latest
+            python: '3.12'
+          - os: windows-latest
+            python: '3.8'
+          - os: windows-latest
+            python: '3.12'
 
     steps:
       - name: Clone repository
