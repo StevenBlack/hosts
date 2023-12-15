@@ -1436,23 +1436,30 @@ class TestFlushDnsCache(BaseStdout):
             output = sys.stdout.getvalue()
             self.assertIn(expected, output)
 
-    def test_flush_windows(self):
+    @mock.patch("subprocess.call", return_value=0)
+    def test_flush_windows(self, _):
         with self.mock_property("platform.system") as obj:
-            obj.return_value = "win32"
+            obj.return_value = "Windows"
+            flush_dns_cache()
 
-            with self.mock_property("os.name"):
-                os.name = "nt"
-                flush_dns_cache()
+            expected = (
+                "Flushing the DNS cache to utilize new hosts "
+                "file...\nFlushing the DNS cache requires "
+                "administrative privileges. You might need to "
+                "enter your password."
+            )
+            output = sys.stdout.getvalue()
+            self.assertIn(expected, output)
 
-                expected = (
-                    "Automatically flushing the DNS cache is "
-                    "not yet supported.\nPlease copy and paste "
-                    "the command 'ipconfig /flushdns' in "
-                    "administrator command prompt after running "
-                    "this script."
-                )
-                output = sys.stdout.getvalue()
-                self.assertIn(expected, output)
+    @mock.patch("subprocess.call", return_value=1)
+    def test_flush_windows_fail(self, _):
+        with self.mock_property("platform.system") as obj:
+            obj.return_value = "Windows"
+            flush_dns_cache()
+
+            expected = "Flushing the DNS cache failed."
+            output = sys.stdout.getvalue()
+            self.assertIn(expected, output)
 
     @mock.patch("os.path.isfile", return_value=False)
     def test_flush_no_tool(self, _):
