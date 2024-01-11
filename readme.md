@@ -399,10 +399,15 @@ We tried that. Using `0` doesn't work universally.
 To modify your current `hosts` file, look for it in the following places and
 modify it with a text editor.
 
-- **macOS (until 10.14.x macOS Mojave), iOS, Android, Linux**: `/etc/hosts`
+- **macOS (until 10.14.x macOS Mojave), iOS, Linux**: `/etc/hosts`
   file.
 - **macOS Catalina:** `/private/etc/hosts` file.
 - **Windows**: `%SystemRoot%\system32\drivers\etc\hosts` file.
+- **Android**: `/system/etc/hosts` file.
+
+## Android
+
+To edit the `hosts` file in Android, you need a module named `Systemless Hosts`. Detailed instructions here - https://www.magiskmodule.com/systemless-hosts-magisk-module/
 
 ## Gentoo
 
