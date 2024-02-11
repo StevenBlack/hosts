@@ -9,7 +9,7 @@
       });
     in
     {
-      nixosModule = { config, ... }:
+      nixosModules.ad-block = { config, ... }:
         with nixpkgs.lib;
         let
           cfg = config.networking.stevenBlackHosts;
@@ -34,6 +34,19 @@
               );
           };
         };
+
+      nixosModules.default = self.nixosModules.ad-block;
+
+      packages.x86_64-linux.default = with import nixpkgs { system = "x86_64-linux"; }; stdenv.mkDerivation {
+        name = "ad-block-host-list";
+        buildInputs = [];
+        src = ./.;
+        installPhase = ''
+          mkdir -p $out
+          cp hosts $out/
+        '';
+      };
+
 
       devShells = forAllSystems (system:
         let pkgs = nixpkgsFor.${system}; in
