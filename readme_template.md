@@ -622,10 +622,6 @@ devices under a variety of operating systems.
   offers a public anycast network hosted mirror of the Unified (Adware + Malware) blocklist:
   - Legacy DNS: `76.76.2.35`, `76.76.10.35`, `2606:1a40::35`, `2606:1a40:1::35`
   - DNS-over-HTTPS/TLS/DOQ: `https://freedns.controld.com/x-stevenblack`, `x-stevenblack.freedns.controld.com`
-- [Snitcher](https://snitcher.dannorth.net)
-  makes the blocklists available as [Little Snitch](https://www.obdev.at/products/littlesnitch/index.html) rule groups.
-  - Lists are split in two because Little Snitch has a limit of 200k entries per rule group, and some of the lists are larger than this.
-  - Rule groups are updated weekly, and subscribed Little Snitch instances will auto-update.
 
 ## Contribute
 
