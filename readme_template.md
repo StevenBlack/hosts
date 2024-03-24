@@ -413,37 +413,7 @@ The hosts extensions are also available with the following options:
 }
 ```
 
-## Updating hosts file on Windows
-
-(NOTE: See also some third-party Hosts managers, listed below.)
-
-On Linux and macOS, run the Python script. On Windows more work is required due
-to compatibility issues so it's preferable to run the batch file as follows:
-
-```sh
-updateHostsWindows.bat
-```
-
-This file **MUST** be run in command prompt with administrator privileges in the
-repository directory. In addition to updating the hosts file, it can also
-replace the existing hosts file, and reload the DNS cache. It goes without
-saying that for this to work, you must be connected to the internet.
-
-To open a command prompt as administrator in the repository's directory, do the
-following:
-
-- **Windows XP**: Start → Run → `cmd`
-- **Windows Vista, 7**: Start Button → type `cmd` → right-click Command Prompt →
-  "Run as Administrator"
-- **Windows 8**: Start → Swipe Up → All Apps → Windows System → right-click
-  Command Prompt → "Run as Administrator"
-- **Windows 10**: Start Button → type `cmd` → right-click Command Prompt → "Run
-  as Administrator"
-
-You can also refer to the "Third-Party Hosts Managers" section for further
-recommended solutions from third parties.
-
-### Warning: Using this `hosts` file in Windows may require disabling DNS Cache service
+## Windows Caveat: Using this `hosts` file in Windows may require disabling DNS Cache service
 
 Windows has issues with larger hosts files. Recent changes in security within
 Windows 10 denies access to changing services via other tools except registry
@@ -472,6 +442,16 @@ Open a command prompt with administrator privileges and run this command:
 ```bat
 ipconfig /flushdns
 ```
+
+To open a command prompt as administrator, do the following:
+
+- **Windows XP**: Start → Run → `cmd`
+- **Windows Vista, 7**: Start Button → type `cmd` → right-click Command Prompt →
+  "Run as Administrator"
+- **Windows 8**: Start → Swipe Up → All Apps → Windows System → right-click
+  Command Prompt → "Run as Administrator"
+- **Windows 10, 11**: Start Button → type `cmd` → right-click Command Prompt → "Run
+  as Administrator"
 
 ### Linux
 
