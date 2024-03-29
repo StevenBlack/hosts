@@ -1436,8 +1436,10 @@ def move_hosts_file_into_place(final_file):
         print(
             f"Replacing {target_file} requires root privileges. You might need to enter your password."
         )
+        cmds = [f'"cp {filename} {target_file}"'] if platform.system() == "Windows" else ["cp", filename, target_file]
+
         try:
-            subprocess.run(SUDO + ["cp", filename, target_file], check=True)
+            subprocess.run(SUDO + cmds, check=True)
             return True
         except subprocess.CalledProcessError:
             print_failure(f"Replacing {target_file} failed.")
@@ -1459,12 +1461,9 @@ def flush_dns_cache():
     if platform.system() == "Darwin":
         if subprocess.call(SUDO + ["killall", "-HUP", "mDNSResponder"]):
             print_failure("Flushing the DNS cache failed.")
-    elif os.name == "nt":
-        print("Automatically flushing the DNS cache is not yet supported.")
-        print(
-            "Please copy and paste the command 'ipconfig /flushdns' in "
-            "administrator command prompt after running this script."
-        )
+    elif platform.system() == "Windows":
+        if subprocess.call(SUDO + ['"ipconfig /flushdns"']):
+            print_failure("Flushing the DNS cache failed.")
     else:
         nscd_prefixes = ["/etc", "/etc/rc.d"]
         nscd_msg = "Flushing the DNS cache by restarting nscd {result}"
