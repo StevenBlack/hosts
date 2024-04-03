@@ -10,15 +10,15 @@ sources can be found in the `hosts/data/` directory.
 
 ![Logo](https://raw.githubusercontent.com/StevenBlack/hosts/master/.github/logo.png)
 
-[![latest release](https://img.shields.io/github/release/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/releases)
-[![license](https://img.shields.io/github/license/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/blob/master/license.txt)
-[![repo size](https://img.shields.io/github/repo-size/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts)
-[![contributors](https://img.shields.io/github/contributors/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/graphs/contributors)
+[![latest release](https://img.shields.io/github/release/StevenBlack/hosts)](https://github.com/StevenBlack/hosts/releases)
+[![license](https://img.shields.io/github/license/StevenBlack/hosts)](https://github.com/StevenBlack/hosts/blob/master/license.txt)
+[![repo size](https://img.shields.io/github/repo-size/StevenBlack/hosts)](https://github.com/StevenBlack/hosts)
+[![contributors](https://img.shields.io/github/contributors/StevenBlack/hosts)](https://github.com/StevenBlack/hosts/graphs/contributors)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/StevenBlack/hosts/ci.yml?branch=master)](https://github.com/StevenBlack/hosts/actions/workflows/ci.yml?query=branch%3Amaster)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
-[![commits since last release](https://img.shields.io/github/commits-since/StevenBlack/hosts/latest.svg)](https://github.com/StevenBlack/hosts/commits/master)
-[![last commit](https://img.shields.io/github/last-commit/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/commits/master)
-[![commit activity](https://img.shields.io/github/commit-activity/y/StevenBlack/hosts.svg)](https://github.com/StevenBlack/hosts/commits/master)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000)](https://github.com/python/black)
+[![commits since last release](https://img.shields.io/github/commits-since/StevenBlack/hosts/latest)](https://github.com/StevenBlack/hosts/commits/master)
+[![last commit](https://img.shields.io/github/last-commit/StevenBlack/hosts)](https://github.com/StevenBlack/hosts/commits/master)
+[![commit activity](https://img.shields.io/github/commit-activity/y/StevenBlack/hosts)](https://github.com/StevenBlack/hosts/commits/master)
 
 # @EXTENSIONS_HEADER@
 
