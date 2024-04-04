@@ -6,17 +6,17 @@ title Disable DNS Cache Service
 :: BatchGotAdmin
 :: Check for permissions
 if "%PROCESSOR_ARCHITECTURE%" equ "amd64" (
-    >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
+  >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
 ) else (
-    >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+  >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 )
 
 :: If the error flag set, we do not have admin rights.
 if %ERRORLEVEL% neq 0 (
-    echo Requesting administrative privileges...
-    goto UACPrompt
+  echo Requesting administrative privileges...
+  goto UACPrompt
 ) else (
-    goto gotAdmin
+  goto gotAdmin
 )
 
 :UACPrompt
