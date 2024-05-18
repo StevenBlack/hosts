@@ -7767,9 +7767,9 @@ ff02::3 ip6-allhosts
 0.0.0.0 s0-2mdn-net.l.google.com
 
 # [googleadservices.com]
-#0.0.0.0 googleadservices.com
-#0.0.0.0 pagead2.googleadservices.com
-#0.0.0.0 www.googleadservices.com
+# 0.0.0.0 googleadservices.com
+# 0.0.0.0 pagead2.googleadservices.com
+# 0.0.0.0 www.googleadservices.com
 
 # [googleadsserving.cn]
 0.0.0.0 static.googleadsserving.cn
@@ -18720,14 +18720,14 @@ ff02::3 ip6-allhosts
 
 
 # You are free to copy and distribute this file for non-commercial uses,
-# as long the original URL and attribution is included. 
+# as long the original URL and attribution is included.
 
 # Please forward any additions, corrections or comments by logging an issue at
 # https://github.com/mitchellkrogza/Badd-Boyz-Hosts/issues
 
 # This list of hosts is compiled from server logs on my own servers
 # and forms the basis of the bad referrers domain lists for
-# The Nginx Ultimate Bad Bot Blocker at: 
+# The Nginx Ultimate Bad Bot Blocker at:
 # https://github.com/mitchellkrogza/nginx-ultimate-bad-bot-blocker
 # and the Apache Ultimate Bad Bot Blocker at:
 # https://github.com/mitchellkrogza/apache-ultimate-bad-bot-blocker
@@ -18738,9 +18738,9 @@ ff02::3 ip6-allhosts
 ##### Version Information ##
 
 # Use this file to prevent your computer or server from connecting to selected
-# internet hosts. This is an easy and effective way to protect you from 
-# many types of spyware, adware, malware, click-jacking and porn sites and reduces 
-# bandwidth use. 
+# internet hosts. This is an easy and effective way to protect you from
+# many types of spyware, adware, malware, click-jacking and porn sites and reduces
+# bandwidth use.
 
 # The file should be named "hosts" NOT "hosts.txt"
 
@@ -124078,15 +124078,17 @@ ff02::3 ip6-allhosts
 0.0.0.0 ybinst8.ec.yimg.com
 0.0.0.0 ybinst9.ec.yimg.com
 # [Yandex][AS13238][178.154.131.0 - 178.154.131.255]
-# 0.0.0.0 yastatic.net #[affects Yandex Mail]
+0.0.0.0 yastatic.net #[affects Yandex Mail]
 # [Yandex][AS13238][213.180.193.0 - 213.180.193.255]
 0.0.0.0 an.yandex.ru
 # [Yandex][AS13238][87.250.250.0 - 87.250.250.255]
 0.0.0.0 advertising.yandex.ru
 0.0.0.0 bs.yandex.ru
 0.0.0.0 bs-meta.yandex.ru
-# 0.0.0.0 clck.yandex.ru
-# 0.0.0.0 grade.market.yandex.ru
+0.0.0.0 clck.yandex.ru
+0.0.0.0 grade.market.yandex.ru
+0.0.0.0 yandex.ru
+0.0.0.0 www.yandex.ru
 0.0.0.0 informer.yandex.ru
 0.0.0.0 mc.yandex.ru
 # [Yesup][AS22923][199.21.148.0 - 199.21.151.255]
@@ -124551,6 +124553,8 @@ ff02::3 ip6-allhosts
 # proto.school
 0.0.0.0 countly.proto.school
 
+# Roblox.com
+0.0.0.0 www.roblox.com/user-sponsorship
 # End shady-hosts
 
 # Start someonewhocares.org
@@ -124558,8 +124562,8 @@ ff02::3 ip6-allhosts
 # This hosts file is brought to you by Dan Pollock and can be found at
 # http://someonewhocares.org/hosts/zero/
 # You are free to copy and distribute this file for non-commercial uses,
-# as long the original URL and attribution is included. 
-# 
+# as long the original URL and attribution is included.
+#
 # See below for acknowledgements.
 
 # Please forward any additions, corrections or comments by email to
@@ -124568,17 +124572,17 @@ ff02::3 ip6-allhosts
 # Last updated: Fri, 10 May 2024 at 17:25:28 GMT
 
 # Use this file to prevent your computer from connecting to selected
-# internet hosts. This is an easy and effective way to protect you from 
-# many types of spyware, reduces bandwidth use, blocks certain pop-up 
+# internet hosts. This is an easy and effective way to protect you from
+# many types of spyware, reduces bandwidth use, blocks certain pop-up
 # traps, prevents user tracking by way of "web bugs" embedded in spam,
 # provides partial protection to IE from certain web-based exploits and
-# blocks most advertising you would otherwise be subjected to on the 
-# internet. 
+# blocks most advertising you would otherwise be subjected to on the
+# internet.
 
-# There is a version of this file that uses 127.0.0.1 instead of 0.0.0.0 
+# There is a version of this file that uses 127.0.0.1 instead of 0.0.0.0
 # available at http://someonewhocares.org/hosts/.
 # On some machines the zero version may run minutely faster, however it
-# may not be compatible with all systems. 
+# may not be compatible with all systems.
 
 # This file must be saved as a text file with no extension. (This means
 # that the file name should be exactly as below, without a ".txt" appended.)
@@ -124605,7 +124609,7 @@ ff02::3 ip6-allhosts
 # On a Netware system, the location is System\etc\hosts"
 # For Macintosh (pre OS X) place it in the Mac System Folder or Preferences
 #    folder and reboot. (something like HD:System Folder:Preferences:Hosts)
-#    Alternatively you can save it elsewhere on your machine, then go to the 
+#    Alternatively you can save it elsewhere on your machine, then go to the
 #    TCP/IP control panel and click on "Select hosts file" to read it in.
 #    ------------------
 #    | As well, note that the format is different on old macs, so
@@ -124823,12 +124827,12 @@ ff02::3 ip6-allhosts
 #</shortcut-examples>
 
 #<hijack-sites>
-# The sites ads234.com and ads345.com -- These sites hijack internet explorer 
-# and redirect all requests through their servers. You may need to use spyware 
-# removal programs such as SpyBotS&amp;D, AdAware or HijackThis to remove this 
-# nasty parasite. It's possible that blocking these sites using a hosts file 
+# The sites ads234.com and ads345.com -- These sites hijack internet explorer
+# and redirect all requests through their servers. You may need to use spyware
+# removal programs such as SpyBotS&amp;D, AdAware or HijackThis to remove this
+# nasty parasite. It's possible that blocking these sites using a hosts file
 # may not work, in which case you should remove the following lines from this
-# file and try the tools listed above immediately. Don't forget to reboot 
+# file and try the tools listed above immediately. Don't forget to reboot
 # after a scan.
 0.0.0.0 ads234.com
 0.0.0.0 ads345.com
@@ -124842,9 +124846,9 @@ ff02::3 ip6-allhosts
 # By entering domains here, it will prevent certain companies from
 # gathering information on your surfing habits. These servers do not
 # necessarily serve ads, instead some are used by certain products to
-# "phone home". Others use web cookies to gather statistics on surfing 
-# habits. Among other uses, this is a common tactic by spammers, to 
-# let them know that you have read your mail. 
+# "phone home". Others use web cookies to gather statistics on surfing
+# habits. Among other uses, this is a common tactic by spammers, to
+# let them know that you have read your mail.
 # Uncomment (remove the #) the lines that you wish to block, as some
 # may provide you with services you like.
 
@@ -124852,23 +124856,23 @@ ff02::3 ip6-allhosts
 #0.0.0.0 auto.search.msn.com  # Microsoft uses this server to redirect
                                 # mistyped URLs to search engines. They
                                 # log all such errors.
-#0.0.0.0 sitefinder.verisign.com	# Verisign has joined the game 
+#0.0.0.0 sitefinder.verisign.com	# Verisign has joined the game
 #0.0.0.0 sitefinder-idn.verisign.com	# of trying to hijack mistyped
-					# URLs to their site. 
+					# URLs to their site.
 					# May break iOS Game Center.
 
-#0.0.0.0 s0.2mdn.net		# This may interfere with some streaming 
+#0.0.0.0 s0.2mdn.net		# This may interfere with some streaming
 				# video on sites such as cbc.ca
 #0.0.0.0 ad.doubleclick.net   # This may interefere with www.sears.com
-				# and potentially other sites. 
+				# and potentially other sites.
 0.0.0.0 media.fastclick.net # Likewise, this may interfere with some
 #0.0.0.0 ebay.doubleclick.net		# may interfere with ebay
 #0.0.0.0 google-analytics.com			# breaks some sites
 #0.0.0.0 ssl.google-analytics.com
 #0.0.0.0 www.google-analytics.l.google.com
-#0.0.0.0 stat.livejournal.com		# There are reports that this may mess 
+#0.0.0.0 stat.livejournal.com		# There are reports that this may mess
  					# up CSS on livejournal
-#0.0.0.0 stats.surfaid.ihost.com	# This has been known cause 
+#0.0.0.0 stats.surfaid.ihost.com	# This has been known cause
 					# problems with NPR.org
 #0.0.0.0 www.google-analytics.com		# breaks some sites
 #0.0.0.0 ads.imeem.com		# Seems to interfere with the functioning of imeem.com
@@ -124906,7 +124910,7 @@ ff02::3 ip6-allhosts
 0.0.0.0 adelogs.adobe.com #See http://www.theregister.co.uk/2014/10/07/adobe_digital_editions_4_caught_snooping_into_ebook_collections_of_users/
 0.0.0.0 ademails.com
 0.0.0.0 adlog.com.com # Used by Ziff Davis to serve
-  # ads and track users across 
+  # ads and track users across
   # the com.com family of sites
 0.0.0.0 admin.iovation.com
 0.0.0.0 adpatrof.com
@@ -134400,7 +134404,7 @@ ff02::3 ip6-allhosts
 
 #<ecard-scam-sites>
 
-# malicious e-card -- these sites send out mass quantities of spam 
+# malicious e-card -- these sites send out mass quantities of spam
 	# and some distribute adware and spyware
 0.0.0.0 123greetings.com # contains one link to distributor of adware or spyware
 0.0.0.0 2000greetings.com
@@ -134434,7 +134438,7 @@ ff02::3 ip6-allhosts
 
 #<wiki-spam-sites>
 
-# message board and wiki spam -- these sites are linked in 
+# message board and wiki spam -- these sites are linked in
 	# message board spam and are unlikely to be real sites
 0.0.0.0 21jewelry.com
 0.0.0.0 24x7.soliday.org
@@ -134935,7 +134939,7 @@ ff02::3 ip6-allhosts
 
 #<Windows10>
 
-# Windows 10 reporting domains. 
+# Windows 10 reporting domains.
 0.0.0.0 adnexus.net
 0.0.0.0 az361816.vo.msecnd.net
 0.0.0.0 az512334.vo.msecnd.net
@@ -134956,31 +134960,31 @@ ff02::3 ip6-allhosts
 # I'd like to thank the following people for submitting sites, and
 # helping promote the site.
 
-# Bill Allison, Harj Basi, Lance Russhing, Marshall Drew-Brook, 
+# Bill Allison, Harj Basi, Lance Russhing, Marshall Drew-Brook,
 #  Leigh Brasington, Scott Terbush, Cary Newfeldt, Kaye, Jeff
 #  Scrivener, Mark Hudson, Matt Bells, T. Kim Nguyen, Lino Demasi,
 #  Marcelo Volmaro, Troy Martin, Donald Kerns, B.Patten-Walsh,
 #  bobeangi, Chris Maniscalco, George Gilbert, Kim Nilsson, zeromus,
-#  Robert Petty, Rob Morrison, Clive Smith, Cecilia Varni, OleKing 
+#  Robert Petty, Rob Morrison, Clive Smith, Cecilia Varni, OleKing
 #  Cole, William Jones, Brian Small, Raj Tailor, Richard Heritage,
-#  Alan Harrison, Ordorica, Crimson, Joseph Cianci, sirapacz, 
-#  Dvixen, Matthew Craig, Tobias Hessem, Kevin F. Quinn, Thomas 
-#  Corthals, Chris McBee, Jaime A. Guerra, Anders Josefson, 
+#  Alan Harrison, Ordorica, Crimson, Joseph Cianci, sirapacz,
+#  Dvixen, Matthew Craig, Tobias Hessem, Kevin F. Quinn, Thomas
+#  Corthals, Chris McBee, Jaime A. Guerra, Anders Josefson,
 #  Simon Manderson, Spectre Ghost, Darren Tay, Dallas Eschenauer, Cecilia
-#  Varni, Adam P. Cole, George Lefkaditis, grzesiek, Adam Howard, Mike 
-#  Bizon, Samuel P. Mallare, Leinweber, Walter Novak, Stephen Genus, 
+#  Varni, Adam P. Cole, George Lefkaditis, grzesiek, Adam Howard, Mike
+#  Bizon, Samuel P. Mallare, Leinweber, Walter Novak, Stephen Genus,
 #  Zube, Johny Provoost, Peter Grafton, Johann Burkard, Magus, Ron Karner,
-#  Fredrik Dahlman, Michele Cybula, Bernard Conlu, Riku B, Twillers, 
+#  Fredrik Dahlman, Michele Cybula, Bernard Conlu, Riku B, Twillers,
 #  Shaika-Dzari, Vartkes Goetcherian, Michael McCown, Garth, Richard Nairn,
 #  Exzar Reed, Robert Gauthier, Floyd Wilder, Mark Drissel, Kenny Lyons,
 #  Paul Dunne, Tirath Pannu, Mike Lambert, Dan Kolcun, Daniel Aleksandersen,
-#  Chris Heegard, Miles Golding, Daniel Bisca, Frederic Begou, Charles 
-#  Fordyce, Mark Lehrer, Sebastien Nadeau-Jean, Russell Gordon, Alexey 
+#  Chris Heegard, Miles Golding, Daniel Bisca, Frederic Begou, Charles
+#  Fordyce, Mark Lehrer, Sebastien Nadeau-Jean, Russell Gordon, Alexey
 #  Gopachenko, Stirling Pearson, Alan Segal, Bobin Joseph, Chris Wall, Sean
 #  Flesch, Brent Getz, Jerry Cain, Brian Micek, Lee Hancock, Kay Thiele,
-#  Kwan Ting Chan, Wladimir Labeikovsky, Lino Demasi, Bowie Bailey, Andreas 
+#  Kwan Ting Chan, Wladimir Labeikovsky, Lino Demasi, Bowie Bailey, Andreas
 #  Marschall, Michael Tompkins, Michael O'Donnell, Jos&eacute; Lucas Teixeira
-#  de Oliveira, M. &Ouml;mer G&ouml;lgeli, and Anthony Gelibert for helping to build 
+#  de Oliveira, M. &Ouml;mer G&ouml;lgeli, and Anthony Gelibert for helping to build
 #  the hosts file.
 # Russell O'Connor for OS/2 information
 # kwadronaut for Windows 7 and Vista information
