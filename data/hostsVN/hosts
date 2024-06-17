@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 12 Jun 2024 22:46 UTC+7
-# Version: 2406122246
-# Blocked: 1,850 domains
+# Last modified: 15 Jun 2024 21:16 UTC+7
+# Version: 2406152116
+# Blocked: 1,860 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -1519,6 +1519,14 @@
 #[adlinknetwork.vn]
 0.0.0.0 service.adlinknetwork.vn
 0.0.0.0 syndication.adlinknetwork.vn
+#[vdacdn2.viettel.vn]
+0.0.0.0 vdacdn1.viettel.vn
+0.0.0.0 vdacdn2.viettel.vn
+#[vda.viettel.vn]
+0.0.0.0 cdn1.vda.viettel.vn
+0.0.0.0 delivery.vda.viettel.vn
+0.0.0.0 log.vda.viettel.vn
+0.0.0.0 vda.viettel.vn
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 ad-admin.vnay.vn
@@ -1556,9 +1564,11 @@
 0.0.0.0 ads.baoangiang.com.vn
 0.0.0.0 ads.baobinhduong.vn
 0.0.0.0 ads.baobinhthuan.com.vn
+0.0.0.0 ads.baocamau.vn
 0.0.0.0 ads.baocantho.com.vn
 0.0.0.0 ads.baodatviet.vn
 0.0.0.0 ads.baohaiduong.vn
+0.0.0.0 ads.baolongan.vn
 0.0.0.0 ads.baotainguyenmoitruong.vn
 0.0.0.0 ads.bkitsoftware.com
 0.0.0.0 ads.businessstyle.vn
@@ -1582,6 +1592,7 @@
 0.0.0.0 ads.markettimes.vn
 0.0.0.0 ads.marry.vn
 0.0.0.0 ads.nghenhinvietnam.vn
+0.0.0.0 ads.nguoiduatin.vn
 0.0.0.0 ads.nhadatmoi.net
 0.0.0.0 ads.phunuonline.com.vn
 0.0.0.0 ads.phunusuckhoe.vn
@@ -1998,6 +2009,7 @@
 0.0.0.0 track.popsww.com
 0.0.0.0 track.sendo.vn
 0.0.0.0 track.vio.edu.vn
+0.0.0.0 track.winigroup.vn
 0.0.0.0 tracker.anime47.com
 0.0.0.0 tracker.edupia.vn
 0.0.0.0 tracker.fado.vn
