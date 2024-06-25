@@ -434,7 +434,7 @@ like this:
 
 ```nix
 {
-  inputs.hosts.url = github:StevenBlack/hosts;
+  inputs.hosts.url = "github:StevenBlack/hosts";
   outputs = { self, nixpkgs, hosts }: {
     nixosConfigurations.my-hostname = {
       system = "<architecture>";
