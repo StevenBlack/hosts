@@ -105,14 +105,7 @@ def main():
                 )
                 line = line.replace("@TOCROWS@", toc_rows)
                 line = line.replace("@SOURCEROWS@", source_rows)
-                # insert the size graph on the home readme only, for now.
-                if key == "base":
-                    line = line.replace(
-                        "@SIZEHISTORY@", size_history_graph
-                    )
-                else:
-                    line = line.replace("@SIZEHISTORY@", "")
-
+                line = line.replace("@SIZEHISTORY@", size_history_graph)
                 out.write(line)
 
 
