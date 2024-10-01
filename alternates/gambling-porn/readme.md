@@ -35,7 +35,7 @@ files are provided.
   [raw hosts file Unified hosts file with gambling, porn extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-porn/hosts)
   containing 210,852 entries.
 
-![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts_file_size_history.png)
+![Size history](./stats.png)
 
 ## List of all hosts file variants
 

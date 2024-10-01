@@ -35,7 +35,7 @@ files are provided.
   [raw hosts file Limited to the extensions: gambling](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-only/hosts)
   containing 8,463 entries.
 
-![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts_file_size_history.png)
+![Size history](./stats.png)
 
 ## List of all hosts file variants
 

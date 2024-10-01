@@ -35,7 +35,7 @@ files are provided.
   [raw hosts file Unified hosts file with fakenews, social extensions](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-social/hosts)
   containing 121,431 entries.
 
-![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts_file_size_history.png)
+![Size history](./stats.png)
 
 ## List of all hosts file variants
 

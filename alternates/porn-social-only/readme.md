@@ -35,7 +35,7 @@ files are provided.
   [raw hosts file Limited to the extensions: porn, social](https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-social-only/hosts)
   containing 90,277 entries.
 
-![Size history](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts_file_size_history.png)
+![Size history](./stats.png)
 
 ## List of all hosts file variants
 
