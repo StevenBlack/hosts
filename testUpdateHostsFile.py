@@ -975,7 +975,7 @@ class TestNormalizeRule(BaseStdout):
             "foo.bar.edu",
             "www.example-foo.bar.edu",
             "www.example-3045.foobar.com",
-            "www.example.xn--p1ai",
+            "www.example.xn--fr3nch",
         ):
             expected = (rule, rule + "\n")
 
