@@ -259,6 +259,10 @@ def main():
     source_data_filename = settings["sourcedatafilename"]
     no_unified_hosts = settings["nounifiedhosts"]
 
+    settings["targetip"] = (
+        None if settings["targetip"] == "None" else settings["targetip"]
+    )
+
     update_sources = prompt_for_update(freshen=settings["freshen"], update_auto=auto)
     if update_sources:
         update_all_sources(source_data_filename, settings["hostfilename"])
@@ -853,11 +857,15 @@ def compress_file(input_file, target_ip, output_file):
     ----------
     input_file : file
         The file object that contains the hostnames that we are reducing.
-    target_ip : str
+    target_ip : str | None
         The target IP address.
     output_file : file
         The file object that will contain the reduced hostnames.
     """
+
+    if target_ip is None:
+        print("Compress file is not supported with targetip to None")
+        return
 
     input_file.seek(0)  # reset file pointer
     write_data(output_file, "\n")
@@ -893,11 +901,15 @@ def minimise_file(input_file, target_ip, output_file):
     ----------
     input_file : file
         The file object that contains the hostnames that we are reducing.
-    target_ip : str
+    target_ip : str | None
         The target IP address.
     output_file : file
         The file object that will contain the reduced hostnames.
     """
+
+    if target_ip is None:
+        print("Minimise file is not supported with targetip to None")
+        return
 
     input_file.seek(0)  # reset file pointer
     write_data(output_file, "\n")
@@ -1014,7 +1026,7 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
     ----------
     rule : str
         The rule whose spelling and spacing we are standardizing.
-    target_ip : str
+    target_ip : str | None
         The target IP address for the rule.
     keep_domain_comments : bool
         Whether or not to keep comments regarding these domains in
@@ -1048,7 +1060,10 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
             and spacing reformatted.
         """
 
-        rule = "%s %s" % (target_ip, extracted_hostname)
+        if target_ip is None:
+            rule = extracted_hostname
+        else:
+            rule = "%s %s" % (target_ip, extracted_hostname)
 
         if keep_domain_comments and extracted_suffix:
             if not extracted_suffix.strip().startswith("#"):

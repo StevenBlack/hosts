@@ -968,6 +968,42 @@ class TestNormalizeRule(BaseStdout):
 
                 sys.stdout = StringIO()
 
+    def test_no_comment_alt_raw(self):
+        for rule in (
+            "twitter.com",
+            "google.com",
+            "foo.bar.edu",
+            "www.example-foo.bar.edu",
+            "www.example-3045.foobar.com",
+            "www.example.xn--p1ai",
+        ):
+            expected = (rule, rule + "\n")
+
+            actual = normalize_rule(rule, target_ip=None, keep_domain_comments=False)
+            self.assertEqual(actual, expected)
+
+            # Nothing gets printed if there's a match.
+            output = sys.stdout.getvalue()
+            self.assertEqual(output, "")
+
+            sys.stdout = StringIO()
+
+    def test_with_comments_alt_raw(self):
+        for comment in ("foo", "bar", "baz"):
+            rule = "1.google.co.uk " + comment
+            expected = (
+                "1.google.co.uk",
+                ("1.google.co.uk # " + comment + "\n"),
+            )
+
+            actual = normalize_rule(rule, target_ip=None, keep_domain_comments=True)
+            self.assertEqual(actual, expected)
+
+            # Nothing gets printed if there's a match.
+            output = sys.stdout.getvalue()
+            self.assertEqual(output, "")
+
+            sys.stdout = StringIO()
 
 class TestStripRule(Base):
     def test_strip_exactly_two(self):
