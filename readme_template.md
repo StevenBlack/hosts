@@ -49,7 +49,6 @@ with GitHub download links.
 
 | Host file recipe | Readme | Raw hosts | Unique domains | Non GitHub mirror |
 | ---------------- | :----: | :-------: | :------------: | :---------------: |
-
 @TOCROWS@
 
 **Expectation**: These unified hosts files should serve all devices, regardless
@@ -62,7 +61,6 @@ included:
 
 | Host file source | Home page | Raw hosts | License | Issues | Description |
 | ---------------- | :-------: | :-------: | :-----: | :----: | ----------- |
-
 @SOURCEROWS@
 
 ## Extensions
@@ -457,7 +455,7 @@ the
 [the comments within the `cmd` file](https://github.com/StevenBlack/hosts/blob/master/disable-dnscache-service-win.bat)
 for more details.
 
-Disabling the DNS Cache Service can cause issues with services and applications like _WSL_ and it's possible to compress the hosts file and negate the need to disable the DNS caching service. You can try the _C++_ Windows command line tool at [Hosts Compress - Windows](https://github.com/Lateralus138/hosts-compress-windows) (the recommended method) or the _PowerShell_ compression script and check out the guide located at the [Hosts Compression Scripts](https://github.com/Lateralus138/hosts-compression-scripts) repository.
+Disabling the DNS Cache Service can cause issues with services and applications like *WSL* and it's possible to compress the hosts file and negate the need to disable the DNS caching service. You can try the *C++* Windows command line tool at [Hosts Compress - Windows](https://github.com/Lateralus138/hosts-compress-windows) (the recommended method) or the *PowerShell* compression script and check out the guide located at the [Hosts Compression Scripts](https://github.com/Lateralus138/hosts-compression-scripts) repository.
 
 ## Reloading hosts file
 
@@ -618,7 +616,7 @@ devices under a variety of operating systems.
   This is a cross-platform command line utility to help install/update hosts
   files found at this repository.
 - [Hosts Compression Scripts](https://github.com/Lateralus138/hosts-compression-scripts) These are various scripts to help compress hosts files (by the author of BlackHosts).
-- [Hosts Compress - Windows](https://github.com/Lateralus138/hosts-compress-windows) This is a _C++_ Windows command line tool to help compress hosts files (by the author of BlackHosts and Hosts Compression Scripts). This is highly recommended over the scripts as it is **exponentially faster**.
+- [Hosts Compress - Windows](https://github.com/Lateralus138/hosts-compress-windows) This is a *C++* Windows command line tool to help compress hosts files (by the author of BlackHosts and Hosts Compression Scripts). This is highly recommended over the scripts as it is **exponentially faster**.
 - [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Combining-Blocklists)
   provides a tool to build block lists from local and remote lists in common
   formats.
