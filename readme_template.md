@@ -196,7 +196,9 @@ hosts files to include in the amalgamation. Example: `--extensions porn` or
 active when `--replace` is also active.
 
 `--ip nnn.nnn.nnn.nnn`, or `-i nnn.nnn.nnn.nnn`: the IP address to use as the
-target. Default is `0.0.0.0`.
+target. Default is `0.0.0.0`. Alternatively, you can pass `none` or any string
+that doesn't start with a number to remove the target IP from the hosts file.
+This is useful when you want to omit a target IP altogether.
 
 `--keepdomaincomments`, or `-k`: `true` (default) or `false`, keep the comments
 that appear on the same line as domains. The default is `true`.
