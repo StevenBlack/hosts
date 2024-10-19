@@ -258,9 +258,9 @@ def main():
     exclusion_regexes = settings["exclusionregexes"]
     source_data_filename = settings["sourcedatafilename"]
     no_unified_hosts = settings["nounifiedhosts"]
-    
+
     settings["targetip"] = (
-        None if not str(settings["targetip"][0]).isnumeric() else settings["targetip"]
+        None if str(settings["targetip"]).lower() == "none" else settings["targetip"]
     )
 
     update_sources = prompt_for_update(freshen=settings["freshen"], update_auto=auto)
