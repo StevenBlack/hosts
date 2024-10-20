@@ -236,6 +236,7 @@ def main():
     options = vars(parser.parse_args())
 
     options["outputpath"] = path_join_robust(BASEDIR_PATH, options["outputsubfolder"])
+    options["outputfilename"] = HOSTS_FILENAME
     options["freshen"] = not options["noupdate"]
 
     settings = get_defaults()
@@ -264,15 +265,10 @@ def main():
     settings["targetip"] = (
         None if str(settings["targetip"]).lower() == "none" else settings["targetip"]
     )
-    settings["skipstatichosts"] = (
-        settings["targetip"] is None or settings["skipstatichosts"]
-    )
-    settings["keepdomaincomments"] = (
-        settings["targetip"] is not None and settings["keepdomaincomments"]
-    )
-    options["outputfilename"] = (
-        HOSTS_FILENAME if settings["targetip"] is not None else DOMAINS_FILENAME
-    )
+    if settings["targetip"] is None:
+        settings["skipstatichosts"] = True
+        settings["keepdomaincomments"] = False
+        options["outputfilename"] = DOMAINS_FILENAME
 
     update_sources = prompt_for_update(freshen=settings["freshen"], update_auto=auto)
     if update_sources:
@@ -318,6 +314,7 @@ def main():
         minimise_file(temp_file, settings["targetip"], final_file)
     else:
         shutil.copy(temp_file.name, final_file.name)
+        temp_file.close()
 
     number_of_rules = settings["numberofrules"]
     output_subfolder = settings["outputsubfolder"]
