@@ -1005,6 +1005,7 @@ class TestNormalizeRule(BaseStdout):
 
             sys.stdout = StringIO()
 
+
 class TestStripRule(Base):
     def test_strip_exactly_two(self):
         for line in [

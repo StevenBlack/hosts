@@ -51,6 +51,8 @@ else:
 
 # Project Settings
 BASEDIR_PATH = os.path.dirname(os.path.realpath(__file__))
+HOSTS_FILENAME = "hosts"
+DOMAINS_FILENAME = "domains.txt"
 
 
 def get_defaults():
@@ -262,6 +264,15 @@ def main():
     settings["targetip"] = (
         None if str(settings["targetip"]).lower() == "none" else settings["targetip"]
     )
+    settings["skipstatichosts"] = (
+        settings["targetip"] is None or settings["skipstatichosts"]
+    )
+    settings["keepdomaincomments"] = (
+        settings["targetip"] is not None and settings["keepdomaincomments"]
+    )
+    options["outputfilename"] = (
+        HOSTS_FILENAME if settings["targetip"] is not None else DOMAINS_FILENAME
+    )
 
     update_sources = prompt_for_update(freshen=settings["freshen"], update_auto=auto)
     if update_sources:
@@ -291,19 +302,22 @@ def main():
     merge_file = create_initial_file(
         nounifiedhosts=no_unified_hosts,
     )
-    remove_old_hosts_file(settings["outputpath"], "hosts", settings["backup"])
+    remove_old_hosts_file(
+        settings["outputpath"], options["outputfilename"], settings["backup"]
+    )
+
+    final_file = open(
+        path_join_robust(settings["outputpath"], options["outputfilename"]), "w+b"
+    )
+    temp_file = tempfile.NamedTemporaryFile()
+    remove_dups_and_excl(merge_file, exclusion_regexes, temp_file)
+
     if settings["compress"]:
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
-        compressed_file = tempfile.NamedTemporaryFile()
-        remove_dups_and_excl(merge_file, exclusion_regexes, compressed_file)
-        compress_file(compressed_file, settings["targetip"], final_file)
+        compress_file(temp_file, settings["targetip"], final_file)
     elif settings["minimise"]:
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
-        minimised_file = tempfile.NamedTemporaryFile()
-        remove_dups_and_excl(merge_file, exclusion_regexes, minimised_file)
-        minimise_file(minimised_file, settings["targetip"], final_file)
+        minimise_file(temp_file, settings["targetip"], final_file)
     else:
-        final_file = remove_dups_and_excl(merge_file, exclusion_regexes)
+        shutil.copy(temp_file.name, final_file.name)
 
     number_of_rules = settings["numberofrules"]
     output_subfolder = settings["outputsubfolder"]
@@ -907,10 +921,6 @@ def minimise_file(input_file, target_ip, output_file):
         The file object that will contain the reduced hostnames.
     """
 
-    if target_ip is None:
-        print("Minimise file is not supported with targetip to None")
-        return
-
     input_file.seek(0)  # reset file pointer
     write_data(output_file, "\n")
 
@@ -918,8 +928,10 @@ def minimise_file(input_file, target_ip, output_file):
     for line in input_file.readlines():
         line = line.decode("UTF-8")
 
-        if line.startswith(target_ip):
-            lines.append(line[: line.find("#")].strip() + "\n")
+        if target_ip is None or line.startswith(target_ip):
+            minimised_line = line[: line.find("#")].strip() + "\n"
+            if minimised_line != "\n":
+                lines.append(minimised_line)
 
     for line in lines:
         write_data(output_file, line)
@@ -927,7 +939,7 @@ def minimise_file(input_file, target_ip, output_file):
     input_file.close()
 
 
-def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
+def remove_dups_and_excl(merge_file, exclusion_regexes, output_file):
     """
     Remove duplicates and remove hosts that we are excluding.
 
@@ -941,8 +953,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
     exclusion_regexes : list
         The list of regex patterns used to exclude domains.
     output_file : file
-        The file object in which the result is written. If None, the file
-        'settings["outputpath"]' will be created.
+        The file object in which the result is written.
     """
 
     number_of_rules = settings["numberofrules"]
@@ -954,14 +965,6 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
                 line = line.strip(" \t\n\r")
                 if line and not line.startswith("#"):
                     settings["exclusions"].append(line)
-
-    if not os.path.exists(settings["outputpath"]):
-        os.makedirs(settings["outputpath"])
-
-    if output_file is None:
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
-    else:
-        final_file = output_file
 
     merge_file.seek(0)  # reset file pointer
     hostnames = {"localhost", "localhost.localdomain", "local", "broadcasthost"}
@@ -981,7 +984,7 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
 
         # Testing the first character doesn't require startswith
         if line[0] == "#" or re.match(r"^\s*$", line[0]):
-            write_data(final_file, line)
+            write_data(output_file, line)
             continue
         if "::1" in line:
             continue
@@ -1007,15 +1010,14 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
                 break
 
         if normalized_rule and (hostname not in hostnames) and write_line:
-            write_data(final_file, normalized_rule)
+            write_data(output_file, normalized_rule)
             hostnames.add(hostname)
             number_of_rules += 1
 
     settings["numberofrules"] = number_of_rules
     merge_file.close()
 
-    if output_file is None:
-        return final_file
+    return output_file
 
 
 def normalize_rule(rule, target_ip, keep_domain_comments):
