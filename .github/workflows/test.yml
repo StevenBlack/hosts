@@ -1,0 +1,12 @@
+name: Test
+
+jobs:
+  sync-and-process:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout your forked repo
+      - name: Process Hosts File
+        run: |
+          FILE_PATH="alternates/fakenews-gambling-porn-social/hosts"
+          echo "$FILE_PATH"
