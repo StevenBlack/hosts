@@ -34,6 +34,15 @@ jobs:
               in_reddit_block { print "#" $0; next }
               { print $0 }
             ' "$FILE_PATH" > "$FILE_PATH.tmp" && mv "$FILE_PATH.tmp" "$FILE_PATH"
+
+          # Use awk to comment out the Twitter block
+            awk '
+              BEGIN { in_twitter_block = 0 }
+              /^# Twitter$/ { in_twitter_block = 1; print "#" $0; next }
+              in_twitter_block && $0 == "" { in_twitter_block = 0; print "#" $0; next }
+              in_twitter_block { print "#" $0; next }
+              { print $0 }
+            ' "$FILE_PATH" > "$FILE_PATH.tmp" && mv "$FILE_PATH.tmp" "$FILE_PATH"
           else
             echo "File not found: $FILE_PATH"
             exit 1
