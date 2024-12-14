@@ -25,7 +25,7 @@ jobs:
       - name: Process Hosts File
         run: |
           FILE_PATH="alternates/fakenews-gambling-porn-social/hosts"
-          RESULT_FILE_PATH="alternates/fakenews-gambling-porn-social/hosts_result"
+          CUSTOM_FILE_PATH="alternates/fakenews-gambling-porn-social/hosts_custom"
           if [ -f "$FILE_PATH" ]; then
             # Use awk to comment out the Reddit block
             awk '
@@ -34,7 +34,7 @@ jobs:
               in_reddit_block && $0 == "" { in_reddit_block = 0; print "#" $0; next }
               in_reddit_block { print "#" $0; next }
               { print $0 }
-            ' "$FILE_PATH" > "$FILE_PATH.tmp" && mv "$FILE_PATH.tmp" "$RESULT_FILE_PATH"
+            ' "$FILE_PATH" > "$FILE_PATH.tmp" && mv "$FILE_PATH.tmp" "$CUSTOM_FILE_PATH"
 
           # Use awk to comment out the Twitter block
             awk '
@@ -43,7 +43,7 @@ jobs:
               in_twitter_block && $0 == "" { in_twitter_block = 0; print "#" $0; next }
               in_twitter_block { print "#" $0; next }
               { print $0 }
-            ' "$FILE_PATH" > "$FILE_PATH.tmp" && mv "$FILE_PATH.tmp" "$RESULT_FILE_PATH"
+            ' "$CUSTOM_FILE_PATH" > "$CUSTOM_FILE_PATH.tmp" && mv "$CUSTOM_FILE_PATH.tmp" "$CUSTOM_FILE_PATH"
           else
             echo "File not found: $FILE_PATH"
             exit 1
