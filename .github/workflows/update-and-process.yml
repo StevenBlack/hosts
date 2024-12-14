@@ -1,0 +1,49 @@
+name: Update and Process Hosts File
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Runs weekly on Sunday at midnight
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  sync-and-process:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout your forked repo
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Add the upstream repository
+      - name: Set Upstream
+        run: |
+          git remote add upstream https://github.com/StevenBlack/hosts.git
+          git fetch upstream
+          git merge upstream/master --no-edit || true
+
+      # Step 3: Process the specified file
+      - name: Process Hosts File
+        run: |
+          FILE_PATH="alternates/fakenews-gambling-porn-social/hosts"
+          if [ -f "$FILE_PATH" ]; then
+            # Use awk to comment out the Reddit block
+            awk '
+              BEGIN { in_reddit_block = 0 }
+              /^# Reddit$/ { in_reddit_block = 1; print "#" $0; next }
+              in_reddit_block && $0 == "" { in_reddit_block = 0; print "#" $0; next }
+              in_reddit_block { print "#" $0; next }
+              { print $0 }
+            ' "$FILE_PATH" > "$FILE_PATH.tmp" && mv "$FILE_PATH.tmp" "$FILE_PATH"
+          else
+            echo "File not found: $FILE_PATH"
+            exit 1
+          fi
+
+      # Step 4: Commit changes
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$FILE_PATH"
+          git commit -m "Automated update and processing of hosts file" || echo "No changes to commit"
+          git push origin HEAD
