@@ -19,7 +19,7 @@ jobs:
         run: |
           git remote add upstream https://github.com/StevenBlack/hosts.git
           git fetch upstream
-          git merge upstream/master --no-edit || true
+          git merge upstream/master --no-edit --allow-unrelated-histories || true
 
       # Step 3: Process the specified file
       - name: Process Hosts File
