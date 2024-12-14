@@ -1,5 +1,9 @@
 name: Test
 
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+
 jobs:
   sync-and-process:
     runs-on: ubuntu-latest
