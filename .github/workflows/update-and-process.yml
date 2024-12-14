@@ -2,7 +2,7 @@ name: Update and Process Hosts File
 
 on:
   schedule:
-    - cron: '0 0 * * 0' # Runs weekly on Sunday at midnight
+    - cron: '0 9 * * *' # Runs daily at 9 AM UTC (4/5 AM ET)
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
