@@ -846,6 +846,7 @@ class TestNormalizeRule(BaseStdout):
             "0.3.4.5 example.org/hello/world",
             "0.0.0.0 https",
             "0.0.0.0 https..",
+            "0.0.0.0 foo.",
         ]:
             self.assertEqual(normalize_rule(rule, **kwargs), (None, None))
 

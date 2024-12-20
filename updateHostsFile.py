@@ -1129,8 +1129,9 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
             is_ip(hostname)
             or re.search(static_ip_regex, hostname)
             or "." not in hostname
-            or "/" in hostname
             or ".." in hostname
+            or "." in hostname[-1]
+            or "/" in hostname
             or ":" in hostname
         ):
             # Example: 0.0.0.0 127.0.0.1
@@ -1138,6 +1139,9 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
             # If the hostname is:
             #   - an IP - or looks like it,
             #   - doesn't contain dots, or
+            #   - contains repeated dots,
+            #   - ends in a dot, or
+            #   - contains a slash, or
             #   - contains a colon,
             # we don't want to normalize it.
             return belch_unwanted(rule)
