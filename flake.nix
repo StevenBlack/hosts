@@ -25,10 +25,10 @@
             enableIPv6 = mkEnableOption "IPv6 rules" // {
               default = config.networking.enableIPv6;
             };
-            blockFakenews = mkEnableOption "Additionally block fakenews hosts.";
-            blockGambling = mkEnableOption "Additionally block gambling hosts.";
-            blockPorn = mkEnableOption "Additionally block porn hosts.";
-            blockSocial = mkEnableOption "Additionally block social hosts.";
+            blockFakenews = mkEnableOption "fakenews hosts entries";
+            blockGambling = mkEnableOption "gambling hosts entries";
+            blockPorn = mkEnableOption "porn hosts entries";
+            blockSocial = mkEnableOption "social hosts entries";
           };
           config = mkIf cfg.enable {
             networking.extraHosts =
