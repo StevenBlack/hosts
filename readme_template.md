@@ -405,6 +405,7 @@ The hosts extensions are also available with the following options:
 ```nix
 {
   networking.stevenBlackHosts = {
+    enableIPv6 = true;
     blockFakenews = true;
     blockGambling = true;
     blockPorn = true;
@@ -412,6 +413,8 @@ The hosts extensions are also available with the following options:
   };
 }
 ```
+
+IPv6 rules are enabled by default when `networking.enableIPv6` is set to `true`.
 
 ## Updating hosts file on Windows
 
