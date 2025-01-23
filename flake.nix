@@ -12,6 +12,7 @@
       nixosModule = { config, ... }:
         with nixpkgs.lib;
         let
+          inherit (nixpkgs) lib;
           cfg = config.networking.stevenBlackHosts;
           alternatesList = (if cfg.blockFakenews then [ "fakenews" ] else []) ++
                            (if cfg.blockGambling then [ "gambling" ] else []) ++
@@ -35,7 +36,8 @@
               let
                 orig = builtins.readFile ("${self}/" + (if alternatesList != [] then alternatesPath else "") + "hosts");
                 ipv6 = builtins.replaceStrings [ "0.0.0.0" ] [ "::" ] orig;
-              in orig + (optionalString cfg.enableIPv6 ("\n" + ipv6));
+              in
+              lib.mkAfter (orig + (lib.optionalString cfg.enableIPv6 ("\n" + ipv6)));
           };
         };
 
