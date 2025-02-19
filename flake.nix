@@ -21,17 +21,21 @@
         in
         {
           options.networking.stevenBlackHosts = {
-            enable = mkEnableOption "Use Steven Black's hosts file as extra hosts.";
-            blockFakenews = mkEnableOption "Additionally block fakenews hosts.";
-            blockGambling = mkEnableOption "Additionally block gambling hosts.";
-            blockPorn = mkEnableOption "Additionally block porn hosts.";
-            blockSocial = mkEnableOption "Additionally block social hosts.";
+            enable = mkEnableOption "Steven Black's hosts file";
+            enableIPv6 = mkEnableOption "IPv6 rules" // {
+              default = config.networking.enableIPv6;
+            };
+            blockFakenews = mkEnableOption "fakenews hosts entries";
+            blockGambling = mkEnableOption "gambling hosts entries";
+            blockPorn = mkEnableOption "porn hosts entries";
+            blockSocial = mkEnableOption "social hosts entries";
           };
           config = mkIf cfg.enable {
             networking.extraHosts =
-              builtins.readFile (
-                "${self}/" + (if alternatesList != [] then alternatesPath else "") + "hosts"
-              );
+              let
+                orig = builtins.readFile ("${self}/" + (if alternatesList != [] then alternatesPath else "") + "hosts");
+                ipv6 = builtins.replaceStrings [ "0.0.0.0" ] [ "::" ] orig;
+              in orig + (optionalString cfg.enableIPv6 ("\n" + ipv6));
           };
         };
 
