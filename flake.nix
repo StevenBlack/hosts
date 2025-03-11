@@ -83,7 +83,7 @@
           dir = ./alternates;
           lists =
             pkgs.lib.trivial.pipe (builtins.readDir ./alternates) [
-              (pkgs.lib.attrsets.filterAttrs (k: v: v == "directory"))
+              (pkgs.lib.filterAttrs (k: v: (builtins.length (pkgs.lib.strings.splitString "-" k)) == 1 && v == "directory")) # select only non-combined filter lists
               (pkgs.lib.attrsets.mapAttrs (k: v: dir + "/${k}/hosts"))
               (pkgs.lib.attrsets.filterAttrs (k: v: builtins.pathExists v))
             ]
