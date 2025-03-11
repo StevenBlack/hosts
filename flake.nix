@@ -7,6 +7,25 @@
       nixpkgsFor = forAllSystems (system: import nixpkgs {
         inherit system;
       });
+
+      toUnboundConf = (
+        file:
+        nixpkgs.lib.strings.concatMapStringsSep "\n" (
+            line:
+            if (nixpkgs.lib.strings.hasPrefix "#" line) || (line == "") then
+              line
+            else
+              let
+                split_line = (nixpkgs.lib.strings.splitString " " line);
+                address = builtins.elemAt split_line 0;
+                domain = builtins.elemAt split_line 1;
+              in
+              ''
+                local-zone: "${domain}" redirect
+                local-data: "${domain} A ${address}"
+              ''
+          ) (nixpkgs.lib.strings.splitString "\n" (builtins.readFile file))
+      );
     in
     {
       nixosModule = { config, ... }:
@@ -50,5 +69,35 @@
             ];
           };
         });
+
+      overlays.default = (
+        final: prev: {
+          unboundconfs = prev.lib.makeScope prev.pkgs.newScope (newscope: self.packages.${prev.system});
+        }
+      );
+
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgsFor.${system};
+          dir = ./alternates;
+          lists =
+            pkgs.lib.trivial.pipe (builtins.readDir ./alternates) [
+              (pkgs.lib.attrsets.filterAttrs (k: v: v == "directory"))
+              (pkgs.lib.attrsets.mapAttrs (k: v: dir + "/${k}/hosts"))
+              (pkgs.lib.attrsets.filterAttrs (k: v: builtins.pathExists v))
+            ]
+            // {
+              all = ./hosts;
+            };
+        in
+        pkgs.lib.attrsets.mapAttrs (
+          k: v:
+          pkgs.writeTextFile {
+            name = k;
+            text = toUnboundConf v;
+          }
+        ) lists
+      );
     };
 }
