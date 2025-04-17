@@ -1133,7 +1133,6 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
             or "." in hostname[-1]
             or "/" in hostname
             or ":" in hostname
-            or "_" in hostname
         ):
             # Example: 0.0.0.0 127.0.0.1
 
