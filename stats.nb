@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       161,          7]
-NotebookDataLength[     41141,        836]
-NotebookOptionsPosition[     40569,        818]
-NotebookOutlinePosition[     40963,        834]
-CellTagsIndexPosition[     40920,        831]
+NotebookDataLength[     42044,        856]
+NotebookOptionsPosition[     41472,        838]
+NotebookOutlinePosition[     41866,        854]
+CellTagsIndexPosition[     41823,        851]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -85,7 +85,7 @@ Cell[BoxData[{
    3.9293606429237022`*^9, 3.929360645945132*^9}, {3.931376802792758*^9, 
    3.931376805515088*^9}, {3.954598230829558*^9, 3.954598269603718*^9}},
  CellLabel->
-  "In[128]:=",ExpressionUUID->"e5e34011-aa3d-4e95-90b1-863054ac32f5"],
+  "In[305]:=",ExpressionUUID->"e5e34011-aa3d-4e95-90b1-863054ac32f5"],
 
 Cell[CellGroupData[{
 
@@ -113,7 +113,7 @@ Cell[BoxData[{
          RowBox[{"All", ",", "All"}], "}"}], ",", "Automatic"}], "}"}]}], 
      "\[IndentingNewLine]", ",", " ", 
      RowBox[{"GridLines", "->", 
-      RowBox[{"{", 
+      RowBox[{"{", "\[IndentingNewLine]", 
        RowBox[{
         RowBox[{"Join", "[", 
          RowBox[{
@@ -129,10 +129,18 @@ Cell[BoxData[{
            RowBox[{
             RowBox[{"{", "2017", "}"}], ",", 
             RowBox[{"{", "2027", "}"}], ",", "\"\<Quarter\>\""}], "]"}]}], 
-         "]"}], ",", " ", 
-        RowBox[{"Range", "[", 
-         RowBox[{"0", ",", "300000", ",", "10000"}], "]"}]}], "}"}]}], 
-     "\[IndentingNewLine]", ",", 
+         "]"}], "\[IndentingNewLine]", ",", " ", 
+        RowBox[{"Join", "[", 
+         RowBox[{
+          RowBox[{"Range", "[", 
+           RowBox[{"0", ",", "300000", ",", "10000"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"#", ",", "Thick"}], "}"}], "&"}], "/@", 
+           RowBox[{"Range", "[", 
+            RowBox[{"0", ",", "300000", ",", "50000"}], "]"}]}]}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", ",", 
      RowBox[{"ImageMargins", "\[Rule]", "20"}], "\[IndentingNewLine]", ",", 
      RowBox[{"ImageSize", " ", "->", " ", "Large"}], "\[IndentingNewLine]", ",", 
      RowBox[{"LabelStyle", "\[Rule]", 
@@ -192,10 +200,13 @@ Cell[BoxData[{
    3.955724433737275*^9}, {3.955724625452713*^9, 3.955724669412251*^9}, {
    3.956329876096713*^9, 3.9563299103616667`*^9}, {3.956329970680182*^9, 
    3.9563299964577503`*^9}, {3.956330107899218*^9, 3.95633011499457*^9}, {
-   3.956330149847582*^9, 3.956330152663987*^9}},
+   3.956330149847582*^9, 3.956330152663987*^9}, {3.95660104472755*^9, 
+   3.956601064036846*^9}, {3.956601094494957*^9, 3.956601107665969*^9}, {
+   3.956601171882221*^9, 3.956601200199129*^9}, {3.956601252613394*^9, 
+   3.9566012593755283`*^9}, {3.956601299500546*^9, 3.956601381489203*^9}},
  NumberMarks->False,
  CellLabel->
-  "In[135]:=",ExpressionUUID->"55c17c4f-14a9-40f1-a01c-ab0b0c9b3309"],
+  "In[312]:=",ExpressionUUID->"55c17c4f-14a9-40f1-a01c-ab0b0c9b3309"],
 
 Cell[BoxData[
  GraphicsBox[{{}, GraphicsComplexBox[CompressedData["
@@ -583,10 +594,18 @@ xzjOCU5yitOc4SznOM8FLnKJy1zhKte4zg1ucovb3OEu94L+/3P/B6RCZDE=
      3.8735712*^9, 3.88152*^9, 3.889296*^9, 3.8971584*^9, 3.9051072*^9, 
      3.913056*^9, 3.9209184*^9, 3.9287808*^9, 3.9367296*^9, 3.9446784*^9, 
      3.9524544*^9, 3.9603168*^9, 3.9682656*^9, 3.9762144*^9, 3.9839904*^9, 
-     3.9918528*^9, 3.9998016*^9, 4.0077504*^9}, {0, 10000, 20000, 30000, 
-    40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000, 130000, 
-    140000, 150000, 160000, 170000, 180000, 190000, 200000, 210000, 220000, 
-    230000, 240000, 250000, 260000, 270000, 280000, 290000, 300000}},
+     3.9918528*^9, 3.9998016*^9, 4.0077504*^9}, {
+    0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 
+     110000, 120000, 130000, 140000, 150000, 160000, 170000, 180000, 190000, 
+     200000, 210000, 220000, 230000, 240000, 250000, 260000, 270000, 280000, 
+     290000, 300000, {0, 
+      Thickness[Large]}, {50000, 
+      Thickness[Large]}, {100000, 
+      Thickness[Large]}, {150000, 
+      Thickness[Large]}, {200000, 
+      Thickness[Large]}, {250000, 
+      Thickness[Large]}, {300000, 
+      Thickness[Large]}}},
   GridLinesStyle->Directive[
     GrayLevel[0.4, 0.5], 
     AbsoluteThickness[1], 
@@ -676,7 +695,7 @@ xzjOCU5yitOc4SznOM8FLnKJy1zhKte4zg1ucovb3OEu94L+/3P/B6RCZDE=
         "\"base version: (adware + malware) only\"", 12, Bold, StripOnInput -> 
          False]}, {
         StyleBox[
-        "\"updated: Sun 18 May 2025 16:15:19 UTC\"", 12, StripOnInput -> 
+        "\"updated: Sun 18 May 2025 23:58:35 UTC\"", 12, StripOnInput -> 
          False]}}, GridBoxAlignment -> {"Columns" -> {{Center}}}, 
       DefaultBaseStyle -> "Column", 
       GridBoxItemSize -> {
@@ -811,9 +830,10 @@ xzjOCU5yitOc4SznOM8FLnKJy1zhKte4zg1ucovb3OEu94L+/3P/B6RCZDE=
    3.9550491123226423`*^9}, 3.955401042607274*^9, 3.9557243571820517`*^9, {
    3.955724401130506*^9, 3.955724435107072*^9}, 3.955724636672626*^9, 
    3.955724670569713*^9, 3.956329854105036*^9, 3.95633001832055*^9, 
-   3.9563301535009117`*^9, 3.9565737199823647`*^9},
+   3.9563301535009117`*^9, 3.9565737199823647`*^9, 3.956601400125139*^9, 
+   3.956601516023966*^9},
  CellLabel->
-  "Out[137]=",ExpressionUUID->"54cb8072-b930-47d9-9b80-e0b8795d2841"]
+  "Out[314]=",ExpressionUUID->"25e3d417-3a5f-4c32-bb15-b7cf8f76a156"]
 }, Open  ]]
 },
 WindowSize->{1234, 1257},
@@ -835,8 +855,8 @@ CellTagsIndex->{}
 Notebook[{
 Cell[561, 20, 3278, 67, 151, "Input",ExpressionUUID->"e5e34011-aa3d-4e95-90b1-863054ac32f5"],
 Cell[CellGroupData[{
-Cell[3864, 91, 4860, 106, 458, "Input",ExpressionUUID->"55c17c4f-14a9-40f1-a01c-ab0b0c9b3309"],
-Cell[8727, 199, 31826, 616, 481, "Output",ExpressionUUID->"54cb8072-b930-47d9-9b80-e0b8795d2841"]
+Cell[3864, 91, 5468, 117, 519, "Input",ExpressionUUID->"55c17c4f-14a9-40f1-a01c-ab0b0c9b3309"],
+Cell[9335, 210, 32121, 625, 481, "Output",ExpressionUUID->"25e3d417-3a5f-4c32-bb15-b7cf8f76a156"]
 }, Open  ]]
 }
 ]
