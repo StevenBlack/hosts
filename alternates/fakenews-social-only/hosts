@@ -3,10 +3,10 @@
 # This hosts file is a merged collection of hosts from reputable sources,
 # with a dash of crowd sourcing via GitHub
 #
-# Date: 21 May 2025 01:44:53 (UTC)
+# Date: 28 May 2025 00:52:50 (UTC)
 # The unified hosts file was not used while generating this file.
 # Extensions used to generate this file: fakenews, social
-# Number of unique domains: 5,411
+# Number of unique domains: 5,436
 #
 # Fetch the latest version of this file: https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-social-only/hosts
 # Project home page: https://github.com/StevenBlack/hosts
@@ -4381,6 +4381,7 @@
 0.0.0.0 z-p42-scontent-yyz1-1.cdninstagram.com
 0.0.0.0 z-p42-scontent.cdninstagram.com
 0.0.0.0 z-p42-static.cdninstagram.com
+0.0.0.0 scontent.fallback.cdninstagram.com
 
 # Whatsapp
 0.0.0.0 account.whatsapp.com
@@ -5463,6 +5464,33 @@
 0.0.0.0 webattachments.snapchat.com
 0.0.0.0 web.snapchat.com
 0.0.0.0 www.snapchat.com
+
+# Twitch
+# from https://www.netify.ai/resources/applications/twitch & Browser Networktraffic
+0.0.0.0 twitch.tv
+0.0.0.0 www.twitch.tv
+0.0.0.0 ttvnw.net
+0.0.0.0 live-video.net
+0.0.0.0 jtvnw.net
+0.0.0.0 twitchcdn.net
+0.0.0.0 ext-twitch.tv
+0.0.0.0 twitch-shadow.net
+0.0.0.0 twitch.a2z.com
+0.0.0.0 twitchcdn-shadow.net
+0.0.0.0 twitchsvc-staging.tech
+0.0.0.0 twitchsvc.net
+0.0.0.0 assets.twitch.tv
+0.0.0.0 k.twitchcdn.net
+0.0.0.0 hermes.twitch.tv
+0.0.0.0 irc-ws.chat.twitch.tv
+0.0.0.0 gql.twitch.tv
+0.0.0.0 static-cdn.jtvnw.net
+0.0.0.0 pubsub-edge.twitch.tv
+0.0.0.0 usher.ttvnw.net
+0.0.0.0 global.poe.live-video.net
+0.0.0.0 supervisor.ext-twitch.tv
+0.0.0.0 extensions-discovery-images.twitch.tv
+0.0.0.0 panels.twitch.tv
 
 # Other
 0.0.0.0 pinpages.alwaysdata.net
