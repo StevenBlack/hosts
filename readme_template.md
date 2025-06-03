@@ -386,7 +386,14 @@ like this:
 
 ```nix
 {
-  inputs.hosts.url = "github:StevenBlack/hosts";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=$YOUR-REF";
+    hosts = {
+      url = "github:StevenBlack/hosts"; # or a fork/mirror
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
   outputs = { self, nixpkgs, hosts }: {
     nixosConfigurations.my-hostname = {
       system = "<architecture>";
