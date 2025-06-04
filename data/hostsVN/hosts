@@ -1,6 +1,6 @@
 # Title: hostsVN
-# Last modified: 02 Jun 2025 15:02 UTC+7
-# Version: 2506021502
+# Last modified: 04 Jun 2025 16:23 UTC+7
+# Version: 2506041623
 # Blocked: 1.765 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
@@ -1419,6 +1419,9 @@
 #[tv360.vn]
 0.0.0.0 log.tv360.vn
 0.0.0.0 pubads-wiinvent.tv360.vn
+#[shopee.vn]
+0.0.0.0 log-collector.shopee.vn
+0.0.0.0 userstats.shopee.vn
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 ad-admin.vnay.vn
@@ -1747,7 +1750,6 @@
 0.0.0.0 live.careplusvn.com
 0.0.0.0 live.vnpgroup.net
 0.0.0.0 liveonline.nhanhoa.com
-0.0.0.0 log-collector.shopee.vn
 0.0.0.0 log-dttc.sggp.org.vn
 0.0.0.0 log-en.nhandan.vn
 0.0.0.0 log-en.sggp.org.vn
@@ -1932,7 +1934,6 @@
 0.0.0.0 trk.staging.123c.vn
 0.0.0.0 upl.net-solutions.vn
 0.0.0.0 us.mplis.gov.vn
-0.0.0.0 userstats.shopee.vn
 0.0.0.0 vieon-tracking.vieon.vn
 0.0.0.0 vietnamdaily-log.kienthuc.net.vn
 0.0.0.0 vietnamdaily-log.trithuccuocsong.vn
