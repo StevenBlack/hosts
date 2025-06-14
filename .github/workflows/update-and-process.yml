@@ -52,6 +52,14 @@ jobs:
               in_linkedin_block { print "#" $0; next }
               { print $0 }
             ' "$CUSTOM_FILE_PATH" > "$CUSTOM_FILE_PATH.tmp" && mv "$CUSTOM_FILE_PATH.tmp" "$CUSTOM_FILE_PATH"
+          # Use awk to comment out the Instagram block
+            awk '
+              BEGIN { in_instagram_block = 0 }
+              /^# Instagram$/ { in_instagram_block = 1; print "#" $0; next }
+              in_instagram_block && $0 == "" { in_instagram_block = 0; print "#" $0; next }
+              in_instagram_block { print "#" $0; next }
+              { print $0 }
+            ' "$CUSTOM_FILE_PATH" > "$CUSTOM_FILE_PATH.tmp" && mv "$CUSTOM_FILE_PATH.tmp" "$CUSTOM_FILE_PATH"
 
           else
             echo "File not found: $FILE_PATH"
