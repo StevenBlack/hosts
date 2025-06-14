@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 17 Feb 2025 15:19 UTC+7
-# Version: 2502171519
-# Blocked: 1.759 domains
+# Last modified: 10 Jun 2025 21:57 UTC+7
+# Version: 2506102157
+# Blocked: 1.765 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -1328,6 +1328,7 @@
 0.0.0.0 log-thanhnien.epicdn.me
 0.0.0.0 log-thuonggiaonline.epicdn.me
 0.0.0.0 log-tinnhanhchungkhoan.epicdn.me
+0.0.0.0 logv2-kienthuc.epicdn.me
 #[thanhnien.vn]
 0.0.0.0 ads.thanhnien.vn
 0.0.0.0 ai.thanhnien.vn
@@ -1415,6 +1416,12 @@
 0.0.0.0 delivery.vda.viettel.vn
 0.0.0.0 log.vda.viettel.vn
 0.0.0.0 vda.viettel.vn
+#[tv360.vn]
+0.0.0.0 log.tv360.vn
+0.0.0.0 pubads-wiinvent.tv360.vn
+#[shopee.vn]
+0.0.0.0 log-collector.shopee.vn
+0.0.0.0 userstats.shopee.vn
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 ad-admin.vnay.vn
@@ -1563,6 +1570,7 @@
 0.0.0.0 crocopop.com
 0.0.0.0 csmads.gameclick.vn
 0.0.0.0 delivery.doisongphapluat.com.vn
+0.0.0.0 delivery.lsvn.vn
 0.0.0.0 delivery.senvangvn.com
 0.0.0.0 delivery.upremium.asia
 0.0.0.0 demopage.me
@@ -1742,10 +1750,10 @@
 0.0.0.0 live.careplusvn.com
 0.0.0.0 live.vnpgroup.net
 0.0.0.0 liveonline.nhanhoa.com
-0.0.0.0 log-collector.shopee.vn
 0.0.0.0 log-dttc.sggp.org.vn
 0.0.0.0 log-en.nhandan.vn
 0.0.0.0 log-en.sggp.org.vn
+0.0.0.0 log-tamnhin.kienthuc.net.vn
 0.0.0.0 log-video.baotintuc.vn
 0.0.0.0 log.1vn.app
 0.0.0.0 log.247post.vn
@@ -1795,7 +1803,6 @@
 0.0.0.0 log.tinnhac.com
 0.0.0.0 log.tinnhanhchungkhoan.vn
 0.0.0.0 log.tinxe.vn
-0.0.0.0 log.tv360.vn
 0.0.0.0 log.viettimes.vn
 0.0.0.0 log.vnay.vn
 0.0.0.0 log.vneconomy.vn
@@ -1813,6 +1820,7 @@
 0.0.0.0 logs.thethaovanhoa.vn
 0.0.0.0 logsbin.dantri.com.vn
 0.0.0.0 logscafef.channelvn.net
+0.0.0.0 logv2.kienthuc.net.vn
 0.0.0.0 logv3.metric.vn
 0.0.0.0 ma.tgdd.vn
 0.0.0.0 matomo.bantheme.xyz
@@ -1907,6 +1915,7 @@
 0.0.0.0 tracking.fff.com.vn
 0.0.0.0 tracking.gapone.vn
 0.0.0.0 tracking.hapiwork.vn
+0.0.0.0 tracking.lsvn.vn
 0.0.0.0 tracking.meta.vn
 0.0.0.0 tracking.phunuadong.vn
 0.0.0.0 tracking.saostar.vn
@@ -1925,7 +1934,6 @@
 0.0.0.0 trk.staging.123c.vn
 0.0.0.0 upl.net-solutions.vn
 0.0.0.0 us.mplis.gov.vn
-0.0.0.0 userstats.shopee.vn
 0.0.0.0 vieon-tracking.vieon.vn
 0.0.0.0 vietnamdaily-log.kienthuc.net.vn
 0.0.0.0 vietnamdaily-log.trithuccuocsong.vn

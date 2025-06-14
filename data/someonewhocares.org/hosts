@@ -8,7 +8,7 @@
 # Please forward any additions, corrections or comments by email to
 # hosts@someonewhocares.org
 
-# Last updated: Sun, 16 Feb 2025 at 01:15:19 GMT
+# Last updated: Fri, 06 Jun 2025 at 23:01:29 GMT
 
 # Use this file to prevent your computer from connecting to selected
 # internet hosts. This is an easy and effective way to protect you from 
@@ -336,6 +336,7 @@ ff02::3		ip6-allhosts
 #0.0.0.0 metrics.ticketmaster.com	# interferes with logging in to ticketmaster.com
 #0.0.0.0 nl.sitestat.com	# may interfere with duo.nl
 #0.0.0.0 pro.hit.gemius.pl	# May interfere with some video sites
+#0.0.0.0 s.youtube.com				# Blocking this will interfere with video watching history and may interfere with Google Podcasts
 #0.0.0.0 services.krxd.net
 #0.0.0.0 stats.channel4.com
 #0.0.0.0 t2.hulu.com		# Uncomment to block Hulu.
@@ -1055,7 +1056,6 @@ ff02::3		ip6-allhosts
 0.0.0.0 s.clickability.com
 0.0.0.0 s.go-mpulse.net
 0.0.0.0 s.update.fbsbx.com 
-0.0.0.0 s.youtube.com				# Blocking this will interfere with video watching history and may interfere with Google Podcasts
 0.0.0.0 s1-tracking.adalyser.com
 0.0.0.0 s1.shinystat.it
 0.0.0.0 s10.histats.com
@@ -2311,6 +2311,7 @@ ff02::3		ip6-allhosts
 0.0.0.0 install.myvideotab.com
 0.0.0.0 installmac.com
 0.0.0.0 instantstreetview.fr
+0.0.0.0 intelcomasfcmscta.com
 0.0.0.0 interac-etransfer.net
 0.0.0.0 interac1-ssl2.info
 0.0.0.0 interacpayment-cra.com
@@ -2629,6 +2630,7 @@ ff02::3		ip6-allhosts
 0.0.0.0 mv0129.stream
 0.0.0.0 mvspjwd.com
 0.0.0.0 mx1.freemail.ne.jp
+0.0.0.0 mybancoschiles.gets-it.net
 0.0.0.0 mycaal.fr
 0.0.0.0 mycnal.fr
 0.0.0.0 mydreamday.fr
@@ -3080,6 +3082,7 @@ ff02::3		ip6-allhosts
 0.0.0.0 thunderbird.es
 0.0.0.0 tibs.fr
 0.0.0.0 ticketforchange.fr
+0.0.0.0 ticketpayfee.com
 0.0.0.0 ticketspy.fr
 0.0.0.0 tiku.io
 0.0.0.0 timberlande.fr
@@ -7745,6 +7748,7 @@ ff02::3		ip6-allhosts
 0.0.0.0 images.jambocast.com
 0.0.0.0 images.linkwithin.com
 0.0.0.0 images.mbuyu.nl
+0.0.0.0 images.mediago.io
 0.0.0.0 images.netcomvad.com
 0.0.0.0 images.outbrain.com
 0.0.0.0 images.outbrainimg.com
@@ -8362,6 +8366,7 @@ ff02::3		ip6-allhosts
 0.0.0.0 ms-shopguide.su
 0.0.0.0 ms-shopzone.su
 0.0.0.0 ms.yandex.ru
+0.0.0.0 msft-ssp-emea.adnxs.com
 0.0.0.0 mslinks-downloads.com
 0.0.0.0 msn-cdn.effectivemeasure.net
 0.0.0.0 msn.tns-cs.net
@@ -10956,7 +10961,6 @@ ff02::3		ip6-allhosts
 0.0.0.0 yoursmartrewards.com
 0.0.0.0 ysiu.freenation.com
 0.0.0.0 yt-adblocker.com
-0.0.0.0 yu.ac.kr
 0.0.0.0 yumenetworks.com
 0.0.0.0 yx-in-f108.1e100.net
 0.0.0.0 z-na.amazon-adsystem.com
