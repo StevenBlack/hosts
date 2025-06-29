@@ -427,6 +427,8 @@ IPv6 rules are enabled by default when `networking.enableIPv6` is set to `true`.
 
 (NOTE: See also some third-party Hosts managers, listed below.)
 
+### For older versions of Windows
+
 On Linux and macOS, run the Python script. On Windows more work is required due
 to compatibility issues so it's preferable to run the batch file as follows:
 
@@ -449,6 +451,32 @@ following:
   Command Prompt → "Run as Administrator"
 - **Windows 10**: Start Button → type `cmd` → right-click Command Prompt → "Run
   as Administrator"
+
+### For new versions of Windows
+
+On modern versions of Windows (10 and especially 11) not all features of the
+aforementioned batch script work (specifically checking if the current shell has
+administrative priviliges) and therefore a more modern approach is recommended.
+
+The provided `updateHostsWindows.ps1` is a Powershell 5.1 script that does the
+same thing as the batch script, but without the need for the python script, with
+added options, and uses only built-in commands (self-contained). As with the
+batch file it **MUST** be ran with administrative privildges, but it can
+relaunch itself if not.
+
+To run execute the script type:
+```Powershell
+.\updateHostsWindows.ps1
+```
+into any available Windows command line and for detailed information type:
+```Powershell
+Get-Help .\updateHostsWindows.ps1 -Full
+```
+
+Newer Windows comes with several issues (that can be overcome) and for more
+information and solutions please visit the home of this script [here](https://github.com/Lateralus138/updateHostsWindows-stevenblack).
+
+---
 
 You can also refer to the "Third-Party Hosts Managers" section for further
 recommended solutions from third parties.
