@@ -40,7 +40,7 @@ def main():
         if key == "base":
             data[key]["description"] = "Unified hosts = **(adware + malware)**"
         else:
-            if data[key]["no_unified_hosts"]:
+            if data[key]["nounifiedhosts"]:
                 data[key]["description"] = (
                     "**" + key.replace("-only", "").replace("-", " + ") + "**"
                 )
@@ -71,7 +71,7 @@ def main():
     for key in keys:
         extensions = key.replace("-only", "").replace("-", ", ")
         extensions_str = "* Extensions: **" + extensions + "**."
-        if data[key]["no_unified_hosts"]:
+        if data[key]["nounifiedhosts"]:
             extensions_header = "Limited to the extensions: " + extensions
         else:
             extensions_header = "Unified hosts file with " + extensions + " extensions"
