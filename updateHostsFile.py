@@ -239,15 +239,15 @@ def main():
     settings = get_defaults()
     settings.update(options)
 
-    data_path = settings["datapath"]
-    extensions_path = settings["extensionspath"]
+    datapath = settings["datapath"]
+    extensionspath = settings["extensionspath"]
 
-    settings["sources"] = list_dir_no_hidden(data_path)
-    settings["extensionsources"] = list_dir_no_hidden(extensions_path)
+    settings["sources"] = list_dir_no_hidden(datapath)
+    settings["extensionsources"] = list_dir_no_hidden(extensionspath)
 
     # All our extensions folders...
     settings["extensions"] = [
-        os.path.basename(item) for item in list_dir_no_hidden(extensions_path)
+        os.path.basename(item) for item in list_dir_no_hidden(extensionspath)
     ]
     # ... intersected with the extensions passed-in as arguments, then sorted.
     settings["extensions"] = sorted(
@@ -255,101 +255,101 @@ def main():
     )
 
     auto = settings["auto"]
-    exclusion_regexes = settings["exclusionregexes"]
-    source_data_filename = settings["sourcedatafilename"]
-    no_unified_hosts = settings["nounifiedhosts"]
+    exclusionregexes = settings["exclusionregexes"]
+    sourcedatafilename = settings["sourcedatafilename"]
+    nounifiedhosts = settings["nounifiedhosts"]
 
-    update_sources = prompt_for_update(freshen=settings["freshen"], update_auto=auto)
-    if update_sources:
-        update_all_sources(source_data_filename, settings["hostfilename"])
+    updatesources = prompt_for_update(freshen=settings["freshen"], updateauto=auto)
+    if updatesources:
+        update_all_sources(sourcedatafilename, settings["hostfilename"])
 
-    gather_exclusions = prompt_for_exclusions(skip_prompt=auto)
+    gatherexclusions = prompt_for_exclusions(skipprompt=auto)
 
-    if gather_exclusions:
-        common_exclusions = settings["commonexclusions"]
-        exclusion_pattern = settings["exclusionpattern"]
-        exclusion_regexes = display_exclusion_options(
-            common_exclusions=common_exclusions,
-            exclusion_pattern=exclusion_pattern,
-            exclusion_regexes=exclusion_regexes,
+    if gatherexclusions:
+        commonexclusions = settings["commonexclusions"]
+        exclusionpattern = settings["exclusionpattern"]
+        exclusionregexes = display_exclusion_options(
+            commonexclusions=commonexclusions,
+            exclusionpattern=exclusionpattern,
+            exclusionregexes=exclusionregexes,
         )
 
     extensions = settings["extensions"]
-    sources_data = update_sources_data(
+    sourcesdata = update_sources_data(
         settings["sourcesdata"],
-        datapath=data_path,
+        datapath=datapath,
         extensions=extensions,
-        extensionspath=extensions_path,
-        sourcedatafilename=source_data_filename,
-        nounifiedhosts=no_unified_hosts,
+        extensionspath=extensionspath,
+        sourcedatafilename=sourcedatafilename,
+        nounifiedhosts=nounifiedhosts,
     )
 
-    merge_file = create_initial_file(
-        nounifiedhosts=no_unified_hosts,
+    mergefile = create_initial_file(
+        nounifiedhosts=nounifiedhosts,
     )
     remove_old_hosts_file(settings["outputpath"], "hosts", settings["backup"])
     if settings["compress"]:
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
-        compressed_file = tempfile.NamedTemporaryFile()
-        remove_dups_and_excl(merge_file, exclusion_regexes, compressed_file)
-        compress_file(compressed_file, settings["targetip"], final_file)
+        finalfile = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
+        compressedfile = tempfile.NamedTemporaryFile()
+        remove_dups_and_excl(mergefile, exclusionregexes, compressedfile)
+        compress_file(compressedfile, settings["targetip"], finalfile)
     elif settings["minimise"]:
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
-        minimised_file = tempfile.NamedTemporaryFile()
-        remove_dups_and_excl(merge_file, exclusion_regexes, minimised_file)
-        minimise_file(minimised_file, settings["targetip"], final_file)
+        finalfile = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
+        minimisedfile = tempfile.NamedTemporaryFile()
+        remove_dups_and_excl(mergefile, exclusionregexes, minimisedfile)
+        minimise_file(minimisedfile, settings["targetip"], finalfile)
     else:
-        final_file = remove_dups_and_excl(merge_file, exclusion_regexes)
+        finalfile = remove_dups_and_excl(mergefile, exclusionregexes)
 
-    number_of_rules = settings["numberofrules"]
-    output_subfolder = settings["outputsubfolder"]
-    skip_static_hosts = settings["skipstatichosts"]
+    numberofrules = settings["numberofrules"]
+    outputsubfolder = settings["outputsubfolder"]
+    skipstatichosts = settings["skipstatichosts"]
 
     write_opening_header(
-        final_file,
+        finalfile,
         extensions=extensions,
-        numberofrules=number_of_rules,
-        outputsubfolder=output_subfolder,
-        skipstatichosts=skip_static_hosts,
-        nounifiedhosts=no_unified_hosts,
+        numberofrules=numberofrules,
+        outputsubfolder=outputsubfolder,
+        skipstatichosts=skipstatichosts,
+        nounifiedhosts=nounifiedhosts,
     )
-    final_file.close()
+    finalfile.close()
 
     if not settings["nogendata"]:
         update_readme_data(
             settings["readmedatafilename"],
             extensions=extensions,
-            numberofrules=number_of_rules,
-            outputsubfolder=output_subfolder,
-            sourcesdata=sources_data,
-            nounifiedhosts=no_unified_hosts,
+            numberofrules=numberofrules,
+            outputsubfolder=outputsubfolder,
+            sourcesdata=sourcesdata,
+            nounifiedhosts=nounifiedhosts,
         )
 
     print_success(
         "Success! The hosts file has been saved in folder "
-        + output_subfolder
+        + outputsubfolder
         + "\nIt contains "
-        + "{:,}".format(number_of_rules)
+        + "{:,}".format(numberofrules)
         + " unique entries."
     )
 
-    move_file = prompt_for_move(
-        final_file,
+    movefile = prompt_for_move(
+        finalfile,
         auto=auto,
         replace=settings["replace"],
-        skipstatichosts=skip_static_hosts,
+        skipstatichosts=skipstatichosts,
     )
 
     # We only flush the DNS cache if we have
     # moved a new hosts file into place.
-    if move_file:
+    if movefile:
         prompt_for_flush_dns_cache(
-            flush_cache=settings["flushdnscache"], prompt_flush=not auto
+            flushcache=settings["flushdnscache"], promptflush=not auto
         )
 
 
 # Prompt the User
-def prompt_for_update(freshen, update_auto):
+def prompt_for_update(freshen, updateauto):
     """
     Prompt the user to update all hosts files.
 
@@ -361,21 +361,21 @@ def prompt_for_update(freshen, update_auto):
     freshen : bool
         Whether data sources should be updated. This function will return
         if it is requested that data sources not be updated.
-    update_auto : bool
+    updateauto : bool
         Whether or not to automatically update all data sources.
 
     Returns
     -------
-    update_sources : bool
+    updatesources : bool
         Whether or not we should update data sources for exclusion files.
     """
 
     # Create a hosts file if it doesn't exist.
-    hosts_file = path_join_robust(BASEDIR_PATH, "hosts")
+    hostsfile = path_join_robust(BASEDIR_PATH, "hosts")
 
-    if not os.path.isfile(hosts_file):
+    if not os.path.isfile(hostsfile):
         try:
-            open(hosts_file, "w+").close()
+            open(hostsfile, "w+").close()
         except (IOError, OSError):
             # Starting in Python 3.3, IOError is aliased
             # OSError. However, we have to catch both for
@@ -389,27 +389,27 @@ def prompt_for_update(freshen, update_auto):
 
     prompt = "Do you want to update all data sources?"
 
-    if update_auto or query_yes_no(prompt):
+    if updateauto or query_yes_no(prompt):
         return True
-    elif not update_auto:
+    elif not updateauto:
         print("OK, we'll stick with what we've got locally.")
 
     return False
 
 
-def prompt_for_exclusions(skip_prompt):
+def prompt_for_exclusions(skipprompt):
     """
     Prompt the user to exclude any custom domains from being blocked.
 
     Parameters
     ----------
-    skip_prompt : bool
+    skipprompt : bool
         Whether or not to skip prompting for custom domains to be excluded.
         If true, the function returns immediately.
 
     Returns
     -------
-    gather_exclusions : bool
+    gatherexclusions : bool
         Whether or not we should proceed to prompt the user to exclude any
         custom domains beyond those in the whitelist.
     """
@@ -420,7 +420,7 @@ def prompt_for_exclusions(skip_prompt):
         "its tracking and ad servers in order to play video."
     )
 
-    if not skip_prompt:
+    if not skipprompt:
         if query_yes_no(prompt):
             return True
         else:
@@ -429,36 +429,36 @@ def prompt_for_exclusions(skip_prompt):
     return False
 
 
-def prompt_for_flush_dns_cache(flush_cache, prompt_flush):
+def prompt_for_flush_dns_cache(flushcache, promptflush):
     """
     Prompt the user to flush the DNS cache.
 
     Parameters
     ----------
-    flush_cache : bool
+    flushcache : bool
         Whether to flush the DNS cache without prompting.
-    prompt_flush : bool
-        If `flush_cache` is False, whether we should prompt for flushing the
+    promptflush : bool
+        If `flushcache` is False, whether we should prompt for flushing the
         cache. Otherwise, the function returns immediately.
     """
 
-    if flush_cache:
+    if flushcache:
         flush_dns_cache()
-    elif prompt_flush:
+    elif promptflush:
         if query_yes_no("Attempt to flush the DNS cache?"):
             flush_dns_cache()
 
 
-def prompt_for_move(final_file, **move_params):
+def prompt_for_move(finalfile, **moveparams):
     """
     Prompt the user to move the newly created hosts file to its designated
     location in the OS.
 
     Parameters
     ----------
-    final_file : file
+    finalfile : file
         The file object that contains the newly created hosts data.
-    move_params : kwargs
+    moveparams : kwargs
         Dictionary providing additional parameters for moving the hosts file
         into place. Currently, those fields are:
 
@@ -468,24 +468,24 @@ def prompt_for_move(final_file, **move_params):
 
     Returns
     -------
-    move_file : bool
+    movefile : bool
         Whether or not the final hosts file was moved.
     """
 
-    skip_static_hosts = move_params["skipstatichosts"]
+    skipstatichosts = moveparams["skipstatichosts"]
 
-    if move_params["replace"] and not skip_static_hosts:
-        move_file = True
-    elif move_params["auto"] or skip_static_hosts:
-        move_file = False
+    if moveparams["replace"] and not skipstatichosts:
+        movefile = True
+    elif moveparams["auto"] or skipstatichosts:
+        movefile = False
     else:
         prompt = "Do you want to replace your existing hosts file with the newly generated file?"
-        move_file = query_yes_no(prompt)
+        movefile = query_yes_no(prompt)
 
-    if move_file:
-        move_file = move_hosts_file_into_place(final_file)
+    if movefile:
+        movefile = move_hosts_file_into_place(finalfile)
 
-    return move_file
+    return movefile
 
 
 # End Prompt the User
@@ -509,18 +509,18 @@ def sort_sources(sources):
     )
 
     # Steven Black's repositories/files/lists should be on top!
-    steven_black_positions = [
+    stevenblackpositions = [
         x for x, y in enumerate(result) if "stevenblack" in y.lower()
     ]
 
-    for index in steven_black_positions:
+    for index in stevenblackpositions:
         result.insert(0, result.pop(index))
 
     return result
 
 
 # Exclusion logic
-def display_exclusion_options(common_exclusions, exclusion_pattern, exclusion_regexes):
+def display_exclusion_options(commonexclusions, exclusionpattern, exclusionregexes):
     """
     Display the exclusion options to the user.
 
@@ -529,54 +529,54 @@ def display_exclusion_options(common_exclusions, exclusion_pattern, exclusion_re
 
     Parameters
     ----------
-    common_exclusions : list
+    commonexclusions : list
         A list of common domains that are excluded from being blocked. One
         example is Hulu. This setting is set directly in the script and cannot
         be overwritten by the user.
-    exclusion_pattern : str
+    exclusionpattern : str
         The exclusion pattern with which to create the domain regex.
-    exclusion_regexes : list
+    exclusionregexes : list
         The list of regex patterns used to exclude domains.
 
     Returns
     -------
-    aug_exclusion_regexes : list
+    aug_exclusionregexes : list
         The original list of regex patterns potentially with additional
         patterns from domains that the user chooses to exclude.
     """
 
-    for exclusion_option in common_exclusions:
-        prompt = "Do you want to exclude the domain " + exclusion_option + " ?"
+    for exclusionoption in commonexclusions:
+        prompt = "Do you want to exclude the domain " + exclusionoption + " ?"
 
         if query_yes_no(prompt):
-            exclusion_regexes = exclude_domain(
-                exclusion_option, exclusion_pattern, exclusion_regexes
+            exclusionregexes = exclude_domain(
+                exclusionoption, exclusionpattern, exclusionregexes
             )
         else:
             continue
 
     if query_yes_no("Do you want to exclude any other domains?"):
-        exclusion_regexes = gather_custom_exclusions(
-            exclusion_pattern, exclusion_regexes
+        exclusionregexes = gather_custom_exclusions(
+            exclusionpattern, exclusionregexes
         )
 
-    return exclusion_regexes
+    return exclusionregexes
 
 
-def gather_custom_exclusions(exclusion_pattern, exclusion_regexes):
+def gather_custom_exclusions(exclusionpattern, exclusionregexes):
     """
     Gather custom exclusions from the user.
 
     Parameters
     ----------
-    exclusion_pattern : str
+    exclusionpattern : str
         The exclusion pattern with which to create the domain regex.
-    exclusion_regexes : list
+    exclusionregexes : list
         The list of regex patterns used to exclude domains.
 
     Returns
     -------
-    aug_exclusion_regexes : list
+    aug_exclusionregexes : list
         The original list of regex patterns potentially with additional
         patterns from domains that the user chooses to exclude.
     """
@@ -584,22 +584,22 @@ def gather_custom_exclusions(exclusion_pattern, exclusion_regexes):
     # We continue running this while-loop until the user
     # says that they have no more domains to exclude.
     while True:
-        domain_prompt = "Enter the domain you want to exclude (e.g. facebook.com): "
-        user_domain = input(domain_prompt)
+        domainprompt = "Enter the domain you want to exclude (e.g. facebook.com): "
+        userdomain = input(domainprompt)
 
-        if is_valid_user_provided_domain_format(user_domain):
-            exclusion_regexes = exclude_domain(
-                user_domain, exclusion_pattern, exclusion_regexes
+        if is_valid_user_provided_domain_format(userdomain):
+            exclusionregexes = exclude_domain(
+                userdomain, exclusionpattern, exclusionregexes
             )
 
-        continue_prompt = "Do you have more domains you want to enter?"
-        if not query_yes_no(continue_prompt):
+        continueprompt = "Do you have more domains you want to enter?"
+        if not query_yes_no(continueprompt):
             break
 
-    return exclusion_regexes
+    return exclusionregexes
 
 
-def exclude_domain(domain, exclusion_pattern, exclusion_regexes):
+def exclude_domain(domain, exclusionpattern, exclusionregexes):
     """
     Exclude a domain from being blocked.
 
@@ -610,25 +610,25 @@ def exclude_domain(domain, exclusion_pattern, exclusion_regexes):
     ----------
     domain : str
         The filename or regex pattern to exclude.
-    exclusion_pattern : str
+    exclusionpattern : str
         The exclusion pattern with which to create the domain regex.
-    exclusion_regexes : list
+    exclusionregexes : list
         The list of regex patterns used to exclude domains.
 
     Returns
     -------
-    aug_exclusion_regexes : list
+    aug_exclusionregexes : list
         The original list of regex patterns with one additional pattern from
         the `domain` input.
     """
 
-    exclusion_regex = re.compile(exclusion_pattern + domain)
-    exclusion_regexes.append(exclusion_regex)
+    exclusionregex = re.compile(exclusionpattern + domain)
+    exclusionregexes.append(exclusionregex)
 
-    return exclusion_regexes
+    return exclusionregexes
 
 
-def matches_exclusions(stripped_rule, exclusion_regexes):
+def matches_exclusions(strippedrule, exclusionregexes):
     """
     Check whether a rule matches an exclusion rule we already provided.
 
@@ -637,9 +637,9 @@ def matches_exclusions(stripped_rule, exclusion_regexes):
 
     Parameters
     ----------
-    stripped_rule : str
+    strippedrule : str
         The rule that we are checking.
-    exclusion_regexes : list
+    exclusionregexes : list
         The list of regex patterns used to exclude domains.
 
     Returns
@@ -649,13 +649,13 @@ def matches_exclusions(stripped_rule, exclusion_regexes):
     """
 
     try:
-        stripped_domain = stripped_rule.split()[1]
+        strippeddpmain = strippedrule.split()[1]
     except IndexError:
         # Example: 'example.org' instead of '0.0.0.0 example.org'
-        stripped_domain = stripped_rule
+        strippeddpmain = strippedrule
 
-    for exclusionRegex in exclusion_regexes:
-        if exclusionRegex.search(stripped_domain):
+    for exclusionRegex in exclusionregexes:
+        if exclusionRegex.search(strippeddpmain):
             return True
 
     return False
@@ -665,15 +665,15 @@ def matches_exclusions(stripped_rule, exclusion_regexes):
 
 
 # Update Logic
-def update_sources_data(sources_data, **sources_params):
+def update_sources_data(sourcesdata, **sourcesparams):
     """
     Update the sources data and information for each source.
 
     Parameters
     ----------
-    sources_data : list
+    sourcesdata : list
         The list of sources data that we are to update.
-    sources_params : kwargs
+    sourcesparams : kwargs
         Dictionary providing additional parameters for updating the
         sources data. Currently, those fields are:
 
@@ -689,32 +689,32 @@ def update_sources_data(sources_data, **sources_params):
         The original source data list with new source data appended.
     """
 
-    source_data_filename = sources_params["sourcedatafilename"]
+    sourcedatafilename = sourcesparams["sourcedatafilename"]
 
-    if not sources_params["nounifiedhosts"]:
+    if not sourcesparams["nounifiedhosts"]:
         for source in sort_sources(
-            recursive_glob(sources_params["datapath"], source_data_filename)
+            recursive_glob(sourcesparams["datapath"], sourcedatafilename)
         ):
-            update_file = open(source, "r", encoding="UTF-8")
+            updatefile = open(source, "r", encoding="UTF-8")
             try:
-                update_data = json.load(update_file)
-                sources_data.append(update_data)
+                updatedata = json.load(updatefile)
+                sourcesdata.append(updatedata)
             finally:
-                update_file.close()
+                updatefile.close()
 
-    for source in sources_params["extensions"]:
-        source_dir = path_join_robust(sources_params["extensionspath"], source)
-        for update_file_path in sort_sources(
-            recursive_glob(source_dir, source_data_filename)
+    for source in sourcesparams["extensions"]:
+        sourcedir = path_join_robust(sourcesparams["extensionspath"], source)
+        for updatefile_path in sort_sources(
+            recursive_glob(sourcedir, sourcedatafilename)
         ):
-            update_file = open(update_file_path, "r")
+            updatefile = open(updatefile_path, "r")
             try:
-                update_data = json.load(update_file)
-                sources_data.append(update_data)
+                updatedata = json.load(updatefile)
+                sourcesdata.append(updatedata)
             finally:
-                update_file.close()
+                updatefile.close()
 
-    return sources_data
+    return sourcesdata
 
 
 def jsonarray(json_array_string):
@@ -729,67 +729,67 @@ def jsonarray(json_array_string):
           '["example1.com", "example1.com", ...]'
     """
 
-    temp_list = json.loads(json_array_string)
-    hostlines = "127.0.0.1 " + "\n127.0.0.1 ".join(temp_list)
+    templist = json.loads(json_array_string)
+    hostlines = "127.0.0.1 " + "\n127.0.0.1 ".join(templist)
     return hostlines
 
 
-def update_all_sources(source_data_filename, host_filename):
+def update_all_sources(sourcedatafilename, hostfilename):
     """
     Update all host files, regardless of folder depth.
 
     Parameters
     ----------
-    source_data_filename : str
+    sourcedatafilename : str
         The name of the filename where information regarding updating
         sources for a particular URL is stored. This filename is assumed
         to be the same for all sources.
-    host_filename : str
+    hostfilename : str
         The name of the file in which the updated source information
         is stored for a particular URL. This filename is assumed to be
         the same for all sources.
     """
 
     # The transforms we support
-    transform_methods = {"jsonarray": jsonarray}
+    transformmethods = {"jsonarray": jsonarray}
 
-    all_sources = sort_sources(recursive_glob("*", source_data_filename))
+    allsources = sort_sources(recursive_glob("*", sourcedatafilename))
 
-    for source in all_sources:
-        update_file = open(source, "r", encoding="UTF-8")
-        update_data = json.load(update_file)
-        update_file.close()
+    for source in allsources:
+        updatefile = open(source, "r", encoding="UTF-8")
+        updatedata = json.load(updatefile)
+        updatefile.close()
 
         # we can pause updating any given hosts source.
         # if the update.json "pause" key is missing, don't pause.
-        if update_data.get("pause", False):
+        if updatedata.get("pause", False):
             continue
 
-        update_url = update_data["url"]
+        updateurl = updatedata["url"]
         update_transforms = []
-        if update_data.get("transforms"):
-            update_transforms = update_data["transforms"]
+        if updatedata.get("transforms"):
+            update_transforms = updatedata["transforms"]
 
-        print("Updating source " + os.path.dirname(source) + " from " + update_url)
+        print("Updating source " + os.path.dirname(source) + " from " + updateurl)
 
         try:
-            updated_file = get_file_by_url(update_url)
+            updatedfile = get_file_by_url(updateurl)
 
             # spin the transforms as required
             for transform in update_transforms:
-                updated_file = transform_methods[transform](updated_file)
+                updatedfile = transformmethods[transform](updatedfile)
 
             # get rid of carriage-return symbols
-            updated_file = updated_file.replace("\r", "")
+            updatedfile = updatedfile.replace("\r", "")
 
-            hosts_file = open(
-                path_join_robust(BASEDIR_PATH, os.path.dirname(source), host_filename),
+            hostsfile = open(
+                path_join_robust(BASEDIR_PATH, os.path.dirname(source), hostfilename),
                 "wb",
             )
-            write_data(hosts_file, updated_file)
-            hosts_file.close()
+            write_data(hostsfile, updatedfile)
+            hostsfile.close()
         except Exception:
-            print("Error in updating source: ", update_url)
+            print("Error in updating source: ", updateurl)
 
 
 # End Update Logic
@@ -802,14 +802,14 @@ def create_initial_file(**initial_file_params):
 
     Parameters
     ----------
-    header_params : kwargs
+    headerparams : kwargs
         Dictionary providing additional parameters for populating the initial file
         information. Currently, those fields are:
 
         1) nounifiedhosts
     """
 
-    merge_file = tempfile.NamedTemporaryFile()
+    mergefile = tempfile.NamedTemporaryFile()
 
     if not initial_file_params["nounifiedhosts"]:
         # spin the sources for the base file
@@ -820,7 +820,7 @@ def create_initial_file(**initial_file_params):
             end = "\n# End {}\n\n".format(os.path.basename(os.path.dirname(source)))
 
             with open(source, "r", encoding="UTF-8") as curFile:
-                write_data(merge_file, start + curFile.read() + end)
+                write_data(mergefile, start + curFile.read() + end)
 
     # spin the sources for extensions to the base file
     for source in settings["extensions"]:
@@ -831,18 +831,18 @@ def create_initial_file(**initial_file_params):
             )
         ):
             with open(filename, "r") as curFile:
-                write_data(merge_file, curFile.read())
+                write_data(mergefile, curFile.read())
 
     maybe_copy_example_file(settings["blacklistfile"])
 
     if os.path.isfile(settings["blacklistfile"]):
         with open(settings["blacklistfile"], "r") as curFile:
-            write_data(merge_file, curFile.read())
+            write_data(mergefile, curFile.read())
 
-    return merge_file
+    return mergefile
 
 
-def compress_file(input_file, target_ip, output_file):
+def compress_file(inputfile, targetip, outputfile):
     """
     Reduce the file dimension removing non-necessary lines (empty lines and
     comments) and putting multiple domains in each line.
@@ -851,27 +851,27 @@ def compress_file(input_file, target_ip, output_file):
 
     Parameters
     ----------
-    input_file : file
+    inputfile : file
         The file object that contains the hostnames that we are reducing.
-    target_ip : str
+    targetip : str
         The target IP address.
-    output_file : file
+    outputfile : file
         The file object that will contain the reduced hostnames.
     """
 
-    input_file.seek(0)  # reset file pointer
-    write_data(output_file, "\n")
+    inputfile.seek(0)  # reset file pointer
+    write_data(outputfile, "\n")
 
-    target_ip_len = len(target_ip)
-    lines = [target_ip]
+    targetip_len = len(targetip)
+    lines = [targetip]
     lines_index = 0
-    for line in input_file.readlines():
+    for line in inputfile.readlines():
         line = line.decode("UTF-8")
 
-        if line.startswith(target_ip):
+        if line.startswith(targetip):
             if lines[lines_index].count(" ") < 9:
                 lines[lines_index] += (
-                    " " + line[target_ip_len : line.find("#")].strip()  # noqa: E203
+                    " " + line[targetip_len : line.find("#")].strip()  # noqa: E203
                 )
             else:
                 lines[lines_index] += "\n"
@@ -879,43 +879,43 @@ def compress_file(input_file, target_ip, output_file):
                 lines_index += 1
 
     for line in lines:
-        write_data(output_file, line)
+        write_data(outputfile, line)
 
-    input_file.close()
+    inputfile.close()
 
 
-def minimise_file(input_file, target_ip, output_file):
+def minimise_file(inputfile, targetip, outputfile):
     """
     Reduce the file dimension removing non-necessary lines (empty lines and
     comments).
 
     Parameters
     ----------
-    input_file : file
+    inputfile : file
         The file object that contains the hostnames that we are reducing.
-    target_ip : str
+    targetip : str
         The target IP address.
-    output_file : file
+    outputfile : file
         The file object that will contain the reduced hostnames.
     """
 
-    input_file.seek(0)  # reset file pointer
-    write_data(output_file, "\n")
+    inputfile.seek(0)  # reset file pointer
+    write_data(outputfile, "\n")
 
     lines = []
-    for line in input_file.readlines():
+    for line in inputfile.readlines():
         line = line.decode("UTF-8")
 
-        if line.startswith(target_ip):
+        if line.startswith(targetip):
             lines.append(line[: line.find("#")].strip() + "\n")
 
     for line in lines:
-        write_data(output_file, line)
+        write_data(outputfile, line)
 
-    input_file.close()
+    inputfile.close()
 
 
-def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
+def remove_dups_and_excl(mergefile, exclusionregexes, outputfile=None):
     """
     Remove duplicates and remove hosts that we are excluding.
 
@@ -924,16 +924,16 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
 
     Parameters
     ----------
-    merge_file : file
+    mergefile : file
         The file object that contains the hostnames that we are pruning.
-    exclusion_regexes : list
+    exclusionregexes : list
         The list of regex patterns used to exclude domains.
-    output_file : file
+    outputfile : file
         The file object in which the result is written. If None, the file
         'settings["outputpath"]' will be created.
     """
 
-    number_of_rules = settings["numberofrules"]
+    numberofrules = settings["numberofrules"]
     maybe_copy_example_file(settings["whitelistfile"])
 
     if os.path.isfile(settings["whitelistfile"]):
@@ -946,16 +946,16 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
     if not os.path.exists(settings["outputpath"]):
         os.makedirs(settings["outputpath"])
 
-    if output_file is None:
-        final_file = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
+    if outputfile is None:
+        finalfile = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
     else:
-        final_file = output_file
+        finalfile = outputfile
 
-    merge_file.seek(0)  # reset file pointer
+    mergefile.seek(0)  # reset file pointer
     hostnames = {"localhost", "localhost.localdomain", "local", "broadcasthost"}
     exclusions = settings["exclusions"]
 
-    for line in merge_file.readlines():
+    for line in mergefile.readlines():
         write_line = True
 
         # Explicit encoding
@@ -969,23 +969,23 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
 
         # Testing the first character doesn't require startswith
         if line[0] == "#" or re.match(r"^\s*$", line[0]):
-            write_data(final_file, line)
+            write_data(finalfile, line)
             continue
         if "::1" in line:
             continue
 
-        stripped_rule = strip_rule(line)  # strip comments
-        if not stripped_rule or matches_exclusions(stripped_rule, exclusion_regexes):
+        strippedrule = strip_rule(line)  # strip comments
+        if not strippedrule or matches_exclusions(strippedrule, exclusionregexes):
             continue
 
         # Issue #1628
-        if "@" in stripped_rule:
+        if "@" in strippedrule:
             continue
 
         # Normalize rule
         hostname, normalized_rule = normalize_rule(
-            stripped_rule,
-            target_ip=settings["targetip"],
+            strippedrule,
+            targetip=settings["targetip"],
             keep_domain_comments=settings["keepdomaincomments"],
         )
 
@@ -995,18 +995,18 @@ def remove_dups_and_excl(merge_file, exclusion_regexes, output_file=None):
                 break
 
         if normalized_rule and (hostname not in hostnames) and write_line:
-            write_data(final_file, normalized_rule)
+            write_data(finalfile, normalized_rule)
             hostnames.add(hostname)
-            number_of_rules += 1
+            numberofrules += 1
 
-    settings["numberofrules"] = number_of_rules
-    merge_file.close()
+    settings["numberofrules"] = numberofrules
+    mergefile.close()
 
-    if output_file is None:
-        return final_file
+    if outputfile is None:
+        return finalfile
 
 
-def normalize_rule(rule, target_ip, keep_domain_comments):
+def normalize_rule(rule, targetip, keep_domain_comments):
     """
     Standardize and format the rule string provided.
 
@@ -1014,7 +1014,7 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
     ----------
     rule : str
         The rule whose spelling and spacing we are standardizing.
-    target_ip : str
+    targetip : str
         The target IP address for the rule.
     keep_domain_comments : bool
         Whether or not to keep comments regarding these domains in
@@ -1048,7 +1048,7 @@ def normalize_rule(rule, target_ip, keep_domain_comments):
             and spacing reformatted.
         """
 
-        rule = "%s %s" % (target_ip, extracted_hostname)
+        rule = "%s %s" % (targetip, extracted_hostname)
 
         if keep_domain_comments and extracted_suffix:
             if not extracted_suffix.strip().startswith("#"):
@@ -1188,15 +1188,15 @@ def strip_rule(line):
     return " ".join(line.split())
 
 
-def write_opening_header(final_file, **header_params):
+def write_opening_header(finalfile, **headerparams):
     """
     Write the header information into the newly-created hosts file.
 
     Parameters
     ----------
-    final_file : file
+    finalfile : file
         The file object that points to the newly-created hosts file.
-    header_params : kwargs
+    headerparams : kwargs
         Dictionary providing additional parameters for populating the header
         information. Currently, those fields are:
 
@@ -1207,135 +1207,135 @@ def write_opening_header(final_file, **header_params):
         5) nounifiedhosts
     """
 
-    final_file.seek(0)  # Reset file pointer.
-    file_contents = final_file.read()  # Save content.
+    finalfile.seek(0)  # Reset file pointer.
+    file_contents = finalfile.read()  # Save content.
 
-    final_file.seek(0)  # Write at the top.
+    finalfile.seek(0)  # Write at the top.
 
-    no_unified_hosts = header_params["nounifiedhosts"]
+    nounifiedhosts = headerparams["nounifiedhosts"]
 
-    if header_params["extensions"]:
-        if no_unified_hosts:
-            if len(header_params["extensions"]) > 1:
+    if headerparams["extensions"]:
+        if nounifiedhosts:
+            if len(headerparams["extensions"]) > 1:
                 write_data(
-                    final_file,
+                    finalfile,
                     "# Title: StevenBlack/hosts extensions {0} and {1} \n#\n".format(
-                        ", ".join(header_params["extensions"][:-1]),
-                        header_params["extensions"][-1],
+                        ", ".join(headerparams["extensions"][:-1]),
+                        headerparams["extensions"][-1],
                     ),
                 )
             else:
                 write_data(
-                    final_file,
+                    finalfile,
                     "# Title: StevenBlack/hosts extension {0}\n#\n".format(
-                        ", ".join(header_params["extensions"])
+                        ", ".join(headerparams["extensions"])
                     ),
                 )
         else:
-            if len(header_params["extensions"]) > 1:
+            if len(headerparams["extensions"]) > 1:
                 write_data(
-                    final_file,
+                    finalfile,
                     "# Title: StevenBlack/hosts with the {0} and {1} extensions\n#\n".format(
-                        ", ".join(header_params["extensions"][:-1]),
-                        header_params["extensions"][-1],
+                        ", ".join(headerparams["extensions"][:-1]),
+                        headerparams["extensions"][-1],
                     ),
                 )
             else:
                 write_data(
-                    final_file,
+                    finalfile,
                     "# Title: StevenBlack/hosts with the {0} extension\n#\n".format(
-                        ", ".join(header_params["extensions"])
+                        ", ".join(headerparams["extensions"])
                     ),
                 )
     else:
-        write_data(final_file, "# Title: StevenBlack/hosts\n#\n")
+        write_data(finalfile, "# Title: StevenBlack/hosts\n#\n")
 
     write_data(
-        final_file,
+        finalfile,
         "# This hosts file is a merged collection "
         "of hosts from reputable sources,\n",
     )
-    write_data(final_file, "# with a dash of crowd sourcing via GitHub\n#\n")
+    write_data(finalfile, "# with a dash of crowd sourcing via GitHub\n#\n")
     write_data(
-        final_file,
+        finalfile,
         "# Date: " + time.strftime("%d %B %Y %H:%M:%S (%Z)", time.gmtime()) + "\n",
     )
 
-    if header_params["extensions"]:
-        if header_params["nounifiedhosts"]:
+    if headerparams["extensions"]:
+        if headerparams["nounifiedhosts"]:
             write_data(
-                final_file,
+                finalfile,
                 "# The unified hosts file was not used while generating this file.\n"
                 "# Extensions used to generate this file: "
-                + ", ".join(header_params["extensions"])
+                + ", ".join(headerparams["extensions"])
                 + "\n",
             )
         else:
             write_data(
-                final_file,
+                finalfile,
                 "# Extensions added to this file: "
-                + ", ".join(header_params["extensions"])
+                + ", ".join(headerparams["extensions"])
                 + "\n",
             )
 
     write_data(
-        final_file,
+        finalfile,
         (
             "# Number of unique domains: {:,}\n#\n".format(
-                header_params["numberofrules"]
+                headerparams["numberofrules"]
             )
         ),
     )
     write_data(
-        final_file,
+        finalfile,
         "# Fetch the latest version of this file: "
         "https://raw.githubusercontent.com/StevenBlack/hosts/master/"
-        + path_join_robust(header_params["outputsubfolder"], "").replace("\\", "/")
+        + path_join_robust(headerparams["outputsubfolder"], "").replace("\\", "/")
         + "hosts\n",
     )
     write_data(
-        final_file, "# Project home page: https://github.com/StevenBlack/hosts\n"
+        finalfile, "# Project home page: https://github.com/StevenBlack/hosts\n"
     )
     write_data(
-        final_file,
+        finalfile,
         "# Project releases: https://github.com/StevenBlack/hosts/releases\n#\n",
     )
     write_data(
-        final_file,
+        finalfile,
         "# ===============================================================\n",
     )
-    write_data(final_file, "\n")
+    write_data(finalfile, "\n")
 
-    if not header_params["skipstatichosts"]:
-        write_data(final_file, "127.0.0.1 localhost\n")
-        write_data(final_file, "127.0.0.1 localhost.localdomain\n")
-        write_data(final_file, "127.0.0.1 local\n")
-        write_data(final_file, "255.255.255.255 broadcasthost\n")
-        write_data(final_file, "::1 localhost\n")
-        write_data(final_file, "::1 ip6-localhost\n")
-        write_data(final_file, "::1 ip6-loopback\n")
-        write_data(final_file, "fe80::1%lo0 localhost\n")
-        write_data(final_file, "ff00::0 ip6-localnet\n")
-        write_data(final_file, "ff00::0 ip6-mcastprefix\n")
-        write_data(final_file, "ff02::1 ip6-allnodes\n")
-        write_data(final_file, "ff02::2 ip6-allrouters\n")
-        write_data(final_file, "ff02::3 ip6-allhosts\n")
-        write_data(final_file, "0.0.0.0 0.0.0.0\n")
+    if not headerparams["skipstatichosts"]:
+        write_data(finalfile, "127.0.0.1 localhost\n")
+        write_data(finalfile, "127.0.0.1 localhost.localdomain\n")
+        write_data(finalfile, "127.0.0.1 local\n")
+        write_data(finalfile, "255.255.255.255 broadcasthost\n")
+        write_data(finalfile, "::1 localhost\n")
+        write_data(finalfile, "::1 ip6-localhost\n")
+        write_data(finalfile, "::1 ip6-loopback\n")
+        write_data(finalfile, "fe80::1%lo0 localhost\n")
+        write_data(finalfile, "ff00::0 ip6-localnet\n")
+        write_data(finalfile, "ff00::0 ip6-mcastprefix\n")
+        write_data(finalfile, "ff02::1 ip6-allnodes\n")
+        write_data(finalfile, "ff02::2 ip6-allrouters\n")
+        write_data(finalfile, "ff02::3 ip6-allhosts\n")
+        write_data(finalfile, "0.0.0.0 0.0.0.0\n")
 
         if platform.system() == "Linux":
-            write_data(final_file, "127.0.1.1 " + socket.gethostname() + "\n")
-            write_data(final_file, "127.0.0.53 " + socket.gethostname() + "\n")
+            write_data(finalfile, "127.0.1.1 " + socket.gethostname() + "\n")
+            write_data(finalfile, "127.0.0.53 " + socket.gethostname() + "\n")
 
-        write_data(final_file, "\n")
+        write_data(finalfile, "\n")
 
     preamble = path_join_robust(BASEDIR_PATH, "myhosts")
     maybe_copy_example_file(preamble)
 
     if os.path.isfile(preamble):
         with open(preamble, "r") as f:
-            write_data(final_file, f.read())
+            write_data(finalfile, f.read())
 
-    final_file.write(file_contents)
+    finalfile.write(file_contents)
 
 
 def update_readme_data(readme_file, **readme_updates):
@@ -1359,17 +1359,17 @@ def update_readme_data(readme_file, **readme_updates):
 
     extensions_key = "base"
     extensions = readme_updates["extensions"]
-    no_unified_hosts = readme_updates["nounifiedhosts"]
+    nounifiedhosts = readme_updates["nounifiedhosts"]
 
     if extensions:
         extensions_key = "-".join(extensions)
-        if no_unified_hosts:
+        if nounifiedhosts:
             extensions_key = extensions_key + "-only"
 
     output_folder = readme_updates["outputsubfolder"]
     generation_data = {
         "location": path_join_robust(output_folder, ""),
-        "no_unified_hosts": no_unified_hosts,
+        "nounifiedhosts": nounifiedhosts,
         "entries": readme_updates["numberofrules"],
         "sourcesdata": readme_updates["sourcesdata"],
     }
@@ -1387,7 +1387,7 @@ def update_readme_data(readme_file, **readme_updates):
         json.dump(readme_data, f)
 
 
-def move_hosts_file_into_place(final_file):
+def move_hosts_file_into_place(finalfile):
     r"""
     Move the newly-created hosts file into its correct location on the OS.
 
@@ -1400,11 +1400,11 @@ def move_hosts_file_into_place(final_file):
 
     Parameters
     ----------
-    final_file : file object
+    finalfile : file object
         The newly-created hosts file to move.
     """  # noqa: W605
 
-    filename = os.path.abspath(final_file.name)
+    filename = os.path.abspath(finalfile.name)
 
     try:
         if not Path(filename).exists():
@@ -1553,25 +1553,25 @@ def remove_old_hosts_file(path_to_file, file_name, backup):
         Whether or not to backup the existing hosts file.
     """
 
-    full_file_path = path_join_robust(path_to_file, file_name)
+    fullfilepath = path_join_robust(path_to_file, file_name)
 
-    if os.path.exists(full_file_path):
+    if os.path.exists(fullfilepath):
         if backup:
-            backup_file_path = full_file_path + "-{}".format(
+            backupfilepath = fullfilepath + "-{}".format(
                 time.strftime("%Y-%m-%d-%H-%M-%S")
             )
 
             # Make a backup copy, marking the date in which the list was updated
-            shutil.copy(full_file_path, backup_file_path)
+            shutil.copy(fullfilepath, backupfilepath)
 
-        os.remove(full_file_path)
+        os.remove(fullfilepath)
 
     # Create directory if not exists
     if not os.path.exists(path_to_file):
         os.makedirs(path_to_file)
 
     # Create new empty hosts file
-    open(full_file_path, "a").close()
+    open(fullfilepath, "a").close()
 
 
 # End File Logic
@@ -1610,16 +1610,16 @@ def domain_to_idna(line):
         tabs = "\t"
         space = " "
 
-        tabs_position, space_position = (line.find(tabs), line.find(space))
+        tabsposition, spaceposition = (line.find(tabs), line.find(space))
 
-        if tabs_position > -1 and space_position > -1:
-            if space_position < tabs_position:
+        if tabsposition > -1 and spaceposition > -1:
+            if spaceposition < tabsposition:
                 separator = space
             else:
                 separator = tabs
-        elif not tabs_position == -1:
+        elif not tabsposition == -1:
             separator = tabs
-        elif not space_position == -1:
+        elif not spaceposition == -1:
             separator = space
         else:
             separator = ""
@@ -1672,9 +1672,9 @@ def maybe_copy_example_file(file_path):
     """
 
     if not os.path.isfile(file_path):
-        example_file_path = file_path + ".example"
-        if os.path.isfile(example_file_path):
-            shutil.copyfile(example_file_path, file_path)
+        examplefilepath = file_path + ".example"
+        if os.path.isfile(examplefilepath):
+            shutil.copyfile(examplefilepath, file_path)
 
 
 def get_file_by_url(url, params=None, **kwargs):

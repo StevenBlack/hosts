@@ -219,18 +219,18 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
         BaseMockDir.setUp(self)
 
     def test_no_freshen_no_new_file(self):
-        hosts_file = os.path.join(self.test_dir, "hosts")
+        hostsfile = os.path.join(self.test_dir, "hosts")
         hosts_data = "This data should not be overwritten"
 
         with self.mock_property("updateHostsFile.BASEDIR_PATH"):
             updateHostsFile.BASEDIR_PATH = self.test_dir
 
-            with open(hosts_file, "w") as f:
+            with open(hostsfile, "w") as f:
                 f.write(hosts_data)
 
-        for update_auto in (False, True):
+        for updateauto in (False, True):
             dir_count = self.dir_count
-            prompt_for_update(freshen=False, update_auto=update_auto)
+            prompt_for_update(freshen=False, updateauto=updateauto)
 
             output = sys.stdout.getvalue()
             self.assertEqual(output, "")
@@ -239,18 +239,18 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 
             self.assertEqual(self.dir_count, dir_count)
 
-            with open(hosts_file, "r") as f:
+            with open(hostsfile, "r") as f:
                 contents = f.read()
                 self.assertEqual(contents, hosts_data)
 
     def test_no_freshen_new_file(self):
-        hosts_file = os.path.join(self.test_dir, "hosts")
+        hostsfile = os.path.join(self.test_dir, "hosts")
 
         with self.mock_property("updateHostsFile.BASEDIR_PATH"):
             updateHostsFile.BASEDIR_PATH = self.test_dir
 
             dir_count = self.dir_count
-            prompt_for_update(freshen=False, update_auto=False)
+            prompt_for_update(freshen=False, updateauto=False)
 
             output = sys.stdout.getvalue()
             self.assertEqual(output, "")
@@ -259,7 +259,7 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 
             self.assertEqual(self.dir_count, dir_count + 1)
 
-            with open(hosts_file, "r") as f:
+            with open(hostsfile, "r") as f:
                 contents = f.read()
                 self.assertEqual(contents, "")
 
@@ -270,7 +270,7 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 
             with self.mock_property("updateHostsFile.BASEDIR_PATH"):
                 updateHostsFile.BASEDIR_PATH = self.test_dir
-                prompt_for_update(freshen=False, update_auto=False)
+                prompt_for_update(freshen=False, updateauto=False)
 
                 output = sys.stdout.getvalue()
                 expected = (
@@ -283,19 +283,19 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def test_freshen_no_update(self, _):
-        hosts_file = os.path.join(self.test_dir, "hosts")
+        hostsfile = os.path.join(self.test_dir, "hosts")
         hosts_data = "This data should not be overwritten"
 
         with self.mock_property("updateHostsFile.BASEDIR_PATH"):
             updateHostsFile.BASEDIR_PATH = self.test_dir
 
-            with open(hosts_file, "w") as f:
+            with open(hostsfile, "w") as f:
                 f.write(hosts_data)
 
             dir_count = self.dir_count
 
-            update_sources = prompt_for_update(freshen=True, update_auto=False)
-            self.assertFalse(update_sources)
+            updatesources = prompt_for_update(freshen=True, updateauto=False)
+            self.assertFalse(updatesources)
 
             output = sys.stdout.getvalue()
             expected = "OK, we'll stick with what we've got locally."
@@ -305,28 +305,28 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 
             self.assertEqual(self.dir_count, dir_count)
 
-            with open(hosts_file, "r") as f:
+            with open(hostsfile, "r") as f:
                 contents = f.read()
                 self.assertEqual(contents, hosts_data)
 
     @mock.patch("updateHostsFile.query_yes_no", return_value=True)
     def test_freshen_update(self, _):
-        hosts_file = os.path.join(self.test_dir, "hosts")
+        hostsfile = os.path.join(self.test_dir, "hosts")
         hosts_data = "This data should not be overwritten"
 
         with self.mock_property("updateHostsFile.BASEDIR_PATH"):
             updateHostsFile.BASEDIR_PATH = self.test_dir
 
-            with open(hosts_file, "w") as f:
+            with open(hostsfile, "w") as f:
                 f.write(hosts_data)
 
             dir_count = self.dir_count
 
-            for update_auto in (False, True):
-                update_sources = prompt_for_update(
-                    freshen=True, update_auto=update_auto
+            for updateauto in (False, True):
+                updatesources = prompt_for_update(
+                    freshen=True, updateauto=updateauto
                 )
-                self.assertTrue(update_sources)
+                self.assertTrue(updatesources)
 
                 output = sys.stdout.getvalue()
                 self.assertEqual(output, "")
@@ -335,7 +335,7 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 
                 self.assertEqual(self.dir_count, dir_count)
 
-                with open(hosts_file, "r") as f:
+                with open(hostsfile, "r") as f:
                     contents = f.read()
                     self.assertEqual(contents, hosts_data)
 
@@ -346,8 +346,8 @@ class TestPromptForUpdate(BaseStdout, BaseMockDir):
 class TestPromptForExclusions(BaseStdout):
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testSkipPrompt(self, mock_query):
-        gather_exclusions = prompt_for_exclusions(skip_prompt=True)
-        self.assertFalse(gather_exclusions)
+        gatherexclusions = prompt_for_exclusions(skipprompt=True)
+        self.assertFalse(gatherexclusions)
 
         output = sys.stdout.getvalue()
         self.assertEqual(output, "")
@@ -356,8 +356,8 @@ class TestPromptForExclusions(BaseStdout):
 
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testNoSkipPromptNoDisplay(self, mock_query):
-        gather_exclusions = prompt_for_exclusions(skip_prompt=False)
-        self.assertFalse(gather_exclusions)
+        gatherexclusions = prompt_for_exclusions(skipprompt=False)
+        self.assertFalse(gatherexclusions)
 
         output = sys.stdout.getvalue()
         expected = "OK, we'll only exclude domains in the whitelist."
@@ -367,8 +367,8 @@ class TestPromptForExclusions(BaseStdout):
 
     @mock.patch("updateHostsFile.query_yes_no", return_value=True)
     def testNoSkipPromptDisplay(self, mock_query):
-        gather_exclusions = prompt_for_exclusions(skip_prompt=False)
-        self.assertTrue(gather_exclusions)
+        gatherexclusions = prompt_for_exclusions(skipprompt=False)
+        self.assertTrue(gatherexclusions)
 
         output = sys.stdout.getvalue()
         self.assertEqual(output, "")
@@ -380,8 +380,8 @@ class TestPromptForFlushDnsCache(Base):
     @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testFlushCache(self, mock_query, mock_flush):
-        for prompt_flush in (False, True):
-            prompt_for_flush_dns_cache(flush_cache=True, prompt_flush=prompt_flush)
+        for promptflush in (False, True):
+            prompt_for_flush_dns_cache(flushcache=True, promptflush=promptflush)
 
             mock_query.assert_not_called()
             self.assert_called_once(mock_flush)
@@ -392,7 +392,7 @@ class TestPromptForFlushDnsCache(Base):
     @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testNoFlushCacheNoPrompt(self, mock_query, mock_flush):
-        prompt_for_flush_dns_cache(flush_cache=False, prompt_flush=False)
+        prompt_for_flush_dns_cache(flushcache=False, promptflush=False)
 
         mock_query.assert_not_called()
         mock_flush.assert_not_called()
@@ -400,7 +400,7 @@ class TestPromptForFlushDnsCache(Base):
     @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=False)
     def testNoFlushCachePromptNoFlush(self, mock_query, mock_flush):
-        prompt_for_flush_dns_cache(flush_cache=False, prompt_flush=True)
+        prompt_for_flush_dns_cache(flushcache=False, promptflush=True)
 
         self.assert_called_once(mock_query)
         mock_flush.assert_not_called()
@@ -408,7 +408,7 @@ class TestPromptForFlushDnsCache(Base):
     @mock.patch("updateHostsFile.flush_dns_cache", return_value=0)
     @mock.patch("updateHostsFile.query_yes_no", return_value=True)
     def testNoFlushCachePromptFlush(self, mock_query, mock_flush):
-        prompt_for_flush_dns_cache(flush_cache=False, prompt_flush=True)
+        prompt_for_flush_dns_cache(flushcache=False, promptflush=True)
 
         self.assert_called_once(mock_query)
         self.assert_called_once(mock_flush)
@@ -521,7 +521,7 @@ class TestDisplayExclusionsOptions(Base):
     @mock.patch("updateHostsFile.query_yes_no", side_effect=[0, 0, 1])
     @mock.patch("updateHostsFile.exclude_domain", return_value=None)
     @mock.patch("updateHostsFile.gather_custom_exclusions", return_value=None)
-    def test_gather_exclusions(self, mock_gather, mock_exclude, _):
+    def test_gatherexclusions(self, mock_gather, mock_exclude, _):
         common_exclusions = ["foo", "bar"]
         display_exclusion_options(common_exclusions, "foo", [])
 
@@ -531,7 +531,7 @@ class TestDisplayExclusionsOptions(Base):
     @mock.patch("updateHostsFile.query_yes_no", side_effect=[1, 0, 1])
     @mock.patch("updateHostsFile.exclude_domain", return_value=None)
     @mock.patch("updateHostsFile.gather_custom_exclusions", return_value=None)
-    def test_mixture_gather_exclusions(self, mock_gather, mock_exclude, _):
+    def test_mixture_gatherexclusions(self, mock_gather, mock_exclude, _):
         common_exclusions = ["foo", "bar"]
         display_exclusion_options(common_exclusions, "foo", [])
 
@@ -672,13 +672,13 @@ class TestUpdateSourcesData(Base):
     def setUp(self):
         Base.setUp(self)
 
-        self.data_path = "data"
-        self.extensions_path = "extensions"
+        self.datapath = "data"
+        self.extensionspath = "extensions"
         self.source_data_filename = "update.json"
 
         self.update_kwargs = dict(
-            datapath=self.data_path,
-            extensionspath=self.extensions_path,
+            datapath=self.datapath,
+            extensionspath=self.extensionspath,
             sourcedatafilename=self.source_data_filename,
             nounifiedhosts=False,
         )
@@ -705,8 +705,8 @@ class TestUpdateSourcesData(Base):
 
         self.assertEqual(new_sources_data, sources_data)
         join_calls = [
-            mock.call(self.extensions_path, ".json"),
-            mock.call(self.extensions_path, ".txt"),
+            mock.call(self.extensionspath, ".json"),
+            mock.call(self.extensionspath, ".txt"),
         ]
         mock_join_robust.assert_has_calls(join_calls)
         mock_open.assert_not_called()
@@ -762,12 +762,12 @@ class TestUpdateAllSources(BaseStdout):
         BaseStdout.setUp(self)
 
         self.source_data_filename = "data.json"
-        self.host_filename = "hosts.txt"
+        self.hostfilename = "hosts.txt"
 
     @mock.patch("builtins.open")
     @mock.patch("updateHostsFile.recursive_glob", return_value=[])
     def test_no_sources(self, _, mock_open):
-        update_all_sources(self.source_data_filename, self.host_filename)
+        update_all_sources(self.source_data_filename, self.hostfilename)
         mock_open.assert_not_called()
 
     @mock.patch("builtins.open", return_value=mock.Mock())
@@ -776,7 +776,7 @@ class TestUpdateAllSources(BaseStdout):
     @mock.patch("updateHostsFile.write_data", return_value=0)
     @mock.patch("updateHostsFile.get_file_by_url", return_value="file_data")
     def test_one_source(self, mock_get, mock_write, *_):
-        update_all_sources(self.source_data_filename, self.host_filename)
+        update_all_sources(self.source_data_filename, self.hostfilename)
         self.assert_called_once(mock_write)
         self.assert_called_once(mock_get)
 
@@ -791,7 +791,7 @@ class TestUpdateAllSources(BaseStdout):
     @mock.patch("updateHostsFile.write_data", return_value=0)
     @mock.patch("updateHostsFile.get_file_by_url", return_value=Exception("fail"))
     def test_source_fail(self, mock_get, mock_write, *_):
-        update_all_sources(self.source_data_filename, self.host_filename)
+        update_all_sources(self.source_data_filename, self.hostfilename)
         mock_write.assert_not_called()
         self.assert_called_once(mock_get)
 
@@ -813,7 +813,7 @@ class TestUpdateAllSources(BaseStdout):
         "updateHostsFile.get_file_by_url", side_effect=[Exception("fail"), "file_data"]
     )
     def test_sources_fail_succeed(self, mock_get, mock_write, *_):
-        update_all_sources(self.source_data_filename, self.host_filename)
+        update_all_sources(self.source_data_filename, self.hostfilename)
         self.assert_called_once(mock_write)
 
         get_calls = [mock.call("example.com"), mock.call("example2.com")]
@@ -835,7 +835,7 @@ class TestUpdateAllSources(BaseStdout):
 # File Logic
 class TestNormalizeRule(BaseStdout):
     def test_no_match(self):
-        kwargs = dict(target_ip="0.0.0.0", keep_domain_comments=False)
+        kwargs = dict(targetip="0.0.0.0", keep_domain_comments=False)
 
         # Note: "Bare"- Domains are accepted. IP are excluded.
         for rule in [
@@ -865,7 +865,7 @@ class TestNormalizeRule(BaseStdout):
             expected = (expected_target, "0.0.0.0 " + expected_target + "\n")
 
             actual = normalize_rule(
-                rule, target_ip="0.0.0.0", keep_domain_comments=False
+                rule, targetip="0.0.0.0", keep_domain_comments=False
             )
             self.assertEqual(actual, expected)
 
@@ -876,12 +876,12 @@ class TestNormalizeRule(BaseStdout):
             sys.stdout = StringIO()
 
     def test_no_comments(self):
-        for target_ip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
+        for targetip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
             rule = "127.0.0.1 1.google.com foo"
-            expected = ("1.google.com", str(target_ip) + " 1.google.com\n")
+            expected = ("1.google.com", str(targetip) + " 1.google.com\n")
 
             actual = normalize_rule(
-                rule, target_ip=target_ip, keep_domain_comments=False
+                rule, targetip=targetip, keep_domain_comments=False
             )
             self.assertEqual(actual, expected)
 
@@ -892,16 +892,16 @@ class TestNormalizeRule(BaseStdout):
             sys.stdout = StringIO()
 
     def test_with_comments(self):
-        for target_ip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
+        for targetip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
             for comment in ("foo", "bar", "baz"):
                 rule = "127.0.0.1 1.google.co.uk " + comment
                 expected = (
                     "1.google.co.uk",
-                    (str(target_ip) + " 1.google.co.uk # " + comment + "\n"),
+                    (str(targetip) + " 1.google.co.uk # " + comment + "\n"),
                 )
 
                 actual = normalize_rule(
-                    rule, target_ip=target_ip, keep_domain_comments=True
+                    rule, targetip=targetip, keep_domain_comments=True
                 )
                 self.assertEqual(actual, expected)
 
@@ -912,11 +912,11 @@ class TestNormalizeRule(BaseStdout):
                 sys.stdout = StringIO()
 
     def test_two_ips(self):
-        for target_ip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
+        for targetip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
             rule = "127.0.0.1 11.22.33.44 foo"
 
             actual = normalize_rule(
-                rule, target_ip=target_ip, keep_domain_comments=False
+                rule, targetip=targetip, keep_domain_comments=False
             )
             self.assertEqual(actual, (None, None))
 
@@ -939,7 +939,7 @@ class TestNormalizeRule(BaseStdout):
             expected = (rule, "0.0.0.0 " + rule + "\n")
 
             actual = normalize_rule(
-                rule, target_ip="0.0.0.0", keep_domain_comments=False
+                rule, targetip="0.0.0.0", keep_domain_comments=False
             )
             self.assertEqual(actual, expected)
 
@@ -950,16 +950,16 @@ class TestNormalizeRule(BaseStdout):
             sys.stdout = StringIO()
 
     def test_with_comments_raw(self):
-        for target_ip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
+        for targetip in ("0.0.0.0", "127.0.0.1", "8.8.8.8"):
             for comment in ("foo", "bar", "baz"):
                 rule = "1.google.co.uk " + comment
                 expected = (
                     "1.google.co.uk",
-                    (str(target_ip) + " 1.google.co.uk # " + comment + "\n"),
+                    (str(targetip) + " 1.google.co.uk # " + comment + "\n"),
                 )
 
                 actual = normalize_rule(
-                    rule, target_ip=target_ip, keep_domain_comments=True
+                    rule, targetip=targetip, keep_domain_comments=True
                 )
                 self.assertEqual(actual, expected)
 
@@ -1193,10 +1193,10 @@ class TestWriteOpeningHeader(BaseMockDir):
             self.assertNotIn(expected, contents)
 
     def _check_preamble(self, check_copy):
-        hosts_file = os.path.join(self.test_dir, "myhosts")
-        hosts_file += ".example" if check_copy else ""
+        hostsfile = os.path.join(self.test_dir, "myhosts")
+        hostsfile += ".example" if check_copy else ""
 
-        with open(hosts_file, "w") as f:
+        with open(hostsfile, "w") as f:
             f.write("peter-piper-picked-a-pepper")
 
         kwargs = dict(
@@ -1275,7 +1275,7 @@ class TestUpdateReadmeData(BaseMockDir):
             sep = self.sep
 
         expected = {
-            "base": {"location": "foo" + sep, 'no_unified_hosts': False, "sourcesdata": "hosts", "entries": 5},
+            "base": {"location": "foo" + sep, 'nounifiedhosts': False, "sourcesdata": "hosts", "entries": 5},
             "foo": "bar",
         }
 
@@ -1298,7 +1298,7 @@ class TestUpdateReadmeData(BaseMockDir):
             sep = self.sep
 
         expected = {
-            "base": {"location": "foo" + sep, 'no_unified_hosts': False, "sourcesdata": "hosts", "entries": 5},
+            "base": {"location": "foo" + sep, 'nounifiedhosts': False, "sourcesdata": "hosts", "entries": 5},
         }
 
         with open(self.readme_file, "r") as f:
@@ -1324,7 +1324,7 @@ class TestUpdateReadmeData(BaseMockDir):
             sep = self.sep
 
         expected = {
-            "com-org": {"location": "foo" + sep, 'no_unified_hosts': False, "sourcesdata": "hosts", "entries": 5}
+            "com-org": {"location": "foo" + sep, 'nounifiedhosts': False, "sourcesdata": "hosts", "entries": 5}
         }
 
         with open(self.readme_file, "r") as f:
@@ -1350,7 +1350,7 @@ class TestUpdateReadmeData(BaseMockDir):
             sep = self.sep
 
         expected = {
-            "com-org-only": {"location": "foo" + sep, 'no_unified_hosts': True, "sourcesdata": "hosts", "entries": 5}
+            "com-org-only": {"location": "foo" + sep, 'nounifiedhosts': True, "sourcesdata": "hosts", "entries": 5}
         }
 
         with open(self.readme_file, "r") as f:
@@ -1520,13 +1520,13 @@ class TestFlushDnsCache(BaseStdout):
 class TestRemoveOldHostsFile(BaseMockDir):
     def setUp(self):
         super(TestRemoveOldHostsFile, self).setUp()
-        self.hosts_file = "hosts"
+        self.hostsfile = "hosts"
         self.full_hosts_path = os.path.join(self.test_dir, "hosts")
 
     def test_remove_hosts_file(self):
         old_dir_count = self.dir_count
 
-        remove_old_hosts_file(self.test_dir, self.hosts_file, backup=False)
+        remove_old_hosts_file(self.test_dir, self.hostsfile, backup=False)
 
         new_dir_count = old_dir_count + 1
         self.assertEqual(self.dir_count, new_dir_count)
@@ -1541,7 +1541,7 @@ class TestRemoveOldHostsFile(BaseMockDir):
 
         old_dir_count = self.dir_count
 
-        remove_old_hosts_file(self.test_dir, self.hosts_file, backup=False)
+        remove_old_hosts_file(self.test_dir, self.hostsfile, backup=False)
 
         new_dir_count = old_dir_count
         self.assertEqual(self.dir_count, new_dir_count)
@@ -1557,7 +1557,7 @@ class TestRemoveOldHostsFile(BaseMockDir):
 
         old_dir_count = self.dir_count
 
-        remove_old_hosts_file(self.test_dir, self.hosts_file, backup=True)
+        remove_old_hosts_file(self.test_dir, self.hostsfile, backup=True)
 
         new_dir_count = old_dir_count + 1
         self.assertEqual(self.dir_count, new_dir_count)
@@ -1566,9 +1566,9 @@ class TestRemoveOldHostsFile(BaseMockDir):
             contents = f.read()
             self.assertEqual(contents, "")
 
-        new_hosts_file = self.full_hosts_path + "-new"
+        new_hostsfile = self.full_hosts_path + "-new"
 
-        with open(new_hosts_file, "r") as f:
+        with open(new_hostsfile, "r") as f:
             contents = f.read()
             self.assertEqual(contents, "foo")
 
