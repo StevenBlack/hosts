@@ -951,6 +951,17 @@ def remove_dups_and_excl(mergefile, exclusionregexes, outputfile=None):
     else:
         finalfile = outputfile
 
+    # analyze any post.json here
+    post_json_path = os.path.join(os.path.dirname(finalfile.name), "post.json")
+    filters = []
+    if os.path.isfile(post_json_path):
+        try:
+            with open(post_json_path, "r", encoding="UTF-8") as post_file:
+                post_data = json.load(post_file)
+                filters = post_data.get("filters", [])
+        except Exception as e:
+            print_failure(f"Error reading post.json: {e}")
+
     mergefile.seek(0)  # reset file pointer
     hostnames = {"localhost", "localhost.localdomain", "local", "broadcasthost"}
     exclusions = settings["exclusions"]
@@ -960,6 +971,10 @@ def remove_dups_and_excl(mergefile, exclusionregexes, outputfile=None):
 
         # Explicit encoding
         line = line.decode("UTF-8")
+
+        # Apply post.json filters
+        if filters and any(f in line for f in filters):
+            continue
 
         # replace tabs with space
         line = line.replace("\t+", " ")
