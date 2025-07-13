@@ -327,7 +327,8 @@ def main():
 
     print_success(
         "Success! The hosts file has been saved in folder "
-        + (outputsubfolder if outputsubfolder else "./")
+        + "./"
+        + outputsubfolder
         + "\nIt contains "
         + "{:,}".format(numberofrules)
         + " unique entries."
