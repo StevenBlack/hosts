@@ -2,7 +2,6 @@
 cd /d "%~dp0"
 echo 🛡️ Iniciando Hosts Generator...
 echo.
-pip install -r requirements.txt
 python main.py
 
 if errorlevel 1 (
