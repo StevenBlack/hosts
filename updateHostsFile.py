@@ -298,22 +298,23 @@ def main():
         nounifiedhosts=nounifiedhosts,
     )
 
-    mergefile = create_initial_file(
-        nounifiedhosts=nounifiedhosts,
-    )
     remove_old_hosts_file(settings["outputpath"], "hosts", settings["backup"])
-    if settings["compress"]:
-        finalfile = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
-        compressedfile = tempfile.NamedTemporaryFile()
-        remove_dups_and_excl(mergefile, exclusionregexes, targetips, compressedfile)
-        compress_file(compressedfile, targetips, finalfile)
-    elif settings["minimise"]:
-        finalfile = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
-        minimisedfile = tempfile.NamedTemporaryFile()
-        remove_dups_and_excl(mergefile, exclusionregexes, targetips, minimisedfile)
-        minimise_file(minimisedfile, targetips, finalfile)
-    else:
-        finalfile = remove_dups_and_excl(mergefile, exclusionregexes, targetips)
+
+    if not os.path.exists(settings["outputpath"]):
+        os.makedirs(settings["outputpath"])
+
+    finalfile = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
+    with create_initial_file(nounifiedhosts=nounifiedhosts) as mergefile:
+        if settings["compress"]:
+            with tempfile.NamedTemporaryFile() as uncompressedfile:
+                remove_dups_and_excl(mergefile, exclusionregexes, targetips, uncompressedfile)
+                compress_file(uncompressedfile, targetips, finalfile)
+        elif settings["minimise"]:
+            with tempfile.NamedTemporaryFile() as unminimisedfile:
+                remove_dups_and_excl(mergefile, exclusionregexes, targetips, unminimisedfile)
+                minimise_file(unminimisedfile, targetips, finalfile)
+        else:
+            remove_dups_and_excl(mergefile, exclusionregexes, targetips, finalfile)
 
     numberofrules = settings["numberofrules"]
     outputsubfolder = settings["outputsubfolder"]
@@ -977,7 +978,7 @@ def minimise_file(inputfile, targetips, outputfile):
     inputfile.close()
 
 
-def remove_dups_and_excl(mergefile, exclusionregexes, targetips, outputfile=None):
+def remove_dups_and_excl(mergefile, exclusionregexes, targetips, outputfile):
     """
     Remove duplicates and remove hosts that we are excluding.
 
@@ -993,8 +994,7 @@ def remove_dups_and_excl(mergefile, exclusionregexes, targetips, outputfile=None
     targetips : list[str]
         The list of target IP addresses
     outputfile : file
-        The file object in which the result is written. If None, the file
-        'settings["outputpath"]' will be created.
+        The file object to which the result is written.
     """
 
     numberofrules = settings["numberofrules"]
@@ -1007,13 +1007,7 @@ def remove_dups_and_excl(mergefile, exclusionregexes, targetips, outputfile=None
                 if line and not line.startswith("#"):
                     settings["exclusions"].append(line)
 
-    if not os.path.exists(settings["outputpath"]):
-        os.makedirs(settings["outputpath"])
-
-    if outputfile is None:
-        finalfile = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
-    else:
-        finalfile = outputfile
+    finalfile = outputfile
 
     # analyze any post.json here
     post_json_path = os.path.join(os.path.dirname(finalfile.name), "post.json")
@@ -1084,12 +1078,6 @@ def remove_dups_and_excl(mergefile, exclusionregexes, targetips, outputfile=None
                 write_data(finalfile, normalized_rule)
 
     settings["numberofrules"] = numberofrules
-    mergefile.close()
-
-    if outputfile is None:
-        return finalfile
-    else:
-        return outputfile
 
 
 def normalize_rule(rule, targetip, keep_domain_comments):
