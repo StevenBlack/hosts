@@ -83,10 +83,22 @@ def main():
         "file from hosts stored in "
         "data subfolders."
     )
+    parser.add_argument(
+        "--noupdate",
+        "-n",
+        dest="noupdate",
+        default=False,
+        action="store_true",
+        help="Don't update from host data sources.",
+    )
     parser.parse_args()
+    options = vars(parser.parse_args())
 
     # Update the unified hosts file
-    update_hosts_file("-a")
+    if options["noupdate"]:
+        update_hosts_file("-a", "-n")
+    else:
+        update_hosts_file("-a")
 
     # List of extensions we want to generate, we will loop over them recursively to prevent manual definitions
     # Only add new extensions to the end of the array, to avoid relocating existing hosts-files
