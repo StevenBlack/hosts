@@ -118,7 +118,7 @@ class TestGetDefaults(Base):
                 "minimise": False,
                 "outputsubfolder": "",
                 "hostfilename": "hosts",
-                "targetip": "0.0.0.0",
+                "targetips": ["0.0.0.0", "::"],
                 "sourcedatafilename": "update.json",
                 "sourcesdata": [],
                 "readmefilename": "readme.md",

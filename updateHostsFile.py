@@ -78,7 +78,7 @@ def get_defaults():
         "minimise": False,
         "outputsubfolder": "",
         "hostfilename": "hosts",
-        "targetip": "0.0.0.0",
+        "targetips": ["0.0.0.0", "::"],
         "sourcedatafilename": "update.json",
         "sourcesdata": [],
         "readmefilename": "readme.md",
@@ -136,9 +136,10 @@ def main():
     parser.add_argument(
         "--ip",
         "-i",
-        dest="targetip",
-        default="0.0.0.0",
-        help="Target IP address. Default is 0.0.0.0.",
+        dest="targetips",
+        nargs="+",
+        default=["0.0.0.0", "::"],
+        help="""Target IP address(es). Default is ["0.0.0.0", "::"].""",
     )
     parser.add_argument(
         "--keepdomaincomments",
@@ -236,7 +237,8 @@ def main():
     options["outputpath"] = path_join_robust(BASEDIR_PATH, options["outputsubfolder"])
     options["freshen"] = not options["noupdate"]
 
-    settings = get_defaults()
+    defaults = get_defaults()
+    settings = defaults.copy()
     settings.update(options)
 
     datapath = settings["datapath"]
@@ -274,6 +276,18 @@ def main():
             exclusionregexes=exclusionregexes,
         )
 
+    targetips = set(settings["targetips"])
+    targetips_updated = targetips != set(defaults["targetips"])
+    generatev4, generatev6 = prompt_for_v4_v6(skipprompt=(auto or targetips_updated))
+    if not generatev4:
+        targetips.remove("0.0.0.0")
+    if not generatev6:
+        targetips.remove("::")
+    print()
+    if len(targetips) == 0:
+        print_failure("Target IP list is empty!")
+        exit(1)
+
     extensions = settings["extensions"]
     sourcesdata = update_sources_data(
         settings["sourcesdata"],
@@ -291,15 +305,15 @@ def main():
     if settings["compress"]:
         finalfile = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
         compressedfile = tempfile.NamedTemporaryFile()
-        remove_dups_and_excl(mergefile, exclusionregexes, compressedfile)
-        compress_file(compressedfile, settings["targetip"], finalfile)
+        remove_dups_and_excl(mergefile, exclusionregexes, targetips, compressedfile)
+        compress_file(compressedfile, targetips, finalfile)
     elif settings["minimise"]:
         finalfile = open(path_join_robust(settings["outputpath"], "hosts"), "w+b")
         minimisedfile = tempfile.NamedTemporaryFile()
-        remove_dups_and_excl(mergefile, exclusionregexes, minimisedfile)
-        minimise_file(minimisedfile, settings["targetip"], finalfile)
+        remove_dups_and_excl(mergefile, exclusionregexes, targetips, minimisedfile)
+        minimise_file(minimisedfile, targetips, finalfile)
     else:
-        finalfile = remove_dups_and_excl(mergefile, exclusionregexes)
+        finalfile = remove_dups_and_excl(mergefile, exclusionregexes, targetips)
 
     numberofrules = settings["numberofrules"]
     outputsubfolder = settings["outputsubfolder"]
@@ -428,6 +442,47 @@ def prompt_for_exclusions(skipprompt):
             print("OK, we'll only exclude domains in the whitelist.")
 
     return False
+
+
+def prompt_for_v4_v6(skipprompt):
+    """
+    Prompt the user to add v4 or v6 rules.
+
+    Parameters
+    ----------
+    skipprompt : bool
+        Whether or not to skip prompting.
+        If true, the function returns immediately.
+
+    Returns
+    -------
+    generatev4 : bool
+        Whether or not we should generate v4 rules.
+    generatev6 : bool
+        Whether or not we should generate v6 rules.
+    """
+
+    prompt_unformatted = (
+        "Do you want to add {} rules?\n"
+        "This roughly doubles the file size, but may be "
+        "necessary to actually block hosts\n"
+        "depending on your network configuration."
+    )
+    prompt_v4 = prompt_unformatted.format("IPv4")
+    prompt_v6 = prompt_unformatted.format("IPv6")
+
+    generatev4 = True
+    generatev6 = True
+
+    if not skipprompt:
+        if not query_yes_no(prompt_v4):
+            print("OK, we'll skip adding v4 rules.")
+            generatev4 = False
+        if not query_yes_no(prompt_v6):
+            print("OK, we'll skip adding v6 rules.")
+            generatev6 = False
+
+    return generatev4, generatev6
 
 
 def prompt_for_flush_dns_cache(flushcache, promptflush):
@@ -843,7 +898,7 @@ def create_initial_file(**initial_file_params):
     return mergefile
 
 
-def compress_file(inputfile, targetip, outputfile):
+def compress_file(inputfile, targetips, outputfile, maxdomainsperline=9):
     """
     Reduce the file dimension removing non-necessary lines (empty lines and
     comments) and putting multiple domains in each line.
@@ -854,38 +909,43 @@ def compress_file(inputfile, targetip, outputfile):
     ----------
     inputfile : file
         The file object that contains the hostnames that we are reducing.
-    targetip : str
+    targetips : list[str]
         The target IP address.
     outputfile : file
         The file object that will contain the reduced hostnames.
+    maxdomainsperline : int
+        The maximum number of domains per line. Defaults to 9.
     """
 
     inputfile.seek(0)  # reset file pointer
     write_data(outputfile, "\n")
 
-    targetip_len = len(targetip)
-    lines = [targetip]
-    lines_index = 0
+    ip_lines = {ip: [] for ip in targetips}
+
     for line in inputfile.readlines():
-        line = line.decode("UTF-8")
+        line = line.decode("UTF-8").strip()
 
-        if line.startswith(targetip):
-            if lines[lines_index].count(" ") < 9:
-                lines[lines_index] += (
-                    " " + line[targetip_len : line.find("#")].strip()  # noqa: E203
-                )
-            else:
-                lines[lines_index] += "\n"
-                lines.append(line[: line.find("#")].strip())
-                lines_index += 1
+        if not line or line.startswith("#"):
+            continue
 
-    for line in lines:
-        write_data(outputfile, line)
+        for targetip in targetips:
+            if line.startswith(targetip):
+                domain_part = line[len(targetip) : line.find("#")].strip() if "#" in line else line[len[targetip] :].strip()
+
+                if len(ip_lines[targetip]) == 0 or ip_lines[targetip][-1].count(" ") >= maxdomainsperline:
+                    ip_lines[targetip].append(targetip + " " + domain_part)
+                else:
+                    ip_lines[targetip][-1] += " " + domain_part
+                break
+
+    for targetip in targetips:
+        for line in ip_lines[targetip]:
+            write_data(outputfile, line + "\n")
 
     inputfile.close()
 
 
-def minimise_file(inputfile, targetip, outputfile):
+def minimise_file(inputfile, targetips, outputfile):
     """
     Reduce the file dimension removing non-necessary lines (empty lines and
     comments).
@@ -894,8 +954,8 @@ def minimise_file(inputfile, targetip, outputfile):
     ----------
     inputfile : file
         The file object that contains the hostnames that we are reducing.
-    targetip : str
-        The target IP address.
+    targetips : list[str]
+        The target IP addresses.
     outputfile : file
         The file object that will contain the reduced hostnames.
     """
@@ -907,8 +967,9 @@ def minimise_file(inputfile, targetip, outputfile):
     for line in inputfile.readlines():
         line = line.decode("UTF-8")
 
-        if line.startswith(targetip):
-            lines.append(line[: line.find("#")].strip() + "\n")
+        for targetip in targetips:
+            if line.startswith(targetip):
+                lines.append(line[: line.find("#")].strip() + "\n")
 
     for line in lines:
         write_data(outputfile, line)
@@ -916,7 +977,7 @@ def minimise_file(inputfile, targetip, outputfile):
     inputfile.close()
 
 
-def remove_dups_and_excl(mergefile, exclusionregexes, outputfile=None):
+def remove_dups_and_excl(mergefile, exclusionregexes, targetips, outputfile=None):
     """
     Remove duplicates and remove hosts that we are excluding.
 
@@ -929,6 +990,8 @@ def remove_dups_and_excl(mergefile, exclusionregexes, outputfile=None):
         The file object that contains the hostnames that we are pruning.
     exclusionregexes : list
         The list of regex patterns used to exclude domains.
+    targetips : list[str]
+        The list of target IP addresses
     outputfile : file
         The file object in which the result is written. If None, the file
         'settings["outputpath"]' will be created.
@@ -998,28 +1061,35 @@ def remove_dups_and_excl(mergefile, exclusionregexes, outputfile=None):
         if "@" in strippedrule:
             continue
 
-        # Normalize rule
-        hostname, normalized_rule = normalize_rule(
-            strippedrule,
-            targetip=settings["targetip"],
-            keep_domain_comments=settings["keepdomaincomments"],
-        )
-
         for exclude in exclusions:
             if re.search(r"(^|[\s\.])" + re.escape(exclude) + r"\s", line):
                 write_line = False
                 break
 
-        if normalized_rule and (hostname not in hostnames) and write_line:
-            write_data(finalfile, normalized_rule)
+        # Normalize rule
+        hostname, has_rule = normalize_rule(
+            strippedrule,
+            targetip="0.0.0.0",
+            keep_domain_comments=settings["keepdomaincomments"],
+        )
+        if write_line and (hostname not in hostnames) and has_rule:
             hostnames.add(hostname)
             numberofrules += 1
+            for targetip in targetips:
+                _, normalized_rule = normalize_rule(
+                    strippedrule,
+                    targetip=targetip,
+                    keep_domain_comments=settings["keepdomaincomments"],
+                )
+                write_data(finalfile, normalized_rule)
 
     settings["numberofrules"] = numberofrules
     mergefile.close()
 
     if outputfile is None:
         return finalfile
+    else:
+        return outputfile
 
 
 def normalize_rule(rule, targetip, keep_domain_comments):
@@ -1064,7 +1134,9 @@ def normalize_rule(rule, targetip, keep_domain_comments):
             and spacing reformatted.
         """
 
-        rule = "%s %s" % (targetip, extracted_hostname)
+        hostname = extracted_hostname.lower()
+
+        rule = "%s %s" % (targetip, hostname)
 
         if keep_domain_comments and extracted_suffix:
             if not extracted_suffix.strip().startswith("#"):
@@ -1073,7 +1145,7 @@ def normalize_rule(rule, targetip, keep_domain_comments):
             else:
                 rule += " %s" % extracted_suffix
 
-        return extracted_hostname, rule + "\n"
+        return hostname, rule + "\n"
 
     def is_ip(dataset: str) -> bool:
         """
@@ -1096,6 +1168,37 @@ def normalize_rule(rule, targetip, keep_domain_comments):
             return True
         except ValueError:
             return False
+
+    def is_valid_hostname(dataset: str, min_labels: int = 1) -> bool:
+        """
+        Validates a hostname according to RFC 1123 Section 2.5.
+
+        - Hostname must be <= 255 characters.
+        - Each label (dot-separated part) must be <= 63 characters.
+        - Labels may contain letters, digits, and hyphens.
+        - Labels must not start or end with a hyphen (but may start with a digit!).
+
+        Parameters
+        ----------
+
+        dataset : str
+            The dataset to validate
+        min_labels : int
+            The minimum number of labels to require.
+
+        Returns
+        ------
+        is_valid_hostname: bool
+            Whether the dataset is a hostname
+        """
+        if len(dataset) > 255:
+            return False
+        if dataset.endswith("."):
+            dataset = dataset[:-1]
+
+        label_regex = re.compile(r"^(?!-)[A-Za-z0-9-]{1,63}(?<!-)$")
+        labels = dataset.split(".")
+        return all(label_regex.match(label) for label in labels) and len(labels) >= min_labels
 
     def belch_unwanted(unwanted: str) -> Tuple[None, None]:
         """
@@ -1122,68 +1225,28 @@ def normalize_rule(rule, targetip, keep_domain_comments):
     first try: IP followed by domain
     """
 
-    static_ip_regex = r"^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$"
     split_rule = rule.split(maxsplit=1)
 
     if is_ip(split_rule[0]):
-        # Assume that the first item is an IP address following the rule.
+        # Assume that the first item is an IP address, discard as we're replacing it with targetip
 
-        if " " or "\t" in split_rule[-1]:
-            try:
-                # Example: 0.0.0.0 example.org # hello, world!
-                hostname, suffix = split_rule[-1].split(maxsplit=1)
-            except ValueError:
-                # Example: 0.0.0.0 example.org[:space:]
-                hostname, suffix = split_rule[-1], None
-        else:
-            # Example: 0.0.0.0 example.org
-            hostname, suffix = split_rule[-1], None
+        split_rule = split_rule[-1].split(maxsplit=1)
 
-        hostname = hostname.lower()
+    if is_valid_hostname(split_rule[0]):
+        # Assume that the next item is the hostname
 
-        if (
-            is_ip(hostname)
-            or re.search(static_ip_regex, hostname)
-            or "." not in hostname
-            or ".." in hostname
-            or "." in hostname[-1]
-            or "/" in hostname
-            or ":" in hostname
-        ):
-            # Example: 0.0.0.0 127.0.0.1
+        hostname = split_rule[0]
+        suffix = split_rule[1] if len(split_rule) > 1 else None
+    else:
+        return belch_unwanted(rule)
 
-            # If the hostname is:
-            #   - an IP - or looks like it,
-            #   - doesn't contain dots, or
-            #   - contains repeated dots,
-            #   - ends in a dot, or
-            #   - contains a slash, or
-            #   - contains a colon,
-            #   - contains an underscore,
-            # we don't want to normalize it.
-            return belch_unwanted(rule)
+    # If the hostname is invalid or looks like an IP, we don't want to normalize it.
+    # If we were wanting 100% compliance with the RFC we'd use min_labels=1,
+    # but we want to stop TLDs from being blocked so we set this to 2.
+    if not is_valid_hostname(hostname, 2) or is_ip(hostname):
+        return belch_unwanted(rule)
 
-        return normalize_response(hostname, suffix)
-
-    if (
-        not re.search(static_ip_regex, split_rule[0])
-        and ":" not in split_rule[0]
-        and ".." not in split_rule[0]
-        and "/" not in split_rule[0]
-        and "." in split_rule[0]
-    ):
-        # Deny anything that looks like an IP; doesn't container dots or INVALID.
-
-        try:
-            hostname, suffix = split_rule
-        except ValueError:
-            hostname, suffix = split_rule[0], None
-
-        hostname = hostname.lower()
-
-        return normalize_response(hostname, suffix)
-
-    return belch_unwanted(rule)
+    return normalize_response(hostname, suffix)
 
 
 def strip_rule(line):
