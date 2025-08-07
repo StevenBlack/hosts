@@ -67,10 +67,10 @@ def recursively_loop_extensions(extension, extensions, current_extensions):
 
     name = "-".join(c_current_extensions)
 
-    params = ("-a", "-n", "-o", "alternates/"+name, "-e") + tuple(c_current_extensions)
+    params = ("-a", "-d", "-n", "-o", "alternates/"+name, "-e") + tuple(c_current_extensions)
     update_hosts_file(*params)
 
-    params = ("-a", "-n", "-s", "--nounifiedhosts", "-o", "alternates/"+name+"-only", "-e") + tuple(c_current_extensions)
+    params = ("-a", "-d", "-n", "-s", "--nounifiedhosts", "-o", "alternates/"+name+"-only", "-e") + tuple(c_current_extensions)
     update_hosts_file(*params)
 
     while len(c_extensions) > 0:
@@ -96,9 +96,9 @@ def main():
 
     # Update the unified hosts file
     if options["noupdate"]:
-        update_hosts_file("-a", "-n")
+        update_hosts_file("-a", "-d", "-n")
     else:
-        update_hosts_file("-a")
+        update_hosts_file("-a", "-d")
 
     # List of extensions we want to generate, we will loop over them recursively to prevent manual definitions
     # Only add new extensions to the end of the array, to avoid relocating existing hosts-files

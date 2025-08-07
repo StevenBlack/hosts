@@ -91,6 +91,7 @@ def get_defaults():
         "commonexclusions": ["hulu.com"],
         "blacklistfile": path_join_robust(BASEDIR_PATH, "blacklist"),
         "whitelistfile": path_join_robust(BASEDIR_PATH, "whitelist"),
+        "addsystemhostname": True,
     }
 
 
@@ -229,6 +230,14 @@ def main():
         default=path_join_robust(BASEDIR_PATH, "blacklist"),
         help="Blacklist file to use while generating hosts files.",
     )
+    parser.add_argument(
+        "--dont-add-system-hostname",
+        "-d",
+        dest="addsystemhostname",
+        default=True,
+        action="store_false",
+        help="Don't add the current system hostname while generating hosts files.",
+    )
 
     global settings
 
@@ -327,6 +336,7 @@ def main():
         outputsubfolder=outputsubfolder,
         skipstatichosts=skipstatichosts,
         nounifiedhosts=nounifiedhosts,
+        addsystemhostname=settings["addsystemhostname"],
     )
     finalfile.close()
 
@@ -1272,6 +1282,7 @@ def write_opening_header(finalfile, **headerparams):
         3) outputsubfolder
         4) skipstatichosts
         5) nounifiedhosts
+        6) hostfilename
     """
 
     finalfile.seek(0)  # Reset file pointer.
@@ -1389,7 +1400,7 @@ def write_opening_header(finalfile, **headerparams):
         write_data(finalfile, "ff02::3 ip6-allhosts\n")
         write_data(finalfile, "0.0.0.0 0.0.0.0\n")
 
-        if platform.system() == "Linux":
+        if platform.system() == "Linux" and "addsystemhostname" in headerparams.keys() and headerparams["addsystemhostname"]:
             write_data(finalfile, "127.0.1.1 " + socket.gethostname() + "\n")
             write_data(finalfile, "127.0.0.53 " + socket.gethostname() + "\n")
 

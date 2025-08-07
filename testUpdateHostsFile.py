@@ -131,6 +131,7 @@ class TestGetDefaults(Base):
                 "commonexclusions": ["hulu.com"],
                 "blacklistfile": "foo" + self.sep + "blacklist",
                 "whitelistfile": "foo" + self.sep + "whitelist",
+                "addsystemhostname": True,
             }
             self.assertDictEqual(actual, expected)
 
@@ -1092,7 +1093,7 @@ class TestWriteOpeningHeader(BaseMockDir):
 
     def test_basic_include_static_hosts_linux(self):
         kwargs = dict(
-            extensions="", outputsubfolder="", numberofrules=5, skipstatichosts=False, nounifiedhosts=False
+            extensions="", outputsubfolder="", numberofrules=5, skipstatichosts=False, nounifiedhosts=False, addsystemhostname=True
         )
         with self.mock_property("platform.system") as system:
             system.return_value = "Linux"
