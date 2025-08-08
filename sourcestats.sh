@@ -48,17 +48,13 @@ data/someonewhocares.org
 data/tiuxo
 data/yoyo.org
 extensions/fakenews
-extensions/gambling
 extensions/gambling/bigdargon
 extensions/gambling/sinfonietta
-extensions/porn
 extensions/porn/bigdargon
 extensions/porn/brijrajparmar27
 extensions/porn/clefspeare13
 extensions/porn/sinfonietta
 extensions/porn/sinfonietta-snuff
-extensions/porn/tiuxo
-extensions/social
 extensions/social/sinfonietta
 extensions/social/tiuxo
 "
