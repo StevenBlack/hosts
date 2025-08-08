@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 lists="
 alternates/fakenews
@@ -73,12 +73,10 @@ for item in $lists; do
     # echo $item $HASH_DATE
     IFS=" "
     split=(${HASH_DATE//,/ })
-    git checkout ${split[0]} ${item}/hosts 1> /dev/null 2> /dev/null
-    domains=$(rh -q -m $item/hosts)
+    domains=$(rh -q -m <(git show ${split[0]}:$item/hosts))
     echo  $item ${split[1]} ${domains}
     echo ${split[1]},${domains} >> ${item}/stats.out
     IFS='
 '
   done
-  git checkout HEAD^ ${item}/hosts 1> /dev/null 2> /dev/null
 done
