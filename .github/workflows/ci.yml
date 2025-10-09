@@ -25,17 +25,18 @@ jobs:
           - '3.11'
           - '3.12'
           - '3.13'
+          - '3.14'
         os:
           - ubuntu-latest
         include:
           - os: macos-latest
             python: '3.9'
           - os: macos-latest
-            python: '3.13'
+            python: '3.14'
           - os: windows-latest
             python: '3.9'
           - os: windows-latest
-            python: '3.13'
+            python: '3.14'
 
     steps:
       - name: Clone repository
