@@ -6,7 +6,10 @@ updates:
       interval: monthly
     labels:
       - dependencies
-      - github_actions
+    groups:
+      github-actions:
+        patterns:
+          - "*"
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
