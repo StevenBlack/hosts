@@ -1,6 +1,11 @@
-**Take Note!**
+> [!IMPORTANT]
+> **Cloning this repository can take a long time!**
+> You probably just want to start with the latest version, not its whole history since 2018.
+> **Therefore** you probably want to use `git clone --depth 1 ...` to save significant time.
 
-With the exception of issues and PRs regarding changes to
+
+> [!NOTE]
+> With the exception of issues and PRs regarding changes to
 `hosts/data/StevenBlack/hosts`, all other issues regarding the content of the
 produced hosts files should be made with the appropriate data source that
 contributed the content in question. The contact information for all of the data
