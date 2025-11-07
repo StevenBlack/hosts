@@ -811,7 +811,6 @@
 0.0.0.0 golds.lp.mydas.mobi
 0.0.0.0 googleads.g.doubleclick.net
 0.0.0.0 googleadservices.com
-0.0.0.0 gravity.com
 0.0.0.0 grvspn.com
 0.0.0.0 gsspat.jp
 0.0.0.0 gsspcln.jp
