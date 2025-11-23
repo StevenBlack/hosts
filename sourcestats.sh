@@ -55,8 +55,8 @@ extensions/porn/brijrajparmar27
 extensions/porn/clefspeare13
 extensions/porn/sinfonietta
 extensions/porn/sinfonietta-snuff
+extensions/porn/tiuxo
 extensions/social/sinfonietta
-extensions/social/tiuxo
 "
 
 IFS='
