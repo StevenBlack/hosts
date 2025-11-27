@@ -59,7 +59,6 @@ lists=(
   extensions/porn/clefspeare13
   extensions/porn/sinfonietta
   extensions/porn/sinfonietta-snuff
-  extensions/social/tiuxo
   extensions/social/sinfonietta
 )
 
