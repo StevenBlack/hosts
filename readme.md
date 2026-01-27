@@ -646,6 +646,11 @@ devices under a variety of operating systems.
   most welcome.
 - [ViHoMa](https://github.com/cmabad/ViHoMa) is a Visual Hosts file Manager,
   written in Java, by Christian Martínez. Check it out!
+- [SaneHosts](https://sanehosts.com "SaneHosts")
+  (for macOS): A native macOS hosts file manager with profile-based blocking.
+  Choose from five protection levels with 200+ curated blocklists, or build
+  custom profiles. Open source at
+  [GitHub](https://github.com/sane-apps/SaneHosts).
 
 ## Interesting Applications
 
