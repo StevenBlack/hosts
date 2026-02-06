@@ -67,10 +67,10 @@ def recursively_loop_extensions(extension, extensions, current_extensions):
 
     name = "-".join(c_current_extensions)
 
-    params = ("-a", "-n", "-o", "alternates/"+name, "-e") + tuple(c_current_extensions)
+    params = ("-a", "-d", "-n", "-o", "alternates/"+name, "-e") + tuple(c_current_extensions)
     update_hosts_file(*params)
 
-    params = ("-a", "-n", "-s", "--nounifiedhosts", "-o", "alternates/"+name+"-only", "-e") + tuple(c_current_extensions)
+    params = ("-a", "-d", "-n", "-s", "--nounifiedhosts", "-o", "alternates/"+name+"-only", "-e") + tuple(c_current_extensions)
     update_hosts_file(*params)
 
     while len(c_extensions) > 0:
@@ -83,10 +83,22 @@ def main():
         "file from hosts stored in "
         "data subfolders."
     )
+    parser.add_argument(
+        "--noupdate",
+        "-n",
+        dest="noupdate",
+        default=False,
+        action="store_true",
+        help="Don't update from host data sources.",
+    )
     parser.parse_args()
+    options = vars(parser.parse_args())
 
     # Update the unified hosts file
-    update_hosts_file("-a")
+    if options["noupdate"]:
+        update_hosts_file("-a", "-d", "-n")
+    else:
+        update_hosts_file("-a", "-d")
 
     # List of extensions we want to generate, we will loop over them recursively to prevent manual definitions
     # Only add new extensions to the end of the array, to avoid relocating existing hosts-files

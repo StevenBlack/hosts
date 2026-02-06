@@ -12,12 +12,23 @@
       nixosModule = { config, ... }:
         with nixpkgs.lib;
         let
+          inherit (nixpkgs) lib;
           cfg = config.networking.stevenBlackHosts;
           alternatesList = (if cfg.blockFakenews then [ "fakenews" ] else []) ++
                            (if cfg.blockGambling then [ "gambling" ] else []) ++
                            (if cfg.blockPorn then [ "porn" ] else []) ++
                            (if cfg.blockSocial then [ "social" ] else []);
-          alternatesPath = "alternates/" + builtins.concatStringsSep "-" alternatesList + "/";
+          alternatesPath = "/alternates/" + builtins.concatStringsSep "-" alternatesList;
+          orig = builtins.readFile (
+            self.outPath + (if alternatesList != [ ] then alternatesPath else "") + "/hosts"
+          );
+          filtered =
+            if cfg.enableIPv6 then
+              orig
+            else
+              lib.concatStringsSep "\n" (
+                lib.filter (line: !(lib.strings.hasPrefix "::" line)) (lib.strings.splitString "\n" orig)
+              );
         in
         {
           options.networking.stevenBlackHosts = {
@@ -32,11 +43,7 @@
             blockSocial = mkEnableOption "social hosts entries";
           };
           config = mkIf cfg.enable {
-            networking.extraHosts =
-              let
-                orig = builtins.readFile ("${self}/" + (if alternatesList != [] then alternatesPath else "") + "hosts");
-                ipv6 = builtins.replaceStrings [ "0.0.0.0" ] [ "::" ] orig;
-              in orig + (optionalString cfg.enableIPv6 ("\n" + ipv6));
+            networking.extraHosts = filtered;
           };
         };
 
