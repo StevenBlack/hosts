@@ -1,40 +1,40 @@
 pkgs:
 let
+  lib = pkgs.lib;
   toUnboundConf = (
     file:
-    pkgs.lib.strings.concatMapStringsSep "\n" (
+    lib.strings.concatMapStringsSep "\n" (
       line:
-      if (pkgs.lib.strings.hasPrefix "#" line) || (line == "") then
+      if (lib.strings.hasPrefix "#" line) || (line == "") then
         line
       else
         let
-          split_line = (pkgs.lib.strings.splitString " " line);
-          address = builtins.elemAt split_line 0;
-          domain = builtins.elemAt split_line 1;
+          splitLine = (lib.strings.splitString " " line);
+          address = builtins.elemAt splitLine 0;
+          domain = builtins.elemAt splitLine 1;
         in
         ''
           local-zone: "${domain}" redirect
           local-data: "${domain} A ${address}"
         ''
-    ) (pkgs.lib.strings.splitString "\n" (builtins.readFile file))
+    ) (lib.strings.splitString "\n" (builtins.readFile file))
   );
-  dir = ./alternates;
-  lists =
-    pkgs.lib.trivial.pipe (builtins.readDir ./alternates) [
-      (pkgs.lib.filterAttrs (
-        k: v: (builtins.length (pkgs.lib.strings.splitString "-" k)) == 1 && v == "directory"
-      )) # select only non-combined filter lists
-      (pkgs.lib.attrsets.mapAttrs (k: v: dir + "/${k}/hosts"))
-      (pkgs.lib.attrsets.filterAttrs (k: v: builtins.pathExists v))
+  files =
+    lib.trivial.pipe (builtins.readDir ./alternates) [
+      (lib.filterAttrs (
+        name: type: type == "directory" && (builtins.length (lib.strings.splitString "-" name)) == 1 # select only non-combined filter lists
+      ))
+      (lib.attrsets.mapAttrs (name: _: ./alternates/${name}/hosts))
+      (lib.attrsets.filterAttrs (name: file: builtins.pathExists file))
     ]
     // {
       all = ./hosts;
     };
 in
-pkgs.lib.attrsets.mapAttrs (
-  k: v:
+lib.attrsets.mapAttrs (
+  name: file:
   pkgs.writeTextFile {
-    name = k;
-    text = toUnboundConf v;
+    inherit name;
+    text = toUnboundConf file;
   }
-) lists
+) files
