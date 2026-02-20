@@ -75,7 +75,7 @@
 
       overlays.default = (
         final: prev: {
-          unboundconfs = prev.lib.makeScope prev.pkgs.newScope (newscope: self.packages.${prev.system});
+          stevenblack-hosts = prev.lib.makeScope prev.newScope (_: self.packages.${prev.system});
         }
       );
 

@@ -13,10 +13,13 @@ let
           address = builtins.elemAt splitLine 0;
           domain = builtins.elemAt splitLine 1;
         in
-        ''
-          local-zone: "${domain}" redirect
-          local-data: "${domain} A ${address}"
-        ''
+        if address == "0.0.0.0" then
+          ''local-zone: "${domain}" refuse''
+        else
+          ''
+            local-zone: "${domain}" redirect
+            local-data: "${domain} A ${address}"
+          ''
     ) (lib.strings.splitString "\n" (builtins.readFile file))
   );
   files =
@@ -31,10 +34,19 @@ let
       all = ./hosts;
     };
 in
-lib.attrsets.mapAttrs (
-  name: file:
-  pkgs.writeTextFile {
-    inherit name;
-    text = toUnboundConf file;
-  }
-) files
+{
+  raw = lib.attrsets.mapAttrs (
+    name: file:
+    builtins.path {
+      inherit name;
+      path = file;
+    }
+  ) files;
+  unbound = lib.attrsets.mapAttrs (
+    name: file:
+    pkgs.writeTextFile {
+      inherit name;
+      text = toUnboundConf file;
+    }
+  ) files;
+}
