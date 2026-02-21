@@ -3,23 +3,15 @@ let
   lib = pkgs.lib;
   toUnboundConf = (
     file:
-    lib.strings.concatMapStringsSep "\n" (
+    lib.strings.concatMapStrings (
       line:
-      if (lib.strings.hasPrefix "#" line) || (line == "") then
-        line
-      else
-        let
-          splitLine = (lib.strings.splitString " " line);
-          address = builtins.elemAt splitLine 0;
-          domain = builtins.elemAt splitLine 1;
-        in
-        if address == "0.0.0.0" then
-          ''local-zone: "${domain}" refuse''
-        else
-          ''
-            local-zone: "${domain}" redirect
-            local-data: "${domain} A ${address}"
-          ''
+      let
+        splitLine = lib.strings.splitString " " line;
+        address = builtins.elemAt splitLine 0;
+      in
+      lib.optionalString (address == "0.0.0.0") ''
+        local-zone: "${builtins.elemAt splitLine 1}" refuse
+      ''
     ) (lib.strings.splitString "\n" (builtins.readFile file))
   );
   files =
