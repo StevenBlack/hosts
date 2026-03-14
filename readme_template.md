@@ -87,9 +87,11 @@ maintain and provide for you.
 
 ## Generate your own unified hosts file
 
-You have three options to generate your own hosts file. You can use our
-container image, build your own image, or do it in your own environment. Option
-#1 is easiest if you have Linux with Docker installed.
+You have five options to generate your own hosts file. You can use our
+container image, build your own image, do it in your own environment, use our
+GUI application, or use Google Colab. Option #1 is easiest if you have Linux
+with Docker installed, while Option #4 provides a user-friendly graphical
+interface for all platforms.
 
 ### Option 1: Use our container image (Linux only)
 
@@ -155,7 +157,34 @@ pip3 install --user -r requirements.txt
 at the user level. More information about it can be found on pip
 [documentation](https://pip.pypa.io/en/stable/reference/pip_install/?highlight=--user#cmdoption-user).
 
-### Option 4: Generate it in Google Colab
+### Option 4: Use the GUI Hosts Generator Application
+
+For users who prefer a graphical interface, we provide a user-friendly GUI application that simplifies the process of generating custom hosts files.
+
+**Features:**
+- Easy-to-use graphical interface
+- Select extensions (gambling, porn, fakenews, social) with checkboxes
+
+**Requirements:**
+- Python 3.6 or later
+- pywebview (for the web-based GUI interface)
+- requests (for downloading hosts sources)
+
+**Installation and Usage:**
+
+1. Navigate to the `gui-hosts-app` directory in this repository
+2. Install dependencies:
+   ```sh
+   pip install -r requirements.txt
+   ```
+3. Run the GUI application:
+   ```sh
+   python main.py
+   ```
+
+The application will guide you through the process with an intuitive interface, making it perfect for users who prefer visual tools over command-line operations.
+
+### Option 5: Generate it in Google Colab
 
 Spin up a free remote [Google Colab](https://colab.research.google.com/drive/1tYWXpU2iuPDqN_o03JW9ml3ExO80eBLq?usp=sharing) environment.
 
