@@ -41,9 +41,19 @@
                 orig = builtins.readFile (
                   "${self}/" + (lib.optionalString (alternatesList != [ ]) alternatesPath) + "hosts"
                 );
-                ipv6 = builtins.replaceStrings [ "0.0.0.0" ] [ "::" ] orig;
+                filterHosts = text:
+                  builtins.concatStringsSep "\n"
+                    (builtins.filter
+                      (line:
+                        let first = builtins.elemAt (lib.splitString " " line) 0;
+                        in !(lib.hasInfix "%" first)
+                      )
+                      (lib.splitString "\n" text)
+                    );
+                filtered = filterHosts orig;
+                ipv6 = builtins.replaceStrings [ "0.0.0.0" ] [ "::" ] filtered;
               in
-              lib.mkAfter (orig + (lib.optionalString cfg.enableIPv6 ("\n" + ipv6)));
+              lib.mkAfter (filtered + (lib.optionalString cfg.enableIPv6 ("\n" + ipv6)));
           };
         };
 
