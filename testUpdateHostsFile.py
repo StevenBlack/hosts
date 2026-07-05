@@ -837,7 +837,7 @@ class TestNormalizeRule(BaseStdout):
     def test_no_match(self):
         kwargs = dict(targetip="0.0.0.0", keep_domain_comments=False)
 
-        # Note: "Bare"- Domains are accepted. IP are excluded.
+        # Note: "Bare"- Domains are accepted. IPs are excluded.
         for rule in [
             "128.0.0.1",
             "::1",
@@ -847,6 +847,11 @@ class TestNormalizeRule(BaseStdout):
             "0.0.0.0 https",
             "0.0.0.0 https..",
             "0.0.0.0 foo.",
+            "0.0.0.0 cm076410.tw1.ru]",
+            "0.0.0.0 example.com[",
+            "0.0.0.0 exa mple.com",
+            "0.0.0.0 -example.com",
+            "0.0.0.0 example-.com",
         ]:
             self.assertEqual(normalize_rule(rule, **kwargs), (None, None))
 
@@ -934,7 +939,8 @@ class TestNormalizeRule(BaseStdout):
             "foo.bar.edu",
             "www.example-foo.bar.edu",
             "www.example-3045.foobar.com",
-            "www.example.xn--p1ai"
+            "www.example.xn--p1ai",
+            "philadelphia_cbslocal.us.intellitxt.com",
         ):
             expected = (rule, "0.0.0.0 " + rule + "\n")
 
