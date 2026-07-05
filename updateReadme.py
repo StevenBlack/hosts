@@ -90,8 +90,10 @@ def main():
             "wt",
             encoding="utf-8",
             newline="\n",
-        ) as out:
-            for line in open(README_TEMPLATE, encoding="utf-8", newline="\n"):
+        ) as out, open(
+            README_TEMPLATE, encoding="utf-8", newline="\n"
+        ) as template:
+            for line in template:
                 line = line.replace(
                     "@GEN_DATE@", time.strftime("%B %d %Y", time.gmtime())
                 )
