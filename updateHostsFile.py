@@ -1452,6 +1452,8 @@ def move_hosts_file_into_place(finalfile):
             print_failure(f"Replacing {target_file} failed.")
             return False
 
+    return False
+
 
 def flush_dns_cache():
     """
