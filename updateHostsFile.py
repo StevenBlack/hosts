@@ -1022,6 +1022,33 @@ def remove_dups_and_excl(mergefile, exclusionregexes, outputfile=None):
         return finalfile
 
 
+# Dot-separated labels of [a-z0-9_-], hyphens not at label ends, at least two
+# labels. Expects a lowercased hostname.
+VALID_DOMAIN_REGEX = re.compile(
+    r"(?:[a-z0-9_]|[a-z0-9_][a-z0-9_-]*[a-z0-9_])"
+    r"(?:\.(?:[a-z0-9_]|[a-z0-9_][a-z0-9_-]*[a-z0-9_]))+"
+)
+
+
+def is_valid_domain(hostname):
+    """
+    Check whether a lowercased hostname looks like a valid domain name.
+
+    Parameters
+    ----------
+    hostname : str
+        The hostname to validate.
+
+    Returns
+    -------
+    valid : bool
+        Whether the hostname only contains characters allowed in a domain
+        name and has a valid label structure.
+    """
+
+    return bool(VALID_DOMAIN_REGEX.fullmatch(hostname))
+
+
 def normalize_rule(rule, targetip, keep_domain_comments):
     """
     Standardize and format the rule string provided.
@@ -1144,33 +1171,19 @@ def normalize_rule(rule, targetip, keep_domain_comments):
         if (
             is_ip(hostname)
             or re.search(static_ip_regex, hostname)
-            or "." not in hostname
-            or ".." in hostname
-            or "." in hostname[-1]
-            or "/" in hostname
-            or ":" in hostname
+            or not is_valid_domain(hostname)
         ):
             # Example: 0.0.0.0 127.0.0.1
 
-            # If the hostname is:
-            #   - an IP - or looks like it,
-            #   - doesn't contain dots, or
-            #   - contains repeated dots,
-            #   - ends in a dot, or
-            #   - contains a slash, or
-            #   - contains a colon,
-            #   - contains an underscore,
-            # we don't want to normalize it.
+            # If the hostname is an IP (or looks like one), or isn't a valid
+            # domain (bad characters, no dot, repeated/trailing dots, slash,
+            # colon, ...), we don't want to normalize it.
             return belch_unwanted(rule)
 
         return normalize_response(hostname, suffix)
 
-    if (
-        not re.search(static_ip_regex, split_rule[0])
-        and ":" not in split_rule[0]
-        and ".." not in split_rule[0]
-        and "/" not in split_rule[0]
-        and "." in split_rule[0]
+    if not re.search(static_ip_regex, split_rule[0]) and is_valid_domain(
+        split_rule[0].lower()
     ):
         # Deny anything that looks like an IP; doesn't container dots or INVALID.
 
