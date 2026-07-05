@@ -4,6 +4,14 @@
 
 set -euo pipefail
 
+# Ensure required tools are installed
+for tool in git rh; do
+  if ! command -v "${tool}" > /dev/null 2>&1; then
+    echo "Error: ${tool} not found in PATH" >&2
+    exit 1
+  fi
+done
+
 lists=(
   alternates/fakenews
   alternates/fakenews-gambling
