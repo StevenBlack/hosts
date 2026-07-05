@@ -1666,6 +1666,7 @@ def domain_to_idna(line):
 
                 splited_line[index] = splited_line[index].encode("IDNA").decode("UTF-8")
             except IndexError:
+                # No hostname field to encode, leave the line as-is.
                 pass
             return separator.join(splited_line)
         return line.encode("IDNA").decode("UTF-8")
