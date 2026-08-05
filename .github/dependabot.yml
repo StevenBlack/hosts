@@ -10,6 +10,8 @@ updates:
       github-actions:
         patterns:
           - "*"
+    cooldown:
+      default-days: 7
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
@@ -17,4 +19,6 @@ updates:
     labels:
       - dependencies
       - python
+    cooldown:
+      default-days: 7
     versioning-strategy: lockfile-only
