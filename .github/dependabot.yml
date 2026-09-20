@@ -1,7 +1,9 @@
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
+  - package-ecosystem: github-actions
     directory: "/"
+    cooldown:
+      default-days: 7
     schedule:
       interval: monthly
     labels:
@@ -10,15 +12,43 @@ updates:
       github-actions:
         patterns:
           - "*"
+        update-types:
+          - minor
+          - patch
+  - package-ecosystem: pip
+    directory: "/"
     cooldown:
       default-days: 7
-  - package-ecosystem: "pip"
-    directory: "/"
     schedule:
-      interval: weekly
+      interval: monthly
     labels:
       - dependencies
       - python
+    groups:
+      pip-deps:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+    versioning-strategy: lockfile-only
+  - package-ecosystem: npm
+    directory: "/"
     cooldown:
       default-days: 7
-    versioning-strategy: lockfile-only
+    schedule:
+      interval: monthly
+    labels:
+      - dependencies
+    versioning-strategy: increase
+    groups:
+      production-dependencies:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      development-dependencies:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
