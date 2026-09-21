@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosts Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div>
+                <h1 data-i18n="app_title">🛡️ Host Generator</h1>
+                <p data-i18n="app_subtitle">Generador de archivos hosts personalizados</p>
+            </div>
+            <div class="header-right">
+                <div id="last-update" class="last-update" data-i18n="last_update">Última actualización: --</div>
+                <select id="language-selector" class="language-selector">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
+                <button class="header-btn" onclick="app.openOutputFolder()" data-i18n="open_folder">📁 Abrir Carpeta</button>
+                <button class="header-btn" onclick="app.refreshAll()" data-i18n="update">🔄 Actualizar</button>
+            </div>
+        </header>
+
+        <main class="content">
+            <!-- Paso 1: Estado de fuentes -->
+            <div id="sources-step" class="step-card">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title" data-i18n="step1_title">Fuentes de Hosts</div>
+                </div>
+                <div class="step-description" data-i18n="step1_description">
+                    Descarga las fuentes de hosts desde repositorios confiables
+                </div>
+                <div id="sources-status" class="step-status">
+                    <span class="loading"></span> <span data-i18n="checking_sources">Verificando fuentes...</span>
+                </div>
+                <div id="download-section">
+                    <button id="download-btn" class="btn" data-i18n="download_sources">📥 Descargar Fuentes</button>
+                    <button id="update-btn" class="btn btn-warning" data-i18n="update_sources" style="display: none;">🔄 Actualizar Fuentes</button>
+                </div>
+                
+                <div id="download-progress" class="progress-section">
+                    <div class="progress-text">
+                        <span id="download-message" data-i18n="preparing_download">Preparando descarga...</span>
+                        <span id="progress-text">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de extensiones -->
+            <div id="extensions-section" class="extensions-section hidden">
+                <div class="extensions-header">
+                    <div class="extensions-title">
+                        <span>🛡️</span>
+                        <span data-i18n="step2_title">Seleccionar Extensiones</span>
+                    </div>
+                    <div class="extensions-actions">
+                        <button class="btn btn-secondary" onclick="app.selectAllExtensions()" data-i18n="select_all">✅ Seleccionar Todo</button>
+                        <button class="btn btn-secondary" onclick="app.clearAllExtensions()" data-i18n="clear_all">❌ Limpiar Todo</button>
+                    </div>
+                </div>
+                <div class="step-description" style="padding: 0 25px 10px;" data-i18n="step2_description">
+                    Elige qué categorías de sitios bloquear
+                </div>
+                <div id="extensions-grid" class="extensions-grid">
+                    <!-- Las extensiones se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Sección de generación -->
+            <div id="generate-section" class="generate-section hidden">
+                <h3 data-i18n="generate_title">Generar Archivo Hosts</h3>
+                <p data-i18n="generate_description">Crea tu archivo hosts personalizado con las extensiones seleccionadas</p>
+                <button id="generate-btn" class="generate-btn" onclick="app.generateHostsFile()" data-i18n="generate_button">⚙️ Generar Archivo Hosts</button>
+            </div>
+
+            <!-- Sección de archivos de salida -->
+            <div class="output-section">
+                <div class="output-header">
+                    <div class="output-title" data-i18n="output_files">Archivos Generados</div>
+                </div>
+                <div id="output-files">
+                    <div class="file-item">
+                        <div class="file-info">
+                            <span>📄</span>
+                            <div>
+                                <div class="file-name" data-i18n="no_files_generated">No hay archivos generados aún</div>
+                                <div class="file-meta" data-i18n="generate_first_file">Genera tu primer archivo hosts</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2025 Hosts Generator - Protege tu navegación</p>
+            <p><a href="https://github.com/Tarkiin/hosts" target="_blank">GitHub</a></p>
+        </footer>
+    </div>
+
+    <!-- Notificación -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
