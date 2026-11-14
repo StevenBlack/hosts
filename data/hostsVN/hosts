@@ -1,7 +1,7 @@
 # Title: hostsVN
-# Last modified: 24 Oct 2026 22:48 UTC+7
-# Version: 2610242248
-# Blocked: 1.747 domains
+# Last modified: 11 Nov 2026 14:29 UTC+7
+# Version: 2611111429
+# Blocked: 1.757 domains
 # Only include advertisers in Vietnam
 # Homepage: https://bigdargon.github.io/hostsVN/
 # GitHub: https://github.com/bigdargon/hostsVN
@@ -504,6 +504,7 @@
 #[aka.zdn.vn]
 0.0.0.0 adtima-static.aka.zdn.vn
 #[zdn.vn]
+0.0.0.0 dev-adtima-static.zdn.vn
 0.0.0.0 stc-support-app-brand.zdn.vn
 0.0.0.0 zaloads-480.zdn.vn
 0.0.0.0 zplayer-trk.zdn.vn
@@ -1427,6 +1428,7 @@
 0.0.0.0 log.vda.viettel.vn
 0.0.0.0 vda.viettel.vn
 #[tv360.vn]
+0.0.0.0 abc3-log.tv360.vn
 0.0.0.0 log.tv360.vn
 0.0.0.0 pubads-wiinvent.tv360.vn
 #[shopee.vn]
@@ -1451,6 +1453,9 @@
 0.0.0.0 p.smartads.tech
 0.0.0.0 st.smartads.tech
 0.0.0.0 t.smartads.tech
+#[meta.vn]
+0.0.0.0 metrics.meta.vn
+0.0.0.0 tracking.meta.vn
 # --- Block adsVN ---
 0.0.0.0 12signup.com
 0.0.0.0 ad-admin.vnay.vn
@@ -1606,6 +1611,7 @@
 0.0.0.0 offerwall.headlines.pw
 0.0.0.0 openx.motgame.vn
 0.0.0.0 ox1.vietstock.vn
+0.0.0.0 pub.skyads.com.vn
 0.0.0.0 qc.5giay.vn
 0.0.0.0 qc.designervn.net
 0.0.0.0 qc.japo.vn
@@ -1688,7 +1694,9 @@
 0.0.0.0 analytics.explus.vn
 0.0.0.0 analytics.fsoft.com.vn
 0.0.0.0 analytics.hebela.vn
+0.0.0.0 analytics.hemeratech.vn
 0.0.0.0 analytics.hub-js.com
+0.0.0.0 analytics.hvn.works
 0.0.0.0 analytics.jamstackvietnam.com
 0.0.0.0 analytics.mobiedu.vn
 0.0.0.0 analytics.moneycat.vn
@@ -1770,6 +1778,8 @@
 0.0.0.0 log.baovanhoa.vn
 0.0.0.0 log.beecost.com
 0.0.0.0 log.beecost.vn
+0.0.0.0 log.cand.vn
+0.0.0.0 log.congluan.vn
 0.0.0.0 log.daibieunhandan.vn
 0.0.0.0 log.daidoanket.vn
 0.0.0.0 log.dav.edu.vn
@@ -1789,6 +1799,7 @@
 0.0.0.0 log.nhipcaudautu.vn
 0.0.0.0 log.oto.com.vn
 0.0.0.0 log.plo.vn
+0.0.0.0 log.rada.vn
 0.0.0.0 log.saigondautu.com.vn
 0.0.0.0 log.sggp.org.vn
 0.0.0.0 log.smoney.vn
@@ -1907,7 +1918,6 @@
 0.0.0.0 tracking.fado.vn
 0.0.0.0 tracking.gapone.vn
 0.0.0.0 tracking.lsvn.vn
-0.0.0.0 tracking.meta.vn
 0.0.0.0 tracking.saostar.vn
 0.0.0.0 tracking.tekoapis.com
 0.0.0.0 tracking.tinxe.vn
@@ -1916,6 +1926,7 @@
 0.0.0.0 tracking.vegaid.vn
 0.0.0.0 tracking.vietbao.vn
 0.0.0.0 tracking.viez.vn
+0.0.0.0 tracking.vneconomy.vn
 0.0.0.0 trackingapi.foody.vn
 0.0.0.0 trackity.tiki.vn
 0.0.0.0 traffic.nvcms.net
